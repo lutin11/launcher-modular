@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.ubuntouchfr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 11:36+0000\n"
+"POT-Creation-Date: 2024-09-18 23:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,10 +45,6 @@ msgstr ""
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/About.qml:125
-msgid "DONATE"
-msgstr ""
-
 #: ../qml/About.qml:140
 msgid "Maintainer"
 msgstr ""
@@ -57,11 +53,7 @@ msgstr ""
 msgid "Copyright"
 msgstr ""
 
-#: ../qml/About.qml:168
-msgid "Special thanks to the testers: Sander Klootwijk, Steve Kueffer."
-msgstr ""
-
-#: ../qml/About.qml:183
+#: ../qml/About.qml:169
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 

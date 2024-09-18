@@ -1,5 +1,5 @@
 import QtQuick 2.9
-import QtQuick.Layouts 1.1
+import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 import Qt.labs.settings 1.0
 import Lomiri.Components.ListItems 1.3 as ListItem
