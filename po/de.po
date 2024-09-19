@@ -773,7 +773,7 @@ msgid "To access to the widget settings, click and hold on the widget and then y
 msgstr "Mit tippen & halten können die Widget Einstellungen aufgerufen werden um diese dann anpassen zu können."
 
 #: ../qml/Help.qml:57
-msgid "<br><b>To access to the widget settings, click and hold on the widget and then you can change the widget settings.</b>"
+msgid "<br><b>Click and hold the widget and to change its settings.</b>"
 msgstr ""
 "<br><b>Mit tippen &amp; halten können die Widget Einstellungen aufgerufen "
 "werden um diese dann anpassen zu können.</b>"

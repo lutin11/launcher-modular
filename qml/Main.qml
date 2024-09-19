@@ -9,7 +9,6 @@ import AppHandler 1.0
 import "pages"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
-import AccountsService 0.1
 
 MainView {
     id: launchermodular
@@ -20,7 +19,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.3.0"
+    property string appVersion : "2.3.1"
 
     function getCustomIconArray() {
         var customIcon = [], hMI_l = launchermodular.customIconModel.count;
@@ -225,6 +224,7 @@ MainView {
                     source: backgroundblur
                     radius: launchermodular.settings.backgroundBlur
                 }
+
                 Rectangle {
                     id: listAppBackground
                     anchors.fill: parent
@@ -239,9 +239,6 @@ MainView {
 
                     /* ******************************** LES PAGES COMMENCE ICI ******************************** */
 
-
-
-
                    SwipeView {
                         id: view
                         currentIndex: 0
@@ -254,14 +251,11 @@ MainView {
                                       Qt.createComponent(directory+name)
                                  }
                                  property int pageIndex:index
-
                             }
                         }
-
-                   }
+                    }
 
                     /* ******************************** FIN DES PAGES ******************************** */
-
                 }
             }
 
@@ -296,11 +290,10 @@ MainView {
                       startMouseX = mouseX
                     }
                     onPositionChanged: {
-                        if(mouseX - startMouseX > units.gu(4)) {
+                        if (mouseX - startMouseX > units.gu(4)) {
                             view.setCurrentIndex((view.currentIndex+1)%view.count)
                             startMouseX += units.gu(4)
-                        }
-                        else if(startMouseX - mouseX > units.gu(4)) {
+                        } else if (startMouseX - mouseX > units.gu(4)) {
                             view.setCurrentIndex((view.currentIndex-1+view.count)%view.count)
                             startMouseX -= units.gu(4)
                         }
@@ -403,6 +396,7 @@ MainView {
                 }
 
             }
+
             Drawer {
                 id: bottomBarSettings
                 edge: Qt.BottomEdge

@@ -75,7 +75,7 @@ msgstr ""
 #: ../qml/Autostart.qml:62
 msgid ""
 "How to set Modular Launcher to start automatically when the device is "
-"booted. <br><br>More details in <a href='https://github.com/ruditimmermans/"
+"booted. <br><br>More details in <a href='https://github.com/lutin11/"
 "launcher-modular-service'>how to add a Modular Launcher systemd user service "
 "file to/on your device</a>"
 msgstr ""

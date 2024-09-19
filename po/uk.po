@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Як налаштувати автоматичний запуск Modular Launcher під час завантаження "
 "пристрою. <br><br>Детальніше в статті <a href=\"https://github.com/"
-"ruditimmermans/launcher-modular-service\">як додати службовий файл "
+"lutin11/launcher-modular-service\">як додати службовий файл "
 "користувача systemd Modular Launcher на свій пристрій</a>"
 
 #: ../qml/Help.qml:15

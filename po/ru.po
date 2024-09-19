@@ -763,7 +763,7 @@ msgstr ""
 
 #: ../qml/Help.qml:15
 msgid "Launcher Modular Help"
-msgstr ""
+msgstr "Launcher Modular Помощь"
 
 #: ../qml/Help.qml:49
 msgid "Widget Settings"
@@ -771,8 +771,8 @@ msgstr "Настройки виджета"
 
 #: ../qml/Help.qml:52
 msgid "To access to the widget settings, click and hold on the widget and then you can change the widget settings."
-msgstr ""
+msgstr "Чтобы перейти к настройкам виджета, нажмите и удерживайте виджет, после чего вы сможете изменить его настройки."
 
 #: ../qml/Help.qml:57
-msgid "<br><b>To access to the widget settings, click and hold on the widget and then you can change the widget settings.</b>"
-msgstr ""
+msgid "<br><b>Click and hold the widget and to change its settings.</b>"
+msgstr "Нажмите и удерживайте виджет, чтобы изменить его настройки."

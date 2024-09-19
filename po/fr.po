@@ -71,7 +71,7 @@ msgid "Widget Settings"
 msgstr "Paramètres du Widget"
 
 #: ../qml/Help.qml:57
-msgid "<br><b>To access to the widget settings, click and hold on the widget and then you can change the widget settings.</b>"
+msgid "<br><b>Click and hold the widget and to change its settings.</b>"
 msgstr "<br><b>Pour accéder au paramètres du widget, appuyez longuement sur le widget et ensuite vous pourrez modifier les paramètres du widget.</b>"
 
 #: ../qml/ImportPage.qml:11

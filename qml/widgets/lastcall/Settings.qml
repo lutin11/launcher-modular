@@ -22,7 +22,7 @@ Page {
                 }
             }
         ]
-   }
+    }
     
     Rectangle {
         id:mainsettings

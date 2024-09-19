@@ -70,7 +70,7 @@ msgid "Widget Settings"
 msgstr "Widgetinstellingen"
 
 #: ../qml/Help.qml:57
-msgid "<br><b>To access to the widget settings, click and hold on the widget and then you can change the widget settings.</b>"
+msgid "<br><b>Click and hold the widget and to change its settings.</b>"
 msgstr "<br><b>Om toegang te krijgen tot de widgetinstellingen, houdt u een widget ingedrukt en kunt u de widgetinstellingen wijzigen.</b>"
 
 #: ../qml/ImportPage.qml:11
@@ -806,5 +806,5 @@ msgid "How to Autostart Launcher Modular on boot"
 msgstr "Launcher Modular automatisch starten bij het opstarten"
 
 #: ../qml/Autostart.qml:62
-msgid "How to enable Launcher Modular to start automatically when the device is booted. <br><br>For more details see the <a href='https://github.com/ruditimmermans/launcher-modular-service'>how to add a Launcher Modular systemd user service file to/on your device</a>"
-msgstr "Launcher Modular automatisch starten bij het opstarten van het apparaat. <br><br>Zie voor meer informatie <a href='https://github.com/ruditimmermans/launcher-modular-service'>hoe u een Launcher Modular systemd-gebruikersbestand toevoegt op uw apparaat</a>"
+msgid "How to enable Launcher Modular to start automatically when the device is booted. <br><br>For more details see the <a href='https://github.com/lutin11/launcher-modular-service'>how to add a Launcher Modular systemd user service file to/on your device</a>"
+msgstr "Launcher Modular automatisch starten bij het opstarten van het apparaat. <br><br>Zie voor meer informatie <a href='https://github.com/lutin11/launcher-modular-service'>hoe u een Launcher Modular systemd-gebruikersbestand toevoegt op uw apparaat</a>"

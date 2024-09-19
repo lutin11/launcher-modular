@@ -87,7 +87,7 @@ msgstr ""
 msgid ""
 "How to enable Launcher Modular to start automatically when the device is "
 "booted. <br><br>For more details see the <a href='https://github.com/"
-"ruditimmermans/launcher-modular-service'>how to add a Launcher Modular "
+"lutin11/launcher-modular-service'>how to add a Launcher Modular "
 "systemd user service file to/on your device</a>"
 msgstr ""
 
@@ -100,9 +100,7 @@ msgid "Widget Settings"
 msgstr "Configurações de Widget"
 
 #: ../qml/Help.qml:57
-msgid ""
-"<br><b>To access to the widget settings, click and hold on the widget and "
-"then you can change the widget settings.</b>"
+msgid "<br><b>Click and hold the widget and to change its settings.</b>"
 msgstr ""
 
 #: ../qml/ImportPage.qml:11
