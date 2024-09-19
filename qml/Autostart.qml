@@ -13,10 +13,6 @@ Page {
     header: PageHeader {
         id: aboutPage
         title: i18n.tr("Autostart Modular Launcher");
-        StyleHints {
-           foregroundColor: "#FFFFFF";
-           backgroundColor: "#111111";
-        }
         leadingActionBar.actions:
             Action {
                 iconName: "back"

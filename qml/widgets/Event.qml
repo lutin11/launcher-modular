@@ -75,7 +75,7 @@ Item {
                 var count = organizerModel.itemCount
                 for ( var i = 0; i < count; i ++ ) {
                     var item = organizerModel.items[i];
-                    if(item.itemType != 505){
+                    if(item.itemType !== 505){
                         if(mymodel.count < launchermodular.settings.limiteItemWidgetEvent){
                           mymodel.append( {"item": item })
                         }

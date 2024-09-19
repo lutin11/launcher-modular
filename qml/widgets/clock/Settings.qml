@@ -50,8 +50,8 @@ Page {
                     text: "<font color=\"#ffffff\">"+i18n.tr("Show analog clock with digits")+"</font>"
                     control: Switch {
                         id: backgroundHoursSwitch
-                        checked: if (launchermodular.settings.backgroundAnalogHours == "num"){ true; }else{ false;}
-                        onClicked: if (launchermodular.settings.backgroundAnalogHours == "num"){ launchermodular.settings.backgroundAnalogHours = ""; }else{ launchermodular.settings.backgroundAnalogHours = "num";}
+                        checked: if (launchermodular.settings.backgroundAnalogHours === "num"){ true; }else{ false;}
+                        onClicked: if (launchermodular.settings.backgroundAnalogHours === "num"){ launchermodular.settings.backgroundAnalogHours = ""; }else{ launchermodular.settings.backgroundAnalogHours = "num";}
                     }
                 }
             } // column

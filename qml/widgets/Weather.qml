@@ -93,7 +93,7 @@ Item {
                         anchors.top: parent.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
                         color: "#E95420"
-                        text: if (launchermodular.settings.unitsFormat == "&units=imperial") { "<font color=\""+launchermodular.settings.textColor+"\">"+launchermodular.settings.cityName.split(",")[0]+"</font> "+temp.split(".")[0]+"°F";}else{ "<font color=\""+launchermodular.settings.textColor+"\">"+launchermodular.settings.cityName.split(",")[0]+"</font> "+temp.split(".")[0]+"°C";}
+                        text: if (launchermodular.settings.unitsFormat === "&units=imperial") { "<font color=\""+launchermodular.settings.textColor+"\">"+launchermodular.settings.cityName.split(",")[0]+"</font> "+temp.split(".")[0]+"°F";}else{ "<font color=\""+launchermodular.settings.textColor+"\">"+launchermodular.settings.cityName.split(",")[0]+"</font> "+temp.split(".")[0]+"°C";}
                     }
                 }
 
@@ -141,7 +141,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         color: "#E95420"
 
-                        text: if (launchermodular.settings.unitsFormat == "&units=imperial") { launchermodular.settings.cityName.split(",")[0]+" "+temp.split(".")[0]+"°F";}else{ launchermodular.settings.cityName.split(",")[0]+" "+temp.split(".")[0]+"°C";}
+                        text: if (launchermodular.settings.unitsFormat === "&units=imperial") { launchermodular.settings.cityName.split(",")[0]+" "+temp.split(".")[0]+"°F";}else{ launchermodular.settings.cityName.split(",")[0]+" "+temp.split(".")[0]+"°C";}
 
                     }
                     Text {
@@ -159,7 +159,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
 
                         text: {
-                            if (launchermodular.settings.unitsFormat == "&units=imperial"){
+                            if (launchermodular.settings.unitsFormat === "&units=imperial"){
                                 if (windspeed >= 0 && windspeed <= 0.2) {
                                     return i18n.tr("Calm")+" "+windspeed+" mph";
                                 } else if (windspeed >= 0.3 && windspeed <= 1.59) {

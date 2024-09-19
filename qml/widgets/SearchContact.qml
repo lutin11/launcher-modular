@@ -79,8 +79,8 @@ Item {
                         anchors.right: parent.right
                         width: units.gu(8)*launchermodular.settings.iconSize
                         height: units.gu(8)*launchermodular.settings.iconSize
-                        source: contact.avatar.imageUrl != "" ? contact.avatar.imageUrl : "image://theme/stock_contact"
-                        visible: launchermodular.settings.iconStyle == "none"
+                        source: contact.avatar.imageUrl !== "" ? contact.avatar.imageUrl : "image://theme/stock_contact"
+                        visible: launchermodular.settings.iconStyle === "none"
                         fillMode: Image.PreserveAspectCrop
                     }
 
@@ -91,8 +91,8 @@ Item {
                             width: screenshotContactSearch.width
                             height: screenshotContactSearch.height
                             radius: units.gu(8)
-                            color: if (launchermodular.settings.iconStyle == "rounded") { "white";}else{ "transparent";}
-                            visible: if (launchermodular.settings.iconStyle == "rounded") { false;}else{ true;}
+                            color: if (launchermodular.settings.iconStyle === "rounded") { "white";}else{ "transparent";}
+                            visible: if (launchermodular.settings.iconStyle === "rounded") { false;}else{ true;}
                         }
                     }
 
@@ -100,8 +100,8 @@ Item {
                         source: screenshotContactSearch
                         anchors.right: parent.right
                         aspect: LomiriShape.Flat
-                        width: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
-                        height: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
+                        width: if (launchermodular.settings.iconStyle === "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
+                        height: if (launchermodular.settings.iconStyle === "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                         radius : "medium"
                         backgroundColor: "white"
                     }
@@ -138,7 +138,7 @@ Item {
                         width: units.gu(8)*launchermodular.settings.iconSize
                         height: units.gu(8)*launchermodular.settings.iconSize
                         color: "white"
-                        visible: launchermodular.settings.iconStyle == "none"
+                        visible: launchermodular.settings.iconStyle === "none"
                         Row {
                             anchors.fill: parent
                             Item{
@@ -184,8 +184,8 @@ Item {
                             width: screenshotContactSearchFlip.width
                             height: screenshotContactSearchFlip.height
                             radius: units.gu(8)
-                            color: if (launchermodular.settings.iconStyle == "rounded") { "white";}else{ "transparent";}
-                            visible: if (launchermodular.settings.iconStyle == "rounded") { false;}else{ true;}
+                            color: if (launchermodular.settings.iconStyle === "rounded") { "white";}else{ "transparent";}
+                            visible: if (launchermodular.settings.iconStyle === "rounded") { false;}else{ true;}
                         }
                     }
 
@@ -196,8 +196,8 @@ Item {
                             width: screenshotContactSearchFlip.width
                             height: screenshotContactSearchFlip.height
                             radius: units.gu(1.5)
-                            color: if (launchermodular.settings.iconStyle == "default") { "white";}else{ "transparent";}
-                            visible: if (launchermodular.settings.iconStyle == "default") { false;}else{ true;}
+                            color: if (launchermodular.settings.iconStyle === "default") { "white";}else{ "transparent";}
+                            visible: if (launchermodular.settings.iconStyle === "default") { false;}else{ true;}
                         }
                     }
 

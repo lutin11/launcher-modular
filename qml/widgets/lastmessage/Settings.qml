@@ -54,7 +54,7 @@ Page {
                     text: "<font color=\"#ffffff\">"+i18n.tr("View a summary")+"</font>"
                     control: Switch {
                         checked: launchermodular.settings.widgetMessageSummary
-                        onClicked: if (launchermodular.settings.widgetMessageSummary == false) {
+                        onClicked: if (launchermodular.settings.widgetMessageSummary === false) {
                                 launchermodular.settings.widgetMessageSummary = true;
                             } else {
                                 launchermodular.settings.widgetMessageSummary = false;
@@ -83,8 +83,8 @@ Page {
                         launchermodular.settings.widgetMessageClick = model[selectedIndex].style
                     }
                     Component.onCompleted: {
-                        if ("message" == launchermodular.settings.widgetMessageClick){selectedIndex = 1}
-                        if ("default" == launchermodular.settings.widgetMessageClick){selectedIndex = 0}
+                        if ("message" === launchermodular.settings.widgetMessageClick){selectedIndex = 1}
+                        if ("default" === launchermodular.settings.widgetMessageClick){selectedIndex = 0}
                     }
                     Text {
                         id: textactionWidgets

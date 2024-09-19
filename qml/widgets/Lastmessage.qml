@@ -98,8 +98,8 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            if ("default" == launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("application:///messaging-app.desktop")}
-            if ("message" == launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("message:///"+widgetLastMessage.messageNumber)}
+            if ("default" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("application:///messaging-app.desktop")}
+            if ("message" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("message:///"+widgetLastMessage.messageNumber)}
         }
         onPressAndHold:pageStack.push(Qt.resolvedUrl("lastmessage/Settings.qml"))
             

@@ -20,8 +20,8 @@ Column {
     
     Item {
         id: titleFavoriteApp
-        height: if(launchermodular.favoriteAppsModel.count != "0"){ units.gu(5) }else{units.gu(0)}
-        visible: if(launchermodular.favoriteAppsModel.count != "0"){ true }else{ false }
+        height: if(launchermodular.favoriteAppsModel.count !== "0"){ units.gu(5) } else {units.gu(0)}
+        visible: if(launchermodular.favoriteAppsModel.count !== "0"){ true } else { false }
         width: parent.width
         anchors {
             left: parent.left
@@ -98,7 +98,7 @@ Column {
                 width: units.gu(8)*launchermodular.settings.iconSize
                 height: units.gu(8)*launchermodular.settings.iconSize
                 source: icon
-                visible: if (launchermodular.settings.iconStyle == "none") { true;}else{ false;}
+                visible: if (launchermodular.settings.iconStyle === "none") { true;}else{ false;}
             }
 
             OpacityMask {
@@ -108,8 +108,8 @@ Column {
                     width: screenshotAppFavorite.width
                     height: screenshotAppFavorite.height
                     radius: units.gu(8)
-                    color: if (launchermodular.settings.iconStyle == "rounded") { "";}else{ "transparent";}
-                    visible: if (launchermodular.settings.iconStyle == "rounded") { false;}else{ true;}
+                    color: if (launchermodular.settings.iconStyle === "rounded") { "";}else{ "transparent";}
+                    visible: if (launchermodular.settings.iconStyle === "rounded") { false;}else{ true;}
                 }
             }
 
@@ -117,8 +117,8 @@ Column {
                 source: screenshotAppFavorite
                 anchors.horizontalCenter: parent.horizontalCenter
                 aspect: LomiriShape.Flat
-                width: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
-                height: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
+                width: if (launchermodular.settings.iconStyle === "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
+                height: if (launchermodular.settings.iconStyle === "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                 radius : "medium"
            }
 

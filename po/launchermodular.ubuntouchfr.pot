@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.ubuntouchfr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 12:31+0000\n"
+"POT-Creation-Date: 2024-09-19 19:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/About.qml:14 ../qml/Main.qml:619
+#: ../qml/About.qml:14 ../qml/Main.qml:616
 msgid "About"
 msgstr ""
 
@@ -61,11 +61,11 @@ msgstr ""
 msgid "Autostart Modular Launcher"
 msgstr ""
 
-#: ../qml/Autostart.qml:49
+#: ../qml/Autostart.qml:45
 msgid "How to Autostart Modular Launcher after booting"
 msgstr ""
 
-#: ../qml/Autostart.qml:62
+#: ../qml/Autostart.qml:58
 msgid ""
 "How to set Modular Launcher to start automatically when the device is "
 "booted. <br><br>More details in <a href='https://github.com/ruditimmermans/"
@@ -77,11 +77,11 @@ msgstr ""
 msgid "Modular Launcher Help"
 msgstr ""
 
-#: ../qml/Help.qml:49
+#: ../qml/Help.qml:45
 msgid "Widget Settings"
 msgstr ""
 
-#: ../qml/Help.qml:57
+#: ../qml/Help.qml:53
 msgid "<br><b>Click and hold the widget and to change its settings.</b>"
 msgstr ""
 
@@ -89,81 +89,81 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:390
+#: ../qml/Main.qml:387
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:469
+#: ../qml/Main.qml:466
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:499
+#: ../qml/Main.qml:496
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:529
+#: ../qml/Main.qml:526
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:559
+#: ../qml/Main.qml:556
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:589
+#: ../qml/Main.qml:586
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:700
+#: ../qml/Main.qml:697
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:713
+#: ../qml/Main.qml:710
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:718
+#: ../qml/Main.qml:715
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:718
+#: ../qml/Main.qml:715
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:719
+#: ../qml/Main.qml:716
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:719
+#: ../qml/Main.qml:716
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:720
+#: ../qml/Main.qml:717
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:720
+#: ../qml/Main.qml:717
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:744 ../qml/Main.qml:746 ../qml/Main.qml:748
+#: ../qml/Main.qml:741 ../qml/Main.qml:743 ../qml/Main.qml:745
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:758
+#: ../qml/Main.qml:755
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:804 ../qml/Pagemanagement.qml:132
+#: ../qml/Main.qml:801 ../qml/Pagemanagement.qml:131
 #: ../qml/Pagemanagementback.qml:122 ../qml/pages/Home.qml:392
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/Pagemanagement.qml:17 ../qml/Pagemanagementback.qml:17
+#: ../qml/Pagemanagement.qml:16 ../qml/Pagemanagementback.qml:17
 msgid "Page management"
 msgstr ""
 
-#: ../qml/Pagemanagement.qml:49 ../qml/Pagemanagementback.qml:49
+#: ../qml/Pagemanagement.qml:48 ../qml/Pagemanagementback.qml:49
 msgid "Choose a page"
 msgstr ""
 
@@ -307,11 +307,11 @@ msgstr ""
 msgid "Settings Page"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:67
+#: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:63
 msgid "Limit of days"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:85
+#: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:81
 msgid "By default 60 days"
 msgstr ""
 
@@ -521,11 +521,11 @@ msgstr ""
 msgid "Settings Widget"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:108
+#: ../qml/widgets/event/Settings.qml:104
 msgid "Limit of event"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:127
+#: ../qml/widgets/event/Settings.qml:123
 msgid "By default 3 event"
 msgstr ""
 

@@ -89,8 +89,8 @@ Item {
     MouseArea {
         anchors.fill: parent
             onClicked: {
-                if ("default" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
-                if ("dial" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+event.callNumber)}
+                if ("default" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
+                if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+event.callNumber)}
             }
             onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
     }

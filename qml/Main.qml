@@ -115,7 +115,7 @@ MainView {
     }//settings
 
     property variant datenow: new Date()
-    property var iconCustomUrl: "../assets/placeholder-app-icon.svg"
+    property string iconCustomUrl: "../assets/placeholder-app-icon.svg"
 
     Timer {
         id: clockUpdater
@@ -149,22 +149,19 @@ MainView {
                 console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elemets");
                 var customIcon_l = launchermodular.settings.customIcon.length
                 for (var i=0; i<customIcon_l; i++){
-                    var item = launchermodular.settings.customIcon[i];
-                    launchermodular.customIconModel.insert(i,{"name": item.name, "icon": item.icon, "action": item.action})
+                    var item0 = launchermodular.settings.customIcon[i];
+                    launchermodular.customIconModel.insert(i,{"name": item0.name, "icon": item0.icon, "action": item0.action})
                 }
-
-
 
                 if(typeof launchermodular.settings.favoriteApps === 'undefined') {
                      launchermodular.settings.favoriteApps = [];
                 }
                 console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
                 var favoriteApps_l = launchermodular.settings.favoriteApps.length
-                for (var i=0; i<favoriteApps_l; i++){
-                    var itemApps = launchermodular.settings.favoriteApps[i];
-                    launchermodular.favoriteAppsModel.insert(i,{"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action})
+                for (var f=0; f<favoriteApps_l; f++){
+                    var itemApps = launchermodular.settings.favoriteApps[f];
+                    launchermodular.favoriteAppsModel.insert(f,{"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action})
                 }
-
 
                 if(typeof launchermodular.settings.page === 'undefined') {
                     console.log("page is undefined, let's create a new one");
@@ -172,9 +169,9 @@ MainView {
                 }
                 console.log("Retrieve page with : "+ launchermodular.settings.page.length +" elemets");
                 var page_l = launchermodular.settings.page.length
-                for (var i=0; i<page_l; i++){
-                    var item = launchermodular.settings.page[i];
-                    launchermodular.pageModel.insert(i,{"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory})
+                for (var p=0; p<page_l; p++){
+                    var item = launchermodular.settings.page[p];
+                    launchermodular.pageModel.insert(p,{"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory})
                 }
 
             }
@@ -772,7 +769,7 @@ MainView {
                                         color: LomiriColors.green
                                     }
 
-                                    property var actionIcon: ""
+                                    property string actionIcon: ""
 
                                     onClicked: {
 

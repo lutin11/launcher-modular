@@ -23,7 +23,7 @@ function jsonPath(obj, expr, arg) {
          return p;
       },
       store: function(p, v) {
-         if (p) P.result[P.result.length] = P.resultType == "PATH" ? P.asPath(p) : v;
+         if (p) P.result[P.result.length] = P.resultType === "PATH" ? P.asPath(p) : v;
          return !!p;
       },
       trace: function(expr, val, path) {
@@ -81,7 +81,7 @@ function jsonPath(obj, expr, arg) {
    };
 
    var $ = obj;
-   if (expr && obj && (P.resultType == "VALUE" || P.resultType == "PATH")) {
+   if (expr && obj && (P.resultType == "VALUE" || P.resultType === "PATH")) {
       P.trace(P.normalize(expr).replace(/^\$;?/,""), obj, "$");  // issue 6 resolved
       return P.result.length ? P.result : false;
    }

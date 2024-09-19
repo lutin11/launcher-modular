@@ -7,7 +7,6 @@ import Lomiri.Components 1.3
 import "pages"
 import Lomiri.Components.Popups 0.1
 import Qt.labs.folderlistmodel 2.1
-import AccountsService 0.1
 
 Page {
     id: pageSettings
@@ -112,8 +111,8 @@ Page {
 
                     delegate: ListItem {
                         ListItemLayout {
-                            height: modelLayout2.height + (divider.visible ? divider.height : 0)
-                            id: modelLayout2
+                            height: modelLayout3.height + (divider.visible ? divider.height : 0)
+                            id: modelLayout3
                             title.text: fileBaseName
                             title.color: "black"
                         }
@@ -244,7 +243,7 @@ Page {
                 }
 
                 Component.onCompleted: {
-                    if(name.split(".")[0] != "Home"){ actionDelete.visible = true }
+                    if(name.split(".")[0] !== "Home"){ actionDelete.visible = true }
                 }
                 onPressAndHold: ListView.view.ViewItems.dragMode = !ListView.view.ViewItems.dragMode
 
@@ -258,7 +257,7 @@ Page {
 
 
             ViewItems.onDragUpdated: {
-                if (event.status == ListItemDrag.Moving) {
+                if (event.status === ListItemDrag.Moving) {
                     model.move(event.from, event.to, 1);
                 }
             }

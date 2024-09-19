@@ -13,10 +13,6 @@ Page {
     header: PageHeader {
         id: headerSettings
         title: i18n.tr("Settings Widget");
-        StyleHints {
-           foregroundColor: "#FFFFFF";
-           backgroundColor: "#111111";
-        }
         leadingActionBar.actions: [
             Action {
                 iconName: "back"

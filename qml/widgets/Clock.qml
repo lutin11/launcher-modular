@@ -37,7 +37,7 @@ Item {
                 id: clockFace
                 width: parent.width
                 height: parent.height
-                source: if(launchermodular.settings.backgroundColor == "#000000") {
+                source: if(launchermodular.settings.backgroundColor === "#000000") {
                   "clock/assets/white-face"+launchermodular.settings.backgroundAnalogHours+".png"
                 } else {
                   "clock/assets/black-face"+launchermodular.settings.backgroundAnalogHours+".png"

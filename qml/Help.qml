@@ -13,18 +13,14 @@ Page {
     header: PageHeader {
         id: helpPage
         title: i18n.tr("Modular Launcher Help");
-       StyleHints {
-           foregroundColor: "#FFFFFF";
-           backgroundColor: "#111111";
-       }
-       leadingActionBar.actions:
+        leadingActionBar.actions:
           Action {
               iconName: "back"
               text: "Back"
               onTriggered: {
                   pageStack.pop();
               }
-         }
+        }
     }
 
     Rectangle {

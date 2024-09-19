@@ -150,7 +150,6 @@ void AppHandler::reloadFav() {
 			}
 		}
 	}
-	emit(fav_appinfoChanged());
 }
 void AppHandler::setFav(const QString& fav) {
 	if(fav == _fav) //nothing changed

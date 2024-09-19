@@ -142,7 +142,7 @@ Page {
                         launchermodular.settings.unitsFormat = model.get(selectedIndex).url
                     }
                     Component.onCompleted: {
-                        while (model.get(selectedIndex).url != launchermodular.settings.unitsFormat && selectedIndex < model.count)
+                        while (model.get(selectedIndex).url !== launchermodular.settings.unitsFormat && selectedIndex < model.count)
                             selectedIndex = selectedIndex+1
                     }
                 }

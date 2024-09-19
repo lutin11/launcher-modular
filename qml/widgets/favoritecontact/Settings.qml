@@ -71,8 +71,8 @@ Page {
                         launchermodular.settings.widgetFavoriteContactClick = model[selectedIndex].style
                     }
                     Component.onCompleted: {
-                        if ("linphone" == launchermodular.settings.widgetFavoriteContactClick){selectedIndex = 1}
-                        if ("tel" == launchermodular.settings.widgetFavoriteContactClick){selectedIndex = 0}
+                        if ("linphone" === launchermodular.settings.widgetFavoriteContactClick){selectedIndex = 1}
+                        if ("tel" === launchermodular.settings.widgetFavoriteContactClick){selectedIndex = 0}
                     }
 
                     Text {
