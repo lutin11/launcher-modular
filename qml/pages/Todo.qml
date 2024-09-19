@@ -5,7 +5,7 @@ import "todo"
 import Qt.labs.settings 1.0
 
 Item {
-    id: todo 
+    id: todoPage
     anchors.fill: parent
     anchors {
         rightMargin: units.gu(4)
@@ -13,81 +13,76 @@ Item {
         topMargin: units.gu(4)
     }
 
-
-
-
     ListView{
         id:todoList
         anchors.fill: parent
         //headerPositioning: ListView.OverlayHeader
 
         header:Rectangle {
-                id: todo
-                height: units.gu(5)
-                color: "transparent"
+            id: todo
+            height: units.gu(5)
+            width: parent.width
+            color: "transparent"
+
+            anchors {
+                left: parent.left
+                right: parent.right
+                leftMargin: units.gu(2)
+                rightMargin: units.gu(2)
+            }
+
+            Rectangle {
+                id: colortodo
+                color: launchermodular.settings.backgroundColor
+                radius: units.gu(1)
+                opacity: 0.3
+                anchors.fill: parent
+            }
+            Icon {
+                id: iconNote
                 anchors {
-                    left: parent.left
-                    right: parent.right
+                    left: todo.left
+                    rightMargin: units.gu(1)
+                    leftMargin: units.gu(1)
                 }
-                Rectangle {
-                    id: colortodo
-                    color: launchermodular.settings.backgroundColor
-                    radius: units.gu(1)
-                    opacity: 0.3
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height*0.5
+                width: height
+                name: "note"
+
+                MouseArea {
                     anchors.fill: parent
-                }
-                Icon {
-                    id: iconNote
-                    anchors {
-                        left: todo.left
-                        rightMargin: units.gu(1)
-                        leftMargin: units.gu(1)
-                    }
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height*0.5
-                    width: height
-                    name: "note"
-                }
-                TextField {
-                    id: todoField
-                    anchors {
-                        left: iconNote.right
-                        right: parent.right
-                    }
-                    height: todo.height
-                    color: launchermodular.settings.textColor
-                        background: Rectangle {
-                                                height: parent.height
-                                                color: "transparent"
-                                              }
-                    maximumLength: 25
-                    placeholderText: i18n.tr("new todo")
-                    Keys.onReturnPressed: {
-                        TodoModel.save(todoField.text)
-                        todoField.text = ""
-                    }
-                }
-                /*
-                Icon {
-                    id: iconAddTodo
-                    anchors {
-                        right: todo.right
-                        rightMargin: units.gu(1)
-                        leftMargin: units.gu(1)
-                    }
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height*0.5
-                    width: height
-                    name: "add"
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            TodoModel.save(todoField.text)
-                            todoField.text = ""
+                    onClicked:{
+                        if(todoField.text.length > 0){
+                           todoField.text = ""
+                           todoField.focus = false
                         }
                     }
-                }*/
+                }
             }
+
+            TextField {
+                id: todoField
+                anchors {
+                    left: iconNote.right
+                    right: parent.right
+                }
+                height: todo.height
+                color: launchermodular.settings.textColor
+                background: Rectangle {
+                    height: parent.height
+                    color: "transparent"
+                }
+                placeholderText: i18n.tr("new todo")
+                Keys.onReturnPressed: {
+                    TodoModel.save(todoField.text)
+                    todoField.text = ""
+                }
+
+                maximumLength: 25
+
+            }
+        }
 
         model:TodoModel.itemModel
         delegate:ListItem {
@@ -99,8 +94,8 @@ Item {
                 title.color: launchermodular.settings.textColor
                 title.font.strikeout: checkbox.checked
                 title.textSize: Label.Large
-                    
-              CheckBox {
+
+                CheckBox {
                     id: checkbox
                     SlotsLayout.position: SlotsLayout.Trailing
                     checked: done
@@ -111,32 +106,29 @@ Item {
                     }
                 }
             }
-            
-        leadingActions: ListItemActions {
-            actions: [
-                Action {
-                    id: actionDelete
-                    text: i18n.tr("Delete")
-                    iconName: "edit-delete"
-                    onTriggered: {
-                        TodoModel.remove(index)
+
+            leadingActions: ListItemActions {
+                actions: [
+                    Action {
+                        id: actionDelete
+                        text: i18n.tr("Delete")
+                        iconName: "edit-delete"
+                        onTriggered: {
+                            TodoModel.remove(index)
+                        }
                     }
+                ]
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked:{
+                    checkbox.toggle()
                 }
-            ]
-        }
-            
-                    MouseArea {
-                        anchors.fill: parent
-                            onClicked:{
-                                checkbox.toggle()                            
-                            }
-                    }
+            }
         }       
         
     
 
     }
-
-
-
 }
