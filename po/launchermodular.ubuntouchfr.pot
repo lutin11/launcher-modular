@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.ubuntouchfr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 10:16+0000\n"
+"POT-Creation-Date: 2024-09-19 10:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,7 +154,7 @@ msgid "Create icon"
 msgstr ""
 
 #: ../qml/Main.qml:824 ../qml/Pagemanagement.qml:137
-#: ../qml/Pagemanagementback.qml:128 ../qml/pages/Home.qml:402
+#: ../qml/Pagemanagementback.qml:128 ../qml/pages/Home.qml:392
 #: ../qml/pages/home/Settings.qml:91
 msgid "Cancel"
 msgstr ""
@@ -167,7 +167,7 @@ msgstr ""
 msgid "Choose a page"
 msgstr ""
 
-#: ../qml/Pagemanagementback.qml:182 ../qml/pages/Todo.qml:119
+#: ../qml/Pagemanagementback.qml:182 ../qml/pages/Todo.qml:114
 #: ../qml/pages/home/Settings.qml:154
 msgid "Delete"
 msgstr ""
@@ -282,23 +282,23 @@ msgstr ""
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:127
+#: ../qml/pages/Home.qml:124
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:254
+#: ../qml/pages/Home.qml:250
 msgid "Installed Apps"
 msgstr ""
 
-#: ../qml/pages/Home.qml:364
+#: ../qml/pages/Home.qml:351
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:364
+#: ../qml/pages/Home.qml:351
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Todo.qml:64
+#: ../qml/pages/Todo.qml:76
 msgid "new todo"
 msgstr ""
 
