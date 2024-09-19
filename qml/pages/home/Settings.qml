@@ -12,49 +12,42 @@ Page {
     header: PageHeader {
         id: headerSettings
         title: i18n.tr("Settings Page");
-       StyleHints {
-           foregroundColor: "#FFFFFF";
-           backgroundColor: "#111111";
-       }
-            leadingActionBar.actions: [
+        leadingActionBar.actions: [
+            Action {
+                iconName: "back"
+                text: "Back"
+                onTriggered: {
+                    launchermodular.settings.favoriteApps = launchermodular.getFavoriteAppsArray();
+                    pageStack.pop();
+                }
+            }
+        ]
+        trailingActionBar {
+            actions: [
                 Action {
-                    iconName: "back"
-                    text: "Back"
+                    iconName: "add"
+                    text: "add"
                     onTriggered: {
-                        launchermodular.settings.favoriteApps = launchermodular.getFavoriteAppsArray();
-                        pageStack.pop();
+                        PopupUtils.open(listAppDialog);
                     }
                 }
-            ]
-            trailingActionBar {
-                actions: [
-                    Action {
-                        iconName: "add"
-                        text: "add"
-                        onTriggered: {
-                            PopupUtils.open(listAppDialog);
-                        }
-                    }
-               ]
-               numberOfSlots: 2
-            }
-   }
+           ]
+           numberOfSlots: 2
+        }
+    }
 
 
-   Component {
+    Component {
         id: listAppDialog
         Dialog {
             id: listAppDialogue
-
-
             ListView {
 
                 model: AppHandler.appsinfo.length
                 height: pageSettingsHome.height*0.65
 
                 delegate: ListItem {
-
-			         property var elem: AppHandler.appsinfo[index]
+                    property var elem: AppHandler.appsinfo[index]
 
                     ListItemLayout {
                         height: modelLayout2.height + (divider.visible ? divider.height : 0)
@@ -73,17 +66,13 @@ Page {
                             height: width
                             radius : "medium"
                         }
-
                     }
-                        divider.visible: false
-                        onClicked: {
-
-                         launchermodular.favoriteAppsModel.append({"name": elem.name, "icon": elem.icon, "action": elem.action});
-
-
-                            PopupUtils.close(listAppDialogue);
-                        }
+                    divider.visible: false
+                    onClicked: {
+                        launchermodular.favoriteAppsModel.append({"name": elem.name, "icon": elem.icon, "action": elem.action});
+                        PopupUtils.close(listAppDialogue);
                     }
+                }
 
             }
 
@@ -96,97 +85,87 @@ Page {
         }
     }
 
-Rectangle {
-    id:mainsettings
+    Rectangle {
+        id:mainsettings
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
 
-
-    Flickable {
-        id: flickableSettings
-        anchors.fill: parent
-        contentHeight: settingsColumn.childrenRect.height
-        flickableDirection: Flickable.VerticalFlick
-        clip: true
-
-
-        Column {
-            id: settingsColumn
+        Flickable {
+            id: flickableSettings
             anchors.fill: parent
+            contentHeight: settingsColumn.childrenRect.height
+            flickableDirection: Flickable.VerticalFlick
+            clip: true
 
+            Column {
+                id: settingsColumn
+                anchors.fill: parent
+                ListItemHeader.Header {
+                    id: titleFavoriteAppsManagement
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Favorite apps management")+"</font>"
+                }
 
-        ListItemHeader.Header {
-            id: titleFavoriteAppsManagement
-            text: "<font color=\"#ffffff\">"+i18n.tr("Favorite apps management")+"</font>"
-        }
-
-        ListView {
-            id: listAppFavAdded
-            model: launchermodular.favoriteAppsModel
-            width: parent.width
-            height: contentHeight
-            delegate: ListItem {
-
-                divider.visible: false
-                height: modelLayout.height + (divider.visible ? divider.height : 0)
-            ListItemLayout {
-                id: modelLayout
-                title.text: "<font color=\"#ffffff\">"+name+"</font>"
-                    LomiriShape {
-                        source: Image {
-                            id: screenshotAppFavorite
-                            source: icon
-                            smooth: true
-                            antialiasing: true
+                ListView {
+                    id: listAppFavAdded
+                    model: launchermodular.favoriteAppsModel
+                    width: parent.width
+                    height: contentHeight
+                    delegate: ListItem {
+                        divider.visible: false
+                        height: modelLayout.height + (divider.visible ? divider.height : 0)
+                        ListItemLayout {
+                            id: modelLayout
+                            title.text: "<font color=\"#ffffff\">"+name+"</font>"
+                            LomiriShape {
+                                source: Image {
+                                    id: screenshotAppFavorite
+                                    source: icon
+                                    smooth: true
+                                    antialiasing: true
+                                }
+                                SlotsLayout.position: SlotsLayout.Leading;
+                                width: units.gu(4)
+                                height: width
+                                radius : "medium"
+                            }
                         }
-                        SlotsLayout.position: SlotsLayout.Leading;
-                        width: units.gu(4)
-                        height: width
-                        radius : "medium"
+
+                        leadingActions: ListItemActions {
+                            actions: [
+                                Action {
+                                    id: actionDelete
+                                    text: i18n.tr("Delete")
+                                    iconName: "edit-delete"
+                                    onTriggered: launchermodular.favoriteAppsModel.remove(index)
+                                }
+                            ]
+                        }
+                        onPressAndHold: {
+                            ListView.view.ViewItems.dragMode = !ListView.view.ViewItems.dragMode
+                        }
                     }
-            }
+                    ViewItems.onDragUpdated: {
+                        if (event.status == ListItemDrag.Moving) {
+                            model.move(event.from, event.to, 1);
+                        }
+                    }
 
-        leadingActions: ListItemActions {
-            actions: [
-                Action {
-                    id: actionDelete
-                    text: i18n.tr("Delete")
-                    iconName: "edit-delete"
-                    onTriggered: launchermodular.favoriteAppsModel.remove(index)
-
+                    moveDisplaced: Transition {
+                        LomiriNumberAnimation {
+                            property: "y"
+                        }
+                    }
                 }
-            ]
-        }
-            onPressAndHold: {
-                ListView.view.ViewItems.dragMode = !ListView.view.ViewItems.dragMode
-            }
-
-            }
-            ViewItems.onDragUpdated: {
-                if (event.status == ListItemDrag.Moving) {
-                    model.move(event.from, event.to, 1);
-                }
-            }
-
-            moveDisplaced: Transition {
-                LomiriNumberAnimation {
-                    property: "y"
-                }
-            }
-        }
-
-
-
-        } // column
-    } //flickable
- } //rectangle settings
+            } // column
+        } //flickable
+    } //rectangle settings
 
     Component.onCompleted: {
-		AppHandler.permaFilter()
-		AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
-    AppHandler.permaFilter("Icon",  "/.*$")
-		AppHandler.sort()
-	}
+        AppHandler.permaFilter()
+        AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
+        AppHandler.permaFilter("Icon",  "/.*$")
+        AppHandler.sort()
+	  }
 
 }

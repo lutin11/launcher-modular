@@ -31,48 +31,48 @@ Item {
         model: folderModel
 
 
-    FolderListModel {
-        id: folderModel
-        nameFilters: ["*.png", "*.jpg", "*.jpeg"]
-        folder: launchermodular.settings.folderimage
-        showDirs: false
-    }
+        FolderListModel {
+            id: folderModel
+            nameFilters: ["*.png", "*.jpg", "*.jpeg"]
+            folder: launchermodular.settings.folderimage
+            showDirs: false
+        }
 
         delegate: Rectangle {
-                    width: gview.cellWidth
-                    height: gview.iconbasesize
-                    color: "transparent"
+            width: gview.cellWidth
+            height: gview.iconbasesize
+            color: "transparent"
 
-                    Item {
-                        width: units.gu(12)
-                        height: units.gu(20)
-                            anchors.horizontalCenter: parent.horizontalCenter
+            Item {
+                width: units.gu(12)
+                height: units.gu(20)
+                anchors.horizontalCenter: parent.horizontalCenter
 
-                        Image {
-                            id: imgIcons
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: parent.width
-                            height: parent.height
-                            source: filePath
-                            visible: false
-                            fillMode: Image.PreserveAspectCrop
-                        }
+                Image {
+                    id: imgIcons
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width
+                    height: parent.height
+                    source: filePath
+                    visible: false
+                    fillMode: Image.PreserveAspectCrop
+                }
 
-                        LomiriShape {
-                            source: imgIcons
-                            width: parent.width
-                            height: parent.height
-                            radius : "medium"
-                            sourceFillMode: LomiriShape.PreserveAspectCrop
-                        }
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked:Qt.openUrlExternally("application:///gallery.ubports_gallery.desktop")
-                                }
-                    } // Item
-            }// delegate Rectangle
+                LomiriShape {
+                    source: imgIcons
+                    width: parent.width
+                    height: parent.height
+                    radius : "medium"
+                    sourceFillMode: LomiriShape.PreserveAspectCrop
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked:Qt.openUrlExternally("application:///gallery.ubports_gallery.desktop")
+                }
+            } // Item
+        }// delegate Rectangle
 
-        }
+    }
 
 }

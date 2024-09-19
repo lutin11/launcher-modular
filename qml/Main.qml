@@ -47,13 +47,11 @@ MainView {
         return page;
     }
 
-
-
     property ListModel pageModel :  ListModel { id: pageModel }
 
     function getFavoriteAppsArray() {
         var favoriteApps = [], hMA_l = launchermodular.favoriteAppsModel.count;
-        for (var i=0; i<hMA_l; i++){
+        for (var i=0; i<hMA_l; i++) {
             var itemApps = launchermodular.favoriteAppsModel.get(i);
             favoriteApps.push({"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action});
         }
@@ -131,74 +129,73 @@ MainView {
     }
 
 
-PageStack {
-  id: pageStack
-    Page {
-        id: pageLauncher
-        anchors.fill: parent
+    PageStack {
+        id: pageStack
+        Page {
+            id: pageLauncher
+            anchors.fill: parent
+
+            Component.onCompleted: {
+                if(launchermodular.settings.firstRunNew){
+                    launchermodular.settings.page = undefined
+                    launchermodular.settings.firstRunNew = false
+                }
+
+                console.log("###### on Component completion #####")
+
+                if(typeof launchermodular.settings.customIcon === 'undefined') {
+                     launchermodular.settings.customIcon = [];
+                }
+                console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elemets");
+                var customIcon_l = launchermodular.settings.customIcon.length
+                for (var i=0; i<customIcon_l; i++){
+                    var item = launchermodular.settings.customIcon[i];
+                    launchermodular.customIconModel.insert(i,{"name": item.name, "icon": item.icon, "action": item.action})
+                }
 
 
-        Component.onCompleted: {
-            if(launchermodular.settings.firstRunNew){
-                launchermodular.settings.page = undefined
-                launchermodular.settings.firstRunNew = false
+
+                if(typeof launchermodular.settings.favoriteApps === 'undefined') {
+                     launchermodular.settings.favoriteApps = [];
+                }
+                console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
+                var favoriteApps_l = launchermodular.settings.favoriteApps.length
+                for (var i=0; i<favoriteApps_l; i++){
+                    var itemApps = launchermodular.settings.favoriteApps[i];
+                    launchermodular.favoriteAppsModel.insert(i,{"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action})
+                }
+
+
+                if(typeof launchermodular.settings.page === 'undefined') {
+                    console.log("page is undefined, let's create a new one");
+                    launchermodular.settings.page = [{"name": "Home.qml", "icon": "pages/home/assets/icon.svg","data":{}, "directory": "pages/"}];
+                }
+                console.log("Retrieve page with : "+ launchermodular.settings.page.length +" elemets");
+                var page_l = launchermodular.settings.page.length
+                for (var i=0; i<page_l; i++){
+                    var item = launchermodular.settings.page[i];
+                    launchermodular.pageModel.insert(i,{"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory})
+                }
+
             }
 
-            console.log("###### on Component completion #####")
+            Component.onDestruction: {
+                console.log("####### On component destruction ###### ");
+                launchermodular.settings.page = getPageArray();
+                console.log("Store page with : "+ launchermodular.settings.page.length +" elemets");
 
-            if(typeof launchermodular.settings.customIcon === 'undefined') {
-                 launchermodular.settings.customIcon = [];
-            }
-            console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elemets");
-            var customIcon_l = launchermodular.settings.customIcon.length
-            for (var i=0; i<customIcon_l; i++){
-                var item = launchermodular.settings.customIcon[i];
-                launchermodular.customIconModel.insert(i,{"name": item.name, "icon": item.icon, "action": item.action})
-            }
+                launchermodular.settings.customIcon = getCustomIconArray();
+                console.log("Store customIcon with : "+ launchermodular.settings.customIcon.length +" elemets");
 
+                launchermodular.settings.favoriteApps = getFavoriteAppsArray();
+                console.log("Store favoriteApps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
 
-
-            if(typeof launchermodular.settings.favoriteApps === 'undefined') {
-                 launchermodular.settings.favoriteApps = [];
-            }
-            console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
-            var favoriteApps_l = launchermodular.settings.favoriteApps.length
-            for (var i=0; i<favoriteApps_l; i++){
-                var itemApps = launchermodular.settings.favoriteApps[i];
-                launchermodular.favoriteAppsModel.insert(i,{"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action})
             }
 
-
-            if(typeof launchermodular.settings.page === 'undefined') {
-                console.log("page is undefined, let's create a new one");
-                launchermodular.settings.page = [{"name": "Home.qml", "icon": "pages/home/assets/icon.svg","data":{}, "directory": "pages/"}];
+            header: PageHeader {
+                id: header
+                visible: false
             }
-            console.log("Retrieve page with : "+ launchermodular.settings.page.length +" elemets");
-            var page_l = launchermodular.settings.page.length
-            for (var i=0; i<page_l; i++){
-                var item = launchermodular.settings.page[i];
-                launchermodular.pageModel.insert(i,{"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory})
-            }
-
-        }
-        Component.onDestruction: {
-            console.log("####### On component destruction ###### ");
-            launchermodular.settings.page = getPageArray();
-            console.log("Store page with : "+ launchermodular.settings.page.length +" elemets");
-
-            launchermodular.settings.customIcon = getCustomIconArray();
-            console.log("Store customIcon with : "+ launchermodular.settings.customIcon.length +" elemets");
-
-            launchermodular.settings.favoriteApps = getFavoriteAppsArray();
-            console.log("Store favoriteApps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
-
-        }
-
-        header: PageHeader {
-            id: header
-            visible: false
-        }
-
 
             Rectangle {
                 id: topBorder
@@ -208,643 +205,625 @@ PageStack {
                 color: "#E95420"
             }
 
-        Rectangle {
-            id: background
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: topBorder.bottom
-                bottom: bottomBarLayout.top
-            }
-
-            Image {
-                id: backgroundblur
-                anchors.fill: parent;
-                source: AccountsService.backgroundFile //unconfined MySettings.getBackgroundFile() ? MySettings.getBackgroundFile() : "../assets/wallpaper.png"
-                smooth: true
-                fillMode: Image.PreserveAspectCrop
-                visible: false
-            }
-
-    FastBlur {
-        anchors.fill: backgroundblur
-        source: backgroundblur
-        radius: launchermodular.settings.backgroundBlur
-    }
             Rectangle {
-            id: listAppBackground
-            anchors.fill: parent
-            color: launchermodular.settings.backgroundColor
-            opacity: launchermodular.settings.backgroundOpacity
-            }
-
-            Rectangle {
-                id: listApp
-                anchors.fill: parent
-                color: "transparent"
-
-/* ******************************** LES PAGES COMMENCE ICI ******************************** */
-
-
-
-
-                SwipeView {
-                    id: view
-
-                    currentIndex: 0
-                    anchors.fill: parent
-
-    Repeater {
-        model: launchermodular.pageModel
-        Loader {
-                sourceComponent:{
-                    Qt.createComponent(directory+name)
-                }
-	    property int pageIndex:index
-
-        }
-    }
-
+                id: background
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: topBorder.bottom
+                    bottom: bottomBarLayout.top
                 }
 
+                Image {
+                    id: backgroundblur
+                    anchors.fill: parent;
+                    source: AccountsService.backgroundFile //unconfined MySettings.getBackgroundFile() ? MySettings.getBackgroundFile() : "../assets/wallpaper.png"
+                    smooth: true
+                    fillMode: Image.PreserveAspectCrop
+                    visible: false
+                }
 
-/* ******************************** FIN DES PAGES ******************************** */
-
-
-            }
-        }
-
-/* ******************************** DEBUT DE LA BARRE EN BAS ******************************** */
-
-        Rectangle {
-            id: bottomBarLayout
-            color: "#111111"
-            height: units.gu(5)
-
-            anchors {
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-            }
-
-            Rectangle {
-                id: borderTop
-                height: units.gu(0.1)
-                anchors.left: parent.left
-                anchors.right: parent.right
-                color: "#E95420"
-            }
-
-MouseArea {
-		anchors.fill: parent
-		property real startMouseX
-		//onEntered: {
-		//	startMouseX = mouseX
-		//}
-		onPressed: {
-			startMouseX = mouseX
-		}
-		onPositionChanged: {
-			if(mouseX - startMouseX > units.gu(4)) {
-				view.setCurrentIndex((view.currentIndex+1)%view.count)
-				startMouseX += units.gu(4)
-			}
-			else if(startMouseX - mouseX > units.gu(4)) {
-				view.setCurrentIndex((view.currentIndex-1+view.count)%view.count)
-				startMouseX -= units.gu(4)
-			}
-		}
-
-		onExited: {indicator.spacing = units.gu(2)}
-
-PageIndicator {
-        id: indicator
-        count: view.count
-        currentIndex: view.currentIndex
-        interactive: false //= dont intercept press
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        spacing: units.gu(2)
-
-            delegate: Rectangle {
-                height: units.gu(4)
-                width: units.gu(3)
-                color: "transparent"
-            Icon {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                source: launchermodular.pageModel.get(index).icon
-                height: units.gu(2)
-                width: units.gu(2)
-                color: index === view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
-                id: iconBottomBar
-                antialiasing: true
-                visible: false
-             }
-             ColorOverlay{
-                 anchors.fill: iconBottomBar
-                 anchors.horizontalCenter: parent.horizontalCenter
-                 anchors.verticalCenter: parent.verticalCenter
-                 source: iconBottomBar
-                 color: index === view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
-                 antialiasing: true
-             }
-
-          MouseArea {
+                FastBlur {
+                    anchors.fill: backgroundblur
+                    source: backgroundblur
+                    radius: launchermodular.settings.backgroundBlur
+                }
+                Rectangle {
+                    id: listAppBackground
                     anchors.fill: parent
-                    propagateComposedEvents: true
-                      onPressed: {
-			             mouse.accepted = false
-                        if(index !== view.currentIndex) {
-                            view.setCurrentIndex(index);
-                            source = indicator.indicatorIcons[view.currentIndex];
+                    color: launchermodular.settings.backgroundColor
+                    opacity: launchermodular.settings.backgroundOpacity
+                }
+
+                Rectangle {
+                    id: listApp
+                    anchors.fill: parent
+                    color: "transparent"
+
+                    /* ******************************** LES PAGES COMMENCE ICI ******************************** */
+
+
+
+
+                   SwipeView {
+                        id: view
+                        currentIndex: 0
+                        anchors.fill: parent
+
+                        Repeater {
+                            model: launchermodular.pageModel
+                            Loader {
+                                 sourceComponent:{
+                                      Qt.createComponent(directory+name)
+                                 }
+                                 property int pageIndex:index
+
+                            }
                         }
-                     }
 
-            }
-        }
+                   }
 
+                    /* ******************************** FIN DES PAGES ******************************** */
 
-}
-	}
-
-Rectangle {
-        id: tutorialConfig
-        visible: launchermodular.settings.firstRun
-        color:"#111111"
-        height: units.gu(5)
-            anchors {
-                top: bottomBarLayout.top
-                topMargin: 2
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
+                }
             }
 
+            /* ******************************** DEBUT DE LA BARRE EN BAS ******************************** */
 
-            Icon {
-                anchors.right: staticText.left
-                anchors.rightMargin: units.gu(1)
-                anchors.verticalCenter: parent.verticalCenter
-                width: units.gu(2)
-                height: units.gu(2)
-                name: "up"
-            }
-
-            Text {
-                id:staticText
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: "darkgray"
-                text: i18n.tr("Swipe up to configure the launcher")
-            }
-
-            Icon {
-                anchors.left: staticText.right
-                anchors.leftMargin: units.gu(1)
-                anchors.verticalCenter: parent.verticalCenter
-                width: units.gu(2)
-                height: units.gu(2)
-                name: "up"
-            }
-
-    }
-
-        transform: Translate {
-            y: -(bottomBarSettings.position * bottomBarSettings.height)
-        }
-
-        }
-    Drawer {
-        id: bottomBarSettings
-        edge: Qt.BottomEdge
-        height: units.gu(8)
-        width: parent.width
-
-        onOpened: launchermodular.settings.firstRun = false
-
-            Row {
-                spacing: 4
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.right: parent.right
+            Rectangle {
+                id: bottomBarLayout
+                color: "#111111"
                 height: units.gu(5)
-                /*
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height
-                    width: units.gu(8)
-                    Icon {
-                        id: iconShortcut
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+
+                Rectangle {
+                    id: borderTop
+                    height: units.gu(0.1)
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    color: "#E95420"
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    property real startMouseX
+                    //onEntered: {
+                    //	startMouseX = mouseX
+                    //}
+                    onPressed: {
+                      startMouseX = mouseX
+                    }
+                    onPositionChanged: {
+                        if(mouseX - startMouseX > units.gu(4)) {
+                            view.setCurrentIndex((view.currentIndex+1)%view.count)
+                            startMouseX += units.gu(4)
+                        }
+                        else if(startMouseX - mouseX > units.gu(4)) {
+                            view.setCurrentIndex((view.currentIndex-1+view.count)%view.count)
+                            startMouseX -= units.gu(4)
+                        }
+                    }
+
+                    onExited: {indicator.spacing = units.gu(2)}
+
+                    PageIndicator {
+                        id: indicator
+                        count: view.count
+                        currentIndex: view.currentIndex
+                        interactive: false //= dont intercept press
                         anchors.horizontalCenter: parent.horizontalCenter
-                        name: "keypad"
-                        height: units.gu(3)
-                        width: units.gu(3)
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: units.gu(2)
+
+                        delegate: Rectangle {
+                            height: units.gu(4)
+                            width: units.gu(3)
+                            color: "transparent"
+                            Icon {
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.verticalCenter: parent.verticalCenter
+                                source: launchermodular.pageModel.get(index).icon
+                                height: units.gu(2)
+                                width: units.gu(2)
+                                color: index === view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                id: iconBottomBar
+                                antialiasing: true
+                                visible: false
+                            }
+                            ColorOverlay{
+                                anchors.fill: iconBottomBar
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.verticalCenter: parent.verticalCenter
+                                source: iconBottomBar
+                                color: index === view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                antialiasing: true
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                propagateComposedEvents: true
+                                onPressed: {
+                                    mouse.accepted = false
+                                    if(index !== view.currentIndex) {
+                                        view.setCurrentIndex(index);
+                                        source = indicator.indicatorIcons[view.currentIndex];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    id: tutorialConfig
+                    visible: launchermodular.settings.firstRun
+                    color:"#111111"
+                    height: units.gu(5)
+
+                    anchors {
+                        top: bottomBarLayout.top
+                        topMargin: 2
+                        left: parent.left
+                        right: parent.right
+                        bottom: parent.bottom
+                    }
+
+                    Icon {
+                        anchors.right: staticText.left
+                        anchors.rightMargin: units.gu(1)
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: units.gu(2)
+                        height: units.gu(2)
+                        name: "up"
                     }
 
                     Text {
-                        anchors.top: iconShortcut.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        width: parent.width
-                        text: i18n.tr("Sets shortcut")
-                        font.pointSize: units.gu(1)
-                        wrapMode:Text.WordWrap
+                        id:staticText
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        color: "darkgray"
+                        text: i18n.tr("Swipe up to configure the launcher")
                     }
 
-                  MouseArea {
+                    Icon {
+                        anchors.left: staticText.right
+                        anchors.leftMargin: units.gu(1)
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: units.gu(2)
+                        height: units.gu(2)
+                        name: "up"
+                    }
+
+                }
+
+                transform: Translate {
+                    y: -(bottomBarSettings.position * bottomBarSettings.height)
+                }
+
+            }
+            Drawer {
+                id: bottomBarSettings
+                edge: Qt.BottomEdge
+                height: units.gu(8)
+                width: parent.width
+
+                onOpened: launchermodular.settings.firstRun = false
+
+                Row {
+                    spacing: 4
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.right: parent.right
+                    height: units.gu(5)
+                    /*
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height
+                        width: units.gu(8)
+                        Icon {
+                            id: iconShortcut
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            name: "keypad"
+                            height: units.gu(3)
+                            width: units.gu(3)
+                        }
+
+                        Text {
+                            anchors.top: iconShortcut.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            width: parent.width
+                            text: i18n.tr("Sets shortcut")
+                            font.pointSize: units.gu(1)
+                            wrapMode:Text.WordWrap
+                        }
+
+                        MouseArea {
                             anchors.fill: parent
                             onPressed: {
                                     //pageStack.push(Qt.resolvedUrl("Widgetmanagement.qml"))
                                     bottomBarSettings.close()
                             }
-                  }
-                }*/
-
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height
-                    width: units.gu(8)
-                    Icon {
-                        id: iconWidget
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        name: "view-expand"
-                        height: units.gu(3)
-                        width: units.gu(3)
-                    }
-
-                    Text {
-                        anchors.top: iconWidget.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        width: parent.width
-                        text: i18n.tr("Add custom icon")
-                        font.pointSize: units.gu(1)
-                        wrapMode:Text.WordWrap
-                    }
-
-                  MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                    customIconDialogue.visible = true
-                                    bottomBarSettings.close()
-                            }
-                  }
-                }
-
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height
-                    width: units.gu(8)
-                    Icon {
-                        id: iconPage
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        name: "browser-tabs"
-                        height: units.gu(3)
-                        width: units.gu(3)
-                    }
-
-                    Text {
-                        anchors.top: iconPage.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        width: parent.width
-                        text: i18n.tr("Manage page")
-                        font.pointSize: units.gu(1)
-                        wrapMode:Text.WordWrap
-                    }
-
-                  MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                    pageStack.push(Qt.resolvedUrl("Pagemanagement.qml"))
-                                    bottomBarSettings.close()
-                            }
-                  }
-                }
-
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height
-                    width: units.gu(8)
-                    Icon {
-                        id: iconSettings
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        name: "system-settings-symbolic"
-                        height: units.gu(3)
-                        width: units.gu(3)
-                    }
-
-                    Text {
-                        anchors.top: iconSettings.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        width: parent.width
-                        text: i18n.tr("Configure Launcher")
-                        font.pointSize: units.gu(1)
-                        wrapMode:Text.WordWrap
-                    }
-
-                  MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                    pageStack.push(Qt.resolvedUrl("Settings.qml"))
-                                    bottomBarSettings.close()
-                            }
-                  }
-                }
-
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height
-                    width: units.gu(8)
-                    Icon {
-                        id: iconAuto
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        name: "flash-auto"
-                        height: units.gu(3)
-                        width: units.gu(3)
-                    }
-
-                    Text {
-                        anchors.top: iconAuto.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        width: parent.width
-                        text: i18n.tr("Autostart")
-                        font.pointSize: units.gu(1)
-                        wrapMode:Text.WordWrap
-                    }
-
-                  MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                    pageStack.push(Qt.resolvedUrl("Autostart.qml"))
-                                    bottomBarSettings.close()
-                            }
-                  }
-                }
-
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height
-                    width: units.gu(8)
-                    Icon {
-                        id: iconHelp
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        name: "help"
-                        height: units.gu(3)
-                        width: units.gu(3)
-                    }
-
-                    Text {
-                        anchors.top: iconHelp.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        width: parent.width
-                        text: i18n.tr("Help")
-                        font.pointSize: units.gu(1)
-                        wrapMode:Text.WordWrap
-                    }
-
-                  MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                    pageStack.push(Qt.resolvedUrl("Help.qml"))
-                                    bottomBarSettings.close()
-                            }
-                  }
-                }
-
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
-                    height: parent.height
-                    width: units.gu(8)
-                    Icon {
-                        id: iconAbout
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        name: "info"
-                        height: units.gu(3)
-                        width: units.gu(3)
-                    }
-
-                    Text {
-                        anchors.top: iconAbout.bottom
-                        horizontalAlignment: Text.AlignHCenter
-                        width: parent.width
-                        text: i18n.tr("About")
-                        font.pointSize: units.gu(1)
-                        wrapMode:Text.WordWrap
-                    }
-
-                  MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                    pageStack.push(Qt.resolvedUrl("About.qml"))
-                                    bottomBarSettings.close()
-                            }
-                  }
-                }
-
-            }
-    }
-
-
-
-
-
-/* ******************************** FIN DE LA BARRE EN BAS ******************************** */
-
-
-                    Rectangle {
-                        id: customIconDialogue
-                        anchors.fill: parent
-                        color: "black"
-                        visible: false
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: customIconDialogue.visible = false
                         }
+                    }*/
 
-                    Rectangle{
-                        anchors.horizontalCenter: parent.horizontalCenter
+                    Column {
                         anchors.verticalCenter: parent.verticalCenter
-                        width: parent.width*0.75
-                        height: parent.height*0.75
-                        radius: units.gu(2)
-                        color: "white"
-                            MouseArea {
-                            anchors.fill: parent
+                        height: parent.height
+                        width: units.gu(8)
+                        Icon {
+                            id: iconWidget
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            name: "view-expand"
+                            height: units.gu(3)
+                            width: units.gu(3)
                         }
-    Flickable {
-        id: flickable
-        anchors.fill: parent
-        contentHeight: customIconColumn.childrenRect.height+units.gu(2)
-        flickableDirection: Flickable.VerticalFlick
-        clip: true
-        maximumFlickVelocity : units.gu(10)*100
-        flickDeceleration: 2500
 
-             Column {
-                    id: customIconColumn
-                    width: parent.width-units.gu(4)
-                    spacing: units.gu(2)
-                    anchors.horizontalCenter: parent.horizontalCenter
-
-
-                        Item{
+                        Text {
+                            anchors.top: iconWidget.bottom
+                            horizontalAlignment: Text.AlignHCenter
                             width: parent.width
-                            height: units.gu(4)
+                            text: i18n.tr("Add custom icon")
+                            font.pointSize: units.gu(1)
+                            wrapMode:Text.WordWrap
                         }
 
-                    LomiriShape {
-                        id: webAppIcon
-                        source: Image {
-                            id: imageSource
-                            source: launchermodular.iconCustomUrl
-                        }
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width: units.gu(15)
-                        height: width
-                        color: lightColor
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: {
-
-                        pageStack.push(Qt.resolvedUrl("ImportPage.qml"));
-
+                            onPressed: {
+                                customIconDialogue.visible = true
+                                bottomBarSettings.close()
                             }
                         }
-                        Label {
-                            visible: imageSource.source === "../assets/placeholder-app-icon.svg" ? true : false
+                    }
+
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height
+                        width: units.gu(8)
+                        Icon {
+                            id: iconPage
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            name: "browser-tabs"
+                            height: units.gu(3)
+                            width: units.gu(3)
+                        }
+
+                        Text {
+                            anchors.top: iconPage.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            width: parent.width
+                            text: i18n.tr("Manage page")
+                            font.pointSize: units.gu(1)
+                            wrapMode:Text.WordWrap
+                        }
+
+                        MouseArea {
                             anchors.fill: parent
-                            anchors.margins: units.gu(1)
-                            anchors.topMargin: webAppIcon.height / 1.4
-                            text: i18n.tr("SVG or PNG icon. 1:1 ratio")
-                            wrapMode: Text.Wrap
+                            onPressed: {
+                                pageStack.push(Qt.resolvedUrl("Pagemanagement.qml"))
+                                bottomBarSettings.close()
+                            }
                         }
                     }
 
-
-                    TextField {
-                        id: appTitle
-                        width: parent.width
-                        color: "black"
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height
+                        width: units.gu(8)
+                        Icon {
+                            id: iconSettings
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            name: "system-settings-symbolic"
+                            height: units.gu(3)
+                            width: units.gu(3)
                         }
-                        placeholderText: i18n.tr("The <b>title</b> to be shown in the app list")
+
+                        Text {
+                            anchors.top: iconSettings.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            width: parent.width
+                            text: i18n.tr("Configure Launcher")
+                            font.pointSize: units.gu(1)
+                            wrapMode:Text.WordWrap
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onPressed: {
+                                pageStack.push(Qt.resolvedUrl("Settings.qml"))
+                                bottomBarSettings.close()
+                            }
+                        }
                     }
 
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height
+                        width: units.gu(8)
+                        Icon {
+                            id: iconAuto
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            name: "flash-auto"
+                            height: units.gu(3)
+                            width: units.gu(3)
+                        }
 
-                  property var modelCustom: [
-                    { title: "<font color=\"#6f6f6f\">"+i18n.tr("Website")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
-                    { title: "<font color=\"#ffffff\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
-                    { title: "<font color=\"#ffffff\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
-                    ]
+                        Text {
+                            anchors.top: iconAuto.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            width: parent.width
+                            text: i18n.tr("Autostart")
+                            font.pointSize: units.gu(1)
+                            wrapMode:Text.WordWrap
+                        }
 
-                    ListItem.ItemSelector {
-                        id: typeIconCustom
-                        width: parent.width
-                        model: customIconColumn.modelCustom
-                        delegate: OptionSelectorDelegate {
+                        MouseArea {
+                            anchors.fill: parent
+                            onPressed: {
+                                pageStack.push(Qt.resolvedUrl("Autostart.qml"))
+                                bottomBarSettings.close()
+                            }
+                        }
+                    }
+
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height
+                        width: units.gu(8)
+                        Icon {
+                            id: iconHelp
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            name: "help"
+                            height: units.gu(3)
+                            width: units.gu(3)
+                        }
+
+                        Text {
+                            anchors.top: iconHelp.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            width: parent.width
+                            text: i18n.tr("Help")
+                            font.pointSize: units.gu(1)
+                            wrapMode:Text.WordWrap
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onPressed: {
+                                pageStack.push(Qt.resolvedUrl("Help.qml"))
+                                bottomBarSettings.close()
+                            }
+                        }
+                    }
+
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height
+                        width: units.gu(8)
+                        Icon {
+                            id: iconAbout
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            name: "info"
+                            height: units.gu(3)
+                            width: units.gu(3)
+                        }
+
+                        Text {
+                            anchors.top: iconAbout.bottom
+                            horizontalAlignment: Text.AlignHCenter
+                            width: parent.width
+                            text: i18n.tr("About")
+                            font.pointSize: units.gu(1)
+                            wrapMode:Text.WordWrap
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onPressed: {
+                                pageStack.push(Qt.resolvedUrl("About.qml"))
+                                bottomBarSettings.close()
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            /* ******************************** FIN DE LA BARRE EN BAS ******************************** */
+
+            Rectangle {
+                id: customIconDialogue
+                anchors.fill: parent
+                color: "black"
+                visible: false
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: customIconDialogue.visible = false
+                }
+
+                Rectangle {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width*0.75
+                    height: parent.height*0.75
+                    radius: units.gu(2)
+                    color: "white"
+                    MouseArea {
+                        anchors.fill: parent
+                    }
+
+                    Flickable {
+                        id: flickable
+                        anchors.fill: parent
+                        contentHeight: customIconColumn.childrenRect.height+units.gu(2)
+                        flickableDirection: Flickable.VerticalFlick
+                        clip: true
+                        maximumFlickVelocity : units.gu(10)*100
+                        flickDeceleration: 2500
+
+                        Column {
+                            id: customIconColumn
+                            width: parent.width-units.gu(4)
+                            spacing: units.gu(2)
+                            anchors.horizontalCenter: parent.horizontalCenter
+
+                            Item{
+                                width: parent.width
+                                height: units.gu(4)
+                            }
+
+                            LomiriShape {
+                                id: webAppIcon
+                                source: Image {
+                                    id: imageSource
+                                    source: launchermodular.iconCustomUrl
+                                }
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                width: units.gu(15)
+                                height: width
+                                color: lightColor
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        pageStack.push(Qt.resolvedUrl("ImportPage.qml"));
+                                    }
+                                }
+                                Label {
+                                    visible: imageSource.source === "../assets/placeholder-app-icon.svg" ? true : false
+                                    anchors.fill: parent
+                                    anchors.margins: units.gu(1)
+                                    anchors.topMargin: webAppIcon.height / 1.4
+                                    text: i18n.tr("SVG or PNG icon. 1:1 ratio")
+                                    wrapMode: Text.Wrap
+                                }
+                            }
+
+                            TextField {
+                                id: appTitle
+                                width: parent.width
+                                color: "black"
+                                anchors {
+                                    left: parent.left
+                                    right: parent.right
+                                }
+                                placeholderText: i18n.tr("The <b>title</b> to be shown in the app list")
+                            }
+
+
+                            property var modelCustom: [
+                              { title: "<font color=\"#6f6f6f\">"+i18n.tr("Website")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
+                              { title: "<font color=\"#ffffff\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
+                              { title: "<font color=\"#ffffff\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
+                            ]
+
+                            ListItem.ItemSelector {
+                                id: typeIconCustom
+                                width: parent.width
+                                model: customIconColumn.modelCustom
+                                delegate: OptionSelectorDelegate {
                                     property var item: model.modelData ? model.modelData : model
                                     text: item.title
                                     subText: item.descr
                                 }
-                    }
-
-                    TextField {
-                        id: appAction
-                        width: parent.width
-                        color: "black"
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                        inputMethodHints: Qt.ImhNoAutoUppercase
-                        placeholderText: {
-                            if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
-
-                            if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
-
-                            if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
-                        }
-                    }
-
-
-
-
-
-                        Item {
-                            height: units.gu(5)
-                            width: parent.width
-                            Button {
-                                anchors.left: parent.left
-                                id: okButton
-                                text: i18n.tr("Create icon")
-                                height: units.gu(4)
-                                width: (parent.width/2)-units.gu(2)
-                                contentItem: Text {
-                                    text: okButton.text
-                                    font: okButton.font
-                                    color: "#ffffff"
-                                    horizontalAlignment: Text.AlignHCenter
-                                    verticalAlignment: Text.AlignVCenter
-                                    elide: Text.ElideRight
-                                }
-
-                                background: Rectangle {
-                                    radius: units.gu(1.5)
-                                    color: LomiriColors.green
-                                }
-
-                                property var actionIcon: ""
-
-                                onClicked: {
-
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){ okButton.actionIcon = "browser:///"+appAction.text }
-
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
-
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
-
-                                launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon});
-
-                                launchermodular.getCustomIconArray();
-                                launchermodular.settings.customIcon = launchermodular.getCustomIconArray();
-
-                                AppHandler.sort();
-
-                                launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
-                                appTitle.text = "";
-                                okButton.actionIcon = "";
-                                appAction.text = "";
-
-                                customIconDialogue.visible = false
-
-                                    }
                             }
-                            Button{
-                                anchors.right: parent.right
-                                text: i18n.tr("Cancel")
-                                height: units.gu(4)
-                                width: (parent.width/2)-units.gu(2)
-                                background: Rectangle {
-                                    radius: units.gu(1.5)
-                                    color: LomiriColors.orange
+
+                            TextField {
+                                id: appAction
+                                width: parent.width
+                                color: "black"
+                                anchors {
+                                    left: parent.left
+                                    right: parent.right
                                 }
-                                onClicked: {
+                                inputMethodHints: Qt.ImhNoAutoUppercase
+                                placeholderText: {
+                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
+
+                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
+
+                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                }
+                            }
+
+                            Item {
+                                height: units.gu(5)
+                                width: parent.width
+                                Button {
+                                    anchors.left: parent.left
+                                    id: okButton
+                                    text: i18n.tr("Create icon")
+                                    height: units.gu(4)
+                                    width: (parent.width/2)-units.gu(2)
+                                    contentItem: Text {
+                                        text: okButton.text
+                                        font: okButton.font
+                                        color: "#ffffff"
+                                        horizontalAlignment: Text.AlignHCenter
+                                        verticalAlignment: Text.AlignVCenter
+                                        elide: Text.ElideRight
+                                    }
+
+                                    background: Rectangle {
+                                        radius: units.gu(1.5)
+                                        color: LomiriColors.green
+                                    }
+
+                                    property var actionIcon: ""
+
                                     onClicked: {
 
-                                    launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
-                                    appTitle.text = "";
-                                    okButton.actionIcon = "";
-                                    appAction.text = "";
-                                    customIconDialogue.visible = false
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){ okButton.actionIcon = "browser:///"+appAction.text }
+
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
+
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
+
+                                        launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon});
+
+                                        launchermodular.getCustomIconArray();
+                                        launchermodular.settings.customIcon = launchermodular.getCustomIconArray();
+
+                                        AppHandler.sort();
+
+                                        launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
+                                        appTitle.text = "";
+                                        okButton.actionIcon = "";
+                                        appAction.text = "";
+
+                                        customIconDialogue.visible = false
 
                                     }
-                                 }
-                             }
-                         }
-                      }
-                   }
+                                }
+
+                                Button{
+                                    anchors.right: parent.right
+                                    text: i18n.tr("Cancel")
+                                    height: units.gu(4)
+                                    width: (parent.width/2)-units.gu(2)
+                                    background: Rectangle {
+                                        radius: units.gu(1.5)
+                                        color: LomiriColors.orange
+                                    }
+                                    onClicked: {
+                                        onClicked: {
+                                            launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
+                                            appTitle.text = "";
+                                            okButton.actionIcon = "";
+                                            appAction.text = "";
+                                            customIconDialogue.visible = false
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-             }
-          }
-       }
+            }
+        }
     }
+}

@@ -10,33 +10,31 @@ import Lomiri.Contacts 0.1
 Item {
     width: listColumn.width/2
     height: listCall.height+rectLastCall.height+emptyLabel.height
-
-    
-        Column {
-            id: event
-            width: parent.width
+    Column {
+        id: event
+        width: parent.width
                 
-	property string callNumber: "" 
+	      property string callNumber: ""
 
-    Rectangle{
-        id: rectLastCall
-        height: units.gu(2.5)
-        color: "transparent"
-        Icon {
-           id: iconLastCall
-            width: units.gu(2)
-            height: units.gu(2)
-            name: "call-start"
-            color: launchermodular.settings.textColor
+        Rectangle{
+            id: rectLastCall
+            height: units.gu(2.5)
+            color: "transparent"
+            Icon {
+               id: iconLastCall
+                width: units.gu(2)
+                height: units.gu(2)
+                name: "call-start"
+                color: launchermodular.settings.textColor
+            }
+            Label {
+                id: titleLastCall
+                anchors.left: iconLastCall.right
+                anchors.leftMargin: units.gu(1)
+                text: i18n.tr("Last Call")
+                color: launchermodular.settings.textColor
+            }
         }
-        Label {
-            id: titleLastCall
-            anchors.left: iconLastCall.right
-            anchors.leftMargin: units.gu(1)
-            text: i18n.tr("Last Call")
-            color: launchermodular.settings.textColor
-        }
-    }
 
         HistoryThreadModel {
             id: historyEventModel
@@ -58,42 +56,42 @@ Item {
             color: launchermodular.settings.textColor
         }
 
-    ListView {
-        id: listCall
-        anchors.top: rectLastCall.bottom
-        model: historyEventModel
-        height: contentHeight
-        width:parent.width;
-        interactive: false
-
-        delegate: Column {
-            visible: index == 0
-            height: index == 0 ? contentHeight : 0
+        ListView {
+            id: listCall
+            anchors.top: rectLastCall.bottom
+            model: historyEventModel
+            height: contentHeight
             width:parent.width;
-            
-            Text {
-                text: participants; 
-                color: launchermodular.settings.textColor; 
-                font.pointSize: units.gu(1.2);
+            interactive: false
+
+            delegate: Column {
+                visible: index == 0
+                height: index == 0 ? contentHeight : 0
+                width:parent.width;
+
+                Text {
+                    text: participants;
+                    color: launchermodular.settings.textColor;
+                    font.pointSize: units.gu(1.2);
+                }
+                Text {
+                    text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat);
+                    color: "#AEA79F";
+                    font.pointSize: units.gu(1);
+                }
+                Component.onCompleted: if(index > 0){}else{event.callNumber = participants}
             }
-            Text {
-                text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat); 
-                color: "#AEA79F"; 
-                font.pointSize: units.gu(1);
-            }
-            Component.onCompleted: if(index > 0){}else{event.callNumber = participants}
         }
+
+            
+
     }
-
-            
-
-        }
     MouseArea {
         anchors.fill: parent
             onClicked: {
-                    if ("default" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
-                    if ("dial" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+event.callNumber)}
-                }
+                if ("default" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
+                if ("dial" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+event.callNumber)}
+            }
             onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
     }
     

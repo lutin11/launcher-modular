@@ -3,12 +3,8 @@ import QtQuick 2.12
 import QtQuick.LocalStorage 2.0
 
 QtObject {
-
-
     property  var db: LocalStorage.openDatabaseSync("todos-scope", "1.0", "Todos", 1000000)
     property ListModel itemModel : ListModel {}
-
-
     function dbInit()
     {
 

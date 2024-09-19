@@ -8,59 +8,57 @@ Column {
     id: widgetFavoriteContacts
     visible: if(searchField.text.length > 0){false}else{true}
 
-                    Item{
-                        id: titleFavoriteContact
-                        height: if(contactFavoriteView.count != "0"){ units.gu(5)}else{units.gu(0)}
-                        visible: if(contactFavoriteView.count != "0"){ true }else{ false }
-                        width: parent.width
-                        anchors {
-                            left: parent.left
-                            leftMargin: units.gu(2)
-                        }
-                        
-                        Icon {
-                           id: iconFavoriteContact
-                            width: units.gu(2)
-                            height: units.gu(2)
-                            name: "account"
-                            color: launchermodular.settings.textColor
-                        }
+    Item{
+        id: titleFavoriteContact
+        height: if(contactFavoriteView.count != "0"){ units.gu(5)}else{units.gu(0)}
+        visible: if(contactFavoriteView.count != "0"){ true }else{ false }
+        width: parent.width
+        anchors {
+            left: parent.left
+            leftMargin: units.gu(2)
+        }
 
-                        Label {
-				            id:titleFavoriteContactText
-                            anchors.left: iconFavoriteContact.right
-                            anchors.leftMargin: units.gu(1)
-                            text: i18n.tr("Favorite Contacts")
-                            color: launchermodular.settings.textColor
-                        }
-                        
-                        
-                        Icon {
-                           id: iconFavoriteContactState
-                            anchors.right: parent.right
-                            anchors.rightMargin: units.gu(3)
-                            width: units.gu(2)
-                            height: units.gu(2)
-                            name: contactFavoriteView.typegrid == "horizontal" ? "go-next" : "go-down";
-                            color: launchermodular.settings.textColor
-                        }
-                        
-                        MouseArea {
-                            anchors.fill: parent
-                            anchors.bottomMargin: units.gu(2)
-                            onClicked: {
-                                contactFavoriteView.typegrid = contactFavoriteView.typegrid == "horizontal" ? "vertical" : "horizontal";
-                            }
-                        }
-                        
-                    }
+        Icon {
+           id: iconFavoriteContact
+            width: units.gu(2)
+            height: units.gu(2)
+            name: "account"
+            color: launchermodular.settings.textColor
+        }
 
-                        
-               
-ContactModel {
+        Label {
+            id:titleFavoriteContactText
+            anchors.left: iconFavoriteContact.right
+            anchors.leftMargin: units.gu(1)
+            text: i18n.tr("Favorite Contacts")
+            color: launchermodular.settings.textColor
+        }
+
+
+        Icon {
+           id: iconFavoriteContactState
+            anchors.right: parent.right
+            anchors.rightMargin: units.gu(3)
+            width: units.gu(2)
+            height: units.gu(2)
+            name: contactFavoriteView.typegrid == "horizontal" ? "go-next" : "go-down";
+            color: launchermodular.settings.textColor
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            anchors.bottomMargin: units.gu(2)
+            onClicked: {
+                contactFavoriteView.typegrid = contactFavoriteView.typegrid == "horizontal" ? "vertical" : "horizontal";
+            }
+        }
+
+    }
+
+    ContactModel {
         id: contactModel
          
-    filter: DetailFilter {
+        filter: DetailFilter {
             id: favouritesFilter
 
             detail: ContactDetail.Favorite
@@ -68,9 +66,7 @@ ContactModel {
             value: true
             matchFlags: DetailFilter.MatchExactly
         }
-
-    
-    manager: "galera"
+        manager: "galera"
     }
                     
     GridView {
@@ -81,7 +77,7 @@ ContactModel {
         
         model: contactModel
 
-       anchors {
+        anchors {
             left: parent.left
             leftMargin: units.gu(2)
             right: parent.right
@@ -98,8 +94,6 @@ ContactModel {
         width: contactFavoriteView.typegrid == "horizontal" ? contentHeight : widgetFavoriteContacts.width;
         height: contactFavoriteView.typegrid == "horizontal" ? contactFavoriteView.heightgrid : contactFavoriteView.contentHeight;
         
-
-            
         delegate: Flipable {
             id: flipable
             width: contactFavoriteView.cellWidth
@@ -107,16 +101,15 @@ ContactModel {
 
             property bool flipped: false
                 
-             Timer {
-                id: closeTimer
-                    interval: 2500; running: false; repeat: false
-                    onTriggered: flipable.flipped = false
-                }
+            Timer {
+              id: closeTimer
+              interval: 2500; running: false; repeat: false
+              onTriggered: flipable.flipped = false
+            }
 
             front: Item{
                 width: contactFavoriteView.cellWidth
                 height: contactFavoriteView.iconbasesize
-                    
 
                 Image {
                     id: screenshotContactFavorite
@@ -149,17 +142,15 @@ ContactModel {
                     radius : "medium"
                     backgroundColor: "white"
                     sourceFillMode: LomiriShape.PreserveAspectCrop
-
                 }
                 MouseArea {
                     anchors.fill: parent
-                        onClicked: {
-                            flipable.flipped = !flipable.flipped
-                            closeTimer.running = true
-                        }
-                        onPressAndHold: pageStack.push(Qt.resolvedUrl("favoritecontact/Settings.qml"))
+                    onClicked: {
+                        flipable.flipped = !flipable.flipped
+                        closeTimer.running = true
+                    }
+                    onPressAndHold: pageStack.push(Qt.resolvedUrl("favoritecontact/Settings.qml"))
                 }
-
 
                 Text{
                     anchors.top: screenshotContactFavorite.bottom
@@ -171,11 +162,10 @@ ContactModel {
                     wrapMode: Text.WordWrap
                     text: contact.name.firstName + " " + contact.name.lastName
                     color: launchermodular.settings.textColor
-                 }
+                }
 
             }
-            
-            
+
             back: Item{
                 width: contactFavoriteView.cellWidth
                 height: contactFavoriteView.iconbasesize
@@ -261,9 +251,8 @@ ContactModel {
                     wrapMode: Text.WordWrap
                     text: contact.name.firstName + " " + contact.name.lastName
                     color: launchermodular.settings.textColor
-                 }
-                
-                
+                }
+
                 Item{
                     height: units.gu(8)
                     width: (screenshotContactFavoriteFlip.width/2)-0.5
@@ -289,7 +278,6 @@ ContactModel {
                     }
                 }
                 
-
             }
 
             transform: Rotation {
@@ -309,17 +297,6 @@ ContactModel {
             transitions: Transition {
                 NumberAnimation { target: rotation; property: "angle"; duration: 1000 }
             }
-
-
         }
-
-        
-        
-        
-
     }
-
-                
-
-        
 }

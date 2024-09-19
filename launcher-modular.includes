@@ -1,0 +1,6 @@
+build/aarch64-linux-gnu/app/launchermodular_autogen
+build/aarch64-linux-gnu/app/plugins/AppHandler/AppHandler_autogen
+build/aarch64-linux-gnu/app/plugins/MySettings/MySettings_autogen
+build/aarch64-linux-gnu/app/po
+plugins/AppHandler
+plugins/MySettings

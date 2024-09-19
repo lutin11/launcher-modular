@@ -17,15 +17,15 @@ Page {
            foregroundColor: "#FFFFFF";
            backgroundColor: "#111111";
        }
-            leadingActionBar.actions: 
-                Action {
-                    iconName: "back"
-                    text: "Back"
-                    onTriggered: {
-                        pageStack.pop();
-        }
-     }
-  }  
+       leadingActionBar.actions:
+          Action {
+              iconName: "back"
+              text: "Back"
+              onTriggered: {
+                  pageStack.pop();
+              }
+         }
+    }
 
     Rectangle {
         id:rect1
@@ -35,35 +35,35 @@ Page {
             topMargin: units.gu(6)
         }
 
-Item {
-      width: parent.width
-      height: parent.height
-
-    Column {
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-        
-        ListItem.Header {
-                text: "<font color=\"#ffffff\">"+i18n.tr("Widget Settings")+"</font>"
-        }        
-        
         Item {
             width: parent.width
-            height: translators1Label.height + units.gu(2)
-            Label {
-                id: translators1Label
-                text: i18n.tr("<br><b>Click and hold the widget and to change its settings.</b>")
-                anchors.centerIn: parent
-                wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
-                horizontalAlignment: Text.AlignHCenter
-                width: parent.width - units.gu(12)
-                color: "#ffffff"
+            height: parent.height
+
+            Column {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
+                ListItem.Header {
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Widget Settings")+"</font>"
+                }
+
+                Item {
+                    width: parent.width
+                    height: translators1Label.height + units.gu(2)
+                    Label {
+                        id: translators1Label
+                        text: i18n.tr("<br><b>Click and hold the widget and to change its settings.</b>")
+                        anchors.centerIn: parent
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        horizontalAlignment: Text.AlignHCenter
+                        width: parent.width - units.gu(12)
+                        color: "#ffffff"
+                    }
+                }
             }
-          }                                   
         }
-      }
     }
 // HELP PAGE    
 }
