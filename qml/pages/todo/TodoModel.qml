@@ -1,5 +1,5 @@
 pragma Singleton
-import QtQuick 2.9
+import QtQuick 2.12
 import QtQuick.LocalStorage 2.0
 
 QtObject {

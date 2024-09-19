@@ -1,5 +1,5 @@
 clickable_minimum_required:
-    "7.9.0"
+    "8.2.0"
 skip_review: true  
 builder:
     "cmake"

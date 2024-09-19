@@ -1,8 +1,8 @@
-import QtQuick 2.9
+import QtQuick 2.12
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import QtContacts 5.0
-import QtGraphicalEffects 1.0
+import QtGraphicalEffects 1.12
 
 Column {
     id: widgetFavoriteContacts
