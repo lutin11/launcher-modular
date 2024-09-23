@@ -411,36 +411,6 @@ MainView {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
                     height: units.gu(5)
-                    /*
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
-                        height: parent.height
-                        width: units.gu(8)
-                        Icon {
-                            id: iconShortcut
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            name: "keypad"
-                            height: units.gu(3)
-                            width: units.gu(3)
-                        }
-
-                        Text {
-                            anchors.top: iconShortcut.bottom
-                            horizontalAlignment: Text.AlignHCenter
-                            width: parent.width
-                            text: i18n.tr("Sets shortcut")
-                            font.pointSize: units.gu(1)
-                            wrapMode:Text.WordWrap
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                    //pageStack.push(Qt.resolvedUrl("Widgetmanagement.qml"))
-                                    bottomBarSettings.close()
-                            }
-                        }
-                    }*/
 
                     Column {
                         anchors.verticalCenter: parent.verticalCenter
@@ -531,36 +501,6 @@ MainView {
                             }
                         }
                     }
-
-                    // Column {
-                    //     anchors.verticalCenter: parent.verticalCenter
-                    //     height: parent.height
-                    //     width: units.gu(8)
-                    //     Icon {
-                    //         id: iconAuto
-                    //         anchors.horizontalCenter: parent.horizontalCenter
-                    //         name: "flash-auto"
-                    //         height: units.gu(3)
-                    //         width: units.gu(3)
-                    //     }
-
-                    //     Text {
-                    //         anchors.top: iconAuto.bottom
-                    //         horizontalAlignment: Text.AlignHCenter
-                    //         width: parent.width
-                    //         text: i18n.tr("Autostart")
-                    //         font.pointSize: units.gu(1)
-                    //         wrapMode:Text.WordWrap
-                    //     }
-
-                    //     MouseArea {
-                    //         anchors.fill: parent
-                    //         onPressed: {
-                    //             pageStack.push(Qt.resolvedUrl("Autostart.qml"))
-                    //             bottomBarSettings.close()
-                    //         }
-                    //     }
-                    // }
 
                     Column {
                         anchors.verticalCenter: parent.verticalCenter
