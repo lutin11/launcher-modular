@@ -118,7 +118,7 @@ Page {
                             title.color: "black"
                         }
                         divider.visible: false
-                        visible: if(fileName.split(".")[0] === "Home"){false; height = 0}
+                        visible: if(fileName && fileName.split(".")[0] === "Home"){false; height = 0}
                         onClicked: {
                             launchermodular.pageModel.append({"name": fileName, "icon": "pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": "pages/"});
                             PopupUtils.close(listPageDialogue);
@@ -250,7 +250,7 @@ Page {
 
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"),{pageIndex:index});
-                    console.log("clicked on"+index)
+                    console.log("clicked on :"+index)
                 }
 
 
