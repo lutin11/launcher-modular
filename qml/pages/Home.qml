@@ -20,7 +20,7 @@ Item {
         AppHandler.reload()
         AppHandler.permaFilter()
         AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
-        AppHandler.permaFilter("package_name",  "^(?!launchermodular.ubuntouchfr_).*$")
+        AppHandler.permaFilter("package_name",  "^(?!launchermodular.lut11_).*$")
         AppHandler.permaFilter("Icon",  "/.*$")
         listCustomIcon.model = ""
         listCustomIcon.model = launchermodular.customIconModel
@@ -454,7 +454,7 @@ Item {
                     console.log(AppHandler.appsinfo.length);
                     AppHandler.permaFilter()
                     AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
-                    AppHandler.permaFilter("package_name",  "^(?!launchermodular.ubuntouchfr_).*$")
+                    AppHandler.permaFilter("package_name",  "^(?!launchermodular.lut11_).*$")
                     AppHandler.permaFilter("Icon",  "/.*$")
 
                     //AppHandler.appsinfo.push(settingsButton)

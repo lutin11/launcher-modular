@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication *app = new QGuiApplication(argc, (char**)argv);
-    app->setApplicationName("launchermodular.ubuntouchfr");
+    app->setApplicationName("launchermodular.lut11");
     QQmlEngine *engine = new QQmlEngine(app);
 
     engine->addImportPath(QStringLiteral("/usr/lib/aarch64-linux-gnu/lomiri/qml/"));    

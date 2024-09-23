@@ -13,7 +13,7 @@ import Lomiri.Components.Popups 1.3
 MainView {
     id: launchermodular
     objectName: 'mainView'
-    applicationName: 'launchermodular.ubuntouchfr'
+    applicationName: 'launchermodular.lut11'
     automaticOrientation: true
 
     width: units.gu(45)
