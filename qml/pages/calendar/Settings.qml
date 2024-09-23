@@ -5,7 +5,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 
 Page {
-    id: pageSettingsNews
+    id: pageSettingsCalendar
 
     header: PageHeader {
         id: headerSettings
@@ -19,7 +19,7 @@ Page {
                 }
             }
         ]
-   }
+    }
 
     Rectangle {
         id:mainsettings
@@ -88,7 +88,4 @@ Page {
             } // column
         } //flickable
      } //rectangle settings
-
-
-
 }

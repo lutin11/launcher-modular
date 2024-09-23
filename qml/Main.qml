@@ -148,8 +148,8 @@ MainView {
                 console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elemets");
                 var customIcon_l = launchermodular.settings.customIcon.length
                 for (var i=0; i<customIcon_l; i++){
-                    var item0 = launchermodular.settings.customIcon[i];
-                    launchermodular.customIconModel.insert(i,{"name": item0.name, "icon": item0.icon, "action": item0.action})
+                    var customIcon = launchermodular.settings.customIcon[i];
+                    launchermodular.customIconModel.insert(i,{"name": customIcon.name, "icon": customIcon.icon, "action": customIcon.action})
                 }
 
                 if(typeof launchermodular.settings.favoriteApps === 'undefined') {
@@ -166,11 +166,12 @@ MainView {
                     console.log("page is undefined, let's create a new one");
                     launchermodular.settings.page = [{"name": "Home.qml", "icon": "pages/home/assets/icon.svg","data":{}, "directory": "pages/"}];
                 }
+
                 console.log("Retrieve page with : "+ launchermodular.settings.page.length +" elemets");
                 var page_l = launchermodular.settings.page.length
                 for (var p=0; p<page_l; p++){
-                    var item = launchermodular.settings.page[p];
-                    launchermodular.pageModel.insert(p,{"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory})
+                    var itemPage = launchermodular.settings.page[p];
+                    launchermodular.pageModel.insert(p,{"name": itemPage.name, "icon": itemPage.icon, "data":itemPage.data, "directory":itemPage.directory})
                 }
 
             }
@@ -531,35 +532,35 @@ MainView {
                         }
                     }
 
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
-                        height: parent.height
-                        width: units.gu(8)
-                        Icon {
-                            id: iconAuto
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            name: "flash-auto"
-                            height: units.gu(3)
-                            width: units.gu(3)
-                        }
+                    // Column {
+                    //     anchors.verticalCenter: parent.verticalCenter
+                    //     height: parent.height
+                    //     width: units.gu(8)
+                    //     Icon {
+                    //         id: iconAuto
+                    //         anchors.horizontalCenter: parent.horizontalCenter
+                    //         name: "flash-auto"
+                    //         height: units.gu(3)
+                    //         width: units.gu(3)
+                    //     }
 
-                        Text {
-                            anchors.top: iconAuto.bottom
-                            horizontalAlignment: Text.AlignHCenter
-                            width: parent.width
-                            text: i18n.tr("Autostart")
-                            font.pointSize: units.gu(1)
-                            wrapMode:Text.WordWrap
-                        }
+                    //     Text {
+                    //         anchors.top: iconAuto.bottom
+                    //         horizontalAlignment: Text.AlignHCenter
+                    //         width: parent.width
+                    //         text: i18n.tr("Autostart")
+                    //         font.pointSize: units.gu(1)
+                    //         wrapMode:Text.WordWrap
+                    //     }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onPressed: {
-                                pageStack.push(Qt.resolvedUrl("Autostart.qml"))
-                                bottomBarSettings.close()
-                            }
-                        }
-                    }
+                    //     MouseArea {
+                    //         anchors.fill: parent
+                    //         onPressed: {
+                    //             pageStack.push(Qt.resolvedUrl("Autostart.qml"))
+                    //             bottomBarSettings.close()
+                    //         }
+                    //     }
+                    // }
 
                     Column {
                         anchors.verticalCenter: parent.verticalCenter

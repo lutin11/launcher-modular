@@ -7,6 +7,7 @@ import Lomiri.Components 1.3
 import "pages"
 import Lomiri.Components.Popups 0.1
 import Qt.labs.folderlistmodel 2.1
+import AccountsService 0.1
 
 Page {
     id: pageSettings
@@ -70,12 +71,12 @@ Page {
                     height: contentHeight
                     width: parent.width
 
-                        FolderListModel {
-                            id: folderModelCustom
-                            nameFilters: ["*.qml"]
-                            folder: "/home/phablet/.launchermodular/pages/"
-                            showDirs: false
-                        }
+                    FolderListModel {
+                        id: folderModelCustom
+                        nameFilters: ["*.qml"]
+                        folder: "/home/phablet/.launchermodular/pages/"
+                        showDirs: false
+                    }
 
                     delegate: ListItem {
                         ListItemLayout {

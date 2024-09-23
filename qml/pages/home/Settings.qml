@@ -1,4 +1,3 @@
-import QtQml 1.1
 import QtQuick 2.4
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
@@ -69,6 +68,10 @@ Page {
                         }
                     }
                     divider.visible: false
+                    onClicked: {
+                         launchermodular.favoriteAppsModel.append({"name": elem.name, "icon": elem.icon, "action": elem.action});
+                         PopupUtils.close(listAppDialogue);
+                    }
                 }
 
             }
