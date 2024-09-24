@@ -50,7 +50,6 @@ Item {
             parent: flickable
             refreshing: home.reloading
             onRefresh: home.getIcon();
-
         }
 
         Column {
@@ -237,7 +236,7 @@ Item {
                 }
 
                 Icon {
-                   id: iconInstalledApps
+                    id: iconInstalledApps
                     width: units.gu(2)
                     height: units.gu(2)
                     name: "keypad"

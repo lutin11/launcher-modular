@@ -20,6 +20,12 @@ MainView {
     height: units.gu(75)
 
     property string appVersion : "2.3.1"
+    property ListModel customIconModel :  ListModel { id: customIconModel }
+    property ListModel pageModel :  ListModel { id: pageModel }
+    property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
+    property variant datenow: new Date()
+    property string iconCustomUrl: "../assets/placeholder-app-icon.svg"
+
 
     function getCustomIconArray() {
         var customIcon = [], hMI_l = launchermodular.customIconModel.count;
@@ -32,9 +38,6 @@ MainView {
         return customIcon;
     }
 
-    property ListModel customIconModel :  ListModel { id: customIconModel }
-
-
     function getPageArray() {
         var page = [], hM_l = launchermodular.pageModel.count;
         for (var i=0; i<hM_l; i++){
@@ -46,21 +49,16 @@ MainView {
         return page;
     }
 
-    property ListModel pageModel :  ListModel { id: pageModel }
-
     function getFavoriteAppsArray() {
-        var favoriteApps = [], hMA_l = launchermodular.favoriteAppsModel.count;
-        for (var i=0; i<hMA_l; i++) {
-            var itemApps = launchermodular.favoriteAppsModel.get(i);
+        var favoriteApps = [], favAppsCount = launchermodular.favoriteAppsModel.count;
+        for (var favAppIndex=0; favAppIndex<favAppsCount; favAppIndex++) {
+            var itemApps = launchermodular.favoriteAppsModel.get(favAppIndex);
             favoriteApps.push({"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action});
         }
 
         console.log("favoriteAppsModel to array, size : "+favoriteApps.length);
         return favoriteApps;
     }
-
-    property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
-
 
     // persistent app settings:
     property var settings: Settings {
@@ -109,12 +107,7 @@ MainView {
         property bool widgetVisibleLastcall: true
         property bool widgetVisibleLastmessage: true
         property bool widgetVisibleEvent: true
-
-
     }//settings
-
-    property variant datenow: new Date()
-    property string iconCustomUrl: "../assets/placeholder-app-icon.svg"
 
     Timer {
         id: clockUpdater
@@ -126,7 +119,6 @@ MainView {
             launchermodular.datenow = new Date()
         }
     }
-
 
     PageStack {
         id: pageStack
