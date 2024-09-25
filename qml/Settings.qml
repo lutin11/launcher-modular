@@ -28,7 +28,7 @@ Page {
     Component {
         id: diag
         Dialog {
-            id: popup
+            id: dialogue
             title: "Authentification needed"
             TextField {
                 id:inp
@@ -36,8 +36,16 @@ Page {
                 echoMode: TextInput.Password
             }
             Button {
-                text:"ok"
-                onClicked: {Terminalaccess.inputLine(inp.text, false);PopupUtils.close(popup)}
+                anchors.left: parent.left
+                id: okButton
+                text: i18n.tr("ok")
+                onClicked: {Terminalaccess.inputLine(inp.text, false);PopupUtils.close(dialogue)}
+            }
+            Button {
+                anchors.right: parent.right
+                id: cancelButton
+                text: i18n.tr("Cancel")
+                onClicked: PopupUtils.close(dialogue)
             }
         }
     }

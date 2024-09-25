@@ -4,7 +4,7 @@ import Lomiri.Components.ListItems 1.3 as ListItem
 import QtContacts 5.0
 import QtGraphicalEffects 1.12
 
-Item {
+Column {
     id: widgetSearchContacts
     width: parent.width
     height: if(searchField.text.length > 0 && contactSearchView.contentWidth > 0){titleSearchContact.height+rectContactSearchView.height}else{units.gu(0)}
@@ -22,7 +22,7 @@ Item {
         }
 
         Icon {
-           id: iconSearchContact
+            id: iconSearchContact
             width: units.gu(2)
             height: units.gu(2)
             name: "account"
@@ -42,7 +42,6 @@ Item {
         id: rectContactSearchView
         anchors.top: titleSearchContact.bottom
         width: launchermodular.width
-
 
         ContactModel {
             id: contactModel

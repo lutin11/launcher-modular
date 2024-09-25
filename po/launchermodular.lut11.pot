@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-25 20:48+0000\n"
+"POT-Creation-Date: 2024-09-25 23:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,7 +149,8 @@ msgstr ""
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:729 ../qml/Pagemanagement.qml:132 ../qml/pages/Home.qml:424
+#: ../qml/Main.qml:729 ../qml/Pagemanagement.qml:132 ../qml/Settings.qml:47
+#: ../qml/pages/Home.qml:53 ../qml/pages/Home.qml:453
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr ""
@@ -166,63 +167,67 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../qml/Settings.qml:68 ../qml/pages/calendar/Settings.qml:43
+#: ../qml/Settings.qml:41 ../qml/pages/Home.qml:37
+msgid "ok"
+msgstr ""
+
+#: ../qml/Settings.qml:76 ../qml/pages/calendar/Settings.qml:43
 msgid "General"
 msgstr ""
 
-#: ../qml/Settings.qml:73
+#: ../qml/Settings.qml:81
 msgid "Dark background"
 msgstr ""
 
-#: ../qml/Settings.qml:100
+#: ../qml/Settings.qml:108
 msgid "Background blur effect"
 msgstr ""
 
-#: ../qml/Settings.qml:108
+#: ../qml/Settings.qml:116
 msgid "None"
 msgstr ""
 
-#: ../qml/Settings.qml:108
+#: ../qml/Settings.qml:116
 msgid "Unstyled icons"
 msgstr ""
 
-#: ../qml/Settings.qml:109
+#: ../qml/Settings.qml:117
 msgid "Rounded"
 msgstr ""
 
-#: ../qml/Settings.qml:109
+#: ../qml/Settings.qml:117
 msgid "Rounded icons"
 msgstr ""
 
-#: ../qml/Settings.qml:133
+#: ../qml/Settings.qml:141
 msgid "Style Icons : "
 msgstr ""
 
-#: ../qml/Settings.qml:144
+#: ../qml/Settings.qml:152
 msgid "Widgets"
 msgstr ""
 
-#: ../qml/Settings.qml:149
+#: ../qml/Settings.qml:157
 msgid "Show clock"
 msgstr ""
 
-#: ../qml/Settings.qml:158
+#: ../qml/Settings.qml:166
 msgid "Show weather"
 msgstr ""
 
-#: ../qml/Settings.qml:168
+#: ../qml/Settings.qml:176
 msgid "Show alarms"
 msgstr ""
 
-#: ../qml/Settings.qml:177
+#: ../qml/Settings.qml:185
 msgid "Show last call"
 msgstr ""
 
-#: ../qml/Settings.qml:186
+#: ../qml/Settings.qml:194
 msgid "Show last message"
 msgstr ""
 
-#: ../qml/Settings.qml:195
+#: ../qml/Settings.qml:203
 msgid "Show events"
 msgstr ""
 
@@ -264,19 +269,19 @@ msgstr ""
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:156
+#: ../qml/pages/Home.qml:185
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:282
+#: ../qml/pages/Home.qml:311
 msgid "Installed Apps"
 msgstr ""
 
-#: ../qml/pages/Home.qml:383
+#: ../qml/pages/Home.qml:412
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:383
+#: ../qml/pages/Home.qml:412
 msgid "Remove"
 msgstr ""
 
