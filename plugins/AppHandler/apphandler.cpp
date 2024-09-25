@@ -28,7 +28,7 @@ QQmlListProperty<AppInfo> AppHandler::appsinfo()
 }
 QQmlListProperty<AppInfo> AppHandler::fav_appsinfo()
 {
-	return QQmlListProperty<AppInfo>(this, 0, &AppHandler::append_appinfo,&AppHandler::count_fav_appinfo, &AppHandler::at_fav_appinfo, &AppHandler::clear_appinfo);
+	return QQmlListProperty<AppInfo>(this, 0, &AppHandler::append_appinfo, &AppHandler::count_fav_appinfo, &AppHandler::at_fav_appinfo, &AppHandler::clear_appinfo);
 }
 void AppHandler::loadAppsInfo()
 {
@@ -42,11 +42,9 @@ void AppHandler::loadAppsLibertine()
 	QStringList containers = dir.entryList(QDir::Dirs);
 	qDebug() << "Libertine container : " << containers;
 	foreach (const QString &container, containers) {
-
 		loadLibertineAppsFromDir("/home/phablet/.cache/libertine-container/"+container+"/rootfs/usr/share/applications/", container);
 		loadLibertineAppsFromDir("/home/phablet/.cache/libertine-container/"+container+"/rootfs/usr/local/share/applications/", container);
 		//loadLibertineAppsFromDir("/home/phablet/.cache/libertine-container/"+container+"/rootfs/#TODO#/.local/share/applications/", container);
-
 	}
 }
 void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& container)
@@ -102,7 +100,6 @@ void AppHandler::append_appinfo(QQmlListProperty<AppInfo> *list, AppInfo *appinf
 		appinfoBoard->_appinfos.append(appinfo);
 		emit appinfoBoard->appinfoChanged();
 	}
-
 }
 AppInfo* AppHandler::at_appinfo(QQmlListProperty<AppInfo> *list, int index) {
 	AppHandler *apphandler = qobject_cast<AppHandler*>(list->object);
@@ -137,15 +134,12 @@ void AppHandler::reloadFav() {
 	}
 	if(_filtering)//temp filtering = nofav
 		return;
-	//clear+populateback _fav_appinfos.clear();
 	QStringList favapplist = _fav.split(",");
 	for(int j=0;j<favapplist.size();j++) {
 		for(int i=0;i<_appinfos.size();i++) {
 			if(favapplist[j]==_appinfos[i]->getProp("package_name").split("_")[0])
 			{
 				_fav_appinfos << _appinfos.takeAt(i);
-				//_fav_appinfos << _appinfos[i];
-				//_appinfos.removeAll(_appinfos[i]);
 				i = _appinfos.size()+1;
 			}
 		}
