@@ -6,6 +6,7 @@ import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import "pages"
+import Terminalaccess 1.0
 import Lomiri.Components.Popups 0.1
 
 Page {
@@ -22,6 +23,23 @@ Page {
                     pageStack.pop();
                 }
             }
+    }
+
+    Component {
+        id: diag
+        Dialog {
+            id: popup
+            title: "Authentification needed"
+            TextField {
+                id:inp
+                placeholderText: "Enter password (by defaut : phablet)"
+                echoMode: TextInput.Password
+            }
+            Button {
+                text:"ok"
+                onClicked: {Terminalaccess.inputLine(inp.text, false);PopupUtils.close(popup)}
+            }
+        }
     }
 
     Rectangle {
@@ -197,9 +215,8 @@ Page {
         } //flickable
     } //rectangle settings
 
-
     Connections {
-      target: Terminalaccess
-      onNeedSudoPassword: {PopupUtils.open(diag)}
+        target: Terminalaccess
+        onNeedSudoPassword: {PopupUtils.open(diag)}
     }
 }

@@ -9,6 +9,7 @@ import AppHandler 1.0
 import "pages"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
+import AccountsService 0.1
 
 MainView {
     id: launchermodular
@@ -65,7 +66,7 @@ MainView {
 
         property bool firstRun: true
         property bool firstRunNew: true
-        property bool developerModeEnabled:	false;
+        property bool developerModeEnabled:    false;
 
         property string apiOpenWeatherMap: ''
         property string unitsFormat: '&units=metric'
@@ -93,7 +94,7 @@ MainView {
         property var favoriteApps;
 
         property var selectedAppNews: [];
-	      signal newsConfigChanged();
+          signal newsConfigChanged();
 
         property bool newsBackgroundOpacity: false
         property string widgetMessageClick: 'default'
@@ -277,7 +278,7 @@ MainView {
                     anchors.fill: parent
                     property real startMouseX
                     //onEntered: {
-                    //	startMouseX = mouseX
+                    //    startMouseX = mouseX
                     //}
                     onPressed: {
                       startMouseX = mouseX

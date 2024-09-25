@@ -14,7 +14,7 @@ Item {
         id: event
         width: parent.width
                 
-	      property string callNumber: ""
+          property string callNumber: ""
 
         Rectangle{
             id: rectLastCall

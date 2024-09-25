@@ -4,17 +4,17 @@
 #include "accountsservice.h"
 
 class MySettings: public QObject {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	MySettings();
-	~MySettings() = default;
-	Q_INVOKABLE QString getBackgroundFile();
+    MySettings();
+    ~MySettings() = default;
+    Q_INVOKABLE QString getBackgroundFile();
 public slots:
-	void setBackgroundFile(const QString &filename);
+    void setBackgroundFile(const QString &filename);
 signals:
-	void backgroundFileChanged();
+    void backgroundFileChanged();
 protected:
-	AccountsService _acc;
+    AccountsService _acc;
 };
 #endif

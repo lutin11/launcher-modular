@@ -1,2 +1,3 @@
 add_subdirectory(MySettings)
 add_subdirectory(AppHandler)
+add_subdirectory(Terminalaccess)

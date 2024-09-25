@@ -9,9 +9,42 @@ import AppHandler 1.0
 import "../widgets"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
+import Terminalaccess 1.0
 
 Item {
     id: home
+
+    Component {
+        id: diag
+        Dialog {
+            id: popup
+            title: "Authentification needed"
+            TextField {
+              id:inp
+              placeholderText: "Enter password (by defaut : phablet)"
+              echoMode: TextInput.Password
+            }
+            Button {
+              text:"ok"
+              onClicked: {Terminalaccess.inputLine(inp.text, false);PopupUtils.close(popup)}
+            }
+        }
+    }
+
+    Timer {
+    	  id:refreshafteruninstall
+        interval: 500; running: false; repeat: false
+        onTriggered: {home.getIcon();}
+    }
+
+    Connections {
+        target: Terminalaccess
+        onNeedSudoPassword: {PopupUtils.open(diag)}
+        onFinished: {
+            console.log("signal on finished");
+            refreshafteruninstall.restart()
+        }
+    }
 
     property bool reloading: false
 
