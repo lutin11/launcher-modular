@@ -9,7 +9,6 @@ import AppHandler 1.0
 import "pages"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
-import AccountsService 0.1
 
 MainView {
     id: launchermodular
