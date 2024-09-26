@@ -166,6 +166,6 @@ Page {
         AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
         AppHandler.permaFilter("Icon",  "/.*$")
         AppHandler.sort()
-	  }
+    }
 
 }

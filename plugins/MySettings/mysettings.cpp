@@ -10,10 +10,10 @@ MySettings::MySettings() : _acc() {
 
 QString MySettings::getBackgroundFile()
 {
-	QVariant answer = _acc.getUserProperty(
-		"org.freedesktop.Accounts.User",
-		"BackgroundFile");
-	QString filename = answer.toString();
+    QVariant answer = _acc.getUserProperty(
+        "org.freedesktop.Accounts.User",
+        "BackgroundFile");
+    QString filename = answer.toString();
 
     if (filename.isEmpty() || !QFile::exists(filename))
 		    return "../assets/wallpaper.png";
@@ -23,11 +23,11 @@ QString MySettings::getBackgroundFile()
 
 void MySettings::setBackgroundFile(const QString &filename)
 {
-	QUrl backgroundFile(filename);
-	if (!backgroundFile.isLocalFile())
-		return;
+    QUrl backgroundFile(filename);
+    if (!backgroundFile.isLocalFile())
+		    return;
 
-	_acc.customSetUserProperty("SetBackgroundFile",
+    _acc.customSetUserProperty("SetBackgroundFile",
 				backgroundFile.path());
-	emit(backgroundFileChanged());
+    emit(backgroundFileChanged());
 }

@@ -18,7 +18,7 @@ Column {
         }
 
         Icon {
-           id: iconFavoriteContact
+            id: iconFavoriteContact
             width: units.gu(2)
             height: units.gu(2)
             name: "account"
@@ -59,7 +59,6 @@ Column {
          
         filter: DetailFilter {
             id: favouritesFilter
-
             detail: ContactDetail.Favorite
             field: Favorite.Favorite
             value: true

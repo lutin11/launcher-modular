@@ -8,9 +8,71 @@ import AppHandler 1.0
 import "../widgets"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
+import Terminalaccess 1.0
 
 Item {
     id: home
+
+    Component {
+        id: diag
+        Dialog {
+            id: authentDialogue
+            title: "Authentification needed"
+            width: parent.width
+
+            TextField {
+                id:inp
+                placeholderText: "Enter password (by defaut : phablet)"
+                echoMode: TextInput.Password
+            }
+            Item {
+                height: units.gu(5)
+                width: parent.width
+                Button {
+                    height: units.gu(4)
+                    width: (parent.width/2)-units.gu(2)
+                    anchors.left: parent.left
+                    id: okButton
+                    text: i18n.tr("ok")
+                    background: Rectangle {
+                        radius: units.gu(1.5)
+                        color: LomiriColors.green
+                    }
+                    onClicked: {Terminalaccess.inputLine(inp.text, false);PopupUtils.close(authentDialogue)}
+                }
+                Button {
+                    anchors.right: parent.right
+                    id: cancelButton
+                    height: units.gu(4)
+                    width: (parent.width/2)-units.gu(2)
+                    background: Rectangle {
+                        radius: units.gu(1.5)
+                        color: LomiriColors.orange
+                    }
+                    text: i18n.tr("Cancel")
+                    onClicked: {
+                        onClicked: PopupUtils.close(authentDialogue);
+                    }
+                }
+            }
+        }
+    }
+
+    Timer {
+    	  id:refreshafteruninstall
+        interval: 500; running: false; repeat: false
+        onTriggered: {home.getIcon();}
+    }
+
+    Connections {
+        target: Terminalaccess
+        onNeedSudoPassword: {PopupUtils.open(diag)}
+        onFinished: {
+            PopupUtils.close(diag);
+            console.log("signal on finished");
+            refreshafteruninstall.restart()
+        }
+    }
 
     property bool reloading: false
 
@@ -403,16 +465,17 @@ Item {
                                     }
 
                                 }
-                            }
+                            } // application:///$(app_id).desktop
 
-                            // application:///$(app_id).desktop
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
                                     listColumnApps.doAction(elem.action)
                                 }
+                                onPressAndHold: {
+                                    PopupUtils.open(appsDialog);
+                                }
                             }
-
 
                         } // Item
 
@@ -438,10 +501,10 @@ Item {
 
                         AppInfo {
                             id: customButton
-                                name: model.name
-                                action: model.action
-                                icon: model.icon === "../assets/placeholder-app-icon.svg" ? "../../assets/placeholder-app-icon.svg" : model.icon
-                                Component.onCompleted:AppHandler.appsinfo.push(customButton)
+                            name: model.name
+                            action: model.action
+                            icon: model.icon === "../assets/placeholder-app-icon.svg" ? "../../assets/placeholder-app-icon.svg" : model.icon
+                            Component.onCompleted:AppHandler.appsinfo.push(customButton)
                         }
 
                     }
