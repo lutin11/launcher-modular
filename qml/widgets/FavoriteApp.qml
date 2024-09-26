@@ -1,6 +1,5 @@
 import QtQuick 2.12
 import Lomiri.Components 1.3
-import Lomiri.Components.ListItems 1.3 as ListItem
 import QtGraphicalEffects 1.12
 import MySettings 1.0
 import AppHandler 1.0

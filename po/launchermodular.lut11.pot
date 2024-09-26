@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 07:11+0000\n"
+"POT-Creation-Date: 2024-09-26 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:728 ../qml/Pagemanagement.qml:132 ../qml/pages/Home.qml:391
+#: ../qml/Main.qml:728 ../qml/Pagemanagement.qml:132 ../qml/pages/Home.qml:390
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr ""
@@ -264,19 +264,19 @@ msgstr ""
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:123
+#: ../qml/pages/Home.qml:122
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:249
+#: ../qml/pages/Home.qml:248
 msgid "Installed Apps"
 msgstr ""
 
-#: ../qml/pages/Home.qml:350
+#: ../qml/pages/Home.qml:349
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:350
+#: ../qml/pages/Home.qml:349
 msgid "Remove"
 msgstr ""
 
@@ -289,15 +289,15 @@ msgid "Delete"
 msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:14
-#: ../qml/pages/picture/Settings.qml:12 ../qml/pages/todo/Settings.qml:12
+#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/todo/Settings.qml:11
 msgid "Settings Page"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:63
+#: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:81
+#: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr ""
 
@@ -305,19 +305,19 @@ msgstr ""
 msgid "Favorite apps management"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:49
+#: ../qml/pages/picture/Settings.qml:48
 msgid "Image path"
 msgstr ""
 
-#: ../qml/widgets/Alarm.qml:31
+#: ../qml/widgets/Alarm.qml:28
 msgid "Alarms"
 msgstr ""
 
-#: ../qml/widgets/Alarm.qml:42
+#: ../qml/widgets/Alarm.qml:39
 msgid "No active alarm"
 msgstr ""
 
-#: ../qml/widgets/Alarm.qml:57
+#: ../qml/widgets/Alarm.qml:54
 msgid "at"
 msgstr ""
 
@@ -329,31 +329,31 @@ msgstr ""
 msgid "No events"
 msgstr ""
 
-#: ../qml/widgets/FavoriteApp.qml:42
+#: ../qml/widgets/FavoriteApp.qml:41
 msgid "Favorite Apps"
 msgstr ""
 
-#: ../qml/widgets/FavoriteContact.qml:33
+#: ../qml/widgets/FavoriteContact.qml:32
 msgid "Favorite Contacts"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:34
+#: ../qml/widgets/Lastcall.qml:33
 msgid "Last Call"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:55
+#: ../qml/widgets/Lastcall.qml:54
 msgid "No recent calls"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:37
+#: ../qml/widgets/Lastmessage.qml:36
 msgid "Last Message"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:57
+#: ../qml/widgets/Lastmessage.qml:56
 msgid "No recent messages"
 msgstr ""
 
-#: ../qml/widgets/SearchContact.qml:36
+#: ../qml/widgets/SearchContact.qml:35
 msgid "Search Contacts"
 msgstr ""
 
@@ -492,31 +492,31 @@ msgstr ""
 msgid "humidity"
 msgstr ""
 
-#: ../qml/widgets/clock/Settings.qml:15
+#: ../qml/widgets/clock/Settings.qml:14
 msgid "Settings Widget Clock"
 msgstr ""
 
-#: ../qml/widgets/clock/Settings.qml:50
+#: ../qml/widgets/clock/Settings.qml:49
 msgid "Show analog clock with digits"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:15
+#: ../qml/widgets/event/Settings.qml:13
 #: ../qml/widgets/favoritecontact/Settings.qml:14
-#: ../qml/widgets/lastcall/Settings.qml:15
+#: ../qml/widgets/lastcall/Settings.qml:14
 #: ../qml/widgets/lastmessage/Settings.qml:15
 msgid "Settings Widget"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:104
+#: ../qml/widgets/event/Settings.qml:102
 msgid "Limit of event"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:123
+#: ../qml/widgets/event/Settings.qml:121
 msgid "By default 3 event"
 msgstr ""
 
 #: ../qml/widgets/favoritecontact/Settings.qml:50
-#: ../qml/widgets/lastcall/Settings.qml:50
+#: ../qml/widgets/lastcall/Settings.qml:49
 #: ../qml/widgets/lastmessage/Settings.qml:49
 msgid "Generals"
 msgstr ""
@@ -526,7 +526,7 @@ msgid "Dialer"
 msgstr ""
 
 #: ../qml/widgets/favoritecontact/Settings.qml:54
-#: ../qml/widgets/lastcall/Settings.qml:54
+#: ../qml/widgets/lastcall/Settings.qml:53
 msgid "Open the dialer"
 msgstr ""
 
@@ -539,21 +539,21 @@ msgid "Open Linphone"
 msgstr ""
 
 #: ../qml/widgets/favoritecontact/Settings.qml:80
-#: ../qml/widgets/lastcall/Settings.qml:79
+#: ../qml/widgets/lastcall/Settings.qml:78
 #: ../qml/widgets/lastmessage/Settings.qml:91
 msgid "When clicked : "
 msgstr ""
 
-#: ../qml/widgets/lastcall/Settings.qml:54
+#: ../qml/widgets/lastcall/Settings.qml:53
 #: ../qml/widgets/lastmessage/Settings.qml:66
 msgid "Default"
 msgstr ""
 
-#: ../qml/widgets/lastcall/Settings.qml:55
+#: ../qml/widgets/lastcall/Settings.qml:54
 msgid "Call"
 msgstr ""
 
-#: ../qml/widgets/lastcall/Settings.qml:55
+#: ../qml/widgets/lastcall/Settings.qml:54
 msgid "Open the dialer with number"
 msgstr ""
 

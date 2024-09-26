@@ -1,8 +1,5 @@
 import QtQuick 2.12
 import Lomiri.Components 1.3
-import Lomiri.Components.ListItems 1.3 as ListItem
-
-
 
 Item {
     id: alarm
