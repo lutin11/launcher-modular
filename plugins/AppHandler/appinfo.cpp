@@ -64,14 +64,16 @@ QString AppInfo::action() { return getProp("Action");}
 
 QVariantMap AppInfo::fullInfo() {
 	QVariantMap map;
-	foreach(const QString& key, _appinfo.keys()) {
+    auto localKeys = _appinfo.keys();
+    foreach(const QString& key, localKeys) {
 		map.insert(key, _appinfo.value(key));
 	}
 	return map;
 }
 QVariantList AppInfo::keys() {
 	QVariantList lst;
-	foreach(const QString& key, _appinfo.keys()) {
+    auto localKeys = _appinfo.keys();
+    foreach(const QString& key, localKeys) {
 		lst << key;
 	}
 	return lst;
