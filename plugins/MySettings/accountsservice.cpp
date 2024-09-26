@@ -42,9 +42,9 @@ AccountsService::AccountsService(QObject *parent)
                              m_systemBusConnection)
 {
     connect (&m_serviceWatcher,
-             SIGNAL (serviceOwnerChanged (QString, QString, QString)),
+             SIGNAL (serviceOwnerChanged(QString,QString,QString)),
              this,
-             SLOT (slotNameOwnerChanged (QString, QString, QString)));
+             SLOT (slotNameOwnerChanged(QString,QString,QString)));
 
     setUpInterface();
 }
@@ -53,7 +53,8 @@ void AccountsService::slotChanged(QString interface,
                                   QVariantMap changed_properties,
                                   QStringList invalidated_properties)
 {
-    Q_FOREACH (const QString k, changed_properties.keys())
+    auto localKeys = changed_properties.keys();
+    Q_FOREACH (const QString k, localKeys)
         Q_EMIT propertyChanged(interface, k);
 
     Q_FOREACH (const QString prop, invalidated_properties)
@@ -71,7 +72,7 @@ void AccountsService::slotNameOwnerChanged(QString name,
         return;
 
     setUpInterface();
-    Q_EMIT (nameOwnerChanged());
+    Q_EMIT(nameOwnerChanged());
 }
 
 void AccountsService::setUpInterface()
@@ -87,14 +88,14 @@ void AccountsService::setUpInterface()
             "org.freedesktop.DBus.Properties",
             "PropertiesChanged",
             this,
-            SLOT(slotChanged(QString, QVariantMap, QStringList)));
+            SLOT(slotChanged(QString,QVariantMap,QStringList)));
         m_accountsserviceIface.connection().connect(
             m_accountsserviceIface.service(),
             m_objectPath,
             "org.freedesktop.Accounts.User",
             "Changed",
             this,
-            SIGNAL (changed ()));
+            SIGNAL (changed()));
     }
 }
 

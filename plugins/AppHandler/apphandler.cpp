@@ -154,7 +154,9 @@ void AppHandler::setFav(const QString& fav) {
 }
 void AppHandler::permaFilter(const QString& key, const QString& regexp) {
     for(int i=0;i< _appinfos.size();) {
-		if(_appinfos[i]->haveProp(key) && !_appinfos[i]->getProp(key).contains(QRegularExpression(regexp))) {
+    AppInfo* appinfo = _appinfos[i];
+    auto localQRegularExpression = QRegularExpression(regexp);
+    if(appinfo->haveProp(key) && !appinfo->getProp(key).contains(localQRegularExpression)) {
 			delete _appinfos.takeAt(i);
 		}
 		else

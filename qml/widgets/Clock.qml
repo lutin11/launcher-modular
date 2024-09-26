@@ -3,7 +3,6 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import QtQuick.Controls 2.2
 import Lomiri.Components 1.3
-import Lomiri.Components.ListItems 1.3 as ListItem
 import Qt.labs.settings 1.0
     
 Item {
