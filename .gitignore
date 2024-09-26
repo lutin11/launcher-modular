@@ -1,0 +1,6 @@
+/build
+/.idea
+/.qtc_clangd
+/CMakeLists.txt.user
+/.clickable/amd64/Dockerfile
+/.clickable/amd64/image.json
