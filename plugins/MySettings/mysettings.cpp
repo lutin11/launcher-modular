@@ -16,7 +16,7 @@ QString MySettings::getBackgroundFile()
     QString filename = answer.toString();
 
     if (filename.isEmpty() || !QFile::exists(filename))
-		    return "";//TODO return something more usefull
+		    return "../assets/wallpaper.png";
     else
 		    return filename;
 }
