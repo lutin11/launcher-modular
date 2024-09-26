@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 13:30+0000\n"
+"POT-Creation-Date: 2024-09-26 17:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/About.qml:14 ../qml/Main.qml:544
+#: ../qml/About.qml:14 ../qml/Main.qml:574
 msgid "About"
 msgstr ""
 
@@ -106,50 +106,54 @@ msgid "Configure Launcher"
 msgstr ""
 
 #: ../qml/Main.qml:514
+msgid "Autostart"
+msgstr ""
+
+#: ../qml/Main.qml:544
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:625
+#: ../qml/Main.qml:655
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:638
+#: ../qml/Main.qml:668
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:643
+#: ../qml/Main.qml:673
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:643
+#: ../qml/Main.qml:673
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:644
+#: ../qml/Main.qml:674
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:644
+#: ../qml/Main.qml:674
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:645
+#: ../qml/Main.qml:675
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:645
+#: ../qml/Main.qml:675
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:669 ../qml/Main.qml:671 ../qml/Main.qml:673
+#: ../qml/Main.qml:699 ../qml/Main.qml:701 ../qml/Main.qml:703
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:683
+#: ../qml/Main.qml:713
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:729 ../qml/Pagemanagement.qml:132 ../qml/Settings.qml:47
+#: ../qml/Main.qml:759 ../qml/Pagemanagement.qml:132 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:452
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
