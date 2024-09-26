@@ -7,7 +7,7 @@ import Lomiri.Components 1.3
 import "pages"
 import Lomiri.Components.Popups 0.1
 import Qt.labs.folderlistmodel 2.1
-import AccountsService 0.1
+import MySettings 1.0
 
 Page {
     id: pageSettings
@@ -165,7 +165,7 @@ Page {
                     anchors.topMargin: units.gu(6)
                     width: parent.width-units.gu(2)
                     height: parent.height-units.gu(6)
-                    source: AccountsService.backgroundFile
+                    source: MySettings.getBackgroundFile()
                     fillMode: Image.PreserveAspectCrop
                     visible: false
                 }

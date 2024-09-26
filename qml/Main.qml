@@ -206,7 +206,7 @@ MainView {
                 Image {
                     id: backgroundblur
                     anchors.fill: parent;
-                    source: AccountsService.backgroundFile //unconfined MySettings.getBackgroundFile() ? MySettings.getBackgroundFile() : "../assets/wallpaper.png"
+                    source: MySettings.getBackgroundFile()
                     smooth: true
                     fillMode: Image.PreserveAspectCrop
                     visible: false

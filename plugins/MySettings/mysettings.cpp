@@ -15,10 +15,10 @@ QString MySettings::getBackgroundFile()
 		"BackgroundFile");
 	QString filename = answer.toString();
 
-	if (filename.isEmpty() || !QFile::exists(filename))
-		return "";//TODO return something more usefull
-	else
-		return filename;
+    if (filename.isEmpty() || !QFile::exists(filename))
+		    return "../assets/wallpaper.png";
+    else
+		    return filename;
 }
 
 void MySettings::setBackgroundFile(const QString &filename)

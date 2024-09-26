@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 23:44+0200\n"
+"POT-Creation-Date: 2024-09-26 07:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/About.qml:14 ../qml/Main.qml:551
+#: ../qml/About.qml:14 ../qml/Main.qml:543
 msgid "About"
 msgstr ""
 
@@ -89,67 +89,67 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:381
+#: ../qml/Main.qml:373
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:431
+#: ../qml/Main.qml:423
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:461
+#: ../qml/Main.qml:453
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:491
+#: ../qml/Main.qml:483
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:521
+#: ../qml/Main.qml:513
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:632
+#: ../qml/Main.qml:624
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:645
+#: ../qml/Main.qml:637
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:650
+#: ../qml/Main.qml:642
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:650
+#: ../qml/Main.qml:642
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:651
+#: ../qml/Main.qml:643
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:651
+#: ../qml/Main.qml:643
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:652
+#: ../qml/Main.qml:644
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:652
+#: ../qml/Main.qml:644
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:676 ../qml/Main.qml:678 ../qml/Main.qml:680
+#: ../qml/Main.qml:668 ../qml/Main.qml:670 ../qml/Main.qml:672
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:690
+#: ../qml/Main.qml:682
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:736 ../qml/Pagemanagement.qml:132 ../qml/pages/Home.qml:392
+#: ../qml/Main.qml:728 ../qml/Pagemanagement.qml:132 ../qml/pages/Home.qml:391
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr ""
@@ -264,19 +264,19 @@ msgstr ""
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:124
+#: ../qml/pages/Home.qml:123
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:250
+#: ../qml/pages/Home.qml:249
 msgid "Installed Apps"
 msgstr ""
 
-#: ../qml/pages/Home.qml:351
+#: ../qml/pages/Home.qml:350
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:351
+#: ../qml/pages/Home.qml:350
 msgid "Remove"
 msgstr ""
 
