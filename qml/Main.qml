@@ -396,8 +396,8 @@ MainView {
 
                 onOpened: launchermodular.settings.firstRun = false
 
-                Row {
-                    spacing: 3
+                RowLayout {
+                    width: parent.width
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
                     height: units.gu(8)
@@ -405,7 +405,7 @@ MainView {
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
-                        width: units.gu(7)
+                        Layout.fillWidth: true
                         id: recAddIcon
                         Icon {
                             id: iconWidget
@@ -438,7 +438,7 @@ MainView {
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
-                        width: units.gu(7)
+                        Layout.fillWidth: true
                         id: recPage
                         Icon {
                             id: iconPage
@@ -471,7 +471,7 @@ MainView {
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
-                        width: units.gu(7)
+                        Layout.fillWidth: true
                         id: recSettings
                         Icon {
                             id: iconSettings
@@ -504,7 +504,7 @@ MainView {
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
-                        width: units.gu(7)
+                        Layout.fillWidth: true
                         id: recFlashAuto
                         Icon {
                             id: iconAuto
@@ -537,7 +537,7 @@ MainView {
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
-                        width: units.gu(7)
+                        Layout.fillWidth: true
                         id: recHelp
                         Icon {
                             id: iconHelp
@@ -570,7 +570,7 @@ MainView {
                     Rectangle {
                         anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
-                        width: units.gu(7)
+                        Layout.fillWidth: true
                         id: recInfo
                         Icon {
                             id: iconAbout
