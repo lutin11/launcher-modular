@@ -403,7 +403,6 @@ MainView {
                     height: units.gu(8)
 
                     Rectangle {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         Layout.fillWidth: true
                         id: recAddIcon
@@ -436,7 +435,6 @@ MainView {
                     }
 
                     Rectangle {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         Layout.fillWidth: true
                         id: recPage
@@ -469,7 +467,6 @@ MainView {
                     }
 
                     Rectangle {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         Layout.fillWidth: true
                         id: recSettings
@@ -502,7 +499,6 @@ MainView {
                     }
 
                     Rectangle {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         Layout.fillWidth: true
                         id: recFlashAuto
@@ -535,7 +531,6 @@ MainView {
                     }
 
                     Rectangle {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         Layout.fillWidth: true
                         id: recHelp
@@ -568,7 +563,6 @@ MainView {
                     }
 
                     Rectangle {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         Layout.fillWidth: true
                         id: recInfo
