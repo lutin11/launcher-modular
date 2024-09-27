@@ -397,14 +397,15 @@ MainView {
                 onOpened: launchermodular.settings.firstRun = false
 
                 Row {
-                    spacing: 4
+                    id: bbr
+                    spacing: 3
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
-                    height: units.gu(5)
+                    height: units.gu(8)
 
-                    Column {
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        width: units.gu(7)
                         Icon {
                             id: iconWidget
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -431,9 +432,9 @@ MainView {
                         }
                     }
 
-                    Column {
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        width: units.gu(7)
                         Icon {
                             id: iconPage
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -460,9 +461,9 @@ MainView {
                         }
                     }
 
-                    Column {
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        width: units.gu(7)
                         Icon {
                             id: iconSettings
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -489,9 +490,9 @@ MainView {
                         }
                     }
 
-                    Column {
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        width: units.gu(7)
                         Icon {
                             id: iconAuto
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -518,9 +519,9 @@ MainView {
                         }
                     }
 
-                    Column {
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        width: units.gu(7)
                         Icon {
                             id: iconHelp
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -547,9 +548,9 @@ MainView {
                         }
                     }
 
-                    Column {
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        width: units.gu(7)
                         Icon {
                             id: iconAbout
                             anchors.horizontalCenter: parent.horizontalCenter
