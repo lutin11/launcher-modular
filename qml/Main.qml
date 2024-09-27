@@ -231,8 +231,7 @@ MainView {
                     color: "transparent"
 
                     /* ******************************** LES PAGES COMMENCE ICI ******************************** */
-
-                   SwipeView {
+                    SwipeView {
                         id: view
                         currentIndex: 0
                         anchors.fill: parent
@@ -247,7 +246,6 @@ MainView {
                             }
                         }
                     }
-
                     /* ******************************** FIN DES PAGES ******************************** */
                 }
             }
@@ -280,7 +278,7 @@ MainView {
                     //    startMouseX = mouseX
                     //}
                     onPressed: {
-                      startMouseX = mouseX
+                       startMouseX = mouseX
                     }
                     onPositionChanged: {
                         if (mouseX - startMouseX > units.gu(4)) {
@@ -334,14 +332,14 @@ MainView {
                                     mouse.accepted = false
                                     if(index !== view.currentIndex) {
                                         view.setCurrentIndex(index);
-                                        source = indicator.indicatorIcons[view.currentIndex];
+                                        iconBottomBar.source = launchermodular.pageModel.get(index).icon;
                                     }
                                 }
                             }
                         }
                     }
                 }
-
+                // first time running
                 Rectangle {
                     id: tutorialConfig
                     visible: launchermodular.settings.firstRun
@@ -405,7 +403,6 @@ MainView {
                     height: units.gu(5)
 
                     Column {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(8)
                         Icon {
@@ -435,7 +432,6 @@ MainView {
                     }
 
                     Column {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(8)
                         Icon {
@@ -465,7 +461,6 @@ MainView {
                     }
 
                     Column {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(8)
                         Icon {
@@ -495,7 +490,6 @@ MainView {
                     }
 
                     Column {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(8)
                         Icon {
@@ -525,7 +519,6 @@ MainView {
                     }
 
                     Column {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(8)
                         Icon {
@@ -555,7 +548,6 @@ MainView {
                     }
 
                     Column {
-                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(8)
                         Icon {
@@ -639,7 +631,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 width: units.gu(15)
                                 height: width
-                                color: lightColor
+                                color: "orange"
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
@@ -696,10 +688,9 @@ MainView {
                                 inputMethodHints: Qt.ImhNoAutoUppercase
                                 placeholderText: {
                                     if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
-
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
-
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                    else ""
                                 }
                             }
 
