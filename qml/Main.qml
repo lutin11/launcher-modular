@@ -391,24 +391,27 @@ MainView {
             Drawer {
                 id: bottomBarSettings
                 edge: Qt.BottomEdge
-                height: units.gu(8)
+                height: units.gu(9)
                 width: parent.width
 
                 onOpened: launchermodular.settings.firstRun = false
 
                 Row {
-                    id: bbr
                     spacing: 3
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
                     height: units.gu(8)
 
                     Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(7)
+                        id: recAddIcon
                         Icon {
                             id: iconWidget
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recAddIcon.horizontalCenter
+                            anchors.top: recAddIcon.top
+                            anchors.topMargin: 1
                             name: "view-expand"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -433,11 +436,15 @@ MainView {
                     }
 
                     Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(7)
+                        id: recPage
                         Icon {
                             id: iconPage
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recPage.horizontalCenter
+                            anchors.top: recPage.top
+                            anchors.topMargin: 6
                             name: "browser-tabs"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -462,11 +469,15 @@ MainView {
                     }
 
                     Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(7)
+                        id: recSettings
                         Icon {
                             id: iconSettings
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recSettings.horizontalCenter
+                            anchors.top: recSettings.top
+                            anchors.topMargin: 6
                             name: "system-settings-symbolic"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -491,11 +502,15 @@ MainView {
                     }
 
                     Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(7)
+                        id: recFlashAuto
                         Icon {
                             id: iconAuto
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recFlashAuto.horizontalCenter
+                            anchors.top: recFlashAuto.top
+                            anchors.topMargin: 6
                             name: "flash-auto"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -520,11 +535,15 @@ MainView {
                     }
 
                     Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(7)
+                        id: recHelp
                         Icon {
                             id: iconHelp
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recHelp.horizontalCenter
+                            anchors.top: recHelp.top
+                            anchors.topMargin: 6
                             name: "help"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -549,11 +568,15 @@ MainView {
                     }
 
                     Rectangle {
+                        anchors.verticalCenter: parent.verticalCenter
                         height: parent.height
                         width: units.gu(7)
+                        id: recInfo
                         Icon {
                             id: iconAbout
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recInfo.horizontalCenter
+                            anchors.top: recInfo.top
+                            anchors.topMargin: 6
                             name: "info"
                             height: units.gu(3)
                             width: units.gu(3)
