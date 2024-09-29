@@ -6,7 +6,7 @@ A launcher modular for ubuntu touch
   <img src="/assets/samples/MainPageHeader.png" width="100" alt="Main page header"/>
   <img src="/assets/samples/MainPageBottom.png" width="100" alt="Main page bottom"/> 
   <img src="/assets/samples/Diary.png" width="100" alt="Page diary"/>
-  <img src="/assets/samples/Diary.png" width="100" alt="Page note"/>
+  <img src="assets/samples/Note.png" width="100" alt="Page note"/>
 </p>
 
 The “Launcher Modular” lets you quickly view information such as:
