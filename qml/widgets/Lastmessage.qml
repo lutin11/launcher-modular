@@ -66,8 +66,7 @@ Item {
             interactive: false
 
             delegate: Column {
-                visible: index == 0
-                height: index == 0 ? contentHeight : 0
+                visible: index < launchermodular.settings.numberOfMessageWidget;
                 width:parent.width;
 
                 Text {
@@ -91,6 +90,22 @@ Item {
                 }
                 Component.onCompleted: if(index > 0){}else{widgetLastMessage.messageNumber = participants}
             }
+            onCountChanged: {
+                /* calculate ListView dimensions based on content */
+
+                // get QQuickItem which is a root element which hosts delegate items
+                var root = listMessage.visibleChildren[0]
+                var listViewHeight = 0
+
+                // iterate over each delegate item to get their sizes
+                for (var i = 0; i < root.visibleChildren.length; i++) {
+                    listViewHeight += root.visibleChildren[i].height
+                }
+
+                listMessage.height = listViewHeight
+                widgetLastMessage.height = listMessage.height+rectLastMessage.height+emptyLabel.height+units.gu(3)
+            }
+
         }
 
     }
