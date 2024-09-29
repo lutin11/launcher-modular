@@ -2,6 +2,31 @@
 
 A launcher modular for ubuntu touch
 
+<p float="left">
+  <img src="/assets/samples/MainPageHeader.png" width="100" alt="Main page header"/>
+  <img src="/assets/samples/MainPageBottom.png" width="100" alt="Main page bottom"/> 
+  <img src="/assets/samples/Diary.png" width="100" alt="Page diary"/>
+  <img src="assets/samples/Note.png" width="100" alt="Page note"/>
+</p>
+
+The “Launcher Modular” lets you quickly view information such as:
+- time
+- weather
+- latest calls
+- messages
+- upcoming events
+
+It gives quick access to your favorite:
+- applications
+- contacts
+
+You have the option of adding “Pages” as:
+- Agenda
+- Notes
+- Photo
+
+And of course you can launch all your installed applications
+
 ### How to build
 
 To build Launcher Modular for Ubuntu Touch devices you do need clickable. Follow install instructions at its repo [here](https://gitlab.com/clickable/clickable).
