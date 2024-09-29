@@ -6,7 +6,7 @@ Item {
     width: listColumn.width/2
     height: rectAlarm.height+listAlarmView.height+emptyLabel.height
 
-    Column {
+    Rectangle {
         id: columnalarm
         width: parent.width
                 

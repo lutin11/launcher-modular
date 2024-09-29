@@ -231,8 +231,7 @@ MainView {
                     color: "transparent"
 
                     /* ******************************** LES PAGES COMMENCE ICI ******************************** */
-
-                   SwipeView {
+                    SwipeView {
                         id: view
                         currentIndex: 0
                         anchors.fill: parent
@@ -247,7 +246,6 @@ MainView {
                             }
                         }
                     }
-
                     /* ******************************** FIN DES PAGES ******************************** */
                 }
             }
@@ -280,7 +278,7 @@ MainView {
                     //    startMouseX = mouseX
                     //}
                     onPressed: {
-                      startMouseX = mouseX
+                       startMouseX = mouseX
                     }
                     onPositionChanged: {
                         if (mouseX - startMouseX > units.gu(4)) {
@@ -334,14 +332,14 @@ MainView {
                                     mouse.accepted = false
                                     if(index !== view.currentIndex) {
                                         view.setCurrentIndex(index);
-                                        source = indicator.indicatorIcons[view.currentIndex];
+                                        iconBottomBar.source = launchermodular.pageModel.get(index).icon;
                                     }
                                 }
                             }
                         }
                     }
                 }
-
+                // first time running
                 Rectangle {
                     id: tutorialConfig
                     visible: launchermodular.settings.firstRun
@@ -393,24 +391,26 @@ MainView {
             Drawer {
                 id: bottomBarSettings
                 edge: Qt.BottomEdge
-                height: units.gu(8)
+                height: units.gu(9)
                 width: parent.width
 
                 onOpened: launchermodular.settings.firstRun = false
 
-                Row {
-                    spacing: 4
+                RowLayout {
+                    width: parent.width
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
-                    height: units.gu(5)
+                    height: units.gu(8)
 
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        Layout.fillWidth: true
+                        id: recAddIcon
                         Icon {
                             id: iconWidget
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recAddIcon.horizontalCenter
+                            anchors.top: recAddIcon.top
+                            anchors.topMargin: 1
                             name: "view-expand"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -434,13 +434,15 @@ MainView {
                         }
                     }
 
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        Layout.fillWidth: true
+                        id: recPage
                         Icon {
                             id: iconPage
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recPage.horizontalCenter
+                            anchors.top: recPage.top
+                            anchors.topMargin: 6
                             name: "browser-tabs"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -464,13 +466,15 @@ MainView {
                         }
                     }
 
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        Layout.fillWidth: true
+                        id: recSettings
                         Icon {
                             id: iconSettings
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recSettings.horizontalCenter
+                            anchors.top: recSettings.top
+                            anchors.topMargin: 6
                             name: "system-settings-symbolic"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -494,13 +498,15 @@ MainView {
                         }
                     }
 
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        Layout.fillWidth: true
+                        id: recFlashAuto
                         Icon {
                             id: iconAuto
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recFlashAuto.horizontalCenter
+                            anchors.top: recFlashAuto.top
+                            anchors.topMargin: 6
                             name: "flash-auto"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -524,13 +530,15 @@ MainView {
                         }
                     }
 
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        Layout.fillWidth: true
+                        id: recHelp
                         Icon {
                             id: iconHelp
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recHelp.horizontalCenter
+                            anchors.top: recHelp.top
+                            anchors.topMargin: 6
                             name: "help"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -554,13 +562,15 @@ MainView {
                         }
                     }
 
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
+                    Rectangle {
                         height: parent.height
-                        width: units.gu(8)
+                        Layout.fillWidth: true
+                        id: recInfo
                         Icon {
                             id: iconAbout
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.horizontalCenter: recInfo.horizontalCenter
+                            anchors.top: recInfo.top
+                            anchors.topMargin: 6
                             name: "info"
                             height: units.gu(3)
                             width: units.gu(3)
@@ -639,7 +649,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 width: units.gu(15)
                                 height: width
-                                color: lightColor
+                                color: "orange"
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
@@ -696,10 +706,9 @@ MainView {
                                 inputMethodHints: Qt.ImhNoAutoUppercase
                                 placeholderText: {
                                     if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
-
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
-
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                    else ""
                                 }
                             }
 

@@ -9,7 +9,7 @@ import Lomiri.Contacts 0.1
 Item {
     width: listColumn.width/2
     height: listCall.height+rectLastCall.height+emptyLabel.height
-    Column {
+    Rectangle {
         id: event
         width: parent.width
                 

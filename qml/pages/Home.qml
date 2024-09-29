@@ -236,7 +236,7 @@ Item {
             Row{
                 id: rowWidgets
                 width: childrenRect.width
-                height: contentHeight
+                height: search.contentHeight
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Clock {
@@ -250,7 +250,7 @@ Item {
             Row{
                 id: rowWidgetsM
                 width: parent.width
-                height: contentHeight
+                height: search.contentHeight
                 anchors {
                     right: parent.right
                     rightMargin: units.gu(2)
@@ -261,7 +261,7 @@ Item {
                 Column{
                     id: widgetLM
                     spacing: units.gu(1)
-                    width: contentWidth
+                    width: search.contentWidth
                     Alarm { visible: launchermodular.settings.widgetVisibleAlarm }
                     Lastcall { visible: launchermodular.settings.widgetVisibleLastcall }
                     Lastmessage { visible: launchermodular.settings.widgetVisibleLastmessage }
@@ -356,7 +356,6 @@ Item {
                     delegate: Item {
                         width: gview.cellWidth
                         height: gview.iconbasesize
-                        property var elem: AppHandler.appsinfo[index]
 
                         Item {
                             id: itemApp
@@ -370,7 +369,7 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 width: parent.width
                                 height: parent.height
-                                source: elem.icon
+                                source: AppHandler.appsinfo[index].icon
                                 visible: if (launchermodular.settings.iconStyle === "none") { true;}else{ false;}
                             }
 
@@ -399,8 +398,8 @@ Item {
                                 Dialog {
                                     id: appsDialogue
 
-                                    title: elem.name
-                                    text: elem.getProp("Comment")
+                                    title: AppHandler.appsinfo[index].name
+                                    text: AppHandler.appsinfo[index].getProp("Comment")
 
                                     Item {
                                         height: units.gu(5)
@@ -408,7 +407,7 @@ Item {
                                         Button {
                                             anchors.left: parent.left
                                             id: uninstallButton
-                                            text: elem.getProp("package_name") ? i18n.tr("Uninstall") : i18n.tr("Remove")
+                                            text: AppHandler.appsinfo[index].getProp("package_name") ? i18n.tr("Uninstall") : i18n.tr("Remove")
                                             height: units.gu(4)
                                             width: (parent.width/2)-units.gu(2)
                                             contentItem: Text {
@@ -427,13 +426,13 @@ Item {
                                             onClicked: {
                                                 PopupUtils.close(appsDialogue);
 
-                                                if (elem.getProp("package_name")){
+                                                if (AppHandler.appsinfo[index].getProp("package_name")){
 
-                                                    Terminalaccess.run("sudo -S click unregister --user=phablet "+elem.getProp("package_name").split("_")[0])
+                                                    Terminalaccess.run("sudo -S click unregister --user=phablet "+AppHandler.appsinfo[index].getProp("package_name").split("_")[0])
 
                                                 } else {
                                                     for (var i = 0; i < launchermodular.customIconModel.count; i++) {
-                                                        if (elem.name === launchermodular.customIconModel.get(i).name) {
+                                                        if (AppHandler.appsinfo[index].name === launchermodular.customIconModel.get(i).name) {
                                                             launchermodular.customIconModel.remove(i)
                                                             launchermodular.getCustomIconArray()
 
@@ -470,7 +469,7 @@ Item {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    listColumnApps.doAction(elem.action)
+                                    listColumnApps.doAction(AppHandler.appsinfo[index].action)
                                 }
                                 onPressAndHold: {
                                     PopupUtils.open(appsDialog);
@@ -486,7 +485,7 @@ Item {
                             width: parent.width
                             font.pixelSize: units.gu(1.5)
                             wrapMode: Text.Wrap
-                            text: elem.name;
+                            text: AppHandler.appsinfo[index].name;
                             color: launchermodular.settings.textColor
                          }
 
