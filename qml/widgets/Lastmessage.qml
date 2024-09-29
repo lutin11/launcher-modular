@@ -11,9 +11,9 @@ Item {
     width: listColumn.width/2
     height: listMessage.height+rectLastMessage.height+emptyLabel.height
         
-      property string messageNumber: ""
+    property string messageNumber: ""
 
-    Column {
+    Rectangle {
         id: message
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
