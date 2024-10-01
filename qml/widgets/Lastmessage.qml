@@ -33,7 +33,7 @@ Item {
                 id: titleLastMessage
                 anchors.left: iconLastMessage.right
                 anchors.leftMargin: units.gu(1)
-                text: i18n.tr("Last Message")
+                text: launchermodular.settings.numberOfMessageWidget === 1 ? i18n.tr("Last Message") : i18n.tr("Last Messages")
                 color: launchermodular.settings.textColor
             }
         }

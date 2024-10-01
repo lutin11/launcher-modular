@@ -10,7 +10,7 @@ Item {
     width: listColumn.width/2
     height: listCall.height+rectLastCall.height+emptyLabel.height
     Rectangle {
-        id: event
+        id: widgetLastCall
         width: parent.width
                 
           property string callNumber: ""
@@ -30,7 +30,7 @@ Item {
                 id: titleLastCall
                 anchors.left: iconLastCall.right
                 anchors.leftMargin: units.gu(1)
-                text: i18n.tr("Last Call")
+                text: launchermodular.settings.numberOfCallsWidget === 1 ? i18n.tr("Last Call") : i18n.tr("Last Calls")
                 color: launchermodular.settings.textColor
             }
         }
@@ -64,7 +64,7 @@ Item {
             interactive: false
 
             delegate: Column {
-                visible: index == 0
+                visible: index < launchermodular.settings.numberOfCallsWidget;
                 height: index == 0 ? contentHeight : 0
                 width:parent.width;
 
@@ -78,18 +78,31 @@ Item {
                     color: "#AEA79F";
                     font.pointSize: units.gu(1);
                 }
-                Component.onCompleted: if(index > 0){}else{event.callNumber = participants}
+                Component.onCompleted: if(index > 0){}else{widgetLastCall.callNumber = participants}
+            }
+            onCountChanged: {
+                /* calculate ListView dimensions based on content */
+
+                // get QQuickItem which is a root element which hosts delegate items
+                var root = listCall.visibleChildren[0]
+                var listViewHeight = 0
+
+                // iterate over each delegate item to get their sizes
+                for (var i = 0; i < root.visibleChildren.length; i++) {
+                    listViewHeight += root.visibleChildren[i].height
+                }
+
+                listCall.height = listViewHeight
+                widgetLastCall.height = listCall.height+rectLastMessage.height+emptyLabel.height+units.gu(3)
             }
         }
-
-            
 
     }
     MouseArea {
         anchors.fill: parent
             onClicked: {
                 if ("default" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
-                if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+event.callNumber)}
+                if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+widgetLastCall.callNumber)}
             }
             onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
     }

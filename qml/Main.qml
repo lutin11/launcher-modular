@@ -106,6 +106,7 @@ MainView {
         property bool widgetVisibleWeather: false
         property bool widgetVisibleAlarm: true
         property bool widgetVisibleLastcall: true
+        property int numberOfCallsWidget: 1
         property bool widgetVisibleLastmessage: true
         property bool widgetVisibleEvent: true
     }//settings
