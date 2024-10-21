@@ -28,7 +28,6 @@ Item {
         focus: true
         model: folderModel
 
-
         FolderListModel {
             id: folderModel
             nameFilters: ["*.png", "*.jpg", "*.jpeg"]
@@ -64,9 +63,12 @@ Item {
                     radius : "medium"
                     sourceFillMode: LomiriShape.PreserveAspectCrop
                 }
+
                 MouseArea {
                     anchors.fill: parent
-                    onClicked:Qt.openUrlExternally("application:///gallery.ubports_gallery.desktop")
+                    onClicked: {
+                        onClicked:Qt.openUrlExternally("photo://" + filePath)
+                    }
                 }
             } // Item
         }// delegate Rectangle
