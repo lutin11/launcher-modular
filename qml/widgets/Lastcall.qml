@@ -79,9 +79,6 @@ Item {
                 var root = listCall.visibleChildren[0]
                 var listViewHeight = 0
 
-                console.log("listCall:"+listCall);
-                console.log("visibleChildren.length:"+root.visibleChildren.length);
-
                 // iterate over each delegate item to get their sizes
                 for (var i = 0; i < launchermodular.settings.numberOfCallWidget; i++) {
                     listViewHeight += root.visibleChildren[i].height
