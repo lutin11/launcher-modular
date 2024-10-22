@@ -98,6 +98,7 @@ MainView {
         property bool newsBackgroundOpacity: false
         property string widgetMessageClick: 'default'
         property bool widgetMessageSummary: true
+        property int numberOfCallWidget: 1
         property int numberOfMessageWidget: 1
         property string widgetCallClick: 'default'
         property string widgetFavoriteContactClick: 'tel'

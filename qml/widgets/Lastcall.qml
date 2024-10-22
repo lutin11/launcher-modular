@@ -7,16 +7,18 @@ import Lomiri.History 0.1
 import Lomiri.Contacts 0.1
 
 Item {
+    id: widgetLastCall
     width: listColumn.width/2
-    height: listCall.height+rectLastCall.height+emptyLabel.height
+    height: launchermodular.settings.numberOfCallWidget+rectLastCallTitle.height+emptyLabel.height
+
+    property string callNumber: ""
+
     Rectangle {
-        id: event
+        id: call
         width: parent.width
-                
-          property string callNumber: ""
 
         Rectangle{
-            id: rectLastCall
+            id: rectLastCallTitle
             height: units.gu(2.5)
             color: "transparent"
             Icon {
@@ -36,7 +38,7 @@ Item {
         }
 
         HistoryThreadModel {
-            id: historyEventModel
+            id: historyCallModel
             filter: HistoryFilter {}
             type: HistoryThreadModel.EventTypeVoice
             sort: HistorySort {
@@ -45,27 +47,17 @@ Item {
             }
         }
 
-        Label {
-            id: emptyLabel
-            fontSize: "small"
-            anchors.top: rectLastCall.bottom
-            visible: listCall.count === 0
-            height: if(listCall.height < 1){units.gu(3)}else{units.gu(2)}
-            text: i18n.tr("No recent calls")
-            color: launchermodular.settings.textColor
-        }
-
         ListView {
             id: listCall
-            anchors.top: rectLastCall.bottom
-            model: historyEventModel
+            anchors.top: rectLastCallTitle.bottom
             height: contentHeight
+            model: historyCallModel
             width:parent.width;
             interactive: false
+            visible: listCall.count > 0
 
             delegate: Column {
-                visible: index == 0
-                height: index == 0 ? contentHeight : 0
+                visible: index < launchermodular.settings.numberOfCallWidget;
                 width:parent.width;
 
                 Text {
@@ -78,18 +70,43 @@ Item {
                     color: "#AEA79F";
                     font.pointSize: units.gu(1);
                 }
-                Component.onCompleted: if(index > 0){}else{event.callNumber = participants}
+                Component.onCompleted: if(index > 0){}else{call.callNumber = participants}
+            }
+            onCountChanged: {
+                /* calculate ListView dimensions based on content */
+
+                // get QQuickItem which is a root element which hosts delegate items
+                var root = listCall.visibleChildren[0]
+                var listViewHeight = 0
+
+                console.log("listCall:"+listCall);
+                console.log("visibleChildren.length:"+root.visibleChildren.length);
+
+                // iterate over each delegate item to get their sizes
+                for (var i = 0; i < launchermodular.settings.numberOfCallWidget; i++) {
+                    listViewHeight += root.visibleChildren[i].height
+                }
+
+                listCall.height = listViewHeight
+                widgetLastCall.height = listCall.height+rectLastCallTitle.height+emptyLabel.height+units.gu(2.5)
             }
         }
 
-            
-
+        Label {
+            id: emptyLabel
+            fontSize: "small"
+            anchors.top: rectLastCallTitle.bottom
+            visible: listCall.count === 0
+            height: listCall.count === 0 ? units.gu(3) : 0
+            text: i18n.tr("No recent calls")
+            color: launchermodular.settings.textColor
+        }
     }
     MouseArea {
         anchors.fill: parent
             onClicked: {
                 if ("default" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
-                if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+event.callNumber)}
+                if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+call.callNumber)}
             }
             onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
     }

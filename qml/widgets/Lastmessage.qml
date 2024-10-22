@@ -9,7 +9,7 @@ import Lomiri.Contacts 0.1
 Item {
     id: widgetLastMessage
     width: listColumn.width/2
-    height: listMessage.height+rectLastMessage.height+emptyLabel.height
+    height: launchermodular.settings.numberOfMessageWidget+rectLastMessageTitle.height+emptyLabel.height
         
     property string messageNumber: ""
 
@@ -19,11 +19,11 @@ Item {
         width: parent.width
 
         Rectangle{
-            id: rectLastMessage
+            id: rectLastMessageTitle
             height: units.gu(2.5)
             color: "transparent"
             Icon {
-               id: iconLastMessage
+                id: iconLastMessage
                 width: units.gu(2)
                 height: units.gu(2)
                 name: "message"
@@ -47,19 +47,9 @@ Item {
             }
         }
 
-        Label {
-            id: emptyLabel
-            fontSize: "small"
-            anchors.top: rectLastMessage.bottom
-            visible: listMessage.count === 0
-            height: if(listMessage.height < 1){units.gu(3)}else{units.gu(1)}
-            text: i18n.tr("No recent messages")
-            color: launchermodular.settings.textColor
-        }
-
         ListView {
             id: listMessage
-            anchors.top: rectLastMessage.bottom
+            anchors.top: rectLastMessageTitle.bottom
             height: contentHeight
             model: historyThreadModel
             width:parent.width;
@@ -98,14 +88,24 @@ Item {
                 var listViewHeight = 0
 
                 // iterate over each delegate item to get their sizes
-                for (var i = 0; i < root.visibleChildren.length; i++) {
+                for (var i = 0; i < launchermodular.settings.numberOfMessageWidget; i++) {
                     listViewHeight += root.visibleChildren[i].height
                 }
 
                 listMessage.height = listViewHeight
-                widgetLastMessage.height = listMessage.height+rectLastMessage.height+emptyLabel.height+units.gu(3)
+                widgetLastMessage.height = listMessage.height+rectLastMessageTitle.height+emptyLabel.height+units.gu(2.5)
             }
 
+        }
+
+        Label {
+            id: emptyLabel
+            fontSize: "small"
+            anchors.top: rectLastMessageTitle.bottom
+            visible: listMessage.count === 0
+            height: listMessage.count === 0 ? units.gu(3) : 0
+            text: i18n.tr("No recent messages")
+            color: launchermodular.settings.textColor
         }
 
     }
