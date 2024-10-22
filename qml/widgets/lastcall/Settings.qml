@@ -83,22 +83,9 @@ Page {
                             placeholderText: i18n.tr("By default 1")
                             width: parent.width
                             text: launchermodular.settings.numberOfCallWidget
-                            onTextChanged: { launchermodular.settings.numberOfCallWidget = text }
+                            onTextChanged: { launchermodular.settings.numberOfCallWidget = parseInt(text) }
                             inputMethodHints: Qt.ImhDigitsOnly;
                         }
-                    }
-                }
-
-                ListItem.Standard {
-                    showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("View a summary")+"</font>"
-                    control: Switch {
-                        checked: launchermodular.settings.widgetMessageSummary
-                        onClicked: if (launchermodular.settings.widgetMessageSummary === false) {
-                                launchermodular.settings.widgetMessageSummary = true;
-                            } else {
-                                launchermodular.settings.widgetMessageSummary = false;
-                            }
                     }
                 }
 

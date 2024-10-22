@@ -83,7 +83,7 @@ Page {
                             placeholderText: i18n.tr("By default 1")
                             width: parent.width
                             text: launchermodular.settings.numberOfMessageWidget
-                            onTextChanged: { launchermodular.settings.numberOfMessageWidget = text }
+                            onTextChanged: { launchermodular.settings.numberOfMessageWidget = parseInt(text) }
                             inputMethodHints: Qt.ImhDigitsOnly;
                         }
                     }
