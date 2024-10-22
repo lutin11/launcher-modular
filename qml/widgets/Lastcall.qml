@@ -9,7 +9,7 @@ import Lomiri.Contacts 0.1
 Item {
     id: widgetLastCall
     width: listColumn.width/2
-    height: launchermodular.settings.numberOfCallWidget+rectLastCallTitle.height+emptyLabel.height
+    height: rectLastCallTitle.height + (listCall.count > 0 ? listCall.contentHeight : emptyLabel.height) + units.gu(2.5)
 
     property string callNumber: ""
 
@@ -54,24 +54,45 @@ Item {
             model: historyCallModel
             width:parent.width;
             interactive: false
+            spacing: 0
+            clip: true
             visible: listCall.count > 0
 
             delegate: Column {
+                id: listCallItel
+                width: ListView.view.width
+                height: visibleContent.height+units.gu(2.5)
                 visible: index < launchermodular.settings.numberOfCallWidget;
-                width:parent.width;
+                MouseArea {
+                    id: itemMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("Clicked on:" + index + " - " + participants)
+                        if ("default" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
+                        if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+participants)}
+                    }
+                    onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
+                }
+                Column {
+                    id: visibleContent
+                    anchors.fill: parent
+                    width:parent.width;
+                    spacing: 0
 
-                Text {
-                    text: participants;
-                    color: launchermodular.settings.textColor;
-                    font.pointSize: units.gu(1.2);
+                    Text {
+                        text: participants;
+                        color: launchermodular.settings.textColor;
+                        font.pointSize: units.gu(1.2);
+                    }
+                    Text {
+                        text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat);
+                        color: "#AEA79F";
+                        font.pointSize: units.gu(1);
+                    }
                 }
-                Text {
-                    text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat);
-                    color: "#AEA79F";
-                    font.pointSize: units.gu(1);
-                }
-                Component.onCompleted: if(index > 0){}else{call.callNumber = participants}
+
             }
+
             onCountChanged: {
                 /* calculate ListView dimensions based on content */
 
@@ -98,14 +119,6 @@ Item {
             text: i18n.tr("No recent calls")
             color: launchermodular.settings.textColor
         }
-    }
-    MouseArea {
-        anchors.fill: parent
-            onClicked: {
-                if ("default" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
-                if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+call.callNumber)}
-            }
-            onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
     }
     
 }
