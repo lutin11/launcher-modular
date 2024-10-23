@@ -8,6 +8,13 @@ Item {
 
     property variant datenow: new Date()
 
+    function updateFilteredModel() {
+        var lowerToday = new Date()
+        lowerToday.setHours(0, 1, 0, 0)
+        return lowerToday
+    }
+    property var updateFilteredModelFunction: updateFilteredModel
+
     Timer {
         interval: 120000 // update clock every second
         running: true
@@ -21,11 +28,11 @@ Item {
         id: organizerModel
 
         startPeriod: {
-            return calendar.datenow
+            return updateFilteredModelFunction();
         }
 
         endPeriod: {
-            var date = calendar.datenow;
+            var date = updateFilteredModelFunction();
             date.setDate(date.getDate() + launchermodular.settings.limiteDaysCalendar);
             return date
         }
@@ -53,13 +60,14 @@ Item {
         }
 
         onModelChanged: {
-            console.log("onModelChanged")
             mymodel.clear();
             var count = organizerModel.itemCount
             for ( var i = 0; i < count; i ++ ) {
                 var item = organizerModel.items[i];
-                if(item.itemType !== 505){
-                  mymodel.append( {"item": item })
+                var today = updateFilteredModelFunction();
+                var limitDown = item.startDateTime >= today
+                if(item.itemType !== 505 && limitDown && mymodel.count < launchermodular.settings.limiteDaysCalendar){
+                    mymodel.append( {"item": item })
                 }
             }
         }

@@ -8,7 +8,14 @@ Item {
     width: listColumn.width/2
     height: event.height+emptyLabel.height
    
-    property variant datenowEvent: new Date()
+    property var datenowEvent: new Date()
+
+    function updateFilteredModel() {
+        var lowerToday = new Date()
+        lowerToday.setHours(0, 1, 0, 0)
+        return lowerToday
+    }
+    property var updateFilteredModelFunction: updateFilteredModel
 
     Timer {
         interval: 1200001 
@@ -51,13 +58,13 @@ Item {
         OrganizerModel {
             id: organizerModel
             startPeriod: {
-                return widgetEvent.datenowEvent
+                return updateFilteredModelFunction()
             }
 
             endPeriod: {
-                var date = widgetEvent.datenowEvent;
-                date.setDate(date.getDate() + launchermodular.settings.limiteDaysWidgetEvent);
-                return date
+                var endPeriodDate = updateFilteredModelFunction();
+                endPeriodDate.setDate(updateFilteredModelFunction() + launchermodular.settings.limiteDaysWidgetEvent)
+                return endPeriodDate
             }
 
             sortOrders: [
@@ -75,7 +82,9 @@ Item {
                 var count = organizerModel.itemCount
                 for ( var i = 0; i < count; i ++ ) {
                     var item = organizerModel.items[i];
-                    if(item.itemType !== 505){
+                    var today = updateFilteredModelFunction();
+                    var limitDown = item.startDateTime >= today
+                    if(item.itemType !== 505 && limitDown){
                         if(mymodel.count < launchermodular.settings.limiteItemWidgetEvent){
                           mymodel.append( {"item": item })
                         }
@@ -119,7 +128,6 @@ Item {
                         } else {
                             return Qt.formatDateTime(starttime, "MMM d" )
                         }
-
                     }
                     horizontalAlignment: Text.AlignRight
                     width: units.gu(4);
