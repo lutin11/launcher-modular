@@ -11,7 +11,30 @@ Item {
     width: listColumn.width/2
     height: rectLastCallTitle.height + (listCall.count > 0 ? listCall.contentHeight : emptyLabel.height) + units.gu(2.5)
 
+    property ListModel filteredModel:  ListModel {}
+
+    function updateFilteredModel() {
+        filteredModel.clear();
+        var numberOfVisibleItems = launchermodular.settings.numberOfCallWidget;
+        var count = Math.min(historyCallModel.count, numberOfVisibleItems);
+        for (var i = 0; i < count; i++) {
+            // Get the participants value from the historyCallModel
+            var participants = historyCallModel.get(i).participants;
+            participants = participants.toString();
+            filteredModel.append({
+                participants: participants,  // Now a string
+                timestamp: historyCallModel.get(i).timestamp
+            });
+        }
+    }
+
+    function updateListViewHeight() {
+      // force view to refresh
+    }
+
     property string callNumber: ""
+
+    property var updateFilteredModelFunction: updateFilteredModel
 
     Rectangle {
         id: call
@@ -37,6 +60,18 @@ Item {
             }
         }
 
+        Component.onCompleted: {
+            updateFilteredModel();
+        }
+
+        // Watch for changes to the numberOfCallWidget parameter
+        Connections {
+            target: launchermodular.settings
+            onNumberOfCallWidgetChanged: {
+                widgetLastCall.updateFilteredModelFunction();
+            }
+        }
+
         HistoryThreadModel {
             id: historyCallModel
             filter: HistoryFilter {}
@@ -51,23 +86,20 @@ Item {
             id: listCall
             anchors.top: rectLastCallTitle.bottom
             height: contentHeight
-            model: historyCallModel
+            model: filteredModel
             width:parent.width;
             interactive: false
             spacing: 0
             clip: true
-            visible: listCall.count > 0
 
-            delegate: Column {
+            delegate: Item {
                 id: listCallItel
                 width: ListView.view.width
                 height: visibleContent.height+units.gu(2.5)
-                visible: index < launchermodular.settings.numberOfCallWidget;
                 MouseArea {
                     id: itemMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        console.log("Clicked on:" + index + " - " + participants)
                         if ("default" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
                         if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+participants)}
                     }
@@ -94,19 +126,7 @@ Item {
             }
 
             onCountChanged: {
-                /* calculate ListView dimensions based on content */
-
-                // get QQuickItem which is a root element which hosts delegate items
-                var root = listCall.visibleChildren[0]
-                var listViewHeight = 0
-
-                // iterate over each delegate item to get their sizes
-                for (var i = 0; i < launchermodular.settings.numberOfCallWidget; i++) {
-                    listViewHeight += root.visibleChildren[i].height
-                }
-
-                listCall.height = listViewHeight
-                widgetLastCall.height = listCall.height+rectLastCallTitle.height+emptyLabel.height+units.gu(2.5)
+                updateListViewHeight();  // Update height manually when count changes
             }
         }
 
