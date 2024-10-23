@@ -9,7 +9,7 @@ import Lomiri.Contacts 0.1
 Item {
     id: widgetLastMessage
     width: listColumn.width/2
-    height: message.height + (listMessage.count > 0 ? listMessage.contentHeight : emptyLabel.height) + units.gu(2.5)
+    height: message.height + (listMessage.count > 0 ? listMessage.contentHeight : emptyLabel.height) + units.gu(1)
         
     property ListModel filteredModel:  ListModel {}
 
@@ -100,7 +100,7 @@ Item {
             delegate: Item {
                 id: listMessageItem
                 width:parent.width;
-                height: visibleContent.height+units.gu(2.5)
+                height: visibleContent.height+units.gu(3)
 
                 MouseArea {
                     id: itemMouseArea

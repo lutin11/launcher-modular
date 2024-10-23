@@ -9,7 +9,7 @@ import Lomiri.Contacts 0.1
 Item {
     id: widgetLastCall
     width: listColumn.width/2
-    height: rectLastCallTitle.height + (listCall.count > 0 ? listCall.contentHeight : emptyLabel.height) + units.gu(2.5)
+    height: rectLastCallTitle.height + (listCall.count > 0 ? listCall.contentHeight : emptyLabel.height) + units.gu(1)
 
     property ListModel filteredModel:  ListModel {}
 
