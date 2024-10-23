@@ -9,9 +9,37 @@ import Lomiri.Contacts 0.1
 Item {
     id: widgetLastMessage
     width: listColumn.width/2
-    height: launchermodular.settings.numberOfMessageWidget+rectLastMessageTitle.height+emptyLabel.height
+    height: message.height + (listMessage.count > 0 ? listMessage.contentHeight : emptyLabel.height) + units.gu(2.5)
         
-    property string messageNumber: ""
+    property ListModel filteredModel:  ListModel {}
+
+    function updateFilteredModel() {
+        filteredModel.clear();
+        var numberOfVisibleItems = launchermodular.settings.numberOfMessageWidget;
+        var count = Math.min(historyThreadModel.count, numberOfVisibleItems);
+        // Get the participants value from the historyThreadModel
+        console.log("updateFilteredModel")
+        for (var i = 0; i < count; i++) {
+            console.log("append eventTextMessage:"+ historyThreadModel.get(i).eventTextMessage)
+            console.log("append timestamp:"+ historyThreadModel.get(i).timestamp)
+            var participants = historyThreadModel.get(i).participants;
+            participants = participants.toString();
+            console.log("append participants:"+ participants)
+
+            filteredModel.append({
+                eventTextMessage: historyThreadModel.get(i).eventTextMessage,
+                timestamp: historyThreadModel.get(i).timestamp,
+                participants: participants,  // Now a string
+            });
+        }
+    }
+
+    function updateListViewHeight() {
+      // force view to refresh
+    }
+
+    property var updateFilteredModelFunction: updateFilteredModel
+
 
     Rectangle {
         id: message
@@ -38,6 +66,18 @@ Item {
             }
         }
 
+        Component.onCompleted: {
+            updateFilteredModel();
+        }
+
+        // Watch for changes to the numberOfMessageWidget parameter
+        Connections {
+            target: launchermodular.settings
+            onNumberOfMessageWidgetChanged: {
+                widgetLastMessage.updateFilteredModelFunction();
+            }
+        }
+
         HistoryThreadModel {
             id: historyThreadModel
             filter: HistoryFilter {}
@@ -51,49 +91,55 @@ Item {
             id: listMessage
             anchors.top: rectLastMessageTitle.bottom
             height: contentHeight
-            model: historyThreadModel
+            model: filteredModel
             width:parent.width;
             interactive: false
+            spacing: 0
+            clip: true
 
-            delegate: Column {
-                visible: index < launchermodular.settings.numberOfMessageWidget;
+            delegate: Item {
+                id: listMessageItem
                 width:parent.width;
+                height: visibleContent.height+units.gu(2.5)
 
-                Text {
-                    text: participants;
-                    color: launchermodular.settings.textColor;
-                    font.pointSize: units.gu(1.2);
+                MouseArea {
+                    id: itemMouseArea
+                    anchors.fill: parent
+                    onClicked: {
+                        if ("default" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("application:///messaging-app.desktop")}
+                        if ("message" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("message:///"+participants)}
+                    }
+                    onPressAndHold:pageStack.push(Qt.resolvedUrl("lastmessage/Settings.qml"))
                 }
-                Text {
-                    text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat);
-                    color: "#AEA79F";
-                    font.pointSize: units.gu(1);
+                Column {
+                    id: visibleContent
+                    anchors.fill: parent
+                    width:parent.width;
+                    spacing: 0
+
+                    Text {
+                        text: participants;
+                        color: launchermodular.settings.textColor;
+                        font.pointSize: units.gu(1.2);
+                    }
+                    Text {
+                        text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat);
+                        color: "#AEA79F";
+                        font.pointSize: units.gu(1);
+                    }
+                    Text {
+                        text: eventTextMessage;
+                        elide: Text.ElideRight;
+                        maximumLineCount: 1;
+                        width: message.width;
+                        color: launchermodular.settings.textColor;
+                        font.pointSize: units.gu(1.1);
+                        visible: launchermodular.settings.widgetMessageSummary;
+                    }
                 }
-                Text {
-                    text: eventTextMessage;
-                    elide: Text.ElideRight;
-                    maximumLineCount: 1;
-                    width: message.width;
-                    color: launchermodular.settings.textColor;
-                    font.pointSize: units.gu(1.1);
-                    visible: launchermodular.settings.widgetMessageSummary;
-                }
-                Component.onCompleted: if(index > 0){}else{widgetLastMessage.messageNumber = participants}
             }
             onCountChanged: {
-                /* calculate ListView dimensions based on content */
-
-                // get QQuickItem which is a root element which hosts delegate items
-                var root = listMessage.visibleChildren[0]
-                var listViewHeight = 0
-
-                // iterate over each delegate item to get their sizes
-                for (var i = 0; i < launchermodular.settings.numberOfMessageWidget; i++) {
-                    listViewHeight += root.visibleChildren[i].height
-                }
-
-                listMessage.height = listViewHeight
-                widgetLastMessage.height = listMessage.height+rectLastMessageTitle.height+emptyLabel.height+units.gu(2.5)
+                updateListViewHeight();  // Update height manually when count changes
             }
 
         }
@@ -107,16 +153,5 @@ Item {
             text: i18n.tr("No recent messages")
             color: launchermodular.settings.textColor
         }
-
     }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            if ("default" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("application:///messaging-app.desktop")}
-            if ("message" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("message:///"+widgetLastMessage.messageNumber)}
-        }
-        onPressAndHold:pageStack.push(Qt.resolvedUrl("lastmessage/Settings.qml"))
-            
-    }
-
 }

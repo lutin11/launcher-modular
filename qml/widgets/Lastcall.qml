@@ -122,9 +122,7 @@ Item {
                         font.pointSize: units.gu(1);
                     }
                 }
-
             }
-
             onCountChanged: {
                 updateListViewHeight();  // Update height manually when count changes
             }
@@ -140,5 +138,4 @@ Item {
             color: launchermodular.settings.textColor
         }
     }
-    
 }
