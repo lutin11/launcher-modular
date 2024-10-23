@@ -11,17 +11,17 @@ Item {
     width: listColumn.width/2
     height: rectLastCallTitle.height + (listCall.count > 0 ? listCall.contentHeight : emptyLabel.height) + units.gu(1)
 
-    property ListModel filteredModel:  ListModel {}
+    property ListModel callList:  ListModel {}
 
     function updateFilteredModel() {
-        filteredModel.clear();
+        callList.clear();
         var numberOfVisibleItems = launchermodular.settings.numberOfCallWidget;
         var count = Math.min(historyCallModel.count, numberOfVisibleItems);
         for (var i = 0; i < count; i++) {
             // Get the participants value from the historyCallModel
             var participants = historyCallModel.get(i).participants;
             participants = participants.toString();
-            filteredModel.append({
+            callList.append({
                 participants: participants,  // Now a string
                 timestamp: historyCallModel.get(i).timestamp
             });
@@ -86,7 +86,7 @@ Item {
             id: listCall
             anchors.top: rectLastCallTitle.bottom
             height: contentHeight
-            model: filteredModel
+            model: callList
             width:parent.width;
             interactive: false
             spacing: 0

@@ -11,24 +11,21 @@ Item {
     width: listColumn.width/2
     height: message.height + (listMessage.count > 0 ? listMessage.contentHeight : emptyLabel.height) + units.gu(1)
         
-    property ListModel filteredModel:  ListModel {}
+    property ListModel messageList:  ListModel {}
 
     function updateFilteredModel() {
-        filteredModel.clear();
+        messageList.clear();
         var numberOfVisibleItems = launchermodular.settings.numberOfMessageWidget;
         var count = Math.min(historyThreadModel.count, numberOfVisibleItems);
         // Get the participants value from the historyThreadModel
-        console.log("updateFilteredModel")
         for (var i = 0; i < count; i++) {
-            console.log("append eventTextMessage:"+ historyThreadModel.get(i).eventTextMessage)
-            console.log("append timestamp:"+ historyThreadModel.get(i).timestamp)
-            var participants = historyThreadModel.get(i).participants;
+            var event = historyThreadModel.get(i);
+            var participants = event.participants;
             participants = participants.toString();
-            console.log("append participants:"+ participants)
 
-            filteredModel.append({
-                eventTextMessage: historyThreadModel.get(i).eventTextMessage,
-                timestamp: historyThreadModel.get(i).timestamp,
+            messageList.append({
+                eventTextMessage: event.eventTextMessage,
+                timestamp: event.timestamp,
                 participants: participants,  // Now a string
             });
         }
@@ -91,7 +88,7 @@ Item {
             id: listMessage
             anchors.top: rectLastMessageTitle.bottom
             height: contentHeight
-            model: filteredModel
+            model: messageList
             width:parent.width;
             interactive: false
             spacing: 0
