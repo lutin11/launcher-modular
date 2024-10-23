@@ -31,15 +31,12 @@ Page {
             picker.activeTransfer = peer.request()
             picker.activeTransfer.stateChanged.connect(function() {
                 if (picker.activeTransfer.state === ContentTransfer.InProgress) {
-                    console.log("In progress");
                     picker.activeTransfer.items = picker.activeTransfer.items[0].url = url;
                     picker.activeTransfer.state = ContentTransfer.Charged;
                 }
                 if (picker.activeTransfer.state === ContentTransfer.Charged) {
-                    console.log("Charged");
-                              picker.imported(picker.activeTransfer.items[0].url)
-                    console.log(picker.activeTransfer.items[0].url)
-                              picker.activeTransfer = null
+                    picker.imported(picker.activeTransfer.items[0].url)
+                    picker.activeTransfer = null
                 }
             })
         }
