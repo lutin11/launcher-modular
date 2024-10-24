@@ -8,31 +8,25 @@ Item {
 
     property variant datenow: new Date()
 
-    function updateFilteredModel() {
+    function getTodayBaseLine() {
         var lowerToday = new Date()
         lowerToday.setHours(0, 1, 0, 0)
         return lowerToday
-    }
-    property var updateFilteredModelFunction: updateFilteredModel
-
-    Timer {
-        interval: 120000 // update clock every second
-        running: true
-        repeat: true
-        onTriggered: {
-            calendar.datenow = new Date()
-        }
     }
 
     OrganizerModel {
         id: organizerModel
 
+        function updateCalendarModel() {
+            update()
+        }
+
         startPeriod: {
-            return updateFilteredModelFunction();
+            return getTodayBaseLine();
         }
 
         endPeriod: {
-            var endPeriodDate = updateFilteredModelFunction();
+            var endPeriodDate = getTodayBaseLine();
             endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysCalendar);
             return endPeriodDate
         }
@@ -64,7 +58,7 @@ Item {
             var count = organizerModel.itemCount
             for ( var i = 0; i < count; i ++ ) {
                 var item = organizerModel.items[i];
-                var today = updateFilteredModelFunction();
+                var today = getTodayBaseLine();
                 var limitDown = item.startDateTime >= today
                 if(item.itemType !== 505 && limitDown && calandarEventModel.count < launchermodular.settings.limiteDaysCalendar){
                     calandarEventModel.append( {"item": item })
@@ -75,6 +69,10 @@ Item {
             console.log("onDataChanged")
         }
         manager: "eds"
+    }
+
+    function updateModel() {
+        organizerModel.updateCalendarModel()
     }
 
     ListModel {
@@ -172,10 +170,22 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked:{
+                    clickTimer.start();
                     var formatedDate = Qt.formatDateTime(item.detail(Detail.EventTime).startDateTime, "yyyy-MM-ddTHH:mm:ss");
                     Qt.openUrlExternally("calendar:///startdate="+formatedDate)
                     //the eventId does not work
                     //Qt.openUrlExternally("calendar:///eventId="+item.itemId)
+                }
+                onDoubleClicked: {clickTimer.stop(); updateModel();}
+            }
+            // Timer to delay the single-click action
+            Timer {
+                id: clickTimer
+                interval: 250  // Adjust delay (in milliseconds) as needed
+                repeat: false
+                onTriggered: {
+                    // Single-click action only happens after the timer completes
+                    Qt.openUrlExternally("application:///calendar.ubports_calendar.desktop")
                 }
             }
         }

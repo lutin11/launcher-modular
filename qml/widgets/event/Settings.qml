@@ -121,7 +121,7 @@ Page {
                             placeholderText: i18n.tr("By default 3 event")
                             width: parent.width
                             text: launchermodular.settings.limiteItemWidgetEvent
-                            onTextChanged: { launchermodular.settings.limiteItemWidgetEvent = text }
+                            onTextChanged: { launchermodular.settings.limiteItemWidgetEvent = parseInt(text) }
                             inputMethodHints: Qt.ImhDigitsOnly;
                         }
                     }

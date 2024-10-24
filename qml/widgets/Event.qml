@@ -8,23 +8,70 @@ Item {
     width: listColumn.width/2
     height: event.height+emptyLabel.height
    
-    property var datenowEvent: new Date()
-
-    function updateFilteredModel() {
+    function getTodayBaseLine() {
         var lowerToday = new Date()
         lowerToday.setHours(0, 1, 0, 0)
         return lowerToday
     }
-    property var updateFilteredModelFunction: updateFilteredModel
 
-    Timer {
-        interval: 1200001 
-        running: true
-        repeat: true
-        onTriggered: {
-            widgetEvent.datenowEvent = new Date()
+    OrganizerModel {
+        id: organizerModel
+
+        function updateCalendarModel() {
+            update()
         }
-    }        
+
+        startPeriod: {
+            return getTodayBaseLine();
+        }
+
+        endPeriod: {
+            var endPeriodDate = getTodayBaseLine();
+            endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysWidgetEvent)
+            return endPeriodDate
+        }
+
+        sortOrders: [
+            SortOrder{
+                id: sortOrder
+                blankPolicy: SortOrder.BlanksFirst
+                detail: Detail.EventTime
+                field: EventTime.FieldStartDateTime
+                direction: Qt.AscendingOrder
+            }
+        ]
+
+        onModelChanged: {
+            widgetEventModel.clear();
+            var count = organizerModel.itemCount
+            for ( var i = 0; i < count; i ++ ) {
+                var item = organizerModel.items[i];
+                var today = getTodayBaseLine();
+                var limitDown = item.startDateTime >= today
+                if(item.itemType !== 505 && limitDown){
+                    if(widgetEventModel.count < launchermodular.settings.limiteItemWidgetEvent){
+                      widgetEventModel.append( {"item": item })
+                    }
+                }
+            }
+        }
+
+        manager: "eds"
+    }
+
+    function updateModel() {
+        organizerModel.updateCalendarModel()
+    }
+
+    property var updateModelFunction: updateModel
+
+    Connections {
+        target: launchermodular.settings
+        onLimiteItemWidgetEventChanged: {
+             console.log("Change detected")
+             widgetEvent.updateModelFunction();
+        }
+    }
         
     Rectangle {
         id: event
@@ -53,47 +100,6 @@ Item {
                 text: i18n.tr("Events")
                 color: launchermodular.settings.textColor
             }
-        }
-
-        OrganizerModel {
-            id: organizerModel
-
-            startPeriod: {
-                return updateFilteredModelFunction();
-            }
-
-            endPeriod: {
-                var endPeriodDate = updateFilteredModelFunction();
-                endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysWidgetEvent)
-                return endPeriodDate
-            }
-
-            sortOrders: [
-                SortOrder{
-                    id: sortOrder
-                    blankPolicy: SortOrder.BlanksFirst
-                    detail: Detail.EventTime
-                    field: EventTime.FieldStartDateTime
-                    direction: Qt.AscendingOrder
-                }
-            ]
-
-            onModelChanged: {
-                widgetEventModel.clear();
-                var count = organizerModel.itemCount
-                for ( var i = 0; i < count; i ++ ) {
-                    var item = organizerModel.items[i];
-                    var today = updateFilteredModelFunction();
-                    var limitDown = item.startDateTime >= today
-                    if(item.itemType !== 505 && limitDown){
-                        if(widgetEventModel.count < launchermodular.settings.limiteItemWidgetEvent){
-                          widgetEventModel.append( {"item": item })
-                        }
-                    }
-                }
-            }
-
-            manager: "eds"
         }
 
         ListModel {
@@ -169,7 +175,19 @@ Item {
     }
     MouseArea {
         anchors.fill: parent
-        onClicked:{Qt.openUrlExternally("application:///calendar.ubports_calendar.desktop")}
+        onClicked:{clickTimer.start();}
         onPressAndHold: pageStack.push(Qt.resolvedUrl("event/Settings.qml"))
+        onDoubleClicked: {clickTimer.stop(); updateModel();}
+    }
+
+    // Timer to delay the single-click action
+    Timer {
+        id: clickTimer
+        interval: 250  // Adjust delay (in milliseconds) as needed
+        repeat: false
+        onTriggered: {
+            // Single-click action only happens after the timer completes
+            Qt.openUrlExternally("application:///calendar.ubports_calendar.desktop")
+        }
     }
 }
