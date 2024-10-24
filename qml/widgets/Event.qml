@@ -57,13 +57,14 @@ Item {
 
         OrganizerModel {
             id: organizerModel
+
             startPeriod: {
-                return updateFilteredModelFunction()
+                return updateFilteredModelFunction();
             }
 
             endPeriod: {
                 var endPeriodDate = updateFilteredModelFunction();
-                endPeriodDate.setDate(updateFilteredModelFunction() + launchermodular.settings.limiteDaysWidgetEvent)
+                endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysWidgetEvent)
                 return endPeriodDate
             }
 
@@ -78,15 +79,15 @@ Item {
             ]
 
             onModelChanged: {
-                mymodel.clear();
+                widgetEventModel.clear();
                 var count = organizerModel.itemCount
                 for ( var i = 0; i < count; i ++ ) {
                     var item = organizerModel.items[i];
                     var today = updateFilteredModelFunction();
                     var limitDown = item.startDateTime >= today
                     if(item.itemType !== 505 && limitDown){
-                        if(mymodel.count < launchermodular.settings.limiteItemWidgetEvent){
-                          mymodel.append( {"item": item })
+                        if(widgetEventModel.count < launchermodular.settings.limiteItemWidgetEvent){
+                          widgetEventModel.append( {"item": item })
                         }
                     }
                 }
@@ -96,7 +97,7 @@ Item {
         }
 
         ListModel {
-            id: mymodel
+            id: widgetEventModel
         }
 
         Label {
@@ -112,24 +113,26 @@ Item {
             id: listEvent
             anchors.top: rectEvent.bottom
             height: contentHeight
-            model: mymodel
+            model: widgetEventModel
             interactive: false
-
             delegate: Row {
                 spacing: units.gu(0.7)
                 Text {
                     text: {
-                        var evt_time = item.detail(Detail.EventTime)
-                        var starttime = evt_time.startDateTime;
+                        var callendarEvent = item.detail(Detail.EventTime)
+                        var eventStartTime = callendarEvent.startDateTime;
                         if(index != 0){
-                            if(Qt.formatDateTime(starttime, "MMM d" ) != Qt.formatDateTime(mymodel.get(index-1).item.detail(Detail.EventTime).startDateTime, "MMM d" )){
-                              return Qt.formatDateTime(starttime, "MMM d" )
+                            var prevEventeventStartTime = widgetEventModel.get(index-1).item.detail(Detail.EventTime).startDateTime;
+                            if(Qt.formatDateTime(eventStartTime, "MMM d" ) != Qt.formatDateTime(prevEventeventStartTime, "MMM d" )){
+                              return Qt.formatDateTime(eventStartTime, "MMM d" )
+                            } else {
+                              return ""
                             }
                         } else {
-                            return Qt.formatDateTime(starttime, "MMM d" )
+                            return Qt.formatDateTime(eventStartTime, "MMM d" )
                         }
                     }
-                    horizontalAlignment: Text.AlignRight
+                    horizontalAlignment: Text.AlignRight;
                     width: units.gu(4);
                     color: launchermodular.settings.textColor;
                     font.pointSize: units.gu(1.2);
@@ -151,9 +154,9 @@ Item {
                     }
                     Text {
                         text: {
-                            var evt_time = item.detail(Detail.EventTime)
-                            var starttime = evt_time.startDateTime;
-                            return Qt.formatDateTime(starttime, "hh:mm" )+" "+item.description
+                            var callendarEvent = item.detail(Detail.EventTime)
+                            var eventStartTime = callendarEvent.startDateTime;
+                            return Qt.formatDateTime(eventStartTime, "hh:mm" )+" "+item.description
                         }
                         elide: Text.ElideRight;
                         maximumLineCount: 1;
@@ -161,10 +164,8 @@ Item {
                         color: "#AEA79F"; font.pointSize: units.gu(1.2);
                     }
                 }
-
             }
         }
-
     }
 
     MouseArea {

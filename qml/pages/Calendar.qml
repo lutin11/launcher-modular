@@ -32,9 +32,9 @@ Item {
         }
 
         endPeriod: {
-            var date = updateFilteredModelFunction();
-            date.setDate(date.getDate() + launchermodular.settings.limiteDaysCalendar);
-            return date
+            var endPeriodDate = updateFilteredModelFunction();
+            endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysCalendar);
+            return endPeriodDate
         }
 
         sortOrders: [
@@ -60,14 +60,14 @@ Item {
         }
 
         onModelChanged: {
-            mymodel.clear();
+            calandarEventModel.clear();
             var count = organizerModel.itemCount
             for ( var i = 0; i < count; i ++ ) {
                 var item = organizerModel.items[i];
                 var today = updateFilteredModelFunction();
                 var limitDown = item.startDateTime >= today
-                if(item.itemType !== 505 && limitDown && mymodel.count < launchermodular.settings.limiteDaysCalendar){
-                    mymodel.append( {"item": item })
+                if(item.itemType !== 505 && limitDown && calandarEventModel.count < launchermodular.settings.limiteDaysCalendar){
+                    calandarEventModel.append( {"item": item })
                 }
             }
         }
@@ -78,7 +78,7 @@ Item {
     }
 
     ListModel {
-        id: mymodel
+        id: calandarEventModel
     }
 
     ListView {
@@ -88,7 +88,7 @@ Item {
         anchors.leftMargin: units.gu(2)
         width: parent.width
         height: contentHeight
-        model: mymodel
+        model: calandarEventModel
 
         header: Item {
             id: textCalendar
