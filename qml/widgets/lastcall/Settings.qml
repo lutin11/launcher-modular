@@ -49,6 +49,46 @@ Page {
                     text: "<font color=\"#ffffff\">"+i18n.tr("Generals")+"</font>"
                 }
 
+                Item {
+                    id: templateRow
+                    width: parent.width
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        rightMargin: units.gu(2)
+                        leftMargin: units.gu(2)
+                    }
+                    height: units.gu(4)
+
+                    Label {
+                        id: label
+                        text: i18n.tr("Number of displayed calls :")
+                        color:  "white"
+                        width: templateRow.titleWidth
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        elide: Text.ElideRight
+                        font.weight: Font.Light
+                    }
+
+                    Row {
+                        id: contentRow
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: label.right
+                        anchors.leftMargin: units.gu(2)
+                        anchors.right: parent.right
+                        spacing: units.gu(2)
+                        TextField {
+                            objectName: "textfield_standard"
+                            placeholderText: i18n.tr("By default 1")
+                            width: parent.width
+                            text: launchermodular.settings.numberOfCallWidget
+                            onTextChanged: { launchermodular.settings.numberOfCallWidget = parseInt(text) }
+                            inputMethodHints: Qt.ImhDigitsOnly;
+                        }
+                    }
+                }
+
                 property var model: [
                   { title: "<font color=\"#ffffff\">"+i18n.tr("Default")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the dialer")+"</font>", style:"default" },
                   { title: "<font color=\"#ffffff\">"+i18n.tr("Call")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the dialer with number")+"</font>", style:"dial" }
@@ -59,6 +99,7 @@ Page {
                     width: (parent.width-textactionWidgets.width)-units.gu(6)
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(2)
+                    anchors.topMargin: units.gu(2)
                     model: settingsColumn.model
                     delegate: OptionSelectorDelegate {
                         property var item: model.modelData ? model.modelData : model
@@ -82,11 +123,9 @@ Page {
                         color: "#ffffff"
                         verticalAlignment: Text.AlignVCenter
                     }
-
                 }
-
             } // column
         } //flickable
-     } //rectangle settings
+    } //rectangle settings
 
 }

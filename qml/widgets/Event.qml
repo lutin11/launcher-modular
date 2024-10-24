@@ -8,16 +8,70 @@ Item {
     width: listColumn.width/2
     height: event.height+emptyLabel.height
    
-    property variant datenowEvent: new Date()
+    function getTodayBaseLine() {
+        var lowerToday = new Date()
+        lowerToday.setHours(0, 1, 0, 0)
+        return lowerToday
+    }
 
-    Timer {
-        interval: 1200001 
-        running: true
-        repeat: true
-        onTriggered: {
-            widgetEvent.datenowEvent = new Date()
+    OrganizerModel {
+        id: organizerModel
+
+        function updateCalendarModel() {
+            update()
         }
-    }        
+
+        startPeriod: {
+            return getTodayBaseLine();
+        }
+
+        endPeriod: {
+            var endPeriodDate = getTodayBaseLine();
+            endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysWidgetEvent)
+            return endPeriodDate
+        }
+
+        sortOrders: [
+            SortOrder{
+                id: sortOrder
+                blankPolicy: SortOrder.BlanksFirst
+                detail: Detail.EventTime
+                field: EventTime.FieldStartDateTime
+                direction: Qt.AscendingOrder
+            }
+        ]
+
+        onModelChanged: {
+            widgetEventModel.clear();
+            var count = organizerModel.itemCount
+            for ( var i = 0; i < count; i ++ ) {
+                var item = organizerModel.items[i];
+                var today = getTodayBaseLine();
+                var limitDown = item.startDateTime >= today
+                if(item.itemType !== 505 && limitDown){
+                    if(widgetEventModel.count < launchermodular.settings.limiteItemWidgetEvent){
+                      widgetEventModel.append( {"item": item })
+                    }
+                }
+            }
+        }
+
+        manager: "eds"
+    }
+
+    function updateModel() {
+        organizerModel.updateCalendarModel()
+    }
+
+    property var updateModelFunction: updateModel
+
+    Connections {
+        target: launchermodular.settings
+        onLimiteItemWidgetEventChanged: {
+             console.log("Change detected")
+             widgetEvent.updateModelFunction();
+        }
+    }
         
     Rectangle {
         id: event
@@ -48,46 +102,8 @@ Item {
             }
         }
 
-        OrganizerModel {
-            id: organizerModel
-            startPeriod: {
-                return widgetEvent.datenowEvent
-            }
-
-            endPeriod: {
-                var date = widgetEvent.datenowEvent;
-                date.setDate(date.getDate() + launchermodular.settings.limiteDaysWidgetEvent);
-                return date
-            }
-
-            sortOrders: [
-                SortOrder{
-                    id: sortOrder
-                    blankPolicy: SortOrder.BlanksFirst
-                    detail: Detail.EventTime
-                    field: EventTime.FieldStartDateTime
-                    direction: Qt.AscendingOrder
-                }
-            ]
-
-            onModelChanged: {
-                mymodel.clear();
-                var count = organizerModel.itemCount
-                for ( var i = 0; i < count; i ++ ) {
-                    var item = organizerModel.items[i];
-                    if(item.itemType !== 505){
-                        if(mymodel.count < launchermodular.settings.limiteItemWidgetEvent){
-                          mymodel.append( {"item": item })
-                        }
-                    }
-                }
-            }
-
-            manager: "eds"
-        }
-
         ListModel {
-            id: mymodel
+            id: widgetEventModel
         }
 
         Label {
@@ -103,25 +119,26 @@ Item {
             id: listEvent
             anchors.top: rectEvent.bottom
             height: contentHeight
-            model: mymodel
+            model: widgetEventModel
             interactive: false
-
             delegate: Row {
                 spacing: units.gu(0.7)
                 Text {
                     text: {
-                        var evt_time = item.detail(Detail.EventTime)
-                        var starttime = evt_time.startDateTime;
+                        var callendarEvent = item.detail(Detail.EventTime)
+                        var eventStartTime = callendarEvent.startDateTime;
                         if(index != 0){
-                            if(Qt.formatDateTime(starttime, "MMM d" ) != Qt.formatDateTime(mymodel.get(index-1).item.detail(Detail.EventTime).startDateTime, "MMM d" )){
-                              return Qt.formatDateTime(starttime, "MMM d" )
+                            var prevEventeventStartTime = widgetEventModel.get(index-1).item.detail(Detail.EventTime).startDateTime;
+                            if(Qt.formatDateTime(eventStartTime, "MMM d" ) != Qt.formatDateTime(prevEventeventStartTime, "MMM d" )){
+                              return Qt.formatDateTime(eventStartTime, "MMM d" )
+                            } else {
+                              return ""
                             }
                         } else {
-                            return Qt.formatDateTime(starttime, "MMM d" )
+                            return Qt.formatDateTime(eventStartTime, "MMM d" )
                         }
-
                     }
-                    horizontalAlignment: Text.AlignRight
+                    horizontalAlignment: Text.AlignRight;
                     width: units.gu(4);
                     color: launchermodular.settings.textColor;
                     font.pointSize: units.gu(1.2);
@@ -143,9 +160,9 @@ Item {
                     }
                     Text {
                         text: {
-                            var evt_time = item.detail(Detail.EventTime)
-                            var starttime = evt_time.startDateTime;
-                            return Qt.formatDateTime(starttime, "hh:mm" )+" "+item.description
+                            var callendarEvent = item.detail(Detail.EventTime)
+                            var eventStartTime = callendarEvent.startDateTime;
+                            return Qt.formatDateTime(eventStartTime, "hh:mm" )+" "+item.description
                         }
                         elide: Text.ElideRight;
                         maximumLineCount: 1;
@@ -153,17 +170,24 @@ Item {
                         color: "#AEA79F"; font.pointSize: units.gu(1.2);
                     }
                 }
-
             }
         }
-
     }
-
     MouseArea {
         anchors.fill: parent
-        onClicked:Qt.openUrlExternally("application:///com.lomiri.calendar_calendar.desktop")
+        onClicked:{clickTimer.start();}
         onPressAndHold: pageStack.push(Qt.resolvedUrl("event/Settings.qml"))
-
+        onDoubleClicked: {clickTimer.stop(); updateModel();}
     }
-    
+
+    // Timer to delay the single-click action
+    Timer {
+        id: clickTimer
+        interval: 250  // Adjust delay (in milliseconds) as needed
+        repeat: false
+        onTriggered: {
+            // Single-click action only happens after the timer completes
+            Qt.openUrlExternally("application:///calendar.ubports_calendar.desktop")
+        }
+    }
 }

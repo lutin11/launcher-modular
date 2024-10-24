@@ -69,7 +69,6 @@ Item {
         onNeedSudoPassword: {PopupUtils.open(diag)}
         onFinished: {
             PopupUtils.close(diag);
-            console.log("signal on finished");
             refreshafteruninstall.restart()
         }
     }
@@ -324,7 +323,6 @@ Item {
                 }
 
                 function doAction(action) {
-                    console.log("opening "+action)
                     if(action.startsWith("application:///")) {
                         Qt.openUrlExternally(action);
                     }
@@ -511,7 +509,6 @@ Item {
                 }
 
                 Component.onCompleted: {
-                    console.log(AppHandler.appsinfo.length);
                     AppHandler.permaFilter()
                     AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
                     AppHandler.permaFilter("package_name",  "^(?!launchermodular.lut11_).*$")

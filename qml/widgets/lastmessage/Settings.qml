@@ -49,6 +49,46 @@ Page {
                     text: "<font color=\"#ffffff\">"+i18n.tr("Generals")+"</font>"
                 }
 
+                Item {
+                    id: templateRow
+                    width: parent.width
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        rightMargin: units.gu(2)
+                        leftMargin: units.gu(2)
+                    }
+                    height: units.gu(4)
+
+                    Label {
+                        id: label
+                        text: i18n.tr("Number of displayed messages :")
+                        color:  "white"
+                        width: templateRow.titleWidth
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        elide: Text.ElideRight
+                        font.weight: Font.Light
+                    }
+
+                    Row {
+                        id: contentRow
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: label.right
+                        anchors.leftMargin: units.gu(2)
+                        anchors.right: parent.right
+                        spacing: units.gu(2)
+                        TextField {
+                            objectName: "textfield_standard"
+                            placeholderText: i18n.tr("By default 1")
+                            width: parent.width
+                            text: launchermodular.settings.numberOfMessageWidget
+                            onTextChanged: { launchermodular.settings.numberOfMessageWidget = parseInt(text) }
+                            inputMethodHints: Qt.ImhDigitsOnly;
+                        }
+                    }
+                }
+
                 ListItem.Standard {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("View a summary")+"</font>"

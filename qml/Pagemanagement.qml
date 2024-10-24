@@ -250,7 +250,6 @@ Page {
 
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"),{pageIndex:index});
-                    console.log("clicked on :"+index)
                 }
 
 
