@@ -58,7 +58,10 @@ Item {
     
     MouseArea {
         anchors.fill: parent
-        onClicked:Qt.openUrlExternally("application:///com.lomiri.clock_clock.desktop")
+        onClicked:{
+          console.log("clock");
+          Qt.openUrlExternally("application:///clock.ubports_clock.desktop")
+        }
     }
 
 }
