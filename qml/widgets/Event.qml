@@ -167,12 +167,9 @@ Item {
             }
         }
     }
-
     MouseArea {
         anchors.fill: parent
-        onClicked:Qt.openUrlExternally("application:///com.lomiri.calendar_calendar.desktop")
+        onClicked:{Qt.openUrlExternally("application:///calendar.ubports_calendar.desktop")}
         onPressAndHold: pageStack.push(Qt.resolvedUrl("event/Settings.qml"))
-
     }
-    
 }
