@@ -86,7 +86,7 @@ MainView {
 
         property int limiteDaysCalendar: 31;
         property int limiteDaysWidgetEvent: 31;
-        property int limiteItemWidgetEvent: 5;
+        property int limiteItemWidgetEvent: 6;
 
         property var page;
         property var customIcon;
