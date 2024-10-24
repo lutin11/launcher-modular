@@ -96,11 +96,11 @@ MainView {
           signal newsConfigChanged();
 
         property bool newsBackgroundOpacity: false
-        property string widgetMessageClick: 'default'
+        property string widgetMessageClick: 'message'
         property bool widgetMessageSummary: true
-        property int numberOfCallWidget: 1
-        property int numberOfMessageWidget: 1
-        property string widgetCallClick: 'default'
+        property int numberOfCallWidget: 3
+        property int numberOfMessageWidget: 3
+        property string widgetCallClick: 'dial'
         property string widgetFavoriteContactClick: 'tel'
 
         property bool widgetVisibleClock: true
