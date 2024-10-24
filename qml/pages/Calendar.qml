@@ -168,18 +168,16 @@ Item {
                 }
 
             }
-             /*
+
             MouseArea {
                 anchors.fill: parent
                 onClicked:{
-                    Qt.openUrlExternally("calendar://eventid="+item.itemId)
-                   // onClicked:Qt.openUrlExternally("application:///calendar.ubports_calendar.desktop")
+                    var formatedDate = Qt.formatDateTime(item.detail(Detail.EventTime).startDateTime, "yyyy-MM-ddTHH:mm:ss");
+                    Qt.openUrlExternally("calendar:///startdate="+formatedDate)
+                    //the eventId does not work
+                    //Qt.openUrlExternally("calendar:///eventId="+item.itemId)
                 }
             }
-            */
-
         }
-
     }
-
 }
