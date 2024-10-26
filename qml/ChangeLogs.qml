@@ -31,23 +31,40 @@ Page {
     }
 
     SwipeView {
-        id: view
+        id: changeLogAboutView
         anchors.fill: parent
         currentIndex: 0
 
         // Page 1: Change Log
         Item {
 
-            property var details1: i18n.tr("You can configure how many last calls, last messages, and events you want to be displayed on the main page");
-            property var description1: i18n.tr("To do so, long press on the widget to access to it's configurable page");
-            property var details2: i18n.tr("On call settings, if the option for 'When clicked', is 'Open the dialer with number', a click on event will redirect it's number to the dialer");
-            property var details3: i18n.tr("On message settings, if the option for 'When clicked', is 'Open the application with message', a click on event will redirect it's number to the messaging app");
-            property var details4: i18n.tr("On event widget as event pages, the event are now displayed from the curent day");
-            property var details5: i18n.tr("It's now possible to double click on event widget or event page to force re-fraiche the event list");
-            property var details6: i18n.tr("A click on 'Alarmes' widget open the clock application");
-            property var details7: i18n.tr("On picture page, a click on image open it in viewer");
-            property var details8: i18n.tr("Todo");
-            property var details9: i18n.tr("Initial release");
+            // 2.3.3
+            property var details1: i18n.tr("Set how many calls to display!");
+            property var description1: i18n.tr("To do this, long press on the widget to access its configuration page.");
+            property var details2: i18n.tr("Set how many messages to display!");
+            property var description2: i18n.tr("To do this, long press on the widget to access its configuration page.");
+            property var details3: i18n.tr("Set how many event to display!");
+            property var description3: i18n.tr("To do this, long press on the widget to access its configuration page.");
+            property var details4: i18n.tr("Call redirection to phone app works!");
+            property var description4: i18n.tr("On call settings, set the option for 'When clicked' to 'Open the dialer with number'");
+            property var details5: i18n.tr("Message redirection to messaging app works!");
+            property var description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'");
+            property var details6: i18n.tr("Force list refresh by double-clicking on the event widget!");
+            property var description6:"";
+            property var details7: i18n.tr("Clicking on the 'Alarm' widget opens the clock!");
+            property var description7:"";
+            property var details8: i18n.tr("Open the photo by clicking on it!");
+            property var description8:"";
+            // 2.3.2
+            property var details9: i18n.tr("Enable Autostart");
+            property var description9: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart");
+            property var details10: i18n.tr("Correction for background display.");
+            property var description10:"";
+            property var details11: i18n.tr("Fix up 'Run a command in a terminal'");
+            property var description11:"";
+            // 2.3.1
+            property var details12: i18n.tr("Resumption of the application.");
+            property var description12: i18n.tr("This is the first release of Launcher Modular based on https://github.com/ruditimmermans/launcher-modular, It contains, libraries updates and some fixes.");
 
             ListModel {
                 id: changeLogModel
@@ -56,14 +73,17 @@ Page {
 
             Component.onCompleted: {
                 changeLogModel.append({ version: "2.3.2", date: "2024-10-24", details: details1, description: description1 });
-                changeLogModel.append({ version: "", date: "", details: details2, description: ""});
-                changeLogModel.append({ version: "", date: "", details: details3, description: ""});
-                changeLogModel.append({ version: "", date: "", details: details4, description: ""});
-                changeLogModel.append({ version: "", date: "", details: details5, description: ""});
-                changeLogModel.append({ version: "", date: "", details: details6, description: ""});
-                changeLogModel.append({ version: "", date: "", details: details7, description: ""});
-                changeLogModel.append({ version: "2.3.1", date: "2024-09-24", details: details8, description: ""});
-                changeLogModel.append({ version: "2.3.0", date: "2024-10-02", details: details9, description: ""});
+                changeLogModel.append({ version: "", date: "", details: details2, description: description2});
+                changeLogModel.append({ version: "", date: "", details: details3, description: description3});
+                changeLogModel.append({ version: "", date: "", details: details4, description: description4});
+                changeLogModel.append({ version: "", date: "", details: details5, description: description5});
+                changeLogModel.append({ version: "", date: "", details: details6, description: description6});
+                changeLogModel.append({ version: "", date: "", details: details7, description: description7});
+                changeLogModel.append({ version: "", date: "", details: details8, description: description8});
+                changeLogModel.append({ version: "2.3.1", date: "2024-09-29", details: details9, description: description9});
+                changeLogModel.append({ version: "", date: "", details: details10, description: description10});
+                changeLogModel.append({ version: "", date: "", details: details11, description: description11});
+                changeLogModel.append({ version: "2.3.0", date: "2024-09-23", details: details12, description: description12});
             }
 
             Rectangle {
@@ -81,6 +101,9 @@ Page {
                     anchors.fill: parent
                     model: changeLogModel
                     spacing: 10
+                    //leftMargin: units.gu(1)
+                    anchors.leftMargin: units.gu(1)  // Adjust this value for left space
+                    anchors.rightMargin: units.gu(1) // Adjust this value for right space
 
                     delegate: Item {
                         id: changeLogContainer
@@ -146,7 +169,6 @@ Page {
         // Page 2: About
         Item {
             Rectangle {
-
                 id: rectAbout
                 color: "#111111"
                 anchors {
@@ -193,7 +215,6 @@ Page {
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         color: "#ffffff"
                         width: parent.width
-                        height: thank1Label.height + units.gu(2)
                         horizontalAlignment: Text.AlignHCenter
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
@@ -203,7 +224,6 @@ Page {
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         color: "#ffffff"
                         width: parent.width
-                        height: thank1Label.height + units.gu(2)
                         horizontalAlignment: Text.AlignHCenter
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
@@ -214,12 +234,47 @@ Page {
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         color: "#ffffff"
                         width: parent.width
-                        height: thank1Label.height + units.gu(2)
                         horizontalAlignment: Text.AlignHCenter
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
             }
+        }
+    }
+    Icon {
+        id: swipeHintButtonNext
+        visible: changeLogAboutView.currentIndex === 0
+        name: "go-next"
+        width: units.gu(2)
+        height: units.gu(2)
+        anchors.right: parent.right
+        anchors.rightMargin: units.gu(3)
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+    }
+    MouseArea {
+        anchors.fill: parent
+        anchors.bottomMargin: units.gu(2)
+        onClicked: {
+            changeLogAboutView.currentIndex = changeLogAboutView.currentIndex === 0 ? 1 : 0;
+        }
+    }
+    Icon {
+        id: swipeHintButtonPrevious
+        visible: changeLogAboutView.currentIndex === 1
+        name: "go-previous"
+        width: units.gu(2)
+        height: units.gu(2)
+        anchors.left: parent.left
+        anchors.leftMargin: units.gu(3)
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+    }
+    MouseArea {
+        anchors.fill: parent
+        anchors.bottomMargin: units.gu(2)
+        onClicked: {
+            changeLogAboutView.currentIndex = changeLogAboutView.currentIndex === 0 ? 1 : 0;
         }
     }
 }
