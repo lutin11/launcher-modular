@@ -135,7 +135,7 @@ MainView {
                     launchermodular.settings.firstRunNew = false
                 }
 
-                //pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
+                pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
 
                 console.log("###### on Component completion #####")
 

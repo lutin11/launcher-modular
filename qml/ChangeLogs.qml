@@ -15,7 +15,7 @@ Page {
         leadingActionBar.actions:
             Action {
                 iconName: "back"
-                text: "Back"
+                text: i18n.tr("Back")
                 onTriggered: {
                     pageStack.pop();
                 }
@@ -37,6 +37,35 @@ Page {
 
         // Page 1: Change Log
         Item {
+
+            property var details1: i18n.tr("You can configure how many last calls, last messages, and events you want to be displayed on the main page");
+            property var description1: i18n.tr("To do so, long press on the widget to access to it's configurable page");
+            property var details2: i18n.tr("On call settings, if the option for 'When clicked', is 'Open the dialer with number', a click on event will redirect it's number to the dialer");
+            property var details3: i18n.tr("On message settings, if the option for 'When clicked', is 'Open the application with message', a click on event will redirect it's number to the messaging app");
+            property var details4: i18n.tr("On event widget as event pages, the event are now displayed from the curent day");
+            property var details5: i18n.tr("It's now possible to double click on event widget or event page to force re-fraiche the event list");
+            property var details6: i18n.tr("A click on 'Alarmes' widget open the clock application");
+            property var details7: i18n.tr("On picture page, a click on image open it in viewer");
+            property var details8: i18n.tr("Todo");
+            property var details9: i18n.tr("Initial release");
+
+            ListModel {
+                id: changeLogModel
+            }
+
+
+            Component.onCompleted: {
+                changeLogModel.append({ version: "2.3.2", date: "2024-10-24", details: details1, description: description1 });
+                changeLogModel.append({ version: "", date: "", details: details2, description: ""});
+                changeLogModel.append({ version: "", date: "", details: details3, description: ""});
+                changeLogModel.append({ version: "", date: "", details: details4, description: ""});
+                changeLogModel.append({ version: "", date: "", details: details5, description: ""});
+                changeLogModel.append({ version: "", date: "", details: details6, description: ""});
+                changeLogModel.append({ version: "", date: "", details: details7, description: ""});
+                changeLogModel.append({ version: "2.3.1", date: "2024-09-24", details: details8, description: ""});
+                changeLogModel.append({ version: "2.3.0", date: "2024-10-02", details: details9, description: ""});
+            }
+
             Rectangle {
 
                 id: rectChangeLog
@@ -44,22 +73,6 @@ Page {
                 anchors {
                     fill: parent
                     topMargin: units.gu(6)
-                }
-
-
-                // Model to store change log items
-                ListModel {
-                    id: changeLogModel
-
-                    ListElement { version: "2.3.2"; date: "2024-10-24"; details: "You can configure how many last calls, last messages, and events you want to be displayed on the main page"; description: "To do so, long press on the widget to access to it's configurable page"}
-                    ListElement { version: ""; date: ""; details: "On call settings, if the option for 'When clicked', is 'Open the dialer with number', a click on event will redirect it's number to the dialer"; description: ""}
-                    ListElement { version: ""; date: ""; details: "On message settings, if the option for 'When clicked', is 'Open the application with message', a click on event will redirect it's number to the messaging app"; description: ""}
-                    ListElement { version: ""; date: ""; details: "On event widget as event pages, the event are now displayed from the curent day"; description: ""}
-                    ListElement { version: ""; date: ""; details: "It's now possible to double click on event widget or event page to force re-fraiche the event list"; description: ""}
-                    ListElement { version: ""; date: ""; details: "A click on 'Alarmes' widget open the clock application"; description: ""}
-                    ListElement { version: ""; date: ""; details: "On picture page, a click on image open it in viewer"; description: ""}
-                    ListElement { version: "2.3.1"; date: "2024-09-24"; details: "Todo"; description: ""}
-                    ListElement { version: "2.3.0"; date: "2024-10-02"; details: "Initial release"; description: ""}
                 }
 
                 ListView {
@@ -87,13 +100,13 @@ Page {
                                     id: versionLine
 
                                     Text {
-                                        text: "Version: " + version
+                                        text: i18n.tr("Version: ") + version
                                         visible: version.length > 0
                                         font.bold: true
-                                        color: "blue"
+                                        color: LomiriColors.orange
                                     }
                                     Text {
-                                        text: " | Date: " + date
+                                        text: i18n.tr(" | Date: ") + date
                                         visible: date.length > 0
                                         color: "gray"
                                     }
@@ -119,14 +132,13 @@ Page {
                                     id: endLine
                                     width: changeLogContainer.width
                                     height: 5
-                                    color: if (index < changeLogModel.count && changeLogModel.get(index+1).version.length > 0){"white"} else {"grey"}
+                                    color: if (index < changeLogModel.count && changeLogModel.get(index+1).version.length > 0){"white"} else {"black"}
                                     anchors.horizontalCenter: parent.horizontalCenter
                                 }
                             }
                         }
                     }
                 }
-
             }
         }
 
@@ -144,6 +156,7 @@ Page {
 
                 Column {
                     anchors.centerIn: parent
+                    spacing: units.gu(2)
 
                     Label {
                         text: "Modular Launcher"
@@ -174,7 +187,37 @@ Page {
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
 
-                    // Other labels for license, source, etc., can be added similarly.
+                    Label {
+                        text: i18n.tr("This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public License</a> for more details.")
+                        onLinkActivated: Qt.openUrlExternally(link)
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        color: "#ffffff"
+                        width: parent.width
+                        height: thank1Label.height + units.gu(2)
+                        horizontalAlignment: Text.AlignHCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+
+                    Label {
+                        text: i18n.tr("Maintainer") + " © 2024 David Cossé <a href='mailto:saveurlinux@disroot.org'>saveurlinux@disroot.org</a>"
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        color: "#ffffff"
+                        width: parent.width
+                        height: thank1Label.height + units.gu(2)
+                        horizontalAlignment: Text.AlignHCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+
+                    Label {
+                        text: i18n.tr("<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>")
+                        onLinkActivated: pageStack.push(Qt.resolvedUrl("Translators.qml"))
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        color: "#ffffff"
+                        width: parent.width
+                        height: thank1Label.height + units.gu(2)
+                        horizontalAlignment: Text.AlignHCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
                 }
             }
         }
