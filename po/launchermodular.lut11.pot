@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 09:33+0000\n"
+"POT-Creation-Date: 2024-10-27 11:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,46 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: ../qml/About.qml:14 ../qml/Main.qml:590
-msgid "About"
-msgstr ""
-
-#: ../qml/About.qml:91 ../qml/ChangeLogs.qml:208
-msgid "A modular launcher for Ubuntu Touch"
-msgstr ""
-
-#: ../qml/About.qml:105 ../qml/ChangeLogs.qml:217
-msgid ""
-"This program is free software: you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation, either version 3 of the License, or (at your option) "
-"any later version. This program is distributed in the hope that it will be "
-"useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a "
-"href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
-"License</a> for more details."
-msgstr ""
-
-#: ../qml/About.qml:120
-msgid "SOURCE"
-msgstr ""
-
-#: ../qml/About.qml:120
-msgid "ISSUES"
-msgstr ""
-
-#: ../qml/About.qml:135 ../qml/ChangeLogs.qml:227
-msgid "Maintainer"
-msgstr ""
-
-#: ../qml/About.qml:149
-msgid "Copyright"
-msgstr ""
-
-#: ../qml/About.qml:164 ../qml/ChangeLogs.qml:236
-msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
-msgstr ""
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -168,6 +128,46 @@ msgstr ""
 msgid " | Date: "
 msgstr ""
 
+#: ../qml/ChangeLogs.qml:261
+msgid "If you like this app, please rank it on OpenStore"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:288
+msgid "A modular launcher for Ubuntu Touch"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:302
+msgid ""
+"This program is free software: you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation, either version 3 of the License, or (at your option) "
+"any later version. This program is distributed in the hope that it will be "
+"useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a "
+"href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
+"License</a> for more details."
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:317
+msgid "SOURCE"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:317
+msgid "ISSUES"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:332
+msgid "Maintainer"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:346
+msgid "Copyright"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:361
+msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
+msgstr ""
+
 #: ../qml/Help.qml:15
 msgid "Modular Launcher Help"
 msgstr ""
@@ -206,6 +206,10 @@ msgstr ""
 
 #: ../qml/Main.qml:558
 msgid "Help"
+msgstr ""
+
+#: ../qml/Main.qml:590
+msgid "About"
 msgstr ""
 
 #: ../qml/Main.qml:672

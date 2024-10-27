@@ -172,74 +172,201 @@ Page {
         // Page 2: About
         Item {
             Rectangle {
-                id: rectAbout
+                id:rectAbout
                 color: "#111111"
                 anchors {
                     fill: parent
                     topMargin: units.gu(6)
                 }
 
-                Column {
-                    id: columnAbout
-                    anchors.centerIn: parent
-                    spacing: units.gu(2)
+                Flickable {
+                    id: aboutListItems
+                    anchors.fill: parent
+                    contentHeight: columnListItems.height
+                    flickableDirection: Flickable.VerticalFlick
+                    clip: true
 
-                    Label {
-                        text: "Modular Launcher"
-                        fontSize: "x-large"
-                        color: "#ffffff"
-                    }
+                    Column {
+                        id: columnListItems
+                        anchors {
+                            top: parent.top
+                            left: parent.left
+                            right: parent.right
+                            topMargin: units.gu(1)
+                        }
 
-                    Image {
-                        source: "../assets/logo.svg"
-                        height: units.gu(12)
-                        width: height
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
+                        Item {
+                            width: parent.width
+                            height: units.gu(5)
+                            Label {
+                                text: "Modular Launcher"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                fontSize: "x-large"
+                                color: "#ffffff"
+                            }
+                        }
 
-                    Label {
-                        text: "v" + launchermodular.appVersion
-                        fontSize: "large"
-                        color: "#ffffff"
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
+                        Item {
+                            width: parent.width
+                            height: units.gu(14)
 
-                    Label {
-                        text: i18n.tr("A modular launcher for Ubuntu Touch")
-                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
-                        color: "#ffffff"
-                        width: parent.width - units.gu(12)
-                        horizontalAlignment: Text.AlignHCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
+                            LomiriShape {
+                                radius: "medium"
+                                source: Image {
+                                    source: Qt.resolvedUrl("../assets/logo.svg");
+                                }
+                                height: units.gu(12);
+                                width: height;
+                                anchors.horizontalCenter: parent.horizontalCenter;
+                            }
+                        }
 
-                    Label {
-                        text: i18n.tr("This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public License</a> for more details.")
-                        onLinkActivated: Qt.openUrlExternally(link)
-                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
-                        color: "#ffffff"
-                        width: parent.width
-                        horizontalAlignment: Text.AlignHCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
+                        Item {
+                            width: parent.width
+                            height: units.gu(4)
+                            Label {
+                                text: ("v"+launchermodular.appVersion)
+                                fontSize: "large"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                color: "#ffffff"
+                            }
+                        }
 
-                    Label {
-                        text: i18n.tr("Maintainer") + " © 2024 David Cossé <a href='mailto:saveurlinux@disroot.org'>saveurlinux@disroot.org</a>"
-                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
-                        color: "#ffffff"
-                        width: parent.width
-                        horizontalAlignment: Text.AlignHCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                    }
+                        Item {
+                            width: parent.width
+                            height: units.gu(2)
+                        }
 
-                    Label {
-                        text: i18n.tr("<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>")
-                        onLinkActivated: pageStack.push(Qt.resolvedUrl("Translators.qml"))
-                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
-                        color: "#ffffff"
-                        width: parent.width
-                        horizontalAlignment: Text.AlignHCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        Item{
+                            width: parent.width
+                            height: units.gu(2)
+
+                            Row {
+                                LomiriShape {
+                                    id: thumbupLeft
+                                    radius: "medium"
+                                    source: Image {
+                                        source: Qt.resolvedUrl("../assets/thumbup-full.svg");
+                                    }
+                                    height: units.gu(2);
+                                    width: units.gu(2);
+                                    anchors.left: parent.right
+                                    anchors.leftMargin: units.gu(1)
+                                }
+
+                                Label {
+                                    id: thumbupText
+                                    anchors.left: thumbupLeft.right
+                                    text: i18n.tr("If you like this app, please rank it on OpenStore")
+                                    color: "#ffffff"
+                                }
+
+                                LomiriShape {
+                                    radius: "medium"
+                                    source: Image {
+                                        source: Qt.resolvedUrl("../assets/thumbup-full.svg");
+                                    }
+                                    height: units.gu(2);
+                                    width: units.gu(2);
+                                    anchors.left: thumbupText.right
+                                    anchors.rightMargin: units.gu(3)
+                                }
+                            }
+                        }
+
+                        Item {
+                            width: parent.width
+                            height: units.gu(2)
+                        }
+
+                        Item {
+                            width: parent.width
+                            height: appLabel.height + units.gu(2)
+                            Label {
+                                id: appLabel
+                                text: i18n.tr("A modular launcher for Ubuntu Touch")
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                                horizontalAlignment: Text.AlignHCenter
+                                width: parent.width
+                                color: "#ffffff"
+                            }
+                        }
+
+                        Item {
+                            width: parent.width
+                            height: licenceLabel.height + units.gu(2)
+                            Label {
+                                id: licenceLabel
+                                text: i18n.tr("This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public License</a> for more details.")
+                                onLinkActivated: Qt.openUrlExternally(link)
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                                horizontalAlignment: Text.AlignHCenter
+                                width: parent.width
+                                color: "#ffffff"
+                            }
+                        }
+
+                        Item {
+                            width: parent.width
+                            height: sourceLabel.height + units.gu(2)
+                            Label {
+                                id: sourceLabel
+                                text: "<a href='https://github.com/lutin11/launcher-modular'>" + i18n.tr("SOURCE") + "</a> | <a href='https://github.com/lutin11/launcher-modular/issues'>" + i18n.tr("ISSUES") + "</a>"
+                                onLinkActivated: Qt.openUrlExternally(link)
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                                horizontalAlignment: Text.AlignHCenter
+                                width: parent.width
+                                color: "#ffffff"
+                            }
+                        }
+
+                        Item {
+                            width: parent.width
+                            height: maintainerLabel.height + units.gu(2)
+                            Label {
+                                id: maintainerLabel
+                                text: i18n.tr("Maintainer") + " © 2024 David Cossé <a href='mailto:saveurlinux@disroot.org'>saveurlinux@disroot.org</a>"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                                horizontalAlignment: Text.AlignHCenter
+                                width: parent.width
+                                color: "#ffffff"
+                            }
+                        }
+
+                        Item {
+                            width: parent.width
+                            height: previousMaintainerLabel.height + units.gu(2)
+                            Label {
+                                id: previousMaintainerLabel
+                                text: i18n.tr("Copyright") + " © 2024 David Cossé"
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                                horizontalAlignment: Text.AlignHCenter
+                                width: parent.width
+                                color: "#ffffff"
+                            }
+                        }
+
+                        Item {
+                            width: parent.width
+                            height: translatorsLabel.height + units.gu(2)
+                            Label {
+                                id: translatorsLabel
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                text: i18n.tr("<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>")
+                                anchors.verticalCenter: parent.verticalCenter
+                                wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                                horizontalAlignment: Text.AlignHCenter
+                                width: parent.width
+                                color: "#ffffff"
+
+                                onLinkActivated: pageStack.push(Qt.resolvedUrl("Translators.qml"))
+                            }
+                        }
                     }
                 }
             }

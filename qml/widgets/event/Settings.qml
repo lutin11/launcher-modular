@@ -24,8 +24,8 @@ Page {
     
     Rectangle {
         id:mainsettings
-        anchors.fill: parent
         color: "#111111"
+        anchors.fill: parent
         anchors.topMargin: units.gu(6)
 
         Flickable {
