@@ -44,15 +44,15 @@ Page {
             property var description1: i18n.tr("To do this, long press on the widget to access its configuration page.");
             property var details2: i18n.tr("Set how many messages to display!");
             property var description2: i18n.tr("To do this, long press on the widget to access its configuration page.");
-            property var details3: i18n.tr("Set how many event to display!");
+            property var details3: i18n.tr("Set how many events to display!");
             property var description3: i18n.tr("To do this, long press on the widget to access its configuration page.");
             property var details4: i18n.tr("Call redirection to phone app works!");
             property var description4: i18n.tr("On call settings, set the option for 'When clicked' to 'Open the dialer with number'");
             property var details5: i18n.tr("Message redirection to messaging app works!");
             property var description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'");
-            property var details6: i18n.tr("Force the event list refresh by double-clicking on the event widget!");
+            property var details6: i18n.tr("Force the event list to refresh by double-clicking on the event widget!");
             property var description6:"";
-            property var details7: i18n.tr("The event list show event from current day!");
+            property var details7: i18n.tr("The event list shows event from current day!");
             property var description7:"";
             property var details8: i18n.tr("Clicking on the 'Alarm' widget opens the clock!");
             property var description8:"";
