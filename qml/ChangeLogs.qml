@@ -37,6 +37,7 @@ Page {
 
         // Page 1: Change Log
         Item {
+            id: page1
 
             // 2.3.3
             property var details1: i18n.tr("Set how many calls to display!");
@@ -64,12 +65,11 @@ Page {
             property var description11:"";
             // 2.3.1
             property var details12: i18n.tr("Resumption of the application.");
-            property var description12: i18n.tr("This is the first release of Launcher Modular based on https://github.com/ruditimmermans/launcher-modular, It contains, libraries updates and some fixes.");
+            property var description12: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.");
 
             ListModel {
                 id: changeLogModel
             }
-
 
             Component.onCompleted: {
                 changeLogModel.append({ version: "2.3.2", date: "2024-10-24", details: details1, description: description1 });
@@ -101,7 +101,6 @@ Page {
                     anchors.fill: parent
                     model: changeLogModel
                     spacing: 10
-                    //leftMargin: units.gu(1)
                     anchors.leftMargin: units.gu(1)  // Adjust this value for left space
                     anchors.rightMargin: units.gu(1) // Adjust this value for right space
 
@@ -150,6 +149,7 @@ Page {
                                     wrapMode: Text.WordWrap
                                     width: changeLogContainer.width
                                     font.pointSize: units.gu(1.2);
+                                    onLinkActivated: Qt.openUrlExternally(link)
                                 }
                                 Rectangle {
                                     id: endLine
@@ -177,6 +177,7 @@ Page {
                 }
 
                 Column {
+                    id: columnAbout
                     anchors.centerIn: parent
                     spacing: units.gu(2)
 
@@ -241,40 +242,50 @@ Page {
             }
         }
     }
-    Icon {
+
+    Button {
         id: swipeHintButtonNext
         visible: changeLogAboutView.currentIndex === 0
-        name: "go-next"
         width: units.gu(2)
         height: units.gu(2)
         anchors.right: parent.right
         anchors.rightMargin: units.gu(3)
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 20
-    }
-    MouseArea {
-        anchors.fill: parent
-        anchors.bottomMargin: units.gu(2)
+        color:"transparent"
+
+        Icon {
+            id: swipeHintButtonNextIcon
+            name: "go-next"
+            width: units.gu(2)
+            height: units.gu(2)
+        }
+
         onClicked: {
-            changeLogAboutView.currentIndex = changeLogAboutView.currentIndex === 0 ? 1 : 0;
+            changeLogAboutView.currentIndex = 1;
         }
     }
-    Icon {
+
+    Button {
         id: swipeHintButtonPrevious
         visible: changeLogAboutView.currentIndex === 1
-        name: "go-previous"
         width: units.gu(2)
         height: units.gu(2)
         anchors.left: parent.left
         anchors.leftMargin: units.gu(3)
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 20
-    }
-    MouseArea {
-        anchors.fill: parent
-        anchors.bottomMargin: units.gu(2)
+        color:"transparent"
+
+        Icon {
+            id: swipeHintButtonPreviousIcon
+            name: "go-previous"
+            width: units.gu(2)
+            height: units.gu(2)
+        }
+
         onClicked: {
-            changeLogAboutView.currentIndex = changeLogAboutView.currentIndex === 0 ? 1 : 0;
+            changeLogAboutView.currentIndex = 0;
         }
     }
 }
