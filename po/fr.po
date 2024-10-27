@@ -2,20 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 17:46+0000\n"
-"PO-Revision-Date: 2023-01-08 13:48+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/ubports/launcher-"
-"modular/fr/>\n"
+"POT-Creation-Date: 2024-10-27 20:14+0000\n"
+"PO-Revision-Date: 2024-10-27 20:07+0000\n"
+"Last-Translator: saveurlinux <cosse@codelutin.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
+"launchermodular-lut11/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: ../qml/Autostart.qml:15
-
 msgid "Autostart Modular Launcher"
 msgstr "Restaurer le lanceur standard"
 
@@ -29,7 +28,11 @@ msgid ""
 "booted. <br><br>More details in <a href='https://github.com/lutin11/launcher-"
 "modular-service'>how to add a Modular Launcher systemd user service file to/"
 "on your device</a>"
-msgstr "Comment configurer Modular Launcher pour qu'il démarre automatiquement lorsque l'appareil est démarré. <br><br>Plus de détails dans <a href='https://github.com/lutin11/launcher-modular-service'>comment ajouter Modular Launcher systemd service sur votre appareil</a>"
+msgstr ""
+"Comment configurer Modular Launcher pour qu'il démarre automatiquement "
+"lorsque l'appareil est démarré. <br><br>Plus de détails dans <a "
+"href='https://github.com/lutin11/launcher-modular-service'>comment ajouter "
+"Modular Launcher systemd service sur votre appareil</a>"
 
 #: ../qml/ChangeLogs.qml:14
 msgid "Change Log"
@@ -45,7 +48,9 @@ msgstr "Configurez combien d'appels visualiser&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:44 ../qml/ChangeLogs.qml:46 ../qml/ChangeLogs.qml:48
 msgid "To do this, long press on the widget to access its configuration page."
-msgstr "Pour ce faire, appuyez longuement sur le widget pour accéder à sa page de configuration."
+msgstr ""
+"Pour ce faire, appuyez longuement sur le widget pour accéder à sa page de "
+"configuration."
 
 #: ../qml/ChangeLogs.qml:45
 msgid "Set how many messages to display!"
@@ -63,32 +68,40 @@ msgstr "La redirection vers un numéro de téléphone fonctionne&nbsp;!"
 msgid ""
 "On call settings, set the option for 'When clicked' to 'Open the dialer with "
 "number'"
-msgstr "Dans les paramètres d'appel, définissez l'option 'Lorsque cliqué' sur 'Composer dans l'application « Téléphone »'."
+msgstr ""
+"Dans les paramètres d'appel, définissez l'option 'Lorsque cliqué' sur "
+"'Composer dans l'application « Téléphone »'."
 
 #: ../qml/ChangeLogs.qml:51
 msgid "Message redirection to messaging app works!"
-msgstr "La redirection des messages vers l'application de messagerie fonctionne&nbsp;!"
+msgstr ""
+"La redirection des messages vers l'application de messagerie "
+"fonctionne&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:52
 msgid ""
 "On message settings, set the option for 'When clicked' to 'Open the "
 "application with message'"
-msgstr "Dans les paramètres des messages, définissez l'option 'Lorsque cliqué' sur 'Ouvrir l'application avec message'."
+msgstr ""
+"Dans les paramètres des messages, définissez l'option 'Lorsque cliqué' sur "
+"'Ouvrir l'application avec message'."
 
 #: ../qml/ChangeLogs.qml:53
 msgid "Force the event list refresh by double-clicking on the event widget!"
-msgstr "Forcez le rafraîchissement de la liste des événements en double-cliquant sur le widget de l'événement&nbsp;!"
+msgstr ""
+"Forcez le rafraîchissement de la liste des événements en double-cliquant sur "
+"le widget de l'événement&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:55
 msgid "The event list show event from current day!"
-msgstr "La liste des événements affiche les événements de la journée en cours&nbsp;!"
+msgstr ""
+"La liste des événements affiche les événements de la journée en cours&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:57
 msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr "En cliquant sur le widget « Alarme », vous ouvrez l'horloge&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:59
-
 msgid "Open the photo by clicking on it!"
 msgstr "Visualiser la photo en cliquant dessus!"
 
@@ -97,7 +110,6 @@ msgid "Enable Autostart"
 msgstr "Activer le démarrage automatique"
 
 #: ../qml/ChangeLogs.qml:63
-
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Balayez vers le haut pour configurer le lanceur"
 
@@ -106,12 +118,10 @@ msgid "Correction for background display."
 msgstr "Correction pour l'affichage en arrière-plan."
 
 #: ../qml/ChangeLogs.qml:66
-
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Lancer un ordre dans un terminal"
 
 #: ../qml/ChangeLogs.qml:69
-
 msgid "Resumption of the application."
 msgstr "Ouvrir l'application"
 
@@ -120,7 +130,10 @@ msgid ""
 "This is the first release of Launcher Modular based on <a href='https://"
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
-msgstr "C'est la première version de Launcher Modular basée sur <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a>. Elle contient des mises à jour des bibliothèques et quelques corrections."
+msgstr ""
+"C'est la première version de Launcher Modular basée sur <a href='https://"
+"github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a>. Elle "
+"contient des mises à jour des bibliothèques et quelques corrections."
 
 #: ../qml/ChangeLogs.qml:128
 msgid "Version: "
@@ -128,14 +141,13 @@ msgstr "Version : "
 
 #: ../qml/ChangeLogs.qml:134
 msgid " | Date: "
-msgstr ""
+msgstr "| Date :"
 
 #: ../qml/ChangeLogs.qml:260
 msgid "If you like this app, please rank it on OpenStore"
 msgstr "Si vous aimez cette application, likez-là sur OpenStore"
 
 #: ../qml/ChangeLogs.qml:287
-
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Un lanceur modulaire pour Ubuntu Touch"
 
@@ -176,14 +188,12 @@ msgid "Copyright"
 msgstr "Droits d'auteur"
 
 #: ../qml/ChangeLogs.qml:360
-
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"TRADUCTEURS DE LANCEUR MODULAIRE\">TRADUCTEURS DE LANCEUR "
 "MODULAIRE</a>"
 
 #: ../qml/Help.qml:15
-
 msgid "Modular Launcher Help"
 msgstr "Aide de Lanceur Modulaire"
 
@@ -219,7 +229,7 @@ msgstr "Configurer le lanceur"
 
 #: ../qml/Main.qml:526
 msgid "Autostart"
-msgstr ""
+msgstr "Démarrage automatique"
 
 #: ../qml/Main.qml:558
 msgid "Help"
@@ -243,14 +253,13 @@ msgstr "Site internet"
 
 #: ../qml/Main.qml:690
 msgid "Open this URL in the web browser"
-msgstr ""
+msgstr "Ouvrez cette URL dans le navigateur web"
 
 #: ../qml/Main.qml:691
 msgid "Terminal command"
 msgstr "Commande de terminal"
 
 #: ../qml/Main.qml:691
-
 msgid "Run a command in a terminal"
 msgstr "Lancer un ordre dans un terminal"
 
@@ -290,7 +299,7 @@ msgstr "Paramètres"
 
 #: ../qml/Settings.qml:41 ../qml/pages/Home.qml:36
 msgid "ok"
-msgstr ""
+msgstr "ok"
 
 #: ../qml/Settings.qml:76 ../qml/pages/calendar/Settings.qml:43
 msgid "General"
@@ -309,7 +318,6 @@ msgid "None"
 msgstr "Aucun"
 
 #: ../qml/Settings.qml:116
-
 msgid "Unstyled icons"
 msgstr "Style d'icônes : "
 
@@ -318,7 +326,6 @@ msgid "Rounded"
 msgstr "Arrondi"
 
 #: ../qml/Settings.qml:117
-
 msgid "Rounded icons"
 msgstr "Arrondi"
 
@@ -359,7 +366,6 @@ msgid "Translators"
 msgstr "Traducteurs"
 
 #: ../qml/Translators.qml:76
-
 msgid "Modular Launcher-translators:"
 msgstr "Traducteurs/trices de Lanceur Modulaire :"
 
@@ -384,10 +390,13 @@ msgid "Russian - "
 msgstr "Russe - "
 
 #: ../qml/Translators.qml:165
+
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"ubports/launcher-modular/'>Hosted Weblate</a>."
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
+"Traduisez Modular Launcher sur <a href='https://hosted.weblate.org/projects/"
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 
 #: ../qml/pages/Calendar.qml:107
 msgid "Agenda"
@@ -540,7 +549,7 @@ msgstr "Fort coup de vent"
 
 #: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
 msgid "Storm"
-msgstr ""
+msgstr "Tempête"
 
 #: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
 msgid "Violent Storm"
@@ -683,11 +692,10 @@ msgstr "Lorsque cliqué : "
 
 #: ../qml/widgets/lastcall/Settings.qml:65
 msgid "Number of displayed calls :"
-msgstr ""
+msgstr "Nombre d'appels affichés"
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-
 msgid "By default 1"
 msgstr "60 jours par défaut"
 
@@ -706,7 +714,7 @@ msgstr "Composer dans l'application « Téléphone »"
 
 #: ../qml/widgets/lastmessage/Settings.qml:65
 msgid "Number of displayed messages :"
-msgstr ""
+msgstr "Nombre de messages affichés"
 
 #: ../qml/widgets/lastmessage/Settings.qml:94
 msgid "View a summary"
@@ -725,22 +733,18 @@ msgid "Open the application with message"
 msgstr "Ouvrir l'application avec message"
 
 #: ../qml/widgets/weather/Settings.qml:14
-
 msgid "Settings for weather widget"
 msgstr "Paramètres du Widget"
 
 #: ../qml/widgets/weather/Settings.qml:59
-
 msgid "API Key"
 msgstr "Clé API"
 
 #: ../qml/widgets/weather/Settings.qml:78
-
 msgid "OpenWeatherMap API"
 msgstr "API d'OpenWeatherMap"
 
 #: ../qml/widgets/weather/Settings.qml:90
-
 msgid "Click to sign up for an API key"
 msgstr "Cliquez pour vous inscrire et obtenir une clé d'API"
 
@@ -753,6 +757,5 @@ msgid "or"
 msgstr "ou"
 
 #: launchermodular.desktop.in.h:1
-
 msgid "Modular launcher"
 msgstr "Restaurer le tableau de bord du lanceur"

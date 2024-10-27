@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 17:46+0000\n"
+"POT-Creation-Date: 2024-10-27 20:14+0000\n"
 "PO-Revision-Date: 2023-02-12 14:38+0000\n"
 "Last-Translator: HudobniVolk <hudobni.volk@tuta.io>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/ubports/"
@@ -97,17 +97,14 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-
 msgid "Open the photo by clicking on it!"
 msgstr "Odprite aplikacijo"
 
 #: ../qml/ChangeLogs.qml:62
-
 msgid "Enable Autostart"
 msgstr "Samodejni zagon"
 
 #: ../qml/ChangeLogs.qml:63
-
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Podrsajte navzgor za konfiguracijo zaganjalnika"
 
@@ -116,12 +113,10 @@ msgid "Correction for background display."
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:66
-
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Zaženite ukaz v terminalu"
 
 #: ../qml/ChangeLogs.qml:69
-
 msgid "Resumption of the application."
 msgstr "Odprite aplikacijo"
 
@@ -384,9 +379,10 @@ msgid "Russian - "
 msgstr "ruščina - "
 
 #: ../qml/Translators.qml:165
+
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"ubports/launcher-modular/'>Hosted Weblate</a>."
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
 "Prevedite Launcher Modular na <a href=\"https://hosted.weblate.org/projects/"
 "ubports/launcher-modular/\">Hosted Weblate</a>."
@@ -469,7 +465,6 @@ msgid "Favorite Contacts"
 msgstr "Priljubljeni stiki"
 
 #: ../qml/widgets/Lastcall.qml:58
-
 msgid "Last Calls"
 msgstr "Zadnji klic"
 
@@ -482,12 +477,10 @@ msgid "No recent calls"
 msgstr "Ni nedavnih klicev"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Messages"
 msgstr "Zadnje sporočilo"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Message"
 msgstr "Zadnje sporočilo"
 
@@ -692,7 +685,6 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-
 msgid "By default 1"
 msgstr "Privzeto 60 dni"
 
@@ -757,10 +749,8 @@ msgstr "ali"
 msgid "Modular launcher"
 msgstr "Launcher Modular"
 
-
 #~ msgid "Message"
 #~ msgstr "Zadnje sporočilo"
-
 
 #~ msgid "Last message"
 #~ msgstr "Zadnje sporočilo"

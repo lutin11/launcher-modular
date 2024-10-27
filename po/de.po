@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 17:46+0000\n"
+"POT-Creation-Date: 2024-10-27 20:14+0000\n"
 "PO-Revision-Date: 2023-01-08 13:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -15,7 +15,6 @@ msgstr ""
 "X-Generator: Weblate 4.15.1-dev\n"
 
 #: ../qml/Autostart.qml:15
-
 msgid "Autostart Modular Launcher"
 msgstr "Standard App-Starter wieder herstellen"
 
@@ -88,7 +87,6 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-
 msgid "Open the photo by clicking on it!"
 msgstr "Die Anwendung öffnen"
 
@@ -97,7 +95,6 @@ msgid "Enable Autostart"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:63
-
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Nach oben wischen für Einstellungen"
 
@@ -106,12 +103,10 @@ msgid "Correction for background display."
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:66
-
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Eine Anweisung im Terminal ausführen"
 
 #: ../qml/ChangeLogs.qml:69
-
 msgid "Resumption of the application."
 msgstr "Die Anwendung öffnen"
 
@@ -135,7 +130,6 @@ msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:287
-
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Ein modularer App-Starter für Ubuntu Touch"
 
@@ -177,13 +171,11 @@ msgid "Copyright"
 msgstr "Copyright"
 
 #: ../qml/ChangeLogs.qml:360
-
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"LAUNCHER MODULAR TRANSLATORS\">LAUNCHER MODULAR ÜBERSETZER</a>"
 
 #: ../qml/Help.qml:15
-
 msgid "Modular Launcher Help"
 msgstr "Launcher Modular Hilfe"
 
@@ -250,7 +242,6 @@ msgid "Terminal command"
 msgstr "Terminalbefehl"
 
 #: ../qml/Main.qml:691
-
 msgid "Run a command in a terminal"
 msgstr "Eine Anweisung im Terminal ausführen"
 
@@ -309,7 +300,6 @@ msgid "None"
 msgstr "Keiner"
 
 #: ../qml/Settings.qml:116
-
 msgid "Unstyled icons"
 msgstr "Iconstyle: "
 
@@ -318,7 +308,6 @@ msgid "Rounded"
 msgstr "Abgerundet"
 
 #: ../qml/Settings.qml:117
-
 msgid "Rounded icons"
 msgstr "Abgerundet"
 
@@ -359,7 +348,6 @@ msgid "Translators"
 msgstr "Übersetzer"
 
 #: ../qml/Translators.qml:76
-
 msgid "Modular Launcher-translators:"
 msgstr "Übersetzer von Launcher Modular:"
 
@@ -386,7 +374,7 @@ msgstr "Russisch - "
 #: ../qml/Translators.qml:165
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"ubports/launcher-modular/'>Hosted Weblate</a>."
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
 
 #: ../qml/pages/Calendar.qml:107
@@ -467,7 +455,6 @@ msgid "Favorite Contacts"
 msgstr "Kontakt Favoriten"
 
 #: ../qml/widgets/Lastcall.qml:58
-
 msgid "Last Calls"
 msgstr "Letzter Anruf"
 
@@ -480,12 +467,10 @@ msgid "No recent calls"
 msgstr "Keine vorherigen Anrufe"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Messages"
 msgstr "Letzte Nachricht"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Message"
 msgstr "Letzte Nachricht"
 
@@ -690,7 +675,6 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-
 msgid "By default 1"
 msgstr "Standardmäßig 60 Tage"
 
@@ -728,22 +712,18 @@ msgid "Open the application with message"
 msgstr "Die Nachricht in der Anwendung öffnen"
 
 #: ../qml/widgets/weather/Settings.qml:14
-
 msgid "Settings for weather widget"
 msgstr "Einstellungen Widget"
 
 #: ../qml/widgets/weather/Settings.qml:59
-
 msgid "API Key"
 msgstr "Api-Schlüssel"
 
 #: ../qml/widgets/weather/Settings.qml:78
-
 msgid "OpenWeatherMap API"
 msgstr "Api-openweathermap"
 
 #: ../qml/widgets/weather/Settings.qml:90
-
 msgid "Click to sign up for an API key"
 msgstr "Klicken um für einen API-Schlüssel zu registrieren"
 
@@ -756,14 +736,11 @@ msgid "or"
 msgstr "oder"
 
 #: launchermodular.desktop.in.h:1
-
 msgid "Modular launcher"
 msgstr "Dash Launcher wiederherstellen"
 
-
 #~ msgid "Message"
 #~ msgstr "Letzte Nachricht"
-
 
 #~ msgid "Last message"
 #~ msgstr "Letzte Nachricht"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 17:46+0000\n"
+"POT-Creation-Date: 2024-10-27 20:14+0000\n"
 "PO-Revision-Date: 2023-02-17 04:45+0000\n"
 "Last-Translator: Raman <translations.0l5zc@simplelogin.com>\n"
 "Language-Team: Malayalam <https://hosted.weblate.org/projects/ubports/"
@@ -281,7 +281,6 @@ msgid "General"
 msgstr "പൊതുവായ"
 
 #: ../qml/Settings.qml:81
-
 msgid "Dark background"
 msgstr "ഇരുണ്ട പശ്ചാത്തലം"
 
@@ -368,7 +367,7 @@ msgstr ""
 #: ../qml/Translators.qml:165
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"ubports/launcher-modular/'>Hosted Weblate</a>."
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
 
 #: ../qml/pages/Calendar.qml:107

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 17:46+0000\n"
+"POT-Creation-Date: 2024-10-27 20:14+0000\n"
 "PO-Revision-Date: 2023-11-20 10:01+0000\n"
 "Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -97,12 +97,10 @@ msgid "Open the photo by clicking on it!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:62
-
 msgid "Enable Autostart"
 msgstr "Autostart"
 
 #: ../qml/ChangeLogs.qml:63
-
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Przewiń w górę, aby skonfigurować launcher"
 
@@ -183,7 +181,6 @@ msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-
 msgid "Modular Launcher Help"
 msgstr "Konfiguruj launcher"
 
@@ -380,7 +377,7 @@ msgstr ""
 #: ../qml/Translators.qml:165
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"ubports/launcher-modular/'>Hosted Weblate</a>."
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
 
 #: ../qml/pages/Calendar.qml:107
@@ -742,6 +739,5 @@ msgid "or"
 msgstr ""
 
 #: launchermodular.desktop.in.h:1
-
 msgid "Modular launcher"
 msgstr "Konfiguruj launcher"

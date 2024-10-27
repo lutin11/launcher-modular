@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 17:46+0000\n"
+"POT-Creation-Date: 2024-10-27 20:14+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/ubports/"
@@ -29,7 +29,6 @@ msgid "How to Autostart Modular Launcher after booting"
 msgstr "Як запустити Modular Launcher після завантаження"
 
 #: ../qml/Autostart.qml:58
-
 msgid ""
 "How to set Modular Launcher to start automatically when the device is "
 "booted. <br><br>More details in <a href='https://github.com/lutin11/launcher-"
@@ -98,17 +97,14 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-
 msgid "Open the photo by clicking on it!"
 msgstr "Відкрити програму"
 
 #: ../qml/ChangeLogs.qml:62
-
 msgid "Enable Autostart"
 msgstr "Автозапуск"
 
 #: ../qml/ChangeLogs.qml:63
-
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Проведіть вгору, щоб налаштувати лаунчер"
 
@@ -117,12 +113,10 @@ msgid "Correction for background display."
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:66
-
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Запустити команду в терміналі"
 
 #: ../qml/ChangeLogs.qml:69
-
 msgid "Resumption of the application."
 msgstr "Відкрити програму"
 
@@ -386,9 +380,10 @@ msgid "Russian - "
 msgstr "Російська- "
 
 #: ../qml/Translators.qml:165
+
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"ubports/launcher-modular/'>Hosted Weblate</a>."
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
 "Перекладіть Modular Launcher на <a href=\"https://hosted.weblate.org/"
 "projects/ubports/launcher-modular/\">Hosted Weblate</a>."
@@ -471,7 +466,6 @@ msgid "Favorite Contacts"
 msgstr "Улюблені контакти"
 
 #: ../qml/widgets/Lastcall.qml:58
-
 msgid "Last Calls"
 msgstr "Останній дзвінок"
 
@@ -484,12 +478,10 @@ msgid "No recent calls"
 msgstr "Немає останніх дзвінків"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Messages"
 msgstr "Останнє повідомлення"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Message"
 msgstr "Останнє повідомлення"
 
@@ -694,7 +686,6 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-
 msgid "By default 1"
 msgstr "За замовчуванням 60 днів"
 
@@ -759,10 +750,8 @@ msgstr "або"
 msgid "Modular launcher"
 msgstr "Modular launcher"
 
-
 #~ msgid "Message"
 #~ msgstr "Останнє повідомлення"
-
 
 #~ msgid "Last message"
 #~ msgstr "Останнє повідомлення"

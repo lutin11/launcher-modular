@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 17:46+0000\n"
+"POT-Creation-Date: 2024-10-27 20:14+0000\n"
 "PO-Revision-Date: 2023-02-08 13:38+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/ubports/"
@@ -92,17 +92,14 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-
 msgid "Open the photo by clicking on it!"
 msgstr "Abrir a aplicação"
 
 #: ../qml/ChangeLogs.qml:62
-
 msgid "Enable Autostart"
 msgstr "Começo automático"
 
 #: ../qml/ChangeLogs.qml:63
-
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Deslize para cima para configurar o iniciador"
 
@@ -115,7 +112,6 @@ msgid "Fix up 'Run a command in a terminal'"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:69
-
 msgid "Resumption of the application."
 msgstr "Abrir a aplicação"
 
@@ -183,7 +179,6 @@ msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-
 msgid "Modular Launcher Help"
 msgstr "Configurar Iniciador"
 
@@ -306,7 +301,6 @@ msgid "None"
 msgstr "Nenhum"
 
 #: ../qml/Settings.qml:116
-
 msgid "Unstyled icons"
 msgstr "Estilo dos ícones: "
 
@@ -315,7 +309,6 @@ msgid "Rounded"
 msgstr "Arredondado"
 
 #: ../qml/Settings.qml:117
-
 msgid "Rounded icons"
 msgstr "Arredondado"
 
@@ -382,7 +375,7 @@ msgstr "Russo - "
 #: ../qml/Translators.qml:165
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"ubports/launcher-modular/'>Hosted Weblate</a>."
+"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
 
 #: ../qml/pages/Calendar.qml:107
@@ -463,7 +456,6 @@ msgid "Favorite Contacts"
 msgstr "Contactos Favoritos"
 
 #: ../qml/widgets/Lastcall.qml:58
-
 msgid "Last Calls"
 msgstr "Última Chamada"
 
@@ -476,12 +468,10 @@ msgid "No recent calls"
 msgstr "Sem chamadas recentes"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Messages"
 msgstr "Última Mensagem"
 
 #: ../qml/widgets/Lastmessage.qml:60
-
 msgid "Last Message"
 msgstr "Última Mensagem"
 
@@ -686,7 +676,6 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-
 msgid "By default 1"
 msgstr "60 dias por padrão"
 
@@ -724,7 +713,6 @@ msgid "Open the application with message"
 msgstr "Abrir com a aplicação com mensagem"
 
 #: ../qml/widgets/weather/Settings.qml:14
-
 msgid "Settings for weather widget"
 msgstr "Configurações do Widget"
 
@@ -749,14 +737,11 @@ msgid "or"
 msgstr "ou"
 
 #: launchermodular.desktop.in.h:1
-
 msgid "Modular launcher"
 msgstr "Configurar Iniciador"
 
-
 #~ msgid "Message"
 #~ msgstr "Última Mensagem"
-
 
 #~ msgid "Last message"
 #~ msgstr "Última Mensagem"
