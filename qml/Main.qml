@@ -65,7 +65,8 @@ MainView {
 
         property bool firstRun: true
         property bool firstRunNew: true
-        property bool developerModeEnabled:    false;
+        property bool developerModeEnabled: false;
+        property string version: '0';
 
         property string apiOpenWeatherMap: ''
         property string unitsFormat: '&units=metric'
@@ -134,6 +135,11 @@ MainView {
                     launchermodular.settings.firstRunNew = false
                 }
 
+                if(parseInt(launchermodular.settings.version.replace(/\./g, '')) <  parseInt(appVersion.replace(/\./g, ''))) {
+                    pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
+                    launchermodular.settings.version = appVersion;
+                }
+
                 console.log("###### on Component completion #####")
 
                 if(typeof launchermodular.settings.customIcon === 'undefined') {
@@ -180,7 +186,6 @@ MainView {
 
                 launchermodular.settings.favoriteApps = getFavoriteAppsArray();
                 console.log("Store favoriteApps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
-
             }
 
             header: PageHeader {
@@ -590,7 +595,8 @@ MainView {
                         MouseArea {
                             anchors.fill: parent
                             onPressed: {
-                                pageStack.push(Qt.resolvedUrl("About.qml"))
+                                //pageStack.push(Qt.resolvedUrl("About.qml"))
+                                pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
                                 bottomBarSettings.close()
                             }
                         }
