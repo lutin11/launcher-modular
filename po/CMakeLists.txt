@@ -1,5 +1,6 @@
 include(FindGettext)
 find_program(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
+find_program(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
 
 set(DOMAIN ${FULL_PROJECT_NAME})
 set(POT_FILE ${DOMAIN}.pot)
@@ -20,6 +21,21 @@ add_custom_target(${POT_FILE} ALL
         --package-name='${DOMAIN}'
         ${I18N_SRC_FILES}
     COMMAND ${CMAKE_COMMAND} -E copy ${POT_FILE} ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Refresh all .po files based on the updated .pot file
+add_custom_target(update_po_files ALL
+    COMMENT "Updating .po files based on the new .pot file"
+    DEPENDS ${POT_FILE}
+    COMMAND ${CMAKE_COMMAND} -E echo "Merging ${POT_FILE} with existing .po files..."
+)
+
+foreach(PO_FILE ${PO_FILES})
+    add_custom_command(TARGET update_po_files POST_BUILD
+        COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --update --backup=none
+            ${PO_FILE} ${POT_FILE}
+        COMMENT "Updating ${PO_FILE}"
+    )
+endforeach()
 
 # Builds the binary translations catalog for each language
 # it finds source translations (*.po) for
