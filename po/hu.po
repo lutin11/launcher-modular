@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-05 16:12+0000\n"
+"POT-Creation-Date: 2024-10-27 14:47+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Lundrin <berenyi.vilmos@tutanota.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/ubports/"
@@ -19,15 +19,126 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.2-dev\n"
 
-#: ../qml/About.qml:14 ../qml/Main.qml:628
-msgid "About"
-msgstr "Bővebben"
-
-#: ../qml/About.qml:96
-msgid "A launcher modular for Ubuntu Touch"
+#: ../qml/Autostart.qml:15
+msgid "Autostart Modular Launcher"
 msgstr ""
 
-#: ../qml/About.qml:110
+#: ../qml/Autostart.qml:45
+msgid "How to Autostart Modular Launcher after booting"
+msgstr ""
+
+#: ../qml/Autostart.qml:58
+msgid ""
+"How to set Modular Launcher to start automatically when the device is "
+"booted. <br><br>More details in <a href='https://github.com/lutin11/launcher-"
+"modular-service'>how to add a Modular Launcher systemd user service file to/"
+"on your device</a>"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:14
+msgid "Change Log"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:18
+msgid "Back"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:43
+msgid "Set how many calls to display!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:44 ../qml/ChangeLogs.qml:46 ../qml/ChangeLogs.qml:48
+msgid "To do this, long press on the widget to access its configuration page."
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:45
+msgid "Set how many messages to display!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:47
+msgid "Set how many event to display!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:49
+msgid "Call redirection to phone app works!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:50
+msgid ""
+"On call settings, set the option for 'When clicked' to 'Open the dialer with "
+"number'"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:51
+msgid "Message redirection to messaging app works!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:52
+msgid ""
+"On message settings, set the option for 'When clicked' to 'Open the "
+"application with message'"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:53
+msgid "Force the event list refresh by double-clicking on the event widget!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:55
+msgid "The event list show event from current day!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:57
+msgid "Clicking on the 'Alarm' widget opens the clock!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:59
+msgid "Open the photo by clicking on it!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:62
+msgid "Enable Autostart"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:63
+msgid "Swipe up to configure the launcher, and click on 'Autostart"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:64
+msgid "Correction for background display."
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:66
+msgid "Fix up 'Run a command in a terminal'"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:69
+msgid "Resumption of the application."
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:70
+msgid ""
+"This is the first release of Launcher Modular based on <a href='https://"
+"github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
+"contains, libraries updates and some fixes."
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:128
+msgid "Version: "
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:134
+msgid " | Date: "
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:260
+msgid "If you like this app, please rank it on OpenStore"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:287
+msgid "A modular launcher for Ubuntu Touch"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:301
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -39,212 +150,189 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/About.qml:125
+#: ../qml/ChangeLogs.qml:316
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/About.qml:125
+#: ../qml/ChangeLogs.qml:316
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/About.qml:125
-msgid "DONATE"
-msgstr ""
-
-#: ../qml/About.qml:140
+#: ../qml/ChangeLogs.qml:331
 msgid "Maintainer"
 msgstr ""
 
-#: ../qml/About.qml:154
+#: ../qml/ChangeLogs.qml:345
 msgid "Copyright"
 msgstr ""
 
-#: ../qml/About.qml:168
-msgid "Special thanks to the testers : Sander Klootwijk, Steve Kueffer."
-msgstr ""
-
-#: ../qml/About.qml:183
-msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>LAUNCHER MODULAR TRANSLATORS</a>"
-msgstr ""
-
-#: ../qml/Autostart.qml:15
-msgid "Autostart Launcher Modular"
-msgstr ""
-
-#: ../qml/Autostart.qml:49
-msgid "How to Autostart Launcher Modular on boot"
-msgstr ""
-
-#: ../qml/Autostart.qml:62
-msgid ""
-"How to enable Launcher Modular to start automatically when the device is "
-"booted. <br><br>For more details see the <a href='https://github.com/"
-"lutin11/launcher-modular-service'>how to add a Launcher Modular "
-"systemd user service file to/on your device</a>"
+#: ../qml/ChangeLogs.qml:360
+msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-msgid "Launcher Modular Help"
+msgid "Modular Launcher Help"
 msgstr ""
 
-#: ../qml/Help.qml:49
+#: ../qml/Help.qml:45
 msgid "Widget Settings"
 msgstr ""
 
-#: ../qml/Help.qml:57
+#: ../qml/Help.qml:53
 msgid "<br><b>Click and hold the widget and to change its settings.</b>"
 msgstr ""
 
-#: ../qml/ImportPage.qml:11
+#: ../qml/ImportPage.qml:10
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:399
+#: ../qml/Main.qml:378
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:478
+#: ../qml/Main.qml:430
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:508
+#: ../qml/Main.qml:462
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:538
+#: ../qml/Main.qml:494
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:568
+#: ../qml/Main.qml:526
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:598
+#: ../qml/Main.qml:558
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:716
+#: ../qml/Main.qml:590
+msgid "About"
+msgstr "Bővebben"
+
+#: ../qml/Main.qml:672
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:730
+#: ../qml/Main.qml:685
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:735
+#: ../qml/Main.qml:690
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:735
-msgid "Open the browser with the url"
+#: ../qml/Main.qml:690
+msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:736
+#: ../qml/Main.qml:691
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:736
-msgid "Launch an order in a terminal"
+#: ../qml/Main.qml:691
+msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:737
+#: ../qml/Main.qml:692
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:737
+#: ../qml/Main.qml:692
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:761 ../qml/Main.qml:763 ../qml/Main.qml:765
+#: ../qml/Main.qml:716 ../qml/Main.qml:717 ../qml/Main.qml:718
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:779
+#: ../qml/Main.qml:729
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:824 ../qml/Pagemanagement.qml:137
-#: ../qml/Pagemanagementback.qml:128 ../qml/pages/Home.qml:433
-#: ../qml/pages/home/Settings.qml:91
+#: ../qml/Main.qml:775 ../qml/Pagemanagement.qml:132 ../qml/Settings.qml:47
+#: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:449
+#: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/Pagemanagement.qml:17 ../qml/Pagemanagementback.qml:17
+#: ../qml/Pagemanagement.qml:17
 msgid "Page management"
 msgstr ""
 
-#: ../qml/Pagemanagement.qml:52 ../qml/Pagemanagementback.qml:52
+#: ../qml/Pagemanagement.qml:49
 msgid "Choose a page"
-msgstr ""
-
-#: ../qml/Pagemanagementback.qml:182 ../qml/pages/Todo.qml:119
-#: ../qml/pages/home/Settings.qml:154
-msgid "Delete"
 msgstr ""
 
 #: ../qml/Settings.qml:17
 msgid "Settings"
 msgstr "Beállítások"
 
-#: ../qml/Settings.qml:76 ../qml/widgets/favoritecontact/Settings.qml:57
-#: ../qml/widgets/lastcall/Settings.qml:57
-#: ../qml/widgets/lastmessage/Settings.qml:56
-msgid "Generals"
+#: ../qml/Settings.qml:41 ../qml/pages/Home.qml:36
+msgid "ok"
+msgstr ""
+
+#: ../qml/Settings.qml:76 ../qml/pages/calendar/Settings.qml:43
+msgid "General"
 msgstr ""
 
 #: ../qml/Settings.qml:81
 msgid "Dark background"
 msgstr ""
 
-#: ../qml/Settings.qml:104
+#: ../qml/Settings.qml:108
 msgid "Background blur effect"
 msgstr ""
 
-#: ../qml/Settings.qml:112
+#: ../qml/Settings.qml:116
 msgid "None"
 msgstr ""
 
-#: ../qml/Settings.qml:112
-msgid "Icons without style"
+#: ../qml/Settings.qml:116
+msgid "Unstyled icons"
 msgstr ""
 
-#: ../qml/Settings.qml:113
+#: ../qml/Settings.qml:117
 msgid "Rounded"
 msgstr ""
 
-#: ../qml/Settings.qml:113
-msgid "Icons rounded"
+#: ../qml/Settings.qml:117
+msgid "Rounded icons"
 msgstr ""
 
-#: ../qml/Settings.qml:137
+#: ../qml/Settings.qml:141
 msgid "Style Icons : "
 msgstr ""
 
-#: ../qml/Settings.qml:148
+#: ../qml/Settings.qml:152
 msgid "Widgets"
 msgstr ""
 
-#: ../qml/Settings.qml:153
+#: ../qml/Settings.qml:157
 msgid "Show clock"
 msgstr ""
 
-#: ../qml/Settings.qml:162
+#: ../qml/Settings.qml:166
 msgid "Show weather"
 msgstr ""
 
-#: ../qml/Settings.qml:172
+#: ../qml/Settings.qml:176
 msgid "Show alarms"
 msgstr ""
 
-#: ../qml/Settings.qml:181
+#: ../qml/Settings.qml:185
 msgid "Show last call"
 msgstr ""
 
-#: ../qml/Settings.qml:190
+#: ../qml/Settings.qml:194
 msgid "Show last message"
 msgstr ""
 
-#: ../qml/Settings.qml:199
+#: ../qml/Settings.qml:203
 msgid "Show events"
 msgstr ""
 
@@ -252,131 +340,130 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: ../qml/Translators.qml:79
-msgid "Launcher Modular translators:"
+#: ../qml/Translators.qml:76
+msgid "Modular Launcher-translators:"
 msgstr ""
 
-#: ../qml/Translators.qml:98
+#: ../qml/Translators.qml:95
 msgid "Dutch - "
 msgstr ""
 
-#: ../qml/Translators.qml:112
+#: ../qml/Translators.qml:109
 msgid "French - "
 msgstr ""
 
-#: ../qml/Translators.qml:126
+#: ../qml/Translators.qml:123
 msgid "German - "
 msgstr ""
 
-#: ../qml/Translators.qml:140
+#: ../qml/Translators.qml:137
 msgid "Portuguese - "
 msgstr ""
 
-#: ../qml/Translators.qml:154
+#: ../qml/Translators.qml:151
 msgid "Russian - "
 msgstr ""
 
-#: ../qml/Translators.qml:168
+#: ../qml/Translators.qml:165
 msgid ""
-"If you like to translate Launcher Modular into your own language, go to <a "
-"href='https://hosted.weblate.org/projects/ubports/launcher-"
-"modular/'>Weblate</a> for more details."
+"Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
+"ubports/launcher-modular/'>Hosted Weblate</a>."
 msgstr ""
 
-#: ../qml/pages/Calendar.qml:103
+#: ../qml/pages/Calendar.qml:107
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:158
+#: ../qml/pages/Home.qml:183
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:285
+#: ../qml/pages/Home.qml:309
 msgid "Installed Apps"
 msgstr ""
 
-#: ../qml/pages/Home.qml:395
+#: ../qml/pages/Home.qml:408
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:395
+#: ../qml/pages/Home.qml:408
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Todo.qml:64
+#: ../qml/pages/Todo.qml:76
 msgid "new todo"
 msgstr ""
 
+#: ../qml/pages/Todo.qml:114 ../qml/pages/home/Settings.qml:138
+msgid "Delete"
+msgstr ""
+
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:14
-#: ../qml/pages/picture/Settings.qml:12 ../qml/pages/todo/Settings.qml:12
+#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/todo/Settings.qml:11
 msgid "Settings Page"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:51
-msgid "General"
-msgstr ""
-
-#: ../qml/pages/calendar/Settings.qml:70 ../qml/widgets/event/Settings.qml:72
+#: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:89 ../qml/widgets/event/Settings.qml:91
+#: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:121
+#: ../qml/pages/home/Settings.qml:106
 msgid "Favorite apps management"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:58
+#: ../qml/pages/picture/Settings.qml:48
 msgid "Image path"
 msgstr ""
 
-#: ../qml/widgets/Alarm.qml:31
+#: ../qml/widgets/Alarm.qml:28
 msgid "Alarms"
 msgstr ""
 
-#: ../qml/widgets/Alarm.qml:42
+#: ../qml/widgets/Alarm.qml:39
 msgid "No active alarm"
 msgstr ""
 
-#: ../qml/widgets/Alarm.qml:58
+#: ../qml/widgets/Alarm.qml:54
 msgid "at"
 msgstr ""
 
-#: ../qml/widgets/Event.qml:46
+#: ../qml/widgets/Event.qml:100
 msgid "Events"
 msgstr ""
 
-#: ../qml/widgets/Event.qml:104
+#: ../qml/widgets/Event.qml:114
 msgid "No events"
 msgstr ""
 
-#: ../qml/widgets/FavoriteApp.qml:42
+#: ../qml/widgets/FavoriteApp.qml:41
 msgid "Favorite Apps"
 msgstr ""
 
-#: ../qml/widgets/FavoriteContact.qml:33
+#: ../qml/widgets/FavoriteContact.qml:32
 msgid "Favorite Contacts"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:36
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:57
+#: ../qml/widgets/Lastcall.qml:137
 msgid "No recent calls"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:38
+#: ../qml/widgets/Lastmessage.qml:61
 msgid "Last Message"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:58
+#: ../qml/widgets/Lastmessage.qml:150
 msgid "No recent messages"
 msgstr ""
 
-#: ../qml/widgets/SearchContact.qml:36
+#: ../qml/widgets/SearchContact.qml:35
 msgid "Search Contacts"
 msgstr ""
 
@@ -384,58 +471,59 @@ msgstr ""
 msgid "Please long press here to configure"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:168 ../qml/widgets/Weather.qml:196
+#: ../qml/widgets/Weather.qml:164 ../qml/widgets/Weather.qml:192
 msgid "Calm"
 msgstr "Szélcsend"
 
-#: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
+#: ../qml/widgets/Weather.qml:166 ../qml/widgets/Weather.qml:194
 msgid "Light Air"
 msgstr "Gyenge szellő, fuvallat"
 
-#: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
+#: ../qml/widgets/Weather.qml:168 ../qml/widgets/Weather.qml:196
 msgid "Light Breeze"
 msgstr "Enyhe szél"
 
-#: ../qml/widgets/Weather.qml:174 ../qml/widgets/Weather.qml:202
+#: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
 msgid "Gentle Breeze"
 msgstr "Gyenge szél"
 
-#: ../qml/widgets/Weather.qml:176 ../qml/widgets/Weather.qml:204
+#: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
 msgid "Moderate Breeze"
 msgstr "Mérsékelt szél"
 
-#: ../qml/widgets/Weather.qml:178 ../qml/widgets/Weather.qml:206
+#: ../qml/widgets/Weather.qml:174 ../qml/widgets/Weather.qml:202
 msgid "Fresh Breeze"
 msgstr "Élénk szél"
 
-#: ../qml/widgets/Weather.qml:180 ../qml/widgets/Weather.qml:208
+#: ../qml/widgets/Weather.qml:176 ../qml/widgets/Weather.qml:204
 msgid "Strong Breeze"
 msgstr "Erős szél"
 
-#: ../qml/widgets/Weather.qml:182 ../qml/widgets/Weather.qml:210
+#: ../qml/widgets/Weather.qml:178 ../qml/widgets/Weather.qml:206
 msgid "Near Gale"
 msgstr "Viharos szél"
 
-#: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
+#: ../qml/widgets/Weather.qml:180 ../qml/widgets/Weather.qml:208
 msgid "Gale"
 msgstr "Élénk viharos szél, vihar"
 
-#: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
+#: ../qml/widgets/Weather.qml:182 ../qml/widgets/Weather.qml:210
 msgid "Severe Gale"
 msgstr "Heves vihar"
 
-#: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
-msgid "Strong storm"
-msgstr "Dühöngő vihar, szélvész"
+#: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
+msgid "Storm"
+msgstr ""
 
-#: ../qml/widgets/Weather.qml:190 ../qml/widgets/Weather.qml:218
+#: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
 msgid "Violent Storm"
 msgstr "Heves szélvész"
 
-#: ../qml/widgets/Weather.qml:192 ../qml/widgets/Weather.qml:220
+#: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
 msgid "Hurricane"
 msgstr "Orkán"
 
+#: ../qml/widgets/Weather.qml:229 ../qml/widgets/Weather.qml:231
 #: ../qml/widgets/Weather.qml:233 ../qml/widgets/Weather.qml:235
 #: ../qml/widgets/Weather.qml:237 ../qml/widgets/Weather.qml:239
 #: ../qml/widgets/Weather.qml:241 ../qml/widgets/Weather.qml:243
@@ -443,177 +531,198 @@ msgstr "Orkán"
 #: ../qml/widgets/Weather.qml:249 ../qml/widgets/Weather.qml:251
 #: ../qml/widgets/Weather.qml:253 ../qml/widgets/Weather.qml:255
 #: ../qml/widgets/Weather.qml:257 ../qml/widgets/Weather.qml:259
-#: ../qml/widgets/Weather.qml:261 ../qml/widgets/Weather.qml:263
 msgid "of"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:233
+#: ../qml/widgets/Weather.qml:229
 msgid "North"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:235
+#: ../qml/widgets/Weather.qml:231
 msgid "North-Northeast"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:237
+#: ../qml/widgets/Weather.qml:233
 msgid "Northeast"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:239
+#: ../qml/widgets/Weather.qml:235
 msgid "East-Northeast"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:241
+#: ../qml/widgets/Weather.qml:237
 msgid "East"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:243
+#: ../qml/widgets/Weather.qml:239
 msgid "East-Southeast"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:245
+#: ../qml/widgets/Weather.qml:241
 msgid "Southeast"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:247
+#: ../qml/widgets/Weather.qml:243
 msgid "South-Southeast"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:249
+#: ../qml/widgets/Weather.qml:245
 msgid "South"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:251
+#: ../qml/widgets/Weather.qml:247
 msgid "South-Southwest"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:253
+#: ../qml/widgets/Weather.qml:249
 msgid "Southwest"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:255
+#: ../qml/widgets/Weather.qml:251
 msgid "West-Southwest"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:257
+#: ../qml/widgets/Weather.qml:253
 msgid "West"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:259
+#: ../qml/widgets/Weather.qml:255
 msgid "West-Northwest"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:261
+#: ../qml/widgets/Weather.qml:257
 msgid "Northwest"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:263
+#: ../qml/widgets/Weather.qml:259
 msgid "North-Northwest"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:275
+#: ../qml/widgets/Weather.qml:270
 msgid "humidity"
 msgstr ""
 
-#: ../qml/widgets/clock/Settings.qml:15
+#: ../qml/widgets/clock/Settings.qml:14
 msgid "Settings Widget Clock"
 msgstr ""
 
-#: ../qml/widgets/clock/Settings.qml:56
+#: ../qml/widgets/clock/Settings.qml:49
 msgid "Show analog clock with digits"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:15
+#: ../qml/widgets/event/Settings.qml:13
 #: ../qml/widgets/favoritecontact/Settings.qml:14
-#: ../qml/widgets/lastcall/Settings.qml:15
+#: ../qml/widgets/lastcall/Settings.qml:14
 #: ../qml/widgets/lastmessage/Settings.qml:15
 msgid "Settings Widget"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:116
+#: ../qml/widgets/event/Settings.qml:102
 msgid "Limit of event"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:135
+#: ../qml/widgets/event/Settings.qml:121
 msgid "By default 3 event"
 msgstr ""
 
-#: ../qml/widgets/favoritecontact/Settings.qml:61
+#: ../qml/widgets/favoritecontact/Settings.qml:50
+#: ../qml/widgets/lastcall/Settings.qml:49
+#: ../qml/widgets/lastmessage/Settings.qml:49
+msgid "Generals"
+msgstr ""
+
+#: ../qml/widgets/favoritecontact/Settings.qml:54
 msgid "Dialer"
 msgstr ""
 
-#: ../qml/widgets/favoritecontact/Settings.qml:61
-#: ../qml/widgets/lastcall/Settings.qml:61
+#: ../qml/widgets/favoritecontact/Settings.qml:54
+#: ../qml/widgets/lastcall/Settings.qml:93
 msgid "Open the dialer"
 msgstr ""
 
-#: ../qml/widgets/favoritecontact/Settings.qml:62
+#: ../qml/widgets/favoritecontact/Settings.qml:55
 msgid "Linphone"
 msgstr ""
 
-#: ../qml/widgets/favoritecontact/Settings.qml:62
+#: ../qml/widgets/favoritecontact/Settings.qml:55
 msgid "Open Linphone"
 msgstr ""
 
-#: ../qml/widgets/favoritecontact/Settings.qml:87
-#: ../qml/widgets/lastcall/Settings.qml:86
-#: ../qml/widgets/lastmessage/Settings.qml:96
+#: ../qml/widgets/favoritecontact/Settings.qml:80
+#: ../qml/widgets/lastcall/Settings.qml:119
+#: ../qml/widgets/lastmessage/Settings.qml:131
 msgid "When clicked : "
 msgstr ""
 
-#: ../qml/widgets/lastcall/Settings.qml:61
-#: ../qml/widgets/lastmessage/Settings.qml:70
+#: ../qml/widgets/lastcall/Settings.qml:65
+msgid "Number of displayed calls :"
+msgstr ""
+
+#: ../qml/widgets/lastcall/Settings.qml:83
+#: ../qml/widgets/lastmessage/Settings.qml:83
+msgid "By default 1"
+msgstr ""
+
+#: ../qml/widgets/lastcall/Settings.qml:93
+#: ../qml/widgets/lastmessage/Settings.qml:106
 msgid "Default"
 msgstr ""
 
-#: ../qml/widgets/lastcall/Settings.qml:62
+#: ../qml/widgets/lastcall/Settings.qml:94
 msgid "Call"
 msgstr ""
 
-#: ../qml/widgets/lastcall/Settings.qml:62
+#: ../qml/widgets/lastcall/Settings.qml:94
 msgid "Open the dialer with number"
 msgstr ""
 
-#: ../qml/widgets/lastmessage/Settings.qml:61
+#: ../qml/widgets/lastmessage/Settings.qml:65
+msgid "Number of displayed messages :"
+msgstr ""
+
+#: ../qml/widgets/lastmessage/Settings.qml:94
 msgid "View a summary"
 msgstr ""
 
-#: ../qml/widgets/lastmessage/Settings.qml:70
+#: ../qml/widgets/lastmessage/Settings.qml:106
 msgid "Open the application"
 msgstr ""
 
-#: ../qml/widgets/lastmessage/Settings.qml:71
+#: ../qml/widgets/lastmessage/Settings.qml:107
 msgid "Open Message"
 msgstr ""
 
-#: ../qml/widgets/lastmessage/Settings.qml:71
+#: ../qml/widgets/lastmessage/Settings.qml:107
 msgid "Open the application with message"
 msgstr ""
 
 #: ../qml/widgets/weather/Settings.qml:14
-msgid "Settings Widget Weather"
+msgid "Settings for weather widget"
 msgstr ""
 
-#: ../qml/widgets/weather/Settings.qml:66
-msgid "Api Key"
+#: ../qml/widgets/weather/Settings.qml:59
+msgid "API Key"
 msgstr ""
 
-#: ../qml/widgets/weather/Settings.qml:85
-msgid "Api openweathermap"
+#: ../qml/widgets/weather/Settings.qml:78
+msgid "OpenWeatherMap API"
 msgstr ""
 
-#: ../qml/widgets/weather/Settings.qml:97
-msgid "Click to signup for an API key"
+#: ../qml/widgets/weather/Settings.qml:90
+msgid "Click to sign up for an API key"
 msgstr ""
 
-#: ../qml/widgets/weather/Settings.qml:117
+#: ../qml/widgets/weather/Settings.qml:108
 msgid "City name"
 msgstr ""
 
-#: ../qml/widgets/weather/Settings.qml:136
+#: ../qml/widgets/weather/Settings.qml:127
 msgid "or"
 msgstr ""
 
 #: launchermodular.desktop.in.h:1
-msgid "Launcher modular"
+msgid "Modular launcher"
 msgstr ""
+
+#~ msgid "Strong storm"
+#~ msgstr "Dühöngő vihar, szélvész"

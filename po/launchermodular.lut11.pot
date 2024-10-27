@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 11:36+0000\n"
+"POT-Creation-Date: 2024-10-27 14:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,15 +128,15 @@ msgstr ""
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:261
+#: ../qml/ChangeLogs.qml:260
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:288
+#: ../qml/ChangeLogs.qml:287
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:302
+#: ../qml/ChangeLogs.qml:301
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -148,23 +148,23 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:317
+#: ../qml/ChangeLogs.qml:316
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:317
+#: ../qml/ChangeLogs.qml:316
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:332
+#: ../qml/ChangeLogs.qml:331
 msgid "Maintainer"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:346
+#: ../qml/ChangeLogs.qml:345
 msgid "Copyright"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:361
+#: ../qml/ChangeLogs.qml:360
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
