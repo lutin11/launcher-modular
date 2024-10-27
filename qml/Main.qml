@@ -135,7 +135,10 @@ MainView {
                     launchermodular.settings.firstRunNew = false
                 }
 
-                pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
+                if(parseInt(launchermodular.settings.version.replace(/\./g, '')) <  parseInt(appVersion.replace(/\./g, ''))) {
+                    pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
+                    launchermodular.settings.version = appVersion;
+                }
 
                 console.log("###### on Component completion #####")
 
@@ -183,10 +186,6 @@ MainView {
 
                 launchermodular.settings.favoriteApps = getFavoriteAppsArray();
                 console.log("Store favoriteApps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
-
-                console.log("launchermodular.settings.version:" + parseInt(launchermodular.settings.version.replace(/\./g, '')) + " < appVersion:" + parseInt(appVersion.replace(/\./g, '')))
-                launchermodular.settings.version = appVersion
-
             }
 
             header: PageHeader {
