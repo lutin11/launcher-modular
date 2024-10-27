@@ -21,7 +21,7 @@ msgstr "Restaurer le lanceur standard"
 
 #: ../qml/Autostart.qml:45
 msgid "How to Autostart Modular Launcher after booting"
-msgstr ""
+msgstr "Comment démarrer automatiquement Modular Launcher après le démarrage ?"
 
 #: ../qml/Autostart.qml:58
 msgid ""
@@ -29,72 +29,72 @@ msgid ""
 "booted. <br><br>More details in <a href='https://github.com/lutin11/launcher-"
 "modular-service'>how to add a Modular Launcher systemd user service file to/"
 "on your device</a>"
-msgstr ""
+msgstr "Comment configurer Modular Launcher pour qu'il démarre automatiquement lorsque l'appareil est démarré. <br><br>Plus de détails dans <a href='https://github.com/lutin11/launcher-modular-service'>comment ajouter Modular Launcher systemd service sur votre appareil</a>"
 
 #: ../qml/ChangeLogs.qml:14
 msgid "Change Log"
-msgstr ""
+msgstr "Liste des changements"
 
 #: ../qml/ChangeLogs.qml:18
 msgid "Back"
-msgstr ""
+msgstr "Retour"
 
 #: ../qml/ChangeLogs.qml:43
 msgid "Set how many calls to display!"
-msgstr ""
+msgstr "Configurez combien d'appels visualiser&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:44 ../qml/ChangeLogs.qml:46 ../qml/ChangeLogs.qml:48
 msgid "To do this, long press on the widget to access its configuration page."
-msgstr ""
+msgstr "Pour ce faire, appuyez longuement sur le widget pour accéder à sa page de configuration."
 
 #: ../qml/ChangeLogs.qml:45
 msgid "Set how many messages to display!"
-msgstr ""
+msgstr "Configurez combien de messages visualiser&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:47
 msgid "Set how many event to display!"
-msgstr ""
+msgstr "Configurez combien d'événements visualiser&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:49
 msgid "Call redirection to phone app works!"
-msgstr ""
+msgstr "La redirection vers un numéro de téléphone fonctionne&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:50
 msgid ""
 "On call settings, set the option for 'When clicked' to 'Open the dialer with "
 "number'"
-msgstr ""
+msgstr "Dans les paramètres d'appel, définissez l'option 'Lorsque cliqué' sur 'Composer dans l'application « Téléphone »'."
 
 #: ../qml/ChangeLogs.qml:51
 msgid "Message redirection to messaging app works!"
-msgstr ""
+msgstr "La redirection des messages vers l'application de messagerie fonctionne&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:52
 msgid ""
 "On message settings, set the option for 'When clicked' to 'Open the "
 "application with message'"
-msgstr ""
+msgstr "Dans les paramètres des messages, définissez l'option 'Lorsque cliqué' sur 'Ouvrir l'application avec message'."
 
 #: ../qml/ChangeLogs.qml:53
 msgid "Force the event list refresh by double-clicking on the event widget!"
-msgstr ""
+msgstr "Forcez le rafraîchissement de la liste des événements en double-cliquant sur le widget de l'événement&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:55
 msgid "The event list show event from current day!"
-msgstr ""
+msgstr "La liste des événements affiche les événements de la journée en cours&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:57
 msgid "Clicking on the 'Alarm' widget opens the clock!"
-msgstr ""
+msgstr "En cliquant sur le widget « Alarme », vous ouvrez l'horloge&nbsp;!"
 
 #: ../qml/ChangeLogs.qml:59
 
 msgid "Open the photo by clicking on it!"
-msgstr "Ouvrir l'application"
+msgstr "Visualiser la photo en cliquant dessus!"
 
 #: ../qml/ChangeLogs.qml:62
 msgid "Enable Autostart"
-msgstr ""
+msgstr "Activer le démarrage automatique"
 
 #: ../qml/ChangeLogs.qml:63
 
@@ -103,7 +103,7 @@ msgstr "Balayez vers le haut pour configurer le lanceur"
 
 #: ../qml/ChangeLogs.qml:64
 msgid "Correction for background display."
-msgstr ""
+msgstr "Correction pour l'affichage en arrière-plan."
 
 #: ../qml/ChangeLogs.qml:66
 
@@ -120,7 +120,7 @@ msgid ""
 "This is the first release of Launcher Modular based on <a href='https://"
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
-msgstr ""
+msgstr "C'est la première version de Launcher Modular basée sur <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a>. Elle contient des mises à jour des bibliothèques et quelques corrections."
 
 #: ../qml/ChangeLogs.qml:128
 msgid "Version: "
@@ -132,7 +132,7 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:260
 msgid "If you like this app, please rank it on OpenStore"
-msgstr ""
+msgstr "Si vous aimez cette application, likez-là sur OpenStore"
 
 #: ../qml/ChangeLogs.qml:287
 
