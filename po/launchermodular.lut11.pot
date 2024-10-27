@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 01:10+0000\n"
+"POT-Creation-Date: 2024-10-27 09:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: ../qml/About.qml:91 ../qml/ChangeLogs.qml:205
+#: ../qml/About.qml:91 ../qml/ChangeLogs.qml:208
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/About.qml:105 ../qml/ChangeLogs.qml:214
+#: ../qml/About.qml:105 ../qml/ChangeLogs.qml:217
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -45,7 +45,7 @@ msgstr ""
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/About.qml:135 ../qml/ChangeLogs.qml:224
+#: ../qml/About.qml:135 ../qml/ChangeLogs.qml:227
 msgid "Maintainer"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Copyright"
 msgstr ""
 
-#: ../qml/About.qml:164 ../qml/ChangeLogs.qml:233
+#: ../qml/About.qml:164 ../qml/ChangeLogs.qml:236
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -118,49 +118,53 @@ msgid ""
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:53
-msgid "Force list refresh by double-clicking on the event widget!"
+msgid "Force the event list refresh by double-clicking on the event widget!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:55
-msgid "Clicking on the 'Alarm' widget opens the clock!"
+msgid "The event list show event from current day!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:57
+msgid "Clicking on the 'Alarm' widget opens the clock!"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:59
 msgid "Open the photo by clicking on it!"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:60
+#: ../qml/ChangeLogs.qml:62
 msgid "Enable Autostart"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:61
+#: ../qml/ChangeLogs.qml:63
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:62
+#: ../qml/ChangeLogs.qml:64
 msgid "Correction for background display."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:64
+#: ../qml/ChangeLogs.qml:66
 msgid "Fix up 'Run a command in a terminal'"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:67
+#: ../qml/ChangeLogs.qml:69
 msgid "Resumption of the application."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:68
+#: ../qml/ChangeLogs.qml:70
 msgid ""
 "This is the first release of Launcher Modular based on <a href='https://"
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:125
+#: ../qml/ChangeLogs.qml:128
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:131
+#: ../qml/ChangeLogs.qml:134
 msgid " | Date: "
 msgstr ""
 

@@ -610,7 +610,7 @@ MainView {
             Rectangle {
                 id: customIconDialogue
                 anchors.fill: parent
-                color: "black"
+                color: "#111111"
                 visible: false
                 MouseArea {
                     anchors.fill: parent
@@ -623,7 +623,7 @@ MainView {
                     width: parent.width*0.75
                     height: parent.height*0.75
                     radius: units.gu(2)
-                    color: "white"
+                    color: "#FFFFFF"
                     MouseArea {
                         anchors.fill: parent
                     }
@@ -657,7 +657,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 width: units.gu(15)
                                 height: width
-                                color: "orange"
+                                color: "#E95420"
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
@@ -677,7 +677,7 @@ MainView {
                             TextField {
                                 id: appTitle
                                 width: parent.width
-                                color: "black"
+                                color: "#111111"
                                 anchors {
                                     left: parent.left
                                     right: parent.right
@@ -706,7 +706,7 @@ MainView {
                             TextField {
                                 id: appAction
                                 width: parent.width
-                                color: "black"
+                                color: "#111111"
                                 anchors {
                                     left: parent.left
                                     right: parent.right
@@ -740,7 +740,7 @@ MainView {
 
                                     background: Rectangle {
                                         radius: units.gu(1.5)
-                                        color: LomiriColors.green
+                                        color: "#0E8420"
                                     }
 
                                     property string actionIcon: ""
@@ -777,7 +777,7 @@ MainView {
                                     width: (parent.width/2)-units.gu(2)
                                     background: Rectangle {
                                         radius: units.gu(1.5)
-                                        color: LomiriColors.orange
+                                        color: "#E95420"
                                     }
                                     onClicked: {
                                         onClicked: {

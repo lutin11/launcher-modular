@@ -59,7 +59,7 @@ Page {
                     Label {
                         id: label
                         text: i18n.tr("Limit of days")
-                        color:  "white"
+                        color:  "#FFFFFF"
                         width: templateRow.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
@@ -100,7 +100,7 @@ Page {
                     Label {
                         id: label2
                         text: i18n.tr("Limit of event")
-                        color:  "white"
+                        color:  "#FFFFFF"
                         width: templateRow2.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter

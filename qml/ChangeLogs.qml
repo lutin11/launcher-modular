@@ -128,26 +128,26 @@ Page {
                                         text: i18n.tr("Version: ") + version
                                         visible: version.length > 0
                                         font.bold: true
-                                        color: LomiriColors.orange
+                                        color: "#E95420"
                                     }
                                     Text {
                                         text: i18n.tr(" | Date: ") + date
                                         visible: date.length > 0
-                                        color: "gray"
+                                        color: "#888888"
                                     }
                                 }
 
                                 Text {
                                     id: textDetail
                                     text: details
-                                    color: "white"
+                                    color: "#FFFFFF"
                                     wrapMode: Text.WordWrap
                                     width: changeLogContainer.width
                                 }
                                 Text {
                                     id: textDescription
                                     text: description
-                                    color: "grey"
+                                    color: "#888888"
                                     visible: description.length > 0
                                     wrapMode: Text.WordWrap
                                     width: changeLogContainer.width
@@ -158,7 +158,7 @@ Page {
                                     id: endLine
                                     width: changeLogContainer.width
                                     height: 5
-                                    color: if (index < changeLogModel.count && changeLogModel.get(index+1).version.length > 0){"white"} else {"black"}
+                                    color: if (index < changeLogModel.count && changeLogModel.get(index+1).version.length > 0){"#FFFFFF"} else {"#111111"}
                                     anchors.horizontalCenter: parent.horizontalCenter
                                 }
                             }
@@ -262,6 +262,7 @@ Page {
             name: "go-next"
             width: units.gu(2)
             height: units.gu(2)
+            color: "#E95420"
         }
 
         onClicked: {
@@ -285,6 +286,7 @@ Page {
             name: "go-previous"
             width: units.gu(2)
             height: units.gu(2)
+            color: "#E95420"
         }
 
         onClicked: {

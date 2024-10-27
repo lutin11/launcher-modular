@@ -89,7 +89,7 @@ Column {
                             width: screenshotContactSearch.width
                             height: screenshotContactSearch.height
                             radius: units.gu(8)
-                            color: if (launchermodular.settings.iconStyle === "rounded") { "white";}else{ "transparent";}
+                            color: if (launchermodular.settings.iconStyle === "rounded") { "#FFFFFF";}else{ "transparent";}
                             visible: if (launchermodular.settings.iconStyle === "rounded") { false;}else{ true;}
                         }
                     }
@@ -101,7 +101,7 @@ Column {
                         width: if (launchermodular.settings.iconStyle === "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                         height: if (launchermodular.settings.iconStyle === "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                         radius : "medium"
-                        backgroundColor: "white"
+                        backgroundColor: "#FFFFFF"
                     }
 
                     MouseArea {
@@ -135,7 +135,7 @@ Column {
                         anchors.right: parent.right
                         width: units.gu(8)*launchermodular.settings.iconSize
                         height: units.gu(8)*launchermodular.settings.iconSize
-                        color: "white"
+                        color: "#FFFFFF"
                         visible: launchermodular.settings.iconStyle === "none"
                         Row {
                             anchors.fill: parent
@@ -148,12 +148,12 @@ Column {
                                     width: units.gu(2)
                                     height: units.gu(2)
                                     name: "call-start"
-                                    color: "green"
+                                    color: "#0E8420"
                                 }
                             }
 
                             Rectangle {
-                                color: "black"
+                                color: "#111111"
                                 height: parent.height
                                 width: 0.5
                             }
@@ -167,7 +167,7 @@ Column {
                                     width: units.gu(2)
                                     height: units.gu(2)
                                     name: "message"
-                                    color: "orange"
+                                    color: "#E95420"
                                 }
 
                             }
@@ -182,7 +182,7 @@ Column {
                             width: screenshotContactSearchFlip.width
                             height: screenshotContactSearchFlip.height
                             radius: units.gu(8)
-                            color: if (launchermodular.settings.iconStyle === "rounded") { "white";}else{ "transparent";}
+                            color: if (launchermodular.settings.iconStyle === "rounded") { "#FFFFFF";}else{ "transparent";}
                             visible: if (launchermodular.settings.iconStyle === "rounded") { false;}else{ true;}
                         }
                     }
@@ -194,7 +194,7 @@ Column {
                             width: screenshotContactSearchFlip.width
                             height: screenshotContactSearchFlip.height
                             radius: units.gu(1.5)
-                            color: if (launchermodular.settings.iconStyle === "default") { "white";}else{ "transparent";}
+                            color: if (launchermodular.settings.iconStyle === "default") { "#FFFFFF";}else{ "transparent";}
                             visible: if (launchermodular.settings.iconStyle === "default") { false;}else{ true;}
                         }
                     }

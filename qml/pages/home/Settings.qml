@@ -53,7 +53,7 @@ Page {
                         height: modelLayout2.height + (divider.visible ? divider.height : 0)
                         id: modelLayout2
                         title.text: elem.name
-                        title.color: "black"
+                        title.color: "#111111"
                         LomiriShape {
                             source: Image {
                                 id: screenshotAppFavorite
@@ -78,7 +78,7 @@ Page {
 
             Button{
                 text: i18n.tr("Cancel")
-                color: LomiriColors.orange
+                color: "#E95420"
                 onClicked: PopupUtils.close(listAppDialogue);
             }
 

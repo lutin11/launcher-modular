@@ -59,7 +59,7 @@ Page {
                     Label {
                         id: label
                         text: i18n.tr("Limit of days")
-                        color:  "white"
+                        color:  "#FFFFFF"
                         width: templateRow.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter

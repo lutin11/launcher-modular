@@ -46,7 +46,7 @@ Page {
                     Label {
                         id: label
                         text: i18n.tr("Image path")
-                        color:  "white"
+                        color:  "#FFFFFF"
                         width: templateRow.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter

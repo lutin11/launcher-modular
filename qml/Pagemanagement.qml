@@ -83,7 +83,7 @@ Page {
                             height: modelLayout2.height + (divider.visible ? divider.height : 0)
                             id: modelLayout2
                             title.text: fileBaseName
-                            title.color: "black"
+                            title.color: "#111111"
                         }
                         divider.visible: false
                         onClicked: {
@@ -115,7 +115,7 @@ Page {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3
                             title.text: fileBaseName
-                            title.color: "black"
+                            title.color: "#111111"
                         }
                         divider.visible: false
                         visible: if(fileName && fileName.split(".")[0] === "Home"){false; height = 0}
@@ -130,7 +130,7 @@ Page {
 
             Button {
                 text: i18n.tr("Cancel")
-                color: LomiriColors.orange
+                color: "#E95420"
                 onClicked: PopupUtils.close(listPageDialogue);
             }
         }

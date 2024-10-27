@@ -36,7 +36,7 @@ Item {
                     text: i18n.tr("ok")
                     background: Rectangle {
                         radius: units.gu(1.5)
-                        color: LomiriColors.green
+                        color: "#0E8420"
                     }
                     onClicked: {Terminalaccess.inputLine(inp.text, false);PopupUtils.close(authentDialogue)}
                 }
@@ -47,7 +47,7 @@ Item {
                     width: (parent.width/2)-units.gu(2)
                     background: Rectangle {
                         radius: units.gu(1.5)
-                        color: LomiriColors.orange
+                        color: "#E95420"
                     }
                     text: i18n.tr("Cancel")
                     onClicked: {
@@ -419,7 +419,7 @@ Item {
 
                                             background: Rectangle {
                                                 radius: units.gu(1.5)
-                                                color: LomiriColors.green
+                                                color: "#0E8420"
                                             }
                                             onClicked: {
                                                 PopupUtils.close(appsDialogue);
@@ -451,7 +451,7 @@ Item {
                                             width: (parent.width/2)-units.gu(2)
                                             background: Rectangle {
                                                 radius: units.gu(1.5)
-                                                color: LomiriColors.orange
+                                                color: "#E95420"
                                             }
                                             onClicked: {
                                                 onClicked: PopupUtils.close(appsDialogue);

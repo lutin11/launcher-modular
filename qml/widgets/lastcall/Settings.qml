@@ -63,7 +63,7 @@ Page {
                     Label {
                         id: label
                         text: i18n.tr("Number of displayed calls :")
-                        color:  "white"
+                        color:  "#FFFFFF"
                         width: templateRow.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter

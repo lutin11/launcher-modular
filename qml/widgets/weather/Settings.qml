@@ -57,7 +57,7 @@ Page {
                     Label {
                         id: label
                         text: i18n.tr("API Key")
-                        color:  "white"
+                        color:  "#FFFFFF"
                         width: templateRow.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
@@ -106,7 +106,7 @@ Page {
                     Label {
                         id: labelCity
                         text: i18n.tr("City name")
-                        color:  "white"
+                        color:  "#FFFFFF"
                         width: templateRow2.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter

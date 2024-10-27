@@ -89,7 +89,7 @@ Item {
             Rectangle {
                 x: parent.width/2.105263158
                 y: parent.height/2.054794521
-                color: "red"
+                color: "#C7162B"
                 width: parent.width/20
                 height: parent.height/20
                 radius: 50
