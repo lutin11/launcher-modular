@@ -37,7 +37,6 @@ Item {
 
     property var updateFilteredModelFunction: updateFilteredModel
 
-
     Rectangle {
         id: message
         anchors.horizontalCenter: parent.horizontalCenter
@@ -58,7 +57,7 @@ Item {
                 id: titleLastMessage
                 anchors.left: iconLastMessage.right
                 anchors.leftMargin: units.gu(1)
-                text: i18n.tr("Last Message")
+                text: listMessage.count > 1 ? i18n.tr("Last Messages") : i18n.tr("Last Message");
                 color: launchermodular.settings.textColor
             }
         }

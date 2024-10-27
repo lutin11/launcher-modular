@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-09-07 04:43+0000\n"
 "Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -92,17 +92,17 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-#, fuzzy
+
 msgid "Open the photo by clicking on it!"
 msgstr "Öppna applikationen"
 
 #: ../qml/ChangeLogs.qml:62
-#, fuzzy
+
 msgid "Enable Autostart"
 msgstr "Autostart"
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
+
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Svep uppåt för att konfigurera startprogrammet"
 
@@ -115,7 +115,7 @@ msgid "Fix up 'Run a command in a terminal'"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:69
-#, fuzzy
+
 msgid "Resumption of the application."
 msgstr "Öppna applikationen"
 
@@ -183,7 +183,7 @@ msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-#, fuzzy
+
 msgid "Modular Launcher Help"
 msgstr "Konfigurera Launcher"
 
@@ -306,7 +306,7 @@ msgid "None"
 msgstr "Ingen"
 
 #: ../qml/Settings.qml:116
-#, fuzzy
+
 msgid "Unstyled icons"
 msgstr "Stilikoner : "
 
@@ -315,7 +315,7 @@ msgid "Rounded"
 msgstr "Rundad"
 
 #: ../qml/Settings.qml:117
-#, fuzzy
+
 msgid "Rounded icons"
 msgstr "Rundad"
 
@@ -463,6 +463,11 @@ msgid "Favorite Contacts"
 msgstr "Favoritkontakter"
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Senaste samtalet"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Senaste samtalet"
 
@@ -470,11 +475,17 @@ msgstr "Senaste samtalet"
 msgid "No recent calls"
 msgstr "Inga senaste samtal"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Senaste meddelandet"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Senaste meddelandet"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Inga senaste meddelanden"
 
@@ -675,7 +686,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "Som standard 60 dagar"
 
@@ -713,7 +724,7 @@ msgid "Open the application with message"
 msgstr "Öppna applikationen med meddelande"
 
 #: ../qml/widgets/weather/Settings.qml:14
-#, fuzzy
+
 msgid "Settings for weather widget"
 msgstr "Inställningar Widget"
 
@@ -738,9 +749,17 @@ msgid "or"
 msgstr "eller"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
+
 msgid "Modular launcher"
 msgstr "Konfigurera Launcher"
+
+
+#~ msgid "Message"
+#~ msgstr "Senaste meddelandet"
+
+
+#~ msgid "Last message"
+#~ msgstr "Senaste meddelandet"
 
 #~ msgid "DONATE"
 #~ msgstr "DONERA"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-02-12 14:38+0000\n"
 "Last-Translator: HudobniVolk <hudobni.volk@tuta.io>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/ubports/"
@@ -97,17 +97,17 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-#, fuzzy
+
 msgid "Open the photo by clicking on it!"
 msgstr "Odprite aplikacijo"
 
 #: ../qml/ChangeLogs.qml:62
-#, fuzzy
+
 msgid "Enable Autostart"
 msgstr "Samodejni zagon"
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
+
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Podrsajte navzgor za konfiguracijo zaganjalnika"
 
@@ -116,12 +116,12 @@ msgid "Correction for background display."
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:66
-#, fuzzy
+
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Zaženite ukaz v terminalu"
 
 #: ../qml/ChangeLogs.qml:69
-#, fuzzy
+
 msgid "Resumption of the application."
 msgstr "Odprite aplikacijo"
 
@@ -469,6 +469,11 @@ msgid "Favorite Contacts"
 msgstr "Priljubljeni stiki"
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Zadnji klic"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Zadnji klic"
 
@@ -476,11 +481,17 @@ msgstr "Zadnji klic"
 msgid "No recent calls"
 msgstr "Ni nedavnih klicev"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Zadnje sporočilo"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Zadnje sporočilo"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Ni nedavnih sporočil"
 
@@ -681,7 +692,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "Privzeto 60 dni"
 
@@ -745,6 +756,14 @@ msgstr "ali"
 #: launchermodular.desktop.in.h:1
 msgid "Modular launcher"
 msgstr "Launcher Modular"
+
+
+#~ msgid "Message"
+#~ msgstr "Zadnje sporočilo"
+
+
+#~ msgid "Last message"
+#~ msgstr "Zadnje sporočilo"
 
 #~ msgid "DONATE"
 #~ msgstr "DONIRAJ"

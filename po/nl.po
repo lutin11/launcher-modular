@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-02-22 13:39+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -15,17 +15,17 @@ msgstr ""
 "X-Generator: Weblate 4.16-dev\n"
 
 #: ../qml/Autostart.qml:15
-#, fuzzy
+
 msgid "Autostart Modular Launcher"
 msgstr "Launcher Modular automatisch starten"
 
 #: ../qml/Autostart.qml:45
-#, fuzzy
+
 msgid "How to Autostart Modular Launcher after booting"
 msgstr "Launcher Modular automatisch starten bij het opstarten"
 
 #: ../qml/Autostart.qml:58
-#, fuzzy
+
 msgid ""
 "How to set Modular Launcher to start automatically when the device is "
 "booted. <br><br>More details in <a href='https://github.com/lutin11/launcher-"
@@ -94,17 +94,17 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-#, fuzzy
+
 msgid "Open the photo by clicking on it!"
 msgstr "App openen"
 
 #: ../qml/ChangeLogs.qml:62
-#, fuzzy
+
 msgid "Enable Autostart"
 msgstr "Automatisch opstarten"
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
+
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Veeg omhoog om in te stellen"
 
@@ -113,12 +113,12 @@ msgid "Correction for background display."
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:66
-#, fuzzy
+
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Open een commando in een terminal"
 
 #: ../qml/ChangeLogs.qml:69
-#, fuzzy
+
 msgid "Resumption of the application."
 msgstr "App openen"
 
@@ -142,7 +142,7 @@ msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:287
-#, fuzzy
+
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Een modulaire launcher voor Ubuntu Touch"
 
@@ -184,12 +184,12 @@ msgid "Copyright"
 msgstr "Auteursrecht"
 
 #: ../qml/ChangeLogs.qml:360
-#, fuzzy
+
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr "<a href='LAUNCHER MODULAR VERTALERS'>LAUNCHER MODULAR VERTALERS</a>"
 
 #: ../qml/Help.qml:15
-#, fuzzy
+
 msgid "Modular Launcher Help"
 msgstr "Launcher Modular Help"
 
@@ -256,7 +256,7 @@ msgid "Terminal command"
 msgstr "Terminalopdracht"
 
 #: ../qml/Main.qml:691
-#, fuzzy
+
 msgid "Run a command in a terminal"
 msgstr "Open een commando in een terminal"
 
@@ -315,7 +315,7 @@ msgid "None"
 msgstr "Geen"
 
 #: ../qml/Settings.qml:116
-#, fuzzy
+
 msgid "Unstyled icons"
 msgstr "Pictogramstijl : "
 
@@ -324,7 +324,7 @@ msgid "Rounded"
 msgstr "Afgerond"
 
 #: ../qml/Settings.qml:117
-#, fuzzy
+
 msgid "Rounded icons"
 msgstr "Afgerond"
 
@@ -365,7 +365,7 @@ msgid "Translators"
 msgstr "Vertalers"
 
 #: ../qml/Translators.qml:76
-#, fuzzy
+
 msgid "Modular Launcher-translators:"
 msgstr "Launcher Modular vertalers:"
 
@@ -473,6 +473,11 @@ msgid "Favorite Contacts"
 msgstr "Favoriete contactpersonen"
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Recentste oproep"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Recentste oproep"
 
@@ -480,11 +485,17 @@ msgstr "Recentste oproep"
 msgid "No recent calls"
 msgstr "Geen recente oproepen"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Recentst bericht"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Recentst bericht"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Geen recente berichten"
 
@@ -685,7 +696,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "Standaard: 60 dagen"
 
@@ -723,22 +734,22 @@ msgid "Open the application with message"
 msgstr "App met bericht openen"
 
 #: ../qml/widgets/weather/Settings.qml:14
-#, fuzzy
+
 msgid "Settings for weather widget"
 msgstr "Instellingenwidget"
 
 #: ../qml/widgets/weather/Settings.qml:59
-#, fuzzy
+
 msgid "API Key"
 msgstr "API sleutel"
 
 #: ../qml/widgets/weather/Settings.qml:78
-#, fuzzy
+
 msgid "OpenWeatherMap API"
 msgstr "API OpenWeatherMap"
 
 #: ../qml/widgets/weather/Settings.qml:90
-#, fuzzy
+
 msgid "Click to sign up for an API key"
 msgstr "Klik om je aan te melden voor een API sleutel"
 
@@ -751,9 +762,17 @@ msgid "or"
 msgstr "of"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
+
 msgid "Modular launcher"
 msgstr "Dash launcher herstellen"
+
+
+#~ msgid "Message"
+#~ msgstr "Recentst bericht"
+
+
+#~ msgid "Last message"
+#~ msgstr "Recentst bericht"
 
 #~ msgid "DONATE"
 #~ msgstr "DONEREN"

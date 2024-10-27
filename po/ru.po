@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Weblate 5.2-dev\n"
 
 #: ../qml/Autostart.qml:15
-#, fuzzy
+
 msgid "Autostart Modular Launcher"
 msgstr "Восстановить стандартный Лаунчер"
 
@@ -89,7 +89,7 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-#, fuzzy
+
 msgid "Open the photo by clicking on it!"
 msgstr "Открыть приложение"
 
@@ -98,7 +98,7 @@ msgid "Enable Autostart"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
+
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Проведите пальцем вверх, чтобы настроить средство запуска"
 
@@ -107,12 +107,12 @@ msgid "Correction for background display."
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:66
-#, fuzzy
+
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Запустить команду в терминале"
 
 #: ../qml/ChangeLogs.qml:69
-#, fuzzy
+
 msgid "Resumption of the application."
 msgstr "Открыть приложение"
 
@@ -136,7 +136,7 @@ msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:287
-#, fuzzy
+
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Launcher modular для Ubuntu Touch"
 
@@ -181,7 +181,7 @@ msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-#, fuzzy
+
 msgid "Modular Launcher Help"
 msgstr "Launcher Modular Помощь"
 
@@ -246,7 +246,7 @@ msgid "Terminal command"
 msgstr "Команда в терминале"
 
 #: ../qml/Main.qml:691
-#, fuzzy
+
 msgid "Run a command in a terminal"
 msgstr "Запустить команду в терминале"
 
@@ -305,7 +305,7 @@ msgid "None"
 msgstr "Без эффектов"
 
 #: ../qml/Settings.qml:116
-#, fuzzy
+
 msgid "Unstyled icons"
 msgstr "Стиль Иконок : "
 
@@ -314,7 +314,7 @@ msgid "Rounded"
 msgstr "Округлые"
 
 #: ../qml/Settings.qml:117
-#, fuzzy
+
 msgid "Rounded icons"
 msgstr "Округлые"
 
@@ -355,7 +355,7 @@ msgid "Translators"
 msgstr "Переводчики"
 
 #: ../qml/Translators.qml:76
-#, fuzzy
+
 msgid "Modular Launcher-translators:"
 msgstr "Переводчики Лаунчера Модуляр:"
 
@@ -463,6 +463,11 @@ msgid "Favorite Contacts"
 msgstr "Избранные Контакты"
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Недавний Звонок"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Недавний Звонок"
 
@@ -470,11 +475,17 @@ msgstr "Недавний Звонок"
 msgid "No recent calls"
 msgstr "Звонков нет"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Недавнее Сообщение"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Недавнее Сообщение"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Нет отправленных сообщений"
 
@@ -675,7 +686,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "По умолчанию 60 дней"
 
@@ -713,22 +724,22 @@ msgid "Open the application with message"
 msgstr "Открыть приложение с сообщением"
 
 #: ../qml/widgets/weather/Settings.qml:14
-#, fuzzy
+
 msgid "Settings for weather widget"
 msgstr "Настройки Виджета"
 
 #: ../qml/widgets/weather/Settings.qml:59
-#, fuzzy
+
 msgid "API Key"
 msgstr "Api ключ"
 
 #: ../qml/widgets/weather/Settings.qml:78
-#, fuzzy
+
 msgid "OpenWeatherMap API"
 msgstr "Api openweathermap"
 
 #: ../qml/widgets/weather/Settings.qml:90
-#, fuzzy
+
 msgid "Click to sign up for an API key"
 msgstr "Нажмите, чтобы зарегистрировать Api ключ"
 
@@ -741,9 +752,17 @@ msgid "or"
 msgstr "или"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
+
 msgid "Modular launcher"
 msgstr "Восстановить панель запуска тире"
+
+
+#~ msgid "Message"
+#~ msgstr "Недавнее Сообщение"
+
+
+#~ msgid "Last message"
+#~ msgstr "Недавнее Сообщение"
 
 #~ msgid "Open the browser with the url"
 #~ msgstr "Открыть в браузере по ссылке"

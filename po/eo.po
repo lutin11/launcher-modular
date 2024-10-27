@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-02-16 11:26+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/ubports/"
@@ -92,17 +92,17 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-#, fuzzy
+
 msgid "Open the photo by clicking on it!"
 msgstr "Malfermi la programon"
 
 #: ../qml/ChangeLogs.qml:62
-#, fuzzy
+
 msgid "Enable Autostart"
 msgstr "Aŭtomate lanĉi"
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
+
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Ŝovumu supren por agordi la lanĉilon"
 
@@ -115,7 +115,7 @@ msgid "Fix up 'Run a command in a terminal'"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:69
-#, fuzzy
+
 msgid "Resumption of the application."
 msgstr "Malfermi la programon"
 
@@ -183,7 +183,7 @@ msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-#, fuzzy
+
 msgid "Modular Launcher Help"
 msgstr "Agordi lanĉilon"
 
@@ -306,7 +306,7 @@ msgid "None"
 msgstr "Nenio"
 
 #: ../qml/Settings.qml:116
-#, fuzzy
+
 msgid "Unstyled icons"
 msgstr "Stilo de piktogramoj: "
 
@@ -315,7 +315,7 @@ msgid "Rounded"
 msgstr "Rondigitaj"
 
 #: ../qml/Settings.qml:117
-#, fuzzy
+
 msgid "Rounded icons"
 msgstr "Rondigitaj"
 
@@ -463,6 +463,11 @@ msgid "Favorite Contacts"
 msgstr "Ŝatataj kontaktoj"
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Lasta alvoko"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Lasta alvoko"
 
@@ -470,11 +475,17 @@ msgstr "Lasta alvoko"
 msgid "No recent calls"
 msgstr "Neniu lastatempa alvoko"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Lasta mesaĝo"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Lasta mesaĝo"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Neniuj lastatempaj mesaĝoj"
 
@@ -675,7 +686,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "Implicite 60 tagoj"
 
@@ -713,7 +724,7 @@ msgid "Open the application with message"
 msgstr "Malfermi la programon per la mesaĝo"
 
 #: ../qml/widgets/weather/Settings.qml:14
-#, fuzzy
+
 msgid "Settings for weather widget"
 msgstr "Agordoj pri fenestraĵoj"
 
@@ -738,9 +749,17 @@ msgid "or"
 msgstr "aŭ"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
+
 msgid "Modular launcher"
 msgstr "Agordi lanĉilon"
+
+
+#~ msgid "Message"
+#~ msgstr "Lasta mesaĝo"
+
+
+#~ msgid "Last message"
+#~ msgstr "Lasta mesaĝo"
 
 #~ msgid "DONATE"
 #~ msgstr "DONACI"

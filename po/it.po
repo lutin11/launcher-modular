@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher Modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-01-08 13:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -167,12 +167,12 @@ msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-#, fuzzy
+
 msgid "Modular Launcher Help"
 msgstr "Configura il Launcher"
 
 #: ../qml/Help.qml:45
-#, fuzzy
+
 msgid "Widget Settings"
 msgstr "Impostazioni"
 
@@ -181,12 +181,12 @@ msgid "<br><b>Click and hold the widget and to change its settings.</b>"
 msgstr ""
 
 #: ../qml/ImportPage.qml:10
-#, fuzzy
+
 msgid "Choose"
 msgstr "Scegli una pagina"
 
 #: ../qml/Main.qml:378
-#, fuzzy
+
 msgid "Swipe up to configure the launcher"
 msgstr "Configura il Launcher"
 
@@ -239,7 +239,7 @@ msgid "Run a command in a terminal"
 msgstr ""
 
 #: ../qml/Main.qml:692
-#, fuzzy
+
 msgid "Launch app"
 msgstr "Launcher modulare"
 
@@ -294,7 +294,7 @@ msgid "None"
 msgstr "Nessuno"
 
 #: ../qml/Settings.qml:116
-#, fuzzy
+
 msgid "Unstyled icons"
 msgstr "Stile icona "
 
@@ -303,7 +303,7 @@ msgid "Rounded"
 msgstr "Rotondi"
 
 #: ../qml/Settings.qml:117
-#, fuzzy
+
 msgid "Rounded icons"
 msgstr "Rotondi"
 
@@ -328,17 +328,17 @@ msgid "Show alarms"
 msgstr ""
 
 #: ../qml/Settings.qml:185
-#, fuzzy
+
 msgid "Show last call"
 msgstr "Ultima chiamata"
 
 #: ../qml/Settings.qml:194
-#, fuzzy
+
 msgid "Show last message"
 msgstr "Ultimo Messaggio"
 
 #: ../qml/Settings.qml:203
-#, fuzzy
+
 msgid "Show events"
 msgstr "Nessun evento"
 
@@ -414,7 +414,7 @@ msgid "Limit of days"
 msgstr "Limite di giorni"
 
 #: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:79
-#, fuzzy
+
 msgid "By default 60 days"
 msgstr "Predefinito 60 giorni"
 
@@ -455,6 +455,11 @@ msgid "Favorite Contacts"
 msgstr ""
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Ultima chiamata"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Ultima chiamata"
 
@@ -462,11 +467,17 @@ msgstr "Ultima chiamata"
 msgid "No recent calls"
 msgstr "Nessuna chiamata recente"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Ultimo Messaggio"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Ultimo Messaggio"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Nessun messaggio recente"
 
@@ -629,7 +640,7 @@ msgid "Limit of event"
 msgstr ""
 
 #: ../qml/widgets/event/Settings.qml:121
-#, fuzzy
+
 msgid "By default 3 event"
 msgstr "Predefinito 60 giorni"
 
@@ -668,7 +679,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "Predefinito 60 giorni"
 
@@ -706,22 +717,22 @@ msgid "Open the application with message"
 msgstr ""
 
 #: ../qml/widgets/weather/Settings.qml:14
-#, fuzzy
+
 msgid "Settings for weather widget"
 msgstr "Impostazioni Widget"
 
 #: ../qml/widgets/weather/Settings.qml:59
-#, fuzzy
+
 msgid "API Key"
 msgstr "Chiave API"
 
 #: ../qml/widgets/weather/Settings.qml:78
-#, fuzzy
+
 msgid "OpenWeatherMap API"
 msgstr "APIi openweathermap"
 
 #: ../qml/widgets/weather/Settings.qml:90
-#, fuzzy
+
 msgid "Click to sign up for an API key"
 msgstr "Clicca per registrarti e ottenere una chiave API"
 
@@ -734,9 +745,17 @@ msgid "or"
 msgstr "o"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
+
 msgid "Modular launcher"
 msgstr "Ripristina dash"
+
+
+#~ msgid "Message"
+#~ msgstr "Ultimo Messaggio"
+
+
+#~ msgid "Last message"
+#~ msgstr "Ultimo Messaggio"
 
 #~ msgid "by"
 #~ msgstr "da"

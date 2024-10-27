@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -445,6 +445,10 @@ msgid "Favorite Contacts"
 msgstr ""
 
 #: ../qml/widgets/Lastcall.qml:58
+msgid "Last Calls"
+msgstr ""
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr ""
 
@@ -452,11 +456,15 @@ msgstr ""
 msgid "No recent calls"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+msgid "Last Messages"
+msgstr ""
+
+#: ../qml/widgets/Lastmessage.qml:60
 msgid "Last Message"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr ""
 

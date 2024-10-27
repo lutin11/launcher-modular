@@ -55,7 +55,7 @@ Item {
                 id: titleLastCall
                 anchors.left: iconLastCall.right
                 anchors.leftMargin: units.gu(1)
-                text: i18n.tr("Last Call")
+                text: callList.count > 1 ? i18n.tr("Last Calls") : i18n.tr("Last Call")
                 color: launchermodular.settings.textColor
             }
         }

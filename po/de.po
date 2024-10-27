@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-01-08 13:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 4.15.1-dev\n"
 
 #: ../qml/Autostart.qml:15
-#, fuzzy
+
 msgid "Autostart Modular Launcher"
 msgstr "Standard App-Starter wieder herstellen"
 
@@ -88,7 +88,7 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-#, fuzzy
+
 msgid "Open the photo by clicking on it!"
 msgstr "Die Anwendung öffnen"
 
@@ -97,7 +97,7 @@ msgid "Enable Autostart"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
+
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Nach oben wischen für Einstellungen"
 
@@ -106,12 +106,12 @@ msgid "Correction for background display."
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:66
-#, fuzzy
+
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Eine Anweisung im Terminal ausführen"
 
 #: ../qml/ChangeLogs.qml:69
-#, fuzzy
+
 msgid "Resumption of the application."
 msgstr "Die Anwendung öffnen"
 
@@ -135,7 +135,7 @@ msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:287
-#, fuzzy
+
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Ein modularer App-Starter für Ubuntu Touch"
 
@@ -177,13 +177,13 @@ msgid "Copyright"
 msgstr "Copyright"
 
 #: ../qml/ChangeLogs.qml:360
-#, fuzzy
+
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"LAUNCHER MODULAR TRANSLATORS\">LAUNCHER MODULAR ÜBERSETZER</a>"
 
 #: ../qml/Help.qml:15
-#, fuzzy
+
 msgid "Modular Launcher Help"
 msgstr "Launcher Modular Hilfe"
 
@@ -250,7 +250,7 @@ msgid "Terminal command"
 msgstr "Terminalbefehl"
 
 #: ../qml/Main.qml:691
-#, fuzzy
+
 msgid "Run a command in a terminal"
 msgstr "Eine Anweisung im Terminal ausführen"
 
@@ -309,7 +309,7 @@ msgid "None"
 msgstr "Keiner"
 
 #: ../qml/Settings.qml:116
-#, fuzzy
+
 msgid "Unstyled icons"
 msgstr "Iconstyle: "
 
@@ -318,7 +318,7 @@ msgid "Rounded"
 msgstr "Abgerundet"
 
 #: ../qml/Settings.qml:117
-#, fuzzy
+
 msgid "Rounded icons"
 msgstr "Abgerundet"
 
@@ -359,7 +359,7 @@ msgid "Translators"
 msgstr "Übersetzer"
 
 #: ../qml/Translators.qml:76
-#, fuzzy
+
 msgid "Modular Launcher-translators:"
 msgstr "Übersetzer von Launcher Modular:"
 
@@ -467,6 +467,11 @@ msgid "Favorite Contacts"
 msgstr "Kontakt Favoriten"
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Letzter Anruf"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Letzter Anruf"
 
@@ -474,11 +479,17 @@ msgstr "Letzter Anruf"
 msgid "No recent calls"
 msgstr "Keine vorherigen Anrufe"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Letzte Nachricht"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Letzte Nachricht"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Keine vorhergehenden Nachrichten"
 
@@ -679,7 +690,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "Standardmäßig 60 Tage"
 
@@ -717,22 +728,22 @@ msgid "Open the application with message"
 msgstr "Die Nachricht in der Anwendung öffnen"
 
 #: ../qml/widgets/weather/Settings.qml:14
-#, fuzzy
+
 msgid "Settings for weather widget"
 msgstr "Einstellungen Widget"
 
 #: ../qml/widgets/weather/Settings.qml:59
-#, fuzzy
+
 msgid "API Key"
 msgstr "Api-Schlüssel"
 
 #: ../qml/widgets/weather/Settings.qml:78
-#, fuzzy
+
 msgid "OpenWeatherMap API"
 msgstr "Api-openweathermap"
 
 #: ../qml/widgets/weather/Settings.qml:90
-#, fuzzy
+
 msgid "Click to sign up for an API key"
 msgstr "Klicken um für einen API-Schlüssel zu registrieren"
 
@@ -745,9 +756,17 @@ msgid "or"
 msgstr "oder"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
+
 msgid "Modular launcher"
 msgstr "Dash Launcher wiederherstellen"
+
+
+#~ msgid "Message"
+#~ msgstr "Letzte Nachricht"
+
+
+#~ msgid "Last message"
+#~ msgstr "Letzte Nachricht"
 
 #~ msgid "Open the browser with the url"
 #~ msgstr "Den Browser mit der URL öffnen"

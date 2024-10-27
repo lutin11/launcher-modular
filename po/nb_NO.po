@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 14:47+0000\n"
+"POT-Creation-Date: 2024-10-27 17:46+0000\n"
 "PO-Revision-Date: 2023-01-23 18:52+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/ubports/"
@@ -92,17 +92,17 @@ msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:59
-#, fuzzy
+
 msgid "Open the photo by clicking on it!"
 msgstr "Åpne programmet"
 
 #: ../qml/ChangeLogs.qml:62
-#, fuzzy
+
 msgid "Enable Autostart"
 msgstr "Autostart"
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
+
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Dra oppover for å sette opp oppstarteren"
 
@@ -115,7 +115,7 @@ msgid "Fix up 'Run a command in a terminal'"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:69
-#, fuzzy
+
 msgid "Resumption of the application."
 msgstr "Åpne programmet"
 
@@ -139,7 +139,7 @@ msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:287
-#, fuzzy
+
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "En modulær oppstarter for Ubuntu Touch"
 
@@ -164,12 +164,12 @@ msgstr ""
 "a>."
 
 #: ../qml/ChangeLogs.qml:316
-#, fuzzy
+
 msgid "SOURCE"
 msgstr "Kilde"
 
 #: ../qml/ChangeLogs.qml:316
-#, fuzzy
+
 msgid "ISSUES"
 msgstr "Problemer"
 
@@ -186,7 +186,7 @@ msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
 #: ../qml/Help.qml:15
-#, fuzzy
+
 msgid "Modular Launcher Help"
 msgstr "Sett opp oppstarter"
 
@@ -235,7 +235,7 @@ msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "SVG eller PNG-ikon. 1:1-forhold"
 
 #: ../qml/Main.qml:685
-#, fuzzy
+
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>Navn</b> vist i programlisten"
 
@@ -310,7 +310,7 @@ msgid "None"
 msgstr "Ingen"
 
 #: ../qml/Settings.qml:116
-#, fuzzy
+
 msgid "Unstyled icons"
 msgstr "Ikonstil: "
 
@@ -319,12 +319,12 @@ msgid "Rounded"
 msgstr "Avrundet"
 
 #: ../qml/Settings.qml:117
-#, fuzzy
+
 msgid "Rounded icons"
 msgstr "Avrundet"
 
 #: ../qml/Settings.qml:141
-#, fuzzy
+
 msgid "Style Icons : "
 msgstr "Ikonstil: "
 
@@ -365,7 +365,7 @@ msgid "Modular Launcher-translators:"
 msgstr ""
 
 #: ../qml/Translators.qml:95
-#, fuzzy
+
 msgid "Dutch - "
 msgstr "Nederlandsk — "
 
@@ -396,7 +396,7 @@ msgid "Agenda"
 msgstr "Agenda"
 
 #: ../qml/pages/Home.qml:183
-#, fuzzy
+
 msgid "Search your phone and online sources"
 msgstr "Søk på enheten din og i nettbaserte kilder"
 
@@ -413,7 +413,7 @@ msgid "Remove"
 msgstr "Fjern"
 
 #: ../qml/pages/Todo.qml:76
-#, fuzzy
+
 msgid "new todo"
 msgstr "Nytt gjøremål"
 
@@ -427,7 +427,7 @@ msgid "Settings Page"
 msgstr "Innstillingsside"
 
 #: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:61
-#, fuzzy
+
 msgid "Limit of days"
 msgstr "Dagsfrist"
 
@@ -436,7 +436,7 @@ msgid "By default 60 days"
 msgstr "Som forvalg 60 dager"
 
 #: ../qml/pages/home/Settings.qml:106
-#, fuzzy
+
 msgid "Favorite apps management"
 msgstr "Håndtering av favorittprogrammer"
 
@@ -449,12 +449,12 @@ msgid "Alarms"
 msgstr "Alarmer"
 
 #: ../qml/widgets/Alarm.qml:39
-#, fuzzy
+
 msgid "No active alarm"
 msgstr "Ingen aktive alarmer"
 
 #: ../qml/widgets/Alarm.qml:54
-#, fuzzy
+
 msgid "at"
 msgstr "klokken"
 
@@ -475,6 +475,11 @@ msgid "Favorite Contacts"
 msgstr "Favorittkontakter"
 
 #: ../qml/widgets/Lastcall.qml:58
+
+msgid "Last Calls"
+msgstr "Siste anrop"
+
+#: ../qml/widgets/Lastcall.qml:58
 msgid "Last Call"
 msgstr "Siste anrop"
 
@@ -482,11 +487,17 @@ msgstr "Siste anrop"
 msgid "No recent calls"
 msgstr "Ingen nylige anrop"
 
-#: ../qml/widgets/Lastmessage.qml:61
+#: ../qml/widgets/Lastmessage.qml:60
+
+msgid "Last Messages"
+msgstr "Siste melding"
+
+#: ../qml/widgets/Lastmessage.qml:60
+
 msgid "Last Message"
 msgstr "Siste melding"
 
-#: ../qml/widgets/Lastmessage.qml:150
+#: ../qml/widgets/Lastmessage.qml:149
 msgid "No recent messages"
 msgstr "Ingen nylige meldinger"
 
@@ -495,7 +506,7 @@ msgid "Search Contacts"
 msgstr "Søk i kontakter"
 
 #: ../qml/widgets/Weather.qml:23
-#, fuzzy
+
 msgid "Please long press here to configure"
 msgstr "Lang-trykk her for å sette opp"
 
@@ -631,12 +642,12 @@ msgid "humidity"
 msgstr "fuktighet"
 
 #: ../qml/widgets/clock/Settings.qml:14
-#, fuzzy
+
 msgid "Settings Widget Clock"
 msgstr "Innstillinger for miniprogramsklokke"
 
 #: ../qml/widgets/clock/Settings.qml:49
-#, fuzzy
+
 msgid "Show analog clock with digits"
 msgstr "Vis analog klokke med siffer"
 
@@ -652,14 +663,14 @@ msgid "Limit of event"
 msgstr "Begivenhetsgrense"
 
 #: ../qml/widgets/event/Settings.qml:121
-#, fuzzy
+
 msgid "By default 3 event"
 msgstr "Som forvalg tre begivenheter"
 
 #: ../qml/widgets/favoritecontact/Settings.qml:50
 #: ../qml/widgets/lastcall/Settings.qml:49
 #: ../qml/widgets/lastmessage/Settings.qml:49
-#, fuzzy
+
 msgid "Generals"
 msgstr "Generelt"
 
@@ -683,7 +694,7 @@ msgstr "Åpne Linphone"
 #: ../qml/widgets/favoritecontact/Settings.qml:80
 #: ../qml/widgets/lastcall/Settings.qml:119
 #: ../qml/widgets/lastmessage/Settings.qml:131
-#, fuzzy
+
 msgid "When clicked : "
 msgstr "Når klikket: "
 
@@ -693,7 +704,7 @@ msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
-#, fuzzy
+
 msgid "By default 1"
 msgstr "Som forvalg 60 dager"
 
@@ -707,7 +718,7 @@ msgid "Call"
 msgstr "Ring"
 
 #: ../qml/widgets/lastcall/Settings.qml:94
-#, fuzzy
+
 msgid "Open the dialer with number"
 msgstr "Åpne nummerskiven med nummer"
 
@@ -728,17 +739,17 @@ msgid "Open Message"
 msgstr "Åpne melding"
 
 #: ../qml/widgets/lastmessage/Settings.qml:107
-#, fuzzy
+
 msgid "Open the application with message"
 msgstr "Åpne programmet med melding"
 
 #: ../qml/widgets/weather/Settings.qml:14
-#, fuzzy
+
 msgid "Settings for weather widget"
 msgstr "Innstillingsminiprogram"
 
 #: ../qml/widgets/weather/Settings.qml:59
-#, fuzzy
+
 msgid "API Key"
 msgstr "API-nøkkel"
 
@@ -759,11 +770,19 @@ msgid "or"
 msgstr "eller"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
+
 msgid "Modular launcher"
 msgstr "Sett opp oppstarter"
 
-#, fuzzy
+
+#~ msgid "Message"
+#~ msgstr "Siste melding"
+
+
+#~ msgid "Last message"
+#~ msgstr "Siste melding"
+
+
 #~ msgid "DONATE"
 #~ msgstr "Doner"
 
