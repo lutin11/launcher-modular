@@ -50,22 +50,24 @@ Page {
             property var description4: i18n.tr("On call settings, set the option for 'When clicked' to 'Open the dialer with number'");
             property var details5: i18n.tr("Message redirection to messaging app works!");
             property var description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'");
-            property var details6: i18n.tr("Force list refresh by double-clicking on the event widget!");
+            property var details6: i18n.tr("Force the event list refresh by double-clicking on the event widget!");
             property var description6:"";
-            property var details7: i18n.tr("Clicking on the 'Alarm' widget opens the clock!");
+            property var details7: i18n.tr("The event list show event from current day!");
             property var description7:"";
-            property var details8: i18n.tr("Open the photo by clicking on it!");
+            property var details8: i18n.tr("Clicking on the 'Alarm' widget opens the clock!");
             property var description8:"";
+            property var details9: i18n.tr("Open the photo by clicking on it!");
+            property var description9:"";
             // 2.3.2
-            property var details9: i18n.tr("Enable Autostart");
-            property var description9: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart");
-            property var details10: i18n.tr("Correction for background display.");
-            property var description10:"";
-            property var details11: i18n.tr("Fix up 'Run a command in a terminal'");
+            property var details10: i18n.tr("Enable Autostart");
+            property var description10: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart");
+            property var details11: i18n.tr("Correction for background display.");
             property var description11:"";
+            property var details12: i18n.tr("Fix up 'Run a command in a terminal'");
+            property var description12:"";
             // 2.3.1
-            property var details12: i18n.tr("Resumption of the application.");
-            property var description12: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.");
+            property var details13: i18n.tr("Resumption of the application.");
+            property var description13: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.");
 
             ListModel {
                 id: changeLogModel
@@ -80,10 +82,11 @@ Page {
                 changeLogModel.append({ version: "", date: "", details: details6, description: description6});
                 changeLogModel.append({ version: "", date: "", details: details7, description: description7});
                 changeLogModel.append({ version: "", date: "", details: details8, description: description8});
-                changeLogModel.append({ version: "2.3.1", date: "2024-09-29", details: details9, description: description9});
-                changeLogModel.append({ version: "", date: "", details: details10, description: description10});
+                changeLogModel.append({ version: "", date: "", details: details9, description: description9});
+                changeLogModel.append({ version: "2.3.1", date: "2024-09-29", details: details10, description: description10});
                 changeLogModel.append({ version: "", date: "", details: details11, description: description11});
-                changeLogModel.append({ version: "2.3.0", date: "2024-09-23", details: details12, description: description12});
+                changeLogModel.append({ version: "", date: "", details: details12, description: description12});
+                changeLogModel.append({ version: "2.3.0", date: "2024-09-23", details: details13, description: description13});
             }
 
             Rectangle {
