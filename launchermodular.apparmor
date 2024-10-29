@@ -4,7 +4,8 @@
         "calendar",
         "networking",
         "history",
-        "contacts"
+        "contacts",
+        "connectivity"
     ],
     "policy_version": 20.04
 }

@@ -84,9 +84,7 @@ Item {
         AppHandler.permaFilter("Icon",  "/.*$")
         listCustomIcon.model = ""
         listCustomIcon.model = launchermodular.customIconModel
-        //AppHandler.appsinfo.push(settingsButton)
         AppHandler.sort()
-        //AppHandler.setFav(settings.coreApps.join())
         home.reloading = false
     }
 

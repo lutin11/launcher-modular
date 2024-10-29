@@ -62,6 +62,7 @@ MainView {
 
     // persistent app settings:
     property var settings: Settings {
+        id:appSettings
 
         property bool firstRun: true
         property bool firstRunNew: true
@@ -94,7 +95,6 @@ MainView {
         property var favoriteApps;
 
         property var selectedAppNews: [];
-          signal newsConfigChanged();
 
         property bool newsBackgroundOpacity: false
         property string widgetMessageClick: 'message'
@@ -110,6 +110,7 @@ MainView {
         property bool widgetVisibleLastcall: true
         property bool widgetVisibleLastmessage: true
         property bool widgetVisibleEvent: true
+        property int itemsToLoadPerChannel: 7
     }//settings
 
     Timer {

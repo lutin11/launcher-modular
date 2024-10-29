@@ -3,7 +3,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import "../components"
 import Qt.labs.settings 1.0
-import QtQuick.XmlListModel 2.0
+import QtQuick.XmlListModel 2.12
 import QtGraphicalEffects 1.12
 
 Item {
