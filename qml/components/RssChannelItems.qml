@@ -2,9 +2,7 @@ import QtQuick.XmlListModel 2.12
 
 XmlListModel {
     id: rssModel
-    //source: ""
     query: "/(rss/channel|feed)/(item|entry)"
-    //namespaceDeclarations: "declare default element namespace 'http://www.w3.org/2005/Atom';"
     XmlRole { name: "titleText"; query: "title/string()" }
     XmlRole { name: "description"; query: "(description|summary)/string()" }
     XmlRole { name: "category"; query: "category/string()" }

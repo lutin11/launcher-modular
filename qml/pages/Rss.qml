@@ -6,7 +6,6 @@ import QtQml.Models 2.2
 import Lomiri.Connectivity 1.0
 
 import "../components"
-import "../components/UI"
 import "../helpers"
 import HelperFunctions 1.0
 
