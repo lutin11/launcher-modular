@@ -7,7 +7,7 @@ import Lomiri.Connectivity 1.0
 
 import "../components"
 import "../helpers"
-import HelperFunctions 1.0
+import NetworkHelper 1.0
 
 Item {
     id:_mainFeed
@@ -122,7 +122,7 @@ Item {
         id:feedList
 
         anchors {
-            topMargin:_mainFeed.header.height
+            topMargin: units.gu(6)
             fill:parent
         }
 

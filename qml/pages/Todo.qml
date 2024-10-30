@@ -16,7 +16,6 @@ Item {
     ListView{
         id:todoList
         anchors.fill: parent
-        //headerPositioning: ListView.OverlayHeader
 
         header:Rectangle {
             id: todo

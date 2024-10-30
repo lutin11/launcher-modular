@@ -21,10 +21,9 @@ Page {
     }
     Rectangle {
         id:mainsettings
-            anchors.fill: parent
-            color: "#111111"
-            anchors.topMargin: units.gu(6)
-
+        anchors.fill: parent
+        color: "#111111"
+        anchors.topMargin: units.gu(6)
 
         Flickable {
             id: flickableSettings
@@ -32,6 +31,7 @@ Page {
             contentHeight: settingsColumn.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
+
             Column {
                 id: settingsColumn
                 anchors.fill: parent

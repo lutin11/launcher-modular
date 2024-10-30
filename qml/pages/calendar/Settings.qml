@@ -46,14 +46,7 @@ Page {
                 Item {
                     id: templateRow
                     width: parent.width
-                    anchors {
-                        top: titleCalendarManagement.bottom
-                        left: parent.left
-                        right: parent.right
-                        rightMargin: units.gu(2)
-                        leftMargin: units.gu(2)
-                        topMargin: units.gu(2)
-                    }
+                    anchors.top: parent.top
                     height: units.gu(4)
 
                     Label {

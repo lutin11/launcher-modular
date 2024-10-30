@@ -7,7 +7,6 @@ import Lomiri.Components 1.3
 import "pages"
 import Lomiri.Components.Popups 0.1
 import Qt.labs.folderlistmodel 2.1
-import MySettings 1.0
 
 Page {
     id: pageSettings
@@ -88,7 +87,6 @@ Page {
                         divider.visible: false
                         onClicked: {
                             launchermodular.pageModel.append({"name": fileName, "icon": "/home/phablet/.launchermodular/pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": "/home/phablet/.launchermodular/pages/"});
-
                             PopupUtils.close(listPageDialogue);
                         }
                     }

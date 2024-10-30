@@ -1,3 +1,4 @@
-add_subdirectory(MySettings)
 add_subdirectory(AppHandler)
+add_subdirectory(MySettings)
+add_subdirectory(NetworkHelper)
 add_subdirectory(Terminalaccess)

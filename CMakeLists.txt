@@ -66,7 +66,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME} DESTINATION ${DAT
 
 add_subdirectory(po)
 add_subdirectory(plugins)
-add_subdirectory(backend)
 
 # Make source files visible in qtcreator
 # We don't need to add plugin sources here as they get exposed

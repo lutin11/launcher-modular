@@ -58,8 +58,7 @@ QtObject {
     {
         var rowid = 0;
         db.transaction(function (tx) {
-            tx.executeSql('INSERT INTO todo(name, done, created_date) VALUES(?, 0, strftime(\'%s\',\'now\'))',
-                          [name])
+            tx.executeSql('INSERT INTO todo(name, done, created_date) VALUES(?, 0, strftime(\'%s\',\'now\'))', [name])
             var result = tx.executeSql('SELECT last_insert_rowid()')
             rowid = parseInt(result.insertId)
         })
@@ -93,8 +92,7 @@ QtObject {
         var data = itemModel.get(index)
 
         db.transaction(function (tx) {
-            tx.executeSql(
-                        'update todo set done=? where todo_id = ?', [done, data.id])
+            tx.executeSql('update todo set done=? where todo_id = ?', [done, data.id])
         })
 
         data.done = done
@@ -116,8 +114,6 @@ QtObject {
 
     Component.onCompleted:{
         dbInit()
-
-
         buildModel()
     }
 }
