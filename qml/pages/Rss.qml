@@ -102,7 +102,7 @@ Item {
 
     function updateFeed() {
         if( !RssModel.itemModel || RssModel.itemModel.length ==  0 ||  _mainFeed.refreshing ||  listSortingTimer.running ) {
-            isFeeds = false;
+            _mainFeed.isFeeds = false;
             return;
         }
         if(Connectivity.status === NetworkingStatus.Offline  ) {
@@ -115,11 +115,9 @@ Item {
         console.log("updating the feeds..");
         feedList.model.clear();
         channelsList = [];
-        console.log("RssModel.itemModel:" + RssModel.itemModel.count);
-        isFeeds = RssModel.itemModel.count > 0
+        _mainFeed.isFeeds = RssModel.itemModel.count > 0
         for(let i=0; i < RssModel.itemModel.count;i++) {
     			let url = RssModel.itemModel.get(i);
-    			console.log("url:" + JSON.stringify(url));
     			cachedHttpRequestInstance.send(url.rss_uri, {"url": url.rss_uri});
     		}
     }
@@ -128,7 +126,7 @@ Item {
         id:feedList
 
         anchors {
-            topMargin: units.gu(6)
+            topMargin: parent.top
             fill:parent
         }
 
@@ -142,7 +140,7 @@ Item {
             }
             z:1
             opacity: 0.6
-            visible:  isFeeds === false
+            visible:  _mainFeed.isFeeds === false
             color: "transparent"
             ProgressBar {
                 anchors {
@@ -151,11 +149,11 @@ Item {
                     margins:units.gu(2)
                 }
                 indeterminate:true
-                visible: isFeeds
+                visible: _mainFeed.isFeeds
             }
              Label {
                  id: noFeeds
-                 text: isFeeds ? i18n.tr("Loading feeds…") : i18n.tr("Go to the page management to add feeds.")
+                 text: _mainFeed.isFeeds ? i18n.tr("Loading feeds…") : i18n.tr("Go to the page management to add feeds.")
                  color: launchermodular.settings.textColor
                  font.weight: Font.Bold
                  wrapMode: Text.Wrap
@@ -169,32 +167,10 @@ Item {
              }
         }
 
-        highlightFollowsCurrentItem:true
-        highlightMoveDuration: 250
-        snapMode:ListView.SnapToItem
-
         pullToRefresh {
             enabled: true
             refreshing: feedList.model.count == 0  || listSortingTimer.running || _mainFeed.refreshing
             onRefresh: _mainFeed.updateFeed()
-        }
-
-        section.property :appSettings.showSections && !_mainFeed.currentSection ? appSettings.mainFeedSectionField : ""
-        section.criteria: ViewSection.FullString
-        section.labelPositioning: ViewSection.InlineLabels
-
-        section.delegate: ListItem {
-            height: sectionHeader.implicitHeight + units.gu(2)
-            Label {
-                id: sectionHeader
-                text: section
-                font.weight: Font.Bold
-                anchors {
-                    left: parent.left
-                    leftMargin: units.gu(2)
-                    verticalCenter: parent.verticalCenter
-                }
-            }
         }
 
         delegate: FeedItem {
@@ -203,16 +179,6 @@ Item {
             onClicked:{
                 feedList.currentIndex = index;
                 Qt.openUrlExternally(itemData.url);
-            }
-        }
-
-        Timer {
-            interval: appSettings.updateFeedEveryXMinutes*60000
-            running: appSettings.updateFeedEveryXMinutes > 0
-            repeat: true
-            triggeredOnStart:false
-            onTriggered: {
-                _mainFeed.updateFeed();
             }
         }
     }
@@ -271,11 +237,7 @@ Item {
             const parseChannelItems = function() {
                 if (channelItems.status !== XmlListModel.Ready) return;
 
-                console.log("channelItems.status:", channelItems.status, "nb message:", channelItems.count);
-
                 if (channelItems.count === 0) {
-                    //root.primaryPageNotify(i18n.tr("Couldn't parse channel: %1").arg(channelData.feedUrl));
-                    console.log("Couldn't parse channel:", channelData.feedUrl);
                     channelItems.statusChanged.disconnect(parseChannelItems);
                     channelItems.destroy();
                     return;

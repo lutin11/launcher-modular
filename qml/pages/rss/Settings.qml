@@ -21,7 +21,7 @@ Page {
         leadingActionBar.actions: [
             Action {
                 iconName: "back"
-                text: "Back"
+                text: i18n.tr("Back")
                 onTriggered: {
                     pageStack.pop();
                 }
@@ -211,7 +211,7 @@ Page {
 
             Text {
                 id: invalidTextError
-                text: "Invalid url"
+                text: i18n.tr("Invalid url")
                 color: "#ffffff"
                 anchors.centerIn: parent // Center text within the rectangle
             }
