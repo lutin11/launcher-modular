@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-27 20:14+0000\n"
+"POT-Creation-Date: 2024-10-30 23:00+0000\n"
 "PO-Revision-Date: 2023-08-15 19:25+0000\n"
 "Last-Translator: Milan Korecky <milan.korecky@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Change Log"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:18
+#: ../qml/ChangeLogs.qml:18 ../qml/pages/rss/Settings.qml:24
 msgid "Back"
 msgstr ""
 
@@ -56,7 +56,7 @@ msgid "Set how many messages to display!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:47
-msgid "Set how many event to display!"
+msgid "Set how many events to display!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:49
@@ -80,11 +80,11 @@ msgid ""
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:53
-msgid "Force the event list refresh by double-clicking on the event widget!"
+msgid "Force the event list to refresh by double-clicking on the event widget!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:55
-msgid "The event list show event from current day!"
+msgid "The event list shows event from current day!"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:57
@@ -194,76 +194,76 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:378
+#: ../qml/Main.qml:379
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:430
+#: ../qml/Main.qml:431
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:462
+#: ../qml/Main.qml:463
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:494
+#: ../qml/Main.qml:495
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:526
+#: ../qml/Main.qml:527
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:558
+#: ../qml/Main.qml:559
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:590
+#: ../qml/Main.qml:591
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../qml/Main.qml:672
+#: ../qml/Main.qml:673
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:685
+#: ../qml/Main.qml:686
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:690
+#: ../qml/Main.qml:691
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:690
+#: ../qml/Main.qml:691
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:692
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:692
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:692
+#: ../qml/Main.qml:693
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:692
+#: ../qml/Main.qml:693
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:716 ../qml/Main.qml:717 ../qml/Main.qml:718
+#: ../qml/Main.qml:717 ../qml/Main.qml:718 ../qml/Main.qml:719
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:729
+#: ../qml/Main.qml:730
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:775 ../qml/Pagemanagement.qml:132 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:449
+#: ../qml/Main.qml:776 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
+#: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:447
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr "Zrušit"
@@ -382,40 +382,50 @@ msgstr ""
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:183
+#: ../qml/pages/Home.qml:181
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:309
+#: ../qml/pages/Home.qml:307
 msgid "Installed Apps"
 msgstr ""
 
-#: ../qml/pages/Home.qml:408
+#: ../qml/pages/Home.qml:406
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:408
+#: ../qml/pages/Home.qml:406
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Todo.qml:76
+#: ../qml/pages/Rss.qml:156
+msgid "Loading feeds…"
+msgstr ""
+
+#: ../qml/pages/Rss.qml:156
+msgid "Go to the page management to add feeds."
+msgstr ""
+
+#: ../qml/pages/Todo.qml:75
 msgid "new todo"
 msgstr ""
 
-#: ../qml/pages/Todo.qml:114 ../qml/pages/home/Settings.qml:138
+#: ../qml/pages/Todo.qml:113 ../qml/pages/home/Settings.qml:138
+#: ../qml/pages/rss/Settings.qml:179
 msgid "Delete"
 msgstr "Smazat"
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:14
-#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/todo/Settings.qml:11
+#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/todo/Settings.qml:11
 msgid "Settings Page"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:61
+#: ../qml/pages/calendar/Settings.qml:54 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:79
+#: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr ""
 
@@ -425,6 +435,14 @@ msgstr ""
 
 #: ../qml/pages/picture/Settings.qml:48
 msgid "Image path"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:99
+msgid "https://omgubuntu.co.uk/feed"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:223
+msgid "Invalid url"
 msgstr ""
 
 #: ../qml/widgets/Alarm.qml:28

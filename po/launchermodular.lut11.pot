@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-29 09:54+0000\n"
+"POT-Creation-Date: 2024-10-30 23:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "Change Log"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:18
+#: ../qml/ChangeLogs.qml:18 ../qml/pages/rss/Settings.qml:24
 msgid "Back"
 msgstr ""
 
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:776 ../qml/Pagemanagement.qml:132 ../qml/Settings.qml:47
+#: ../qml/Main.qml:776 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:447
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
@@ -388,32 +388,34 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/MainFeedPage.qml:187
+#: ../qml/pages/Rss.qml:156
 msgid "Loading feeds…"
 msgstr ""
 
-#: ../qml/pages/MainFeedPage.qml:187
-msgid "Long press-me to setup rss feeds"
+#: ../qml/pages/Rss.qml:156
+msgid "Go to the page management to add feeds."
 msgstr ""
 
-#: ../qml/pages/Todo.qml:76
+#: ../qml/pages/Todo.qml:75
 msgid "new todo"
 msgstr ""
 
-#: ../qml/pages/Todo.qml:114 ../qml/pages/home/Settings.qml:138
+#: ../qml/pages/Todo.qml:113 ../qml/pages/home/Settings.qml:138
+#: ../qml/pages/rss/Settings.qml:179
 msgid "Delete"
 msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:14
-#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/todo/Settings.qml:11
+#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/todo/Settings.qml:11
 msgid "Settings Page"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:61 ../qml/widgets/event/Settings.qml:61
+#: ../qml/pages/calendar/Settings.qml:54 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:80 ../qml/widgets/event/Settings.qml:79
+#: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr ""
 
@@ -423,6 +425,14 @@ msgstr ""
 
 #: ../qml/pages/picture/Settings.qml:48
 msgid "Image path"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:99
+msgid "https://omgubuntu.co.uk/feed"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:223
+msgid "Invalid url"
 msgstr ""
 
 #: ../qml/widgets/Alarm.qml:28
