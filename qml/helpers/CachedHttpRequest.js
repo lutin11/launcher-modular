@@ -1,8 +1,7 @@
 WorkerScript.onMessage = function(message) {
-    //console.log("------ CachedHttpRequest.js: " + message.requestURL)
     var http = new XMLHttpRequest();
-    http.open("GET", message.requestURL);
-    var textToRemove = [];
+    http.open("GET", message.requestURL, true); // Specify asynchronous (true) for clarity
+    const textToRemove = [];
 
     http.onreadystatechange = function() {
         if (http.readyState === XMLHttpRequest.DONE) {
@@ -10,7 +9,6 @@ WorkerScript.onMessage = function(message) {
                 var response = http.responseText;
                 for (var strToRemove of textToRemove) {
                     response = response.replace(strToRemove, '');
-                    //console.log("------ Removing from response: " + strToRemove);
                 }
                 WorkerScript.sendMessage({
                     "success": true,
@@ -22,16 +20,16 @@ WorkerScript.onMessage = function(message) {
                 });
             } else {
                 if (message.logActions) {
-                    //console.log("CachedHttpRequest:Worker: HTTP readyState: " + http.readyState + ", status: " + http.status);
+                    console.log("WorkerScript: HTTP error with status: " + http.status);
                 }
-                if (http.response) {
-                    var response = http.response;
-                    for (var strToRemove of textToRemove) {
-                        response = response.replace(strToRemove, '');
-                    }
-                    textToRemove.push(response);
-                    //console.log("++++++++++++ Redirected or Error response from: " + message.requestURL);
-                }
+                WorkerScript.sendMessage({
+                    "success": false,
+                    "http": http,
+                    "responseText": http.responseText || "",
+                    "id": message.id,
+                    "requestURL": message.requestURL,
+                    "cachedResponseReturned": message.cachedResponseReturned
+                });
             }
         }
     };
@@ -49,5 +47,6 @@ WorkerScript.onMessage = function(message) {
         });
     };
 
-    http.send(message.postData ? message.postData : null);
+    // Initiate the network request
+    http.send(message.postData || null);
 };
