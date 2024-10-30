@@ -7,6 +7,7 @@ import Lomiri.Connectivity 1.0
 
 import "../components"
 import "../helpers"
+import "rss"
 import NetworkHelper 1.0
 
 Item {
@@ -14,14 +15,17 @@ Item {
 
     clip:true
 
-    property var model : ["https://www.radiofrance.fr/franceinter/rss", "https://www.mediapart.fr/articles/feed"]
+    property var model : RssModel.itemModel
     property var refreshing:  cachedHttpRequestInstance.waitingForResults;
     property var currentSearch : null
     property var currentSection : null
     property var channelsList : []
+    property bool isFeeds: false
 
     Component.onCompleted: {
+        RssModel.dbInit()
         updateFeedsTimer.start();
+
     }
 
     onRefreshingChanged: if(!refreshing) {
@@ -79,6 +83,7 @@ Item {
         running:false
         onTriggered : {
             console.log("Timer updating..")
+            RssModel.buildModel()
             _mainFeed.updateFeed();
         }
     }
@@ -96,7 +101,8 @@ Item {
     //--------------------------------- Functions ----------------------------------
 
     function updateFeed() {
-        if( !_mainFeed.model || _mainFeed.model.length ==  0 ||  _mainFeed.refreshing ||  listSortingTimer.running ) {
+        if( !RssModel.itemModel || RssModel.itemModel.length ==  0 ||  _mainFeed.refreshing ||  listSortingTimer.running ) {
+            isFeeds = false;
             return;
         }
         if(Connectivity.status === NetworkingStatus.Offline  ) {
@@ -109,13 +115,13 @@ Item {
         console.log("updating the feeds..");
         feedList.model.clear();
         channelsList = [];
-    //		_mainFeed.header.sectionsModel = [];
-    //		for(var i in _mainFeed.model) {
-    //			var url = _mainFeed.model[i];
-    //			cachedHttpRequestInstance.send(url, {"url": url});
-    //		}
-        cachedHttpRequestInstance.send("https://www.radiofrance.fr/franceinter/rss", {"url": "https://www.radiofrance.fr/franceinter/rss"});
-        cachedHttpRequestInstance.send("https://www.mediapart.fr/articles/feed", {"url": "https://www.mediapart.fr/articles/feed"});
+        console.log("RssModel.itemModel:" + RssModel.itemModel.count);
+        isFeeds = RssModel.itemModel.count > 0
+        for(let i=0; i < RssModel.itemModel.count;i++) {
+    			let url = RssModel.itemModel.get(i);
+    			console.log("url:" + JSON.stringify(url));
+    			cachedHttpRequestInstance.send(url.rss_uri, {"url": url.rss_uri});
+    		}
     }
 
     Feed {
@@ -129,13 +135,47 @@ Item {
         model: FeedsModel {
             id:feedModel
         }
+
+        Rectangle {
+            anchors {
+                fill:parent
+            }
+            z:1
+            opacity: 0.6
+            visible:  isFeeds === false
+            color: "transparent"
+            ProgressBar {
+                anchors {
+                    horizontalCenter:parent.horizontalCenter
+                    bottom:loadingLabel.top
+                    margins:units.gu(2)
+                }
+                indeterminate:true
+                visible: isFeeds
+            }
+             Label {
+                 id: noFeeds
+                 text: isFeeds ? i18n.tr("Loading feeds…") : i18n.tr("Go to the page management to add feeds.")
+                 color: launchermodular.settings.textColor
+                 font.weight: Font.Bold
+                 wrapMode: Text.Wrap
+                 horizontalAlignment:Text.AlignHCenter
+                 anchors {
+                   verticalCenter:parent.verticalCenter
+                   left:parent.left
+                   right:parent.right
+                   margins:units.gu(2)
+                 }
+             }
+        }
+
         highlightFollowsCurrentItem:true
         highlightMoveDuration: 250
         snapMode:ListView.SnapToItem
 
         pullToRefresh {
             enabled: true
-            refreshing:  feedList.model.count == 0  || listSortingTimer.running || _mainFeed.refreshing
+            refreshing: feedList.model.count == 0  || listSortingTimer.running || _mainFeed.refreshing
             onRefresh: _mainFeed.updateFeed()
         }
 
@@ -157,40 +197,8 @@ Item {
             }
         }
 
-        Rectangle {
-            anchors {
-                fill:parent
-            }
-            z:1
-            opacity: 0.3
-            visible:  _mainFeed.model.length  == 0 ||  feedList.model.count == 0  || listSortingTimer.running || _mainFeed.refreshing
-            color: "transparent"
-            ProgressBar {
-                anchors {
-                    horizontalCenter:parent.horizontalCenter
-                    bottom:loadingLabel.top
-                    margins:units.gu(2)
-                }
-                indeterminate:true
-                visible: _mainFeed.model.length > 0
-
-            }
-            Label {
-                id:loadingLabel
-                anchors {
-                    verticalCenter:parent.verticalCenter
-                    left:parent.left
-                    right:parent.right
-                    margins:units.gu(2)
-                }
-                text: _mainFeed.model.length > 0 ? i18n.tr("Loading feeds…") : i18n.tr("Long press-me to setup rss feeds")
-                wrapMode: Text.Wrap
-                horizontalAlignment:Text.AlignHCenter
-            }
-        }
-
         delegate: FeedItem {
-            visible: !_mainFeed.currentSection || _mainFeed.currentSection == itemData['channel'] //_mainFeed.itemMatchSearch(itemData,_mainFeed.currentSearch)
+            visible: !_mainFeed.currentSection || _mainFeed.currentSection == itemData['channel']
 
             onClicked:{
                 feedList.currentIndex = index;

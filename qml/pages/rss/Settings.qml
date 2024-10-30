@@ -10,12 +10,8 @@ Page {
     id: pageSettingsRss
     anchors.fill: parent
 
-    property ListModel localItemModel: ListModel {}
-
     Component.onCompleted: {
         RssModel.dbInit()
-        RssModel.populateModel(localItemModel)
-        console.log("Model populated, count:", localItemModel.count)
     }
 
     header: PageHeader {
@@ -31,11 +27,6 @@ Page {
                 }
             }
         ]
-    }
-
-    property ListModel itemModel: ListModel {
-        id: rssModel
-        dynamicRoles: true
     }
 
     Rectangle {
@@ -154,8 +145,6 @@ Page {
                         Row {
                             id: rssRowUri
                             width: parent.width
-                            //anchors.leftMargin: units.gu(1)
-                            //anchors.rightMargin: units.gu(1)
 
                             Rectangle {
                                 id: rssUri
