@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2024-10-30 23:31+0000\n"
-"PO-Revision-Date: 2024-10-27 20:07+0000\n"
-"Last-Translator: saveurlinux <cosse@codelutin.com>\n"
+"PO-Revision-Date: 2024-10-31 14:36+0000\n"
+"Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
 "Language: fr\n"
@@ -44,7 +44,7 @@ msgstr "Retour"
 
 #: ../qml/ChangeLogs.qml:44
 msgid "Set how many calls to display!"
-msgstr "Configurez combien d'appels visualiser!"
+msgstr "Configurez combien d'appels visualiser !"
 
 #: ../qml/ChangeLogs.qml:45 ../qml/ChangeLogs.qml:47 ../qml/ChangeLogs.qml:49
 msgid "To do this, long press on the widget to access its configuration page."
@@ -54,15 +54,15 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:46
 msgid "Set how many messages to display!"
-msgstr "Configurez combien de messages visualiser!"
+msgstr "Configurez combien de messages visualiser !"
 
 #: ../qml/ChangeLogs.qml:48
 msgid "Set how many events to display!"
-msgstr "Configurez combien d'événements visualiser!"
+msgstr "Configurez combien d'événements visualiser !"
 
 #: ../qml/ChangeLogs.qml:50
 msgid "Call redirection to phone app works!"
-msgstr "La redirection vers un numéro de téléphone fonctionne!"
+msgstr "La redirection vers un numéro de téléphone fonctionne !"
 
 #: ../qml/ChangeLogs.qml:51
 msgid ""
@@ -75,8 +75,7 @@ msgstr ""
 #: ../qml/ChangeLogs.qml:52
 msgid "Message redirection to messaging app works!"
 msgstr ""
-"La redirection des messages vers l'application de messagerie "
-"fonctionne!"
+"La redirection des messages vers l'application de messagerie fonctionne !"
 
 #: ../qml/ChangeLogs.qml:53
 msgid ""
@@ -90,20 +89,19 @@ msgstr ""
 msgid "Force the event list to refresh by double-clicking on the event widget!"
 msgstr ""
 "Forcez le rafraîchissement de la liste des événements en double-cliquant sur "
-"le widget de l'événement!"
+"le widget de l'événement !"
 
 #: ../qml/ChangeLogs.qml:56
 msgid "The event list shows event from current day!"
-msgstr ""
-"La liste des événements affiche les événements de la journée en cours!"
+msgstr "La liste des événements affiche les événements de la journée en cours !"
 
 #: ../qml/ChangeLogs.qml:58
 msgid "Clicking on the 'Alarm' widget opens the clock!"
-msgstr "En cliquant sur le widget « Alarme », vous ouvrez l'horloge!"
+msgstr "En cliquant sur le widget « Alarme », vous ouvrez l'horloge !"
 
 #: ../qml/ChangeLogs.qml:60
 msgid "Open the photo by clicking on it!"
-msgstr "Visualiser la photo en cliquant dessus!"
+msgstr "Visualiser la photo en cliquant dessus !"
 
 #: ../qml/ChangeLogs.qml:63
 msgid "Enable Autostart"
@@ -154,7 +152,7 @@ msgstr "Version : "
 
 #: ../qml/ChangeLogs.qml:146
 msgid " | Date: "
-msgstr "| Date:"
+msgstr "| Date :"
 
 #: ../qml/ChangeLogs.qml:272
 msgid "If you like this app, please rank it on OpenStore"
@@ -175,14 +173,14 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
-"Ce programme est un logiciel libre: vous pouvez le redistribuer et/ou "
-"le modifier selon les termes de la Licence Publique Générale GNU telle que "
+"Ce programme est un logiciel libre : vous pouvez le redistribuer et/ou le "
+"modifier selon les termes de la Licence Publique Générale GNU telle que "
 "publiée par la Free Software Foundation, soit la version 3 de la Licence, "
 "soit (à votre choix) toute version ultérieure. Ce programme est distribué "
-"dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
+"dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
 "garantie implicite de COMMERCIALISATION ou d'ADÉQUATION À UN USAGE "
-"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html"
-"\">GNU General Public License</a> pour plus de détails."
+"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\""
+">GNU General Public License</a> pour plus de détails."
 
 #: ../qml/ChangeLogs.qml:328
 msgid "SOURCE"
