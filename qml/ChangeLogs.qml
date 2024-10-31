@@ -39,6 +39,7 @@ Page {
         Item {
             id: page1
 
+            property var emptyDescription:"";
             // 2.3.3
             property var details1: i18n.tr("Set how many calls to display!");
             property var description1: i18n.tr("To do this, long press on the widget to access its configuration page.");
@@ -68,25 +69,36 @@ Page {
             // 2.3.1
             property var details13: i18n.tr("Resumption of the application.");
             property var description13: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.");
+            // 2.3.4
+            property var details14: i18n.tr("Addition of a new page for RSS feeds");
+            property var description14:"On Rss setting page, you can add a list of RSS feeds";
+            property var details15: i18n.tr("Update translations");
+            property var description15:"";
+            property var details16: i18n.tr("Improved 'Picture' page display performance");
+            property var description16:"";
+
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
-                changeLogModel.append({ version: "2.3.2", date: "2024-10-24", details: details1, description: description1 });
+                changeLogModel.append({ version: "2.3.4", date: "2024-10-31", details: details14, description: description14 });
+                changeLogModel.append({ version: "", date: "", details: details15, description: emptyDescription });
+                changeLogModel.append({ version: "", date: "", details: details16, description: emptyDescription });
+                changeLogModel.append({ version: "2.3.3", date: "2024-10-24", details: details1, description: description1 });
                 changeLogModel.append({ version: "", date: "", details: details2, description: description2});
                 changeLogModel.append({ version: "", date: "", details: details3, description: description3});
                 changeLogModel.append({ version: "", date: "", details: details4, description: description4});
                 changeLogModel.append({ version: "", date: "", details: details5, description: description5});
-                changeLogModel.append({ version: "", date: "", details: details6, description: description6});
-                changeLogModel.append({ version: "", date: "", details: details7, description: description7});
-                changeLogModel.append({ version: "", date: "", details: details8, description: description8});
-                changeLogModel.append({ version: "", date: "", details: details9, description: description9});
-                changeLogModel.append({ version: "2.3.1", date: "2024-09-29", details: details10, description: description10});
-                changeLogModel.append({ version: "", date: "", details: details11, description: description11});
-                changeLogModel.append({ version: "", date: "", details: details12, description: description12});
-                changeLogModel.append({ version: "2.3.0", date: "2024-09-23", details: details13, description: description13});
+                changeLogModel.append({ version: "", date: "", details: details6, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details7, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details8, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details9, description: emptyDescription});
+                changeLogModel.append({ version: "2.3.2", date: "2024-09-29", details: details10, description: description10});
+                changeLogModel.append({ version: "", date: "", details: details11, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details12, description: emptyDescription});
+                changeLogModel.append({ version: "2.3.1", date: "2024-09-23", details: details13, description: description13});
             }
 
             Rectangle {
@@ -100,26 +112,26 @@ Page {
 
                 ListView {
                     id: changeLogModelListView
-                    anchors.topMargin: units.gu(6)
+                    anchors.topMargin: units.gu(1)
                     anchors.fill: parent
                     model: changeLogModel
-                    spacing: 10
+                    spacing: units.gu(1)
                     anchors.leftMargin: units.gu(1)  // Adjust this value for left space
                     anchors.rightMargin: units.gu(1) // Adjust this value for right space
 
                     delegate: Item {
                         id: changeLogContainer
                         width: parent.width
-                        height: versionLine.height + textDetail.implicitHeight + textDescription.implicitHeight + endLine.height + 20
+                        height: versionLine.height + textDetail.implicitHeight + textDescription.implicitHeight + endLine.height
                         Rectangle {
                             id: changeLogItem
-                            height: units.gu(5)
+                            height: versionLine.height + textDetail.implicitHeight + textDescription.implicitHeight + endLine.height
                             width: parent.width
                             opacity: 0.9
                             color: "#111111"
 
                             Column {
-                                spacing: 5
+                                //spacing: 5
 
                                 Row {
                                     id: versionLine
@@ -148,7 +160,7 @@ Page {
                                     id: textDescription
                                     text: description
                                     color: "#888888"
-                                    visible: description.length > 0
+                                    visible: description.length > 1
                                     wrapMode: Text.WordWrap
                                     width: changeLogContainer.width
                                     font.pointSize: units.gu(1.2);
@@ -157,7 +169,7 @@ Page {
                                 Rectangle {
                                     id: endLine
                                     width: changeLogContainer.width
-                                    height: 5
+                                    height: 1
                                     color: if (index < changeLogModel.count && changeLogModel.get(index+1).version.length > 0){"#FFFFFF"} else {"#111111"}
                                     anchors.horizontalCenter: parent.horizontalCenter
                                 }
