@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2024-10-30 23:31+0000\n"
-"PO-Revision-Date: 2024-10-31 14:36+0000\n"
-"Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
+"PO-Revision-Date: 2024-11-01 22:00+0000\n"
+"Last-Translator: Steve <steve.kueffer.ch@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
 "Language: fr\n"
@@ -16,11 +16,11 @@ msgstr ""
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
-msgstr "Restaurer le lanceur standard"
+msgstr "Démarrer automatiquement Modular Launcher"
 
 #: ../qml/Autostart.qml:45
 msgid "How to Autostart Modular Launcher after booting"
-msgstr "Comment démarrer automatiquement Modular Launcher après le démarrage ?"
+msgstr "Comment démarrer automatiquement Modular Launcher après le démarrage"
 
 #: ../qml/Autostart.qml:58
 msgid ""
@@ -32,7 +32,7 @@ msgstr ""
 "Comment configurer Modular Launcher pour qu'il démarre automatiquement "
 "lorsque l'appareil est démarré. <br><br>Plus de détails dans <a "
 "href='https://github.com/lutin11/launcher-modular-service'>comment ajouter "
-"Modular Launcher systemd service sur votre appareil</a>"
+"Modular Launcher systemd user service vers/sur votre appareil</a>"
 
 #: ../qml/ChangeLogs.qml:14
 msgid "Change Log"
@@ -44,7 +44,7 @@ msgstr "Retour"
 
 #: ../qml/ChangeLogs.qml:44
 msgid "Set how many calls to display!"
-msgstr "Configurez combien d'appels visualiser !"
+msgstr "Configurez combien d'appels visualiser!"
 
 #: ../qml/ChangeLogs.qml:45 ../qml/ChangeLogs.qml:47 ../qml/ChangeLogs.qml:49
 msgid "To do this, long press on the widget to access its configuration page."
@@ -54,15 +54,15 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:46
 msgid "Set how many messages to display!"
-msgstr "Configurez combien de messages visualiser !"
+msgstr "Configurez combien de messages visualiser!"
 
 #: ../qml/ChangeLogs.qml:48
 msgid "Set how many events to display!"
-msgstr "Configurez combien d'événements visualiser !"
+msgstr "Configurez combien d'événements visualiser!"
 
 #: ../qml/ChangeLogs.qml:50
 msgid "Call redirection to phone app works!"
-msgstr "La redirection vers un numéro de téléphone fonctionne !"
+msgstr "La redirection vers un numéro de téléphone fonctionne!"
 
 #: ../qml/ChangeLogs.qml:51
 msgid ""
@@ -70,12 +70,12 @@ msgid ""
 "number'"
 msgstr ""
 "Dans les paramètres d'appel, définissez l'option 'Lorsque cliqué' sur "
-"'Composer dans l'application « Téléphone »'."
+"'ouvrir le compositeur d'appel avec le numéro'"
 
 #: ../qml/ChangeLogs.qml:52
 msgid "Message redirection to messaging app works!"
 msgstr ""
-"La redirection des messages vers l'application de messagerie fonctionne !"
+"La redirection des messages vers l'application de messagerie fonctionne!"
 
 #: ../qml/ChangeLogs.qml:53
 msgid ""
