@@ -23,7 +23,8 @@ It gives quick access to your favorite:
 You have the option of adding “Pages” as:
 - Agenda
 - Notes
-- Photo
+- Photos
+- RSS feeds
 
 And of course you can launch all your installed applications
 
