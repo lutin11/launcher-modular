@@ -365,7 +365,9 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 width: parent.width
                                 height: parent.height
-                                source: AppHandler.appsinfo[index].icon
+                                source: AppHandler.appsinfo[index].icon && (AppHandler.appsinfo[index].icon.endsWith(".png") || AppHandler.appsinfo[index].icon.endsWith(".svg"))
+                                        ? AppHandler.appsinfo[index].icon
+                                        : "../../assets/placeholder-app-icon.svg"
                                 visible: if (launchermodular.settings.iconStyle == "none") { true;}else{ false;}
                             }
 
