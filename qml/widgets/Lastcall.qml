@@ -100,8 +100,8 @@ Item {
                     id: itemMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if ("default" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
-                        if ("dial" === launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+participants)}
+                        if ("default" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
+                        if ("dial" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+participants)}
                     }
                     onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
                 }
@@ -132,8 +132,8 @@ Item {
             id: emptyLabel
             fontSize: "small"
             anchors.top: rectLastCallTitle.bottom
-            visible: listCall.count === 0
-            height: listCall.count === 0 ? units.gu(3) : 0
+            visible: listCall.count == 0
+            height: listCall.count == 0 ? units.gu(3) : 0
             text: i18n.tr("No recent calls")
             color: launchermodular.settings.textColor
         }

@@ -105,7 +105,7 @@ Item {
             _mainFeed.isFeeds = false;
             return;
         }
-        if(Connectivity.status === NetworkingStatus.Offline  ) {
+        if(Connectivity.status == NetworkingStatus.Offline  ) {
             console.log("Limited connectivity... not updating.");
             if( feedList.model && feedList.model.length) {
               return;
@@ -140,7 +140,7 @@ Item {
             }
             z:1
             opacity: 0.6
-            visible:  _mainFeed.isFeeds === false
+            visible:  _mainFeed.isFeeds == false
             color: "transparent"
             ProgressBar {
                 anchors {
@@ -202,7 +202,7 @@ Item {
                     }
 
                     // Check if Atom feed and store additional data
-                    if (channel.namespaceDeclarations === "declare default element namespace 'http://www.w3.org/2005/Atom';") {
+                    if (channel.namespaceDeclarations == "declare default element namespace 'http://www.w3.org/2005/Atom';") {
                         channelData.isAtom = true;
                     }
 
@@ -237,7 +237,7 @@ Item {
             const parseChannelItems = function() {
                 if (channelItems.status !== XmlListModel.Ready) return;
 
-                if (channelItems.count === 0) {
+                if (channelItems.count == 0) {
                     channelItems.statusChanged.disconnect(parseChannelItems);
                     channelItems.destroy();
                     return;

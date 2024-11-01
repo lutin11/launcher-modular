@@ -146,7 +146,7 @@ Page {
                         }
                     }
                     ViewItems.onDragUpdated: {
-                        if (event.status === ListItemDrag.Moving) {
+                        if (event.status == ListItemDrag.Moving) {
                             model.move(event.from, event.to, 1);
                         }
                     }

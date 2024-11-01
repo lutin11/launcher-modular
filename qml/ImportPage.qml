@@ -30,11 +30,11 @@ Page {
             peer.selectionType = ContentTransfer.Single
             picker.activeTransfer = peer.request()
             picker.activeTransfer.stateChanged.connect(function() {
-                if (picker.activeTransfer.state === ContentTransfer.InProgress) {
+                if (picker.activeTransfer.state == ContentTransfer.InProgress) {
                     picker.activeTransfer.items = picker.activeTransfer.items[0].url = url;
                     picker.activeTransfer.state = ContentTransfer.Charged;
                 }
-                if (picker.activeTransfer.state === ContentTransfer.Charged) {
+                if (picker.activeTransfer.state == ContentTransfer.Charged) {
                     picker.imported(picker.activeTransfer.items[0].url)
                     picker.activeTransfer = null
                 }

@@ -117,7 +117,7 @@ Page {
                             title.color: "#111111"
                         }
                         divider.visible: false
-                        visible: if(fileName && fileName.split(".")[0] === "Home"){false; height = 0}
+                        visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0}
                         onClicked: {
                             launchermodular.pageModel.append({"name": fileName, "icon": "pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": "pages/"});
                             PopupUtils.close(listPageDialogue);
@@ -256,7 +256,7 @@ Page {
 
 
             ViewItems.onDragUpdated: {
-                if (event.status === ListItemDrag.Moving) {
+                if (event.status == ListItemDrag.Moving) {
                     model.move(event.from, event.to, 1);
                 }
             }

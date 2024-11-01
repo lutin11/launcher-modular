@@ -143,7 +143,7 @@ MainView {
 
                 console.log("###### on Component completion #####")
 
-                if(typeof launchermodular.settings.customIcon === 'undefined') {
+                if(typeof launchermodular.settings.customIcon == 'undefined') {
                      launchermodular.settings.customIcon = [];
                 }
                 console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elemets");
@@ -153,7 +153,7 @@ MainView {
                     launchermodular.customIconModel.insert(i,{"name": customIcon.name, "icon": customIcon.icon, "action": customIcon.action})
                 }
 
-                if(typeof launchermodular.settings.favoriteApps === 'undefined') {
+                if(typeof launchermodular.settings.favoriteApps == 'undefined') {
                      launchermodular.settings.favoriteApps = [];
                 }
                 console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
@@ -163,7 +163,7 @@ MainView {
                     launchermodular.favoriteAppsModel.insert(f,{"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action})
                 }
 
-                if(typeof launchermodular.settings.page === 'undefined') {
+                if(typeof launchermodular.settings.page == 'undefined') {
                     console.log("page is undefined, let's create a new one");
                     launchermodular.settings.page = [{"name": "Home.qml", "icon": "pages/home/assets/icon.svg","data":{}, "directory": "pages/"}];
                 }
@@ -319,7 +319,7 @@ MainView {
                                 source: launchermodular.pageModel.get(index).icon
                                 height: units.gu(2)
                                 width: units.gu(2)
-                                color: index === view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
                                 id: iconBottomBar
                                 antialiasing: true
                                 visible: false
@@ -329,7 +329,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
                                 source: iconBottomBar
-                                color: index === view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
                                 antialiasing: true
                             }
 
@@ -666,7 +666,7 @@ MainView {
                                     }
                                 }
                                 Label {
-                                    visible: imageSource.source === "../assets/placeholder-app-icon.svg" ? true : false
+                                    visible: imageSource.source == "../assets/placeholder-app-icon.svg" ? true : false
                                     anchors.fill: parent
                                     anchors.margins: units.gu(1)
                                     anchors.topMargin: webAppIcon.height / 1.4
@@ -714,9 +714,9 @@ MainView {
                                 }
                                 inputMethodHints: Qt.ImhNoAutoUppercase
                                 placeholderText: {
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
-                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
-                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
                                     else ""
                                 }
                             }
@@ -748,11 +748,11 @@ MainView {
 
                                     onClicked: {
 
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){ okButton.actionIcon = "browser:///"+appAction.text }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "website"){ okButton.actionIcon = "browser:///"+appAction.text }
 
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
 
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
 
                                         launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon});
 

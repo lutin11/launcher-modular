@@ -97,7 +97,7 @@ Page {
                             verticalAlignment: Text.AlignVCenter
                             color: "#aaaaaa" // Light grey color for placeholder
                             text: i18n.tr("https://omgubuntu.co.uk/feed")
-                            visible: rssField.text.length === 0
+                            visible: rssField.text.length == 0
                         }
 
                         property string urlToSave: ""

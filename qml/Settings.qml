@@ -80,8 +80,8 @@ Page {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Dark background")+"</font>"
                     control: Switch {
-                        checked:  if (launchermodular.settings.backgroundColor === "#000000"){ true; }else{ false;}
-                        onClicked: {if (launchermodular.settings.backgroundColor === "#000000"){ launchermodular.settings.backgroundColor = "#ffffff"; launchermodular.settings.textColor = "#000000"; }else{ launchermodular.settings.backgroundColor = "#000000"; launchermodular.settings.textColor = "#ffffff"; }}
+                        checked:  if (launchermodular.settings.backgroundColor == "#000000"){ true; }else{ false;}
+                        onClicked: {if (launchermodular.settings.backgroundColor == "#000000"){ launchermodular.settings.backgroundColor = "#ffffff"; launchermodular.settings.textColor = "#000000"; }else{ launchermodular.settings.backgroundColor = "#000000"; launchermodular.settings.textColor = "#ffffff"; }}
                     }
                 }
 
@@ -107,8 +107,8 @@ Page {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Background blur effect")+"</font>"
                     control: Switch {
-                        checked:  if (launchermodular.settings.backgroundBlur === "32"){ true; }else{ false;}
-                        onClicked: {if (launchermodular.settings.backgroundBlur === "32"){ launchermodular.settings.backgroundBlur = "0"; }else{ launchermodular.settings.backgroundBlur = "32"; }}
+                        checked:  if (launchermodular.settings.backgroundBlur == "32"){ true; }else{ false;}
+                        onClicked: {if (launchermodular.settings.backgroundBlur == "32"){ launchermodular.settings.backgroundBlur = "0"; }else{ launchermodular.settings.backgroundBlur = "32"; }}
                     }
                 }
 
@@ -132,8 +132,8 @@ Page {
                         launchermodular.settings.iconStyle = model[selectedIndex].style
                     }
                     Component.onCompleted: {
-                        if ("rounded" === launchermodular.settings.iconStyle){selectedIndex = 1}
-                        if ("none" === launchermodular.settings.iconStyle){selectedIndex = 0}
+                        if ("rounded" == launchermodular.settings.iconStyle){selectedIndex = 1}
+                        if ("none" == launchermodular.settings.iconStyle){selectedIndex = 0}
                     }
 
                     Text {

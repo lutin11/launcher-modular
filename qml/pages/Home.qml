@@ -366,26 +366,26 @@ Item {
                                 width: parent.width
                                 height: parent.height
                                 source: AppHandler.appsinfo[index].icon
-                                visible: if (launchermodular.settings.iconStyle === "none") { true;}else{ false;}
+                                visible: if (launchermodular.settings.iconStyle == "none") { true;}else{ false;}
                             }
 
                             OpacityMask {
                                 anchors.fill: imgIcons
-                                source: launchermodular.settings.iconStyle === "rounded" ? imgIcons : undefined
+                                source: launchermodular.settings.iconStyle == "rounded" ? imgIcons : undefined
                                 maskSource: Rectangle {
                                     width: imgIcons.width
                                     height: imgIcons.height
                                     radius: units.gu(8)
-                                    color: if (launchermodular.settings.iconStyle === "rounded") { "";} else { "transparent";}
-                                    visible: if (launchermodular.settings.iconStyle === "rounded") { false;} else { true;}
+                                    color: if (launchermodular.settings.iconStyle == "rounded") { "";} else { "transparent";}
+                                    visible: if (launchermodular.settings.iconStyle == "rounded") { false;} else { true;}
                                 }
                             }
 
                             LomiriShape {
                                 source: imgIcons
                                 aspect: LomiriShape.Flat
-                                width: if (launchermodular.settings.iconStyle === "default") { parent.width;}else{ units.gu(0);}
-                                height: if (launchermodular.settings.iconStyle === "default") { parent.height;}else{ units.gu(0);}
+                                width: if (launchermodular.settings.iconStyle == "default") { parent.width;}else{ units.gu(0);}
+                                height: if (launchermodular.settings.iconStyle == "default") { parent.height;}else{ units.gu(0);}
                                 radius : "medium"
                             }
 
@@ -428,7 +428,7 @@ Item {
 
                                                 } else {
                                                     for (var i = 0; i < launchermodular.customIconModel.count; i++) {
-                                                        if (AppHandler.appsinfo[index].name === launchermodular.customIconModel.get(i).name) {
+                                                        if (AppHandler.appsinfo[index].name == launchermodular.customIconModel.get(i).name) {
                                                             launchermodular.customIconModel.remove(i)
                                                             launchermodular.getCustomIconArray()
 
@@ -498,7 +498,7 @@ Item {
                             id: customButton
                             name: model.name
                             action: model.action
-                            icon: model.icon === "../assets/placeholder-app-icon.svg" ? "../../assets/placeholder-app-icon.svg" : model.icon
+                            icon: model.icon == "../assets/placeholder-app-icon.svg" ? "../../assets/placeholder-app-icon.svg" : model.icon
                             Component.onCompleted:AppHandler.appsinfo.push(customButton)
                         }
 

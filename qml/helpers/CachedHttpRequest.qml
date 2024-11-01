@@ -128,7 +128,7 @@ Item {
         }
 
         function cleanOldCachedDocs() {
-            if (Connectivity.status === NetworkingStatus.Offline) return;
+            if (Connectivity.status == NetworkingStatus.Offline) return;
 
             getPreviousResponses.query = ["*"];
             if (isLoggingEnabled) console.log("CachedHttpRequest: Cleaning old documents...");
@@ -148,7 +148,7 @@ Item {
 
         function mapJsonToRequest(json) {
             return Object.keys(json).map(key =>
-                typeof json[key] === 'object' ? `${key}[]=${mapJsonToRequest(json[key])}` : `${key}=${json[key]}`
+                typeof json[key] == 'object' ? `${key}[]=${mapJsonToRequest(json[key])}` : `${key}=${json[key]}`
             ).join("&");
         }
     }

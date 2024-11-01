@@ -102,8 +102,8 @@ Item {
                     id: itemMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if ("default" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("application:///messaging-app.desktop")}
-                        if ("message" === launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("message:///"+participants)}
+                        if ("default" == launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("application:///messaging-app.desktop")}
+                        if ("message" == launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("message:///"+participants)}
                     }
                     onPressAndHold:pageStack.push(Qt.resolvedUrl("lastmessage/Settings.qml"))
                 }
@@ -144,8 +144,8 @@ Item {
             id: emptyLabel
             fontSize: "small"
             anchors.top: rectLastMessageTitle.bottom
-            visible: listMessage.count === 0
-            height: listMessage.count === 0 ? units.gu(3) : 0
+            visible: listMessage.count == 0
+            height: listMessage.count == 0 ? units.gu(3) : 0
             text: i18n.tr("No recent messages")
             color: launchermodular.settings.textColor
         }

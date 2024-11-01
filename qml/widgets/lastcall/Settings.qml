@@ -110,8 +110,8 @@ Page {
                         launchermodular.settings.widgetCallClick = model[selectedIndex].style
                     }
                     Component.onCompleted: {
-                        if ("dial" === launchermodular.settings.widgetCallClick){selectedIndex = 1}
-                        if ("default" === launchermodular.settings.widgetCallClick){selectedIndex = 0}
+                        if ("dial" == launchermodular.settings.widgetCallClick){selectedIndex = 1}
+                        if ("default" == launchermodular.settings.widgetCallClick){selectedIndex = 0}
                     }
 
                     Text {

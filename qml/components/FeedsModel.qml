@@ -70,15 +70,15 @@ ListModel {
 	}
 	// true if a is less then b
 	function lessThen(a,b) {
-		return 	a === undefined || a[appSettings.mainFeedSortField] === undefined || //does 'a' even exists?
+		return 	a == undefined || a[appSettings.mainFeedSortField] == undefined || //does 'a' even exists?
 				(b[appSettings.mainFeedSortField] !== undefined  && ( //well if it does it can't be less then undefined...
 				( specialSort[appSettings.mainFeedSortField] && specialSort[appSettings.mainFeedSortField](a[appSettings.mainFeedSortField]) < specialSort[appSettings.mainFeedSortField](b[appSettings.mainFeedSortField]) ) //do we have a special handling for the selected field?
 				||
-				(specialSort[appSettings.mainFeedSortField] === undefined && a[appSettings.mainFeedSortField] < b[appSettings.mainFeedSortField] ) ) );// or do we just sort it by the string value?
+				(specialSort[appSettings.mainFeedSortField] == undefined && a[appSettings.mainFeedSortField] < b[appSettings.mainFeedSortField] ) ) );// or do we just sort it by the string value?
 	}
 	
 	function getValue(i) {
-		if(i === undefined || i[appSettings.mainFeedSortField] === undefined ) {
+		if(i == undefined || i[appSettings.mainFeedSortField] == undefined ) {
 			return false;
 		}
 		if ( specialSort[appSettings.mainFeedSortField] ) {//do we have a special handleing for the selected field? 

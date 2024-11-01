@@ -49,7 +49,7 @@ Item {
             delegate: Item{
                 width: parent.width
                 visible: model.enabled
-                height: if(model.enabled === false){0}else{textAlarm.contentHeight+hourAlarm.contentHeight}
+                height: if(model.enabled == false){0}else{textAlarm.contentHeight+hourAlarm.contentHeight}
                 Text {id: textAlarm; width: parent.width; wrapMode:Text.WordWrap; text: date.toLocaleDateString(Qt.locale()); color: launchermodular.settings.textColor; font.pointSize: units.gu(1.2);}
                 Text {id: hourAlarm; anchors.top: textAlarm.bottom; width: parent.width; wrapMode:Text.WordWrap; text: i18n.tr("at")+" "+Qt.formatTime(date); color: "#AEA79F"; font.pointSize: units.gu(1);}
             }

@@ -387,7 +387,7 @@ Page {
 
     Button {
         id: swipeHintButtonNext
-        visible: changeLogAboutView.currentIndex === 0
+        visible: changeLogAboutView.currentIndex == 0
         width: units.gu(2)
         height: units.gu(2)
         anchors.right: parent.right
@@ -411,7 +411,7 @@ Page {
 
     Button {
         id: swipeHintButtonPrevious
-        visible: changeLogAboutView.currentIndex === 1
+        visible: changeLogAboutView.currentIndex == 1
         width: units.gu(2)
         height: units.gu(2)
         anchors.left: parent.left
