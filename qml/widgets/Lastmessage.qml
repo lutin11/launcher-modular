@@ -42,7 +42,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
 
-        Rectangle{
+        Rectangle {
             id: rectLastMessageTitle
             height: units.gu(2.5)
             color: "transparent"
@@ -57,7 +57,7 @@ Item {
                 id: titleLastMessage
                 anchors.left: iconLastMessage.right
                 anchors.leftMargin: units.gu(1)
-                text: listMessage.count > 1 ? i18n.tr("Last Messages") : i18n.tr("Last Message");
+                text: listMessage.count > 1 ? i18n.tr("Last Messages") : i18n.tr("Last Message")
                 color: launchermodular.settings.textColor
             }
         }
@@ -88,7 +88,7 @@ Item {
             anchors.top: rectLastMessageTitle.bottom
             height: contentHeight
             model: messageList
-            width:parent.width;
+            width: parent.width
             interactive: false
             spacing: 0
             clip: true
@@ -102,42 +102,46 @@ Item {
                     id: itemMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if ("default" == launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("application:///messaging-app.desktop")}
-                        if ("message" == launchermodular.settings.widgetMessageClick){Qt.openUrlExternally("message:///"+participants)}
+                        if ("default" == launchermodular.settings.widgetMessageClick) {
+                            Qt.openUrlExternally("application:///messaging-app.desktop");
+                        }
+                        if ("message" == launchermodular.settings.widgetMessageClick) {
+                            Qt.openUrlExternally("message:///" + participants);
+                        }
                     }
-                    onPressAndHold:pageStack.push(Qt.resolvedUrl("lastmessage/Settings.qml"))
+                    onPressAndHold: pageStack.push(Qt.resolvedUrl("lastmessage/Settings.qml"))
                 }
                 Column {
                     id: visibleContent
                     anchors.fill: parent
-                    width:parent.width;
+                    width:parent.width
                     spacing: 0
 
                     Text {
-                        text: participants;
-                        color: launchermodular.settings.textColor;
-                        font.pointSize: units.gu(1.2);
+                        text: participants
+                        color: launchermodular.settings.textColor
+                        font.pointSize: units.gu(1.2)
                     }
                     Text {
-                        text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat);
-                        color: "#AEA79F";
-                        font.pointSize: units.gu(1);
+                        text: timestamp.toLocaleString(Qt.locale(), Locale.ShortFormat)
+                        color: "#AEA79F"
+                        font.pointSize: units.gu(1)
                     }
                     Text {
-                        text: eventTextMessage;
-                        elide: Text.ElideRight;
-                        maximumLineCount: 1;
-                        width: message.width;
-                        color: launchermodular.settings.textColor;
-                        font.pointSize: units.gu(1.1);
-                        visible: launchermodular.settings.widgetMessageSummary;
+                        text: eventTextMessage
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
+                        width: message.width
+                        color: launchermodular.settings.textColor
+                        font.pointSize: units.gu(1.1)
+                        visible: launchermodular.settings.widgetMessageSummary
                     }
                 }
             }
+
             onCountChanged: {
                 updateListViewHeight();  // Update height manually when count changes
             }
-
         }
 
         Label {
@@ -145,7 +149,7 @@ Item {
             fontSize: "small"
             anchors.top: rectLastMessageTitle.bottom
             visible: listMessage.count == 0
-            height: listMessage.count == 0 ? units.gu(3) : 0
+            height: units.gu(3)
             text: i18n.tr("No recent messages")
             color: launchermodular.settings.textColor
         }
