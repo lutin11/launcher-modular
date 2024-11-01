@@ -126,7 +126,6 @@ Item {
         id:feedList
 
         anchors {
-            topMargin: _mainFeed.top
             fill:parent
         }
 
