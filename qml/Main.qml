@@ -34,7 +34,7 @@ MainView {
             customIcon.push({"name": itemIcon.name, "icon": itemIcon.icon, "action": itemIcon.action});
         }
 
-        console.log("customIconModel to array, size : "+customIcon.length);
+        if (DEBUG_MODE) console.log("customIconModel to array, size : "+customIcon.length);
         return customIcon;
     }
 
@@ -45,7 +45,7 @@ MainView {
             page.push({"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory});
         }
 
-        console.log("pageModel to array, size : "+page.length);
+        if (DEBUG_MODE) console.log("pageModel to array, size : "+page.length);
         return page;
     }
 
@@ -56,7 +56,7 @@ MainView {
             favoriteApps.push({"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action});
         }
 
-        console.log("favoriteAppsModel to array, size : "+favoriteApps.length);
+        if (DEBUG_MODE) console.log("favoriteAppsModel to array, size : "+favoriteApps.length);
         return favoriteApps;
     }
 
@@ -141,12 +141,12 @@ MainView {
                     launchermodular.settings.version = appVersion;
                 }
 
-                console.log("###### on Component completion #####")
+                if (DEBUG_MODE) console.log("###### on Component completion #####")
 
                 if(typeof launchermodular.settings.customIcon == 'undefined') {
                      launchermodular.settings.customIcon = [];
                 }
-                console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elemets");
+                if (DEBUG_MODE) console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elemets");
                 var customIcon_l = launchermodular.settings.customIcon.length
                 for (var i=0; i<customIcon_l; i++){
                     var customIcon = launchermodular.settings.customIcon[i];
@@ -156,7 +156,7 @@ MainView {
                 if(typeof launchermodular.settings.favoriteApps == 'undefined') {
                      launchermodular.settings.favoriteApps = [];
                 }
-                console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
+                if (DEBUG_MODE) console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
                 var favoriteApps_l = launchermodular.settings.favoriteApps.length
                 for (var f=0; f<favoriteApps_l; f++){
                     var itemApps = launchermodular.settings.favoriteApps[f];
@@ -164,11 +164,11 @@ MainView {
                 }
 
                 if(typeof launchermodular.settings.page == 'undefined') {
-                    console.log("page is undefined, let's create a new one");
+                    if (DEBUG_MODE) console.log("page is undefined, let's create a new one");
                     launchermodular.settings.page = [{"name": "Home.qml", "icon": "pages/home/assets/icon.svg","data":{}, "directory": "pages/"}];
                 }
 
-                console.log("Retrieve page with : "+ launchermodular.settings.page.length +" elemets");
+                if (DEBUG_MODE) console.log("Retrieve page with : "+ launchermodular.settings.page.length +" elemets");
                 var page_l = launchermodular.settings.page.length
                 for (var p=0; p<page_l; p++){
                     var itemPage = launchermodular.settings.page[p];
@@ -178,15 +178,15 @@ MainView {
             }
 
             Component.onDestruction: {
-                console.log("####### On component destruction ###### ");
+                if (DEBUG_MODE) console.log("####### On component destruction ###### ");
                 launchermodular.settings.page = getPageArray();
-                console.log("Store page with : "+ launchermodular.settings.page.length +" elemets");
+                if (DEBUG_MODE) console.log("Store page with : "+ launchermodular.settings.page.length +" elemets");
 
                 launchermodular.settings.customIcon = getCustomIconArray();
-                console.log("Store customIcon with : "+ launchermodular.settings.customIcon.length +" elemets");
+                if (DEBUG_MODE) console.log("Store customIcon with : "+ launchermodular.settings.customIcon.length +" elemets");
 
                 launchermodular.settings.favoriteApps = getFavoriteAppsArray();
-                console.log("Store favoriteApps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
+                if (DEBUG_MODE) console.log("Store favoriteApps with : "+ launchermodular.settings.favoriteApps.length +" elemets");
             }
 
             header: PageHeader {

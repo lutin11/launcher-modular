@@ -29,7 +29,7 @@ QtObject {
         db.transaction(function (tx) {
             var results = tx.executeSql('SELECT * FROM todo ORDER BY created_date DESC')
             for (var i = 0; i < results.rows.length; i++) {
-                //console.log(results.rows.item(i).name)
+                if (DEBUG_MODE) console.log(results.rows.item(i).name)
                 var todo = {
                     id: results.rows.item(i).todo_id,
                     name: results.rows.item(i).name,
@@ -37,7 +37,7 @@ QtObject {
                     createdDate: results.rows.item(i).created_date,
                 }
                 itemModel.append(todo)
-                //console.log(JSON.stringify(todo))
+                if (DEBUG_MODE) console.log(JSON.stringify(todo))
             }
         })
 
@@ -103,7 +103,7 @@ QtObject {
     {
         var data = itemModel.get(index)
         db.transaction(function (tx) {
-            console.log("delete rowid:" + data.id)
+            if (DEBUG_MODE) console.log("delete rowid:" + data.id)
             tx.executeSql('delete from todo where todo_id = ?', [data.id])
         })
 

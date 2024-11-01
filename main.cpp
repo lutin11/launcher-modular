@@ -4,6 +4,7 @@
 #include <QString>
 #include <QQuickView>
 #include <QQmlEngine>
+#include <QQmlContext>
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +12,9 @@ int main(int argc, char *argv[])
     app->setApplicationName("launchermodular.lut11");
     QQmlEngine *engine = new QQmlEngine(app);
 
+    // Set global debug property
+    bool debug = false; // true to enable debug
+    engine->rootContext()->setContextProperty("DEBUG_MODE", debug);
     engine->addImportPath(QStringLiteral("/usr/lib/aarch64-linux-gnu/lomiri/qml/"));    
 
     QQuickView *view = new QQuickView(engine, nullptr);

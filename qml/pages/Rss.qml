@@ -64,7 +64,7 @@ Item {
         repeat: false
         running:false
         onTriggered : {
-            console.log("Timer Sorting..")
+            if (DEBUG_MODE) console.log("Timer Sorting..")
             feedList.model.sort();
             var sortFunctions = {
                 "Publication Date" : function sortByPubDate(a,b) {
@@ -82,7 +82,7 @@ Item {
         repeat: false
         running:false
         onTriggered : {
-            console.log("Timer updating..")
+            if (DEBUG_MODE) console.log("Timer updating..")
             RssModel.buildModel()
             _mainFeed.updateFeed();
         }
@@ -106,13 +106,13 @@ Item {
             return;
         }
         if(Connectivity.status == NetworkingStatus.Offline  ) {
-            console.log("Limited connectivity... not updating.");
+            if (DEBUG_MODE) console.log("Limited connectivity... not updating.");
             if( feedList.model && feedList.model.length) {
               return;
             }
         }
 
-        console.log("updating the feeds..");
+        if (DEBUG_MODE) console.log("updating the feeds..");
         feedList.model.clear();
         channelsList = [];
         _mainFeed.isFeeds = RssModel.itemModel.count > 0
@@ -126,7 +126,7 @@ Item {
         id:feedList
 
         anchors {
-            topMargin: parent.top
+            topMargin: _mainFeed.top
             fill:parent
         }
 
@@ -145,7 +145,6 @@ Item {
             ProgressBar {
                 anchors {
                     horizontalCenter:parent.horizontalCenter
-                    bottom:loadingLabel.top
                     margins:units.gu(2)
                 }
                 indeterminate:true
@@ -206,7 +205,7 @@ Item {
                         channelData.isAtom = true;
                     }
 
-                    console.log("channel:", JSON.stringify(channelData));
+                    if (DEBUG_MODE) console.log("channel:", JSON.stringify(channelData));
                     channelData.feedUrl = data.url;
                     channelData.fullXml = response;
                     channelsList.push(channelData);
@@ -219,7 +218,7 @@ Item {
                 channel.xml = response;
 
             } catch (e) {
-                console.log("Failed to load channel:", e);
+                if (DEBUG_MODE) console.log("Failed to load channel:", e);
             }
         }
 

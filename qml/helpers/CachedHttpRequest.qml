@@ -20,7 +20,7 @@ Item {
     function send(url, id, getData, postData) {
         id = id || Math.random();
         const requestURL = url + (getData ? "?" + _internal.mapJsonToRequest(getData) : "");
-        if (isLoggingEnabled) console.log("CachedHttpRequest: Retrieving data for:", requestURL, "id:", id);
+        if (DEBUG_MODE) console.log("CachedHttpRequest: Retrieving data for:", requestURL, "id:", id);
 
         waitingForResults = true;
         const cachedFactorPassed = _internal.retrieveFromCache(requestURL, id);
@@ -28,7 +28,7 @@ Item {
 
         const cachedResponseReturned = cachedFactorPassed < 1 || !onlyReturnFreshCache;
 
-        if (isLoggingEnabled) console.log("CachedHttpRequest: Sending request to URL:", requestURL);
+        if (DEBUG_MODE) console.log("CachedHttpRequest: Sending request to URL:", requestURL);
 
         cachedHttpRequestWorker.sendMessage({
             "requestURL": requestURL,
@@ -57,7 +57,7 @@ Item {
                         "isResultJSON": _cachedHttpReq.isResultJSON
                     }, Qt.md5(message.requestURL));
 
-                    if (isLoggingEnabled) console.log("CachedHttpRequest: Cached response with ID:", docId);
+                    if (DEBUG_MODE) console.log("CachedHttpRequest: Cached response with ID:", docId);
                     if (!cachedResponseIsEnough || !message.cachedResponseReturned) {
                         responseDataUpdated(response, message.id);
                     }
@@ -112,13 +112,13 @@ Item {
                     const response = prvResponse.isResultJSON ? JSON.parse(prvResponse.response) : prvResponse.response;
 
                     if (age < cachingTimeMiliSec) {
-                        if (isLoggingEnabled) console.log("CachedHttpRequest: Loading cached response for:", requestURL);
+                        if (DEBUG_MODE) console.log("CachedHttpRequest: Loading cached response for:", requestURL);
                         _cachedHttpReq.responseDataUpdated(response, id);
                         return age / cachingTimeMiliSec;
                     }
 
                     if (!onlyReturnFreshCache) {
-                        console.log("CachedHttpRequest: Returning outdated cached response for:", requestURL);
+                        if (DEBUG_MODE) console.log("CachedHttpRequest: Returning outdated cached response for:", requestURL);
                         _cachedHttpReq.responseDataUpdated(response, id);
                         return 1;
                     }
@@ -131,19 +131,19 @@ Item {
             if (Connectivity.status == NetworkingStatus.Offline) return;
 
             getPreviousResponses.query = ["*"];
-            if (isLoggingEnabled) console.log("CachedHttpRequest: Cleaning old documents...");
+            if (DEBUG_MODE) console.log("CachedHttpRequest: Cleaning old documents...");
 
             getPreviousResponses.results.forEach(docId => {
                 const prvResponse = cachedReqDbInstance.getDoc(docId);
                 const age = Date.now() - prvResponse.timestamp;
 
                 if (age > cachingTimeMiliSec * 1.25) {
-                    if (isLoggingEnabled) console.log("CachedHttpRequest: Removing stale document for:", prvResponse.request);
+                    if (DEBUG_MODE) console.log("CachedHttpRequest: Removing stale document for:", prvResponse.request);
                     cachedReqDbInstance.deleteDoc(docId);
                 }
             });
 
-            if (isLoggingEnabled) console.log("CachedHttpRequest: Cleaning complete.");
+            if (DEBUG_MODE) console.log("CachedHttpRequest: Cleaning complete.");
         }
 
         function mapJsonToRequest(json) {

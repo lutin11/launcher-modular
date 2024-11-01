@@ -59,7 +59,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked:{
-          console.log("clock");
+          if (DEBUG_MODE) console.log("clock");
           Qt.openUrlExternally("application:///clock.ubports_clock.desktop")
         }
     }

@@ -68,7 +68,7 @@ Item {
     Connections {
         target: launchermodular.settings
         onLimiteItemWidgetEventChanged: {
-             console.log("Change detected")
+             if (DEBUG_MODE) console.log("Change detected")
              widgetEvent.updateModelFunction();
         }
     }

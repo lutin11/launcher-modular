@@ -124,7 +124,7 @@ Page {
                         target: NetworkHelper
                         onUrlCheckCompleted: function(reachable, isRssFeed) {
                             if (reachable && isRssFeed) {
-                                console.log("URL " + rssField.urlToSave + " is a valid RSS feed");
+                                if (DEBUG_MODE) console.log("URL " + rssField.urlToSave + " is a valid RSS feed");
                                 RssModel.save(rssField.urlToSave);
                                 rssField.text = ""
                                 errorLine.visible = false

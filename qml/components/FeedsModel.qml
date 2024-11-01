@@ -15,7 +15,7 @@ ListModel {
 	onSortOrderChanged: sort();
 	
 	function sort() {
-		console.log("Sorting...")
+		if (DEBUG_MODE) console.log("Sorting...")
 		var mins = false; var maxs = false;
 		for(var i=0; i < feedModel.count;i++) {
 			var val = feedModel.getValue(feedModel.get(i));
@@ -41,7 +41,7 @@ ListModel {
 			}
 			if(sorted[eIdx]) {
 				while( sorted[eIdx] ) {
-					//console.log(eIdx,i,val);
+					if (DEBUG_MODE) console.log(eIdx,i,val);
 					if( val < feedModel.getValue(sorted[eIdx]) ) {
 						var tmp = sorted[eIdx];
 						sorted[eIdx] = value;
@@ -66,7 +66,7 @@ ListModel {
 				inIdx += sortOrder == Qt.AscendingOrder ? 1 : -1;
 			}
 		}
-		console.log("Done Sorting.")
+		if (DEBUG_MODE) console.log("Done Sorting.")
 	}
 	// true if a is less then b
 	function lessThen(a,b) {

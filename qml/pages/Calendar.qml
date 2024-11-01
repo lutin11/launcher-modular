@@ -42,15 +42,15 @@ Item {
         ]
 
         onExportCompleted: {
-            console.log("onExportCompleted")
+            if (DEBUG_MODE) console.log("onExportCompleted")
         }
 
         onImportCompleted: {
-            console.log("onImportCompleted")
+            if (DEBUG_MODE) console.log("onImportCompleted")
         }
 
         onItemsFetched: {
-            console.log("onItemsFetched")
+            if (DEBUG_MODE) console.log("onItemsFetched")
         }
 
         onModelChanged: {
@@ -66,7 +66,7 @@ Item {
             }
         }
         onDataChanged: {
-            console.log("onDataChanged")
+            if (DEBUG_MODE) console.log("onDataChanged")
         }
         manager: "eds"
     }

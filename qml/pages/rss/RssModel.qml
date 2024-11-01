@@ -22,7 +22,7 @@ QtObject {
     }
 
     function populateModel(targetModel) {
-        console.log("Populating model")
+        if (DEBUG_MODE) console.log("Populating model")
         targetModel.clear()
         db.transaction(function (tx) {
             var results = tx.executeSql('SELECT rss_id, rss_uri FROM rss ORDER BY rss_id DESC;')
@@ -32,25 +32,25 @@ QtObject {
                     rss_uri: results.rows.item(i).rss_uri
                 }
                 targetModel.append(rss)
-                console.log("Append:", JSON.stringify(rss))
+                if (DEBUG_MODE) console.log("Append:", JSON.stringify(rss))
             }
         })
     }
 
     function buildModel()
     {
-        console.log("Model building");
+        if (DEBUG_MODE) console.log("Model building");
         itemModel.clear()
         db.transaction(function (tx) {
             var results = tx.executeSql('SELECT rss_id, rss_uri FROM rss ORDER BY rss_id DESC;')
             for (var i = 0; i < results.rows.length; i++) {
-                console.log(results.rows.item(i).rss_uri)
+                if (DEBUG_MODE) console.log(results.rows.item(i).rss_uri)
                 let rss = {
                     id: results.rows.item(i).rss_id,
                     rss_uri: results.rows.item(i).rss_uri
                 }
                 itemModel.append(rss)
-                console.log("Append:" + JSON.stringify(rss))
+                if (DEBUG_MODE) console.log("Append:" + JSON.stringify(rss))
             }
         })
 
@@ -70,7 +70,7 @@ QtObject {
 
     function save(rss_uri_)
     {
-        console.log("will save:" + JSON.stringify(rss_uri_))
+        if (DEBUG_MODE) console.log("will save:" + JSON.stringify(rss_uri_))
         var rowid = 0;
         db.transaction(function (tx) {
             tx.executeSql('INSERT INTO rss(rss_uri) VALUES(?)', [rss_uri_])
@@ -101,7 +101,7 @@ QtObject {
     {
         var data = itemModel.get(index)
         db.transaction(function (tx) {
-            console.log("delete rowid:" + data.id)
+            if (DEBUG_MODE) console.log("delete rowid:" + data.id)
             tx.executeSql('delete from rss where rss_id = ?', [data.id])
         })
 
@@ -111,6 +111,6 @@ QtObject {
     Component.onCompleted:{
         RssModel.dbInit()
         RssModel.buildModel()
-        console.log("nb itemModel:", RssModel.itemModel.count)
+        if (DEBUG_MODE) console.log("nb itemModel:", RssModel.itemModel.count)
     }
 }
