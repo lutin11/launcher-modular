@@ -167,7 +167,7 @@ Item {
                         elide: Text.ElideRight;
                         maximumLineCount: 1;
                         width: event.width-units.gu(4);
-                        color: "#AEA79F"; font.pointSize: units.gu(1.2);
+                        color: "#AEA79F"; font.pointSize: units.gu(1);
                     }
                 }
             }

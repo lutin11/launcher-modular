@@ -17,7 +17,7 @@ Item {
         callList.clear();
         var numberOfVisibleItems = launchermodular.settings.numberOfCallWidget;
         var count = Math.min(historyCallModel.count, numberOfVisibleItems);
-        for (var i = 0; i < count; i++) {
+        for (let i = 0; i < count; i++) {
             // Get the participants value from the historyCallModel
             var participants = historyCallModel.get(i).participants;
             participants = participants.toString();
@@ -87,7 +87,7 @@ Item {
             anchors.top: rectLastCallTitle.bottom
             height: contentHeight
             model: callList
-            width:parent.width;
+            width:parent.width
             interactive: false
             spacing: 0
             clip: true
@@ -95,13 +95,13 @@ Item {
             delegate: Item {
                 id: listCallItel
                 width: ListView.view.width
-                height: visibleContent.height+units.gu(2.5)
+                height: visibleContent.height+units.gu(2)
                 MouseArea {
                     id: itemMouseArea
                     anchors.fill: parent
                     onClicked: {
-                        if ("default" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop")}
-                        if ("dial" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+participants)}
+                        if ("default" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("application:///dialer-app.desktop");}
+                        if ("dial" == launchermodular.settings.widgetCallClick){Qt.openUrlExternally("tel:///"+participants);}
                     }
                     onPressAndHold: pageStack.push(Qt.resolvedUrl("lastcall/Settings.qml"))
                 }
@@ -123,6 +123,7 @@ Item {
                     }
                 }
             }
+
             onCountChanged: {
                 updateListViewHeight();  // Update height manually when count changes
             }
@@ -133,7 +134,7 @@ Item {
             fontSize: "small"
             anchors.top: rectLastCallTitle.bottom
             visible: listCall.count == 0
-            height: listCall.count == 0 ? units.gu(3) : 0
+            height: units.gu(3)
             text: i18n.tr("No recent calls")
             color: launchermodular.settings.textColor
         }

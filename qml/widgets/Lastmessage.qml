@@ -18,7 +18,7 @@ Item {
         var numberOfVisibleItems = launchermodular.settings.numberOfMessageWidget;
         var count = Math.min(historyThreadModel.count, numberOfVisibleItems);
         // Get the participants value from the historyThreadModel
-        for (var i = 0; i < count; i++) {
+        for (let i = 0; i < count; i++) {
             var event = historyThreadModel.get(i);
             var participants = event.participants;
             participants = participants.toString();
