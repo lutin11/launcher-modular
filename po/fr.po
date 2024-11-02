@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2024-10-30 23:31+0000\n"
-"PO-Revision-Date: 2024-11-01 22:00+0000\n"
+"PO-Revision-Date: 2024-11-02 15:38+0000\n"
 "Last-Translator: Steve <steve.kueffer.ch@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 5.8.2\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -138,9 +138,8 @@ msgid "Addition of a new page for RSS feeds"
 msgstr "Ajout d'une nouvelle page pour les flux RSS"
 
 #: ../qml/ChangeLogs.qml:75
-#, fuzzy
 msgid "Update translations"
-msgstr "Traducteurs"
+msgstr "Mettre à jour les traductions"
 
 #: ../qml/ChangeLogs.qml:77
 msgid "Improved 'Picture' page display performance"
@@ -469,7 +468,7 @@ msgstr "Chemin de l'image"
 
 #: ../qml/pages/rss/Settings.qml:99
 msgid "https://omgubuntu.co.uk/feed"
-msgstr ""
+msgstr "https://omgubuntu.co.uk/feed"
 
 #: ../qml/pages/rss/Settings.qml:223
 msgid "Invalid url"
