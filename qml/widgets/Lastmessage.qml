@@ -5,6 +5,7 @@ import "../components"
 import Qt.labs.settings 1.0
 import Lomiri.History 0.1
 import Lomiri.Contacts 0.1
+import ContactHelper 1.0
 
 Item {
     id: widgetLastMessage
@@ -12,6 +13,24 @@ Item {
     height: message.height + (listMessage.count > 0 ? listMessage.contentHeight : emptyLabel.height) + units.gu(1)
         
     property ListModel messageList:  ListModel {}
+
+    ContactHelper {
+        id: contactHelper
+    }
+
+    function fetchContactById(contactId) {
+        var contactFullName = "";
+        let contact = contactHelper.getContactById(contactId);
+        if (contact) {
+            contactFullName  = contact["firstName"];
+            if (contact.midleName) {
+                contactFullName += " " + contact["lastName"];
+            }
+        } else {
+            console.log("No contact found for ID:", contactId);
+        }
+        return contactFullName;
+    }
 
     function updateFilteredModel() {
         messageList.clear();
@@ -21,12 +40,15 @@ Item {
         for (let i = 0; i < count; i++) {
             var event = historyThreadModel.get(i);
             var participants = event.participants;
-            participants = participants.toString();
+            let contactId = event.properties.participants[0].contactId;
+            var contactFullName = fetchContactById(contactId);
+            var participantsString = participants.toString();
 
             messageList.append({
                 eventTextMessage: event.eventTextMessage,
                 timestamp: event.timestamp,
-                participants: participants,  // Now a string
+                participants: participantsString,  // Now a string
+                contactFullName: contactFullName
             });
         }
     }
@@ -118,7 +140,7 @@ Item {
                     spacing: 0
 
                     Text {
-                        text: participants
+                        text: contactFullName.length > 0 ? contactFullName : participants
                         color: launchermodular.settings.textColor
                         font.pointSize: units.gu(1.2)
                     }

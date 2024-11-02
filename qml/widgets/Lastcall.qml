@@ -5,6 +5,7 @@ import "../components"
 import Qt.labs.settings 1.0
 import Lomiri.History 0.1
 import Lomiri.Contacts 0.1
+import ContactHelper 1.0
 
 Item {
     id: widgetLastCall
@@ -13,16 +14,38 @@ Item {
 
     property ListModel callList:  ListModel {}
 
+    ContactHelper {
+        id: contactHelper
+    }
+
+    function fetchContactById(contactId) {
+        var contactFullName = "";
+        let contact = contactHelper.getContactById(contactId);
+        if (contact) {
+            contactFullName  = contact["firstName"];
+            if (contact.midleName) {
+                contactFullName += " " + contact["lastName"];
+            }
+        } else {
+            console.log("No contact found for ID:", contactId);
+        }
+        return contactFullName;
+    }
+
     function updateFilteredModel() {
         callList.clear();
         var numberOfVisibleItems = launchermodular.settings.numberOfCallWidget;
         var count = Math.min(historyCallModel.count, numberOfVisibleItems);
         for (let i = 0; i < count; i++) {
             // Get the participants value from the historyCallModel
-            var participants = historyCallModel.get(i).participants;
+            var event = historyCallModel.get(i);
+            let contactId = event.properties.participants[0].contactId;
+            var contactFullName = fetchContactById(contactId);
+            var participants = event.participants;
             participants = participants.toString();
             callList.append({
                 participants: participants,  // Now a string
+                contactFullName: contactFullName,
                 timestamp: historyCallModel.get(i).timestamp
             });
         }
@@ -112,7 +135,7 @@ Item {
                     spacing: 0
 
                     Text {
-                        text: participants;
+                        text: contactFullName.length > 0 ? contactFullName : participants;
                         color: launchermodular.settings.textColor;
                         font.pointSize: units.gu(1.2);
                     }

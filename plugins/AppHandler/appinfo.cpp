@@ -14,6 +14,7 @@ AppInfo::AppInfo(const QString& packagename, const QString& infos)
 	_appinfo.insert("Action", "application:///"+packagename+".desktop");
 	import(infos);
 }
+
 void AppInfo::import(const QString& infos) {
 	bool read = false;
 	foreach (const QString& line , infos.split("\n")) {
@@ -35,6 +36,7 @@ void AppInfo::import(const QString& infos) {
 		}
 	}
 }
+
 QString AppInfo::getProp(const QString& key)
 {
 	QString locale = (QLocale() != QLocale::c()) ? QLocale().name().split("_").first() : "c";
@@ -49,6 +51,7 @@ QString AppInfo::getProp(const QString& key)
 	}
     
 }
+
 bool AppInfo::haveProp(const QString& key)
 {
 	return _appinfo.contains(key);
@@ -70,6 +73,7 @@ QVariantMap AppInfo::fullInfo() {
 	}
 	return map;
 }
+
 QVariantList AppInfo::keys() {
 	QVariantList lst;
     auto localKeys = _appinfo.keys();
