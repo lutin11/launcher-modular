@@ -3,30 +3,40 @@
 A launcher modular for ubuntu touch
 
 <p float="left">
-  <img src="/assets/samples/MainPageHeader.png" width="100" alt="Main page header"/>
-  <img src="/assets/samples/MainPageBottom.png" width="100" alt="Main page bottom"/> 
-  <img src="/assets/samples/Diary.png" width="100" alt="Page diary"/>
-  <img src="assets/samples/Note.png" width="100" alt="Page note"/>
+  <img src="/assets/samples/Home_Page.png" width="100" alt="Main page"/>
+  <img src="/assets/samples/Home_Page_Toolbar.png" width="100" alt="Main page toolbar"/> 
+  <img src="/assets/samples/Calendar_Page.png" width="100" alt="Calendar page"/>
+  <img src="assets/samples/TODO_Page.png" width="100" alt="Page note"/>
+  <img src="assets/samples/RSS_Page.png" width="100" alt="RSS note"/>
+  <img src="assets/samples/Picture_Page.png" width="100" alt="Picture page"/>
+  <img src="assets/samples/Global_Settings.png" width="100" alt="Global settings"/>
+  <img src="assets/samples/Add_Icon.png" width="100" alt="Add icon"/>
+  <img src="assets/samples/Add_Page.png" width="100" alt="Add page"/>
+  <img src="assets/samples/RSS_Setings.png" width="100" alt="RSS setings"/>
 </p>
 
-The “Launcher Modular” lets you quickly view information such as:
+## The “Launcher Modular” lets you quickly view information such as:
 - time
-- weather
+- weather forecast
 - latest calls
-- messages
+- latest messages
 - upcoming events
 
-It gives quick access to your favorite:
+## It gives quick access to your favorite:
 - applications
 - contacts
 
-You have the option of adding “Pages” as:
+## By clicking on a contact's icon, you can call them or send them a message.
+
+## It give you access to all your applications from Ubports, Libertine, Waydroid
+
+## You have the option of adding “Pages” as:
 - Agenda
-- Notes
+- Todo list
 - Photos
 - RSS feeds
 
-And of course you can launch all your installed applications
+## The main search bar will search your contacts, applications and the web at the same time
 
 ### How to build
 
