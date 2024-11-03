@@ -41,16 +41,40 @@ Page {
                     right: parent.right
                 }
 
-                ListItem.Header {
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Widget Settings")+"</font>"
+                Item {
+                    width: parent.width
+                    height: widgetSettingHelp.height + units.gu(2)
+                    Label {
+                        id: widgetSettingHelp
+                        text: i18n.tr("<br><b>Click and hold the widget to change its settings.</b>")
+                        anchors.centerIn: parent
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        horizontalAlignment: Text.AlignHCenter
+                        width: parent.width - units.gu(12)
+                        color: "#ffffff"
+                    }
                 }
 
                 Item {
                     width: parent.width
-                    height: translators1Label.height + units.gu(2)
+                    height: addNewPageHelp.height + units.gu(2)
                     Label {
-                        id: translators1Label
-                        text: i18n.tr("<br><b>Click and hold the widget and to change its settings.</b>")
+                        id: addNewPageHelp
+                        text: i18n.tr("<br><b>To add a new page, go to 'Manage page' and click on the '+' on the top right.</b>")
+                        anchors.centerIn: parent
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        horizontalAlignment: Text.AlignHCenter
+                        width: parent.width - units.gu(12)
+                        color: "#ffffff"
+                    }
+                }
+
+                Item {
+                    width: parent.width
+                    height: pageSettingHelp.height + units.gu(2)
+                    Label {
+                        id: pageSettingHelp
+                        text: i18n.tr("<br><b>To change page settings, go to 'Manage page' and click the page.</b>")
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         horizontalAlignment: Text.AlignHCenter
