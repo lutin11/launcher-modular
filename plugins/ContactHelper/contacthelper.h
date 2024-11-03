@@ -7,7 +7,6 @@
 #include <QtContacts/QContact>
 #include <QtContacts/QContactId>
 #include <QtContacts/QContactName>
-#include <QtContacts/QContactPhoneNumber>
 
 class ContactHelper : public QObject {
     Q_OBJECT

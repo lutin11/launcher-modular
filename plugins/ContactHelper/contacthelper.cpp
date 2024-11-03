@@ -28,16 +28,9 @@ QVariantMap ContactHelper::getContactById(const QString &contactIdString) {
         QString firstName = contactName.firstName();
         QString lastName = contactName.lastName();
 
-        // Retrieve contact's phone number(s) (if available)
-        QStringList phoneNumbers;
-        for (const QContactPhoneNumber &phoneDetail : contact.details<QContactPhoneNumber>()) {
-            phoneNumbers.append(phoneDetail.number());
-        }
-
         // Populate contactMap with details to return to QML
         contactMap["firstName"] = firstName;
         contactMap["lastName"] = lastName;
-        contactMap["phoneNumbers"] = phoneNumbers;
 
         qDebug() << "Contact map to return:" << contactMap;
     } else {
