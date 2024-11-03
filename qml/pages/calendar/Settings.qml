@@ -36,17 +36,17 @@ Page {
 
             Column {
                 id: settingsColumn
-                anchors.fill: parent
-
-                ListItem.Header {
-                    id: titleCalendarManagement
-                    text: "<font color=\"#ffffff\">"+i18n.tr("General")+"</font>"
+                anchors {
+                   fill: parent
+                   top: parent.top
+                   topMargin: units.gu(2)
+                   leftMargin: units.gu(1)
+                   rightMargin: units.gu(1)
                 }
 
                 Item {
                     id: templateRow
                     width: parent.width
-                    anchors.top: parent.top
                     height: units.gu(4)
 
                     Label {

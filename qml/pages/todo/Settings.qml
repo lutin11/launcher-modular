@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
+import Lomiri.Components.ListItems 1.3 as ListItem
 
 Page {
     id: pageSettingsTodo
@@ -33,7 +34,19 @@ Page {
             clip: true
             Column {
                 id: settingsColumn
-                anchors.fill: parent
+
+                ListItem.Header {
+                    id: titleCalendarManagement
+                    text: "<font color=\"#ffffff\">"+i18n.tr("No settings for 'TODO' page")+"</font>"
+                }
+
+                anchors {
+                   fill: parent
+                   top: parent.top
+                   topMargin: units.gu(2)
+                   leftMargin: units.gu(1)
+                   rightMargin: units.gu(1)
+                }
             } // column
         } //flickable
     } //rectangle settings
