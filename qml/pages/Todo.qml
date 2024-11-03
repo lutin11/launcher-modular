@@ -8,9 +8,9 @@ Item {
     id: todoPage
     anchors.fill: parent
     anchors {
-        rightMargin: units.gu(4)
-        leftMargin: units.gu(4)
-        topMargin: units.gu(4)
+        rightMargin: units.gu(2)
+        leftMargin: units.gu(2)
+        topMargin: units.gu(2)
     }
 
     ListView{
@@ -26,8 +26,6 @@ Item {
             anchors {
                 left: parent.left
                 right: parent.right
-                leftMargin: units.gu(2)
-                rightMargin: units.gu(2)
             }
 
             Rectangle {
@@ -72,14 +70,28 @@ Item {
                     height: parent.height
                     color: "transparent"
                 }
-                placeholderText: i18n.tr("new todo")
+                placeholderText: ""
+                // Custom placeholder
+                Text {
+                    anchors.fill: parent
+                    anchors.leftMargin: units.gu(2)
+                    verticalAlignment: Text.AlignVCenter
+                    color: "#aaaaaa" // Light grey color for placeholder
+                    text: i18n.tr("New todo")
+                    visible: todoField.text.length == 0
+                    font.pixelSize: units.gu(1.5)
+                }
+                inputMethodHints: Qt.ImhNoPredictiveText
+                onVisibleChanged: {
+                    if (visible) {
+                        forceActiveFocus()
+                    }
+                }
                 Keys.onReturnPressed: {
                     TodoModel.save(todoField.text)
                     todoField.text = ""
                 }
-
                 maximumLength: 25
-
             }
         }
 

@@ -182,7 +182,7 @@ Item {
                     // Custom placeholder
                     Text {
                         anchors.fill: parent
-                        anchors.leftMargin: units.gu(1)
+                        anchors.leftMargin: units.gu(2)
                         verticalAlignment: Text.AlignVCenter
                         color: "#aaaaaa" // Light grey color for placeholder
                         text: i18n.tr("Search your phone and online sources")
