@@ -59,7 +59,7 @@ Item {
     }
 
     Timer {
-    	  id:refreshafteruninstall
+        id:refreshafteruninstall
         interval: 500; running: false; repeat: false
         onTriggered: {home.getIcon();}
     }
@@ -178,7 +178,17 @@ Item {
                       color: "transparent"
                     }
 
-                    placeholderText: i18n.tr("Search your phone and online sources")
+                    placeholderText: ""
+                    // Custom placeholder
+                    Text {
+                        anchors.fill: parent
+                        anchors.leftMargin: units.gu(1)
+                        verticalAlignment: Text.AlignVCenter
+                        color: "#aaaaaa" // Light grey color for placeholder
+                        text: i18n.tr("Search your phone and online sources")
+                        visible: searchField.text.length == 0
+                        font.pixelSize: units.gu(1.5)
+                    }
                     inputMethodHints: Qt.ImhNoPredictiveText
                     onVisibleChanged: {
                         if (visible) {
