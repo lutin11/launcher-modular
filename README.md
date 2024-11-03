@@ -15,30 +15,30 @@ A launcher modular for ubuntu touch
   <img src="assets/samples/RSS_Setings.png" width="100" alt="RSS setings"/>
 </p>
 
-## The “Launcher Modular” lets you quickly view information such as:
+### The “Launcher Modular” lets you quickly view information such as:
 - time
 - weather forecast
 - latest calls
 - latest messages
 - upcoming events
 
-## It gives quick access to your favorite:
+### It gives quick access to your favorite:
 - applications
 - contacts
 
-## By clicking on a contact's icon, you can call them or send them a message.
+### By clicking on a contact's icon, you can call them or send them a message.
 
-## It give you access to all your applications from Ubports, Libertine, Waydroid
+### It give you access to all your applications from Ubports, Libertine, Waydroid
 
-## You have the option of adding “Pages” as:
+### You have the option of adding “Pages” as:
 - Agenda
 - Todo list
 - Photos
 - RSS feeds
 
-## The main search bar will search your contacts, applications and the web at the same time
+### The main search bar will search your contacts, applications and the web at the same time
 
-### How to build
+## How to build
 
 To build Launcher Modular for Ubuntu Touch devices you do need clickable. Follow install instructions at its repo [here](https://gitlab.com/clickable/clickable).
 Once clickable is installed you are ready to go.
