@@ -52,20 +52,14 @@ Page {
             property var details5: i18n.tr("Message redirection to messaging app works!");
             property var description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'");
             property var details6: i18n.tr("Force the event list to refresh by double-clicking on the event widget!");
-            property var description6:"";
             property var details7: i18n.tr("The event list shows event from current day!");
-            property var description7:"";
             property var details8: i18n.tr("Clicking on the 'Alarm' widget opens the clock!");
-            property var description8:"";
             property var details9: i18n.tr("Open the photo by clicking on it!");
-            property var description9:"";
             // 2.3.2
             property var details10: i18n.tr("Enable Autostart");
             property var description10: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart");
             property var details11: i18n.tr("Correction for background display.");
-            property var description11:"";
             property var details12: i18n.tr("Fix up 'Run a command in a terminal'");
-            property var description12:"";
             // 2.3.1
             property var details13: i18n.tr("Resumption of the application.");
             property var description13: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.");
@@ -73,16 +67,20 @@ Page {
             property var details14: i18n.tr("Addition of a new page for RSS feeds");
             property var description14:"On Rss setting page, you can add a list of RSS feeds";
             property var details15: i18n.tr("Update translations");
-            property var description15:"";
             property var details16: i18n.tr("Improved 'Picture' page display performance");
-            property var description16:"";
-
+            // 2.3.5
+            property var details17: i18n.tr("Display contact name if exists on message and call widget");
+            property var details18: i18n.tr("Improved 'Picture' page display performance");
+            property var details19: i18n.tr("Update translations");
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.3.5", date: "2024-11-03", details: details17, description: emptyDescription });
+                changeLogModel.append({ version: "", date: "", details: details18, description: emptyDescription });
+                changeLogModel.append({ version: "", date: "", details: details19, description: emptyDescription });
                 changeLogModel.append({ version: "2.3.4", date: "2024-10-31", details: details14, description: description14 });
                 changeLogModel.append({ version: "", date: "", details: details15, description: emptyDescription });
                 changeLogModel.append({ version: "", date: "", details: details16, description: emptyDescription });
