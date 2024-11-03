@@ -3,6 +3,8 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.1
+import Lomiri.Thumbnailer 0.1
+
 
 Item {
     id: picture
@@ -46,11 +48,15 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
                     height: parent.height
-                    source: filePath
+                    source:  "image://thumbnailer/" + filePath;
+                    sourceSize {
+                        width: parent.width
+                        height: parent.height
+                    }
                     visible: Math.abs(gview.contentY - y) < 2 * gview.cellHeight  // Lazy loading based on proximity to viewport
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true  // To load images without blocking the main UI thread
-                    cache: true  // Enable image caching for faster re-display
+                    cache: false
                 }
 
                 LomiriShape {
