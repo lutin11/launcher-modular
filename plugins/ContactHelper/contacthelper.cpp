@@ -12,9 +12,6 @@ ContactHelper::ContactHelper(QObject *parent)
 QVariantMap ContactHelper::getContactById(const QString &contactIdString) {
     qDebug() << "Receive contactId:" << contactIdString;
     QVariantMap contactMap;
-    QList<QContact> allContacts = manager.contacts();
-    //qDebug() << "Nb Contacts:" << allContacts.length();
-
 
     // Convert the contactIdString into a QContactId object
     QContactId contactId = QContactId::fromString(contactIdString);
