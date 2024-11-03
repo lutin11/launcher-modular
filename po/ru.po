@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 23:58+0000\n"
+"POT-Creation-Date: 2024-11-03 16:35+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -79,75 +79,79 @@ msgstr ""
 msgid "Force the event list to refresh by double-clicking on the event widget!"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:56
+#: ../qml/ChangeLogs.qml:55
 msgid "The event list shows event from current day!"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:58
+#: ../qml/ChangeLogs.qml:56
 msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:60
+#: ../qml/ChangeLogs.qml:57
 msgid "Open the photo by clicking on it!"
 msgstr "Открыть приложение"
 
-#: ../qml/ChangeLogs.qml:63
+#: ../qml/ChangeLogs.qml:59
 msgid "Enable Autostart"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:64
+#: ../qml/ChangeLogs.qml:60
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Проведите пальцем вверх, чтобы настроить средство запуска"
 
-#: ../qml/ChangeLogs.qml:65
+#: ../qml/ChangeLogs.qml:61
 msgid "Correction for background display."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:67
+#: ../qml/ChangeLogs.qml:62
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Запустить команду в терминале"
 
-#: ../qml/ChangeLogs.qml:70
+#: ../qml/ChangeLogs.qml:64
 msgid "Resumption of the application."
 msgstr "Открыть приложение"
 
-#: ../qml/ChangeLogs.qml:71
+#: ../qml/ChangeLogs.qml:65
 msgid ""
 "This is the first release of Launcher Modular based on <a href='https://"
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:73
+#: ../qml/ChangeLogs.qml:67
 msgid "Addition of a new page for RSS feeds"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:75
+#: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74
 #, fuzzy
 msgid "Update translations"
 msgstr "Переводчики"
 
-#: ../qml/ChangeLogs.qml:77
+#: ../qml/ChangeLogs.qml:70 ../qml/ChangeLogs.qml:73
 msgid "Improved 'Picture' page display performance"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:140
+#: ../qml/ChangeLogs.qml:72
+msgid "Display contact name if exists on message and call widget"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:138
 msgid "Version: "
 msgstr "Версия: "
 
-#: ../qml/ChangeLogs.qml:146
+#: ../qml/ChangeLogs.qml:144
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:272
+#: ../qml/ChangeLogs.qml:270
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:299
+#: ../qml/ChangeLogs.qml:297
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Launcher modular для Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:313
+#: ../qml/ChangeLogs.qml:311
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -167,23 +171,23 @@ msgstr ""
 "href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
 "License</a>."
 
-#: ../qml/ChangeLogs.qml:328
+#: ../qml/ChangeLogs.qml:326
 msgid "SOURCE"
 msgstr "ИСХОДНЫЙ КОД"
 
-#: ../qml/ChangeLogs.qml:328
+#: ../qml/ChangeLogs.qml:326
 msgid "ISSUES"
 msgstr "ПРОБЛЕМЫ"
 
-#: ../qml/ChangeLogs.qml:343
+#: ../qml/ChangeLogs.qml:341
 msgid "Maintainer"
 msgstr "Сопроводитель"
 
-#: ../qml/ChangeLogs.qml:357
+#: ../qml/ChangeLogs.qml:355
 msgid "Copyright"
 msgstr "Авторское право"
 
-#: ../qml/ChangeLogs.qml:372
+#: ../qml/ChangeLogs.qml:370
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -191,13 +195,21 @@ msgstr ""
 msgid "Modular Launcher Help"
 msgstr "Launcher Modular Помощь"
 
-#: ../qml/Help.qml:45
-msgid "Widget Settings"
-msgstr "Настройки виджета"
-
-#: ../qml/Help.qml:53
-msgid "<br><b>Click and hold the widget and to change its settings.</b>"
+#: ../qml/Help.qml:49
+#, fuzzy
+msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr "Нажмите и удерживайте виджет, чтобы изменить его настройки."
+
+#: ../qml/Help.qml:63
+msgid ""
+"<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
+"top right.</b>"
+msgstr ""
+
+#: ../qml/Help.qml:77
+msgid ""
+"<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
+msgstr ""
 
 #: ../qml/ImportPage.qml:10
 msgid "Choose"
@@ -272,7 +284,7 @@ msgid "Create icon"
 msgstr "Создать иконку"
 
 #: ../qml/Main.qml:776 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:447
+#: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:459
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr "Отменить"
@@ -293,7 +305,7 @@ msgstr "Настройки"
 msgid "ok"
 msgstr ""
 
-#: ../qml/Settings.qml:76 ../qml/pages/calendar/Settings.qml:43
+#: ../qml/Settings.qml:76
 msgid "General"
 msgstr "Основное"
 
@@ -391,42 +403,43 @@ msgstr ""
 msgid "Agenda"
 msgstr "Календарь событий"
 
-#: ../qml/pages/Home.qml:181
+#: ../qml/pages/Home.qml:188
 msgid "Search your phone and online sources"
 msgstr "Поиск в телефоне и в Интернете"
 
-#: ../qml/pages/Home.qml:307
+#: ../qml/pages/Home.qml:317
 msgid "Installed Apps"
 msgstr "Установленные Приложения"
 
-#: ../qml/pages/Home.qml:406
+#: ../qml/pages/Home.qml:418
 msgid "Uninstall"
 msgstr "Удалить"
 
-#: ../qml/pages/Home.qml:406
+#: ../qml/pages/Home.qml:418
 msgid "Remove"
 msgstr "Убрать"
 
-#: ../qml/pages/Rss.qml:156
+#: ../qml/pages/Rss.qml:154
 msgid "Loading feeds…"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:156
+#: ../qml/pages/Rss.qml:154
 msgid "Go to the page management to add feeds."
 msgstr ""
 
-#: ../qml/pages/Todo.qml:75
-msgid "new todo"
+#: ../qml/pages/Todo.qml:80
+#, fuzzy
+msgid "New todo"
 msgstr "новое задание"
 
-#: ../qml/pages/Todo.qml:113 ../qml/pages/home/Settings.qml:138
+#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:138
 #: ../qml/pages/rss/Settings.qml:179
 msgid "Delete"
 msgstr "Удалить"
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:14
 #: ../qml/pages/picture/Settings.qml:11 ../qml/pages/rss/Settings.qml:19
-#: ../qml/pages/todo/Settings.qml:11
+#: ../qml/pages/todo/Settings.qml:12
 msgid "Settings Page"
 msgstr "Страница Настроек"
 
@@ -442,7 +455,7 @@ msgstr "По умолчанию 60 дней"
 msgid "Favorite apps management"
 msgstr "Управление избранными приложениями"
 
-#: ../qml/pages/picture/Settings.qml:48
+#: ../qml/pages/picture/Settings.qml:52
 msgid "Image path"
 msgstr "Путь к изображению"
 
@@ -452,6 +465,10 @@ msgstr ""
 
 #: ../qml/pages/rss/Settings.qml:223
 msgid "Invalid url"
+msgstr ""
+
+#: ../qml/pages/todo/Settings.qml:40
+msgid "No settings for 'TODO' page"
 msgstr ""
 
 #: ../qml/widgets/Alarm.qml:28
@@ -482,27 +499,27 @@ msgstr "Избранные Приложения"
 msgid "Favorite Contacts"
 msgstr "Избранные Контакты"
 
-#: ../qml/widgets/Lastcall.qml:58
+#: ../qml/widgets/Lastcall.qml:81
 msgid "Last Calls"
 msgstr "Недавний Звонок"
 
-#: ../qml/widgets/Lastcall.qml:58
+#: ../qml/widgets/Lastcall.qml:81
 msgid "Last Call"
 msgstr "Недавний Звонок"
 
-#: ../qml/widgets/Lastcall.qml:137
+#: ../qml/widgets/Lastcall.qml:161
 msgid "No recent calls"
 msgstr "Звонков нет"
 
-#: ../qml/widgets/Lastmessage.qml:60
+#: ../qml/widgets/Lastmessage.qml:82
 msgid "Last Messages"
 msgstr "Недавнее Сообщение"
 
-#: ../qml/widgets/Lastmessage.qml:60
+#: ../qml/widgets/Lastmessage.qml:82
 msgid "Last Message"
 msgstr "Недавнее Сообщение"
 
-#: ../qml/widgets/Lastmessage.qml:149
+#: ../qml/widgets/Lastmessage.qml:175
 msgid "No recent messages"
 msgstr "Нет отправленных сообщений"
 
@@ -766,6 +783,9 @@ msgstr "или"
 #: launchermodular.desktop.in.h:1
 msgid "Modular launcher"
 msgstr "Восстановить панель запуска тире"
+
+#~ msgid "Widget Settings"
+#~ msgstr "Настройки виджета"
 
 #~ msgid "Message"
 #~ msgstr "Недавнее Сообщение"
