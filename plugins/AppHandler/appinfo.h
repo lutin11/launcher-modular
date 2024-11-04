@@ -16,7 +16,7 @@ class AppInfo: public QObject {
     public:
         ~AppInfo() = default;
         AppInfo(const QString& infos = "");
-        AppInfo(const QString &packageName, const QString& infos);
+        AppInfo(const QString &packageName, const QString& infos, bool isLibertine = false);
         Q_INVOKABLE QString getProp(const QString& key);
         Q_INVOKABLE bool haveProp(const QString& key);
         Q_INVOKABLE void import(const QString& infos);

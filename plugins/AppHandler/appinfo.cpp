@@ -8,10 +8,16 @@ AppInfo::AppInfo(const QString& infos)
 	//qDebug() << "keys:" <<_appinfo.keys() << "values" << _appinfo.values();
 }
 
-AppInfo::AppInfo(const QString& packagename, const QString& infos)
+AppInfo::AppInfo(const QString& packagename, const QString& infos, bool isLibertine)
 {
 	_appinfo.insert("package_name", packagename);
-	_appinfo.insert("Action", "application:///"+packagename+".desktop");
+	if (isLibertine) {
+	  _appinfo.insert("Action", "terminal:///libertine-launch -i libert1 firefox");
+		//_appinfo.insert("Action", "terminal:///lomiri-app-launch "+packagename);
+		qDebug() << "infos: libertine lomiri-app-launch "+packagename;
+	}else {
+		_appinfo.insert("Action", "application:///"+packagename+".desktop");
+	}
 	import(infos);
 }
 
