@@ -213,14 +213,3 @@ void AppHandler::resetTempFilter() {
     emit appinfoChanged();
 }
 
-/*QString AppHandler::getAppNews() {
-    QString xmlNews;
-    for(int i=0;i < _appinfos.size();i++) {
-		if(!_appinfos[i]->getProp(XML_NEWS_KEY).isEmpty()) {
-			Terminalaccess t;
-			if(t.run(_appinfos[i]->getProp("Path")+_appinfos[i]->getProp("Exec").split(" ").last()+" "+_appinfos[i]->getProp(XML_NEWS_KEY)+" 2> /dev/null"))
-				xmlNews+=t.outputUntilEnd();
-		}
-    }
-    return xmlNews;
-}*/

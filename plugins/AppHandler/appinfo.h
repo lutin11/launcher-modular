@@ -12,6 +12,7 @@ class AppInfo: public QObject {
     Q_PROPERTY( QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY( QString icon READ icon WRITE setIcon NOTIFY iconChanged)
     Q_PROPERTY( QString action READ action WRITE setAction NOTIFY actionChanged)
+    Q_PROPERTY( QString libertine READ libertine)
 
     public:
         ~AppInfo() = default;
@@ -25,6 +26,7 @@ class AppInfo: public QObject {
         QString name();
         QString icon();
         QString action();
+        QString libertine();
     public slots:
         void setName(const QString&);
         void setIcon(const QString&);

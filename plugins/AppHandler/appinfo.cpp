@@ -12,10 +12,9 @@ AppInfo::AppInfo(const QString& packagename, const QString& infos, bool isLibert
 {
 	_appinfo.insert("package_name", packagename);
 	if (isLibertine) {
-	  _appinfo.insert("Action", "terminal:///libertine-launch -i libert1 firefox");
-		//_appinfo.insert("Action", "terminal:///lomiri-app-launch "+packagename);
-		qDebug() << "infos: libertine lomiri-app-launch "+packagename;
-	}else {
+		_appinfo.insert("Libertine", "true");
+		_appinfo.insert("Action", packagename);
+	} else {
 		_appinfo.insert("Action", "application:///"+packagename+".desktop");
 	}
 	import(infos);
@@ -70,6 +69,7 @@ void AppInfo::setAction(const QString& action) { _appinfo.insert("Action", actio
 QString AppInfo::name() { return getProp("Name");}
 QString AppInfo::icon() { return getProp("Icon");}
 QString AppInfo::action() { return getProp("Action");}
+QString AppInfo::libertine() { return getProp("Libertine");}
 
 QVariantMap AppInfo::fullInfo() {
 	QVariantMap map;
