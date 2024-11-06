@@ -9,6 +9,7 @@ import "../widgets"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
 import Terminalaccess 1.0
+import LibertineLauncher 1.0
 
 Item {
     id: home
@@ -330,19 +331,19 @@ Item {
                     rightMargin: units.gu(2)
                 }
 
-                function doAction(action) {
-                    if(action.startsWith("application:///")) {
+                function doAction(app) {
+                    var action = app.action;
+                    if(app.libertine == "true") {
+                        LibertineLauncher.launchLibertineApp(app.container, action);
+                    } else if(action.startsWith("application:///")) {
                         Qt.openUrlExternally(action);
-                    }
-                    if(action.startsWith("terminal:///")) {
+                    } else if(action.startsWith("terminal:///")) {
                         var actionterm = action.replace(/^terminal:\/\/\//, "")
                         var actionsudo = actionterm.replace(/^sudo /, "sudo -S ")
                         Terminalaccess.run(actionsudo);
-                    }
-                    if(action.startsWith("browser:///")) {
+                    } else if(action.startsWith("browser:///")) {
                         Qt.openUrlExternally(action.replace(/^browser:\/\/\//, ""));
-                    }
-                    if(action.startsWith("internal:///")) {
+                    } else if(action.startsWith("internal:///")) {
                         pageStack.push(Qt.resolvedUrl(action.replace(/^internal:\/\/\//, "")))
                     }
                 }
@@ -477,7 +478,8 @@ Item {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    listColumnApps.doAction(AppHandler.appsinfo[index].action)
+
+                                    listColumnApps.doAction(AppHandler.appsinfo[index])
                                 }
                                 onPressAndHold: {
                                     PopupUtils.open(appsDialog);

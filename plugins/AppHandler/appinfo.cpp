@@ -8,13 +8,20 @@ AppInfo::AppInfo(const QString& infos)
 	//qDebug() << "keys:" <<_appinfo.keys() << "values" << _appinfo.values();
 }
 
+AppInfo::AppInfo(const QString& container, const QString& application, const QString& infos, bool isLibertine)
+{
+	if (isLibertine) {
+		qDebug() << "Libertine AppInfo : " << container + " "+ application;
+		_appinfo.insert("Libertine", "true");
+	    _appinfo.insert("Container", container);
+		_appinfo.insert("Action", application);
+		import(infos);
+	}
+}
 AppInfo::AppInfo(const QString& packagename, const QString& infos, bool isLibertine)
 {
 	_appinfo.insert("package_name", packagename);
-	if (isLibertine) {
-		_appinfo.insert("Libertine", "true");
-		_appinfo.insert("Action", packagename);
-	} else {
+	if (!isLibertine) {
 		_appinfo.insert("Action", "application:///"+packagename+".desktop");
 	}
 	import(infos);
@@ -70,6 +77,7 @@ QString AppInfo::name() { return getProp("Name");}
 QString AppInfo::icon() { return getProp("Icon");}
 QString AppInfo::action() { return getProp("Action");}
 QString AppInfo::libertine() { return getProp("Libertine");}
+QString AppInfo::container() { return getProp("Container");}
 
 QVariantMap AppInfo::fullInfo() {
 	QVariantMap map;

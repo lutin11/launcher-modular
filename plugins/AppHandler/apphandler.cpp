@@ -58,9 +58,9 @@ void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& co
       file.open(QIODevice::ReadOnly | QIODevice::Text);
       QTextStream filestream(&file);
       filestream.setCodec("UTF-8");
-      qDebug() << "Libertine AppInfo : " << container+"_"+fileName.left(fileName.size() - QString(".desktop").size())+"_0.0";
-      _appinfos.append(new AppInfo(container+"_"+fileName.left(fileName.size() - QString(".desktop").size())+"_0.0", filestream.readAll(), true));
-
+    
+      _appinfos.append(new AppInfo(container, fileName.left(fileName.size() - QString(".desktop").size()), filestream.readAll(), true));
+      
       if(_appinfos.last()->getProp("Icon").startsWith("/")) {
         _appinfos.last()->setIcon("/home/phablet/.cache/libertine-container/"+container+"/rootfs"+_appinfos.last()->getProp("Icon"));
       }
