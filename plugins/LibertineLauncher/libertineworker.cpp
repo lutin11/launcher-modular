@@ -13,7 +13,6 @@ void LibertineWorker::run() {
         QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
         QString displayValue = env.value("DISPLAY", ":0");  // TODO set environement at launcher modular startup
         env.insert("DISPLAY", displayValue);
-        env.insert("APP_EXEC_POLICY", "unconfined");
 
         // Start XWayland libertineProcess synchronously
         QProcess xWaylandProcess;
@@ -44,7 +43,7 @@ void LibertineWorker::run() {
         }
 
         // Wait for the app to finish, then stop XWayland
-        libertineProcess.waitForFinished();
+        libertineProcess.waitForFinished(-1);// avoid the 30-second timeout
         if (xWaylandProcess.state() != QProcess::NotRunning) {
             xWaylandProcess.terminate();
             xWaylandProcess.waitForFinished();
