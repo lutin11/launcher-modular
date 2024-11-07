@@ -1,45 +1,24 @@
 #include "libertinelauncher.h"
+#include "libertineworker.h"
 #include <QProcess>
+#include <QObject>
+#include <QString>
+#include <QThread>
 #include <QDebug>
 
-LibertineWorker::LibertineWorker(QObject *parent) : QObject(parent), xWaylandProcess(nullptr), libertineProcess(nullptr) {}
+LibertineLauncher::LibertineLauncher(QObject *parent) : QObject(parent) {}
 
-void LibertineWorker::launchLibertineApp(const QString &containerName, const QString &appName)
+void LibertineLauncher::launchLibertineApp(const QString &containerName, const QString &appName)
 {
-    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-    QString displayValue = env.value("DISPLAY", ":1");  // Default to :0 if DISPLAY is not set
-    env.insert("DISPLAY", displayValue);
-    env.insert("APP_EXEC_POLICY", "unconfined");
+    QThread *workerThread = new QThread;
+    LibertineWorker *worker = new LibertineWorker(containerName, appName);
 
-    // Set up XWayland process
-    xWaylandProcess = new QProcess(this);
-    xWaylandProcess->setProcessEnvironment(env);
-    xWaylandProcess->start("Xwayland", QStringList() << "-once" << "-sigstop");
+    worker->moveToThread(workerThread);
 
-    // Check XWayland start success
-    if (!xWaylandProcess->waitForStarted()) {
-        qDebug() << "Error: Unable to start Xwayland";
-        return;
-    }
+    connect(workerThread, &QThread::started, worker, &LibertineWorker::run);
+    connect(worker, &LibertineWorker::finished, workerThread, &QThread::quit);
+    connect(worker, &LibertineWorker::finished, worker, &LibertineWorker::deleteLater);
+    connect(workerThread, &QThread::finished, workerThread, &QThread::deleteLater);
 
-    qDebug() << "XWayland started with DISPLAY=" << displayValue;
-
-    // Set up and launch Libertine app process
-    libertineProcess = new QProcess(this);
-    libertineProcess->setProcessEnvironment(env);
-    QStringList arguments = { "-i", containerName, appName };
-    libertineProcess->start("libertine-launch", arguments);
-
-    //Terminate XWayland after the app completes if needed
-    if (xWaylandProcess->state() != QProcess::NotRunning) {
-        xWaylandProcess->terminate();
-        xWaylandProcess->waitForFinished();
-    }
-
-   if (!libertineProcess->waitForStarted()) {
-       qDebug() << "Erreur : Impossible de lancer l'application" << appName;
-   } else {
-       qDebug() << "Lancement de l'application" << appName << "dans le conteneur" << containerName;
-   }
-    qDebug() << "Launching Libertine app" << appName << "in container" << containerName;
+    workerThread->start();
 }

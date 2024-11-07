@@ -6,6 +6,7 @@ set(
     SRC
     plugin.cpp
     libertinelauncher.cpp
+    libertineworker.cpp
 )
 
 set(CMAKE_AUTOMOC ON)

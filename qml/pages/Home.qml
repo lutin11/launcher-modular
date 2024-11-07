@@ -334,7 +334,7 @@ Item {
                 function doAction(app) {
                     var action = app.action;
                     if(app.libertine == "true") {
-                        LibertineWorker.launchLibertineApp(app.container, action);
+                        LibertineLauncher.launchLibertineApp(app.container, action);
                     } else if(action.startsWith("application:///")) {
                         Qt.openUrlExternally(action);
                     } else if(action.startsWith("terminal:///")) {

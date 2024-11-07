@@ -4,20 +4,14 @@
 #include <QObject>
 #include <QString>
 
-class QProcess;
-
-class LibertineWorker : public QObject
+class LibertineLauncher : public QObject
 {
     Q_OBJECT
-
 public:
-    explicit LibertineWorker(QObject *parent = nullptr);
+    explicit LibertineLauncher(QObject *parent = nullptr);
 
+    // Function to launch an application in a specified Libertine container
     Q_INVOKABLE void launchLibertineApp(const QString &containerName, const QString &appName);
-
-private:
-    QProcess *xWaylandProcess;
-    QProcess *libertineProcess;
 };
 
 #endif // LIBERTINELAUNCHER_H
