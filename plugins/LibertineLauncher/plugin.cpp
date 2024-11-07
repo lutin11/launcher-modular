@@ -6,5 +6,5 @@
 
 void LibertineLauncherPlugin::registerTypes(const char *uri) {
     //@uri LibertineLauncher
-    qmlRegisterSingletonType<LibertineLauncher>(uri, 1, 0, "LibertineLauncher", [](QQmlEngine*, QJSEngine*) -> QObject* { return new LibertineLauncher; });
+    qmlRegisterSingletonType<LibertineWorker>(uri, 1, 0, "LibertineWorker", [](QQmlEngine*, QJSEngine*) -> QObject* { return new LibertineWorker; });
 }
