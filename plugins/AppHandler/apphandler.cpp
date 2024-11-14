@@ -6,11 +6,12 @@
 #include <QDebug>
 #include <QQmlListProperty>
 #include <QRegularExpression>
+#include <QStandardPaths>
 #include "apphandler.h"
 #include "appinfo.h"
 
 #define APP_SYS_PATH "/usr/share/applications/"
-#define APP_USR_PATH "/home/phablet/.local/share/applications/"
+#define HOME_PATH QDir::homePath()
 
 AppHandler::AppHandler() {
     loadAppsInfo();
@@ -33,18 +34,18 @@ QQmlListProperty<AppInfo> AppHandler::fav_appsinfo()
 void AppHandler::loadAppsInfo()
 {
     loadAppsFromDir(APP_SYS_PATH);
-    loadAppsFromDir(APP_USR_PATH);
+    loadAppsFromDir(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
     loadAppsLibertine();
 }
 void AppHandler::loadAppsLibertine()
 {
-    QDir dir("/home/phablet/.cache/libertine-container/");
+    QDir dir(HOME_PATH + "/.cache/libertine-container/");
+    qDebug() << "Look for container into: " << HOME_PATH + "/.cache/libertine-container/";
     QStringList containers = dir.entryList(QDir::Dirs);
     qDebug() << "Libertine container : " << containers;
     foreach (const QString &container, containers) {
-      loadLibertineAppsFromDir("/home/phablet/.cache/libertine-container/"+container+"/rootfs/usr/share/applications/", container);
-      loadLibertineAppsFromDir("/home/phablet/.cache/libertine-container/"+container+"/rootfs/usr/local/share/applications/", container);
-      //loadLibertineAppsFromDir("/home/phablet/.cache/libertine-container/"+container+"/rootfs/#TODO#/.local/share/applications/", container);
+      loadLibertineAppsFromDir(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/applications/", container);
+      loadLibertineAppsFromDir(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/local/share/applications/", container);
     }
 }
 void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& container)
@@ -62,10 +63,10 @@ void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& co
       _appinfos.append(new AppInfo(container, fileName.left(fileName.size() - QString(".desktop").size()), filestream.readAll(), true));
       
       if(_appinfos.last()->getProp("Icon").startsWith("/")) {
-        _appinfos.last()->setIcon("/home/phablet/.cache/libertine-container/"+container+"/rootfs"+_appinfos.last()->getProp("Icon"));
+        _appinfos.last()->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs"+_appinfos.last()->getProp("Icon"));
       }
-      else if(QFile("/home/phablet/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+_appinfos.last()->getProp("Icon")+".png").exists()) {
-        _appinfos.last()->setIcon("/home/phablet/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+_appinfos.last()->getProp("Icon")+".png");
+      else if(QFile(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+_appinfos.last()->getProp("Icon")+".png").exists()) {
+        _appinfos.last()->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+_appinfos.last()->getProp("Icon")+".png");
       }
       else
         _appinfos.last()->setIcon("image://theme/placeholder-app-icon");

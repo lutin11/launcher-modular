@@ -3,7 +3,6 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
-import MySettings 1.0
 import AppHandler 1.0
 import "../widgets"
 import QtQuick.Controls 2.2
@@ -332,8 +331,7 @@ Item {
                 }
 
                 function doAction(app) {
-                    var action = app.action;
-                    doLaunchAction(action, app.container);
+                    doLaunchAction(app.action, app.container);
                 }
 
                 function doLaunchAction(action, container) {

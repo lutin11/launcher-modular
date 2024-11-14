@@ -84,7 +84,7 @@ MainView {
         property string backgroundOpacity: '0.7'
         property string backgroundBlur: '0'
 
-        property string folderimage: '/home/phablet/Pictures/'
+        property string folderimage: MySettings.getPicturesLocation()
 
         property int limiteDaysCalendar: 31;
         property int limiteDaysWidgetEvent: 31;
