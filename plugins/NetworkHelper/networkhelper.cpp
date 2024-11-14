@@ -3,6 +3,7 @@
 #include <QXmlStreamReader>
 #include <QDebug>
 #include <QUrl>
+#include <QObject>
 
 NetworkHelper::NetworkHelper(QObject *parent) : QObject(parent), manager(new QNetworkAccessManager(this)) {
     connect(manager, &QNetworkAccessManager::finished, this, &NetworkHelper::onReplyFinished);
@@ -41,5 +42,3 @@ void NetworkHelper::onReplyFinished() {
     reply->deleteLater(); // Clean up the reply object
 }
 
-// Add this line at the end of the .cpp file
-#include "networkhelper.moc"
