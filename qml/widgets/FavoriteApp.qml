@@ -124,7 +124,10 @@ Column {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    listColumnApps.doAction(action)
+                    if(typeof container == 'undefined') {
+                        container = "";
+                    }
+                    listColumnApps.doLaunchAction(action, container)
                 }
             }
 

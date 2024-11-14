@@ -19,6 +19,7 @@ bool Terminalaccess::start(bool reset_err, bool reset_out) {
     _proc.kill();
     _proc.waitForFinished();
     if(reset_err)
+    qDebug() << "Process fail to start :" << _proc.readAllStandardError() << _err;
 		_err.clear();
     if(reset_out)
 		_output.clear();
