@@ -41,7 +41,7 @@ void AppHandler::loadAppsLibertine()
 {
     QDir dir(HOME_PATH + "/.cache/libertine-container/");
     qDebug() << "Look for container into: " << HOME_PATH + "/.cache/libertine-container/";
-    QStringList containers = dir.entryList(QDir::Dirs);
+    QStringList containers = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
     qDebug() << "Libertine container : " << containers;
     foreach (const QString &container, containers) {
       loadLibertineAppsFromDir(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/applications/", container);
@@ -59,17 +59,26 @@ void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& co
       file.open(QIODevice::ReadOnly | QIODevice::Text);
       QTextStream filestream(&file);
       filestream.setCodec("UTF-8");
-    
-      _appinfos.append(new AppInfo(container, fileName.left(fileName.size() - QString(".desktop").size()), filestream.readAll(), true));
-      
-      if(_appinfos.last()->getProp("Icon").startsWith("/")) {
-        _appinfos.last()->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs"+_appinfos.last()->getProp("Icon"));
+
+      AppInfo* app = _appinfos.last();
+      qDebug() << "Parsing libertine desktop app:" << fileName << "->" << fileName.left(fileName.size() - QString(".desktop").size()) << "OnlyShowIn:" << app->getProp("OnlyShowIn");
+      if(app->getProp("OnlyShowIn") == nullptr) {
+        _appinfos.append(new AppInfo(container, fileName.left(fileName.size() - QString(".desktop").size()), filestream.readAll(), true));
+        
+        if(app->getProp("Icon").startsWith("/")) {
+          app->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs"+app->getProp("Icon"));
+        }
+        else if(QFile(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+app->getProp("Icon")+".png").exists()) {
+          app->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+app->getProp("Icon")+".png");
+        }
+        else if(QFile(HOME_PATH + "/.cache/libertine-container/"+container+"/usr/share/icons/hicolor/scalable/apps/"+app->getProp("Icon")+".png").exists()) {
+          app->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/usr/share/icons/hicolor/scalable/apps/"+app->getProp("Icon")+".png");
+        }
+        else {
+          app->setIcon("image://theme/placeholder-app-icon");
+        }
+        qDebug() << " libertine desktop app:" << fileName << " added";
       }
-      else if(QFile(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+_appinfos.last()->getProp("Icon")+".png").exists()) {
-        _appinfos.last()->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs/usr/share/icons/hicolor/128x128/apps/"+_appinfos.last()->getProp("Icon")+".png");
-      }
-      else
-        _appinfos.last()->setIcon("image://theme/placeholder-app-icon");
     }
     qDebug() << _appinfos.size() << " libertine desktop file read from " << path;
 }
