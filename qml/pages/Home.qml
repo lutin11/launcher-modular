@@ -9,6 +9,10 @@ import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
 import Terminalaccess 1.0
 import LibertineLauncher 1.0
+import CalculatorHelper 1.0
+import Lomiri.Components.ListItems 1.3 as ListItem
+
+
 
 Item {
     id: home
@@ -202,6 +206,7 @@ Item {
                             AppHandler.tempFilter("Name;Name[];package_name", text)
                             rowWidgets.visible = false
                             rowWidgetsM.visible = false
+                            CalculatorHelper.processInput(text)
                         } else {
                             iconWebSearch.visible = false
                             AppHandler.resetTempFilter()
@@ -279,6 +284,11 @@ Item {
 
             }
 
+            Calculator {
+                id: calculatorAppWidget
+                width: parent.width
+            }
+
             FavoriteApp {
                 id: favoriteAppWidget
                 width: parent.width
@@ -292,31 +302,6 @@ Item {
             SearchContact {
                 id: searchContactWidget
                 width: parent.width
-            }
-
-            Item{
-                id: titleList
-                height: units.gu(4)
-                width: parent.width
-                anchors {
-                    left: parent.left
-                    leftMargin: units.gu(2)
-                }
-
-                Icon {
-                    id: iconInstalledApps
-                    width: units.gu(2)
-                    height: units.gu(2)
-                    name: "keypad"
-                    color: launchermodular.settings.textColor
-                }
-                Label {
-                    id: titleListApps
-                    anchors.left: iconInstalledApps.right
-                    anchors.leftMargin: units.gu(1)
-                    text: i18n.tr("Installed Apps")
-                    color: launchermodular.settings.textColor
-                }
             }
 
             Item {
