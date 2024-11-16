@@ -119,7 +119,7 @@ Item {
         for(let i=0; i < RssModel.itemModel.count;i++) {
     			let url = RssModel.itemModel.get(i);
     			cachedHttpRequestInstance.send(url.rss_uri, {"url": url.rss_uri});
-    		}
+    	}
     }
 
     Feed {
@@ -149,7 +149,7 @@ Item {
                 indeterminate:true
                 visible: _mainFeed.isFeeds
             }
-             Label {
+            Label {
                  id: noFeeds
                  text: _mainFeed.isFeeds ? i18n.tr("Loading feeds…") : i18n.tr("Go to the page management to add feeds.")
                  color: launchermodular.settings.textColor
@@ -162,7 +162,7 @@ Item {
                    right:parent.right
                    margins:units.gu(2)
                  }
-             }
+            }
         }
 
         pullToRefresh {
