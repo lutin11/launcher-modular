@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-03 16:35+0000\n"
+"POT-Creation-Date: 2024-11-16 10:49+0000\n"
 "PO-Revision-Date: 2023-01-23 18:52+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/ubports/"
@@ -218,77 +218,77 @@ msgstr ""
 msgid "Choose"
 msgstr "Velg"
 
-#: ../qml/Main.qml:379
+#: ../qml/Main.qml:380
 msgid "Swipe up to configure the launcher"
 msgstr "Dra oppover for å sette opp oppstarteren"
 
-#: ../qml/Main.qml:431
+#: ../qml/Main.qml:432
 msgid "Add custom icon"
 msgstr "Legg til egendefinert ikon"
 
-#: ../qml/Main.qml:463
+#: ../qml/Main.qml:464
 msgid "Manage page"
 msgstr "Håndter siden"
 
-#: ../qml/Main.qml:495
+#: ../qml/Main.qml:496
 msgid "Configure Launcher"
 msgstr "Sett opp oppstarter"
 
-#: ../qml/Main.qml:527
+#: ../qml/Main.qml:528
 msgid "Autostart"
 msgstr "Autostart"
 
-#: ../qml/Main.qml:559
+#: ../qml/Main.qml:560
 msgid "Help"
 msgstr "Hjelp"
 
-#: ../qml/Main.qml:591
+#: ../qml/Main.qml:592
 msgid "About"
 msgstr "Om"
 
-#: ../qml/Main.qml:673
+#: ../qml/Main.qml:674
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "SVG eller PNG-ikon. 1:1-forhold"
 
-#: ../qml/Main.qml:686
+#: ../qml/Main.qml:687
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>Navn</b> vist i programlisten"
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:692
 msgid "Website"
 msgstr "Nettside"
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:692
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:692
+#: ../qml/Main.qml:693
 msgid "Terminal command"
 msgstr "Terminal-kommando"
 
-#: ../qml/Main.qml:692
+#: ../qml/Main.qml:693
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:693
+#: ../qml/Main.qml:694
 msgid "Launch app"
 msgstr "Start program"
 
-#: ../qml/Main.qml:693
+#: ../qml/Main.qml:694
 msgid "Launch an app"
 msgstr "Start et program"
 
-#: ../qml/Main.qml:717 ../qml/Main.qml:718 ../qml/Main.qml:719
+#: ../qml/Main.qml:718 ../qml/Main.qml:719 ../qml/Main.qml:720
 msgid "<b>Action</b> example: "
 msgstr "<b>Handling</b> eksempel: "
 
-#: ../qml/Main.qml:730
+#: ../qml/Main.qml:731
 msgid "Create icon"
 msgstr "Opprett ikon"
 
-#: ../qml/Main.qml:776 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:459
-#: ../qml/pages/home/Settings.qml:80
+#: ../qml/Main.qml:777 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
+#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:455
+#: ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -304,7 +304,7 @@ msgstr "Velg en side"
 msgid "Settings"
 msgstr "Innstillinger"
 
-#: ../qml/Settings.qml:41 ../qml/pages/Home.qml:36
+#: ../qml/Settings.qml:41 ../qml/pages/Home.qml:40
 msgid "ok"
 msgstr ""
 
@@ -406,19 +406,15 @@ msgstr ""
 msgid "Agenda"
 msgstr "Agenda"
 
-#: ../qml/pages/Home.qml:188
+#: ../qml/pages/Home.qml:196
 msgid "Search your phone and online sources"
 msgstr "Søk på enheten din og i nettbaserte kilder"
 
-#: ../qml/pages/Home.qml:317
-msgid "Installed Apps"
-msgstr "Installerte programmer"
-
-#: ../qml/pages/Home.qml:418
+#: ../qml/pages/Home.qml:414
 msgid "Uninstall"
 msgstr "Avinstaller"
 
-#: ../qml/pages/Home.qml:418
+#: ../qml/pages/Home.qml:414
 msgid "Remove"
 msgstr "Fjern"
 
@@ -435,7 +431,7 @@ msgstr ""
 msgid "New todo"
 msgstr "Nytt gjøremål"
 
-#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:138
+#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:139
 #: ../qml/pages/rss/Settings.qml:179
 msgid "Delete"
 msgstr "Slett"
@@ -454,7 +450,7 @@ msgstr "Dagsfrist"
 msgid "By default 60 days"
 msgstr "Som forvalg 60 dager"
 
-#: ../qml/pages/home/Settings.qml:106
+#: ../qml/pages/home/Settings.qml:107
 msgid "Favorite apps management"
 msgstr "Håndtering av favorittprogrammer"
 
@@ -486,6 +482,10 @@ msgstr "Ingen aktive alarmer"
 msgid "at"
 msgstr "klokken"
 
+#: ../qml/widgets/Calculator.qml:22
+msgid "Calcul result:"
+msgstr ""
+
 #: ../qml/widgets/Event.qml:100
 msgid "Events"
 msgstr "Begivenheter"
@@ -494,7 +494,7 @@ msgstr "Begivenheter"
 msgid "No events"
 msgstr "Ingen begivenheter"
 
-#: ../qml/widgets/FavoriteApp.qml:41
+#: ../qml/widgets/FavoriteApp.qml:34
 msgid "Favorite Apps"
 msgstr "Favorittprogrammer"
 
@@ -530,63 +530,62 @@ msgstr "Ingen nylige meldinger"
 msgid "Search Contacts"
 msgstr "Søk i kontakter"
 
-#: ../qml/widgets/Weather.qml:23
+#: ../qml/widgets/Weather.qml:27
 msgid "Please long press here to configure"
 msgstr "Lang-trykk her for å sette opp"
 
-#: ../qml/widgets/Weather.qml:164 ../qml/widgets/Weather.qml:192
+#: ../qml/widgets/Weather.qml:168 ../qml/widgets/Weather.qml:196
 msgid "Calm"
 msgstr "Stille"
 
-#: ../qml/widgets/Weather.qml:166 ../qml/widgets/Weather.qml:194
+#: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
 msgid "Light Air"
 msgstr "Flau vind"
 
-#: ../qml/widgets/Weather.qml:168 ../qml/widgets/Weather.qml:196
+#: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
 msgid "Light Breeze"
 msgstr "Svak vind"
 
-#: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
+#: ../qml/widgets/Weather.qml:174 ../qml/widgets/Weather.qml:202
 msgid "Gentle Breeze"
 msgstr "Lett bris"
 
-#: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
+#: ../qml/widgets/Weather.qml:176 ../qml/widgets/Weather.qml:204
 msgid "Moderate Breeze"
 msgstr "Laber bris"
 
-#: ../qml/widgets/Weather.qml:174 ../qml/widgets/Weather.qml:202
+#: ../qml/widgets/Weather.qml:178 ../qml/widgets/Weather.qml:206
 msgid "Fresh Breeze"
 msgstr "Frisk bris"
 
-#: ../qml/widgets/Weather.qml:176 ../qml/widgets/Weather.qml:204
+#: ../qml/widgets/Weather.qml:180 ../qml/widgets/Weather.qml:208
 msgid "Strong Breeze"
 msgstr "Liten kuling"
 
-#: ../qml/widgets/Weather.qml:178 ../qml/widgets/Weather.qml:206
+#: ../qml/widgets/Weather.qml:182 ../qml/widgets/Weather.qml:210
 msgid "Near Gale"
 msgstr "Stiv kuling"
 
-#: ../qml/widgets/Weather.qml:180 ../qml/widgets/Weather.qml:208
+#: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
 msgid "Gale"
 msgstr "Sterk kuling"
 
-#: ../qml/widgets/Weather.qml:182 ../qml/widgets/Weather.qml:210
+#: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
 msgid "Severe Gale"
 msgstr "Liten storm"
 
-#: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
+#: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
 msgid "Storm"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
+#: ../qml/widgets/Weather.qml:190 ../qml/widgets/Weather.qml:218
 msgid "Violent Storm"
 msgstr "Sterk storm"
 
-#: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
+#: ../qml/widgets/Weather.qml:192 ../qml/widgets/Weather.qml:220
 msgid "Hurricane"
 msgstr "Orkan"
 
-#: ../qml/widgets/Weather.qml:229 ../qml/widgets/Weather.qml:231
 #: ../qml/widgets/Weather.qml:233 ../qml/widgets/Weather.qml:235
 #: ../qml/widgets/Weather.qml:237 ../qml/widgets/Weather.qml:239
 #: ../qml/widgets/Weather.qml:241 ../qml/widgets/Weather.qml:243
@@ -594,74 +593,75 @@ msgstr "Orkan"
 #: ../qml/widgets/Weather.qml:249 ../qml/widgets/Weather.qml:251
 #: ../qml/widgets/Weather.qml:253 ../qml/widgets/Weather.qml:255
 #: ../qml/widgets/Weather.qml:257 ../qml/widgets/Weather.qml:259
+#: ../qml/widgets/Weather.qml:261 ../qml/widgets/Weather.qml:263
 msgid "of"
 msgstr "fra"
 
-#: ../qml/widgets/Weather.qml:229
+#: ../qml/widgets/Weather.qml:233
 msgid "North"
 msgstr "Nord"
 
-#: ../qml/widgets/Weather.qml:231
+#: ../qml/widgets/Weather.qml:235
 msgid "North-Northeast"
 msgstr "Nord-nordøst"
 
-#: ../qml/widgets/Weather.qml:233
+#: ../qml/widgets/Weather.qml:237
 msgid "Northeast"
 msgstr "Nordøst"
 
-#: ../qml/widgets/Weather.qml:235
+#: ../qml/widgets/Weather.qml:239
 msgid "East-Northeast"
 msgstr "Øst-nordøst"
 
-#: ../qml/widgets/Weather.qml:237
+#: ../qml/widgets/Weather.qml:241
 msgid "East"
 msgstr "Øst"
 
-#: ../qml/widgets/Weather.qml:239
+#: ../qml/widgets/Weather.qml:243
 msgid "East-Southeast"
 msgstr "Øst-sørøst"
 
-#: ../qml/widgets/Weather.qml:241
+#: ../qml/widgets/Weather.qml:245
 msgid "Southeast"
 msgstr "Sørøst"
 
-#: ../qml/widgets/Weather.qml:243
+#: ../qml/widgets/Weather.qml:247
 msgid "South-Southeast"
 msgstr "Sør-sørøst"
 
-#: ../qml/widgets/Weather.qml:245
+#: ../qml/widgets/Weather.qml:249
 msgid "South"
 msgstr "Sør"
 
-#: ../qml/widgets/Weather.qml:247
+#: ../qml/widgets/Weather.qml:251
 msgid "South-Southwest"
 msgstr "Sør-sørvest"
 
-#: ../qml/widgets/Weather.qml:249
+#: ../qml/widgets/Weather.qml:253
 msgid "Southwest"
 msgstr "Sørvest"
 
-#: ../qml/widgets/Weather.qml:251
+#: ../qml/widgets/Weather.qml:255
 msgid "West-Southwest"
 msgstr "Vest-sørvest"
 
-#: ../qml/widgets/Weather.qml:253
+#: ../qml/widgets/Weather.qml:257
 msgid "West"
 msgstr "Vest"
 
-#: ../qml/widgets/Weather.qml:255
+#: ../qml/widgets/Weather.qml:259
 msgid "West-Northwest"
 msgstr "Vest-nordvest"
 
-#: ../qml/widgets/Weather.qml:257
+#: ../qml/widgets/Weather.qml:261
 msgid "Northwest"
 msgstr "Nordvest"
 
-#: ../qml/widgets/Weather.qml:259
+#: ../qml/widgets/Weather.qml:263
 msgid "North-Northwest"
 msgstr "Nord-nordvest"
 
-#: ../qml/widgets/Weather.qml:270
+#: ../qml/widgets/Weather.qml:274
 msgid "humidity"
 msgstr "fuktighet"
 
@@ -786,6 +786,9 @@ msgstr "eller"
 #: launchermodular.desktop.in.h:1
 msgid "Modular launcher"
 msgstr "Sett opp oppstarter"
+
+#~ msgid "Installed Apps"
+#~ msgstr "Installerte programmer"
 
 #~ msgid "Widget Settings"
 #~ msgstr "Miniprogramsinnstillinger"

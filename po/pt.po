@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-03 16:35+0000\n"
+"POT-Creation-Date: 2024-11-16 10:49+0000\n"
 "PO-Revision-Date: 2023-02-08 13:38+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/ubports/"
@@ -218,77 +218,77 @@ msgstr ""
 msgid "Choose"
 msgstr "Escolher"
 
-#: ../qml/Main.qml:379
+#: ../qml/Main.qml:380
 msgid "Swipe up to configure the launcher"
 msgstr "Deslize para cima para configurar o iniciador"
 
-#: ../qml/Main.qml:431
+#: ../qml/Main.qml:432
 msgid "Add custom icon"
 msgstr "Adicionar ícone personalizado"
 
-#: ../qml/Main.qml:463
+#: ../qml/Main.qml:464
 msgid "Manage page"
 msgstr "Gerir página"
 
-#: ../qml/Main.qml:495
+#: ../qml/Main.qml:496
 msgid "Configure Launcher"
 msgstr "Configurar Iniciador"
 
-#: ../qml/Main.qml:527
+#: ../qml/Main.qml:528
 msgid "Autostart"
 msgstr "Começo automático"
 
-#: ../qml/Main.qml:559
+#: ../qml/Main.qml:560
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../qml/Main.qml:591
+#: ../qml/Main.qml:592
 msgid "About"
 msgstr "Sobre"
 
-#: ../qml/Main.qml:673
+#: ../qml/Main.qml:674
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "SVG ou PNG icon. 1:1 ratio"
 
-#: ../qml/Main.qml:686
+#: ../qml/Main.qml:687
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "O <b>title</b> a ser mostrado na lista de aplicações"
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:692
 msgid "Website"
 msgstr "Website"
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:692
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:692
+#: ../qml/Main.qml:693
 msgid "Terminal command"
 msgstr "Comando de terminal"
 
-#: ../qml/Main.qml:692
+#: ../qml/Main.qml:693
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:693
+#: ../qml/Main.qml:694
 msgid "Launch app"
 msgstr "Iniciar aplicação"
 
-#: ../qml/Main.qml:693
+#: ../qml/Main.qml:694
 msgid "Launch an app"
 msgstr "Iniciar uma aplicação"
 
-#: ../qml/Main.qml:717 ../qml/Main.qml:718 ../qml/Main.qml:719
+#: ../qml/Main.qml:718 ../qml/Main.qml:719 ../qml/Main.qml:720
 msgid "<b>Action</b> example: "
 msgstr "<b>Action</b> examplo: "
 
-#: ../qml/Main.qml:730
+#: ../qml/Main.qml:731
 msgid "Create icon"
 msgstr "Criar ícone"
 
-#: ../qml/Main.qml:776 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:52 ../qml/pages/Home.qml:459
-#: ../qml/pages/home/Settings.qml:80
+#: ../qml/Main.qml:777 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
+#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:455
+#: ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -304,7 +304,7 @@ msgstr "Escolher uma página"
 msgid "Settings"
 msgstr "Configurações"
 
-#: ../qml/Settings.qml:41 ../qml/pages/Home.qml:36
+#: ../qml/Settings.qml:41 ../qml/pages/Home.qml:40
 msgid "ok"
 msgstr ""
 
@@ -406,19 +406,15 @@ msgstr ""
 msgid "Agenda"
 msgstr "Agenda"
 
-#: ../qml/pages/Home.qml:188
+#: ../qml/pages/Home.qml:196
 msgid "Search your phone and online sources"
 msgstr "Procurar em fontes online e no dispositivo"
 
-#: ../qml/pages/Home.qml:317
-msgid "Installed Apps"
-msgstr "Aplicações Instaladas"
-
-#: ../qml/pages/Home.qml:418
+#: ../qml/pages/Home.qml:414
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-#: ../qml/pages/Home.qml:418
+#: ../qml/pages/Home.qml:414
 msgid "Remove"
 msgstr "Remover"
 
@@ -435,7 +431,7 @@ msgstr ""
 msgid "New todo"
 msgstr "novo a fazer"
 
-#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:138
+#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:139
 #: ../qml/pages/rss/Settings.qml:179
 msgid "Delete"
 msgstr "Eliminar"
@@ -454,7 +450,7 @@ msgstr "Limite de dias"
 msgid "By default 60 days"
 msgstr "60 dias por padrão"
 
-#: ../qml/pages/home/Settings.qml:106
+#: ../qml/pages/home/Settings.qml:107
 msgid "Favorite apps management"
 msgstr "Aplicações de gestão favoritas"
 
@@ -486,6 +482,10 @@ msgstr "Sem alarmes ativos"
 msgid "at"
 msgstr "às"
 
+#: ../qml/widgets/Calculator.qml:22
+msgid "Calcul result:"
+msgstr ""
+
 #: ../qml/widgets/Event.qml:100
 msgid "Events"
 msgstr "Eventos"
@@ -494,7 +494,7 @@ msgstr "Eventos"
 msgid "No events"
 msgstr "Sem eventos"
 
-#: ../qml/widgets/FavoriteApp.qml:41
+#: ../qml/widgets/FavoriteApp.qml:34
 msgid "Favorite Apps"
 msgstr "Aplicações Favoritas"
 
@@ -530,63 +530,62 @@ msgstr "Sem mensagens recentes"
 msgid "Search Contacts"
 msgstr "Procurar Contactos"
 
-#: ../qml/widgets/Weather.qml:23
+#: ../qml/widgets/Weather.qml:27
 msgid "Please long press here to configure"
 msgstr "Por favor, pressione continuamente aqui para configurar"
 
-#: ../qml/widgets/Weather.qml:164 ../qml/widgets/Weather.qml:192
+#: ../qml/widgets/Weather.qml:168 ../qml/widgets/Weather.qml:196
 msgid "Calm"
 msgstr "Calmo"
 
-#: ../qml/widgets/Weather.qml:166 ../qml/widgets/Weather.qml:194
+#: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
 msgid "Light Air"
 msgstr "Ar Leve"
 
-#: ../qml/widgets/Weather.qml:168 ../qml/widgets/Weather.qml:196
+#: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
 msgid "Light Breeze"
 msgstr "Brisa Leve"
 
-#: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
+#: ../qml/widgets/Weather.qml:174 ../qml/widgets/Weather.qml:202
 msgid "Gentle Breeze"
 msgstr "Brisa Gentil"
 
-#: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
+#: ../qml/widgets/Weather.qml:176 ../qml/widgets/Weather.qml:204
 msgid "Moderate Breeze"
 msgstr "Brisa Moderada"
 
-#: ../qml/widgets/Weather.qml:174 ../qml/widgets/Weather.qml:202
+#: ../qml/widgets/Weather.qml:178 ../qml/widgets/Weather.qml:206
 msgid "Fresh Breeze"
 msgstr "Brisa Fresca"
 
-#: ../qml/widgets/Weather.qml:176 ../qml/widgets/Weather.qml:204
+#: ../qml/widgets/Weather.qml:180 ../qml/widgets/Weather.qml:208
 msgid "Strong Breeze"
 msgstr "Brisa Forte"
 
-#: ../qml/widgets/Weather.qml:178 ../qml/widgets/Weather.qml:206
+#: ../qml/widgets/Weather.qml:182 ../qml/widgets/Weather.qml:210
 msgid "Near Gale"
 msgstr "Perto de Vendaval"
 
-#: ../qml/widgets/Weather.qml:180 ../qml/widgets/Weather.qml:208
+#: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
 msgid "Gale"
 msgstr "Vendaval"
 
-#: ../qml/widgets/Weather.qml:182 ../qml/widgets/Weather.qml:210
+#: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
 msgid "Severe Gale"
 msgstr "Vendaval Severo"
 
-#: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
+#: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
 msgid "Storm"
 msgstr ""
 
-#: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
+#: ../qml/widgets/Weather.qml:190 ../qml/widgets/Weather.qml:218
 msgid "Violent Storm"
 msgstr "Tempestade Violenta"
 
-#: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
+#: ../qml/widgets/Weather.qml:192 ../qml/widgets/Weather.qml:220
 msgid "Hurricane"
 msgstr "Furacão"
 
-#: ../qml/widgets/Weather.qml:229 ../qml/widgets/Weather.qml:231
 #: ../qml/widgets/Weather.qml:233 ../qml/widgets/Weather.qml:235
 #: ../qml/widgets/Weather.qml:237 ../qml/widgets/Weather.qml:239
 #: ../qml/widgets/Weather.qml:241 ../qml/widgets/Weather.qml:243
@@ -594,74 +593,75 @@ msgstr "Furacão"
 #: ../qml/widgets/Weather.qml:249 ../qml/widgets/Weather.qml:251
 #: ../qml/widgets/Weather.qml:253 ../qml/widgets/Weather.qml:255
 #: ../qml/widgets/Weather.qml:257 ../qml/widgets/Weather.qml:259
+#: ../qml/widgets/Weather.qml:261 ../qml/widgets/Weather.qml:263
 msgid "of"
 msgstr "de"
 
-#: ../qml/widgets/Weather.qml:229
+#: ../qml/widgets/Weather.qml:233
 msgid "North"
 msgstr "Norte"
 
-#: ../qml/widgets/Weather.qml:231
+#: ../qml/widgets/Weather.qml:235
 msgid "North-Northeast"
 msgstr "Norte-Nordeste"
 
-#: ../qml/widgets/Weather.qml:233
+#: ../qml/widgets/Weather.qml:237
 msgid "Northeast"
 msgstr "Nordeste"
 
-#: ../qml/widgets/Weather.qml:235
+#: ../qml/widgets/Weather.qml:239
 msgid "East-Northeast"
 msgstr "Leste-Nordeste"
 
-#: ../qml/widgets/Weather.qml:237
+#: ../qml/widgets/Weather.qml:241
 msgid "East"
 msgstr "Leste"
 
-#: ../qml/widgets/Weather.qml:239
+#: ../qml/widgets/Weather.qml:243
 msgid "East-Southeast"
 msgstr "Leste-Sudeste"
 
-#: ../qml/widgets/Weather.qml:241
+#: ../qml/widgets/Weather.qml:245
 msgid "Southeast"
 msgstr "Sudeste"
 
-#: ../qml/widgets/Weather.qml:243
+#: ../qml/widgets/Weather.qml:247
 msgid "South-Southeast"
 msgstr "Sul-Sudeste"
 
-#: ../qml/widgets/Weather.qml:245
+#: ../qml/widgets/Weather.qml:249
 msgid "South"
 msgstr "Sul"
 
-#: ../qml/widgets/Weather.qml:247
+#: ../qml/widgets/Weather.qml:251
 msgid "South-Southwest"
 msgstr "Sul-Sudoeste"
 
-#: ../qml/widgets/Weather.qml:249
+#: ../qml/widgets/Weather.qml:253
 msgid "Southwest"
 msgstr "Sudoeste"
 
-#: ../qml/widgets/Weather.qml:251
+#: ../qml/widgets/Weather.qml:255
 msgid "West-Southwest"
 msgstr "Oeste-Sudoeste"
 
-#: ../qml/widgets/Weather.qml:253
+#: ../qml/widgets/Weather.qml:257
 msgid "West"
 msgstr "Oeste"
 
-#: ../qml/widgets/Weather.qml:255
+#: ../qml/widgets/Weather.qml:259
 msgid "West-Northwest"
 msgstr "Oeste-Noroeste"
 
-#: ../qml/widgets/Weather.qml:257
+#: ../qml/widgets/Weather.qml:261
 msgid "Northwest"
 msgstr "Noroeste"
 
-#: ../qml/widgets/Weather.qml:259
+#: ../qml/widgets/Weather.qml:263
 msgid "North-Northwest"
 msgstr "Norte-Noroeste"
 
-#: ../qml/widgets/Weather.qml:270
+#: ../qml/widgets/Weather.qml:274
 msgid "humidity"
 msgstr "humidade"
 
@@ -786,6 +786,9 @@ msgstr "ou"
 #: launchermodular.desktop.in.h:1
 msgid "Modular launcher"
 msgstr "Configurar Iniciador"
+
+#~ msgid "Installed Apps"
+#~ msgstr "Aplicações Instaladas"
 
 #~ msgid "Widget Settings"
 #~ msgstr "Configurações de Widget"
