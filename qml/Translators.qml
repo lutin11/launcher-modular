@@ -89,6 +89,20 @@ Page {
 
                 Item {
                     width: parent.width
+                    height: trans0Label.height + units.gu(2)
+                    Label {
+                        id: trans0Label
+                        text: i18n.tr("Arabic - ") + "Salah Khani"
+                        anchors.centerIn: parent
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        horizontalAlignment: Text.AlignHCenter
+                        width: parent.width - units.gu(12)
+                        color: "#ffffff"
+                    }
+                }
+
+                Item {
+                    width: parent.width
                     height: trans1Label.height + units.gu(2)
                     Label {
                         id: trans1Label
@@ -106,7 +120,7 @@ Page {
                     height: trans2Label.height + units.gu(2)
                     Label {
                         id: trans2Label
-                        text: i18n.tr("French - ") + "Steve Kueffer"
+                        text: i18n.tr("French - ") + "Stanwood77, Steve Kueffer"
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         horizontalAlignment: Text.AlignHCenter

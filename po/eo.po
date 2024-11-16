@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 10:49+0000\n"
+"POT-Creation-Date: 2024-11-16 11:25+0000\n"
 "PO-Revision-Date: 2023-02-16 11:26+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/ubports/"
@@ -126,7 +126,7 @@ msgstr ""
 msgid "Addition of a new page for RSS feeds"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74
+#: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
 #, fuzzy
 msgid "Update translations"
 msgstr "Tradukintoj"
@@ -139,23 +139,39 @@ msgstr ""
 msgid "Display contact name if exists on message and call widget"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:138
+#: ../qml/ChangeLogs.qml:76
+msgid "Fix launching Libertine applications"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:77
+msgid "Fix launching favorite applications"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:78
+msgid "Update weather on refreshing home page"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:79
+msgid "Added the ability to run a calculation from the search bar"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:149
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:144
+#: ../qml/ChangeLogs.qml:155
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:270
+#: ../qml/ChangeLogs.qml:281
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:297
+#: ../qml/ChangeLogs.qml:308
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:311
+#: ../qml/ChangeLogs.qml:322
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -175,23 +191,23 @@ msgstr ""
 "org/licenses/gpl-3.0.en.html\">Ĝeneralan Publikan Licencon GNU</a> por pliaj "
 "detaloj."
 
-#: ../qml/ChangeLogs.qml:326
+#: ../qml/ChangeLogs.qml:337
 msgid "SOURCE"
 msgstr "FONTO"
 
-#: ../qml/ChangeLogs.qml:326
+#: ../qml/ChangeLogs.qml:337
 msgid "ISSUES"
 msgstr "PROBLEMOJ"
 
-#: ../qml/ChangeLogs.qml:341
+#: ../qml/ChangeLogs.qml:352
 msgid "Maintainer"
 msgstr "Mastrumanto"
 
-#: ../qml/ChangeLogs.qml:355
+#: ../qml/ChangeLogs.qml:366
 msgid "Copyright"
 msgstr "Kopirajtoj"
 
-#: ../qml/ChangeLogs.qml:370
+#: ../qml/ChangeLogs.qml:381
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -377,26 +393,30 @@ msgid "Modular Launcher-translators:"
 msgstr ""
 
 #: ../qml/Translators.qml:95
+msgid "Arabic - "
+msgstr ""
+
+#: ../qml/Translators.qml:109
 msgid "Dutch - "
 msgstr "Nederlanda - "
 
-#: ../qml/Translators.qml:109
+#: ../qml/Translators.qml:123
 msgid "French - "
 msgstr "Franca - "
 
-#: ../qml/Translators.qml:123
+#: ../qml/Translators.qml:137
 msgid "German - "
 msgstr "Germana - "
 
-#: ../qml/Translators.qml:137
+#: ../qml/Translators.qml:151
 msgid "Portuguese - "
 msgstr "Portugala - "
 
-#: ../qml/Translators.qml:151
+#: ../qml/Translators.qml:165
 msgid "Russian - "
 msgstr "Rusa - "
 
-#: ../qml/Translators.qml:165
+#: ../qml/Translators.qml:179
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
