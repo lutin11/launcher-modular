@@ -71,7 +71,7 @@ MainView {
 
         property string apiOpenWeatherMap: ''
         property string unitsFormat: '&units=metric'
-        property string cityName: ''
+        property string cityName: 'Paris'
 
         property string formatHours: '24h'
         property string backgroundAnalogHours: ''

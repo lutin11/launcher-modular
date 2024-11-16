@@ -9,6 +9,10 @@ import QtGraphicalEffects 1.12
 Item {
     width: listColumn.width/2
     height: units.gu(24)
+    id: weatherItem
+
+    property alias modelWeather: modelWeather
+    property alias modelWeatherNext: modelWeatherNext
 
     Rectangle {
         id: weather

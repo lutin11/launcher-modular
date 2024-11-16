@@ -89,6 +89,10 @@ Item {
         listCustomIcon.model = ""
         listCustomIcon.model = launchermodular.customIconModel
         AppHandler.sort()
+        if (launchermodular.settings.widgetVisibleWeather){
+            weatherWidget.modelWeather.reload()
+            weatherWidget.modelWeatherNext.reload()
+        }
         home.reloading = false
     }
 
@@ -255,7 +259,10 @@ Item {
                     visible: launchermodular.settings.widgetVisibleClock
                     width: launchermodular.settings.widgetVisibleWeather ? listColumn.width/2 : listColumn.width
                 }
-                Weather { visible: launchermodular.settings.widgetVisibleWeather }
+                Weather { 
+                    id: weatherWidget
+                    visible: launchermodular.settings.widgetVisibleWeather 
+                }
 
             }
 
@@ -289,6 +296,11 @@ Item {
                 width: parent.width
             }
 
+            SearchContact {
+                id: searchContactWidget
+                width: parent.width
+            }
+
             FavoriteApp {
                 id: favoriteAppWidget
                 width: parent.width
@@ -296,11 +308,6 @@ Item {
 
             FavoriteContact {
                 id: favoriteContactWidget
-                width: parent.width
-            }
-
-            SearchContact {
-                id: searchContactWidget
                 width: parent.width
             }
 

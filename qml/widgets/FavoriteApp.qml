@@ -9,14 +9,7 @@ import Lomiri.Components.Popups 1.3
 Column {
     id: widgetFavoriteApps
     visible: if(searchField.text.length > 0){false}else{true}
-    
-    Timer {
-        id: closeTimer
-        interval: 500; running: home.reloading; repeat: false
-        onTriggered: AppHandler.setFav(settings.coreApps.join())
-    }
 
-    
     Item {
         id: titleFavoriteApp
         height: if(launchermodular.favoriteAppsModel.count !== "0"){ units.gu(5) } else {units.gu(0)}

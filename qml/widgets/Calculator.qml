@@ -3,7 +3,7 @@ import Lomiri.Components 1.3
 import QtGraphicalEffects 1.12
 import CalculatorHelper 1.0
 
-Column{
+Column {
     id:widgetCalculatorRow
     height: calculColumn.height
     visible: if(culculResult.text.length > 0){true}else{false}
@@ -15,49 +15,31 @@ Column{
         rightMargin: units.gu(2)
     }
 
-    Flickable {
-        id: flickableCalculator
-        width: parent.width
-        height: units.gu(10)
-        clip: true
-
-        Column {
-            id: calculColumn
-            spacing: units.gu(2)
-            anchors {
-                top: parent.top
-                left: parent.left
-                right: parent.right
-            }
-
-            Label {
-                id:calculatorHeaderText
-                anchors.left: iconCalculator.right
-                anchors.leftMargin: units.gu(1)
-                text: i18n.tr("Calcul result:")
-                color: launchermodular.settings.textColor
-            }
-            Text{
-                id: culculResult
-                horizontalAlignment: Text.AlignHCenter
-                anchors.topMargin: units.gu(1)
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.pixelSize: units.gu(1.5)
-                text: ""
-                color: launchermodular.settings.textColor
-            }
-            
-            Connections {
-                target: CalculatorHelper
-                onResultReady: function(result) {
-                    console.log("Signal received with result: " + result);
-                    if (result) {
-                        culculResult.text = result;
-                    }
-                }
-                onNoResult:function(){culculResult.text = "";}
+    Label {
+        id:calculatorHeaderText
+        anchors.left: iconCalculator.right
+        anchors.leftMargin: units.gu(1)
+        text: i18n.tr("Calcul result:")
+        color: launchermodular.settings.textColor
+    }
+    Text{
+        id: culculResult
+        horizontalAlignment: Text.AlignHCenter
+        anchors.topMargin: units.gu(1)
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pixelSize: units.gu(1.5)
+        text: ""
+        color: launchermodular.settings.textColor
+    }
+    
+    Connections {
+        target: CalculatorHelper
+        onResultReady: function(result) {
+            console.log("Signal received with result: " + result);
+            if (result) {
+                culculResult.text = result;
             }
         }
+        onNoResult:function(){culculResult.text = "";}
     }
-
 }
