@@ -72,12 +72,23 @@ Page {
             property var details17: i18n.tr("Display contact name if exists on message and call widget");
             property var details18: i18n.tr("Improved 'Picture' page display performance");
             property var details19: i18n.tr("Update translations");
+            // 2.3.6
+            property var details20: i18n.tr("Fix launching Libertine applications");
+            property var details21: i18n.tr("Fix launching favorite applications");
+            property var details22: i18n.tr("Update weather on refreshing home page");
+            property var details23: i18n.tr("Added the ability to run a calculation from the search bar");
+            property var details24: i18n.tr("Update translations");
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.3.6", date: "2024-11-17", details: details20, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details21, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details22, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details23, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details24, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.5", date: "2024-11-03", details: details17, description: emptyDescription });
                 changeLogModel.append({ version: "", date: "", details: details18, description: emptyDescription });
                 changeLogModel.append({ version: "", date: "", details: details19, description: emptyDescription });

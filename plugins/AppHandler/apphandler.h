@@ -5,6 +5,8 @@
 #include <QString>
 #include <QQmlListProperty>
 #include "appinfo.h"
+#include <QDir>
+#include <QStandardPaths>
 
 class AppHandler: public QObject {
     Q_OBJECT

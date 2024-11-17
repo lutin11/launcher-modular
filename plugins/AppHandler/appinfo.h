@@ -12,11 +12,14 @@ class AppInfo: public QObject {
     Q_PROPERTY( QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY( QString icon READ icon WRITE setIcon NOTIFY iconChanged)
     Q_PROPERTY( QString action READ action WRITE setAction NOTIFY actionChanged)
+    Q_PROPERTY( QString libertine READ libertine)
+    Q_PROPERTY( QString container READ container)
 
     public:
         ~AppInfo() = default;
         AppInfo(const QString& infos = "");
-        AppInfo(const QString &packageName, const QString& infos);
+        AppInfo(const QString &packageName, const QString& infos, bool isLibertine = false);
+        AppInfo(const QString &conatainer, const QString &application, const QString& infos, bool isLibertine = false);
         Q_INVOKABLE QString getProp(const QString& key);
         Q_INVOKABLE bool haveProp(const QString& key);
         Q_INVOKABLE void import(const QString& infos);
@@ -25,6 +28,8 @@ class AppInfo: public QObject {
         QString name();
         QString icon();
         QString action();
+        QString libertine();
+        QString container();
     public slots:
         void setName(const QString&);
         void setIcon(const QString&);

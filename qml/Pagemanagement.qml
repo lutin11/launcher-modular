@@ -74,7 +74,7 @@ Page {
                     FolderListModel {
                         id: folderModelCustom
                         nameFilters: ["*.qml"]
-                        folder: "/home/phablet/.launchermodular/pages/"
+                        folder: MySettings.getHomeLocation()+"/.launchermodular/pages/"
                         showDirs: false
                     }
 
@@ -87,7 +87,7 @@ Page {
                         }
                         divider.visible: false
                         onClicked: {
-                            launchermodular.pageModel.append({"name": fileName, "icon": "/home/phablet/.launchermodular/pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": "/home/phablet/.launchermodular/pages/"});
+                            launchermodular.pageModel.append({"name": fileName, "icon": MySettings.getHomeLocation()+"/.launchermodular/pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": MySettings.getHomeLocation()+"/.launchermodular/pages/"});
                             PopupUtils.close(listPageDialogue);
                         }
                     }

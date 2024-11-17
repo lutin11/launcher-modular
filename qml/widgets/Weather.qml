@@ -9,6 +9,10 @@ import QtGraphicalEffects 1.12
 Item {
     width: listColumn.width/2
     height: units.gu(24)
+    id: weatherItem
+
+    property alias modelWeather: modelWeather
+    property alias modelWeatherNext: modelWeatherNext
 
     Rectangle {
         id: weather
@@ -30,7 +34,7 @@ Item {
 
         ActivityIndicator {
             anchors.centerIn: parent
-            running:  if ( modelWeather.count == 0 && configure.visible == false) { true;}else{ false;}
+            running:  if ( modelWeather.status == XmlListModel.Loading && configure.visible == false) { true;}else{ false;}
         }
 
         Timer {

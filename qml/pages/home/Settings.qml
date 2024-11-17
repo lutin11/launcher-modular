@@ -69,8 +69,9 @@ Page {
                     }
                     divider.visible: false
                     onClicked: {
-                         launchermodular.favoriteAppsModel.append({"name": elem.name, "icon": elem.icon, "action": elem.action});
-                         PopupUtils.close(listAppDialogue);
+                        if (DEBUG_MODE) console.log("add fav app:", JSON.stringify(elem));
+                        launchermodular.favoriteAppsModel.append({"name": elem.name, "icon": elem.icon, "action": elem.action, "container": elem.container});
+                        PopupUtils.close(listAppDialogue);
                     }
                 }
 

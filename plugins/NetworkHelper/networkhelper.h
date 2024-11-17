@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QObject>
 
 class NetworkHelper : public QObject {
     Q_OBJECT

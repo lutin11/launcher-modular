@@ -3,12 +3,16 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
-import MySettings 1.0
 import AppHandler 1.0
 import "../widgets"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
 import Terminalaccess 1.0
+import LibertineLauncher 1.0
+import CalculatorHelper 1.0
+import Lomiri.Components.ListItems 1.3 as ListItem
+
+
 
 Item {
     id: home
@@ -85,6 +89,10 @@ Item {
         listCustomIcon.model = ""
         listCustomIcon.model = launchermodular.customIconModel
         AppHandler.sort()
+        if (launchermodular.settings.widgetVisibleWeather){
+            weatherWidget.modelWeather.reload()
+            weatherWidget.modelWeatherNext.reload()
+        }
         home.reloading = false
     }
 
@@ -202,6 +210,7 @@ Item {
                             AppHandler.tempFilter("Name;Name[];package_name", text)
                             rowWidgets.visible = false
                             rowWidgetsM.visible = false
+                            CalculatorHelper.processInput(text)
                         } else {
                             iconWebSearch.visible = false
                             AppHandler.resetTempFilter()
@@ -250,7 +259,10 @@ Item {
                     visible: launchermodular.settings.widgetVisibleClock
                     width: launchermodular.settings.widgetVisibleWeather ? listColumn.width/2 : listColumn.width
                 }
-                Weather { visible: launchermodular.settings.widgetVisibleWeather }
+                Weather { 
+                    id: weatherWidget
+                    visible: launchermodular.settings.widgetVisibleWeather 
+                }
 
             }
 
@@ -279,13 +291,8 @@ Item {
 
             }
 
-            FavoriteApp {
-                id: favoriteAppWidget
-                width: parent.width
-            }
-
-            FavoriteContact {
-                id: favoriteContactWidget
+            Calculator {
+                id: calculatorAppWidget
                 width: parent.width
             }
 
@@ -294,29 +301,14 @@ Item {
                 width: parent.width
             }
 
-            Item{
-                id: titleList
-                height: units.gu(4)
+            FavoriteApp {
+                id: favoriteAppWidget
                 width: parent.width
-                anchors {
-                    left: parent.left
-                    leftMargin: units.gu(2)
-                }
+            }
 
-                Icon {
-                    id: iconInstalledApps
-                    width: units.gu(2)
-                    height: units.gu(2)
-                    name: "keypad"
-                    color: launchermodular.settings.textColor
-                }
-                Label {
-                    id: titleListApps
-                    anchors.left: iconInstalledApps.right
-                    anchors.leftMargin: units.gu(1)
-                    text: i18n.tr("Installed Apps")
-                    color: launchermodular.settings.textColor
-                }
+            FavoriteContact {
+                id: favoriteContactWidget
+                width: parent.width
             }
 
             Item {
@@ -330,19 +322,23 @@ Item {
                     rightMargin: units.gu(2)
                 }
 
-                function doAction(action) {
-                    if(action.startsWith("application:///")) {
+                function doAction(app) {
+                    doLaunchAction(app.action, app.container);
+                }
+
+                function doLaunchAction(action, container) {
+                    if (DEBUG_MODE) console.log("app:", JSON.stringify(action));
+                    if(container.length > 0) {
+                        LibertineLauncher.launchLibertineApp(container, action);
+                    } else if(action.startsWith("application:///")) {
                         Qt.openUrlExternally(action);
-                    }
-                    if(action.startsWith("terminal:///")) {
+                    } else if(action.startsWith("terminal:///")) {
                         var actionterm = action.replace(/^terminal:\/\/\//, "")
                         var actionsudo = actionterm.replace(/^sudo /, "sudo -S ")
                         Terminalaccess.run(actionsudo);
-                    }
-                    if(action.startsWith("browser:///")) {
+                    } else if(action.startsWith("browser:///")) {
                         Qt.openUrlExternally(action.replace(/^browser:\/\/\//, ""));
-                    }
-                    if(action.startsWith("internal:///")) {
+                    } else if(action.startsWith("internal:///")) {
                         pageStack.push(Qt.resolvedUrl(action.replace(/^internal:\/\/\//, "")))
                     }
                 }
@@ -477,7 +473,8 @@ Item {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-                                    listColumnApps.doAction(AppHandler.appsinfo[index].action)
+
+                                    listColumnApps.doAction(AppHandler.appsinfo[index])
                                 }
                                 onPressAndHold: {
                                     PopupUtils.open(appsDialog);

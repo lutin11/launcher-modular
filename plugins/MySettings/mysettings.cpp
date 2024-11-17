@@ -3,10 +3,10 @@
 #include <QUrl>
 #include <QFile>
 #include "mysettings.h"
+#include <QDir>
+#include <QStandardPaths>
 
-MySettings::MySettings() : _acc() {
-
-}
+MySettings::MySettings() : _acc() {}
 
 QString MySettings::getBackgroundFile()
 {
@@ -27,7 +27,15 @@ void MySettings::setBackgroundFile(const QString &filename)
     if (!backgroundFile.isLocalFile())
 		    return;
 
-    _acc.customSetUserProperty("SetBackgroundFile",
-				backgroundFile.path());
+    _acc.customSetUserProperty("SetBackgroundFile", backgroundFile.path());
+
     emit(backgroundFileChanged());
+}
+
+QString getHomeLocation() {
+    return QDir::homePath();
+}
+
+QString MySettings::getPicturesLocation() {
+    return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 }

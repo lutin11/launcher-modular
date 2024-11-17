@@ -6,7 +6,7 @@ ListModel {
 	id:feedModel
 	dynamicRoles:true
 	property var sortOrder: appSettings.mainFeedSortAsc;
-	property var sorting: false;
+    property bool sorting: false;
 	
 	property var specialSort: {
 		'updated' : function(itm) {return Date.parse(itm);}
@@ -16,9 +16,10 @@ ListModel {
 	
 	function sort() {
 		if (DEBUG_MODE) console.log("Sorting...")
-		var mins = false; var maxs = false;
-		for(var i=0; i < feedModel.count;i++) {
-			var val = feedModel.getValue(feedModel.get(i));
+        let mins = false;
+        let maxs = false;
+        for(let fm=0; fm < feedModel.count;fm++) {
+            var val = feedModel.getValue(feedModel.get(fm));
 			if ( mins == false || val !== false && val < mins ) {
 				mins = val;
 			}
@@ -26,22 +27,22 @@ ListModel {
 				maxs = val;
 			}
 		}
-		var sorted = [];
+        let sorted = [];
 		sorted.length = feedModel.count;
 		if(maxs - mins == 0 ) {
 			return ;
 		}
-		var factor =  feedModel.count / (maxs - mins);
-		for(var i=0; i < feedModel.count;i++) {
-			var value = JSON.parse(JSON.stringify(feedModel.get(i)));;
-			var val = feedModel.getValue(value);
-			var eIdx = val !== false ? parseInt((val - mins) * factor) : 0;
+        let factor =  feedModel.count / (maxs - mins);
+        for(let fm_=0; fm_ < feedModel.count;fm_++) {
+            let value = JSON.parse(JSON.stringify(feedModel.get(fm_)));;
+            let val = feedModel.getValue(value);
+            let eIdx = val !== false ? parseInt((val - mins) * factor) : 0;
 			if(isNaN(eIdx)) {
 				eIdx = 0;
 			}
 			if(sorted[eIdx]) {
 				while( sorted[eIdx] ) {
-					if (DEBUG_MODE) console.log(eIdx,i,val);
+                    if (DEBUG_MODE) console.log(eIdx,fm_,val);
 					if( val < feedModel.getValue(sorted[eIdx]) ) {
 						var tmp = sorted[eIdx];
 						sorted[eIdx] = value;
@@ -56,9 +57,9 @@ ListModel {
 			}
 		}
 		
-		var inIdx = sortOrder == Qt.AscendingOrder ? 0 : feedModel.count;
+        let inIdx = sortOrder == Qt.AscendingOrder ? 0 : feedModel.count;
 		feedModel.clear();
-		for(var idx=sortOrder == Qt.AscendingOrder ? 0 : sorted.length;  
+        for(let idx=sortOrder == Qt.AscendingOrder ? 0 : sorted.length;
 			sortOrder == Qt.AscendingOrder  && idx < sorted.length || sortOrder !== Qt.AscendingOrder  && idx > 0  ; 
 			idx+= sortOrder == Qt.AscendingOrder ? 1 : -1) {
 			if(sorted[idx]) {
