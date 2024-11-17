@@ -111,6 +111,8 @@ MainView {
         property bool widgetVisibleLastmessage: true
         property bool widgetVisibleEvent: true
         property int itemsToLoadPerChannel: 7
+
+        property int mainFeedSortAsc: 1
     }//settings
 
     Timer {

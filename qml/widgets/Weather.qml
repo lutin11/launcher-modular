@@ -34,7 +34,7 @@ Item {
 
         ActivityIndicator {
             anchors.centerIn: parent
-            running:  if ( modelWeather.count == 0 && configure.visible == false) { true;}else{ false;}
+            running:  if ( modelWeather.status == XmlListModel.Loading && configure.visible == false) { true;}else{ false;}
         }
 
         Timer {
