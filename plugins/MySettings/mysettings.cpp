@@ -39,3 +39,7 @@ QString getHomeLocation() {
 QString MySettings::getPicturesLocation() {
     return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 }
+
+QString MySettings::getMusicLocation() {
+    return QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
+}

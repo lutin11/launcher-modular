@@ -85,6 +85,7 @@ MainView {
         property string backgroundBlur: '0'
 
         property string folderimage: MySettings.getPicturesLocation()
+        property string foldermusic: MySettings.getMusicLocation()
 
         property int limiteDaysCalendar: 31;
         property int limiteDaysWidgetEvent: 31;

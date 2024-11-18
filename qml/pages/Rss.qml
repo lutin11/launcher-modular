@@ -150,18 +150,18 @@ Item {
                 visible: _mainFeed.isFeeds
             }
             Label {
-                 id: noFeeds
-                 text: _mainFeed.isFeeds ? i18n.tr("Loading feeds…") : i18n.tr("Go to the page management to add feeds.")
-                 color: launchermodular.settings.textColor
-                 font.weight: Font.Bold
-                 wrapMode: Text.Wrap
-                 horizontalAlignment:Text.AlignHCenter
-                 anchors {
-                   verticalCenter:parent.verticalCenter
-                   left:parent.left
-                   right:parent.right
-                   margins:units.gu(2)
-                 }
+                id: noFeeds
+                text: _mainFeed.isFeeds ? i18n.tr("Loading feeds…") : i18n.tr("Go to the page management to add feeds.")
+                color: launchermodular.settings.textColor
+                font.weight: Font.Bold
+                wrapMode: Text.Wrap
+                horizontalAlignment:Text.AlignHCenter
+                anchors {
+                    verticalCenter:parent.verticalCenter
+                    left:parent.left
+                    right:parent.right
+                    margins:units.gu(2)
+                }
             }
         }
 
