@@ -6,3 +6,4 @@
 /.clickable/amd64/image.json
 /.clickable/arm64/Dockerfile
 /.clickable/arm64/image.json
+launcher-modular.creator.user
