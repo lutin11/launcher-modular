@@ -5,7 +5,7 @@ import CalculatorHelper 1.0
 
 Column {
     id:widgetCalculatorRow
-    height: calculColumn.height
+    height: culculResult.height
     visible: if(culculResult.text.length > 0){true}else{false}
     width: parent.width
     anchors {
@@ -17,7 +17,6 @@ Column {
 
     Label {
         id:calculatorHeaderText
-        anchors.left: iconCalculator.right
         anchors.leftMargin: units.gu(1)
         text: i18n.tr("Calcul result:")
         color: launchermodular.settings.textColor

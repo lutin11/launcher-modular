@@ -9,61 +9,64 @@ import Lomiri.Thumbnailer 0.1
 Item {
     id: musics
 
-    GridView {
-        id: gview
-        anchors.fill: parent
+    FolderListModel {
+        id: musicFileModel
+        folder: launchermodular.settings.folderMusic
+        showDirs: false
+        showFiles: true
+        nameFilters: ["*.mp3", "*.aac", "*.ogg", "*.wav", "*.flac", "*.m4a", "*.alac"]
+    }
+
+    ListView {
+        id: gviewFile
+        model: musicFileModel
+        width: parent.width
+        //height: fileNameId.implicitHeight
         anchors {
+            fill: parent
             rightMargin: units.gu(2)
             leftMargin: units.gu(2)
             topMargin: units.gu(2)
         }
-        cellHeight: iconbasesize+units.gu(8)
-        property real iconbasesize: units.gu(14)
-        cellWidth: Math.floor(width/Math.floor(width/iconbasesize))
         clip: true  // To avoid rendering content outside of the visible area
 
         focus: true
-        model: musicFolderModel
 
-        FolderListModel {
-            id: musicFolderModel
-            folder: QStandardPaths.writableLocation(QStandardPaths.MusicLocation)
+        delegate: Item {
+            id: fileDelegate
+            width: gviewFile.cellWidth
+            height: fileNameId.implicitHeight
 
-            // Optionally, you can filter to show only music files by checking extensions
-            onFolderLoaded: {
-                console.log("Music folder loaded:", folder)
-            }
-
-            // Optional: You can use filters like `filter` to only show certain file types (e.g., .mp3, .flac)
-            filter: "*.mp3, *.aac, *.ogg, *.wav, *.flac, *.m4a, *.alac"
-
-            // This will show a list of files from the folder
-            ListView {
+            Rectangle {
+                id: fileDelegateRectangle
+                opacity: 0.9
+                color: "#111111"
+                height: fileNameId.implicitHeight
                 width: parent.width
-                height: parent.height
 
-                model: musicFolderModel
+                Column {
 
-                delegate: Item {
-                    width: parent.width
-                    height: 50
+                    Text {
+                        id: fileNameId
+                        text: fileName
+                        font.pixelSize: units.gu(2)
+                        font.bold: musicFileModel.isFolder(index) ? true : false
+                        color: "#E95420"
 
-                    Rectangle {
-                        width: parent.width
-                        height: 50
-                        color: "lightgray"
-                        border.color: "gray"
-                        radius: 5
-                        padding: 10
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: model.fileName
-                            font.pixelSize: 16
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                console.log("try launch 1")
+                                console.log("is folder1: " + musicFileModel.isFolder(index))
+                                if (!musicFileModel.isFolder(index)) {
+                                    console.log("launch1:" + filePath)
+                                    onClicked:Qt.openUrlExternally("music://" + filePath)
+                                }
+                            }
                         }
                     }
                 }
-            }
-        }
+            } // Item
+        }// delegate Rectangle
     }
 }
