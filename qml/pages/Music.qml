@@ -4,17 +4,53 @@ import QtGraphicalEffects 1.12
 import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.1
 import Lomiri.Thumbnailer 0.1
-
+import MySettings 1.0
 
 Item {
     id: musics
 
+    property string rootMusic: MySettings.getMusicLocation()
+
     FolderListModel {
         id: musicFileModel
-        folder: launchermodular.settings.folderMusic
-        showDirs: false
+        folder: rootMusic
+        //showDotAndDotDot: true
+        showDirsFirst: true
+        showDirs: true
         showFiles: true
         nameFilters: ["*.mp3", "*.aac", "*.ogg", "*.wav", "*.flac", "*.m4a", "*.alac"]
+
+        onFolderChanged: {
+            console.log("ref root: " + rootMusic)
+            console.log("root change: " + String(folder))
+            if (!String(folder).startsWith("file://" + rootMusic)) {
+                musicFileModel.folder = rootMusic; // Revenir à la racine
+                console.log("back to default: " + rootMusic)
+            } else {
+                musicFileModel.folder = folder
+                console.log("root is changing to: " + folder)
+            }
+        }
+    }
+
+    Rectangle {
+        height: units.gu(2)
+        anchors.leftMargin: units.gu(2)
+        Icon {
+            id: iconBack
+            visible: true
+            height: units.gu(2)
+            width: units.gu(2)
+            name: "revert"
+            color: "#E95420"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked:{
+                     musicFileModel.folder = musicFileModel.parentFolder;
+                }
+            }
+        }
     }
 
     ListView {
@@ -44,8 +80,23 @@ Item {
                 height: fileNameId.implicitHeight
                 width: parent.width
 
-                Column {
+                Row {
+                    spacing: units.gu(1)
+                    Icon {
+                        id: itemIcon
+                        visible: true
+                        height: units.gu(2)
+                        width: units.gu(2)
+                        name: musicFileModel.isFolder(index) ? "folder-symbolic" : "stock_music"
+                        color: "#E95420"
 
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked:{
+                                 musicFileModel.folder = musicFileModel.parentFolder;
+                            }
+                        }
+                    }
                     Text {
                         id: fileNameId
                         text: fileName
@@ -56,11 +107,13 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                console.log("try launch 1")
                                 console.log("is folder1: " + musicFileModel.isFolder(index))
                                 if (!musicFileModel.isFolder(index)) {
                                     console.log("launch1:" + filePath)
                                     onClicked:Qt.openUrlExternally("music://" + filePath)
+                                } else {
+                                    console.log("change to :" + filePath)
+                                    musicFileModel.folder = filePath;
                                 }
                             }
                         }
