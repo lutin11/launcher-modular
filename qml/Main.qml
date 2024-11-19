@@ -94,8 +94,6 @@ MainView {
         property var customIcon;
         property var favoriteApps;
 
-        property var selectedAppNews: [];
-
         property bool newsBackgroundOpacity: false
         property string widgetMessageClick: 'message'
         property bool widgetMessageSummary: true

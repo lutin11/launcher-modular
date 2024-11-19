@@ -21,8 +21,6 @@ Page {
                 iconName: "back"
                 text: "Back"
                 onTriggered: {
-                    launchermodular.pageModel.append({"name": "temp", "icon": "temp.svg"});
-                    launchermodular.pageModel.remove(launchermodular.pageModel.count-1);
                     launchermodular.settings.page = launchermodular.getPageArray();
                     pageStack.pop();
                 }
@@ -236,7 +234,6 @@ Page {
                         anchors.fill: parent
                         onClicked:{
                             launchermodular.pageModel.remove(index)
-                            mainloader.reloadPage()
                         }
                     }
 
