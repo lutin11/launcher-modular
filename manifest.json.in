@@ -7,10 +7,10 @@
         "launchermodular": {
             "apparmor": "launchermodular.apparmor",
             "desktop":  "launchermodular.desktop",
-	        "content-hub": "launchermodular.contenthub"
+	          "content-hub": "launchermodular.contenthub"
         }
     },
-    "version": "2.3.6",
+    "version": "2.3.6.1",
     "maintainer": "David Cossé <saveurlinux@disroot.org>",
     "framework" : "@CLICK_FRAMEWORK@"
 }

@@ -32,12 +32,12 @@ void MySettings::setBackgroundFile(const QString &filename)
     emit(backgroundFileChanged());
 }
 
-QString getHomeLocation() {
+QString MySettings::getHomeLocation() {
     return QDir::homePath();
 }
 
 QString MySettings::getPicturesLocation() {
-    return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation) + "/camera.ubports";
 }
 
 QString MySettings::getMusicLocation() {

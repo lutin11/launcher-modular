@@ -78,12 +78,16 @@ Page {
             property var details22: i18n.tr("Update weather on refreshing home page");
             property var details23: i18n.tr("Added the ability to run a calculation from the search bar");
             property var details24: i18n.tr("Update translations");
+            // 2.3.6.1
+            property var details25: i18n.tr("Fix page management issue");
+            property var description25:"This is a hotfix release, as 'Page management' did not work anymore. Please feel free to report any issues throw https://github.com/lutin11/launcher-modular/issues or on Ubports forum";
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.3.6.1", date: "2024-11-19", details: details25, description: description25});
                 changeLogModel.append({ version: "2.3.6", date: "2024-11-17", details: details20, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details21, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details22, description: emptyDescription});

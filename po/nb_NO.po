@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-17 20:03+0000\n"
+"POT-Creation-Date: 2024-11-19 08:37+0000\n"
 "PO-Revision-Date: 2023-01-23 18:52+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/ubports/"
@@ -155,23 +155,28 @@ msgstr ""
 msgid "Added the ability to run a calculation from the search bar"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:149
+#: ../qml/ChangeLogs.qml:82
+#, fuzzy
+msgid "Fix page management issue"
+msgstr "Sidehåndtering"
+
+#: ../qml/ChangeLogs.qml:153
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:155
+#: ../qml/ChangeLogs.qml:159
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:281
+#: ../qml/ChangeLogs.qml:285
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:308
+#: ../qml/ChangeLogs.qml:312
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "En modulær oppstarter for Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:322
+#: ../qml/ChangeLogs.qml:326
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -191,23 +196,23 @@ msgstr ""
 "\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
 "a>."
 
-#: ../qml/ChangeLogs.qml:337
+#: ../qml/ChangeLogs.qml:341
 msgid "SOURCE"
 msgstr "Kilde"
 
-#: ../qml/ChangeLogs.qml:337
+#: ../qml/ChangeLogs.qml:341
 msgid "ISSUES"
 msgstr "Problemer"
 
-#: ../qml/ChangeLogs.qml:352
+#: ../qml/ChangeLogs.qml:356
 msgid "Maintainer"
 msgstr "Vedlikeholder"
 
-#: ../qml/ChangeLogs.qml:366
+#: ../qml/ChangeLogs.qml:370
 msgid "Copyright"
 msgstr "Opphavsrett"
 
-#: ../qml/ChangeLogs.qml:381
+#: ../qml/ChangeLogs.qml:385
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -234,75 +239,75 @@ msgstr ""
 msgid "Choose"
 msgstr "Velg"
 
-#: ../qml/Main.qml:382
+#: ../qml/Main.qml:380
 msgid "Swipe up to configure the launcher"
 msgstr "Dra oppover for å sette opp oppstarteren"
 
-#: ../qml/Main.qml:434
+#: ../qml/Main.qml:432
 msgid "Add custom icon"
 msgstr "Legg til egendefinert ikon"
 
-#: ../qml/Main.qml:466
+#: ../qml/Main.qml:464
 msgid "Manage page"
 msgstr "Håndter siden"
 
-#: ../qml/Main.qml:498
+#: ../qml/Main.qml:496
 msgid "Configure Launcher"
 msgstr "Sett opp oppstarter"
 
-#: ../qml/Main.qml:530
+#: ../qml/Main.qml:528
 msgid "Autostart"
 msgstr "Autostart"
 
-#: ../qml/Main.qml:562
+#: ../qml/Main.qml:560
 msgid "Help"
 msgstr "Hjelp"
 
-#: ../qml/Main.qml:594
+#: ../qml/Main.qml:592
 msgid "About"
 msgstr "Om"
 
-#: ../qml/Main.qml:676
+#: ../qml/Main.qml:674
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "SVG eller PNG-ikon. 1:1-forhold"
 
-#: ../qml/Main.qml:689
+#: ../qml/Main.qml:687
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>Navn</b> vist i programlisten"
 
-#: ../qml/Main.qml:694
+#: ../qml/Main.qml:692
 msgid "Website"
 msgstr "Nettside"
 
-#: ../qml/Main.qml:694
+#: ../qml/Main.qml:692
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:695
+#: ../qml/Main.qml:693
 msgid "Terminal command"
 msgstr "Terminal-kommando"
 
-#: ../qml/Main.qml:695
+#: ../qml/Main.qml:693
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:696
+#: ../qml/Main.qml:694
 msgid "Launch app"
 msgstr "Start program"
 
-#: ../qml/Main.qml:696
+#: ../qml/Main.qml:694
 msgid "Launch an app"
 msgstr "Start et program"
 
-#: ../qml/Main.qml:720 ../qml/Main.qml:721 ../qml/Main.qml:722
+#: ../qml/Main.qml:718 ../qml/Main.qml:719 ../qml/Main.qml:720
 msgid "<b>Action</b> example: "
 msgstr "<b>Handling</b> eksempel: "
 
-#: ../qml/Main.qml:733
+#: ../qml/Main.qml:731
 msgid "Create icon"
 msgstr "Opprett ikon"
 
-#: ../qml/Main.qml:779 ../qml/Pagemanagement.qml:131 ../qml/Settings.qml:47
+#: ../qml/Main.qml:777 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:455
 #: ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
@@ -312,7 +317,7 @@ msgstr "Avbryt"
 msgid "Page management"
 msgstr "Sidehåndtering"
 
-#: ../qml/Pagemanagement.qml:49
+#: ../qml/Pagemanagement.qml:47
 msgid "Choose a page"
 msgstr "Velg en side"
 
