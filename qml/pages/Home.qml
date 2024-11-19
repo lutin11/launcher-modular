@@ -140,7 +140,7 @@ Item {
                 }
 
                 Rectangle {
-                    id: colorSearch
+                    id: searchBackground
                     color: launchermodular.settings.backgroundColor
                     radius: units.gu(1)
                     opacity: 0.3

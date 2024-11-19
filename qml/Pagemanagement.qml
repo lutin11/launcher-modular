@@ -6,7 +6,7 @@ import QtQuick.Controls 2.2
 import Lomiri.Components 1.3
 import "pages"
 import Lomiri.Components.Popups 0.1
-import Qt.labs.folderlistmodel 2.1
+import Qt.labs.folderlistmodel 2.12
 import MySettings 1.0
 
 Page {
