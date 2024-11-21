@@ -119,8 +119,8 @@ Item {
             visible: videoFileModel.folder != "file://" + rootVideo && searchField.text.length === 0
             anchors {
                 left: searchBar.left
-                rightMargin: units.gu(1)
-                leftMargin: units.gu(1)
+                rightMargin: units.gu(launchermodular.settings.videoFontSize)
+                leftMargin: units.gu(launchermodular.settings.videoFontSize)
                 verticalCenter: parent.verticalCenter
             }
             height: parent.height*0.5
@@ -157,7 +157,7 @@ Item {
                 color: "#aaaaaa" // Light grey color for placeholder
                 text: i18n.tr("Search your video")
                 visible: searchField.text.length == 0
-                font.pixelSize: units.gu(1.5)
+                font.pixelSize: units.gu(launchermodular.settings.videoFontSize)
             }
             inputMethodHints: Qt.ImhNoPredictiveText
             onVisibleChanged: {
@@ -239,15 +239,15 @@ Item {
                     Icon {
                         id: searchVideoViewItem
                         visible: true
-                        height: units.gu(2)
-                        width: units.gu(2)
+                        height: units.gu(launchermodular.settings.videoFontSize)
+                        width: units.gu(launchermodular.settings.videoFontSize)
                         name: fileIsDir ? "folder-symbolic" : "stock_video"
                         color: "#E95420"
                     }
                     Text {
                         id: searchVideoViewName
                         text: fileName
-                        font.pixelSize: units.gu(2)
+                        font.pixelSize: units.gu(launchermodular.settings.videoFontSize)
                         font.bold: fileIsDir ? true : false
                         color: "#E95420"
 

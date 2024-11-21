@@ -46,6 +46,32 @@ Page {
                    leftMargin: units.gu(1)
                    rightMargin: units.gu(1)
                 }
+                
+                Slider {
+                    id: sliderFontSize
+                    function formatValue(v) { return v.toFixed(2) }
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    value: launchermodular.settings.musicFontSize
+                    maximumValue: 5.0
+                    minimumValue: 1.0
+                    live: true
+                    onValueChanged: { launchermodular.settings.musicFontSize = sliderFontSize.value }
+                    onPressedChanged: {
+                        if (pressed) {
+                            pageSettings.visible = false
+                            sliderFontSize.visible = true;
+                        } else {
+                            pageSettings.visible = true;
+                        }
+                    }
+                }
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    text: i18n.tr("Exemple")
+                    font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
+                    color: "#aaaaaa" // Light grey color for placeholder
+                }
             } // column
         } //flickable
     } //rectangle settings

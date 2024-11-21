@@ -86,6 +86,8 @@ MainView {
 
         property string folderimage: MySettings.getPicturesLocation()
         property string folderMusic: MySettings.getMusicLocation()
+        property string videoFontSize: '2.0'
+        property string musicFontSize: '2.0'
 
         property int limiteDaysCalendar: 31;
         property int limiteDaysWidgetEvent: 31;
