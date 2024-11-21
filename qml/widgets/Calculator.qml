@@ -5,8 +5,8 @@ import CalculatorHelper 1.0
 
 Column {
     id:widgetCalculatorRow
-    height: culculResult.height
-    visible: if(culculResult.text.length > 0){true}else{false}
+    height: calculResult.height
+    visible: if(calculResult.text.length > 0){true}else{false}
     width: parent.width
     anchors {
         left: parent.left
@@ -22,7 +22,7 @@ Column {
         color: launchermodular.settings.textColor
     }
     Text{
-        id: culculResult
+        id: calculResult
         horizontalAlignment: Text.AlignHCenter
         anchors.topMargin: units.gu(1)
         anchors.horizontalCenter: parent.horizontalCenter
@@ -36,9 +36,9 @@ Column {
         onResultReady: function(result) {
             console.log("Signal received with result: " + result);
             if (result) {
-                culculResult.text = result;
+                calculResult.text = result;
             }
         }
-        onNoResult:function(){culculResult.text = "";}
+        onNoResult:function(){calculResult.text = "";}
     }
 }
