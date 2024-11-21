@@ -85,12 +85,12 @@ Item {
         } else {
             initialParsingDone = true;
             musicFileModel.folder = rootMusic;
-            console.log("searching model complet")
+            if (DEBUG_MODE) console.log("searching model complet")
         }
     }
 
     function searchMusic(term) {
-        console.log("searchMusic with term:" + term)
+        if (DEBUG_MODE) console.log("searchMusic with term:" + term)
         searchTerm = term
         searchResults.clear()
         for (var i = 0; i < searchModel.count; i++) {
@@ -254,7 +254,6 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                console.log("is folder: " + fileIsDir)
                                 if (!fileIsDir) {
                                     onClicked:Qt.openUrlExternally("music://" + model.filePath)
                                 } else {
