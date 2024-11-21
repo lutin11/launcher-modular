@@ -18,7 +18,7 @@ Item {
     id: home
 
     Component {
-        id: diag
+        id: authenticationDialog
         Dialog {
             id: authentDialogue
             title: "Authentification needed"
@@ -65,21 +65,21 @@ Item {
     Timer {
         id:refreshafteruninstall
         interval: 500; running: false; repeat: false
-        onTriggered: {home.getIcon();}
+        onTriggered: {home.refreshHomePage();}
     }
 
     Connections {
         target: Terminalaccess
-        onNeedSudoPassword: {PopupUtils.open(diag)}
+        onNeedSudoPassword: {PopupUtils.open(authenticationDialog)}
         onFinished: {
-            PopupUtils.close(diag);
+            PopupUtils.close(authenticationDialog);
             refreshafteruninstall.restart()
         }
     }
 
     property bool reloading: false
 
-    function getIcon() {
+    function refreshHomePage() {
         home.reloading = true
         AppHandler.reload()
         AppHandler.permaFilter()
@@ -93,11 +93,23 @@ Item {
             weatherWidget.modelWeather.reload()
             weatherWidget.modelWeatherNext.reload()
         }
+        if (launchermodular.settings.widgetVisibleLastmessage) {
+            widgetLastMessage.updateFilteredModelFunction();
+        }
+        if (launchermodular.settings.widgetVisibleLastcall) {
+            widgetLastCall.updateFilteredModelFunction();
+        }
+
+        if (launchermodular.settings.widgetVisibleEvent) {
+            widgetEvent.updateModel();
+        }
+
+
         home.reloading = false
     }
 
     Flickable {
-        id: flickable
+        id: homeFlickable
         anchors.fill: parent
         contentHeight: listColumn.childrenRect.height+units.gu(2)
         flickableDirection: Flickable.VerticalFlick
@@ -113,9 +125,9 @@ Item {
         }
 
         PullToRefresh {
-            parent: flickable
+            parent: homeFlickable
             refreshing: home.reloading
-            onRefresh: home.getIcon();
+            onRefresh: home.refreshHomePage();
         }
 
         Column {
@@ -169,6 +181,7 @@ Item {
                             if(searchField.text.length > 0){
                                searchField.text = ""
                                searchField.focus = false
+                               CalculatorHelper.processInput(searchField.text);// to force reset
                             }
                         }
                     }
@@ -281,13 +294,25 @@ Item {
                     id: widgetLM
                     spacing: units.gu(1)
                     width: search.contentWidth
-                    Alarm { visible: launchermodular.settings.widgetVisibleAlarm }
-                    Lastcall { visible: launchermodular.settings.widgetVisibleLastcall }
-                    Lastmessage { visible: launchermodular.settings.widgetVisibleLastmessage }
+                    Alarm {
+                        id: widgetAlarm
+                        visible: launchermodular.settings.widgetVisibleAlarm
+                    }
+                    Lastcall {
+                        id: widgetLastCall
+                        visible: launchermodular.settings.widgetVisibleLastcall
+                    }
+                    Lastmessage {
+                        id: widgetLastMessage
+                        visible: launchermodular.settings.widgetVisibleLastmessage
+                    }
 
                 }
 
-                Event { visible: launchermodular.settings.widgetVisibleEvent }
+                Event {
+                  id: widgetEvent
+                  visible: launchermodular.settings.widgetVisibleEvent
+                }
 
             }
 
@@ -446,7 +471,7 @@ Item {
                                                     launchermodular.settings.customIcon = launchermodular.getCustomIconArray();
                                                 }
 
-                                                home.getIcon()
+                                                home.refreshHomePage()
 
                                             }
                                         }
