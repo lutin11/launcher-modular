@@ -30,14 +30,14 @@ Page {
     }
 
     Rectangle {
-        id:mainsettings
+        id:mainRssSettings
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
         height: units.gu(60)
 
         Flickable {
-            id: flickableSettings
+            id: flickableRssSettings
             anchors.fill: parent
             //contentHeight: rssList.height
             flickableDirection: Flickable.VerticalFlick

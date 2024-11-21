@@ -10,7 +10,7 @@ Page {
     id: pageSettingsHome
 
     header: PageHeader {
-        id: headerSettings
+        id: headerHomeSettings
         title: i18n.tr("Settings Page");
         leadingActionBar.actions: [
             Action {
@@ -38,7 +38,7 @@ Page {
 
 
     Component {
-        id: listAppDialog
+        id: listHomeAppDialog
         Dialog {
             id: listAppDialogue
             ListView {
@@ -50,8 +50,8 @@ Page {
                     property var elem: AppHandler.appsinfo[index]
 
                     ListItemLayout {
-                        height: modelLayout2.height + (divider.visible ? divider.height : 0)
-                        id: modelLayout2
+                        height: homeListItemLayout.height + (divider.visible ? divider.height : 0)
+                        id: homeListItemLayout
                         title.text: elem.name
                         title.color: "#111111"
                         LomiriShape {
@@ -87,20 +87,20 @@ Page {
     }
 
     Rectangle {
-        id:mainsettings
+        id:homeMainsettings
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
 
         Flickable {
-            id: flickableSettings
+            id: homeFlickableSettings
             anchors.fill: parent
-            contentHeight: settingsColumn.childrenRect.height
+            contentHeight: homeSettingsColumn.childrenRect.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
 
             Column {
-                id: settingsColumn
+                id: homeSettingsColumn
                 anchors.fill: parent
                 ListItemHeader.Header {
                     id: titleFavoriteAppsManagement
@@ -108,7 +108,7 @@ Page {
                 }
 
                 ListView {
-                    id: listAppFavAdded
+                    id: homeListAppFavAdded
                     model: launchermodular.favoriteAppsModel
                     width: parent.width
                     height: contentHeight
@@ -135,7 +135,7 @@ Page {
                         leadingActions: ListItemActions {
                             actions: [
                                 Action {
-                                    id: actionDelete
+                                    id: actionDeleteFavorit
                                     text: i18n.tr("Delete")
                                     iconName: "edit-delete"
                                     onTriggered: launchermodular.favoriteAppsModel.remove(index)

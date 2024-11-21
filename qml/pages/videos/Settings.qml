@@ -26,7 +26,7 @@ Page {
         color: "#111111"
         anchors.topMargin: units.gu(6)
         Flickable {
-            id: flickableSettings
+            id: flickableVideoSettings
             anchors.fill: parent
             contentHeight: settingsColumn.height
             flickableDirection: Flickable.VerticalFlick
@@ -36,7 +36,7 @@ Page {
 
                 ListItem.Header {
                     id: titleCalendarManagement
-                    text: "<font color=\"#ffffff\">"+i18n.tr("No settings for 'Video' page")+"</font>"
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'Video' page")+"</font>"
                 }
 
                 anchors {
@@ -45,6 +45,13 @@ Page {
                    topMargin: units.gu(2)
                    leftMargin: units.gu(1)
                    rightMargin: units.gu(1)
+                }
+
+                Text {
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    text: i18n.tr("Exemple")
+                    font.pixelSize: units.gu(launchermodular.settings.videoFontSize)
+                    color: "#aaaaaa" // Light grey color for placeholder
                 }
 
                 Slider {
@@ -64,13 +71,6 @@ Page {
                             pageSettings.visible = true;
                         }
                     }
-                }
-
-                Text {
-                    anchors.horizontalCenter: parent.horizontalCenter;
-                    text: i18n.tr("Exemple")
-                    font.pixelSize: units.gu(launchermodular.settings.videoFontSize)
-                    color: "#aaaaaa" // Light grey color for placeholder
                 }
 
             } // column

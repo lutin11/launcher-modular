@@ -8,7 +8,7 @@ Page {
     id: pageSettingsCalendar
 
     header: PageHeader {
-        id: headerSettings
+        id: calendarHeaderSettings
         title: i18n.tr("Settings Page");
         leadingActionBar.actions: [
             Action {
@@ -22,20 +22,20 @@ Page {
     }
 
     Rectangle {
-        id:mainsettings
+        id:calendarMainsettings
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
 
         Flickable {
-            id: flickableSettings
+            id: calendarFlickableSettings
             anchors.fill: parent
-            contentHeight: settingsColumn.height
+            contentHeight: calendarSettingsColumn.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
 
             Column {
-                id: settingsColumn
+                id: calendarSettingsColumn
                 anchors {
                    fill: parent
                    top: parent.top
@@ -45,15 +45,15 @@ Page {
                 }
 
                 Item {
-                    id: templateRow
+                    id: calendarSettingsRow
                     width: parent.width
                     height: units.gu(4)
 
                     Label {
-                        id: label
+                        id: calendarLimitOfDayLabel
                         text: i18n.tr("Limit of days")
                         color:  "#FFFFFF"
-                        width: templateRow.titleWidth
+                        width: calendarSettingsRow.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         elide: Text.ElideRight
@@ -61,9 +61,9 @@ Page {
                     }
 
                     Row {
-                        id: contentRow
+                        id: calendarLimitOfDaySetting
                         anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: label.right
+                        anchors.left: calendarLimitOfDay.right
                         anchors.leftMargin: units.gu(2)
                         anchors.right: parent.right
                         spacing: units.gu(2)

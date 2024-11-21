@@ -4,10 +4,10 @@ import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 
 Page {
-    id: pageSettingsPicture
+    id: picturePageSettingsPicture
 
     header: PageHeader {
-        id: headerSettings
+        id: headerPictureSettings
         title: i18n.tr("Settings Page");
         leadingActionBar.actions: [
             Action {
@@ -20,20 +20,20 @@ Page {
         ]
     }
     Rectangle {
-        id:mainsettings
+        id:pictureMainSettings
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
 
         Flickable {
-            id: flickableSettings
+            id: flickablePictureSettings
             anchors.fill: parent
             contentHeight: settingsColumn.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
 
             Column {
-                id: settingsColumn
+                id: pictureColumnSettings
                 anchors {
                    fill: parent
                    top: parent.top
@@ -43,7 +43,7 @@ Page {
                 }
 
                 Item {
-                    id: templateRow
+                    id: pictureTemplateRow
                     width: parent.width
                     height: units.gu(4)
 
@@ -51,7 +51,7 @@ Page {
                         id: label
                         text: i18n.tr("Image path")
                         color:  "#FFFFFF"
-                        width: templateRow.titleWidth
+                        width: pictureTemplateRow.titleWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         elide: Text.ElideRight
@@ -59,7 +59,7 @@ Page {
                     }
 
                     Row {
-                        id: contentRow
+                        id: pictureContentRow
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: label.right
                         anchors.leftMargin: units.gu(2)

@@ -33,7 +33,7 @@ Item {
 
         sortOrders: [
             SortOrder{
-              id: sortOrder
+              id: calendarSortOrder
                 blankPolicy: SortOrder.BlanksFirst
                 detail: Detail.EventTime
                 field: EventTime.FieldStartDateTime

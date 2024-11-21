@@ -27,7 +27,7 @@ Page {
         color: "#111111"
         anchors.topMargin: units.gu(6)
         Flickable {
-            id: flickableSettings
+            id: flickableTodoSettings
             anchors.fill: parent
             contentHeight: settingsColumn.height
             flickableDirection: Flickable.VerticalFlick
