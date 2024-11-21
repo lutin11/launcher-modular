@@ -15,6 +15,7 @@ public:
     Q_INVOKABLE QString getHomeLocation();
     Q_INVOKABLE QString getPicturesLocation();
     Q_INVOKABLE QString getMusicLocation();
+    Q_INVOKABLE QString getVideoLocation();
 public slots:
     void setBackgroundFile(const QString &filename);
 signals:

@@ -43,3 +43,7 @@ QString MySettings::getPicturesLocation() {
 QString MySettings::getMusicLocation() {
     return QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
 }
+
+QString MySettings::getVideoLocation() {
+    return QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
+}
