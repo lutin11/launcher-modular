@@ -16,6 +16,7 @@ Item {
     property string searchTerm: ""
     property var folders: []
     property bool initialParsingDone: false
+    property string parentFolder: MySettings.getMusicLocation()
 
     ListModel {
         id: searchModel
@@ -45,15 +46,28 @@ Item {
         onStatusChanged: if (musicFileModel.status == FolderListModel.Ready) {
             if (!initialParsingDone) {
                 parseForder()
+            } else {
+                initSearchModel()
             }
+        }
+    }
+
+    function initSearchModel() {
+        searchResults.clear()
+        for (var i = 0; i < musicFileModel.count; i++) {
+            let filePath = musicFileModel.get(i, "filePath")
+            let fileName = musicFileModel.get(i, "fileName")
+            let fileIsDir = musicFileModel.get(i, "fileIsDir")
+            parentFolder = musicFileModel.parentFolder
+            searchResults.append({filePath : filePath, fileName : fileName, fileIsDir: fileIsDir});
         }
     }
 
     function parseForder() {
         for (var i = 0; i < musicFileModel.count; i++) {
-            let filePath = musicFileModel.get(i, "filePath");
-            let fileName = musicFileModel.get(i, "fileName");
-            let fileIsDir = musicFileModel.get(i, "fileIsDir");
+            let filePath = musicFileModel.get(i, "filePath")
+            let fileName = musicFileModel.get(i, "fileName")
+            let fileIsDir = musicFileModel.get(i, "fileIsDir")
 
             if (!fileIsDir) {
                 searchModel.append({filePath : filePath, fileName : fileName, fileIsDir: fileIsDir});
@@ -155,7 +169,9 @@ Item {
                 if(text.length > 0) {
                     searchMusic(text)
                 } else {
-                    searchMusic("")
+                    if(musicFileModel.folder == "file://" + rootMusic) {
+                        musicFileModel.folder = ""; // force refresh
+                    }
                     musicFileModel.folder = rootMusic
                 }
             }
@@ -181,83 +197,20 @@ Item {
                 anchors.fill: parent
                 onClicked:{
                     if(searchField.text.length > 0){
-                       searchField.text = ""
-                       searchField.focus = false
-                       musicFileModel.folder = rootMusic
+                        searchField.text = ""
+                        searchField.focus = false
+                    } else if(musicFileModel.folder == "file://" + rootMusic) {
+                            musicFileModel.folder = ""; // force refresh
                     }
+                    musicFileModel.folder = rootMusic
                 }
             }
         }
     }
 
     ListView {
-        id: currentMusicFolderView
-        model: musicFileModel
-        visible: searchTerm.length === 0
-
-        width: parent.width
-        anchors {
-            fill: parent
-            rightMargin: units.gu(2)
-            leftMargin: units.gu(2)
-            topMargin: units.gu(6)
-        }
-        clip: true  // To avoid rendering content outside of the visible area
-
-        focus: true
-
-        delegate: Item {
-            id: currentMusicViewDelegate
-            width: currentMusicFolderView.cellWidth
-            height: currentMusicViewName.implicitHeight
-
-            Rectangle {
-                id: currentMusicViewRectangle
-                opacity: 0.9
-                color: "#111111"
-                height: currentMusicViewName.implicitHeight
-                width: parent.width
-
-                Row {
-                    spacing: units.gu(1)
-                    Icon {
-                        id: currentMusicViewItem
-                        visible: true
-                        height: units.gu(2)
-                        width: units.gu(2)
-                        name: fileIsDir ? "folder-symbolic" : "stock_music"
-                        color: "#E95420"
-                    }
-                    Text {
-                        id: currentMusicViewName
-                        text: fileName
-                        font.pixelSize: units.gu(2)
-                        font.bold: fileIsDir ? true : false
-                        color: "#E95420"
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                console.log("is folder: " + fileIsDir)
-                                if (!fileIsDir) {
-                                    console.log("launch:" + filePath)
-                                    onClicked:Qt.openUrlExternally("music://" + filePath)
-                                } else {
-                                    console.log("change to :" + filePath)
-                                    musicFileModel.folder = filePath;
-                                }
-                            }
-                        }
-                    }
-                }
-            } // Item
-        }// delegate Rectangle
-    }
-
-    ListView {
         id: searchMusicView
         model: searchResults
-        visible: searchTerm.length > 0 && searchResults.count > 0
 
         width: parent.width
         anchors {
