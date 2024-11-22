@@ -28,7 +28,7 @@ Page {
                     iconName: "add"
                     text: "add"
                     onTriggered: {
-                        PopupUtils.open(listAppDialog);
+                        PopupUtils.open(listHomeAppDialog);
                     }
                 }
            ]
@@ -40,7 +40,7 @@ Page {
     Component {
         id: listHomeAppDialog
         Dialog {
-            id: listAppDialogue
+            id: listAppDialog
             ListView {
 
                 model: AppHandler.appsinfo.length
@@ -71,7 +71,7 @@ Page {
                     onClicked: {
                         if (DEBUG_MODE) console.log("add fav app:", JSON.stringify(elem));
                         launchermodular.favoriteAppsModel.append({"name": elem.name, "icon": elem.icon, "action": elem.action, "container": elem.container});
-                        PopupUtils.close(listAppDialogue);
+                        PopupUtils.close(listAppDialog);
                     }
                 }
 
@@ -80,7 +80,7 @@ Page {
             Button{
                 text: i18n.tr("Cancel")
                 color: "#E95420"
-                onClicked: PopupUtils.close(listAppDialogue);
+                onClicked: PopupUtils.close(listAppDialog);
             }
 
         }
