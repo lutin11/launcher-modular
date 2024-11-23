@@ -242,14 +242,14 @@ Item {
                         height: units.gu(launchermodular.settings.musicFontSize)
                         width: units.gu(launchermodular.settings.musicFontSize)
                         name: fileIsDir ? "folder-symbolic" : "stock_music"
-                        color: "#E95420"
+                        color: launchermodular.settings.musicFontColor
                     }
                     Text {
                         id: searchMusicViewName
                         text: fileName
                         font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
                         font.bold: fileIsDir ? true : false
-                        color: "#E95420"
+                        color: launchermodular.settings.musicFontColor
 
                         MouseArea {
                             anchors.fill: parent

@@ -36,7 +36,6 @@ Page {
         }
     }
 
-
     Component {
         id: listHomeAppDialog
         Dialog {
@@ -102,6 +101,7 @@ Page {
             Column {
                 id: homeSettingsColumn
                 anchors.fill: parent
+                spacing: units.gu(1)
                 ListItemHeader.Header {
                     id: titleFavoriteAppsManagement
                     text: "<font color=\"#ffffff\">"+i18n.tr("Favorite apps management")+"</font>"
@@ -156,6 +156,150 @@ Page {
                         LomiriNumberAnimation {
                             property: "y"
                         }
+                    }
+                }
+                ListItemHeader.Header {
+                    id: titleGeneralSettings
+                    text: "<font color=\"#ffffff\">"+i18n.tr("General")+"</font>"
+                }
+
+                property var iconStyleModel: [
+                { title: "<font color=\"#ffffff\">"+i18n.tr("None")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Unstyled icons")+"</font>", style:"none" },
+                { title: "<font color=\"#ffffff\">"+i18n.tr("Rounded")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Rounded icons")+"</font>", style:"rounded" }
+                ]
+
+                ListItemHeader.ItemSelector {
+                    id: styleIconList
+                    width: (parent.width-textStyleIcons.width)-units.gu(8)
+                    colourImage: true
+                    anchors.right: parent.right
+                    anchors.rightMargin: units.gu(2)
+                    model: homeSettingsColumn.iconStyleModel
+                    delegate: OptionSelectorDelegate {
+                        property var item: model.modelData ? model.modelData : model
+                        text: item.title
+                        subText: item.descr
+                    }
+                    onSelectedIndexChanged: {
+                        launchermodular.settings.iconStyle = model[selectedIndex].style
+                    }
+                    Component.onCompleted: {
+                        if ("rounded" == launchermodular.settings.iconStyle){selectedIndex = 1}
+                        if ("none" == launchermodular.settings.iconStyle){selectedIndex = 0}
+                    }
+
+                    Text {
+                      id: textStyleIcons
+                      text: i18n.tr("Style Icons : ")
+                      height: units.gu(5)
+                      anchors.right: parent.left
+                      anchors.rightMargin: units.gu(2)
+                      color: "#ffffff"
+                      verticalAlignment: Text.AlignVCenter
+                    }
+
+                }
+
+                property var searchEngineModel: [
+                    { name: "<font color=\"#ffffff\">Duckduckgo</font>", value: "https://duckduckgo.com/?q="},
+                    { name: "<font color=\"#ffffff\">Ecosia</font>", value: "https://www.ecosia.org/search?q="},
+                    { name: "<font color=\"#ffffff\">Qwant</font>", value: "https://www.qwant.com/?q="},
+                    { name: "<font color=\"#ffffff\">Bing</font>", value: "https://www.bing.com/search?q="},
+                    { name: "<font color=\"#ffffff\">Yahoo</font>", value: "https://search.yahoo.com/search?p="},
+                    { name: "<font color=\"#ffffff\">Google</font>", value: "https://www.google.com/search?q="},
+                ]
+
+                ListItemHeader.ItemSelector {
+                    id: searchEngineList
+                    width: (parent.width-textStyleIcons.width)-units.gu(8)
+                    colourImage: true
+                    anchors.right: parent.right
+                    anchors.rightMargin: units.gu(2)
+                    model: homeSettingsColumn.searchEngineModel
+                    delegate: OptionSelectorDelegate {
+                        property var item: model.modelData ? model.modelData : model
+                        text: item.name
+                    }
+                    onSelectedIndexChanged: {
+                        launchermodular.settings.searchEngine = model[selectedIndex].value
+                    }
+                    Component.onCompleted: {
+                        if ("https://duckduckgo.com/?q=" == launchermodular.settings.searchEngine){selectedIndex = 0}
+                        else if ("https://www.ecosia.org/search?q=" == launchermodular.settings.searchEngine){selectedIndex = 1}
+                        else if ("https://www.qwant.com/?q=" == launchermodular.settings.searchEngine){selectedIndex = 2}
+                        else if ("https://www.bing.com/search?q=" == launchermodular.settings.searchEngine){selectedIndex = 3}
+                        else if ("https://search.yahoo.com/search?p=" == launchermodular.settings.searchEngine){selectedIndex = 4}
+                        else if ("https://www.google.com/search?q=" == launchermodular.settings.searchEngine){selectedIndex = 5}
+                    }
+
+                    Text {
+                      id: searchEngineLabel
+                      text: i18n.tr("Search engine : ")
+                      height: units.gu(5)
+                      anchors.right: parent.left
+                      anchors.rightMargin: units.gu(2)
+                      color: "#ffffff"
+                      verticalAlignment: Text.AlignVCenter
+                    }
+
+                }
+
+                ListItemHeader.Header {
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Widgets")+"</font>"
+                }
+
+                ListItemHeader.Standard {
+                    showDivider: false
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show clock")+"</font>"
+                    control: Switch {
+                        checked: launchermodular.settings.widgetVisibleClock
+                        onClicked: launchermodular.settings.widgetVisibleClock = !launchermodular.settings.widgetVisibleClock
+                    }
+                }
+
+                ListItemHeader.Standard {
+                    showDivider: false
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show weather")+"</font>"
+                    control: Switch {
+                        checked:
+                        launchermodular.settings.widgetVisibleWeather
+                        onClicked: launchermodular.settings.widgetVisibleWeather = !launchermodular.settings.widgetVisibleWeather
+                    }
+                }
+
+                ListItemHeader.Standard {
+                    showDivider: false
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show alarms")+"</font>"
+                    control: Switch {
+                        checked: launchermodular.settings.widgetVisibleAlarm
+                        onClicked: launchermodular.settings.widgetVisibleAlarm = !launchermodular.settings.widgetVisibleAlarm
+                    }
+                }
+
+                ListItemHeader.Standard {
+                    showDivider: false
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last call")+"</font>"
+                    control: Switch {
+                        checked: launchermodular.settings.widgetVisibleLastcall
+                        onClicked: launchermodular.settings.widgetVisibleLastcall = !launchermodular.settings.widgetVisibleLastcall
+                    }
+                }
+
+                ListItemHeader.Standard {
+                    showDivider: false
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last message")+"</font>"
+                    control: Switch {
+                        checked: launchermodular.settings.widgetVisibleLastmessage
+                        onClicked: launchermodular.settings.widgetVisibleLastmessage = !launchermodular.settings.widgetVisibleLastmessage
+                    }
+                }
+
+                ListItemHeader.Standard {
+                    showDivider: false
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show events")+"</font>"
+                    control: Switch {
+                        checked: launchermodular.settings.widgetVisibleEvent
+                        onClicked: launchermodular.settings.widgetVisibleEvent = !launchermodular.settings.widgetVisibleEvent
                     }
                 }
             } // column

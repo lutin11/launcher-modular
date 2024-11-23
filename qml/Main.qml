@@ -88,6 +88,10 @@ MainView {
         property string folderMusic: MySettings.getMusicLocation()
         property string videoFontSize: '2.0'
         property string musicFontSize: '2.0'
+        property string musicFontColor: "#E95420"
+        property string videoFontColor: "#E95420"
+
+        property string searchEngine: "https://duckduckgo.com/?q="
 
         property int limiteDaysCalendar: 31;
         property int limiteDaysWidgetEvent: 31;

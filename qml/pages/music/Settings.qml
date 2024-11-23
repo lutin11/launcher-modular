@@ -3,6 +3,7 @@ import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
+import Lomiri.Components.Themes 1.3
 
 Page {
     id: musicSettingsPicture
@@ -25,12 +26,14 @@ Page {
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
+
         Flickable {
             id: flickableMusicSettings
             anchors.fill: parent
             contentHeight: settingsColumn.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
+
             Column {
                 id: settingsColumn
 
@@ -39,19 +42,11 @@ Page {
                     text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'Music' page")+"</font>"
                 }
 
-                anchors {
-                   fill: parent
-                   top: parent.top
-                   topMargin: units.gu(2)
-                   leftMargin: units.gu(1)
-                   rightMargin: units.gu(1)
-                }
-
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter;
                     text: i18n.tr("Exemple")
                     font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
-                    color: "#aaaaaa" // Light grey color for placeholder
+                    color: launchermodular.settings.musicFontColor
                 }
                 
                 Slider {
@@ -72,6 +67,24 @@ Page {
                         }
                     }
                 }
+
+                Grid {
+                    spacing: units.gu(1)
+                    columns: 7
+                    rows: 1
+                    Repeater {
+                        model: ["#FFFFFF", "#111111", "#5D5D5D", "#888888", "#19B6EE", "#0E8420", "#E95420"]
+                        Button {
+                            width: units.gu(5)
+                            height: units.gu(5)
+                            text: ""
+                            color: modelData // Set the button color
+                            onClicked: launchermodular.settings.musicFontColor = modelData
+                        }
+                    }
+                }
+
+
 
             } // column
         } //flickable

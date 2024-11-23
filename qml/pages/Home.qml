@@ -252,7 +252,7 @@ Item {
                             if (searchField.text.toLowerCase().startsWith("http://") || searchField.text.toLowerCase().startsWith("https://")) {
                                 Qt.openUrlExternally( searchField.text.toLowerCase() );
                             } else {
-                                Qt.openUrlExternally( "https://www.google.com/search?q="+searchField.text.toLowerCase()+"&t=h_&ia=web" );
+                                Qt.openUrlExternally( launchermodular.settings.searchEngine + encodeURIComponent(searchField.text.toLowerCase()) +"&t=h_&ia=web" );
                             }
 
                         }
