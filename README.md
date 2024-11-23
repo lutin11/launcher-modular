@@ -35,6 +35,8 @@ A launcher modular for ubuntu touch
 - Todo list
 - Photos
 - RSS feeds
+- Music
+- Videos
 
 ### The main search bar will search your contacts, applications and the web at the same time
 
