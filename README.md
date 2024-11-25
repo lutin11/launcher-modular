@@ -54,3 +54,5 @@ Once clickable is installed you are ready to go.
 7. to launch on phone run clickable: `clickable` or on desktop: `clickable desktop`.
 8. to view logs: `clickable logs`
 
+font used: https://www.keshikan.net/fonts-e.html
+

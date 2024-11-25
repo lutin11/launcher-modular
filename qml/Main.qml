@@ -90,6 +90,15 @@ MainView {
         property string musicFontSize: '2.0'
         property string musicFontColor: "#E95420"
         property string videoFontColor: "#E95420"
+        property string clockFontColor: "#E95420"
+        property string clockFontFamily: "DSEG7Classic"
+        property bool clockFontBold: false
+        property bool clockFontItalic: false
+        property real clockFontRatio: 3.65
+
+        property string clockFontSize: "48"
+        property string clockFontWordSpacing: "1.0"
+        property string clockTimeFormat: "hh:mm:ss"
 
         property string searchEngine: "https://duckduckgo.com/?q="
 
