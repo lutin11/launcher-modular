@@ -135,7 +135,7 @@ Item {
 
             getPreviousResponses.results.forEach(docId => {
                 const prvResponse = cachedReqDbInstance.getDoc(docId);
-                const age = Date.now() - prvResponse.timestamp;
+                const age = prvResponse ? Date.now() - prvResponse.timestamp : 0;
 
                 if (age > cachingTimeMiliSec * 1.25) {
                     if (DEBUG_MODE) console.log("CachedHttpRequest: Removing stale document for:", prvResponse.request);
