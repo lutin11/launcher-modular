@@ -255,10 +255,14 @@ MainView {
                         Repeater {
                             model: launchermodular.pageModel
                             Loader {
-                                 sourceComponent:{
-                                      Qt.createComponent(directory+name)
-                                 }
-                                 property int pageIndex:index
+                                sourceComponent: {
+                                    var comp = Qt.createComponent(directory + name);
+                                    if (comp.status === Component.Error) {
+                                        console.error("Failed to load component: " + directory + name + ", error: " + comp.errorString());
+                                        return null;
+                                    }
+                                    return comp;
+                                }
                             }
                         }
                     }
@@ -290,9 +294,6 @@ MainView {
                 MouseArea {
                     anchors.fill: parent
                     property real startMouseX
-                    //onEntered: {
-                    //    startMouseX = mouseX
-                    //}
                     onPressed: {
                        startMouseX = mouseX
                     }
@@ -324,7 +325,9 @@ MainView {
                             Icon {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
-                                source: launchermodular.pageModel.get(index).icon
+                                source: (index >= 0 && index < launchermodular.pageModel.count)
+                                        ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                        : "../assets/happy-full.svg"
                                 height: units.gu(2)
                                 width: units.gu(2)
                                 color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
@@ -348,7 +351,9 @@ MainView {
                                     mouse.accepted = false
                                     if(index !== view.currentIndex) {
                                         view.setCurrentIndex(index);
-                                        iconBottomBar.source = launchermodular.pageModel.get(index).icon;
+                                        iconBottomBar.source = (index >= 0 && index < launchermodular.pageModel.count)
+                                           ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                           : "../assets/happy-full.svg"
                                     }
                                 }
                             }
