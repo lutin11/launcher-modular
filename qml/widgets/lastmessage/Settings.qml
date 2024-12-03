@@ -102,6 +102,19 @@ Page {
                     }
                 }
 
+                ListItem.Standard {
+                    showDivider: false
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Filter on received messages")+"</font>"
+                    control: Switch {
+                        checked: launchermodular.settings.widgetMessageFilterOnReceivedMessages
+                        onClicked: if (launchermodular.settings.widgetMessageFilterOnReceivedMessages == false) {
+                                launchermodular.settings.widgetMessageFilterOnReceivedMessages = true;
+                            } else {
+                                launchermodular.settings.widgetMessageFilterOnReceivedMessages = false;
+                            }
+                    }
+                }
+
                 property var model: [
                   { title: "<font color=\"#ffffff\">"+i18n.tr("Default")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the application")+"</font>", style:"default" },
                   { title: "<font color=\"#ffffff\">"+i18n.tr("Open Message")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the application with message")+"</font>", style:"message" }

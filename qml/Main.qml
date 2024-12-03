@@ -104,6 +104,7 @@ MainView {
         property bool newsBackgroundOpacity: false
         property string widgetMessageClick: 'message'
         property bool widgetMessageSummary: true
+        property bool widgetMessageFilterOnReceivedMessages: true
         property int numberOfCallWidget: 3
         property int numberOfMessageWidget: 3
         property string widgetCallClick: 'dial'

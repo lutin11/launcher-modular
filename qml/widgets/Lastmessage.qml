@@ -20,36 +20,53 @@ Item {
 
     function fetchContactById(contactId) {
         var contactFullName = "";
-        let contact = contactHelper.getContactById(contactId);
-        if (contact) {
-            contactFullName  = contact["firstName"];
-            if (contact.midleName) {
-                contactFullName += " " + contact["lastName"];
+        if (contactId) {
+            let contact = contactHelper.getContactById(contactId);
+            if (contact) {
+                if (contact["firstName"]) {
+                contactFullName  += contact["firstName"];
+                }
+                if (contact["lastName"]) {
+                    contactFullName += " " + contact["lastName"];
+                }
+            } else {
+                console.log("No contact found for ID:", contactId);
             }
-        } else {
-            console.log("No contact found for ID:", contactId);
         }
         return contactFullName;
     }
 
     function updateFilteredModel() {
-        messageList.clear();
+        messageList.clear(); // Clear the existing list
         var numberOfVisibleItems = launchermodular.settings.numberOfMessageWidget;
-        var count = Math.min(historyThreadModel.count, numberOfVisibleItems);
-        // Get the participants value from the historyThreadModel
-        for (let i = 0; i < count; i++) {
-            var event = historyThreadModel.get(i);
+        var count = Math.min(historyMessageModel.count, numberOfVisibleItems);
+
+        var visibleItemCount = 0; // Keep track of added items
+
+        for (let i = 0; i < historyMessageModel.count && visibleItemCount < numberOfVisibleItems; i++) {
+            var event = historyMessageModel.get(i);
+
+            // Skip events where senderId is "self"
+            if (launchermodular.settings.widgetMessageFilterOnReceivedMessages && event.eventSenderId === "self") {
+                continue;
+            }
+
             var participants = event.participants;
-            let contactId = event.properties.participants[0].contactId;
+
+            // Fetch contactId and full name
+            let contactId = event.properties.participants[0] ? event.properties.participants[0].contactId : ""; // Use optional chaining to avoid errors
             var contactFullName = fetchContactById(contactId);
             var participantsString = participants.toString();
 
+            // Append the filtered event to the messageList
             messageList.append({
-                eventTextMessage: event.eventTextMessage,
+                participants: participantsString,
+                contactFullName: contactFullName,
                 timestamp: event.timestamp,
-                participants: participantsString,  // Now a string
-                contactFullName: contactFullName
+                eventTextMessage: event.eventTextMessage
             });
+
+            visibleItemCount++;
         }
     }
 
@@ -88,16 +105,22 @@ Item {
             updateFilteredModel();
         }
 
-        // Watch for changes to the numberOfMessageWidget parameter
+        // Watch for changes to the parameters
         Connections {
             target: launchermodular.settings
             onNumberOfMessageWidgetChanged: {
                 widgetLastMessage.updateFilteredModelFunction();
             }
+            onWidgetMessageSummaryChanged: {
+                widgetLastMessage.updateFilteredModelFunction();
+            }
+            onWidgetMessageFilterOnReceivedMessagesChanged: {
+                widgetLastMessage.updateFilteredModelFunction();
+            }
         }
 
         HistoryThreadModel {
-            id: historyThreadModel
+            id: historyMessageModel
             filter: HistoryFilter {}
             sort: HistorySort {
                 sortField: "lastEventTimestamp"
@@ -118,7 +141,7 @@ Item {
             delegate: Item {
                 id: listMessageItem
                 width:parent.width;
-                height: visibleContent.height+units.gu(3)
+                height: units.gu(3)
 
                 MouseArea {
                     id: itemMouseArea
@@ -157,6 +180,11 @@ Item {
                         color: launchermodular.settings.textColor
                         font.pointSize: units.gu(1.1)
                         visible: launchermodular.settings.widgetMessageSummary
+                    }
+                }
+                Component.onCompleted: {
+                    if (visibleContent.height+units.gu(3) !== units.gu(3)) {
+                        height = visibleContent.height+units.gu(3);
                     }
                 }
             }
