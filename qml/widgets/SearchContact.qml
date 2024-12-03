@@ -82,8 +82,11 @@ Column {
                         source: "image://theme/stock_contact"
 
                         Component.onCompleted: {
-                            if (contact.avatar.imageUrl !== "") {
-                                source = contact.avatar.imageUrl;
+                            if (contact.avatar && contact.avatar.imageUrl) {
+                                let decodedUrl = decodeURIComponent(contact.avatar.imageUrl);
+                                if (decodedUrl !== "") {
+                                    source = contact.avatar.imageUrl;;
+                                }
                             }
                         }
                     }
