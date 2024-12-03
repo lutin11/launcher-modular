@@ -4,7 +4,7 @@ import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import AppHandler 1.0
-import Lomiri.Components.Popups 0.1
+import Lomiri.Components.Popups 1.3
 
 Page {
     id: pageSettingsHome
