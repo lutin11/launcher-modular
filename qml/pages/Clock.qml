@@ -35,6 +35,8 @@ Item {
             width:parent.width
             font.family: launchermodular.settings.clockFontFamily
             font.pixelSize: launchermodular.settings.clockFontSize
+            font.bold: launchermodular.settings.clockFontBold
+            font.italic: launchermodular.settings.clockFontItalic
             color: launchermodular.settings.clockFontColor
             text: "88:88:88"
             maximumLineCount: 1
