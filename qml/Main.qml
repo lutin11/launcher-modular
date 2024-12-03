@@ -79,17 +79,17 @@ MainView {
         property string iconStyle: 'rounded'
         property string iconSize: '0.866525720666956'
 
-        property string textColor: '#FFFFFF'
-        property string backgroundColor: '#000000'
-        property string backgroundOpacity: '0.7'
-        property string backgroundBlur: '0'
+        property color textColor: '#FFFFFF'
+        property color backgroundColor: '#000000'
+        property real backgroundOpacity: 0.7
+        property int backgroundBlur: 0
 
         property string folderimage: MySettings.getPicturesLocation()
         property string folderMusic: MySettings.getMusicLocation()
-        property string videoFontSize: '2.0'
-        property string musicFontSize: '2.0'
-        property string musicFontColor: "#E95420"
-        property string videoFontColor: "#E95420"
+        property real videoFontSize: 2.0
+        property real musicFontSize: 2.0
+        property color musicFontColor: "#E95420"
+        property color videoFontColor: "#E95420"
 
         property string searchEngine: "https://duckduckgo.com/?q="
 
@@ -97,9 +97,9 @@ MainView {
         property int limiteDaysWidgetEvent: 31;
         property int limiteItemWidgetEvent: 6;
 
-        property var page;
-        property var customIcon;
-        property var favoriteApps;
+        property var page: []
+        property var customIcon: []
+        property var favoriteApps: []
 
         property bool newsBackgroundOpacity: false
         property string widgetMessageClick: 'message'
@@ -414,6 +414,7 @@ MainView {
                 edge: Qt.BottomEdge
                 height: units.gu(9)
                 width: parent.width
+                visible: view.count > 1
 
                 onOpened: launchermodular.settings.firstRun = false
 
@@ -769,7 +770,6 @@ MainView {
 
                                         launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon});
 
-                                        launchermodular.getCustomIconArray();
                                         launchermodular.settings.customIcon = launchermodular.getCustomIconArray();
 
                                         AppHandler.sort();

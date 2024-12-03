@@ -114,8 +114,8 @@ Page {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Background blur effect")+"</font>"
                     control: Switch {
-                        checked:  if (launchermodular.settings.backgroundBlur == "32"){ true; }else{ false;}
-                        onClicked: {if (launchermodular.settings.backgroundBlur == "32"){ launchermodular.settings.backgroundBlur = "0"; }else{ launchermodular.settings.backgroundBlur = "32"; }}
+                        checked:  if (launchermodular.settings.backgroundBlur == 32){ true; }else{ false;}
+                        onClicked: {if (launchermodular.settings.backgroundBlur == 32){ launchermodular.settings.backgroundBlur = 0; } else { launchermodular.settings.backgroundBlur = 32; }}
                     }
                 }
 
