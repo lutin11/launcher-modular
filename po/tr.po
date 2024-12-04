@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-23 00:49+0000\n"
+"POT-Creation-Date: 2024-12-03 23:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -226,75 +226,75 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:387
+#: ../qml/Main.qml:393
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:439
+#: ../qml/Main.qml:446
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:471
+#: ../qml/Main.qml:478
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:503
+#: ../qml/Main.qml:510
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:535
+#: ../qml/Main.qml:542
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:567
+#: ../qml/Main.qml:574
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:599
+#: ../qml/Main.qml:606
 msgid "About"
 msgstr ""
 
-#: ../qml/Main.qml:681
+#: ../qml/Main.qml:688
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:694
+#: ../qml/Main.qml:701
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:706
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:706
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:700
+#: ../qml/Main.qml:707
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:700
+#: ../qml/Main.qml:707
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:701
+#: ../qml/Main.qml:708
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:701
+#: ../qml/Main.qml:708
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:725 ../qml/Main.qml:726 ../qml/Main.qml:727
+#: ../qml/Main.qml:732 ../qml/Main.qml:733 ../qml/Main.qml:734
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:738
+#: ../qml/Main.qml:745
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:784 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:480
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
@@ -542,27 +542,27 @@ msgstr ""
 msgid "Favorite Contacts"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:81
+#: ../qml/widgets/Lastcall.qml:84
 msgid "Last Calls"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:81
+#: ../qml/widgets/Lastcall.qml:84
 msgid "Last Call"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:164
 msgid "No recent calls"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:82
+#: ../qml/widgets/Lastmessage.qml:99
 msgid "Last Messages"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:82
+#: ../qml/widgets/Lastmessage.qml:99
 msgid "Last Message"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:175
+#: ../qml/widgets/Lastmessage.qml:203
 msgid "No recent messages"
 msgstr ""
 
@@ -753,7 +753,7 @@ msgstr ""
 
 #: ../qml/widgets/favoritecontact/Settings.qml:80
 #: ../qml/widgets/lastcall/Settings.qml:119
-#: ../qml/widgets/lastmessage/Settings.qml:131
+#: ../qml/widgets/lastmessage/Settings.qml:144
 msgid "When clicked : "
 msgstr ""
 
@@ -767,7 +767,7 @@ msgid "By default 1"
 msgstr ""
 
 #: ../qml/widgets/lastcall/Settings.qml:93
-#: ../qml/widgets/lastmessage/Settings.qml:106
+#: ../qml/widgets/lastmessage/Settings.qml:119
 msgid "Default"
 msgstr ""
 
@@ -787,15 +787,19 @@ msgstr ""
 msgid "View a summary"
 msgstr ""
 
-#: ../qml/widgets/lastmessage/Settings.qml:106
+#: ../qml/widgets/lastmessage/Settings.qml:107
+msgid "Filter on received messages"
+msgstr ""
+
+#: ../qml/widgets/lastmessage/Settings.qml:119
 msgid "Open the application"
 msgstr ""
 
-#: ../qml/widgets/lastmessage/Settings.qml:107
+#: ../qml/widgets/lastmessage/Settings.qml:120
 msgid "Open Message"
 msgstr ""
 
-#: ../qml/widgets/lastmessage/Settings.qml:107
+#: ../qml/widgets/lastmessage/Settings.qml:120
 msgid "Open the application with message"
 msgstr ""
 
