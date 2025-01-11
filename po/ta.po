@@ -6,23 +6,26 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-01-11 15:07+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-01-11 18:25+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
+"launchermodular-lut11/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
-msgstr ""
+msgstr "தானிதொடக்கு மட்டு துவக்கி"
 
 #: ../qml/Autostart.qml:45
 msgid "How to Autostart Modular Launcher after booting"
-msgstr ""
+msgstr "துவக்கத்திற்குப் பிறகு மட்டு துவக்கியை தானிதொடக்கு செய்வது எப்படி"
 
 #: ../qml/Autostart.qml:58
 msgid ""
@@ -31,86 +34,97 @@ msgid ""
 "modular-service'>how to add a Modular Launcher systemd user service file to/"
 "on your device</a>"
 msgstr ""
+"சாதனம் துவக்கப்படும்போது தானாகவே தொடங்க மட்டு துவக்கியை எவ்வாறு அமைப்பது. <br><br><a "
+"href='https://github.com/lutin11/launcher-modular-service'>உங்கள் சாதனத்தில் ஒரு "
+"மட்டு துவக்கி முறைமை பயனர் சேவை கோப்பை எவ்வாறு சேர்ப்பது</a>என்பதில் மேலும் விவரங்கள்"
 
 #: ../qml/ChangeLogs.qml:14
 msgid "Change Log"
-msgstr ""
+msgstr "பதிவை மாற்றவும்"
 
 #: ../qml/ChangeLogs.qml:18 ../qml/pages/rss/Settings.qml:24
 msgid "Back"
-msgstr ""
+msgstr "பின்"
 
 #: ../qml/ChangeLogs.qml:44
 msgid "Set how many calls to display!"
-msgstr ""
+msgstr "காண்பிக்க எத்தனை அழைப்புகள் அமைக்கவும்!"
 
 #: ../qml/ChangeLogs.qml:45 ../qml/ChangeLogs.qml:47 ../qml/ChangeLogs.qml:49
 msgid "To do this, long press on the widget to access its configuration page."
 msgstr ""
+"இதைச் செய்ய, அதன் உள்ளமைவு பக்கத்தை அணுக நிரல்பலகத்தில் நீண்ட அழுத்தவும்."
 
 #: ../qml/ChangeLogs.qml:46
 msgid "Set how many messages to display!"
-msgstr ""
+msgstr "எத்தனை செய்திகளைக் காண்பிக்க அமைக்கவும்!"
 
 #: ../qml/ChangeLogs.qml:48
 msgid "Set how many events to display!"
-msgstr ""
+msgstr "எத்தனை நிகழ்வுகளைக் காண்பிக்க வேண்டும்!"
 
 #: ../qml/ChangeLogs.qml:50
 msgid "Call redirection to phone app works!"
-msgstr ""
+msgstr "தொலைபேசி பயன்பாட்டிற்கு அழைப்பு திருப்பிவிடுவது வேலை செய்கிறது!"
 
 #: ../qml/ChangeLogs.qml:51
 msgid ""
 "On call settings, set the option for 'When clicked' to 'Open the dialer with "
 "number'"
 msgstr ""
+"அழைப்பு அமைப்புகளில், 'எண்ணுடன் சுழற்றியைத் திறக்க' 'சொடுக்கு செய்தபோது' விருப்பத்தை "
+"அமைக்கவும்"
 
 #: ../qml/ChangeLogs.qml:52
 msgid "Message redirection to messaging app works!"
-msgstr ""
+msgstr "செய்தியிடல் பயன்பாட்டிற்கு செய்தி திருப்பி வேலை செய்கிறது!"
 
 #: ../qml/ChangeLogs.qml:53
 msgid ""
 "On message settings, set the option for 'When clicked' to 'Open the "
 "application with message'"
 msgstr ""
+"செய்தி அமைப்புகளில், 'செய்தியுடன் பயன்பாட்டைத் திறக்க' 'சொடுக்கு செய்தபோது' விருப்பத்தை "
+"அமைக்கவும்"
 
 #: ../qml/ChangeLogs.qml:54
 msgid "Force the event list to refresh by double-clicking on the event widget!"
 msgstr ""
+"நிகழ்வு நிரல்பலகத்தில் இருமுறை சொடுக்கு செய்வதன் மூலம் நிகழ்வு பட்டியலைப் புதுப்பிக்கக் "
+"கட்டாயப்படுத்துங்கள்!"
 
 #: ../qml/ChangeLogs.qml:55
 msgid "The event list shows event from current day!"
-msgstr ""
+msgstr "நிகழ்வுப் பட்டியல் தற்போதைய நாளிலிருந்து நிகழ்வுகளைக் காட்டுகிறது!"
 
 #: ../qml/ChangeLogs.qml:56
 msgid "Clicking on the 'Alarm' widget opens the clock!"
-msgstr ""
+msgstr "'விழிப்பொலி' நிரல்பலகத்தைக் சொடுக்கு செய்தால் கடிகாரத்தைத் திறக்கிறது!"
 
 #: ../qml/ChangeLogs.qml:57
 msgid "Open the photo by clicking on it!"
-msgstr ""
+msgstr "புகைப்படத்தைச் சொடுக்கு செய்வதன் மூலம் திறக்கவும்!"
 
 #: ../qml/ChangeLogs.qml:59
 msgid "Enable Autostart"
-msgstr ""
+msgstr "தானிதொடக்கை இயக்கவும்"
 
 #: ../qml/ChangeLogs.qml:60
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr ""
+"துவக்கியை உள்ளமைக்க மேல்பக்கம் தேய்த்து, 'தானிதொடக்கு' என்பதைக் சொடுக்குக"
 
 #: ../qml/ChangeLogs.qml:61
 msgid "Correction for background display."
-msgstr ""
+msgstr "பின்னணி காட்சிக்கான திருத்தம்."
 
 #: ../qml/ChangeLogs.qml:62
 msgid "Fix up 'Run a command in a terminal'"
-msgstr ""
+msgstr "'ஒரு முனையத்தில் ஒரு கட்டளையை இயக்கவும்' சரி செய்"
 
 #: ../qml/ChangeLogs.qml:64
 msgid "Resumption of the application."
-msgstr ""
+msgstr "பயன்பாட்டின் மறுதொடக்கம்."
 
 #: ../qml/ChangeLogs.qml:65
 msgid ""
@@ -118,58 +132,62 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
+"<A href = 'https: //github.com/ruditimmemmans/launcher-modular'> "
+"ருடிடிமர்மன்சின்</a>, நூலகங்கள் புதுப்பிப்புகள் மற்றும் சில திருத்தங்களை அடிப்படையாகக் கொண்"
+"ட மட்டு துவக்கியின் முதல் வெளியீடு இதுவாகும்."
 
 #: ../qml/ChangeLogs.qml:67
 msgid "Addition of a new page for RSS feeds"
-msgstr ""
+msgstr "ஆர்எச்எச் ஊட்டங்களுக்கு புதிய பக்கத்தைச் சேர்ப்பது"
 
 #: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
 msgid "Update translations"
-msgstr ""
+msgstr "மொழிபெயர்ப்புகளைப் புதுப்பிக்கவும்"
 
 #: ../qml/ChangeLogs.qml:70 ../qml/ChangeLogs.qml:73
 msgid "Improved 'Picture' page display performance"
-msgstr ""
+msgstr "மேம்படுத்தப்பட்ட 'படம்' பக்க காட்சி செயல்திறன்"
 
 #: ../qml/ChangeLogs.qml:72
 msgid "Display contact name if exists on message and call widget"
-msgstr ""
+msgstr "செய்தியில் இருந்தால் தொடர்பு பெயரைக் காண்பி, நிரல்பலகத்தை அழைக்கவும்"
 
 #: ../qml/ChangeLogs.qml:76
 msgid "Fix launching Libertine applications"
-msgstr ""
+msgstr "லிபர்டைன் பயன்பாடுகளைத் தொடங்குவதை சரிசெய்யவும்"
 
 #: ../qml/ChangeLogs.qml:77
 msgid "Fix launching favorite applications"
-msgstr ""
+msgstr "பிடித்த பயன்பாடுகளைத் தொடங்குவதை சரிசெய்யவும்"
 
 #: ../qml/ChangeLogs.qml:78
 msgid "Update weather on refreshing home page"
-msgstr ""
+msgstr "புத்துணர்ச்சியூட்டும் முகப்பு பக்கத்தில் வானிலை புதுப்பிக்கவும்"
 
 #: ../qml/ChangeLogs.qml:79
 msgid "Added the ability to run a calculation from the search bar"
-msgstr ""
+msgstr "தேடல் பட்டியிலிருந்து ஒரு கணக்கீட்டை இயக்கும் திறனைச் சேர்த்தது"
 
 #: ../qml/ChangeLogs.qml:82
 msgid "Fix page management issue"
-msgstr ""
+msgstr "பக்க மேலாண்மை சிக்கலைச் சரிசெய்யவும்"
 
 #: ../qml/ChangeLogs.qml:153
 msgid "Version: "
-msgstr ""
+msgstr "பதிப்பு:"
 
 #: ../qml/ChangeLogs.qml:159
 msgid " | Date: "
-msgstr ""
+msgstr "| தேதி:"
 
 #: ../qml/ChangeLogs.qml:285
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
+"இந்தப் பயன்பாட்டை நீங்கள் விரும்பினால், தயவுசெய்து அதைத் திறந்தகடையில் தரவரிசைப்படுத்தவும்"
 
 #: ../qml/ChangeLogs.qml:312
 msgid "A modular launcher for Ubuntu Touch"
-msgstr ""
+msgstr "உபுண்டு தொடுதலுக்கான ஒரு மட்டு துவக்கி"
 
 #: ../qml/ChangeLogs.qml:326
 msgid ""
@@ -182,453 +200,469 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
+"இந்த நிரல் இலவச மென்பொருள்: நீங்கள் அதை மறுபகிர்வு செய்யலாம் மற்றும்/அல்லது இலவச மென்பொருள் "
+"அறக்கட்டளையால் வெளியிடப்பட்ட குனு பொது பொது உரிமத்தின் விதிமுறைகளின் கீழ் மாற்றலாம், "
+"உரிமத்தின் பதிப்பு 3 அல்லது (உங்கள் விருப்பத்தில்) பின்னர் எந்தப் பதிப்பும். இந்தத் திட்டம் "
+"பயனுள்ளதாக இருக்கும் என்ற நம்பிக்கையில் விநியோகிக்கப்படுகிறது, ஆனால் எந்த உத்தரவாதமும் "
+"இல்லாமல்; ஒரு குறிப்பிட்ட நோக்கத்திற்காக வணிகத்தன்மை அல்லது உடற்தகுதி ஆகியவற்றின் மறைமுக "
+"பொறுப்பு கூட இல்லாமல். மேலும் விவரங்களுக்கு <a href = 'https: //www.gnu.org/"
+"licenses/gpl-3.0.en.html'> குனு பொது பொது உரிமம் </a> ஐப் பார்க்கவும்."
 
 #: ../qml/ChangeLogs.qml:341
 msgid "SOURCE"
-msgstr ""
+msgstr "மூலம்"
 
 #: ../qml/ChangeLogs.qml:341
 msgid "ISSUES"
-msgstr ""
+msgstr "சிக்கல்கள்"
 
 #: ../qml/ChangeLogs.qml:356
 msgid "Maintainer"
-msgstr ""
+msgstr "பராமரிப்பாளர்"
 
 #: ../qml/ChangeLogs.qml:370
 msgid "Copyright"
-msgstr ""
+msgstr "பதிப்புரிமை"
 
 #: ../qml/ChangeLogs.qml:385
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
+"<a href='LAUNCHER MODULAR TRANSLATORS'> மட்டு துவக்கி மொழிபெயர்ப்பாளர்கள் </a>"
 
 #: ../qml/Help.qml:15
 msgid "Modular Launcher Help"
-msgstr ""
+msgstr "மட்டு துவக்கி உதவி"
 
 #: ../qml/Help.qml:49
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr ""
+"<br><b>அதன் அமைப்புகளை மாற்ற நிரல்பலகத்தை சொடுக்கு செய்து வைத்திருங்கள். </b>"
 
 #: ../qml/Help.qml:63
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
+"<br><b>ஒரு புதிய பக்கத்தைச் சேர்க்க, 'பக்கத்தை நிர்வகிக்கவும்' என்பதற்குச் சென்று மேல் வலது "
+"புறத்தில் உள்ள '+' என்பதைக் சொடுக்கு செய்க.</b>"
 
 #: ../qml/Help.qml:77
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
+"<br><b> பக்க அமைப்புகளை மாற்ற, 'பக்கத்தை நிர்வகி' என்பதற்குச் சென்று பக்கத்தைக் சொடுக்கு "
+"செய்க.</b>"
 
 #: ../qml/ImportPage.qml:10
 msgid "Choose"
-msgstr ""
+msgstr "தேர்வு"
 
 #: ../qml/Main.qml:393
 msgid "Swipe up to configure the launcher"
-msgstr ""
+msgstr "துவக்கியை உள்ளமைக்க மேலே தேய்க்கவும்"
 
 #: ../qml/Main.qml:446
 msgid "Add custom icon"
-msgstr ""
+msgstr "தனிப்பயன் படவுருவைச் சேர்"
 
 #: ../qml/Main.qml:478
 msgid "Manage page"
-msgstr ""
+msgstr "பக்கத்தை நிர்வகிக்கவும்"
 
 #: ../qml/Main.qml:510
 msgid "Configure Launcher"
-msgstr ""
+msgstr "துவக்கியை உள்ளமைக்கவும்"
 
 #: ../qml/Main.qml:542
 msgid "Autostart"
-msgstr ""
+msgstr "தானிதொடக்கு"
 
 #: ../qml/Main.qml:574
 msgid "Help"
-msgstr ""
+msgstr "உதவி"
 
 #: ../qml/Main.qml:606
 msgid "About"
-msgstr ""
+msgstr "பற்றி"
 
 #: ../qml/Main.qml:688
 msgid "SVG or PNG icon. 1:1 ratio"
-msgstr ""
+msgstr "எச்விசி அல்லது பிஎன்சி படவுரு. 1: 1 விகிதம்"
 
 #: ../qml/Main.qml:701
 msgid "The <b>title</b> to be shown in the app list"
-msgstr ""
+msgstr "பயன்பாட்டு பட்டியலில் காட்டப்பட வேண்டிய <b> தலைப்பு </b>"
 
 #: ../qml/Main.qml:706
 msgid "Website"
-msgstr ""
+msgstr "வலைத்தளம்"
 
 #: ../qml/Main.qml:706
 msgid "Open this URL in the web browser"
-msgstr ""
+msgstr "இந்த முகவரியை வலை உலாவியில் திறக்கவும்"
 
 #: ../qml/Main.qml:707
 msgid "Terminal command"
-msgstr ""
+msgstr "முனையக் கட்டளை"
 
 #: ../qml/Main.qml:707
 msgid "Run a command in a terminal"
-msgstr ""
+msgstr "ஒரு முனையத்தில் ஒரு கட்டளையை இயக்கவும்"
 
 #: ../qml/Main.qml:708
 msgid "Launch app"
-msgstr ""
+msgstr "பயன்பாட்டைத் தொடங்கவும்"
 
 #: ../qml/Main.qml:708
 msgid "Launch an app"
-msgstr ""
+msgstr "பயன்பாட்டைத் தொடங்கவும்"
 
 #: ../qml/Main.qml:732 ../qml/Main.qml:733 ../qml/Main.qml:734
 msgid "<b>Action</b> example: "
-msgstr ""
+msgstr "<b> செயல் </b> எடுத்துக்காட்டு:"
 
 #: ../qml/Main.qml:745
 msgid "Create icon"
-msgstr ""
+msgstr "படவுருவை உருவாக்கவும்"
 
 #: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:480
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
-msgstr ""
+msgstr "கைவிடு"
 
 #: ../qml/Pagemanagement.qml:17
 msgid "Page management"
-msgstr ""
+msgstr "பக்க மேலாண்மை"
 
 #: ../qml/Pagemanagement.qml:47
 msgid "Choose a page"
-msgstr ""
+msgstr "ஒரு பக்கத்தைத் தேர்வுசெய்க"
 
 #: ../qml/Settings.qml:17
 msgid "Settings"
-msgstr ""
+msgstr "அமைப்புகள்"
 
 #: ../qml/Settings.qml:35
 msgid "Enter password (by defaut : phablet)"
-msgstr ""
+msgstr "கடவுச்சொல்லை உள்ளிடவும் (இயல்பாக: அகரமுதல)"
 
 #: ../qml/Settings.qml:41 ../qml/pages/Home.qml:40
 msgid "ok"
-msgstr ""
+msgstr "சரி"
 
 #: ../qml/Settings.qml:76 ../qml/pages/home/Settings.qml:163
 msgid "General"
-msgstr ""
+msgstr "பொது"
 
 #: ../qml/Settings.qml:81
 msgid "Dark background"
-msgstr ""
+msgstr "இருண்ட பின்னணி"
 
 #: ../qml/Settings.qml:115
 msgid "Background blur effect"
-msgstr ""
+msgstr "பின்னணி மங்கலான விளைவு"
 
 #: ../qml/Translators.qml:14
 msgid "Translators"
-msgstr ""
+msgstr "மொழிபெயர்ப்பாளர்கள்"
 
 #: ../qml/Translators.qml:76
 msgid "Modular Launcher-translators:"
-msgstr ""
+msgstr "மட்டு துவக்கி-மொழிபெயர்ப்பாளர்கள்:"
 
 #: ../qml/Translators.qml:95
 msgid "Arabic - "
-msgstr ""
+msgstr "அரபு -"
 
 #: ../qml/Translators.qml:109
 msgid "Dutch - "
-msgstr ""
+msgstr "டச்சு -"
 
 #: ../qml/Translators.qml:123
 msgid "French - "
-msgstr ""
+msgstr "பிரஞ்சு -"
 
 #: ../qml/Translators.qml:137
 msgid "German - "
-msgstr ""
+msgstr "செர்மன் -"
 
 #: ../qml/Translators.qml:151
 msgid "Portuguese - "
-msgstr ""
+msgstr "போர்த்துகீசியம் -"
 
 #: ../qml/Translators.qml:165
 msgid "Russian - "
-msgstr ""
+msgstr "ரச்ய -"
 
 #: ../qml/Translators.qml:179
 msgid "Tamil - "
-msgstr ""
+msgstr "தமிழ் -"
 
 #: ../qml/Translators.qml:193
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
+"மட்டு துவக்கியை <a href = 'https: //hosted.weblate.org/projects/"
+"launcher-modular/launchermodular-lut11'> வலைபெயர்ப்பில்</a> மொழிபெயர்க்கவும்."
 
 #: ../qml/pages/Calendar.qml:107
 msgid "Agenda"
-msgstr ""
+msgstr "நிகழ்ச்சி நிரல்"
 
 #: ../qml/pages/Home.qml:209
 msgid "Search your phone and online sources"
-msgstr ""
+msgstr "உங்கள் தொலைபேசி மற்றும் நிகழ்நிலை ஆதாரங்களைத் தேடுங்கள்"
 
 #: ../qml/pages/Home.qml:439
 msgid "Uninstall"
-msgstr ""
+msgstr "நிறுவல் நீக்க"
 
 #: ../qml/pages/Home.qml:439
 msgid "Remove"
-msgstr ""
+msgstr "அகற்று"
 
 #: ../qml/pages/Music.qml:158
 msgid "Search your music"
-msgstr ""
+msgstr "உங்கள் இசையைத் தேடுங்கள்"
 
 #: ../qml/pages/Rss.qml:154
 msgid "Loading feeds…"
-msgstr ""
+msgstr "ஊட்டங்களை ஏற்றுகிறது…"
 
 #: ../qml/pages/Rss.qml:154
 msgid "Go to the page management to add feeds."
-msgstr ""
+msgstr "ஊட்டங்களைச் சேர்க்க பக்க நிர்வாகத்திற்குச் செல்லவும்."
 
 #: ../qml/pages/Todo.qml:80
+#, fuzzy
 msgid "New todo"
-msgstr ""
+msgstr "அனைத்தும்"
 
 #: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:139
 #: ../qml/pages/rss/Settings.qml:179
 msgid "Delete"
-msgstr ""
+msgstr "நீக்கு"
 
 #: ../qml/pages/Videos.qml:158
 msgid "Search your video"
-msgstr ""
+msgstr "உங்கள் காணொளியைத் தேடு"
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:14
 #: ../qml/pages/music/Settings.qml:13 ../qml/pages/picture/Settings.qml:11
 #: ../qml/pages/rss/Settings.qml:19 ../qml/pages/todo/Settings.qml:12
 #: ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
-msgstr ""
+msgstr "அமைப்புகள் பக்கம்"
 
 #: ../qml/pages/calendar/Settings.qml:54 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
-msgstr ""
+msgstr "நாட்களின் வரம்பு"
 
 #: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
-msgstr ""
+msgstr "இயல்பாக 60 நாட்கள்"
 
 #: ../qml/pages/home/Settings.qml:107
 msgid "Favorite apps management"
-msgstr ""
+msgstr "பிடித்த பயன்பாடுகள் மேலாண்மை"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "None"
-msgstr ""
+msgstr "எதுவுமில்லை"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"
-msgstr ""
+msgstr "நிலையற்ற சின்னங்கள்"
 
 #: ../qml/pages/home/Settings.qml:168
 msgid "Rounded"
-msgstr ""
+msgstr "வட்டமான"
 
 #: ../qml/pages/home/Settings.qml:168
 msgid "Rounded icons"
-msgstr ""
+msgstr "வட்டமான சின்னங்கள்"
 
 #: ../qml/pages/home/Settings.qml:193
 msgid "Style Icons : "
-msgstr ""
+msgstr "பாணி படவுருகள்:"
 
 #: ../qml/pages/home/Settings.qml:237
 msgid "Search engine : "
-msgstr ""
+msgstr "தேடுபொறி:"
 
 #: ../qml/pages/home/Settings.qml:248
 msgid "Widgets"
-msgstr ""
+msgstr "நிரல்பலகைகள்"
 
 #: ../qml/pages/home/Settings.qml:253
 msgid "Show clock"
-msgstr ""
+msgstr "கடிகாரத்தைக் காட்டு"
 
 #: ../qml/pages/home/Settings.qml:262
 msgid "Show weather"
-msgstr ""
+msgstr "வானிலை காட்டு"
 
 #: ../qml/pages/home/Settings.qml:272
 msgid "Show alarms"
-msgstr ""
+msgstr "விழிப்பொலிகளைக் காட்டு"
 
 #: ../qml/pages/home/Settings.qml:281
 msgid "Show last call"
-msgstr ""
+msgstr "கடைசி அழைப்பைக் காட்டு"
 
 #: ../qml/pages/home/Settings.qml:290
 msgid "Show last message"
-msgstr ""
+msgstr "கடைசி செய்தியைக் காட்டு"
 
 #: ../qml/pages/home/Settings.qml:299
 msgid "Show events"
-msgstr ""
+msgstr "நிகழ்வுகளைக் காட்டு"
 
 #: ../qml/pages/music/Settings.qml:42
 msgid "Settings for 'Music' page"
-msgstr ""
+msgstr "'இசை' பக்கத்திற்கான அமைப்புகள்"
 
 #: ../qml/pages/music/Settings.qml:47 ../qml/pages/videos/Settings.qml:46
 msgid "Exemple"
-msgstr ""
+msgstr "எடுத்துக்காட்டு"
 
 #: ../qml/pages/picture/Settings.qml:52
 msgid "Image path"
-msgstr ""
+msgstr "படப் பாதை"
 
 #: ../qml/pages/rss/Settings.qml:99
 msgid "https://omgubuntu.co.uk/feed"
-msgstr ""
+msgstr "https://omgubuntu.co.uk/feed"
 
 #: ../qml/pages/rss/Settings.qml:223
 msgid "Invalid url"
-msgstr ""
+msgstr "தவறான முகவரி"
 
 #: ../qml/pages/todo/Settings.qml:40
 msgid "No settings for 'TODO' page"
-msgstr ""
+msgstr "'செய்யவேண்டிய' பக்கத்திற்கான அமைப்புகள் இல்லை"
 
 #: ../qml/pages/videos/Settings.qml:41
 msgid "Settings for 'Video' page"
-msgstr ""
+msgstr "'காணொளி' பக்கத்திற்கான அமைப்புகள்"
 
 #: ../qml/widgets/Alarm.qml:28
 msgid "Alarms"
-msgstr ""
+msgstr "விழிப்பொலிகள்"
 
 #: ../qml/widgets/Alarm.qml:39
 msgid "No active alarm"
-msgstr ""
+msgstr "செயலில் விழிப்பொலி இல்லை"
 
 #: ../qml/widgets/Alarm.qml:54
 msgid "at"
-msgstr ""
+msgstr "இல்"
 
 #: ../qml/widgets/Calculator.qml:21
 msgid "Calcul result:"
-msgstr ""
+msgstr "கணக்கீட்டு முடிவு:"
 
 #: ../qml/widgets/Event.qml:100
 msgid "Events"
-msgstr ""
+msgstr "நிகழ்வுகள்"
 
 #: ../qml/widgets/Event.qml:114
 msgid "No events"
-msgstr ""
+msgstr "நிகழ்வுகள் இல்லை"
 
 #: ../qml/widgets/FavoriteApp.qml:34
 msgid "Favorite Apps"
-msgstr ""
+msgstr "பிடித்த பயன்பாடுகள்"
 
 #: ../qml/widgets/FavoriteContact.qml:32
 msgid "Favorite Contacts"
-msgstr ""
+msgstr "பிடித்த தொடர்புகள்"
 
 #: ../qml/widgets/Lastcall.qml:84
 msgid "Last Calls"
-msgstr ""
+msgstr "கடைசி அழைப்புகள்"
 
 #: ../qml/widgets/Lastcall.qml:84
 msgid "Last Call"
-msgstr ""
+msgstr "கடைசி அழைப்பு"
 
 #: ../qml/widgets/Lastcall.qml:164
 msgid "No recent calls"
-msgstr ""
+msgstr "அண்மைக் கால அழைப்புகள் இல்லை"
 
 #: ../qml/widgets/Lastmessage.qml:99
 msgid "Last Messages"
-msgstr ""
+msgstr "கடைசி செய்திகள்"
 
 #: ../qml/widgets/Lastmessage.qml:99
 msgid "Last Message"
-msgstr ""
+msgstr "கடைசி செய்தி"
 
 #: ../qml/widgets/Lastmessage.qml:203
 msgid "No recent messages"
-msgstr ""
+msgstr "அண்மைக் கால செய்திகள் இல்லை"
 
 #: ../qml/widgets/SearchContact.qml:35
 msgid "Search Contacts"
-msgstr ""
+msgstr "தொடர்புகளைத் தேடு"
 
 #: ../qml/widgets/Weather.qml:27
 msgid "Please long press here to configure"
-msgstr ""
+msgstr "உள்ளமைக்க இங்கே நீண்ட நேரம் அழுத்தவும்"
 
 #: ../qml/widgets/Weather.qml:168 ../qml/widgets/Weather.qml:196
 msgid "Calm"
-msgstr ""
+msgstr "அமைதியானது"
 
 #: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
 msgid "Light Air"
-msgstr ""
+msgstr "மெல்லிய காற்று"
 
 #: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
 msgid "Light Breeze"
-msgstr ""
+msgstr "மெல்லிய தென்றல்"
 
 #: ../qml/widgets/Weather.qml:174 ../qml/widgets/Weather.qml:202
 msgid "Gentle Breeze"
-msgstr ""
+msgstr "மென்மையான தென்றல்"
 
 #: ../qml/widgets/Weather.qml:176 ../qml/widgets/Weather.qml:204
 msgid "Moderate Breeze"
-msgstr ""
+msgstr "மிதமான தென்றல்"
 
 #: ../qml/widgets/Weather.qml:178 ../qml/widgets/Weather.qml:206
 msgid "Fresh Breeze"
-msgstr ""
+msgstr "புதிய தென்றல்"
 
 #: ../qml/widgets/Weather.qml:180 ../qml/widgets/Weather.qml:208
 msgid "Strong Breeze"
-msgstr ""
+msgstr "வலுவான தென்றல்"
 
 #: ../qml/widgets/Weather.qml:182 ../qml/widgets/Weather.qml:210
 msgid "Near Gale"
-msgstr ""
+msgstr "கேலுக்கு அருகில்"
 
 #: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
 msgid "Gale"
-msgstr ""
+msgstr "கேல்"
 
 #: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
 msgid "Severe Gale"
-msgstr ""
+msgstr "கடுமையான கேல்"
 
 #: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
 msgid "Storm"
-msgstr ""
+msgstr "புயல்"
 
 #: ../qml/widgets/Weather.qml:190 ../qml/widgets/Weather.qml:218
 msgid "Violent Storm"
-msgstr ""
+msgstr "வன்முறை புயல்"
 
 #: ../qml/widgets/Weather.qml:192 ../qml/widgets/Weather.qml:220
 msgid "Hurricane"
-msgstr ""
+msgstr "சூறாவளி"
 
 #: ../qml/widgets/Weather.qml:233 ../qml/widgets/Weather.qml:235
 #: ../qml/widgets/Weather.qml:237 ../qml/widgets/Weather.qml:239
@@ -639,198 +673,201 @@ msgstr ""
 #: ../qml/widgets/Weather.qml:257 ../qml/widgets/Weather.qml:259
 #: ../qml/widgets/Weather.qml:261 ../qml/widgets/Weather.qml:263
 msgid "of"
-msgstr ""
+msgstr "இல்"
 
 #: ../qml/widgets/Weather.qml:233
 msgid "North"
-msgstr ""
+msgstr "வடக்கு"
 
 #: ../qml/widgets/Weather.qml:235
 msgid "North-Northeast"
-msgstr ""
+msgstr "வடக்கு-வடகிழக்கு"
 
 #: ../qml/widgets/Weather.qml:237
 msgid "Northeast"
-msgstr ""
+msgstr "வடகிழக்கு"
 
 #: ../qml/widgets/Weather.qml:239
 msgid "East-Northeast"
-msgstr ""
+msgstr "கிழக்கு-வடகிழக்கு"
 
 #: ../qml/widgets/Weather.qml:241
 msgid "East"
-msgstr ""
+msgstr "கிழக்கு"
 
 #: ../qml/widgets/Weather.qml:243
 msgid "East-Southeast"
-msgstr ""
+msgstr "கிழக்கு-தென்கிழக்கு"
 
 #: ../qml/widgets/Weather.qml:245
 msgid "Southeast"
-msgstr ""
+msgstr "தென்கிழக்கு"
 
 #: ../qml/widgets/Weather.qml:247
 msgid "South-Southeast"
-msgstr ""
+msgstr "தெற்கு-தென்கிழக்கு"
 
 #: ../qml/widgets/Weather.qml:249
 msgid "South"
-msgstr ""
+msgstr "தெற்கு"
 
 #: ../qml/widgets/Weather.qml:251
 msgid "South-Southwest"
-msgstr ""
+msgstr "தெற்கு-தென்மேற்கு"
 
 #: ../qml/widgets/Weather.qml:253
 msgid "Southwest"
-msgstr ""
+msgstr "தென்மேற்கு"
 
 #: ../qml/widgets/Weather.qml:255
 msgid "West-Southwest"
-msgstr ""
+msgstr "மேற்கு-தென்மேற்கு"
 
 #: ../qml/widgets/Weather.qml:257
 msgid "West"
-msgstr ""
+msgstr "மேற்கு"
 
 #: ../qml/widgets/Weather.qml:259
 msgid "West-Northwest"
-msgstr ""
+msgstr "மேற்கு-வடமேற்கு"
 
 #: ../qml/widgets/Weather.qml:261
 msgid "Northwest"
-msgstr ""
+msgstr "வடமேற்கு"
 
 #: ../qml/widgets/Weather.qml:263
 msgid "North-Northwest"
-msgstr ""
+msgstr "வடக்கு-வடமேற்கு"
 
 #: ../qml/widgets/Weather.qml:274
 msgid "humidity"
-msgstr ""
+msgstr "ஈரப்பதம்"
 
 #: ../qml/widgets/clock/Settings.qml:14
 msgid "Settings Widget Clock"
-msgstr ""
+msgstr "அமைப்புகள் நிரல்பலக கடிகாரம்"
 
 #: ../qml/widgets/clock/Settings.qml:49
 msgid "Show analog clock with digits"
-msgstr ""
+msgstr "இலக்கங்களுடன் தொடர்முறை கடிகாரத்தைக் காட்டு"
 
 #: ../qml/widgets/event/Settings.qml:13
 #: ../qml/widgets/favoritecontact/Settings.qml:14
 #: ../qml/widgets/lastcall/Settings.qml:14
 #: ../qml/widgets/lastmessage/Settings.qml:15
 msgid "Settings Widget"
-msgstr ""
+msgstr "அமைப்புகள் நிரல்பலகம்"
 
 #: ../qml/widgets/event/Settings.qml:102
 msgid "Limit of event"
-msgstr ""
+msgstr "நிகழ்வின் வரம்பு"
 
 #: ../qml/widgets/event/Settings.qml:121
 msgid "By default 3 event"
-msgstr ""
+msgstr "இயல்பாக 3 நிகழ்வு"
 
 #: ../qml/widgets/favoritecontact/Settings.qml:50
 #: ../qml/widgets/lastcall/Settings.qml:49
 #: ../qml/widgets/lastmessage/Settings.qml:49
 msgid "Generals"
-msgstr ""
+msgstr "பொதுவான"
 
 #: ../qml/widgets/favoritecontact/Settings.qml:54
+#, fuzzy
 msgid "Dialer"
-msgstr ""
+msgstr "டயலர்"
 
 #: ../qml/widgets/favoritecontact/Settings.qml:54
 #: ../qml/widgets/lastcall/Settings.qml:93
+#, fuzzy
 msgid "Open the dialer"
-msgstr ""
+msgstr "டயலரைத் திறக்கவும்"
 
 #: ../qml/widgets/favoritecontact/Settings.qml:55
 msgid "Linphone"
-msgstr ""
+msgstr "லின்பேசி"
 
 #: ../qml/widgets/favoritecontact/Settings.qml:55
 msgid "Open Linphone"
-msgstr ""
+msgstr "லின்பேசி திற"
 
 #: ../qml/widgets/favoritecontact/Settings.qml:80
 #: ../qml/widgets/lastcall/Settings.qml:119
 #: ../qml/widgets/lastmessage/Settings.qml:144
 msgid "When clicked : "
-msgstr ""
+msgstr "சொடுக்கு செய்யும்போது:"
 
 #: ../qml/widgets/lastcall/Settings.qml:65
 msgid "Number of displayed calls :"
-msgstr ""
+msgstr "காட்டப்படும் அழைப்புகளின் எண்ணிக்கை:"
 
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
 msgid "By default 1"
-msgstr ""
+msgstr "இயல்பாக 1"
 
 #: ../qml/widgets/lastcall/Settings.qml:93
 #: ../qml/widgets/lastmessage/Settings.qml:119
 msgid "Default"
-msgstr ""
+msgstr "இயல்புநிலை"
 
 #: ../qml/widgets/lastcall/Settings.qml:94
 msgid "Call"
-msgstr ""
+msgstr "அழைப்பு"
 
 #: ../qml/widgets/lastcall/Settings.qml:94
+#, fuzzy
 msgid "Open the dialer with number"
-msgstr ""
+msgstr "டயலரை எண்ணுடன் திறக்கவும்"
 
 #: ../qml/widgets/lastmessage/Settings.qml:65
 msgid "Number of displayed messages :"
-msgstr ""
+msgstr "காட்டப்படும் செய்திகளின் எண்ணிக்கை:"
 
 #: ../qml/widgets/lastmessage/Settings.qml:94
 msgid "View a summary"
-msgstr ""
+msgstr "சுருக்கத்தைக் காண்க"
 
 #: ../qml/widgets/lastmessage/Settings.qml:107
 msgid "Filter on received messages"
-msgstr ""
+msgstr "பெறப்பட்ட செய்திகளில் வடிகட்டவும்"
 
 #: ../qml/widgets/lastmessage/Settings.qml:119
 msgid "Open the application"
-msgstr ""
+msgstr "பயன்பாட்டைத் திற"
 
 #: ../qml/widgets/lastmessage/Settings.qml:120
 msgid "Open Message"
-msgstr ""
+msgstr "செய்தி திற"
 
 #: ../qml/widgets/lastmessage/Settings.qml:120
 msgid "Open the application with message"
-msgstr ""
+msgstr "செய்தியுடன் பயன்பாட்டைத் திற"
 
 #: ../qml/widgets/weather/Settings.qml:14
 msgid "Settings for weather widget"
-msgstr ""
+msgstr "வானிலை நிரல்பலக அமைப்புகள்"
 
 #: ../qml/widgets/weather/Settings.qml:59
 msgid "API Key"
-msgstr ""
+msgstr "பநிஇ விசை"
 
 #: ../qml/widgets/weather/Settings.qml:78
 msgid "OpenWeatherMap API"
-msgstr ""
+msgstr "திறந்தவானிலைவரைபடம் பநிஇ"
 
 #: ../qml/widgets/weather/Settings.qml:90
 msgid "Click to sign up for an API key"
-msgstr ""
+msgstr "பநிஇ விசைக்குப் பதிவுபெற சொடுக்கு செய்க"
 
 #: ../qml/widgets/weather/Settings.qml:108
 msgid "City name"
-msgstr ""
+msgstr "நகரத்தின் பெயர்"
 
 #: ../qml/widgets/weather/Settings.qml:127
 msgid "or"
-msgstr ""
+msgstr "அல்லது"
 
 #: launchermodular.desktop.in.h:1
 msgid "Modular launcher"
-msgstr ""
+msgstr "மட்டு துவக்கி"
