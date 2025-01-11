@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-03 23:59+0000\n"
+"POT-Creation-Date: 2025-01-11 15:07+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -375,6 +375,10 @@ msgid "Russian - "
 msgstr "Русский - "
 
 #: ../qml/Translators.qml:179
+msgid "Tamil - "
+msgstr ""
+
+#: ../qml/Translators.qml:193
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
