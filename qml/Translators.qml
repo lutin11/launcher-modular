@@ -176,7 +176,8 @@ Page {
                     height: trans6Label.height + units.gu(2)
                     Label {
                         id: trans6Label
-                        text: i18n.tr("Tamil - ") + "Anishprabu"
+                        text: i18n.tr("Tamil - ") + "<a href='https://tamilneram.github.io/'>தமிழ்நேரம்</a>"
+                        onLinkActivated: Qt.openUrlExternally(link)
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         horizontalAlignment: Text.AlignHCenter
