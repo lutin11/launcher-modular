@@ -10,7 +10,7 @@
 	          "content-hub": "launchermodular.contenthub"
         }
     },
-    "version": "2.3.7-rc",
+    "version": "2.3.7",
     "maintainer": "David Cossé <saveurlinux@disroot.org>",
     "framework" : "@CLICK_FRAMEWORK@"
 }
