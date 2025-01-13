@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher Modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-11 15:07+0000\n"
+"POT-Creation-Date: 2025-01-13 21:21+0000\n"
 "PO-Revision-Date: 2023-01-08 13:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -155,23 +155,54 @@ msgstr ""
 msgid "Fix page management issue"
 msgstr "Gestione delle pagine"
 
-#: ../qml/ChangeLogs.qml:153
+#: ../qml/ChangeLogs.qml:85
+#, fuzzy
+msgid "Add 'Music' page"
+msgstr "Impostazioni"
+
+#: ../qml/ChangeLogs.qml:86
+#, fuzzy
+msgid "Add 'Video' page"
+msgstr "Impostazioni Widget"
+
+#: ../qml/ChangeLogs.qml:87
+msgid "Fixup contacts name displayed"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:88
+#, fuzzy
+msgid "Add filter on received messages"
+msgstr "Nessun messaggio recente"
+
+#: ../qml/ChangeLogs.qml:89
+msgid "Fixup home setting not displayed"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:90
+msgid "Add Tamil traduction thanks to தமிழ்நேரம்"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:91
+msgid "Update Arabic traduction thanks to Salah Khani"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:168
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:159
+#: ../qml/ChangeLogs.qml:174
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:285
+#: ../qml/ChangeLogs.qml:300
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:312
+#: ../qml/ChangeLogs.qml:327
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:326
+#: ../qml/ChangeLogs.qml:341
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -183,23 +214,23 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:341
+#: ../qml/ChangeLogs.qml:356
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:341
+#: ../qml/ChangeLogs.qml:356
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:356
+#: ../qml/ChangeLogs.qml:371
 msgid "Maintainer"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:370
+#: ../qml/ChangeLogs.qml:385
 msgid "Copyright"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:385
+#: ../qml/ChangeLogs.qml:400
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -368,7 +399,7 @@ msgstr ""
 msgid "Tamil - "
 msgstr ""
 
-#: ../qml/Translators.qml:193
+#: ../qml/Translators.qml:194
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
