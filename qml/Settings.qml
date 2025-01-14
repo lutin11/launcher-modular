@@ -7,7 +7,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import "pages"
 import Terminalaccess 1.0
-import Lomiri.Components.Popups 0.1
+import Lomiri.Components.Popups 1.3
 
 Page {
     id: pageSettings
@@ -114,8 +114,8 @@ Page {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Background blur effect")+"</font>"
                     control: Switch {
-                        checked:  if (launchermodular.settings.backgroundBlur == "32"){ true; }else{ false;}
-                        onClicked: {if (launchermodular.settings.backgroundBlur == "32"){ launchermodular.settings.backgroundBlur = "0"; }else{ launchermodular.settings.backgroundBlur = "32"; }}
+                        checked:  if (launchermodular.settings.backgroundBlur == 32){ true; }else{ false;}
+                        onClicked: {if (launchermodular.settings.backgroundBlur == 32){ launchermodular.settings.backgroundBlur = 0; } else { launchermodular.settings.backgroundBlur = 32; }}
                     }
                 }
 

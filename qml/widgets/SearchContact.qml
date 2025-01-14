@@ -77,9 +77,18 @@ Column {
                         anchors.right: parent.right
                         width: units.gu(8)*launchermodular.settings.iconSize
                         height: units.gu(8)*launchermodular.settings.iconSize
-                        source: contact.avatar.imageUrl != "" ? contact.avatar.imageUrl : "image://theme/stock_contact"
                         visible: launchermodular.settings.iconStyle == "none"
                         fillMode: Image.PreserveAspectCrop
+                        source: "image://theme/stock_contact"
+
+                        Component.onCompleted: {
+                            if (contact.avatar && contact.avatar.imageUrl) {
+                                let decodedUrl = decodeURIComponent(contact.avatar.imageUrl);
+                                if (decodedUrl !== "") {
+                                    source = contact.avatar.imageUrl;;
+                                }
+                            }
+                        }
                     }
 
                     OpacityMask {

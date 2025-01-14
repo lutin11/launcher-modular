@@ -81,12 +81,29 @@ Page {
             // 2.3.6.1
             property var details25: i18n.tr("Fix page management issue");
             property var description25:"This is a hotfix release, as 'Page management' did not work anymore. Please feel free to report any issues throw https://github.com/lutin11/launcher-modular/issues or on Ubports forum";
+            // 2.3.7
+            property var details26: i18n.tr("Add 'Music' page");
+            property var details27: i18n.tr("Add 'Video' page");
+            property var details28: i18n.tr("Corrected display of contact names");
+            property var details29: i18n.tr("Added filter on received messages");
+            property var details30: i18n.tr("Correction of home setting not displayed");
+            property var details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்");
+            property var details32: i18n.tr("Update Arabic translations thanks to Salah Khani");
+            // 2.3.8
+            // TODO
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.3.7", date: "2025-01-13", details: details26, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details27, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details28, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details29, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details30, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details31, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details32, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.6.1", date: "2024-11-19", details: details25, description: description25});
                 changeLogModel.append({ version: "2.3.6", date: "2024-11-17", details: details20, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details21, description: emptyDescription});

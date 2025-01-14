@@ -20,14 +20,19 @@ Item {
 
     function fetchContactById(contactId) {
         var contactFullName = "";
-        let contact = contactHelper.getContactById(contactId);
-        if (contact) {
-            contactFullName  = contact["firstName"];
-            if (contact.midleName) {
-                contactFullName += " " + contact["lastName"];
+        if (contactId) {
+            let contact = contactHelper.getContactById(contactId);
+            if (contact) {
+                if (contact["firstName"]) {
+                contactFullName  += contact["firstName"];
+                }
+                if (contact["lastName"]) {
+                    contactFullName += " " + contact["lastName"];
+                }
+            } else {
+                console.log("No contact found for ID:", contactId);
             }
-        } else {
-            console.log("No contact found for ID:", contactId);
+            console.log("lastCall contactFullName for ID:" + contactId + " -> " + contactFullName);
         }
         return contactFullName;
     }
@@ -37,16 +42,16 @@ Item {
         var numberOfVisibleItems = launchermodular.settings.numberOfCallWidget;
         var count = Math.min(historyCallModel.count, numberOfVisibleItems);
         for (let i = 0; i < count; i++) {
-            // Get the participants value from the historyCallModel
             var event = historyCallModel.get(i);
             let contactId = event.properties.participants[0].contactId;
             var contactFullName = fetchContactById(contactId);
             var participants = event.participants;
-            participants = participants.toString();
+            var participantsString = participants.toString();
+
             callList.append({
-                participants: participants,  // Now a string
+                participants: participantsString,
                 contactFullName: contactFullName,
-                timestamp: historyCallModel.get(i).timestamp
+                timestamp: event.timestamp
             });
         }
     }
@@ -54,8 +59,6 @@ Item {
     function updateListViewHeight() {
       // force view to refresh
     }
-
-    property string callNumber: ""
 
     property var updateFilteredModelFunction: updateFilteredModel
 

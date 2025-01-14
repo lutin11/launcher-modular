@@ -19,7 +19,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.3.6.1"
+    property string appVersion : "2.3.8.rc"
     property ListModel customIconModel :  ListModel { id: customIconModel }
     property ListModel pageModel :  ListModel { id: pageModel }
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
@@ -79,17 +79,18 @@ MainView {
         property string iconStyle: 'rounded'
         property string iconSize: '0.866525720666956'
 
-        property string textColor: '#FFFFFF'
-        property string backgroundColor: '#000000'
-        property string backgroundOpacity: '0.7'
-        property string backgroundBlur: '0'
+        property color textColor: '#FFFFFF'
+        property color backgroundColor: '#000000'
+        property real backgroundOpacity: 0.7
+        property int backgroundBlur: 0
 
         property string folderimage: MySettings.getPicturesLocation()
         property string folderMusic: MySettings.getMusicLocation()
-        property string videoFontSize: '2.0'
-        property string musicFontSize: '2.0'
-        property string musicFontColor: "#E95420"
-        property string videoFontColor: "#E95420"
+        property real videoFontSize: 2.0
+        property real musicFontSize: 2.0
+        property color musicFontColor: "#E95420"
+        property color videoFontColor: "#E95420"
+
         property string clockFontColor: "#E95420"
         property string clockFontFamily: "DSEG7Classic"
         property bool clockFontBold: false
@@ -106,13 +107,14 @@ MainView {
         property int limiteDaysWidgetEvent: 31;
         property int limiteItemWidgetEvent: 6;
 
-        property var page;
-        property var customIcon;
-        property var favoriteApps;
+        property var page: []
+        property var customIcon: []
+        property var favoriteApps: []
 
         property bool newsBackgroundOpacity: false
         property string widgetMessageClick: 'message'
         property bool widgetMessageSummary: true
+        property bool widgetMessageFilterOnReceivedMessages: true
         property int numberOfCallWidget: 3
         property int numberOfMessageWidget: 3
         property string widgetCallClick: 'dial'
@@ -264,10 +266,14 @@ MainView {
                         Repeater {
                             model: launchermodular.pageModel
                             Loader {
-                                 sourceComponent:{
-                                      Qt.createComponent(directory+name)
-                                 }
-                                 property int pageIndex:index
+                                sourceComponent: {
+                                    var comp = Qt.createComponent(directory + name);
+                                    if (comp.status === Component.Error) {
+                                        console.error("Failed to load component: " + directory + name + ", error: " + comp.errorString());
+                                        return null;
+                                    }
+                                    return comp;
+                                }
                             }
                         }
                     }
@@ -299,9 +305,6 @@ MainView {
                 MouseArea {
                     anchors.fill: parent
                     property real startMouseX
-                    //onEntered: {
-                    //    startMouseX = mouseX
-                    //}
                     onPressed: {
                        startMouseX = mouseX
                     }
@@ -333,7 +336,9 @@ MainView {
                             Icon {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
-                                source: launchermodular.pageModel.get(index).icon
+                                source: (index >= 0 && index < launchermodular.pageModel.count)
+                                        ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                        : "../assets/happy-full.svg"
                                 height: units.gu(2)
                                 width: units.gu(2)
                                 color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
@@ -357,7 +362,9 @@ MainView {
                                     mouse.accepted = false
                                     if(index !== view.currentIndex) {
                                         view.setCurrentIndex(index);
-                                        iconBottomBar.source = launchermodular.pageModel.get(index).icon;
+                                        iconBottomBar.source = (index >= 0 && index < launchermodular.pageModel.count)
+                                           ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                           : "../assets/happy-full.svg"
                                     }
                                 }
                             }
@@ -418,6 +425,7 @@ MainView {
                 edge: Qt.BottomEdge
                 height: units.gu(9)
                 width: parent.width
+                visible: view.count > 1
 
                 onOpened: launchermodular.settings.firstRun = false
 
@@ -773,7 +781,6 @@ MainView {
 
                                         launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon});
 
-                                        launchermodular.getCustomIconArray();
                                         launchermodular.settings.customIcon = launchermodular.getCustomIconArray();
 
                                         AppHandler.sort();

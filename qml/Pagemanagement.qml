@@ -5,7 +5,7 @@ import Qt.labs.settings 1.0
 import QtQuick.Controls 2.2
 import Lomiri.Components 1.3
 import "pages"
-import Lomiri.Components.Popups 0.1
+import Lomiri.Components.Popups 1.3
 import Qt.labs.folderlistmodel 2.12
 import MySettings 1.0
 
@@ -115,7 +115,7 @@ Page {
                             title.color: "#111111"
                         }
                         divider.visible: false
-                        visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0}
+                        visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0} else {true}
                         onClicked: {
                             launchermodular.pageModel.append({"name": fileName, "icon": "pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": "pages/"});
                             PopupUtils.close(listPageDialogue);
