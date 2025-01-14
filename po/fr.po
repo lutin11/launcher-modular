@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-13 21:21+0000\n"
+"POT-Creation-Date: 2025-01-14 17:25+0000\n"
 "PO-Revision-Date: 2024-11-02 15:38+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -182,24 +182,25 @@ msgid "Add 'Video' page"
 msgstr "Pas de paramètres pour la page « TODO"
 
 #: ../qml/ChangeLogs.qml:87
-msgid "Fixup contacts name displayed"
+msgid "Corrected display of contact names"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:88
 #, fuzzy
-msgid "Add filter on received messages"
+msgid "Added filter on received messages"
 msgstr "Aucun message récent"
 
 #: ../qml/ChangeLogs.qml:89
-msgid "Fixup home setting not displayed"
-msgstr ""
+#, fuzzy
+msgid "Correction of home setting not displayed"
+msgstr "Correction pour l'affichage en arrière-plan."
 
 #: ../qml/ChangeLogs.qml:90
-msgid "Add Tamil traduction thanks to தமிழ்நேரம்"
+msgid "Add Tamil translations thanks to தமிழ்நேரம்"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:91
-msgid "Update Arabic traduction thanks to Salah Khani"
+msgid "Update Arabic translations thanks to Salah Khani"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:168

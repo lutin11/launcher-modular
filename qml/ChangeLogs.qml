@@ -84,11 +84,11 @@ Page {
             // 2.3.7
             property var details26: i18n.tr("Add 'Music' page");
             property var details27: i18n.tr("Add 'Video' page");
-            property var details28: i18n.tr("Fixup contacts name displayed");
-            property var details29: i18n.tr("Add filter on received messages");
-            property var details30: i18n.tr("Fixup home setting not displayed");
-            property var details31: i18n.tr("Add Tamil traduction thanks to தமிழ்நேரம்");
-            property var details32: i18n.tr("Update Arabic traduction thanks to Salah Khani");
+            property var details28: i18n.tr("Corrected display of contact names");
+            property var details29: i18n.tr("Added filter on received messages");
+            property var details30: i18n.tr("Correction of home setting not displayed");
+            property var details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்");
+            property var details32: i18n.tr("Update Arabic translations thanks to Salah Khani");
 
             ListModel {
                 id: changeLogModel

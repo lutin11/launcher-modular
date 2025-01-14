@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-13 21:21+0000\n"
+"POT-Creation-Date: 2025-01-14 17:25+0000\n"
 "PO-Revision-Date: 2023-02-17 04:45+0000\n"
 "Last-Translator: Raman <translations.0l5zc@simplelogin.com>\n"
 "Language-Team: Malayalam <https://hosted.weblate.org/projects/ubports/"
@@ -168,23 +168,23 @@ msgid "Add 'Video' page"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:87
-msgid "Fixup contacts name displayed"
+msgid "Corrected display of contact names"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:88
-msgid "Add filter on received messages"
+msgid "Added filter on received messages"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:89
-msgid "Fixup home setting not displayed"
+msgid "Correction of home setting not displayed"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:90
-msgid "Add Tamil traduction thanks to தமிழ்நேரம்"
+msgid "Add Tamil translations thanks to தமிழ்நேரம்"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:91
-msgid "Update Arabic traduction thanks to Salah Khani"
+msgid "Update Arabic translations thanks to Salah Khani"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:168
