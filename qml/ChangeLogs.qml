@@ -89,6 +89,8 @@ Page {
             property var details30: i18n.tr("Correction of home setting not displayed");
             property var details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்");
             property var details32: i18n.tr("Update Arabic translations thanks to Salah Khani");
+            // 2.3.8
+            // TODO
 
             ListModel {
                 id: changeLogModel
