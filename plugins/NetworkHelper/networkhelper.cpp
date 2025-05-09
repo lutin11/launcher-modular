@@ -1,6 +1,7 @@
 #include "networkhelper.h"
 #include <QNetworkRequest>
 #include <QXmlStreamReader>
+#include <QUrl>
 #include <QDebug>
 #include <QUrl>
 #include <QObject>
@@ -10,10 +11,16 @@ NetworkHelper::NetworkHelper(QObject *parent) : QObject(parent), manager(new QNe
 }
 
 void NetworkHelper::checkUrlReachable(const QString &url) {
-    reply = manager->get(QNetworkRequest(QUrl(url)));  // Directly pass the QNetworkRequest
+    QUrl qurl(url);
+    if (!qurl.isValid() || qurl.scheme() != "http" && qurl.scheme() != "https") {
+        qDebug() << "Invalid URL format :" << url;
+        emit urlCheckCompleted(false, false);
+        return;
+    }
+    manager->get(QNetworkRequest(qurl));
 }
 
-void NetworkHelper::onReplyFinished() {
+void NetworkHelper::onReplyFinished(QNetworkReply *reply) {
     bool isReachable = (reply->error() == QNetworkReply::NoError);
     bool isRssFeed = false;
 
@@ -23,12 +30,15 @@ void NetworkHelper::onReplyFinished() {
 
         qDebug() << "Content Type:" << contentType;
 
-        if (contentType.contains("rss") || contentType.contains("xml")) {
+        if (contentType.contains("rss") || contentType.contains("xml") || contentType.contains("html")) {
             // Parse XML content to identify RSS elements
+            qDebug() << "RSS url feed reachable";
             QXmlStreamReader xml(reply);
             while (!xml.atEnd() && !xml.hasError()) {
                 xml.readNext();
+                qDebug() << "RSS readNext";
                 if (xml.isStartElement()) {
+                    qDebug() << "RSS name:" << xml.name();
                     if (xml.name() == "rss" || xml.name() == "feed" || xml.name() == "channel") {
                         isRssFeed = true;
                         break;

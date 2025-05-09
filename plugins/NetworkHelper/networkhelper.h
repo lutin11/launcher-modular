@@ -18,11 +18,10 @@ signals:
     void urlCheckCompleted(bool reachable, bool isRssFeed);
 
 private slots:
-    void onReplyFinished();
+    void onReplyFinished(QNetworkReply *reply);
 
 private:
     QNetworkAccessManager *manager;
-    QNetworkReply *reply;
 };
 
 #endif // NETWORKHELPER_H
