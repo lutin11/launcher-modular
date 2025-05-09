@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: Install clickable
@@ -20,7 +20,7 @@ jobs:
         run: |
           CLICKABLE_FRAMEWORK=ubuntu-sdk-20.04 clickable build --libs --app --arch ${{ matrix.arch }}
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Launcher-modular_${{ matrix.arch }}
           path: build/*/app/*.click
