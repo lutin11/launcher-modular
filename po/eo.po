@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-14 17:25+0000\n"
+"POT-Creation-Date: 2025-05-09 21:19+0000\n"
 "PO-Revision-Date: 2023-02-16 11:26+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/ubports/"
@@ -191,23 +191,27 @@ msgstr ""
 msgid "Update Arabic translations thanks to Salah Khani"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:168
+#: ../qml/ChangeLogs.qml:93
+msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:171
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:174
+#: ../qml/ChangeLogs.qml:177
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:300
+#: ../qml/ChangeLogs.qml:303
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:327
+#: ../qml/ChangeLogs.qml:330
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:341
+#: ../qml/ChangeLogs.qml:344
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -227,23 +231,23 @@ msgstr ""
 "org/licenses/gpl-3.0.en.html\">Ĝeneralan Publikan Licencon GNU</a> por pliaj "
 "detaloj."
 
-#: ../qml/ChangeLogs.qml:356
+#: ../qml/ChangeLogs.qml:359
 msgid "SOURCE"
 msgstr "FONTO"
 
-#: ../qml/ChangeLogs.qml:356
+#: ../qml/ChangeLogs.qml:359
 msgid "ISSUES"
 msgstr "PROBLEMOJ"
 
-#: ../qml/ChangeLogs.qml:371
+#: ../qml/ChangeLogs.qml:374
 msgid "Maintainer"
 msgstr "Mastrumanto"
 
-#: ../qml/ChangeLogs.qml:385
+#: ../qml/ChangeLogs.qml:388
 msgid "Copyright"
 msgstr "Kopirajtoj"
 
-#: ../qml/ChangeLogs.qml:400
+#: ../qml/ChangeLogs.qml:403
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -452,7 +456,7 @@ msgid "New todo"
 msgstr "nova farendaĵo"
 
 #: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:139
-#: ../qml/pages/rss/Settings.qml:179
+#: ../qml/pages/rss/Settings.qml:173
 msgid "Delete"
 msgstr "Forviŝi"
 
@@ -548,7 +552,7 @@ msgstr "Loko de bildo"
 msgid "https://omgubuntu.co.uk/feed"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:223
+#: ../qml/pages/rss/Settings.qml:217
 msgid "Invalid url"
 msgstr ""
 
