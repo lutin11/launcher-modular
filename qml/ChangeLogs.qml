@@ -90,13 +90,17 @@ Page {
             property var details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்");
             property var details32: i18n.tr("Update Arabic translations thanks to Salah Khani");
             // 2.3.8
-            // TODO
+            property var details33: i18n.tr("Fix issue '#5 Valid RSS Feeds not accepted'");
+            // 2.3.9
+            property var details34: i18n.tr("change framework to 22.04");
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.3.9", date: "2025-05-09", details: details34, description: emptyDescription});
+                changeLogModel.append({ version: "2.3.8", date: "2025-05-09", details: details33, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.7", date: "2025-01-13", details: details26, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details27, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details28, description: emptyDescription});

@@ -108,14 +108,8 @@ Page {
                         }
 
                         Keys.onReturnPressed: {
-                            if (isValidUrl(rssField.text)) {
-                                rssField.urlToSave = rssField.text;  // Store text in temporary property
-                                NetworkHelper.checkUrlReachable(rssField.text)
-                            } else {
-                                console.log("Invalid URL format")
-                                errorLine.visible = true
-                                invalidTextError.text = "Invalid URL format"
-                            }
+                            rssField.urlToSave = rssField.text;  // Store text in temporary property
+                            NetworkHelper.checkUrlReachable(rssField.text)
                         }
                         maximumLength: 100
                     }
