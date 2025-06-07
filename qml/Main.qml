@@ -67,13 +67,12 @@ MainView {
         property bool firstRun: true
         property bool firstRunNew: true
         property bool developerModeEnabled: false;
-        property string version: '0';
+        property string version: '0'
 
         property string apiOpenWeatherMap: ''
         property string unitsFormat: '&units=metric'
         property string cityName: 'Paris'
 
-        property string formatHours: '24h'
         property string backgroundAnalogHours: ''
 
         property string iconStyle: 'rounded'
@@ -95,17 +94,17 @@ MainView {
         property string clockFontFamily: "DSEG7Classic"
         property bool clockFontBold: false
         property bool clockFontItalic: false
-        property real clockFontRatio: 3.65
 
         property string clockFontSize: "48"
         property string clockFontWordSpacing: "1.0"
         property string clockTimeFormat: "hh:mm:ss"
+        property string formatHours: '24h'
 
         property string searchEngine: "https://duckduckgo.com/?q="
 
-        property int limiteDaysCalendar: 31;
-        property int limiteDaysWidgetEvent: 31;
-        property int limiteItemWidgetEvent: 6;
+        property int limiteDaysCalendar: 31
+        property int limiteDaysWidgetEvent: 31
+        property int limiteItemWidgetEvent: 6
 
         property var page: []
         property var customIcon: []

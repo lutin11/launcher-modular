@@ -85,11 +85,10 @@ Page {
                     anchors.top: digitalClock.bottom
                     anchors.topMargin: units.gu(2)
                     anchors.horizontalCenter: parent.horizontalCenter;
-                    value: launchermodular.settings.clockFontSize
+                    value: (launchermodular.settings.clockFontSize-24)/2.4
                     minimumValue: 10.0
                     maximumValue: 70.0
                     live: true
-                    onValueChanged: { launchermodular.settings.clockFontSize = sliderFontSize.value }
                     onPressedChanged: {
                         if (pressed) {
                             pageSettings.visible = false
@@ -105,13 +104,7 @@ Page {
                     font: digitalClock.font
                     text: digitalClock.text
                     onWidthChanged: {
-                        maxFontPixelSize = Math.floor((clockSettingsPicture.width - units.gu(2)) / textMetrics.width * digitalClock.font.pixelSize);
-                        console.log("Pixel size:" + maxFontPixelSize)
-                        if (sliderFontSize.value > maxFontPixelSize) {
-                            sliderFontSize.value = maxFontPixelSize; // Adjust slider if necessary
-                            sliderFontSize.maximumValue = maxFontPixelSize;
-                            launchermodular.settings.clockFontRatio = (maxFontPixelSize * 100)/Screen.width
-                        }
+                        launchermodular.settings.clockFontSize = (2.4 * sliderFontSize.value) + 24
                     }
                 }
 

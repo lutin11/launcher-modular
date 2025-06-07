@@ -25,7 +25,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "white"
+        color: "black"
 
         Text {
             id: digitalClock
@@ -64,8 +64,9 @@ Item {
             id: textMetrics
             text: digitalClock.text
             onWidthChanged: {
-                digitalClock.font.pixelSize = Math.floor((Screen.width * launchermodular.settings.clockFontRatio)/100)
-                console.log("digitalClock.font.pixelSize:" + digitalClock.font.pixelSize)
+                let isPortrait = Screen.desktopAvailableWidth < Screen.desktopAvailableHeight
+                let ratio = isPortrait ? 1 : Math.floor(Screen.desktopAvailableWidth / Screen.desktopAvailableHeight)
+                digitalClock.font.pixelSize = launchermodular.settings.clockFontSize * ratio
             }
         }
 
@@ -73,59 +74,56 @@ Item {
             id: orientationHelper
         }
 
-        Grid {
-            id: propertyGrid
-            columns: 2
-            spacing: 8
-            x: spacing
-            y: spacing
-            anchors.bottom: parent.bottom
+        // Grid {
+        //     id: propertyGrid
+        //     columns: 2
+        //     spacing: 8
+        //     x: spacing
+        //     y: spacing
+        //     anchors.bottom: parent.bottom
 
-            Text {
-                text: "Screen \"" + Screen.name + "\":"
-                font.bold: true
-            }
-            Item { width: 1; height: 1 } // spacer
+        //     Text {
+        //         text: "Screen \"" + Screen.name + "\":"
+        //         font.bold: true
+        //     }
+        //     Item { width: 1; height: 1 } // spacer
 
-            Text { text: "manufacturer" }
-            Text { text: Screen.manufacturer ? Screen.manufacturer : "unknown" }
+        //     Text { text: "manufacturer" }
+        //     Text { text: Screen.manufacturer ? Screen.manufacturer : "unknown" }
 
-            Text { text: "model" }
-            Text { text: Screen.model ? Screen.model : "unknown" }
+        //     Text { text: "model" }
+        //     Text { text: Screen.model ? Screen.model : "unknown" }
 
-            Text { text: "serial number" }
-            Text { text: Screen.serialNumber ? Screen.serialNumber : "unknown" }
+        //     Text { text: "serial number" }
+        //     Text { text: Screen.serialNumber ? Screen.serialNumber : "unknown" }
 
-            Text { text: "dimensions" }
-            Text { text: Screen.width + "x" + Screen.height }
+        //     Text { text: "dimensions" }
+        //     Text { text: Screen.width + "x" + Screen.height }
 
-            Text { text: "pixel density" }
-            Text { text: Screen.pixelDensity.toFixed(2) + " dots/mm (" + (Screen.pixelDensity * 25.4).toFixed(2) + " dots/inch)" }
+        //     Text { text: "pixel density" }
+        //     Text { text: Screen.pixelDensity.toFixed(2) + " dots/mm (" + (Screen.pixelDensity * 25.4).toFixed(2) + " dots/inch)" }
 
-            Text { text: "logical pixel density" }
-            Text { text: Screen.logicalPixelDensity.toFixed(2) + " dots/mm (" + (Screen.logicalPixelDensity * 25.4).toFixed(2) + " dots/inch)" }
+        //     Text { text: "logical pixel density" }
+        //     Text { text: Screen.logicalPixelDensity.toFixed(2) + " dots/mm (" + (Screen.logicalPixelDensity * 25.4).toFixed(2) + " dots/inch)" }
 
-            Text { text: "device pixel ratio" }
-            Text { text: Screen.devicePixelRatio.toFixed(2) }
+        //     Text { text: "device pixel ratio" }
+        //     Text { text: Screen.devicePixelRatio.toFixed(2) }
 
-            Text { text: "available virtual desktop" }
-            Text { text: Screen.desktopAvailableWidth + "x" + Screen.desktopAvailableHeight }
+        //     Text { text: "available virtual desktop" }
+        //     Text { text: Screen.desktopAvailableWidth + "x" + Screen.desktopAvailableHeight }
 
-            Text { text: "position in virtual desktop" }
-            Text { text: Screen.virtualX + ", " + Screen.virtualY }
+        //     Text { text: "position in virtual desktop" }
+        //     Text { text: Screen.virtualX + ", " + Screen.virtualY }
 
-            Text { text: "orientation" }
-            Text {
-              text: clock.orientationToString(Screen.orientation) + " (" + Screen.orientation + ")"
-              color: "black"
-            }
+        //     Text { text: "orientation" }
+        //     Text {
+        //       text: clock.orientationToString(Screen.orientation) + " (" + Screen.orientation + ")"
+        //       color: "black"
+        //     }
 
-            Text { text: "primary orientation" }
-            Text { text: clock.orientationToString(Screen.primaryOrientation) + " (" + Screen.primaryOrientation + ")" }
+        //     Text { text: "primary orientation" }
+        //     Text { text: clock.orientationToString(Screen.primaryOrientation) + " (" + Screen.primaryOrientation + ")" }
 
-        }
+        // }
     }
-
-
-
 }
