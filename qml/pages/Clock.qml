@@ -38,7 +38,7 @@ Item {
             font.bold: launchermodular.settings.clockFontBold
             font.italic: launchermodular.settings.clockFontItalic
             color: launchermodular.settings.clockFontColor
-            text: "88:88:88"
+            text: if(launchermodular.settings.clockHHMMSS) {"88:88:88"} else {"88:88"}
             maximumLineCount: 1
             elide: Text.ElideMiddle
             wrapMode: Text.WrapAnywhere
@@ -46,7 +46,7 @@ Item {
         }
 
         Timer {
-            interval: 1000 // 1 second in milliseconds
+            interval: if(launchermodular.settings.clockHHMMSS) {1000} else {60000}
             running: true
             repeat: true
             onTriggered: {
@@ -56,8 +56,10 @@ Item {
                 let minutes = date.getMinutes();
                 let seconds = date.getSeconds();
 
-                // Format as hh:mm:ss
-                digitalClock.text = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                // Format as hh:mm:ss / hh:mm
+                digitalClock.text = launchermodular.settings.clockHHMMSS
+                        ? `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+                        : `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
             }
         }
         TextMetrics {

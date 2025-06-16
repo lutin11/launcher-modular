@@ -94,6 +94,7 @@ MainView {
         property string clockFontFamily: "DSEG7Classic"
         property bool clockFontBold: false
         property bool clockFontItalic: false
+        property bool clockHHMMSS: true
 
         property string clockFontSize: "48"
         property string clockFontWordSpacing: "1.0"

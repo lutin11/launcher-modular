@@ -61,10 +61,10 @@ Page {
                     maximumLineCount: 1
                     elide: Text.ElideMiddle
                     wrapMode: Text.WrapAnywhere
-                    text: "88:88:88"
+                    text: if(launchermodular.settings.clockHHMMSS) {"88:88:88"} else {"88:88"}
                 }
                 Timer {
-                    interval: 1000 // 1 second in milliseconds
+                    interval: if(launchermodular.settings.clockHHMMSS) {1000} else {60000}
                     running: true
                     repeat: true
                     onTriggered: {
@@ -75,7 +75,9 @@ Page {
                         let seconds = date.getSeconds();
 
                         // Format as hh:mm:ss
-                        digitalClock.text = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        digitalClock.text = launchermodular.settings.clockHHMMSS
+                                ? `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+                                : `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
                     }
                 }
                 
@@ -91,10 +93,7 @@ Page {
                     live: true
                     onPressedChanged: {
                         if (pressed) {
-                            pageSettings.visible = false
                             sliderFontSize.visible = true;
-                        } else {
-                            pageSettings.visible = true;
                         }
                     }
                 }
@@ -187,6 +186,49 @@ Page {
                     Text {
                         id: fontTypeLabel
                         text: i18n.tr("Font type : ")
+                        height: units.gu(5)
+                        anchors.right: parent.left
+                        anchors.rightMargin: units.gu(2)
+                        color: "#ffffff"
+                        verticalAlignment: Text.AlignVCenter
+                    }
+
+                }
+
+                ListItemHeader.ItemSelector {
+                    id: clockFormat
+                    width: clocksettings.width - (clockFormatLabel.width + units.gu(4))
+                    anchors.top: fontTypeList.bottom
+                    anchors.topMargin: units.gu(2)
+                    anchors.right: parent.right
+                    anchors.rightMargin: units.gu(1)
+                    model: [
+                    { name: "<font color=\"#ffffff\">88:88:88</font>", value: "hh:mm:ss"},
+                    { name: "<font color=\"#ffffff\">88:88</font>", value: "hh:mm"},
+                    ]
+                    delegate: OptionSelectorDelegate {
+                        property var item: model.modelData ? model.modelData : model
+                        text: item.name
+                    }
+                    onSelectedIndexChanged: {
+                        var typeChoice = model[selectedIndex].value
+                        if (typeChoice == "hh:mm:ss") {
+                            launchermodular.settings.clockHHMMSS = true
+                        } else {
+                            launchermodular.settings.clockHHMMSS = false
+                        }
+                    }
+                    Component.onCompleted: {
+                        if (launchermodular.settings.clockHHMMSS == true) {
+                            selectedIndex = 0
+                        } else {
+                            selectedIndex = 1
+                        }
+                    }
+
+                    Text {
+                        id: clockFormatLabel
+                        text: i18n.tr("Format : ")
                         height: units.gu(5)
                         anchors.right: parent.left
                         anchors.rightMargin: units.gu(2)
