@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-09 21:19+0000\n"
+"POT-Creation-Date: 2025-09-13 21:39+0000\n"
 "PO-Revision-Date: 2023-08-15 19:25+0000\n"
 "Last-Translator: Milan Korecky <milan.korecky@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -190,23 +190,27 @@ msgstr ""
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:171
+#: ../qml/ChangeLogs.qml:95
+msgid "change framework to 22.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:174
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:177
+#: ../qml/ChangeLogs.qml:180
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:303
+#: ../qml/ChangeLogs.qml:306
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:330
+#: ../qml/ChangeLogs.qml:333
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:344
+#: ../qml/ChangeLogs.qml:347
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -226,23 +230,23 @@ msgstr ""
 "href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
 "Licence </a>."
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:362
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:362
 msgid "ISSUES"
 msgstr "HLÁŠENÍ CHYB"
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:377
 msgid "Maintainer"
 msgstr "Správce"
 
-#: ../qml/ChangeLogs.qml:388
+#: ../qml/ChangeLogs.qml:391
 msgid "Copyright"
 msgstr "Copyright"
 
-#: ../qml/ChangeLogs.qml:403
+#: ../qml/ChangeLogs.qml:406
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
