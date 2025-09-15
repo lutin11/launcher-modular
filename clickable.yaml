@@ -4,7 +4,7 @@ skip_review: true
 builder:
     "cmake"
 kill:
-    "qmlscene"
+    "launchermodular.lut11"
 dependencies_target: [
     "qml-module-lomiri-history",
     "history-service",
