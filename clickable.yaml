@@ -7,7 +7,6 @@ kill:
     "launchermodular.lut11"
 dependencies_target: [
     "qml-module-lomiri-history",
-    "history-service",
     "qml-module-lomiri-contacts",
     "qml-module-lomiri-addressbook",
     "libpam0g-dev",
