@@ -16,21 +16,12 @@ jobs:
       - name: Install clickable
         run: |
           python3 -m pip install clickable-ut --upgrade
-      - name: Build-22.04
-        run: |
-          CLICKABLE_FRAMEWORK=ubuntu-sdk-22.04 clickable build --libs --app --arch ${{ matrix.arch }}
-      - name: Upload Artifacts-22.04
-        uses: actions/upload-artifact@v4
-        with:
-          name: Launcher-modular_${{ matrix.arch }}
-          path: build/*/app/*.click
-          if-no-files-found: error
-      - name: Build-24.04
+      - name: Build
         run: |
           CLICKABLE_FRAMEWORK=ubuntu-touch-24.04-1.x \
             clickable build --libs --app --arch ${{ matrix.arch }}
 
-      - name: Upload Artifacts-24.04
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Launcher-modular_${{ matrix.arch }}
