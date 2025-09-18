@@ -658,6 +658,11 @@ MainView {
                             width: parent.width-units.gu(4)
                             spacing: units.gu(2)
                             anchors.horizontalCenter: parent.horizontalCenter
+                            property var modelCustom: [
+                              { title: "<font color=\"#6f6f6f\">"+i18n.tr("Website")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
+                              { title: "<font color=\"#ffffff\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
+                              { title: "<font color=\"#ffffff\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
+                            ]
 
                             Item{
                                 width: parent.width
@@ -700,13 +705,6 @@ MainView {
                                 }
                                 placeholderText: i18n.tr("The <b>title</b> to be shown in the app list")
                             }
-
-
-                            property var modelCustom: [
-                              { title: "<font color=\"#6f6f6f\">"+i18n.tr("Website")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
-                              { title: "<font color=\"#ffffff\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
-                              { title: "<font color=\"#ffffff\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
-                            ]
 
                             ListItem.ItemSelector {
                                 id: typeIconCustom
