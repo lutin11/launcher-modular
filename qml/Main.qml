@@ -256,6 +256,8 @@ MainView {
                         Repeater {
                             model: launchermodular.pageModel
                             Loader {
+                                id: pageLoader
+                                visible: index === view.currentIndex
                                 sourceComponent: {
                                     var comp = Qt.createComponent(model.directory + model.name);
                                     if (comp.status === Component.Error) {
