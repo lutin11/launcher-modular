@@ -331,7 +331,7 @@ MainView {
                                         : "../assets/happy-full.svg"
                                 height: units.gu(2)
                                 width: units.gu(2)
-                                color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
                                 id: iconBottomBar
                                 antialiasing: true
                                 visible: false
@@ -341,7 +341,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
                                 source: iconBottomBar
-                                color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
                                 antialiasing: true
                             }
 
@@ -792,16 +792,16 @@ MainView {
                                         radius: units.gu(1.5)
                                         color: "#E95420"
                                     }
-                                    onClicked: {
-                                        onClicked: {
-                                            launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
-                                            appTitle.text = "";
-                                            okButton.actionIcon = "";
-                                            appAction.text = "";
-                                            customIconDialogue.visible = false
 
-                                        }
+                                    onClicked: {
+                                        launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
+                                        appTitle.text = "";
+                                        okButton.actionIcon = "";
+                                        appAction.text = "";
+                                        customIconDialogue.visible = false
+
                                     }
+
                                 }
                             }
                         }
