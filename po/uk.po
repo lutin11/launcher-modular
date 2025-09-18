@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-09 21:19+0000\n"
+"POT-Creation-Date: 2025-09-18 06:32+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/ubports/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.2-dev\n"
 
 #: ../qml/Autostart.qml:15
@@ -200,23 +200,31 @@ msgstr ""
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:171
-msgid "Version: "
+#: ../qml/ChangeLogs.qml:95
+msgid "change framework to 22.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:97
+msgid "change framework to 24.04"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:177
+msgid "Version: "
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:183
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:303
+#: ../qml/ChangeLogs.qml:309
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:330
+#: ../qml/ChangeLogs.qml:336
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Модульний лаунчер для Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:344
+#: ../qml/ChangeLogs.qml:350
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -236,23 +244,23 @@ msgstr ""
 "про це читайте у розділі <a href=\"https://www.gnu.org/licenses/gpl-3.0.en."
 "html\">GNU General Public License</a>."
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:365
 msgid "SOURCE"
 msgstr "ДЖЕРЕЛЬНИЙ КОД"
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:365
 msgid "ISSUES"
 msgstr "ПРОБЛЕМИ"
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:380
 msgid "Maintainer"
 msgstr "Супроводжувач"
 
-#: ../qml/ChangeLogs.qml:388
+#: ../qml/ChangeLogs.qml:394
 msgid "Copyright"
 msgstr "Авторське право"
 
-#: ../qml/ChangeLogs.qml:403
+#: ../qml/ChangeLogs.qml:409
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"LAUNCHER MODULAR TRANSLATORS\">Modular Launcher-translators</a>"

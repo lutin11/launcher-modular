@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-09 21:19+0000\n"
+"POT-Creation-Date: 2025-09-18 06:32+0000\n"
 "PO-Revision-Date: 2025-02-22 23:12+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -202,24 +202,32 @@ msgstr "அரபு மொழிபெயர்ப்புகளைப் ப�
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:171
+#: ../qml/ChangeLogs.qml:95
+msgid "change framework to 22.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:97
+msgid "change framework to 24.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:177
 msgid "Version: "
 msgstr "பதிப்பு:"
 
-#: ../qml/ChangeLogs.qml:177
+#: ../qml/ChangeLogs.qml:183
 msgid " | Date: "
 msgstr "| தேதி:"
 
-#: ../qml/ChangeLogs.qml:303
+#: ../qml/ChangeLogs.qml:309
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 "இந்தப் பயன்பாட்டை நீங்கள் விரும்பினால், தயவுசெய்து அதைத் திறந்தகடையில் தரவரிசைப்படுத்தவும்"
 
-#: ../qml/ChangeLogs.qml:330
+#: ../qml/ChangeLogs.qml:336
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "உபுண்டு தொடுதலுக்கான ஒரு மட்டு துவக்கி"
 
-#: ../qml/ChangeLogs.qml:344
+#: ../qml/ChangeLogs.qml:350
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -238,23 +246,23 @@ msgstr ""
 "பொறுப்பு கூட இல்லாமல். மேலும் விவரங்களுக்கு <a href = 'https: //www.gnu.org/"
 "licenses/gpl-3.0.en.html'> குனு பொது பொது உரிமம் </a> ஐப் பார்க்கவும்."
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:365
 msgid "SOURCE"
 msgstr "மூலம்"
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:365
 msgid "ISSUES"
 msgstr "சிக்கல்கள்"
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:380
 msgid "Maintainer"
 msgstr "பராமரிப்பாளர்"
 
-#: ../qml/ChangeLogs.qml:388
+#: ../qml/ChangeLogs.qml:394
 msgid "Copyright"
 msgstr "பதிப்புரிமை"
 
-#: ../qml/ChangeLogs.qml:403
+#: ../qml/ChangeLogs.qml:409
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href='LAUNCHER MODULAR TRANSLATORS'> மட்டு துவக்கி மொழிபெயர்ப்பாளர்கள் </a>"

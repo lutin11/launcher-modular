@@ -1,16 +1,15 @@
 clickable_minimum_required:
-    "8.2.0"
+    "8.4.0"
 skip_review: true  
 builder:
     "cmake"
 kill:
-    "qmlscene"
+    "launchermodular.lut11"
 dependencies_target: [
-    "qml-module-lomiri-history0.1",
-    "history-service",
-    "qml-module-lomiri-contacts0.1",
-    "qml-module-lomiri-addressbook0.1",
+    "qml-module-lomiri-history",
+    "qml-module-lomiri-contacts",
+    "qml-module-lomiri-addressbook",
     "libpam0g-dev",
     "libgsettings-qt-dev",
-    "qml-module-gsettings1.0"
+    "qml-module-gsettings"
     ]   

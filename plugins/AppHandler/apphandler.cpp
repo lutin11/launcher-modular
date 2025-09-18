@@ -182,7 +182,7 @@ void AppHandler::sort(const QString& key, bool revertsort) {
       for(int i=0;i< _appinfos.size()-1;i++) {
         if( _appinfos[i]->getProp(key) > _appinfos[i+1]->getProp(key)) {
           ordered = false;
-          _appinfos.swap(i,i+1);
+          _appinfos.swapItemsAt(i,i+1);
         }
       }
     }
