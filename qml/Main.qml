@@ -257,9 +257,9 @@ MainView {
                             model: launchermodular.pageModel
                             Loader {
                                 sourceComponent: {
-                                    var comp = Qt.createComponent(directory + name);
+                                    var comp = Qt.createComponent(model.directory + model.name);
                                     if (comp.status === Component.Error) {
-                                        console.error("Failed to load component: " + directory + name + ", error: " + comp.errorString());
+                                        console.error("Failed to load component: " + model.directory + model.name + ", error: " + comp.errorString());
                                         return null;
                                     }
                                     return comp;
