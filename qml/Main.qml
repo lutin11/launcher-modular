@@ -66,8 +66,8 @@ MainView {
 
         property bool firstRun: true
         property bool firstRunNew: true
-        property bool developerModeEnabled: false;
-        property string version: '0';
+        property bool developerModeEnabled: false
+        property string version: '0'
 
         property string apiOpenWeatherMap: ''
         property string unitsFormat: '&units=metric'
@@ -93,9 +93,9 @@ MainView {
 
         property string searchEngine: "https://duckduckgo.com/?q="
 
-        property int limiteDaysCalendar: 31;
-        property int limiteDaysWidgetEvent: 31;
-        property int limiteItemWidgetEvent: 6;
+        property int limiteDaysCalendar: 31
+        property int limiteDaysWidgetEvent: 31
+        property int limiteItemWidgetEvent: 6
 
         property var page: []
         property var customIcon: []
