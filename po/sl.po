@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-13 21:39+0000\n"
+"POT-Creation-Date: 2025-09-18 06:32+0000\n"
 "PO-Revision-Date: 2023-02-12 14:38+0000\n"
 "Last-Translator: HudobniVolk <hudobni.volk@tuta.io>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/ubports/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 4.16-dev\n"
 
 #: ../qml/Autostart.qml:15
@@ -204,23 +204,27 @@ msgstr ""
 msgid "change framework to 22.04"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:174
+#: ../qml/ChangeLogs.qml:97
+msgid "change framework to 24.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:177
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:180
+#: ../qml/ChangeLogs.qml:183
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:306
+#: ../qml/ChangeLogs.qml:309
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:333
+#: ../qml/ChangeLogs.qml:336
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Modularni zaganjalnik za Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:347
+#: ../qml/ChangeLogs.qml:350
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -240,23 +244,23 @@ msgstr ""
 "NAMEN. Za več podrobnosti glej <a href=\"https://www.gnu.org/licenses/"
 "gpl-3.0.en.html\">Splošna javna licenca GNU</a>."
 
-#: ../qml/ChangeLogs.qml:362
+#: ../qml/ChangeLogs.qml:365
 msgid "SOURCE"
 msgstr "IZVOR"
 
-#: ../qml/ChangeLogs.qml:362
+#: ../qml/ChangeLogs.qml:365
 msgid "ISSUES"
 msgstr "TEŽAVE"
 
-#: ../qml/ChangeLogs.qml:377
+#: ../qml/ChangeLogs.qml:380
 msgid "Maintainer"
 msgstr "Vzdrževalec"
 
-#: ../qml/ChangeLogs.qml:391
+#: ../qml/ChangeLogs.qml:394
 msgid "Copyright"
 msgstr "Avtorske pravice"
 
-#: ../qml/ChangeLogs.qml:406
+#: ../qml/ChangeLogs.qml:409
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"LAUNCHER MODULAR TRANSLATORS\">Prevajalci Launcher Modular</a>"

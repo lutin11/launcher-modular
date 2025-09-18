@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-13 21:39+0000\n"
+"POT-Creation-Date: 2025-09-18 06:32+0000\n"
 "PO-Revision-Date: 2024-11-02 15:38+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -211,23 +211,27 @@ msgstr ""
 msgid "change framework to 22.04"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:174
+#: ../qml/ChangeLogs.qml:97
+msgid "change framework to 24.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:177
 msgid "Version: "
 msgstr "Version : "
 
-#: ../qml/ChangeLogs.qml:180
+#: ../qml/ChangeLogs.qml:183
 msgid " | Date: "
 msgstr "| Date :"
 
-#: ../qml/ChangeLogs.qml:306
+#: ../qml/ChangeLogs.qml:309
 msgid "If you like this app, please rank it on OpenStore"
 msgstr "Si vous aimez cette application, likez-là sur OpenStore"
 
-#: ../qml/ChangeLogs.qml:333
+#: ../qml/ChangeLogs.qml:336
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Un lanceur modulaire pour Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:347
+#: ../qml/ChangeLogs.qml:350
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -244,26 +248,26 @@ msgstr ""
 "soit (à votre choix) toute version ultérieure. Ce programme est distribué "
 "dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
 "garantie implicite de COMMERCIALISATION ou d'ADÉQUATION À UN USAGE "
-"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html"
-"\">GNU General Public License</a> pour plus de détails."
+"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en."
+"html\">GNU General Public License</a> pour plus de détails."
 
-#: ../qml/ChangeLogs.qml:362
+#: ../qml/ChangeLogs.qml:365
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: ../qml/ChangeLogs.qml:362
+#: ../qml/ChangeLogs.qml:365
 msgid "ISSUES"
 msgstr "PROBLÈMES"
 
-#: ../qml/ChangeLogs.qml:377
+#: ../qml/ChangeLogs.qml:380
 msgid "Maintainer"
 msgstr "Mainteneur"
 
-#: ../qml/ChangeLogs.qml:391
+#: ../qml/ChangeLogs.qml:394
 msgid "Copyright"
 msgstr "Droits d'auteur"
 
-#: ../qml/ChangeLogs.qml:406
+#: ../qml/ChangeLogs.qml:409
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"TRADUCTEURS DE LANCEUR MODULAIRE\">TRADUCTEURS DE LANCEUR "

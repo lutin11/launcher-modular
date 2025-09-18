@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-13 21:39+0000\n"
+"POT-Creation-Date: 2025-09-18 06:32+0000\n"
 "PO-Revision-Date: 2024-11-04 14:59+0000\n"
 "Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -209,23 +209,27 @@ msgstr ""
 msgid "change framework to 22.04"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:174
+#: ../qml/ChangeLogs.qml:97
+msgid "change framework to 24.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:177
 msgid "Version: "
 msgstr "النسخة:"
 
-#: ../qml/ChangeLogs.qml:180
+#: ../qml/ChangeLogs.qml:183
 msgid " | Date: "
 msgstr "| التاريخ:"
 
-#: ../qml/ChangeLogs.qml:306
+#: ../qml/ChangeLogs.qml:309
 msgid "If you like this app, please rank it on OpenStore"
 msgstr "إذا أعجبك هذا التطبيق، يرجى تصنيفه على OpenStore"
 
-#: ../qml/ChangeLogs.qml:333
+#: ../qml/ChangeLogs.qml:336
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "مشغل معياري ل Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:347
+#: ../qml/ChangeLogs.qml:350
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -243,23 +247,23 @@ msgstr ""
 "معين  راجع <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>رخصة "
 "الشبكة العامة للاتحاد العام </a> لمزيد من التفاصيل."
 
-#: ../qml/ChangeLogs.qml:362
+#: ../qml/ChangeLogs.qml:365
 msgid "SOURCE"
 msgstr "المصدر"
 
-#: ../qml/ChangeLogs.qml:362
+#: ../qml/ChangeLogs.qml:365
 msgid "ISSUES"
 msgstr "المشكلات"
 
-#: ../qml/ChangeLogs.qml:377
+#: ../qml/ChangeLogs.qml:380
 msgid "Maintainer"
 msgstr "المشرف"
 
-#: ../qml/ChangeLogs.qml:391
+#: ../qml/ChangeLogs.qml:394
 msgid "Copyright"
 msgstr "حقوق الطبع والنشر"
 
-#: ../qml/ChangeLogs.qml:406
+#: ../qml/ChangeLogs.qml:409
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr "a href='LAUNCHER MODULAR TRANSLATORS'>مترجمو المشغلات المعيارية</a>"
 
