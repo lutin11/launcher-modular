@@ -70,8 +70,8 @@ Column {
     GridView {
         id: contactFavoriteView
             
-        property var typegrid: "horizontal";
-        property var heightgrid: (contactFavoriteView.count != "0") ? units.gu(13)*launchermodular.settings.iconSize : units.gu(0);
+        property var typegrid: "horizontal"
+        property var heightgrid: (contactFavoriteView.count != "0") ? units.gu(13)*launchermodular.settings.iconSize : units.gu(0)
         
         model: contactModel
 

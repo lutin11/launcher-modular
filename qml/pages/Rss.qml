@@ -16,7 +16,7 @@ Item {
     clip:true
 
     property var model : RssModel.itemModel
-    property var refreshing:  cachedHttpRequestInstance.waitingForResults;
+    property var refreshing:  cachedHttpRequestInstance.waitingForResults
     property var currentSearch : null
     property var currentSection : null
     property var channelsList : []
