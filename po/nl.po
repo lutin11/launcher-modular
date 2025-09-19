@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-09 21:19+0000\n"
+"POT-Creation-Date: 2025-09-19 16:45+0000\n"
 "PO-Revision-Date: 2023-02-22 13:39+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -125,6 +125,10 @@ msgstr ""
 msgid "Addition of a new page for RSS feeds"
 msgstr ""
 
+#: ../qml/ChangeLogs.qml:68
+msgid "On Rss setting page, you can add a list of RSS feeds"
+msgstr ""
+
 #: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
 #, fuzzy
 msgid "Update translations"
@@ -158,6 +162,13 @@ msgstr ""
 #, fuzzy
 msgid "Fix page management issue"
 msgstr "Paginabeheer"
+
+#: ../qml/ChangeLogs.qml:83
+msgid ""
+"This is a hotfix release, as 'Page management' did not work anymore. Please "
+"feel free to report any issues throw https://github.com/lutin11/launcher-"
+"modular/issues or on Ubports forum"
+msgstr ""
 
 #: ../qml/ChangeLogs.qml:85
 #, fuzzy
@@ -194,23 +205,31 @@ msgstr ""
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:171
+#: ../qml/ChangeLogs.qml:95
+msgid "change framework to 22.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:97
+msgid "change framework to 24.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:176
 msgid "Version: "
 msgstr "Versie: "
 
-#: ../qml/ChangeLogs.qml:177
+#: ../qml/ChangeLogs.qml:182
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:303
+#: ../qml/ChangeLogs.qml:308
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:330
+#: ../qml/ChangeLogs.qml:335
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Een modulaire launcher voor Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:344
+#: ../qml/ChangeLogs.qml:349
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -231,23 +250,23 @@ msgstr ""
 "\"https://www.gnu.org/licenses/gpl-3.0.nl.html\"> GNU Algemene Publike "
 "Licentie </a> voor meer details."
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:364
 msgid "SOURCE"
 msgstr "BRONCODE"
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:364
 msgid "ISSUES"
 msgstr "PROBLEMEN"
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:379
 msgid "Maintainer"
 msgstr "Beheerder"
 
-#: ../qml/ChangeLogs.qml:388
+#: ../qml/ChangeLogs.qml:393
 msgid "Copyright"
 msgstr "Auteursrecht"
 
-#: ../qml/ChangeLogs.qml:403
+#: ../qml/ChangeLogs.qml:408
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr "<a href='LAUNCHER MODULAR VERTALERS'>LAUNCHER MODULAR VERTALERS</a>"
 
@@ -277,65 +296,65 @@ msgstr ""
 msgid "Choose"
 msgstr "Kiezen"
 
-#: ../qml/Main.qml:393
+#: ../qml/Main.qml:395
 msgid "Swipe up to configure the launcher"
 msgstr "Veeg omhoog om in te stellen"
 
-#: ../qml/Main.qml:446
+#: ../qml/Main.qml:448
 msgid "Add custom icon"
 msgstr "Aangepast pictogram"
 
-#: ../qml/Main.qml:478
+#: ../qml/Main.qml:480
 msgid "Manage page"
 msgstr "Pagina beheren"
 
-#: ../qml/Main.qml:510
+#: ../qml/Main.qml:512
 msgid "Configure Launcher"
 msgstr "Startscherm instellen"
 
-#: ../qml/Main.qml:542
+#: ../qml/Main.qml:544
 msgid "Autostart"
 msgstr "Automatisch opstarten"
 
-#: ../qml/Main.qml:574
+#: ../qml/Main.qml:576
 msgid "Help"
 msgstr "Hulp"
 
-#: ../qml/Main.qml:606
+#: ../qml/Main.qml:608
 msgid "About"
 msgstr "Over"
 
-#: ../qml/Main.qml:688
-msgid "SVG or PNG icon. 1:1 ratio"
-msgstr "Svg- of png-pictogram. 1:1-beeldverhouding"
-
-#: ../qml/Main.qml:701
-msgid "The <b>title</b> to be shown in the app list"
-msgstr "De <b>naam</b> die op de lijst wordt getoond"
-
-#: ../qml/Main.qml:706
+#: ../qml/Main.qml:664
 msgid "Website"
 msgstr "Website"
 
-#: ../qml/Main.qml:706
+#: ../qml/Main.qml:664
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:707
+#: ../qml/Main.qml:665
 msgid "Terminal command"
 msgstr "Terminalopdracht"
 
-#: ../qml/Main.qml:707
+#: ../qml/Main.qml:665
 msgid "Run a command in a terminal"
 msgstr "Open een commando in een terminal"
 
-#: ../qml/Main.qml:708
+#: ../qml/Main.qml:666
 msgid "Launch app"
 msgstr "App openen"
 
-#: ../qml/Main.qml:708
+#: ../qml/Main.qml:666
 msgid "Launch an app"
 msgstr "Open een app"
+
+#: ../qml/Main.qml:695
+msgid "SVG or PNG icon. 1:1 ratio"
+msgstr "Svg- of png-pictogram. 1:1-beeldverhouding"
+
+#: ../qml/Main.qml:708
+msgid "The <b>title</b> to be shown in the app list"
+msgstr "De <b>naam</b> die op de lijst wordt getoond"
 
 #: ../qml/Main.qml:732 ../qml/Main.qml:733 ../qml/Main.qml:734
 msgid "<b>Action</b> example: "
@@ -346,7 +365,7 @@ msgid "Create icon"
 msgstr "Pictogram maken"
 
 #: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:480
+#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr "Annuleren"
@@ -429,19 +448,19 @@ msgstr ""
 msgid "Agenda"
 msgstr "Agenda"
 
-#: ../qml/pages/Home.qml:209
+#: ../qml/pages/Home.qml:210
 msgid "Search your phone and online sources"
 msgstr "Doorzoek je telefoon en online-bronnen"
 
-#: ../qml/pages/Home.qml:439
+#: ../qml/pages/Home.qml:435
 msgid "Uninstall"
 msgstr "Deïnstalleren"
 
-#: ../qml/pages/Home.qml:439
+#: ../qml/pages/Home.qml:435
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: ../qml/pages/Music.qml:158
+#: ../qml/pages/Music.qml:159
 msgid "Search your music"
 msgstr ""
 
@@ -453,17 +472,17 @@ msgstr ""
 msgid "Go to the page management to add feeds."
 msgstr ""
 
-#: ../qml/pages/Todo.qml:80
+#: ../qml/pages/Todo.qml:81
 #, fuzzy
 msgid "New todo"
 msgstr "nieuwe taak"
 
-#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
 #: ../qml/pages/rss/Settings.qml:173
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: ../qml/pages/Videos.qml:158
+#: ../qml/pages/Videos.qml:159
 msgid "Search your video"
 msgstr ""
 

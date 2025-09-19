@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-09 21:19+0000\n"
+"POT-Creation-Date: 2025-09-19 16:45+0000\n"
 "PO-Revision-Date: 2024-11-02 15:38+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -138,6 +138,10 @@ msgstr ""
 msgid "Addition of a new page for RSS feeds"
 msgstr "Ajout d'une nouvelle page pour les flux RSS"
 
+#: ../qml/ChangeLogs.qml:68
+msgid "On Rss setting page, you can add a list of RSS feeds"
+msgstr ""
+
 #: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
 msgid "Update translations"
 msgstr "Mettre à jour les traductions"
@@ -170,6 +174,13 @@ msgstr ""
 #, fuzzy
 msgid "Fix page management issue"
 msgstr "Gestion des pages"
+
+#: ../qml/ChangeLogs.qml:83
+msgid ""
+"This is a hotfix release, as 'Page management' did not work anymore. Please "
+"feel free to report any issues throw https://github.com/lutin11/launcher-"
+"modular/issues or on Ubports forum"
+msgstr ""
 
 #: ../qml/ChangeLogs.qml:85
 #, fuzzy
@@ -207,23 +218,31 @@ msgstr ""
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:171
+#: ../qml/ChangeLogs.qml:95
+msgid "change framework to 22.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:97
+msgid "change framework to 24.04"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:176
 msgid "Version: "
 msgstr "Version : "
 
-#: ../qml/ChangeLogs.qml:177
+#: ../qml/ChangeLogs.qml:182
 msgid " | Date: "
 msgstr "| Date :"
 
-#: ../qml/ChangeLogs.qml:303
+#: ../qml/ChangeLogs.qml:308
 msgid "If you like this app, please rank it on OpenStore"
 msgstr "Si vous aimez cette application, likez-là sur OpenStore"
 
-#: ../qml/ChangeLogs.qml:330
+#: ../qml/ChangeLogs.qml:335
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Un lanceur modulaire pour Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:344
+#: ../qml/ChangeLogs.qml:349
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -243,23 +262,23 @@ msgstr ""
 "PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html"
 "\">GNU General Public License</a> pour plus de détails."
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:364
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:364
 msgid "ISSUES"
 msgstr "PROBLÈMES"
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:379
 msgid "Maintainer"
 msgstr "Mainteneur"
 
-#: ../qml/ChangeLogs.qml:388
+#: ../qml/ChangeLogs.qml:393
 msgid "Copyright"
 msgstr "Droits d'auteur"
 
-#: ../qml/ChangeLogs.qml:403
+#: ../qml/ChangeLogs.qml:408
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"TRADUCTEURS DE LANCEUR MODULAIRE\">TRADUCTEURS DE LANCEUR "
@@ -294,65 +313,65 @@ msgstr ""
 msgid "Choose"
 msgstr "Choisir"
 
-#: ../qml/Main.qml:393
+#: ../qml/Main.qml:395
 msgid "Swipe up to configure the launcher"
 msgstr "Balayez vers le haut pour configurer le lanceur"
 
-#: ../qml/Main.qml:446
+#: ../qml/Main.qml:448
 msgid "Add custom icon"
 msgstr "Ajouter une icône personnalisée"
 
-#: ../qml/Main.qml:478
+#: ../qml/Main.qml:480
 msgid "Manage page"
 msgstr "Gérer la page"
 
-#: ../qml/Main.qml:510
+#: ../qml/Main.qml:512
 msgid "Configure Launcher"
 msgstr "Configurer le lanceur"
 
-#: ../qml/Main.qml:542
+#: ../qml/Main.qml:544
 msgid "Autostart"
 msgstr "Démarrage automatique"
 
-#: ../qml/Main.qml:574
+#: ../qml/Main.qml:576
 msgid "Help"
 msgstr "Aide"
 
-#: ../qml/Main.qml:606
+#: ../qml/Main.qml:608
 msgid "About"
 msgstr "À propos"
 
-#: ../qml/Main.qml:688
-msgid "SVG or PNG icon. 1:1 ratio"
-msgstr "Icône SVG ou PNG au ratio 1:1"
-
-#: ../qml/Main.qml:701
-msgid "The <b>title</b> to be shown in the app list"
-msgstr "Le <b>titre</b> à afficher dans la liste des applications"
-
-#: ../qml/Main.qml:706
+#: ../qml/Main.qml:664
 msgid "Website"
 msgstr "Site internet"
 
-#: ../qml/Main.qml:706
+#: ../qml/Main.qml:664
 msgid "Open this URL in the web browser"
 msgstr "Ouvrez cette URL dans le navigateur web"
 
-#: ../qml/Main.qml:707
+#: ../qml/Main.qml:665
 msgid "Terminal command"
 msgstr "Commande de terminal"
 
-#: ../qml/Main.qml:707
+#: ../qml/Main.qml:665
 msgid "Run a command in a terminal"
 msgstr "Lancer un ordre dans un terminal"
 
-#: ../qml/Main.qml:708
+#: ../qml/Main.qml:666
 msgid "Launch app"
 msgstr "Lancer l'application"
 
-#: ../qml/Main.qml:708
+#: ../qml/Main.qml:666
 msgid "Launch an app"
 msgstr "Lancer une application"
+
+#: ../qml/Main.qml:695
+msgid "SVG or PNG icon. 1:1 ratio"
+msgstr "Icône SVG ou PNG au ratio 1:1"
+
+#: ../qml/Main.qml:708
+msgid "The <b>title</b> to be shown in the app list"
+msgstr "Le <b>titre</b> à afficher dans la liste des applications"
 
 #: ../qml/Main.qml:732 ../qml/Main.qml:733 ../qml/Main.qml:734
 msgid "<b>Action</b> example: "
@@ -363,7 +382,7 @@ msgid "Create icon"
 msgstr "Créer une icône"
 
 #: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:480
+#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr "Annuler"
@@ -448,19 +467,19 @@ msgstr ""
 msgid "Agenda"
 msgstr "Agenda"
 
-#: ../qml/pages/Home.qml:209
+#: ../qml/pages/Home.qml:210
 msgid "Search your phone and online sources"
 msgstr "Rechercher dans votre téléphone et en ligne"
 
-#: ../qml/pages/Home.qml:439
+#: ../qml/pages/Home.qml:435
 msgid "Uninstall"
 msgstr "Désinstaller"
 
-#: ../qml/pages/Home.qml:439
+#: ../qml/pages/Home.qml:435
 msgid "Remove"
 msgstr "Supprimer"
 
-#: ../qml/pages/Music.qml:158
+#: ../qml/pages/Music.qml:159
 msgid "Search your music"
 msgstr ""
 
@@ -472,16 +491,16 @@ msgstr "Chargement des flux..."
 msgid "Go to the page management to add feeds."
 msgstr "Allez dans la gestion des pages pour ajouter des flux."
 
-#: ../qml/pages/Todo.qml:80
+#: ../qml/pages/Todo.qml:81
 msgid "New todo"
 msgstr "Nouvelle liste de choses à faire"
 
-#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
 #: ../qml/pages/rss/Settings.qml:173
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ../qml/pages/Videos.qml:158
+#: ../qml/pages/Videos.qml:159
 msgid "Search your video"
 msgstr ""
 
