@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 11:47+0000\n"
+"POT-Creation-Date: 2025-09-19 11:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -206,23 +206,27 @@ msgstr ""
 msgid "change framework to 24.04"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:177
+#: ../qml/ChangeLogs.qml:99
+msgid "fixe superimposed pages at start up"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:180
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:183
+#: ../qml/ChangeLogs.qml:186
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:309
+#: ../qml/ChangeLogs.qml:312
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:336
+#: ../qml/ChangeLogs.qml:339
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:350
+#: ../qml/ChangeLogs.qml:353
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -234,23 +238,23 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:365
+#: ../qml/ChangeLogs.qml:368
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:365
+#: ../qml/ChangeLogs.qml:368
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:380
+#: ../qml/ChangeLogs.qml:383
 msgid "Maintainer"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:394
+#: ../qml/ChangeLogs.qml:397
 msgid "Copyright"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:409
+#: ../qml/ChangeLogs.qml:412
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
