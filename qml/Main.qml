@@ -66,8 +66,8 @@ MainView {
 
         property bool firstRun: true
         property bool firstRunNew: true
-        property bool developerModeEnabled: false;
-        property string version: '0';
+        property bool developerModeEnabled: false
+        property string version: '0'
 
         property string apiOpenWeatherMap: ''
         property string unitsFormat: '&units=metric'
@@ -93,9 +93,9 @@ MainView {
 
         property string searchEngine: "https://duckduckgo.com/?q="
 
-        property int limiteDaysCalendar: 31;
-        property int limiteDaysWidgetEvent: 31;
-        property int limiteItemWidgetEvent: 6;
+        property int limiteDaysCalendar: 31
+        property int limiteDaysWidgetEvent: 31
+        property int limiteItemWidgetEvent: 6
 
         property var page: []
         property var customIcon: []
@@ -256,10 +256,12 @@ MainView {
                         Repeater {
                             model: launchermodular.pageModel
                             Loader {
+                                id: pageLoader
+                                visible: index === view.currentIndex
                                 sourceComponent: {
-                                    var comp = Qt.createComponent(directory + name);
+                                    var comp = Qt.createComponent(model.directory + model.name);
                                     if (comp.status === Component.Error) {
-                                        console.error("Failed to load component: " + directory + name + ", error: " + comp.errorString());
+                                        console.error("Failed to load component: " + model.directory + model.name + ", error: " + comp.errorString());
                                         return null;
                                     }
                                     return comp;
@@ -331,7 +333,7 @@ MainView {
                                         : "../assets/happy-full.svg"
                                 height: units.gu(2)
                                 width: units.gu(2)
-                                color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
                                 id: iconBottomBar
                                 antialiasing: true
                                 visible: false
@@ -341,7 +343,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
                                 source: iconBottomBar
-                                color: index == view.currentIndex ? "#E95420" : pressed ? "#000000" : "#FFFFFF"
+                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
                                 antialiasing: true
                             }
 
@@ -658,6 +660,11 @@ MainView {
                             width: parent.width-units.gu(4)
                             spacing: units.gu(2)
                             anchors.horizontalCenter: parent.horizontalCenter
+                            property var modelCustom: [
+                              { title: "<font color=\"#6f6f6f\">"+i18n.tr("Website")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
+                              { title: "<font color=\"#ffffff\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
+                              { title: "<font color=\"#ffffff\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
+                            ]
 
                             Item{
                                 width: parent.width
@@ -700,13 +707,6 @@ MainView {
                                 }
                                 placeholderText: i18n.tr("The <b>title</b> to be shown in the app list")
                             }
-
-
-                            property var modelCustom: [
-                              { title: "<font color=\"#6f6f6f\">"+i18n.tr("Website")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
-                              { title: "<font color=\"#ffffff\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
-                              { title: "<font color=\"#ffffff\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
-                            ]
 
                             ListItem.ItemSelector {
                                 id: typeIconCustom
@@ -794,16 +794,16 @@ MainView {
                                         radius: units.gu(1.5)
                                         color: "#E95420"
                                     }
-                                    onClicked: {
-                                        onClicked: {
-                                            launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
-                                            appTitle.text = "";
-                                            okButton.actionIcon = "";
-                                            appAction.text = "";
-                                            customIconDialogue.visible = false
 
-                                        }
+                                    onClicked: {
+                                        launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
+                                        appTitle.text = "";
+                                        okButton.actionIcon = "";
+                                        appAction.text = "";
+                                        customIconDialogue.visible = false
+
                                     }
+
                                 }
                             }
                         }

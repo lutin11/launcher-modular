@@ -58,8 +58,8 @@ Column {
     GridView {
         id: appFavoriteView
 
-        property var typegrid: "horizontal";
-        property var heightgrid: (launchermodular.favoriteAppsModel.count !== "0") ? units.gu(13)*launchermodular.settings.iconSize : units.gu(0);
+        property var typegrid: "horizontal"
+        property var heightgrid: (launchermodular.favoriteAppsModel.count !== "0") ? units.gu(13)*launchermodular.settings.iconSize : units.gu(0)
 
         model: launchermodular.favoriteAppsModel
 
