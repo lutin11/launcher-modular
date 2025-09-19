@@ -7,7 +7,7 @@
         "launchermodular": {
             "apparmor": "launchermodular.apparmor",
             "desktop":  "launchermodular.desktop",
-	          "content-hub": "launchermodular.contenthub"
+            "content-hub": "launchermodular.contenthub"
         }
     },
     "version": "2.3.9",
