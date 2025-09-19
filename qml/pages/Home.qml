@@ -188,6 +188,7 @@ Item {
                 }
                 TextField {
                     id: searchField
+                    focus: false
                     anchors {
                         left: iconSearch.right
                         right: iconWebSearch.left
@@ -211,11 +212,6 @@ Item {
                         font.pixelSize: units.gu(1.5)
                     }
                     inputMethodHints: Qt.ImhNoPredictiveText
-                    onVisibleChanged: {
-                        if (visible) {
-                            forceActiveFocus()
-                        }
-                    }
                     onTextChanged: {
                         AppHandler.resetTempFilter()
                         if(text.length > 0) {

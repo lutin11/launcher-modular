@@ -137,6 +137,7 @@ Item {
 
         TextField {
             id: searchField
+            focus: false
             anchors {
                 left: iconBack.right
                 right: iconSearch.left
@@ -160,11 +161,6 @@ Item {
                 font.pixelSize: units.gu(launchermodular.settings.videoFontSize)
             }
             inputMethodHints: Qt.ImhNoPredictiveText
-            onVisibleChanged: {
-                if (visible) {
-                    forceActiveFocus()
-                }
-            }
             onTextChanged: {
                 if(text.length > 0) {
                     searchVideo(text)
