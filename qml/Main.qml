@@ -19,7 +19,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.3.9"
+    property string appVersion : "2.4.1.1"
     property ListModel customIconModel :  ListModel { id: customIconModel }
     property ListModel pageModel :  ListModel { id: pageModel }
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
