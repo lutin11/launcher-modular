@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-18 06:32+0000\n"
+"POT-Creation-Date: 2025-09-19 11:47+0000\n"
 "PO-Revision-Date: 2023-02-06 21:39+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/ubports/"
@@ -126,6 +126,10 @@ msgstr ""
 msgid "Addition of a new page for RSS feeds"
 msgstr ""
 
+#: ../qml/ChangeLogs.qml:68
+msgid "On Rss setting page, you can add a list of RSS feeds"
+msgstr ""
+
 #: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
 msgid "Update translations"
 msgstr ""
@@ -156,6 +160,13 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:82
 msgid "Fix page management issue"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:83
+msgid ""
+"This is a hotfix release, as 'Page management' did not work anymore. Please "
+"feel free to report any issues throw https://github.com/lutin11/launcher-"
+"modular/issues or on Ubports forum"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:85
@@ -269,64 +280,64 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:393
+#: ../qml/Main.qml:395
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:446
+#: ../qml/Main.qml:448
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:478
+#: ../qml/Main.qml:480
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:510
+#: ../qml/Main.qml:512
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:542
+#: ../qml/Main.qml:544
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:574
+#: ../qml/Main.qml:576
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:606
+#: ../qml/Main.qml:608
 msgid "About"
 msgstr "Sobre"
 
-#: ../qml/Main.qml:688
-msgid "SVG or PNG icon. 1:1 ratio"
-msgstr ""
-
-#: ../qml/Main.qml:701
-msgid "The <b>title</b> to be shown in the app list"
-msgstr ""
-
-#: ../qml/Main.qml:706
+#: ../qml/Main.qml:664
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:706
+#: ../qml/Main.qml:664
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:707
+#: ../qml/Main.qml:665
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:707
+#: ../qml/Main.qml:665
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:708
+#: ../qml/Main.qml:666
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:708
+#: ../qml/Main.qml:666
 msgid "Launch an app"
+msgstr ""
+
+#: ../qml/Main.qml:695
+msgid "SVG or PNG icon. 1:1 ratio"
+msgstr ""
+
+#: ../qml/Main.qml:708
+msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
 #: ../qml/Main.qml:732 ../qml/Main.qml:733 ../qml/Main.qml:734
@@ -338,7 +349,7 @@ msgid "Create icon"
 msgstr ""
 
 #: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:480
+#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr ""
@@ -421,19 +432,19 @@ msgstr ""
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:209
+#: ../qml/pages/Home.qml:210
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:439
+#: ../qml/pages/Home.qml:435
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:439
+#: ../qml/pages/Home.qml:435
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Music.qml:158
+#: ../qml/pages/Music.qml:159
 msgid "Search your music"
 msgstr ""
 
@@ -445,16 +456,16 @@ msgstr ""
 msgid "Go to the page management to add feeds."
 msgstr ""
 
-#: ../qml/pages/Todo.qml:80
+#: ../qml/pages/Todo.qml:81
 msgid "New todo"
 msgstr ""
 
-#: ../qml/pages/Todo.qml:125 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
 #: ../qml/pages/rss/Settings.qml:173
 msgid "Delete"
 msgstr ""
 
-#: ../qml/pages/Videos.qml:158
+#: ../qml/pages/Videos.qml:159
 msgid "Search your video"
 msgstr ""
 
