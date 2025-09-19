@@ -56,3 +56,13 @@ Once clickable is installed you are ready to go.
 
 font used: https://www.keshikan.net/fonts-e.html
 
+### Fom 2.4.0 the branch develop and master have default framework is 24.04
+use `CLICKABLE_FRAMEWORK=ubuntu-touch-24.04-1.x clickable`
+if you switch from framwork you may need to execute the following command:
+`docker system prune -a --volumes`
+
+### for 22.04 framework 
+switch to develop-jammy and master-jammy
+
+
+

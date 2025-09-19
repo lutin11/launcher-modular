@@ -39,66 +39,72 @@ Page {
         Item {
             id: page1
 
-            property var emptyDescription:"";
+            property var emptyDescription:""
             // 2.3.3
-            property var details1: i18n.tr("Set how many calls to display!");
-            property var description1: i18n.tr("To do this, long press on the widget to access its configuration page.");
-            property var details2: i18n.tr("Set how many messages to display!");
-            property var description2: i18n.tr("To do this, long press on the widget to access its configuration page.");
-            property var details3: i18n.tr("Set how many events to display!");
-            property var description3: i18n.tr("To do this, long press on the widget to access its configuration page.");
-            property var details4: i18n.tr("Call redirection to phone app works!");
-            property var description4: i18n.tr("On call settings, set the option for 'When clicked' to 'Open the dialer with number'");
-            property var details5: i18n.tr("Message redirection to messaging app works!");
-            property var description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'");
-            property var details6: i18n.tr("Force the event list to refresh by double-clicking on the event widget!");
-            property var details7: i18n.tr("The event list shows event from current day!");
-            property var details8: i18n.tr("Clicking on the 'Alarm' widget opens the clock!");
-            property var details9: i18n.tr("Open the photo by clicking on it!");
+            property var details1: i18n.tr("Set how many calls to display!")
+            property var description1: i18n.tr("To do this, long press on the widget to access its configuration page.")
+            property var details2: i18n.tr("Set how many messages to display!")
+            property var description2: i18n.tr("To do this, long press on the widget to access its configuration page.")
+            property var details3: i18n.tr("Set how many events to display!")
+            property var description3: i18n.tr("To do this, long press on the widget to access its configuration page.")
+            property var details4: i18n.tr("Call redirection to phone app works!")
+            property var description4: i18n.tr("On call settings, set the option for 'When clicked' to 'Open the dialer with number'")
+            property var details5: i18n.tr("Message redirection to messaging app works!")
+            property var description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'")
+            property var details6: i18n.tr("Force the event list to refresh by double-clicking on the event widget!")
+            property var details7: i18n.tr("The event list shows event from current day!")
+            property var details8: i18n.tr("Clicking on the 'Alarm' widget opens the clock!")
+            property var details9: i18n.tr("Open the photo by clicking on it!")
             // 2.3.2
-            property var details10: i18n.tr("Enable Autostart");
-            property var description10: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart");
-            property var details11: i18n.tr("Correction for background display.");
-            property var details12: i18n.tr("Fix up 'Run a command in a terminal'");
+            property var details10: i18n.tr("Enable Autostart")
+            property var description10: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart")
+            property var details11: i18n.tr("Correction for background display.")
+            property var details12: i18n.tr("Fix up 'Run a command in a terminal'")
             // 2.3.1
-            property var details13: i18n.tr("Resumption of the application.");
-            property var description13: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.");
+            property var details13: i18n.tr("Resumption of the application.")
+            property var description13: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.")
             // 2.3.4
-            property var details14: i18n.tr("Addition of a new page for RSS feeds");
-            property var description14:"On Rss setting page, you can add a list of RSS feeds";
-            property var details15: i18n.tr("Update translations");
-            property var details16: i18n.tr("Improved 'Picture' page display performance");
+            property var details14: i18n.tr("Addition of a new page for RSS feeds")
+            property var description14: i18n.tr("On Rss setting page, you can add a list of RSS feeds")
+            property var details15: i18n.tr("Update translations")
+            property var details16: i18n.tr("Improved 'Picture' page display performance")
             // 2.3.5
-            property var details17: i18n.tr("Display contact name if exists on message and call widget");
-            property var details18: i18n.tr("Improved 'Picture' page display performance");
-            property var details19: i18n.tr("Update translations");
+            property var details17: i18n.tr("Display contact name if exists on message and call widget")
+            property var details18: i18n.tr("Improved 'Picture' page display performance")
+            property var details19: i18n.tr("Update translations")
             // 2.3.6
-            property var details20: i18n.tr("Fix launching Libertine applications");
-            property var details21: i18n.tr("Fix launching favorite applications");
-            property var details22: i18n.tr("Update weather on refreshing home page");
-            property var details23: i18n.tr("Added the ability to run a calculation from the search bar");
-            property var details24: i18n.tr("Update translations");
+            property var details20: i18n.tr("Fix launching Libertine applications")
+            property var details21: i18n.tr("Fix launching favorite applications")
+            property var details22: i18n.tr("Update weather on refreshing home page")
+            property var details23: i18n.tr("Added the ability to run a calculation from the search bar")
+            property var details24: i18n.tr("Update translations")
             // 2.3.6.1
-            property var details25: i18n.tr("Fix page management issue");
-            property var description25:"This is a hotfix release, as 'Page management' did not work anymore. Please feel free to report any issues throw https://github.com/lutin11/launcher-modular/issues or on Ubports forum";
+            property var details25: i18n.tr("Fix page management issue")
+            property var description25:i18n.tr("This is a hotfix release, as 'Page management' did not work anymore. Please feel free to report any issues throw https://github.com/lutin11/launcher-modular/issues or on Ubports forum")
             // 2.3.7
-            property var details26: i18n.tr("Add 'Music' page");
-            property var details27: i18n.tr("Add 'Video' page");
-            property var details28: i18n.tr("Corrected display of contact names");
-            property var details29: i18n.tr("Added filter on received messages");
-            property var details30: i18n.tr("Correction of home setting not displayed");
-            property var details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்");
-            property var details32: i18n.tr("Update Arabic translations thanks to Salah Khani");
+            property var details26: i18n.tr("Add 'Music' page")
+            property var details27: i18n.tr("Add 'Video' page")
+            property var details28: i18n.tr("Corrected display of contact names")
+            property var details29: i18n.tr("Added filter on received messages")
+            property var details30: i18n.tr("Correction of home setting not displayed")
+            property var details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்")
+            property var details32: i18n.tr("Update Arabic translations thanks to Salah Khani")
             // 2.3.8
-            property var details33: i18n.tr("Fix issue '#5 Valid RSS Feeds not accepted'");
+            property var details33: i18n.tr("Fix issue '#5 Valid RSS Feeds not accepted'")
             // 2.3.9
-            property var details34: i18n.tr("change framework to 22.04");
+            property var details34: i18n.tr("change framework to 22.04")
+            // 2.4.0
+            property var details35: i18n.tr("change framework to 24.04")
+            // 2.4.1
+            property var details36: i18n.tr("fixe superimposed pages at start up")
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.4.1", date: "2025-09-19", details: details36, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.0", date: "2025-09-18", details: details35, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.9", date: "2025-05-09", details: details34, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.8", date: "2025-05-09", details: details33, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.7", date: "2025-01-13", details: details26, description: emptyDescription});

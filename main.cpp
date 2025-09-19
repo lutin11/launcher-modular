@@ -10,14 +10,16 @@
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication *app = new QGuiApplication(argc, (char**)argv);
-    app->setApplicationName("launchermodular.lut11");
-    QQmlEngine *engine = new QQmlEngine(app);
+    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+
+    QGuiApplication app(argc, argv);
+    app.setApplicationName("launchermodular.lut11");
+    QQmlEngine engine;
 
     // Set global debug property
     bool debug = false; // true to enable debug
-    engine->rootContext()->setContextProperty("DEBUG_MODE", debug);
-    engine->addImportPath(QStringLiteral("/usr/lib/aarch64-linux-gnu/lomiri/qml/"));
+    engine.rootContext()->setContextProperty("DEBUG_MODE", debug);
+    engine.addImportPath(QStringLiteral("/usr/lib/aarch64-linux-gnu/lomiri/qml/"));
 
     int fontId = QFontDatabase::addApplicationFont(":/fonts/DSEG7Classic-Regular.ttf");
     if (fontId == -1) {
@@ -31,11 +33,10 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(":/fonts/DSEG7Classic-Light.ttf");
     QFontDatabase::addApplicationFont(":/fonts/DSEG7Classic-LightItalic.ttf");
 
-    QQuickView *view = new QQuickView(engine, nullptr);
+    QQuickView view(&engine, nullptr);
+    view.setSource(QStringLiteral("%1/qml/Main.qml").arg(app.applicationDirPath()));
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
+    view.show();
 
-    view->setSource(QStringLiteral("%1/qml/Main.qml").arg(app->applicationDirPath()));
-    view->setResizeMode(QQuickView::SizeRootObjectToView);
-    view->show();
-
-    return app->exec();
+    return app.exec();
 }

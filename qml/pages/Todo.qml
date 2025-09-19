@@ -60,6 +60,7 @@ Item {
 
             TextField {
                 id: todoField
+                focus: false
                 anchors {
                     left: iconNote.right
                     right: parent.right
@@ -82,11 +83,6 @@ Item {
                     font.pixelSize: units.gu(1.5)
                 }
                 inputMethodHints: Qt.ImhNoPredictiveText
-                onVisibleChanged: {
-                    if (visible) {
-                        forceActiveFocus()
-                    }
-                }
                 Keys.onReturnPressed: {
                     TodoModel.save(todoField.text)
                     todoField.text = ""

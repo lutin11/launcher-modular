@@ -5,8 +5,8 @@ import QtQml.Models 2.2
 ListModel {
 	id:feedModel
 	dynamicRoles:true
-	property var sortOrder: appSettings.mainFeedSortAsc;
-    property bool sorting: false;
+	property var sortOrder: appSettings.mainFeedSortAsc
+    property bool sorting: false
 	
 	property var specialSort: {
 		'updated' : function(itm) {return Date.parse(itm);}
