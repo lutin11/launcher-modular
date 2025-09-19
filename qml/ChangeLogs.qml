@@ -95,12 +95,15 @@ Page {
             property var details34: i18n.tr("change framework to 22.04")
             // 2.4.0
             property var details35: i18n.tr("change framework to 24.04")
+            // 2.4.1
+            property var details36: i18n.tr("fixe superimposed pages at start up")
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.4.1", date: "2025-09-19", details: details36, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.0", date: "2025-09-18", details: details35, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.9", date: "2025-05-09", details: details34, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.8", date: "2025-05-09", details: details33, description: emptyDescription});
