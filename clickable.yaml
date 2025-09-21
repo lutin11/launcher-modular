@@ -5,4 +5,7 @@ builder:
     "cmake"
 kill:
     "launchermodular.lut11"
-dependencies_target: []
+dependencies_target: [
+    "libpam0g-dev",
+    "libgsettings-qt-dev"
+    ]
