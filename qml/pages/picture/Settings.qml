@@ -28,7 +28,7 @@ Page {
         Flickable {
             id: flickablePictureSettings
             anchors.fill: parent
-            contentHeight: settingsColumn.height
+            contentHeight: pictureColumnSettings.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
 

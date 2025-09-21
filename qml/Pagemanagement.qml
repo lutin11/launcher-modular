@@ -245,7 +245,7 @@ Page {
                 onPressAndHold: ListView.view.ViewItems.dragMode = !ListView.view.ViewItems.dragMode
 
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"),{pageIndex:index});
+                    pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"));
                 }
 
 
