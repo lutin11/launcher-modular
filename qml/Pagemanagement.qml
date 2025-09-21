@@ -3,9 +3,9 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import QtQuick.Controls 2.2
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import "pages"
-import Lomiri.Components.Popups 1.3
+import Ubuntu.Components.Popups 1.3
 import Qt.labs.folderlistmodel 2.12
 import MySettings 1.0
 
@@ -167,7 +167,7 @@ Page {
                     visible: false
                 }
 
-                LomiriShape {
+                UbuntuShape {
                     source: imgIcons
                     anchors.topMargin: units.gu(6)
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -175,7 +175,7 @@ Page {
                     width: parent.width-units.gu(2)
                     height: parent.height-units.gu(6)
                     radius : "medium"
-                    sourceFillMode: LomiriShape.PreserveAspectCrop
+                    sourceFillMode: UbuntuShape.PreserveAspectCrop
 
                     Rectangle {
                         anchors.fill: parent

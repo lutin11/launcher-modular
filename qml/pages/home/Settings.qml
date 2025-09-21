@@ -1,10 +1,10 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
-import Lomiri.Components 1.3
-import Lomiri.Components.ListItems 1.3 as ListItemHeader
+import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3 as ListItemHeader
 import AppHandler 1.0
-import Lomiri.Components.Popups 1.3
+import Ubuntu.Components.Popups 1.3
 
 Page {
     id: pageSettingsHome
@@ -53,7 +53,7 @@ Page {
                         id: homeListItemLayout
                         title.text: elem.name
                         title.color: "#111111"
-                        LomiriShape {
+                        UbuntuShape {
                             source: Image {
                                 id: screenshotAppFavorite
                                 source: elem.icon
@@ -118,7 +118,7 @@ Page {
                         ListItemLayout {
                             id: modelLayout
                             title.text: "<font color=\"#ffffff\">"+name+"</font>"
-                            LomiriShape {
+                            UbuntuShape {
                                 source: Image {
                                     id: screenshotAppFavorite
                                     source: icon

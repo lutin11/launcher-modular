@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import Lomiri.Connectivity 1.0
+import Ubuntu.Connectivity 1.0
 import U1db 1.0 as U1db
 
 Item {

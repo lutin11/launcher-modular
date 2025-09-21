@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import QtContacts 5.0
 import QtGraphicalEffects 1.12
 
@@ -103,10 +103,10 @@ Column {
                         }
                     }
 
-                    LomiriShape {
+                    UbuntuShape {
                         source: screenshotContactSearch
                         anchors.right: parent.right
-                        aspect: LomiriShape.Flat
+                        aspect: UbuntuShape.Flat
                         width: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                         height: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                         radius : "medium"

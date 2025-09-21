@@ -1,9 +1,9 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import Qt.labs.folderlistmodel 2.12
-import Lomiri.Thumbnailer 0.1
+import Ubuntu.Thumbnailer 0.1
 
 
 Item {
@@ -59,12 +59,12 @@ Item {
                     cache: false
                 }
 
-                LomiriShape {
+                UbuntuShape {
                     source: imgIcons
                     width: parent.width
                     height: parent.height
                     radius : "medium"
-                    sourceFillMode: LomiriShape.PreserveAspectCrop
+                    sourceFillMode: UbuntuShape.PreserveAspectCrop
                 }
 
                 MouseArea {

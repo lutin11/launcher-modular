@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import QtQuick.Controls 2.2
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import "pages"
 
 Page {
@@ -262,7 +262,7 @@ Page {
                             width: parent.width
                             height: units.gu(14)
 
-                            LomiriShape {
+                            UbuntuShape {
                                 radius: "medium"
                                 source: Image {
                                     source: Qt.resolvedUrl("../assets/logo.svg");
@@ -294,7 +294,7 @@ Page {
                             height: units.gu(2)
 
                             Row {
-                                LomiriShape {
+                                UbuntuShape {
                                     id: thumbupLeft
                                     radius: "medium"
                                     source: Image {
@@ -313,7 +313,7 @@ Page {
                                     color: "#ffffff"
                                 }
 
-                                LomiriShape {
+                                UbuntuShape {
                                     radius: "medium"
                                     source: Image {
                                         source: Qt.resolvedUrl("../assets/thumbup-full.svg");

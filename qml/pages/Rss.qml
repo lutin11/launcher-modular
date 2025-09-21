@@ -1,9 +1,9 @@
 import QtQuick 2.12
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import QtQuick.Controls 2.2 as QControls
 import QtQuick.XmlListModel 2.12
 import QtQml.Models 2.2
-import Lomiri.Connectivity 1.0
+import Ubuntu.Connectivity 1.0
 
 import "../components"
 import "../helpers"

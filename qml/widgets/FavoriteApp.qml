@@ -1,10 +1,10 @@
 import QtQuick 2.12
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import QtGraphicalEffects 1.12
 import MySettings 1.0
 import AppHandler 1.0
 import QtQuick.Controls 2.2
-import Lomiri.Components.Popups 1.3
+import Ubuntu.Components.Popups 1.3
 
 Column {
     id: widgetFavoriteApps
@@ -105,10 +105,10 @@ Column {
                 }
             }
 
-            LomiriShape {
+            UbuntuShape {
                 source: screenshotAppFavorite
                 anchors.horizontalCenter: parent.horizontalCenter
-                aspect: LomiriShape.Flat
+                aspect: UbuntuShape.Flat
                 width: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                 height: if (launchermodular.settings.iconStyle == "default") { units.gu(8)*launchermodular.settings.iconSize;}else{ units.gu(0);}
                 radius : "medium"
