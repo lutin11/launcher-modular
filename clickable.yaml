@@ -6,10 +6,6 @@ builder:
 kill:
     "launchermodular.lut11"
 dependencies_target: [
-    "qml-module-lomiri-history",
-    "qml-module-lomiri-contacts",
-    "qml-module-lomiri-addressbook",
     "libpam0g-dev",
-    "libgsettings-qt-dev",
-    "qml-module-gsettings"
-    ]   
+    "libgsettings-qt-dev"
+    ]

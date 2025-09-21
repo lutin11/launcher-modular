@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <QString>
 #include <QStringList>
 #include <QFile>
@@ -175,21 +176,16 @@ void AppHandler::permaFilter(const QString& key, const QString& regexp) {
     }
     emit appinfoChanged();
 }
+
 void AppHandler::sort(const QString& key, bool revertsort) {
-    bool ordered;
-    do {
-      ordered = true;
-      for(int i=0;i< _appinfos.size()-1;i++) {
-        if( _appinfos[i]->getProp(key) > _appinfos[i+1]->getProp(key)) {
-          ordered = false;
-          _appinfos.swapItemsAt(i,i+1);
-        }
-      }
-    }
-    while (!ordered);
+    std::sort(_appinfos.begin(), _appinfos.end(),
+              [=](AppInfo* a, AppInfo* b) {
+                  return revertsort
+                      ? a->getProp(key) > b->getProp(key)
+                      : a->getProp(key) < b->getProp(key);
+              });
     emit appinfoChanged();
 }
-
 
 void AppHandler::tempFilter(const QString& keys, const QString& regexp, bool caseinsensitive) {
     //this disable fav
