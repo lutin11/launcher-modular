@@ -63,7 +63,7 @@ Page {
                     Row {
                         id: calendarLimitOfDaySetting
                         anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: calendarLimitOfDay.right
+                        anchors.left: calendarLimitOfDayLabel.right
                         anchors.leftMargin: units.gu(2)
                         anchors.right: parent.right
                         spacing: units.gu(2)

@@ -1,29 +1,30 @@
 name: Clickable Build
 
-on: [ push, pull_request ]
+on: [push, pull_request]
 
 jobs:
   build:
     strategy:
       matrix:
         arch: [amd64, arm64, armhf]
+        framework: [ubuntu-touch-24.04-1.x, ubuntu-sdk-20.04]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
       - name: Install clickable
-        run: |
-          python3 -m pip install clickable-ut --upgrade
+        run: python3 -m pip install clickable-ut --upgrade
+
       - name: Build
         run: |
-          CLICKABLE_FRAMEWORK=ubuntu-touch-24.04-1.x \
-            clickable build --libs --app --arch ${{ matrix.arch }}
+          CLICKABLE_FRAMEWORK=${{ matrix.framework }} clickable build --libs --app --arch ${{ matrix.arch }}
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Launcher-modular_${{ matrix.arch }}
+          name: Launcher-modular_${{ matrix.framework }}_${{ matrix.arch }}
           path: build/*/app/*.click
           if-no-files-found: error
