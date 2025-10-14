@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 11:49+0000\n"
+"POT-Creation-Date: 2025-10-14 21:03+0000\n"
 "PO-Revision-Date: 2023-11-11 09:34+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -352,7 +352,7 @@ msgstr ""
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:143 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"

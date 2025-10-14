@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-14 19:48+0000\n"
+"POT-Creation-Date: 2025-10-14 21:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -350,7 +350,7 @@ msgstr ""
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:143 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"

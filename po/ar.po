@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 11:49+0000\n"
+"POT-Creation-Date: 2025-10-14 21:03+0000\n"
 "PO-Revision-Date: 2024-11-04 14:59+0000\n"
 "Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -377,7 +377,7 @@ msgstr "مثال <b>الإجراء</b>:"
 msgid "Create icon"
 msgstr "إنشاء أيقونة"
 
-#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:143 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"

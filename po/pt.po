@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 11:49+0000\n"
+"POT-Creation-Date: 2025-10-14 21:03+0000\n"
 "PO-Revision-Date: 2023-02-08 13:38+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/ubports/"
@@ -250,9 +250,9 @@ msgstr ""
 "Software Foundation, either version 3 of the License, or (at your option) "
 "any later version. This program is distributed in the hope that it will be "
 "useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> for more details."
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> for more details."
 
 #: ../qml/ChangeLogs.qml:368
 msgid "SOURCE"
@@ -365,7 +365,7 @@ msgstr "<b>Action</b> examplo: "
 msgid "Create icon"
 msgstr "Criar ícone"
 
-#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:143 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"

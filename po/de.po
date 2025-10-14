@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 11:49+0000\n"
+"POT-Creation-Date: 2025-10-14 21:03+0000\n"
 "PO-Revision-Date: 2024-11-02 12:20+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -256,9 +256,9 @@ msgstr ""
 "Lizenz, oder (nach deiner Entscheidung) einer neueren Version. Das Programm "
 "wird verteilt in der Hoffnung, dass es nützlich ist, aber OHNE JEDWEDE "
 "GARANTIE; ohne auch nur eine implizierte Garantie der VERKÄUFLICHKEIT oder "
-"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> für weitere Details."
+"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> für weitere Details."
 
 #: ../qml/ChangeLogs.qml:368
 msgid "SOURCE"
@@ -375,7 +375,7 @@ msgstr "<b>Aktion</b> Beispiel: "
 msgid "Create icon"
 msgstr "Icon erstellen"
 
-#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:143 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"

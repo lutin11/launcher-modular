@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 11:49+0000\n"
+"POT-Creation-Date: 2025-10-14 21:03+0000\n"
 "PO-Revision-Date: 2023-02-22 13:39+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -250,8 +250,8 @@ msgstr ""
 "Licentie of (naar jouw keuze) elke latere versie. Dit programma is "
 "gedistribueerd in de hoop dat het nuttig zal zijn maar ZONDER ENIGE "
 "GARANTIE; zelfs zonder de impliciete garanties die GEBRUIKELIJK ZIJN IN DE "
-"HANDEL of voor BRUIKBAARHEID VOOR EEN SPECIFIEK DOEL. Zie de <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.nl.html\"> GNU Algemene Publike "
+"HANDEL of voor BRUIKBAARHEID VOOR EEN SPECIFIEK DOEL. Zie de <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.nl.html\"> GNU Algemene Publike "
 "Licentie </a> voor meer details."
 
 #: ../qml/ChangeLogs.qml:368
@@ -368,7 +368,7 @@ msgstr "<b>Actie</b>voorbeeld: "
 msgid "Create icon"
 msgstr "Pictogram maken"
 
-#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:143 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"

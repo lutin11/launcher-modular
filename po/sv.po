@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 11:49+0000\n"
+"POT-Creation-Date: 2025-10-14 21:03+0000\n"
 "PO-Revision-Date: 2023-09-07 04:43+0000\n"
 "Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -250,9 +250,9 @@ msgstr ""
 "Software Foundation, antingen version 3 av licensen, eller (efter eget val) "
 "vilken senare version som helst. Detta program distribueras i hopp om att "
 "det ska vara användbart, men UTAN NÅGON GARANTI; utan ens den underförstådda "
-"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> för mer information."
+"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> för mer information."
 
 #: ../qml/ChangeLogs.qml:368
 msgid "SOURCE"
@@ -365,7 +365,7 @@ msgstr "<b>Åtgärd</b> exempel: "
 msgid "Create icon"
 msgstr "Skapa ikon"
 
-#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:129 ../qml/Settings.qml:47
+#: ../qml/Main.qml:790 ../qml/Pagemanagement.qml:143 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
