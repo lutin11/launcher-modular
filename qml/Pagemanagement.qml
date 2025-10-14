@@ -53,6 +53,12 @@ Page {
                 flickableDirection: Flickable.VerticalFlick
                 clip: true
 
+                Rectangle {
+                    anchors.fill: parent
+                    color: "white"
+                    z: -1
+                }
+
                 ScrollBar.vertical: ScrollBar {
                     active: true;
 
@@ -72,7 +78,7 @@ Page {
                     FolderListModel {
                         id: folderModelCustom
                         nameFilters: ["*.qml"]
-                        folder: MySettings.getHomeLocation()+"/.launchermodular/pages/"
+                        folder: MySettings.getHomeLocation() + "/.launchermodular/pages/"
                         showDirs: false
                     }
 
@@ -81,15 +87,19 @@ Page {
                             height: modelLayout2.height + (divider.visible ? divider.height : 0)
                             id: modelLayout2
                             title.text: fileBaseName
-                            title.color: "#E95420"
+                            title.color: "#111111"
                         }
                         divider.visible: false
                         onClicked: {
-                            launchermodular.pageModel.append({"name": fileName, "icon": MySettings.getHomeLocation()+"/.launchermodular/pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": MySettings.getHomeLocation()+"/.launchermodular/pages/"});
-                            PopupUtils.close(listPageDialogue);
+                            launchermodular.pageModel.append({
+                                "name": fileName,
+                                "icon": MySettings.getHomeLocation() + "/.launchermodular/pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
+                                "data": {},
+                                "directory": MySettings.getHomeLocation() + "/.launchermodular/pages/"
+                            })
+                            PopupUtils.close(listPageDialogue)
                         }
                     }
-
                 }
 
                 ListView {
@@ -112,25 +122,30 @@ Page {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3
                             title.text: fileBaseName
-                            title.color: "#E95420"
+                            title.color: "#111111"
                         }
                         divider.visible: false
                         visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0} else {true}
                         onClicked: {
-                            launchermodular.pageModel.append({"name": fileName, "icon": "pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": "pages/"});
-                            PopupUtils.close(listPageDialogue);
+                            launchermodular.pageModel.append({
+                                "name": fileName,
+                                "icon": "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
+                                "data": {},
+                                "directory": "pages/"
+                            })
+                            PopupUtils.close(listPageDialogue)
                         }
                     }
-
                 }
             }
 
             Button {
                 text: i18n.tr("Cancel")
                 color: "#E95420"
-                onClicked: PopupUtils.close(listPageDialogue);
+                onClicked: PopupUtils.close(listPageDialogue)
             }
         }
+
     }
 
     Rectangle {
