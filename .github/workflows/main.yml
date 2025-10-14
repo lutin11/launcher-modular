@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         arch: [amd64, arm64, armhf]
-        framework: [ubuntu-touch-24.04-1.x, ubuntu-sdk-20.04]
+        framework: [ubuntu-sdk-16.04]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

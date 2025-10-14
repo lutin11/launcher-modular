@@ -1,6 +1,6 @@
-import QtQuick 2.12
+import QtQuick 2.4
 import Ubuntu.Components 1.3
-import QtGraphicalEffects 1.12
+import QtGraphicalEffects 1.0
 import CalculatorHelper 1.0
 
 Column {

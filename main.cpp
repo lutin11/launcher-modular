@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     // Set global debug property
     bool debug = false; // true to enable debug
     engine.rootContext()->setContextProperty("DEBUG_MODE", debug);
-    engine.addImportPath(QStringLiteral("/usr/lib/aarch64-linux-gnu/lomiri/qml/"));
+    engine.addImportPath(QStringLiteral("/usr/lib/aarch64-linux-gnu/ubuntu/qml/"));
 
     QQuickView view(&engine, nullptr);
     view.setSource(QStringLiteral("%1/qml/Main.qml").arg(app.applicationDirPath()));

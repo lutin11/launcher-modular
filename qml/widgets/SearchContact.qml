@@ -1,7 +1,7 @@
-import QtQuick 2.12
+import QtQuick 2.4
 import Ubuntu.Components 1.3
 import QtContacts 5.0
-import QtGraphicalEffects 1.12
+import QtGraphicalEffects 1.0
 
 Column {
     id: widgetSearchContacts

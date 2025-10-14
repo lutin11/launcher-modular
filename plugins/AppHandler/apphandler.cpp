@@ -95,8 +95,8 @@ void AppHandler::loadAppsFromDir(const QString& path)
       QTextStream filestream(&file);
       filestream.setCodec("UTF-8");
       _appinfos.append(new AppInfo(fileName.left(fileName.size() - QString(".desktop").size()), filestream.readAll()));
-      if(!_appinfos.last()->getProp("X-Lomiri-UAL-Source-Desktop").isEmpty()) {
-        QFile subfile(_appinfos.last()->getProp("X-Lomiri-UAL-Source-Desktop"));
+      if(!_appinfos.last()->getProp("X-Ubuntu-UAL-Source-Desktop").isEmpty()) {
+        QFile subfile(_appinfos.last()->getProp("X-Ubuntu-UAL-Source-Desktop"));
         subfile.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream subfilestream(&subfile);
         subfilestream.setCodec("UTF-8");

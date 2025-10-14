@@ -1,7 +1,7 @@
 #!/bin/bash
-launched=$(lomiri-app-list | grep launchermodular.lut11)
-appid=$(lomiri-app-launch-appids | grep launchermodular.lut11)
+launched=$(ubuntu-app-list | grep launchermodular.lut11)
+appid=$(ubuntu-app-launch-appids | grep launchermodular.lut11)
 if [ -n appid ]
 then
-    lomiri-app-launch $appid && tail --pid=$(lomiri-app-pid $appid) -f /dev/null
+    ubuntu-app-launch $appid && tail --pid=$(ubuntu-app-pid $appid) -f /dev/null
 fi

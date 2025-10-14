@@ -17,7 +17,7 @@ void LibertineWorker::run() {
         QProcess libertineProcess;
         libertineProcess.setProcessEnvironment(env);
 
-        libertineProcess.start("lomiri-app-launch", QStringList() << m_containerName + "_" + m_appName);
+        libertineProcess.start("ubuntu-app-launch", QStringList() << m_containerName + "_" + m_appName);
 
         if (!libertineProcess.waitForStarted()) {
             qDebug() << "Erreur : Failed to start application" << m_appName;

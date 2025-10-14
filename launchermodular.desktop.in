@@ -4,5 +4,5 @@ Exec=launchermodular
 Icon=assets/logo.svg
 Terminal=false
 Type=Application
-X-Lomiri-Touch=true
-X-Lomiri-Single-Instance=true
+X-Ubuntu-Touch=true
+X-Ubuntu-Single-Instance=true

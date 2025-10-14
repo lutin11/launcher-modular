@@ -153,7 +153,7 @@ Page {
                     }
 
                     moveDisplaced: Transition {
-                        LomiriNumberAnimation {
+                        UbuntuNumberAnimation {
                             property: "y"
                         }
                     }
