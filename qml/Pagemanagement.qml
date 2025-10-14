@@ -81,7 +81,7 @@ Page {
                             height: modelLayout2.height + (divider.visible ? divider.height : 0)
                             id: modelLayout2
                             title.text: fileBaseName
-                            title.color: "#111111"
+                            title.color: "#E95420"
                         }
                         divider.visible: false
                         onClicked: {
@@ -112,7 +112,7 @@ Page {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3
                             title.text: fileBaseName
-                            title.color: "#111111"
+                            title.color: "#E95420"
                         }
                         divider.visible: false
                         visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0} else {true}
