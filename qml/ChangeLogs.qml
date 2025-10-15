@@ -96,7 +96,7 @@ Page {
             // 2.4.0
             property var details35: i18n.tr("Change framework to 24.04")
             // 2.4.1
-            property var details36: i18n.tr("Fixe superimposed pages at start up")
+            property var details36: i18n.tr("Fix superimposed pages at start up")
             // 2.4.2
             property var details37: i18n.tr("The calendar limit of days is not settable")
 
