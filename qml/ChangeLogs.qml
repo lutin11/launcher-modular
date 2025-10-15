@@ -92,17 +92,20 @@ Page {
             // 2.3.8
             property var details33: i18n.tr("Fix issue '#5 Valid RSS Feeds not accepted'")
             // 2.3.9
-            property var details34: i18n.tr("change framework to 22.04")
+            property var details34: i18n.tr("Change framework to 22.04")
             // 2.4.0
-            property var details35: i18n.tr("change framework to 24.04")
+            property var details35: i18n.tr("Change framework to 24.04")
             // 2.4.1
-            property var details36: i18n.tr("fixe superimposed pages at start up")
+            property var details36: i18n.tr("Fixe superimposed pages at start up")
+            // 2.4.2
+            property var details37: i18n.tr("The calendar limit of days is not settable")
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.4.2", date: "2025-10-15", details: details37, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.1", date: "2025-09-19", details: details36, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.0", date: "2025-09-18", details: details35, description: emptyDescription});
                 changeLogModel.append({ version: "2.3.9", date: "2025-05-09", details: details34, description: emptyDescription});
