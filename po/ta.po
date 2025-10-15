@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-14 21:03+0000\n"
+"POT-Creation-Date: 2025-10-15 06:39+0000\n"
 "PO-Revision-Date: 2025-02-22 23:12+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -214,35 +214,39 @@ msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:95
-msgid "change framework to 22.04"
+msgid "Change framework to 22.04"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:97
-msgid "change framework to 24.04"
+msgid "Change framework to 24.04"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:99
-msgid "fixe superimposed pages at start up"
+msgid "Fix superimposed pages at start up"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:180
+#: ../qml/ChangeLogs.qml:101
+msgid "The calendar limit of days is not settable"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:183
 msgid "Version: "
 msgstr "பதிப்பு:"
 
-#: ../qml/ChangeLogs.qml:186
+#: ../qml/ChangeLogs.qml:189
 msgid " | Date: "
 msgstr "| தேதி:"
 
-#: ../qml/ChangeLogs.qml:312
+#: ../qml/ChangeLogs.qml:315
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 "இந்தப் பயன்பாட்டை நீங்கள் விரும்பினால், தயவுசெய்து அதைத் திறந்தகடையில் தரவரிசைப்படுத்தவும்"
 
-#: ../qml/ChangeLogs.qml:339
+#: ../qml/ChangeLogs.qml:342
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "உபுண்டு தொடுதலுக்கான ஒரு மட்டு துவக்கி"
 
-#: ../qml/ChangeLogs.qml:353
+#: ../qml/ChangeLogs.qml:356
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -261,23 +265,23 @@ msgstr ""
 "பொறுப்பு கூட இல்லாமல். மேலும் விவரங்களுக்கு <a href = 'https: //www.gnu.org/"
 "licenses/gpl-3.0.en.html'> குனு பொது பொது உரிமம் </a> ஐப் பார்க்கவும்."
 
-#: ../qml/ChangeLogs.qml:368
+#: ../qml/ChangeLogs.qml:371
 msgid "SOURCE"
 msgstr "மூலம்"
 
-#: ../qml/ChangeLogs.qml:368
+#: ../qml/ChangeLogs.qml:371
 msgid "ISSUES"
 msgstr "சிக்கல்கள்"
 
-#: ../qml/ChangeLogs.qml:383
+#: ../qml/ChangeLogs.qml:386
 msgid "Maintainer"
 msgstr "பராமரிப்பாளர்"
 
-#: ../qml/ChangeLogs.qml:397
+#: ../qml/ChangeLogs.qml:400
 msgid "Copyright"
 msgstr "பதிப்புரிமை"
 
-#: ../qml/ChangeLogs.qml:412
+#: ../qml/ChangeLogs.qml:415
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href='LAUNCHER MODULAR TRANSLATORS'> மட்டு துவக்கி மொழிபெயர்ப்பாளர்கள் </a>"
