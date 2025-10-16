@@ -6,6 +6,7 @@ import QtQuick.Controls 2.2
 import Lomiri.Components 1.3
 import "pages"
 import Lomiri.Components.Popups 1.3
+import Lomiri.Components.Themes 1.3
 import Qt.labs.folderlistmodel 2.12
 import MySettings 1.0
 
@@ -81,15 +82,18 @@ Page {
                             height: modelLayout2.height + (divider.visible ? divider.height : 0)
                             id: modelLayout2
                             title.text: fileBaseName
-                            title.color: "#111111"
                         }
                         divider.visible: false
                         onClicked: {
-                            launchermodular.pageModel.append({"name": fileName, "icon": MySettings.getHomeLocation()+"/.launchermodular/pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": MySettings.getHomeLocation()+"/.launchermodular/pages/"});
-                            PopupUtils.close(listPageDialogue);
+                            launchermodular.pageModel.append({
+                                "name": fileName,
+                                "icon": MySettings.getHomeLocation() + "/.launchermodular/pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
+                                "data": {},
+                                "directory": MySettings.getHomeLocation() + "/.launchermodular/pages/"
+                            })
+                            PopupUtils.close(listPageDialogue)
                         }
                     }
-
                 }
 
                 ListView {
@@ -112,23 +116,26 @@ Page {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3
                             title.text: fileBaseName
-                            title.color: "#111111"
                         }
                         divider.visible: false
                         visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0} else {true}
                         onClicked: {
-                            launchermodular.pageModel.append({"name": fileName, "icon": "pages/"+fileBaseName.toLowerCase()+"/assets/icon.svg", "data":{}, "directory": "pages/"});
-                            PopupUtils.close(listPageDialogue);
+                            launchermodular.pageModel.append({
+                                "name": fileName,
+                                "icon": "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
+                                "data": {},
+                                "directory": "pages/"
+                            })
+                            PopupUtils.close(listPageDialogue)
                         }
                     }
-
                 }
             }
 
             Button {
                 text: i18n.tr("Cancel")
-                color: "#E95420"
-                onClicked: PopupUtils.close(listPageDialogue);
+                color: Theme.palette.normal.overlaySecondaryText
+                onClicked: PopupUtils.close(listPageDialogue)
             }
         }
     }
@@ -195,7 +202,6 @@ Page {
                 Rectangle {
                     width: imgIcons.width;
                     height: namePage.contentHeight+units.gu(2)
-                    color: "#000000"
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: imgIcons.bottom
                     opacity: 0.8
@@ -208,7 +214,6 @@ Page {
                         width: parent.width;
                         text : name.split(".")[0]
                         wrapMode:Text.WordWrap
-                        color: "#ffffff"
                     }
                 }
 
