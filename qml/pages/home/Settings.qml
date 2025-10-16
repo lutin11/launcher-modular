@@ -5,6 +5,7 @@ import Ubuntu.Components 1.3
 import Ubuntu.Components.ListItems 1.3 as ListItemHeader
 import AppHandler 1.0
 import Ubuntu.Components.Popups 1.3
+import Ubuntu.Components.Themes 1.3
 
 Page {
     id: pageSettingsHome
@@ -52,7 +53,6 @@ Page {
                         height: homeListItemLayout.height + (divider.visible ? divider.height : 0)
                         id: homeListItemLayout
                         title.text: elem.name
-                        title.color: "#111111"
                         UbuntuShape {
                             source: Image {
                                 id: screenshotAppFavorite
@@ -78,7 +78,7 @@ Page {
 
             Button{
                 text: i18n.tr("Cancel")
-                color: "#E95420"
+                color: Theme.palette.normal.overlaySecondaryText
                 onClicked: PopupUtils.close(listAppDialog);
             }
 

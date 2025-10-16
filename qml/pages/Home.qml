@@ -1,17 +1,17 @@
-import QtQuick 2.4
+import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.0
+import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
-import Ubuntu.Components 1.3
+import Lomiri.Components 1.3
 import AppHandler 1.0
 import "../widgets"
 import QtQuick.Controls 2.2
-import Ubuntu.Components.Popups 1.3
+import Lomiri.Components.Popups 1.3
 import Terminalaccess 1.0
 import LibertineLauncher 1.0
 import CalculatorHelper 1.0
-import Ubuntu.Components.ListItems 1.3 as ListItem
-
+import Lomiri.Components.ListItems 1.3 as ListItem
+import Ubuntu.Components.Themes 1.3
 
 
 Item {
@@ -51,7 +51,7 @@ Item {
                     width: (parent.width/2)-units.gu(2)
                     background: Rectangle {
                         radius: units.gu(1.5)
-                        color: "#E95420"
+                        color: Theme.palette.normal.overlaySecondaryText
                     }
                     text: i18n.tr("Cancel")
                     onClicked: {
@@ -478,7 +478,7 @@ Item {
                                             width: (parent.width/2)-units.gu(2)
                                             background: Rectangle {
                                                 radius: units.gu(1.5)
-                                                color: "#E95420"
+                                                color: Theme.palette.normal.overlaySecondaryText
                                             }
                                             onClicked: {
                                                 onClicked: PopupUtils.close(appsDialogue);

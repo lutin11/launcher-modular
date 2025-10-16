@@ -1,14 +1,15 @@
-import QtQuick 2.4
+import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.0
+import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
-import Ubuntu.Components 1.3
-import Ubuntu.Components.ListItems 1.3 as ListItem
+import Lomiri.Components 1.3
+import Lomiri.Components.ListItems 1.3 as ListItem
 import MySettings 1.0
 import AppHandler 1.0
 import "pages"
 import QtQuick.Controls 2.2
 import Ubuntu.Components.Popups 1.3
+import Ubuntu.Components.Themes 1.3
 
 MainView {
     id: launchermodular
@@ -430,6 +431,7 @@ MainView {
                     Rectangle {
                         height: parent.height
                         Layout.fillWidth: true
+                        Layout.minimumWidth:units.gu(3)
                         id: recAddIcon
                         Icon {
                             id: iconWidget
@@ -462,6 +464,7 @@ MainView {
                     Rectangle {
                         height: parent.height
                         Layout.fillWidth: true
+                        Layout.minimumWidth:units.gu(3)
                         id: recPage
                         Icon {
                             id: iconPage
@@ -494,6 +497,7 @@ MainView {
                     Rectangle {
                         height: parent.height
                         Layout.fillWidth: true
+                        Layout.minimumWidth:units.gu(3)
                         id: recSettings
                         Icon {
                             id: iconSettings
@@ -526,6 +530,7 @@ MainView {
                     Rectangle {
                         height: parent.height
                         Layout.fillWidth: true
+                        Layout.minimumWidth:units.gu(3)
                         id: recFlashAuto
                         Icon {
                             id: iconAuto
@@ -558,6 +563,7 @@ MainView {
                     Rectangle {
                         height: parent.height
                         Layout.fillWidth: true
+                        Layout.minimumWidth:units.gu(3)
                         id: recHelp
                         Icon {
                             id: iconHelp
@@ -590,6 +596,7 @@ MainView {
                     Rectangle {
                         height: parent.height
                         Layout.fillWidth: true
+                        Layout.minimumWidth:units.gu(3)
                         id: recInfo
                         Icon {
                             id: iconAbout
@@ -628,7 +635,8 @@ MainView {
             Rectangle {
                 id: customIconDialogue
                 anchors.fill: parent
-                color: "#111111"
+                opacity: 0.9
+                color: Theme.palette.normal.overlay
                 visible: false
                 MouseArea {
                     anchors.fill: parent
@@ -639,9 +647,9 @@ MainView {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width*0.75
-                    height: parent.height*0.75
+                    height: parent.height*0.65
                     radius: units.gu(2)
-                    color: "#FFFFFF"
+                    color: Theme.palette.normal.background
                     MouseArea {
                         anchors.fill: parent
                     }
@@ -649,7 +657,8 @@ MainView {
                     Flickable {
                         id: flickable
                         anchors.fill: parent
-                        contentHeight: customIconColumn.childrenRect.height+units.gu(2)
+                        anchors.topMargin: units.gu(2)
+                        contentHeight: customIconColumn.height+units.gu(2)
                         flickableDirection: Flickable.VerticalFlick
                         clip: true
                         maximumFlickVelocity : units.gu(10)*100
@@ -661,15 +670,10 @@ MainView {
                             spacing: units.gu(2)
                             anchors.horizontalCenter: parent.horizontalCenter
                             property var modelCustom: [
-                              { title: "<font color=\"#6f6f6f\">"+i18n.tr("Website")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
-                              { title: "<font color=\"#ffffff\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
-                              { title: "<font color=\"#ffffff\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\"#6f6f6f\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
+                              { title: "<font color=\""+Theme.palette.normal.backgroundText+"\">"+i18n.tr("Website")+"</font>", descr: "<font color=\""+Theme.palette.normal.baseText+"\">"+i18n.tr("Open this URL in the web browser")+"</font>", style:"website" },
+                              { title: "<font color=\""+Theme.palette.normal.backgroundText+"\">"+i18n.tr("Terminal command")+"</font>", descr: "<font color=\""+Theme.palette.normal.baseText+"\">"+i18n.tr("Run a command in a terminal")+"</font>", style:"terminal" },
+                              { title: "<font color=\""+Theme.palette.normal.backgroundText+"\">"+i18n.tr("Launch app")+"</font>", descr: "<font color=\""+Theme.palette.normal.baseText+"\">"+i18n.tr("Launch an app")+"</font>", style:"appid" }
                             ]
-
-                            Item{
-                                width: parent.width
-                                height: units.gu(4)
-                            }
 
                             UbuntuShape {
                                 id: webAppIcon
@@ -680,7 +684,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 width: units.gu(15)
                                 height: width
-                                color: "#E95420"
+                                color: Theme.palette.normal.base
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
@@ -700,7 +704,7 @@ MainView {
                             TextField {
                                 id: appTitle
                                 width: parent.width
-                                color: "#111111"
+                                color: Theme.palette.normal.backgroundText
                                 anchors {
                                     left: parent.left
                                     right: parent.right
@@ -722,7 +726,7 @@ MainView {
                             TextField {
                                 id: appAction
                                 width: parent.width
-                                color: "#111111"
+                                color: Theme.palette.normal.backgroundText
                                 anchors {
                                     left: parent.left
                                     right: parent.right
@@ -737,7 +741,8 @@ MainView {
                             }
 
                             Item {
-                                height: units.gu(5)
+                                anchors.topMargin: units.gu(2)
+                                anchors.top: parent.bottom
                                 width: parent.width
                                 Button {
                                     anchors.left: parent.left
@@ -764,21 +769,16 @@ MainView {
                                     onClicked: {
 
                                         if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "website"){ okButton.actionIcon = "browser:///"+appAction.text }
-
                                         if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
-
                                         if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
-
-                                        launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon});
-
-                                        launchermodular.settings.customIcon = launchermodular.getCustomIconArray();
-
+                                        launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon})
+                                        launchermodular.settings.customIcon = launchermodular.getCustomIconArray()
                                         AppHandler.sort();
 
-                                        launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
-                                        appTitle.text = "";
-                                        okButton.actionIcon = "";
-                                        appAction.text = "";
+                                        launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg"
+                                        appTitle.text = ""
+                                        okButton.actionIcon = ""
+                                        appAction.text = ""
 
                                         customIconDialogue.visible = false
 
@@ -787,21 +787,27 @@ MainView {
 
                                 Button{
                                     anchors.right: parent.right
-                                    text: i18n.tr("Cancel")
                                     height: units.gu(4)
                                     width: (parent.width/2)-units.gu(2)
+                                    contentItem: Text {
+                                        text: i18n.tr("Cancel")
+                                        font: okButton.font
+                                        color: Theme.palette.normal.overlay
+                                        horizontalAlignment: Text.AlignHCenter
+                                        verticalAlignment: Text.AlignVCenter
+                                        elide: Text.ElideRight
+                                    }
                                     background: Rectangle {
                                         radius: units.gu(1.5)
-                                        color: "#E95420"
+                                        color: Theme.palette.normal.overlaySecondaryText
                                     }
 
                                     onClicked: {
-                                        launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg";
-                                        appTitle.text = "";
-                                        okButton.actionIcon = "";
-                                        appAction.text = "";
+                                        launchermodular.iconCustomUrl = "../assets/placeholder-app-icon.svg"
+                                        appTitle.text = ""
+                                        okButton.actionIcon = ""
+                                        appAction.text = ""
                                         customIconDialogue.visible = false
-
                                     }
 
                                 }

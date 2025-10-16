@@ -63,9 +63,9 @@ Page {
                     anchors.topMargin: units.gu(2)
                     model: settingsColumn.model
                     delegate: OptionSelectorDelegate {
-                                property var item: model.modelData ? model.modelData : model
-                                text: item.title
-                                subText: item.descr
+                        property var item: model.modelData ? model.modelData : model
+                        text: item.title
+                        subText: item.descr
                     }
                     onSelectedIndexChanged: {
                         launchermodular.settings.widgetFavoriteContactClick = model[selectedIndex].style

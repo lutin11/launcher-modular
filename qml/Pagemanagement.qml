@@ -1,11 +1,12 @@
-import QtQuick 2.4
+import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.0
+import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import QtQuick.Controls 2.2
-import Ubuntu.Components 1.3
+import Lomiri.Components 1.3
 import "pages"
 import Ubuntu.Components.Popups 1.3
+import Ubuntu.Components.Themes 1.3
 import Qt.labs.folderlistmodel 2.12
 import MySettings 1.0
 
@@ -87,7 +88,6 @@ Page {
                             height: modelLayout2.height + (divider.visible ? divider.height : 0)
                             id: modelLayout2
                             title.text: fileBaseName
-                            title.color: "#111111"
                         }
                         divider.visible: false
                         onClicked: {
@@ -122,7 +122,6 @@ Page {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3
                             title.text: fileBaseName
-                            title.color: "#111111"
                         }
                         divider.visible: false
                         visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0} else {true}
@@ -141,7 +140,7 @@ Page {
 
             Button {
                 text: i18n.tr("Cancel")
-                color: "#E95420"
+                color: Theme.palette.normal.overlaySecondaryText
                 onClicked: PopupUtils.close(listPageDialogue)
             }
         }
@@ -210,7 +209,6 @@ Page {
                 Rectangle {
                     width: imgIcons.width;
                     height: namePage.contentHeight+units.gu(2)
-                    color: "#000000"
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: imgIcons.bottom
                     opacity: 0.8
@@ -223,7 +221,6 @@ Page {
                         width: parent.width;
                         text : name.split(".")[0]
                         wrapMode:Text.WordWrap
-                        color: "#ffffff"
                     }
                 }
 
