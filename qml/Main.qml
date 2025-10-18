@@ -1,9 +1,9 @@
-import QtQuick 2.12
+import QtQuick 2.4
 import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.12
+import QtGraphicalEffects 1.0
 import Qt.labs.settings 1.0
-import Lomiri.Components 1.3
-import Lomiri.Components.ListItems 1.3 as ListItem
+import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3 as ListItem
 import MySettings 1.0
 import AppHandler 1.0
 import "pages"
