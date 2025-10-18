@@ -11,6 +11,7 @@ import Terminalaccess 1.0
 import LibertineLauncher 1.0
 import CalculatorHelper 1.0
 import Lomiri.Components.ListItems 1.3 as ListItem
+import Lomiri.Components.Themes 1.3
 
 
 
@@ -51,7 +52,7 @@ Item {
                     width: (parent.width/2)-units.gu(2)
                     background: Rectangle {
                         radius: units.gu(1.5)
-                        color: "#E95420"
+                        color: Theme.palette.normal.overlaySecondaryText
                     }
                     text: i18n.tr("Cancel")
                     onClicked: {
@@ -478,7 +479,7 @@ Item {
                                             width: (parent.width/2)-units.gu(2)
                                             background: Rectangle {
                                                 radius: units.gu(1.5)
-                                                color: "#E95420"
+                                                color: Theme.palette.normal.overlaySecondaryText
                                             }
                                             onClicked: {
                                                 onClicked: PopupUtils.close(appsDialogue);
