@@ -99,12 +99,15 @@ Page {
             property var details36: i18n.tr("Fix superimposed pages at start up")
             // 2.4.2
             property var details37: i18n.tr("The calendar limit of days is not settable")
+            // 2.4.3
+            property var details38: i18n.tr("Fixup theme not well manage")
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.4.3", date: "2025-10-18", details: details38, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.2", date: "2025-10-15", details: details37, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.1", date: "2025-09-19", details: details36, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.0", date: "2025-09-18", details: details35, description: emptyDescription});
