@@ -9,7 +9,19 @@ import QtQuick.Window 2.10
 Page {
     id: clockSettingsPicture
 
-    property int maxFontPixelSize: 10 // Default, will be updated dynamically
+    //property int maxFontPixelSize: 10 // Default, will be updated dynamically
+
+    function updateTime() {
+        const date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+
+        // Format as hh:mm:ss
+        digitalClock.text = launchermodular.settings.clockHHMMSS
+                ? `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+                : `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    }
 
     header: PageHeader {
         id: headerSettings
@@ -43,7 +55,7 @@ Page {
 
                 ListItemHeader.Header {
                     id: titleCalendarManagement
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'Music' page")+"</font>"
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'Clock' page")+"</font>"
                 }
 
                 Text {
@@ -64,20 +76,12 @@ Page {
                     text: if(launchermodular.settings.clockHHMMSS) {"88:88:88"} else {"88:88"}
                 }
                 Timer {
-                    interval: if(launchermodular.settings.clockHHMMSS) {1000} else {60000}
+                    id: timer
+                    interval: if(launchermodular.settings.clockHHMMSS) {1000} else {1000} //60000
                     running: true
                     repeat: true
                     onTriggered: {
-                        // Update the time
-                        const date = new Date();
-                        let hours = date.getHours();
-                        let minutes = date.getMinutes();
-                        let seconds = date.getSeconds();
-
-                        // Format as hh:mm:ss
-                        digitalClock.text = launchermodular.settings.clockHHMMSS
-                                ? `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
-                                : `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                        updateTime();
                     }
                 }
                 
@@ -125,13 +129,6 @@ Page {
                         }
                     }
                 }
-                
-                property var fontTypeModel: [
-                    { name: "<font color=\"#ffffff\">i18n.tr('Bold')</font>", value: "#DSEG7Classic-Bold"},
-                    { name: "<font color=\"#ffffff\">18n.tr('BoldItalic')</font>", value: "DSEG7Classic-BoldItalic"},
-                    { name: "<font color=\"#ffffff\">18n.tr('Italic')</font>", value: "DSEG7Classic-Italic"},
-                    { name: "<font color=\"#ffffff\">18n.tr('Regular')</font>", value: "DSEG7Classic-Regular"}
-                ]
 
                 ListItemHeader.ItemSelector {
                     id: fontTypeList
@@ -141,10 +138,10 @@ Page {
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(1)
                     model: [
-                    { name: "<font color=\"#ffffff\">i18n.tr('Bold')</font>", value: "#DSEG7Classic-Bold"},
-                    { name: "<font color=\"#ffffff\">18n.tr('BoldItalic')</font>", value: "DSEG7Classic-BoldItalic"},
-                    { name: "<font color=\"#ffffff\">18n.tr('Italic')</font>", value: "DSEG7Classic-Italic"},
-                    { name: "<font color=\"#ffffff\">18n.tr('Regular')</font>", value: "DSEG7Classic-Regular"}
+                    { name: "<font color=\"#ffffff\">"+i18n.tr("Bold")+"</font>", value: "#DSEG7Classic-Bold"},
+                    { name: "<font color=\"#ffffff\">"+i18n.tr("BoldItalic")+"</font>", value: "DSEG7Classic-BoldItalic"},
+                    { name: "<font color=\"#ffffff\">"+i18n.tr("Italic")+"</font>", value: "DSEG7Classic-Italic"},
+                    { name: "<font color=\"#ffffff\">"+i18n.tr("Regular")+"</font>", value: "DSEG7Classic-Regular"}
                     ]
                     delegate: OptionSelectorDelegate {
                         property var item: model.modelData ? model.modelData : model
@@ -217,6 +214,7 @@ Page {
                         } else {
                             launchermodular.settings.clockHHMMSS = false
                         }
+                        updateTime();
                     }
                     Component.onCompleted: {
                         if (launchermodular.settings.clockHHMMSS == true) {

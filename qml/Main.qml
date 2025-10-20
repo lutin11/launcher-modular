@@ -269,6 +269,12 @@ MainView {
                             Loader {
                                 id: pageLoader
                                 visible: index === view.currentIndex
+                                onLoaded: {
+                                    if (item) item.visible = visible
+                                }
+                                onVisibleChanged: {
+                                    if (item) item.visible = visible
+                                }
                                 sourceComponent: {
                                     var comp = Qt.createComponent(model.directory + model.name);
                                     if (comp.status === Component.Error) {
