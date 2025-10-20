@@ -54,6 +54,8 @@ Once clickable is installed you are ready to go.
 7. to launch on phone run clickable: `clickable` or on desktop: `clickable desktop`.
 8. to view logs: `clickable logs`
 
+font used: https://www.keshikan.net/fonts-e.html
+
 ### Fom 2.4.0 the branch develop and master have default framework is 24.04
 Regarding the version you want to buid on apply one of the following commands:
 ```

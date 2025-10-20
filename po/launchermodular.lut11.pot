@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 09:49+0000\n"
+"POT-Creation-Date: 2025-10-18 19:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -290,75 +290,75 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:396
+#: ../qml/Main.qml:406
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:450
+#: ../qml/Main.qml:460
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:483
+#: ../qml/Main.qml:493
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:516
+#: ../qml/Main.qml:526
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:549
+#: ../qml/Main.qml:559
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:582
+#: ../qml/Main.qml:592
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:615
+#: ../qml/Main.qml:625
 msgid "About"
 msgstr ""
 
-#: ../qml/Main.qml:673
+#: ../qml/Main.qml:683
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:673
+#: ../qml/Main.qml:683
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:674
+#: ../qml/Main.qml:684
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:674
+#: ../qml/Main.qml:684
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:675
+#: ../qml/Main.qml:685
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:675
+#: ../qml/Main.qml:685
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:709
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:712
+#: ../qml/Main.qml:722
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:736 ../qml/Main.qml:737 ../qml/Main.qml:738
+#: ../qml/Main.qml:746 ../qml/Main.qml:747 ../qml/Main.qml:748
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:750
+#: ../qml/Main.qml:760
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:793 ../qml/Pagemanagement.qml:136 ../qml/Settings.qml:47
+#: ../qml/Main.qml:803 ../qml/Pagemanagement.qml:136 ../qml/Settings.qml:47
 #: ../qml/pages/Home.qml:57 ../qml/pages/Home.qml:477
 #: ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
@@ -479,10 +479,10 @@ msgstr ""
 msgid "Search your video"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:15
-#: ../qml/pages/music/Settings.qml:13 ../qml/pages/picture/Settings.qml:11
-#: ../qml/pages/rss/Settings.qml:19 ../qml/pages/todo/Settings.qml:12
-#: ../qml/pages/videos/Settings.qml:12
+#: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:16
+#: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
+#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr ""
 
@@ -492,6 +492,34 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:46
+msgid "Settings for 'Clock' page"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:130
+msgid "Bold"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:131
+msgid "BoldItalic"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:132
+msgid "Italic"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:133
+msgid "Regular"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:188
+msgid "Font type : "
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:231
+msgid "Format : "
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:107
