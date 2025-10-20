@@ -5,11 +5,12 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
 import QtQuick.Window 2.10
+import QtSensors 5.12
 
 Page {
     id: clockSettingsPicture
 
-    //property int maxFontPixelSize: 10 // Default, will be updated dynamically
+    property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
 
     function updateTime() {
         const date = new Date();
@@ -36,6 +37,7 @@ Page {
             }
         ]
     }
+
     Rectangle {
         id:clocksettings
         anchors.fill: parent
@@ -66,7 +68,7 @@ Page {
                     anchors.leftMargin: units.gu(1)
                     anchors.rightMargin: units.gu(1)
                     font.family: launchermodular.settings.clockFontFamily
-                    font.pixelSize: launchermodular.settings.clockFontSize
+                    font.pixelSize: launchermodular.settings.clockFontSize * pixelDensityFactor
                     font.bold: launchermodular.settings.clockFontBold
                     font.italic: launchermodular.settings.clockFontItalic
                     color: launchermodular.settings.clockFontColor
@@ -77,7 +79,7 @@ Page {
                 }
                 Timer {
                     id: timer
-                    interval: if(launchermodular.settings.clockHHMMSS) {1000} else {1000} //60000
+                    interval: 1000
                     running: true
                     repeat: true
                     onTriggered: {
@@ -91,23 +93,15 @@ Page {
                     anchors.top: digitalClock.bottom
                     anchors.topMargin: units.gu(2)
                     anchors.horizontalCenter: parent.horizontalCenter;
-                    value: (launchermodular.settings.clockFontSize-24)/2.4
+                    value: launchermodular.settings.clockFontSize
                     minimumValue: 10.0
-                    maximumValue: 70.0
+                    maximumValue: 100.0
                     live: true
+                    onValueChanged: { launchermodular.settings.clockFontSize = sliderFontSize.value}
                     onPressedChanged: {
                         if (pressed) {
                             sliderFontSize.visible = true;
                         }
-                    }
-                }
-
-                TextMetrics {
-                    id: textMetrics
-                    font: digitalClock.font
-                    text: digitalClock.text
-                    onWidthChanged: {
-                        launchermodular.settings.clockFontSize = (2.4 * sliderFontSize.value) + 24
                     }
                 }
 
@@ -235,6 +229,18 @@ Page {
                     }
 
                 }
+
+                Text {
+                    id: digitalClockFontSize
+                    anchors.top: clockFormat.bottom
+                    anchors.topMargin: units.gu(2)
+                    anchors.horizontalCenter: parent.horizontalCenter;
+                    anchors.leftMargin: units.gu(1)
+                    anchors.rightMargin: units.gu(1)
+                    color: "#ffffff"
+                    text: launchermodular.settings.clockFontSize
+                }
+
             } // column
         } //flickable
     } //rectangle settings

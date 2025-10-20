@@ -8,10 +8,9 @@ import QtSensors 5.12
 Item {
     id: clock
 
-    property real minFontSize: 10
-    property real maxFontSize: 60
     property int currentOrientation: Qt.PrimaryOrientation
     property real targetFontSize: launchermodular.settings.clockFontSize
+    property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
 
     function updateTime() {
         const date = new Date();
@@ -19,7 +18,6 @@ Item {
         let minutes = date.getMinutes();
         let seconds = date.getSeconds();
 
-        // Format as hh:mm:ss
         digitalClock.text = launchermodular.settings.clockHHMMSS
                 ? `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
                 : `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
@@ -27,51 +25,22 @@ Item {
 
     onVisibleChanged: {
           if (visible) {
-              console.log("Clock is now visible (active page)")
               pageClockTimer.running = true
               updateTime()
+              adjustFontSize()
           } else {
-              console.log("Clock is now hidden (inactive page)")
               pageClockTimer.running = false
           }
       }
 
-    function orientationToString(o) {
-        switch (o) {
-        case OrientationReading.TopUp:
-            return "normal portrait";
-        case OrientationReading.TopDow:
-            return "inverted portrait";
-        case OrientationReading.LeftUp:
-            return "landscape";
-        case OrientationReading.RightUp:
-            return "inverted landscape";
-        case OrientationReading.FaceUp:
-            return "face up screen";
-        case OrientationReading.FaceDown:
-            return "face back screen";
-        }
-        return "unknown";
-    }
-
-    function changeTextMetrics() {
-        textMetrics.text = randomTimeHHMM()
-        updateTime()
-        Qt.callLater(() => adjustFontSize())
-    }
-
     function adjustFontSize() {
-        var w = textMetrics.width
-        var availableWidth = digitalClock.width
-
-        if (w <= 0)
-            return
-
-        var scale = availableWidth
-        var newSize = digitalClock.font.pixelSize * scale * 0.95
-        newSize = Math.max(minFontSize, Math.min(maxFontSize, newSize))
-        targetFontSize = newSize
-        digitalClock.font.pixelSize = targetFontSize
+        targetFontSize = (OrientationReading.TopUp ||
+                          OrientationReading.TopDow ||
+                          (OrientationReading.FaceUp &&
+                           currentOrientation === (OrientationReading.TopUp || OrientationReading.TopDow)
+                           ))
+                ? launchermodular.settings.clockFontSize * 0.95
+                : (launchermodular.settings.clockFontSize * (Screen.width/Screen.height)* 0.95)
     }
 
     function randomTimeHHMM() {
@@ -81,10 +50,8 @@ Item {
     }
 
     function onOrientationChanged(newOrientation) {
-        maxFontSize = (OrientationReading.TopUp || OrientationReading.TopDow || (OrientationReading.FaceUp && currentOrientation == (OrientationReading.TopUp || OrientationReading.TopDow))) ? 169 : 300
         currentOrientation = newOrientation
-        console.log("Clock orientation:", orientationToString(newOrientation), " - ", maxFontSize)
-        changeTextMetrics()
+        adjustFontSize()
     }
 
     Timer {
@@ -103,7 +70,6 @@ Item {
 
         onReadingChanged: {
             const o = reading.orientation;
-            console.log("Sensor orientation:", o)
             clock.onOrientationChanged(o)
         }
     }
@@ -119,7 +85,7 @@ Item {
             anchors.rightMargin: units.gu(1)
             width:parent.width
             font.family: launchermodular.settings.clockFontFamily
-            font.pixelSize: targetFontSize
+            font.pixelSize: targetFontSize * pixelDensityFactor
             font.bold: launchermodular.settings.clockFontBold
             font.italic: launchermodular.settings.clockFontItalic
             color: launchermodular.settings.clockFontColor
@@ -136,15 +102,6 @@ Item {
                 }
             }
         }
-
-        TextMetrics {
-            id: textMetrics
-            text: digitalClock.text
-            font: digitalClock.font
-        }
-
-        onWidthChanged: adjustFontSize()
-        onHeightChanged: adjustFontSize()
 
         Component.onCompleted: adjustFontSize()
     }
