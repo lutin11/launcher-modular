@@ -230,17 +230,6 @@ Page {
 
                 }
 
-                Text {
-                    id: digitalClockFontSize
-                    anchors.top: clockFormat.bottom
-                    anchors.topMargin: units.gu(2)
-                    anchors.horizontalCenter: parent.horizontalCenter;
-                    anchors.leftMargin: units.gu(1)
-                    anchors.rightMargin: units.gu(1)
-                    color: "#ffffff"
-                    text: launchermodular.settings.clockFontSize
-                }
-
             } // column
         } //flickable
     } //rectangle settings
