@@ -80,5 +80,5 @@ Page {
                 }
             } // column
         } //flickable
-     } //rectangle settings
+    } //rectangle settings
 }

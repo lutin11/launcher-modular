@@ -74,7 +74,6 @@ MainView {
         property string unitsFormat: '&units=metric'
         property string cityName: 'Paris'
 
-        property string formatHours: '24h'
         property string backgroundAnalogHours: ''
 
         property string iconStyle: 'rounded'
@@ -91,6 +90,17 @@ MainView {
         property real musicFontSize: 2.0
         property color musicFontColor: "#E95420"
         property color videoFontColor: "#E95420"
+
+        property string clockFontColor: "#E95420"
+        property string clockFontFamily: "DSEG7Classic"
+        property bool clockFontBold: false
+        property bool clockFontItalic: false
+        property bool clockHHMMSS: true
+
+        property string clockFontSize: "48"
+        property string clockFontWordSpacing: "1.0"
+        property string clockTimeFormat: "hh:mm:ss"
+        property string formatHours: '24h'
 
         property string searchEngine: "https://duckduckgo.com/?q="
 
@@ -259,6 +269,12 @@ MainView {
                             Loader {
                                 id: pageLoader
                                 visible: index === view.currentIndex
+                                onLoaded: {
+                                    if (item) item.visible = visible
+                                }
+                                onVisibleChanged: {
+                                    if (item) item.visible = visible
+                                }
                                 sourceComponent: {
                                     var comp = Qt.createComponent(model.directory + model.name);
                                     if (comp.status === Component.Error) {
