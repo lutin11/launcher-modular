@@ -1,9 +1,9 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
-import Lomiri.Components 1.3
-import Lomiri.Components.ListItems 1.3 as ListItemHeader
-import Lomiri.Components.Themes 1.3
+import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3 as ListItemHeader
+import Ubuntu.Components.Themes 1.3
 import QtQuick.Window 2.10
 import QtSensors 5.12
 
