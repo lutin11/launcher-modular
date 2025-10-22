@@ -6,7 +6,6 @@ import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import "pages"
-import Terminalaccess 1.0
 import Lomiri.Components.Popups 1.3
 
 Page {
@@ -23,31 +22,6 @@ Page {
                     pageStack.pop();
                 }
             }
-    }
-
-    Component {
-        id: diag
-        Dialog {
-            id: dialogue
-            title: "Authentification needed"
-            TextField {
-                id:inp
-                placeholderText: i18n.tr("Enter password (by defaut : phablet)")
-                echoMode: TextInput.Password
-            }
-            Button {
-                anchors.left: parent.left
-                id: okButton
-                text: i18n.tr("ok")
-                onClicked: {Terminalaccess.inputLine(inp.text, false);PopupUtils.close(dialogue)}
-            }
-            Button {
-                anchors.right: parent.right
-                id: cancelButton
-                text: i18n.tr("Cancel")
-                onClicked: PopupUtils.close(dialogue)
-            }
-        }
     }
 
     Rectangle {
@@ -95,22 +69,24 @@ Page {
                 Slider {
                     id: slideOpacity
                     anchors.horizontalCenter: parent.horizontalCenter;
-                    value: launchermodular.settings.backgroundOpacity
-                    maximumValue: 1.0
+                    value: launchermodular.settings.backgroundOpacity * 100
+                    maximumValue: 100
                     minimumValue: 0
                     live: true
-                    onValueChanged: { launchermodular.settings.backgroundOpacity = slideOpacity.value }
-                    onPressedChanged: {
+                    onValueChanged: {
+                        launchermodular.settings.backgroundOpacity = slideOpacity.value/100
+                    } onPressedChanged: {
                         if (pressed) {
-                            pageSettings.visible = false
-                            slideOpacity.visible = true;
-                        } else {
-                            pageSettings.visible = true;
-                        }
+                            pageSettings.opacity = 0
+                            slideOpacity.opacity = 1 }
+                        else {
+                            launchermodular.settings.backgroundOpacity = slideOpacity.value/100
+                            pageSettings.opacity = 1 }
                     }
                 }
 
                 ListItem.Standard {
+                    id: blurSwitch
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Background blur effect")+"</font>"
                     control: Switch {
@@ -122,9 +98,4 @@ Page {
             } // column
         } //flickable
     } //rectangle settings
-
-    Connections {
-        target: Terminalaccess
-        onNeedSudoPassword: {PopupUtils.open(diag)}
-    }
 }
