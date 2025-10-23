@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-22 21:57+0000\n"
+"POT-Creation-Date: 2025-10-23 06:40+0000\n"
 "PO-Revision-Date: 2024-11-04 14:59+0000\n"
 "Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -532,18 +532,28 @@ msgid "BoldItalic"
 msgstr ""
 
 #: ../qml/pages/clock/Settings.qml:137
-msgid "Italic"
-msgstr ""
-
-#: ../qml/pages/clock/Settings.qml:138
 msgid "Regular"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:179
+#: ../qml/pages/clock/Settings.qml:138
+msgid "Italic"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:139
+#, fuzzy
+msgid "Light"
+msgstr "الهواء الخفيف"
+
+#: ../qml/pages/clock/Settings.qml:140
+#, fuzzy
+msgid "LightItalic"
+msgstr "الهواء الخفيف"
+
+#: ../qml/pages/clock/Settings.qml:195
 msgid "Font type : "
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:223
+#: ../qml/pages/clock/Settings.qml:239
 msgid "Format : "
 msgstr ""
 

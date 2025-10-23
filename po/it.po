@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher Modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-22 21:57+0000\n"
+"POT-Creation-Date: 2025-10-23 06:40+0000\n"
 "PO-Revision-Date: 2023-01-08 13:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -506,18 +506,28 @@ msgid "BoldItalic"
 msgstr ""
 
 #: ../qml/pages/clock/Settings.qml:137
-msgid "Italic"
-msgstr ""
-
-#: ../qml/pages/clock/Settings.qml:138
 msgid "Regular"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:179
+#: ../qml/pages/clock/Settings.qml:138
+msgid "Italic"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:139
+#, fuzzy
+msgid "Light"
+msgstr "Bava di vento"
+
+#: ../qml/pages/clock/Settings.qml:140
+#, fuzzy
+msgid "LightItalic"
+msgstr "Bava di vento"
+
+#: ../qml/pages/clock/Settings.qml:195
 msgid "Font type : "
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:223
+#: ../qml/pages/clock/Settings.qml:239
 msgid "Format : "
 msgstr ""
 
