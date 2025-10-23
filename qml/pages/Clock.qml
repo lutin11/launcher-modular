@@ -112,5 +112,14 @@ Item {
         }
 
         Component.onCompleted: adjustFontSize()
+
+        MouseArea {
+            anchors.fill: parent
+            onDoubleClicked: {
+              launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
+              WindowController.toggleFullScreen();
+            }
+        }
+
     }
 }

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.0.0)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(Qt5Core)
+find_package(Qt5Gui)
 find_package(Qt5Qml)
 find_package(Qt5Quick)
 
@@ -24,6 +25,9 @@ set(FULL_PROJECT_NAME "launchermodular.lut11")
 set(CMAKE_INSTALL_PREFIX /)
 set(DATA_DIR /)
 set(DESKTOP_FILE_NAME ${PROJECT_NAME}.desktop)
+set(MAIN_SRC_FILES
+    windowcontroller.h
+    windowcontroller.cpp)
 
 # This command figures out the target architecture for use in the manifest file
 execute_process(
