@@ -1,8 +1,9 @@
-import QtQuick 2.12
+import QtQuick 2.15
 import QtQuick.Controls 2.12
 import Lomiri.Components 1.3
 import QtQuick.Window 2.10
 import QtSensors 5.12
+import QtSystemInfo 5.0 // for screen saver
 
 
 Item {
@@ -11,6 +12,11 @@ Item {
     property int currentOrientation: Qt.PrimaryOrientation
     property real targetFontSize: launchermodular.settings.clockFontSize
     property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
+
+    ScreenSaver {
+        id: screenSaver
+        screenSaverEnabled: true
+    }
 
     function updateTime() {
         const date = new Date();
@@ -28,8 +34,10 @@ Item {
               pageClockTimer.running = true
               updateTime()
               adjustFontSize()
+              screenSaver.screenSaverEnabled = false
           } else {
               pageClockTimer.running = false
+              screenSaver.screenSaverEnabled = true
           }
       }
 
