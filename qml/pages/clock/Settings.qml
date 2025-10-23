@@ -132,29 +132,28 @@ Page {
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(1)
                     model: [
-                    { name: "<font color=\"#ffffff\">"+i18n.tr("Bold")+"</font>", value: "#DSEG7Classic-Bold"},
-                    { name: "<font color=\"#ffffff\">"+i18n.tr("BoldItalic")+"</font>", value: "DSEG7Classic-BoldItalic"},
-                    { name: "<font color=\"#ffffff\">"+i18n.tr("Italic")+"</font>", value: "DSEG7Classic-Italic"},
-                    { name: "<font color=\"#ffffff\">"+i18n.tr("Regular")+"</font>", value: "DSEG7Classic-Regular"}
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("Bold")+"</font>"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("BoldItalic")+"</font>"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("Italic")+"</font>"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("Regular")+"</font>"}
                     ]
                     delegate: OptionSelectorDelegate {
                         property var item: model.modelData ? model.modelData : model
                         text: item.name
                     }
                     onSelectedIndexChanged: {
-                        var typeChoice = model[selectedIndex].value
-                        if (typeChoice === "#DSEG7Classic-Bold") {
+                        if (selectedIndex === 0) {
                             launchermodular.settings.clockFontBold = true
                             launchermodular.settings.clockFontItalic = false
-                        } else if (typeChoice === "DSEG7Classic-BoldItalic") {
+                        } else if (selectedIndex === 1) {
                             launchermodular.settings.clockFontBold = true
                             launchermodular.settings.clockFontItalic = true
-                        } else if (typeChoice === "DSEG7Classic-Italic") {
-                             launchermodular.settings.clockFontBold = false
-                             launchermodular.settings.clockFontItalic = true
-                        } else if (typeChoice === "DSEG7Classic-Regular") {
-                              launchermodular.settings.clockFontBold = false
-                              launchermodular.settings.clockFontItalic = false
+                        } else if (selectedIndex === 2) {
+                            launchermodular.settings.clockFontBold = false
+                            launchermodular.settings.clockFontItalic = true
+                        } else if (selectedIndex === 3) {
+                            launchermodular.settings.clockFontBold = false
+                            launchermodular.settings.clockFontItalic = false
                         }
                     }
                     Component.onCompleted: {
