@@ -93,8 +93,8 @@ MainView {
 
         property string clockFontColor: "#E95420"
         property string clockFontFamily: "DSEG7Classic"
-        property bool clockFontBold: false
         property bool clockFontItalic: false
+        property int clockFontWeight: Font.Normal
         property bool clockHHMMSS: true
 
         property string clockFontSize: "48"

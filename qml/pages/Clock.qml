@@ -94,8 +94,8 @@ Item {
             width:parent.width
             font.family: launchermodular.settings.clockFontFamily
             font.pixelSize: targetFontSize * pixelDensityFactor
-            font.bold: launchermodular.settings.clockFontBold
             font.italic: launchermodular.settings.clockFontItalic
+            font.weight: launchermodular.settings.clockFontWeight
             color: launchermodular.settings.clockFontColor
             text: if(launchermodular.settings.clockHHMMSS) {"88:88:88"} else {"88:88"}
             maximumLineCount: 1

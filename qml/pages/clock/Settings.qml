@@ -69,8 +69,8 @@ Page {
                     anchors.rightMargin: units.gu(1)
                     font.family: launchermodular.settings.clockFontFamily
                     font.pixelSize: launchermodular.settings.clockFontSize * pixelDensityFactor
-                    font.bold: launchermodular.settings.clockFontBold
                     font.italic: launchermodular.settings.clockFontItalic
+                    font.weight: launchermodular.settings.clockFontWeight
                     color: launchermodular.settings.clockFontColor
                     maximumLineCount: 1
                     elide: Text.ElideMiddle
@@ -132,44 +132,60 @@ Page {
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(1)
                     model: [
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("Bold")+"</font>"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("BoldItalic")+"</font>"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("Italic")+"</font>"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("Regular")+"</font>"}
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("Bold")+"</font>", value: "DSEG7Classic-Bold"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("BoldItalic")+"</font>", value: "DSEG7Classic-BoldItalic"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("Regular")+"</font>", value: "DSEG7Classic-Regular"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("Italic")+"</font>", value: "DSEG7Classic-Italic"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("Light")+"</font>", value: "DSEG7Classic-Light"},
+                        { name: "<font color=\"#ffffff\">"+i18n.tr("LightItalic")+"</font>", value: "DSEG7Classic-LightItalic"}
                     ]
                     delegate: OptionSelectorDelegate {
                         property var item: model.modelData ? model.modelData : model
                         text: item.name
                     }
                     onSelectedIndexChanged: {
+                        console.log("selectedIndex :"+selectedIndex);
+                        var typeChoice = model[selectedIndex].value
                         if (selectedIndex === 0) {
-                            launchermodular.settings.clockFontBold = true
+                            launchermodular.settings.clockFontWeight = Font.Bold
                             launchermodular.settings.clockFontItalic = false
                         } else if (selectedIndex === 1) {
-                            launchermodular.settings.clockFontBold = true
+                            launchermodular.settings.clockFontWeight = Font.Bold
                             launchermodular.settings.clockFontItalic = true
                         } else if (selectedIndex === 2) {
-                            launchermodular.settings.clockFontBold = false
-                            launchermodular.settings.clockFontItalic = true
-                        } else if (selectedIndex === 3) {
-                            launchermodular.settings.clockFontBold = false
+                            launchermodular.settings.clockFontWeight = Font.Normal
                             launchermodular.settings.clockFontItalic = false
+                        } else if (selectedIndex === 3) {
+                            launchermodular.settings.clockFontWeight = Font.Normal
+                            launchermodular.settings.clockFontItalic = true
+                        } else if (selectedIndex === 4) {
+                            launchermodular.settings.clockFontWeight = Font.Light
+                            launchermodular.settings.clockFontItalic = false
+                        } else if (selectedIndex === 5) {
+                            launchermodular.settings.clockFontWeight = Font.Light
+                            launchermodular.settings.clockFontItalic = true
                         }
                     }
                     Component.onCompleted: {
-                        if (launchermodular.settings.clockFontBold == true &&
+                        if (launchermodular.settings.clockFontWeight == Font.Bold &&
                             launchermodular.settings.clockFontItalic == false) {
                             selectedIndex = 0
-                        } else if (launchermodular.settings.clockFontBold == true &&
+                        } else if (launchermodular.settings.clockFontWeight == Font.Bold &&
                             launchermodular.settings.clockFontItalic == true) {
                             selectedIndex = 1
-                        } else if (
-                            launchermodular.settings.clockFontBold == false &&
-                            launchermodular.settings.clockFontItalic == true) {
+                        } else if (launchermodular.settings.clockFontWeight == Font.Normal &&
+                            launchermodular.settings.clockFontItalic == false) {
                             selectedIndex = 2
-                        } else if (launchermodular.settings.clockFontBold == false &&
-                                launchermodular.settings.clockFontItalic == false) {
+                        }  else if (
+                            launchermodular.settings.clockFontWeight == Font.Normal &&
+                            launchermodular.settings.clockFontItalic == true) {
                             selectedIndex = 3
+                        } else if (launchermodular.settings.clockFontWeight == Font.Light &&
+                            launchermodular.settings.clockFontItalic == false) {
+                            selectedIndex = 4
+                        } else if (launchermodular.settings.clockFontWeight == Font.Light &&
+                            launchermodular.settings.clockFontItalic == false) {
+                            selectedIndex = 5
                         }
                     }
 
