@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-23 06:40+0000\n"
+"POT-Creation-Date: 2025-10-23 12:19+0000\n"
 "PO-Revision-Date: 2023-02-08 13:38+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/ubports/"
@@ -305,75 +305,75 @@ msgstr ""
 msgid "Choose"
 msgstr "Escolher"
 
-#: ../qml/Main.qml:412
+#: ../qml/Main.qml:420
 msgid "Swipe up to configure the launcher"
 msgstr "Deslize para cima para configurar o iniciador"
 
-#: ../qml/Main.qml:466
+#: ../qml/Main.qml:474
 msgid "Add custom icon"
 msgstr "Adicionar ícone personalizado"
 
-#: ../qml/Main.qml:499
+#: ../qml/Main.qml:507
 msgid "Manage page"
 msgstr "Gerir página"
 
-#: ../qml/Main.qml:532
+#: ../qml/Main.qml:540
 msgid "Configure Launcher"
 msgstr "Configurar Iniciador"
 
-#: ../qml/Main.qml:565
+#: ../qml/Main.qml:573
 msgid "Autostart"
 msgstr "Começo automático"
 
-#: ../qml/Main.qml:598
+#: ../qml/Main.qml:606
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../qml/Main.qml:631
+#: ../qml/Main.qml:639
 msgid "About"
 msgstr "Sobre"
 
-#: ../qml/Main.qml:689
+#: ../qml/Main.qml:696
 msgid "Website"
 msgstr "Website"
 
-#: ../qml/Main.qml:689
+#: ../qml/Main.qml:696
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:690
+#: ../qml/Main.qml:697
 msgid "Terminal command"
 msgstr "Comando de terminal"
 
-#: ../qml/Main.qml:690
+#: ../qml/Main.qml:697
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:698
 msgid "Launch app"
 msgstr "Iniciar aplicação"
 
-#: ../qml/Main.qml:691
+#: ../qml/Main.qml:698
 msgid "Launch an app"
 msgstr "Iniciar uma aplicação"
 
-#: ../qml/Main.qml:715
+#: ../qml/Main.qml:722
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "SVG ou PNG icon. 1:1 ratio"
 
-#: ../qml/Main.qml:728
+#: ../qml/Main.qml:735
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "O <b>title</b> a ser mostrado na lista de aplicações"
 
-#: ../qml/Main.qml:752 ../qml/Main.qml:753 ../qml/Main.qml:754
+#: ../qml/Main.qml:759 ../qml/Main.qml:760 ../qml/Main.qml:761
 msgid "<b>Action</b> example: "
 msgstr "<b>Action</b> examplo: "
 
-#: ../qml/Main.qml:766
+#: ../qml/Main.qml:773
 msgid "Create icon"
 msgstr "Criar ícone"
 
-#: ../qml/Main.qml:809 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
+#: ../qml/Main.qml:816 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
 #: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr "Cancelar"
@@ -536,11 +536,11 @@ msgstr "Ar Leve"
 msgid "LightItalic"
 msgstr "Ar Leve"
 
-#: ../qml/pages/clock/Settings.qml:195
+#: ../qml/pages/clock/Settings.qml:194
 msgid "Font type : "
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:239
+#: ../qml/pages/clock/Settings.qml:238
 msgid "Format : "
 msgstr ""
 
