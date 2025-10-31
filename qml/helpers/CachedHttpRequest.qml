@@ -94,7 +94,7 @@ Item {
 
     Timer {
         id: selfCleaningTimer
-        interval: _cachedHttpReq.cachingTimeMiliSec / 2
+        interval: Math.max(0, _cachedHttpReq.cachingTimeMiliSec / 2)
         triggeredOnStart: true
         running: true
         onTriggered: _internal.cleanOldCachedDocs();
