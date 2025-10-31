@@ -64,7 +64,7 @@ Item {
 
     Timer {
         id: pageClockTimer
-        interval: Math.max(0, if(launchermodular.settings.clockHHMMSS) {1000} else {60000})
+        interval: Math.max(0, launchermodular.settings.clockHHMMSS ? 1000 : 60000)
         running: true
         repeat: true
         onTriggered: {
