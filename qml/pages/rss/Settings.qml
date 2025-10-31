@@ -123,11 +123,11 @@ Page {
                                 rssField.text = ""
                                 errorLine.visible = false
                             } else if (reachable) {
-                                console.log("URL is reachable but not a valid RSS feed");
+                                if (DEBUG_MODE) console.log("URL is reachable but not a valid RSS feed");
                                 errorLine.visible = true
                                 invalidTextError.text = "URL is reachable but not a valid RSS feed"
                             } else {
-                                console.log("URL not reachable");
+                                if (DEBUG_MODE) console.log("URL not reachable");
                                 errorLine.visible = true
                                 invalidTextError.text = "URL not reachable"
                             }

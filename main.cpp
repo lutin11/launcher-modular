@@ -7,6 +7,7 @@
 #include <QQmlContext>
 #include <QFont>
 #include <QFontDatabase>
+#include "windowcontroller.h"
 
 int main(int argc, char *argv[])
 {
@@ -34,8 +35,12 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(":/fonts/DSEG7Classic-LightItalic.ttf");
 
     QQuickView view(&engine, nullptr);
-    view.setSource(QStringLiteral("%1/qml/Main.qml").arg(app.applicationDirPath()));
     view.setResizeMode(QQuickView::SizeRootObjectToView);
+    WindowController controller(&view);
+
+    engine.rootContext()->setContextProperty("WindowController", &controller);
+    view.setSource(QStringLiteral("%1/qml/Main.qml").arg(app.applicationDirPath()));
+
     view.show();
 
     return app.exec();

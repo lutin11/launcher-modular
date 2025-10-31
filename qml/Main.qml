@@ -93,8 +93,8 @@ MainView {
 
         property string clockFontColor: "#E95420"
         property string clockFontFamily: "DSEG7Classic"
-        property bool clockFontBold: false
         property bool clockFontItalic: false
+        property int clockFontWeight: Font.Normal
         property bool clockHHMMSS: true
 
         property string clockFontSize: "48"
@@ -130,6 +130,8 @@ MainView {
         property int itemsToLoadPerChannel: 7
 
         property int mainFeedSortAsc: 1
+
+        property bool fullScreen: false
     }//settings
 
     Timer {
@@ -150,6 +152,9 @@ MainView {
             anchors.fill: parent
 
             Component.onCompleted: {
+
+                launchermodular.settings.fullScreen = false
+
                 if(launchermodular.settings.firstRunNew){
                     launchermodular.settings.page = undefined
                     launchermodular.settings.firstRunNew = false
@@ -220,6 +225,7 @@ MainView {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 color: "#E95420"
+                visible: !launchermodular.settings.fullScreen
             }
 
             Rectangle {
@@ -228,7 +234,7 @@ MainView {
                     left: parent.left
                     right: parent.right
                     top: topBorder.bottom
-                    bottom: bottomBarLayout.top
+                    bottom: launchermodular.settings.fullScreen ? bottomBarLayout.bottom : bottomBarLayout.top
                 }
 
                 Image {
@@ -263,6 +269,7 @@ MainView {
                         id: view
                         currentIndex: 0
                         anchors.fill: parent
+                        interactive: !launchermodular.settings.fullScreen
 
                         Repeater {
                             model: launchermodular.pageModel
@@ -296,6 +303,7 @@ MainView {
                 id: bottomBarLayout
                 color: "#111111"
                 height: units.gu(5)
+                visible: !launchermodular.settings.fullScreen
 
                 anchors {
                     left: parent.left
@@ -636,7 +644,6 @@ MainView {
                         MouseArea {
                             anchors.fill: parent
                             onPressed: {
-                                //pageStack.push(Qt.resolvedUrl("About.qml"))
                                 pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
                                 bottomBarSettings.close()
                             }

@@ -1,8 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>fonts/DSEG7Classic-Regular.ttf</file>
         <file>fonts/DSEG7Classic-Bold.ttf</file>
+        <file>fonts/DSEG7Classic-BoldItalic.ttf</file>
         <file>fonts/DSEG7Classic-Italic.ttf</file>
-        <!-- Add other font files as needed -->
+        <file>fonts/DSEG7Classic-Light.ttf</file>
+        <file>fonts/DSEG7Classic-LightItalic.ttf</file>
+        <file>fonts/DSEG7Classic-Regular.ttf</file>
     </qresource>
 </RCC>
