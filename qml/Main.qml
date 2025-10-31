@@ -136,7 +136,7 @@ MainView {
 
     Timer {
         id: clockUpdater
-        interval: 60000-(launchermodular.datenow.getSeconds()*1000)
+        interval: Math.max(0, 60000-(launchermodular.datenow.getSeconds()*1000))
         running: true
         repeat: true
         onTriggered: {
