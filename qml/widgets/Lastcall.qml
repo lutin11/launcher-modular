@@ -29,10 +29,7 @@ Item {
                 if (contact["lastName"]) {
                     contactFullName += " " + contact["lastName"];
                 }
-            } else {
-                console.log("No contact found for ID:", contactId);
             }
-            console.log("lastCall contactFullName for ID:" + contactId + " -> " + contactFullName);
         }
         return contactFullName;
     }
