@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import QtQuick.Controls 2.2
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import "pages"
 
 Page {
