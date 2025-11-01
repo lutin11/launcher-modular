@@ -101,12 +101,17 @@ Page {
             property string details37: i18n.tr("The calendar limit of days is not settable")
             // 2.4.2.9
             property string details38: i18n.tr("Fixup theme not well manage")
+            // 2.4.3.9
+            property string details39: i18n.tr("Add Clocke Page")
+            property string details40: i18n.tr("Fix background settings")
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "", date: "2025-10-31", details: details40, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.3.9", date: "2025-10-31", details: details39, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.2.9", date: "2025-10-18", details: details38, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.2", date: "2025-10-15", details: details37, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.1", date: "2025-09-19", details: details36, description: emptyDescription});
