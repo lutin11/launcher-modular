@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-23 12:19+0000\n"
+"POT-Creation-Date: 2025-11-01 07:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -218,23 +218,31 @@ msgstr ""
 msgid "Fixup theme not well manage"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:186
+#: ../qml/ChangeLogs.qml:105
+msgid "Add Clocke Page"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:106
+msgid "Fix background settings"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:191
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:192
+#: ../qml/ChangeLogs.qml:197
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:318
+#: ../qml/ChangeLogs.qml:323
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:345
+#: ../qml/ChangeLogs.qml:350
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:364
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -246,23 +254,23 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:379
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:379
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:389
+#: ../qml/ChangeLogs.qml:394
 msgid "Maintainer"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:403
+#: ../qml/ChangeLogs.qml:408
 msgid "Copyright"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:418
+#: ../qml/ChangeLogs.qml:423
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -640,27 +648,27 @@ msgstr ""
 msgid "Favorite Contacts"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:84
+#: ../qml/widgets/Lastcall.qml:81
 msgid "Last Calls"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:84
+#: ../qml/widgets/Lastcall.qml:81
 msgid "Last Call"
 msgstr ""
 
-#: ../qml/widgets/Lastcall.qml:164
+#: ../qml/widgets/Lastcall.qml:161
 msgid "No recent calls"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:99
+#: ../qml/widgets/Lastmessage.qml:97
 msgid "Last Messages"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:99
+#: ../qml/widgets/Lastmessage.qml:97
 msgid "Last Message"
 msgstr ""
 
-#: ../qml/widgets/Lastmessage.qml:203
+#: ../qml/widgets/Lastmessage.qml:201
 msgid "No recent messages"
 msgstr ""
 
