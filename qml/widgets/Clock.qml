@@ -27,10 +27,6 @@ Item {
             property int minutes: clock.now.getMinutes()
             property variant now: launchermodular.datenow
 
-            onMinutesChanged: {
-                clockNumeric.updateNow();
-            }
-
             // private:
             Image {
                 id: clockFace
@@ -106,15 +102,6 @@ Item {
             property variant now: if (launchermodular.settings.formatHours == "12h"){ Qt.formatTime(new Date(),"hh:mm a"); }else{ Qt.formatTime(new Date(),"hh:mm");}
             color: "transparent"
 
-            /*
-                Timer {
-                    id: clockUpdaterNumeric
-                    interval: 1000 // update clock every second
-                    running: true
-                    repeat: true
-                    onTriggered:updateNow()
-                }
-            */
             function updateNow() {
                 if (launchermodular.settings.formatHours == "12h"){
                     clockNumeric.now = Qt.formatTime(new Date(),"hh:mm a");
@@ -132,7 +119,6 @@ Item {
                 text:  clockNumeric.now.split(' ')[0]
                 color: launchermodular.settings.textColor
             }
-
 
         }
     }

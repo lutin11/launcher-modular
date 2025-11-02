@@ -60,10 +60,7 @@ Page {
                     onValueChanged: { launchermodular.settings.musicFontSize = sliderFontSize.value }
                     onPressedChanged: {
                         if (pressed) {
-                            pageSettings.visible = false
                             sliderFontSize.visible = true;
-                        } else {
-                            pageSettings.visible = true;
                         }
                     }
                 }

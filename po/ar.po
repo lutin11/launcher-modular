@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 09:39+0000\n"
+"POT-Creation-Date: 2025-10-31 04:46+0000\n"
 "PO-Revision-Date: 2024-11-04 14:59+0000\n"
 "Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -317,77 +317,76 @@ msgstr ""
 msgid "Choose"
 msgstr "إختار"
 
-#: ../qml/Main.qml:396
+#: ../qml/Main.qml:420
 msgid "Swipe up to configure the launcher"
 msgstr "اسحب لأعلى لإعداد المشغل"
 
-#: ../qml/Main.qml:450
+#: ../qml/Main.qml:474
 msgid "Add custom icon"
 msgstr "إضافة أيقونة مخصصة"
 
-#: ../qml/Main.qml:483
+#: ../qml/Main.qml:507
 msgid "Manage page"
 msgstr "إدارة الصفحة"
 
-#: ../qml/Main.qml:516
+#: ../qml/Main.qml:540
 msgid "Configure Launcher"
 msgstr "إعداد المشغل"
 
-#: ../qml/Main.qml:549
+#: ../qml/Main.qml:573
 msgid "Autostart"
 msgstr "التشغيل التلقائي"
 
-#: ../qml/Main.qml:582
+#: ../qml/Main.qml:606
 msgid "Help"
 msgstr "المساعدة"
 
-#: ../qml/Main.qml:615
+#: ../qml/Main.qml:639
 msgid "About"
 msgstr "حول"
 
-#: ../qml/Main.qml:673
+#: ../qml/Main.qml:696
 msgid "Website"
 msgstr "الموقع"
 
-#: ../qml/Main.qml:673
+#: ../qml/Main.qml:696
 msgid "Open this URL in the web browser"
 msgstr "افتح عنوان URL هذا في متصفح الويب"
 
-#: ../qml/Main.qml:674
+#: ../qml/Main.qml:697
 msgid "Terminal command"
 msgstr "أوامر الطرفية"
 
-#: ../qml/Main.qml:674
+#: ../qml/Main.qml:697
 msgid "Run a command in a terminal"
 msgstr "تشغيل أمر في الطرفية"
 
-#: ../qml/Main.qml:675
+#: ../qml/Main.qml:698
 msgid "Launch app"
 msgstr "شغل التطبيق"
 
-#: ../qml/Main.qml:675
+#: ../qml/Main.qml:698
 msgid "Launch an app"
 msgstr "شغل التطبيق"
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:722
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "أيقونة SVG أو PNG. نسبة 1:1"
 
-#: ../qml/Main.qml:712
+#: ../qml/Main.qml:735
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>العنوان</b> الذي سيتم عرضه في قائمة التطبيقات"
 
-#: ../qml/Main.qml:736 ../qml/Main.qml:737 ../qml/Main.qml:738
+#: ../qml/Main.qml:759 ../qml/Main.qml:760 ../qml/Main.qml:761
 msgid "<b>Action</b> example: "
 msgstr "مثال <b>الإجراء</b>:"
 
-#: ../qml/Main.qml:750
+#: ../qml/Main.qml:773
 msgid "Create icon"
 msgstr "إنشاء أيقونة"
 
-#: ../qml/Main.qml:793 ../qml/Pagemanagement.qml:142 ../qml/Settings.qml:47
-#: ../qml/pages/Home.qml:56 ../qml/pages/Home.qml:476
-#: ../qml/pages/home/Settings.qml:80
+#: ../qml/Main.qml:816 ../qml/Pagemanagement.qml:142 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:80
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -399,27 +398,19 @@ msgstr "إدارة الصفحة"
 msgid "Choose a page"
 msgstr "اختر صفحة"
 
-#: ../qml/Settings.qml:17
+#: ../qml/Settings.qml:16
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: ../qml/Settings.qml:35
-msgid "Enter password (by defaut : phablet)"
-msgstr ""
-
-#: ../qml/Settings.qml:41 ../qml/pages/Home.qml:40
-msgid "ok"
-msgstr "أوكي"
-
-#: ../qml/Settings.qml:76 ../qml/pages/home/Settings.qml:163
+#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:163
 msgid "General"
 msgstr "عام"
 
-#: ../qml/Settings.qml:81
+#: ../qml/Settings.qml:55
 msgid "Dark background"
 msgstr "خلفية داكنة"
 
-#: ../qml/Settings.qml:115
+#: ../qml/Settings.qml:91
 msgid "Background blur effect"
 msgstr "تأثير طمس الخلفية"
 
@@ -471,6 +462,10 @@ msgstr ""
 msgid "Agenda"
 msgstr "أجندة"
 
+#: ../qml/pages/Home.qml:40
+msgid "ok"
+msgstr "أوكي"
+
 #: ../qml/pages/Home.qml:210
 msgid "Search your phone and online sources"
 msgstr "ابحث عن هاتفك ومصادرك عبر الإنترنت"
@@ -508,10 +503,10 @@ msgstr "حذف"
 msgid "Search your video"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/home/Settings.qml:15
-#: ../qml/pages/music/Settings.qml:13 ../qml/pages/picture/Settings.qml:11
-#: ../qml/pages/rss/Settings.qml:19 ../qml/pages/todo/Settings.qml:12
-#: ../qml/pages/videos/Settings.qml:12
+#: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
+#: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
+#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr "إعدادات الصفحة"
 
@@ -522,6 +517,45 @@ msgstr "الحد من الأيام"
 #: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr "افتراضيا 60 يوما"
+
+#: ../qml/pages/clock/Settings.qml:60
+#, fuzzy
+msgid "Settings for 'Clock' page"
+msgstr "لا توجد إعدادات لصفحة \"TODO\"."
+
+#: ../qml/pages/clock/Settings.qml:135
+msgid "Bold"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:136
+msgid "BoldItalic"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:137
+msgid "Regular"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:138
+msgid "Italic"
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:139
+#, fuzzy
+msgid "Light"
+msgstr "الهواء الخفيف"
+
+#: ../qml/pages/clock/Settings.qml:140
+#, fuzzy
+msgid "LightItalic"
+msgstr "الهواء الخفيف"
+
+#: ../qml/pages/clock/Settings.qml:194
+msgid "Font type : "
+msgstr ""
+
+#: ../qml/pages/clock/Settings.qml:238
+msgid "Format : "
+msgstr ""
 
 #: ../qml/pages/home/Settings.qml:107
 msgid "Favorite apps management"
@@ -641,27 +675,27 @@ msgstr "التطبيقات المفضلة"
 msgid "Favorite Contacts"
 msgstr "جهات اﻹتصال المفضلة"
 
-#: ../qml/widgets/Lastcall.qml:84
+#: ../qml/widgets/Lastcall.qml:81
 msgid "Last Calls"
 msgstr "آخر مكالمات"
 
-#: ../qml/widgets/Lastcall.qml:84
+#: ../qml/widgets/Lastcall.qml:81
 msgid "Last Call"
 msgstr "آخر مكالمة"
 
-#: ../qml/widgets/Lastcall.qml:164
+#: ../qml/widgets/Lastcall.qml:161
 msgid "No recent calls"
 msgstr "لا توجد مكالمات الأخيرة"
 
-#: ../qml/widgets/Lastmessage.qml:99
+#: ../qml/widgets/Lastmessage.qml:97
 msgid "Last Messages"
 msgstr "آخر رسائل"
 
-#: ../qml/widgets/Lastmessage.qml:99
+#: ../qml/widgets/Lastmessage.qml:97
 msgid "Last Message"
 msgstr "آخر رسالة"
 
-#: ../qml/widgets/Lastmessage.qml:203
+#: ../qml/widgets/Lastmessage.qml:201
 msgid "No recent messages"
 msgstr "لا توجد رسائل حالية"
 
@@ -928,8 +962,12 @@ msgid "or"
 msgstr "أو"
 
 #: launchermodular.desktop.in.h:1
-msgid "Modular launcher"
-msgstr "المشغل المعياري"
+#, fuzzy
+msgid "Launcher Modular"
+msgstr "شغل التطبيق"
+
+#~ msgid "Modular launcher"
+#~ msgstr "المشغل المعياري"
 
 #~ msgid "Installed Apps"
 #~ msgstr "التطبيقات المثبتة"

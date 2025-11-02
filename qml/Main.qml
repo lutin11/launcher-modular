@@ -20,7 +20,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.4.2.9"
+    property string appVersion : "2.4.3.9"
     property ListModel customIconModel :  ListModel { id: customIconModel }
     property ListModel pageModel :  ListModel { id: pageModel }
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
@@ -74,7 +74,6 @@ MainView {
         property string unitsFormat: '&units=metric'
         property string cityName: 'Paris'
 
-        property string formatHours: '24h'
         property string backgroundAnalogHours: ''
 
         property string iconStyle: 'rounded'
@@ -91,6 +90,17 @@ MainView {
         property real musicFontSize: 2.0
         property color musicFontColor: "#E95420"
         property color videoFontColor: "#E95420"
+
+        property string clockFontColor: "#E95420"
+        property string clockFontFamily: "DSEG7Classic"
+        property bool clockFontItalic: false
+        property int clockFontWeight: Font.Normal
+        property bool clockHHMMSS: true
+
+        property string clockFontSize: "48"
+        property string clockFontWordSpacing: "1.0"
+        property string clockTimeFormat: "hh:mm:ss"
+        property string formatHours: '24h'
 
         property string searchEngine: "https://duckduckgo.com/?q="
 
@@ -120,11 +130,13 @@ MainView {
         property int itemsToLoadPerChannel: 7
 
         property int mainFeedSortAsc: 1
+
+        property bool fullScreen: false
     }//settings
 
     Timer {
         id: clockUpdater
-        interval: 60000-(launchermodular.datenow.getSeconds()*1000)
+        interval: Math.max(0, 60000-(launchermodular.datenow.getSeconds()*1000))
         running: true
         repeat: true
         onTriggered: {
@@ -140,6 +152,9 @@ MainView {
             anchors.fill: parent
 
             Component.onCompleted: {
+
+                launchermodular.settings.fullScreen = false
+
                 if(launchermodular.settings.firstRunNew){
                     launchermodular.settings.page = undefined
                     launchermodular.settings.firstRunNew = false
@@ -210,6 +225,7 @@ MainView {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 color: "#E95420"
+                visible: !launchermodular.settings.fullScreen
             }
 
             Rectangle {
@@ -218,7 +234,7 @@ MainView {
                     left: parent.left
                     right: parent.right
                     top: topBorder.bottom
-                    bottom: bottomBarLayout.top
+                    bottom: launchermodular.settings.fullScreen ? bottomBarLayout.bottom : bottomBarLayout.top
                 }
 
                 Image {
@@ -253,12 +269,19 @@ MainView {
                         id: view
                         currentIndex: 0
                         anchors.fill: parent
+                        interactive: !launchermodular.settings.fullScreen
 
                         Repeater {
                             model: launchermodular.pageModel
                             Loader {
                                 id: pageLoader
                                 visible: index === view.currentIndex
+                                onLoaded: {
+                                    if (item) item.visible = visible
+                                }
+                                onVisibleChanged: {
+                                    if (item) item.visible = visible
+                                }
                                 sourceComponent: {
                                     var comp = Qt.createComponent(model.directory + model.name);
                                     if (comp.status === Component.Error) {
@@ -280,6 +303,7 @@ MainView {
                 id: bottomBarLayout
                 color: "#111111"
                 height: units.gu(5)
+                visible: !launchermodular.settings.fullScreen
 
                 anchors {
                     left: parent.left
@@ -620,7 +644,6 @@ MainView {
                         MouseArea {
                             anchors.fill: parent
                             onPressed: {
-                                //pageStack.push(Qt.resolvedUrl("About.qml"))
                                 pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
                                 bottomBarSettings.close()
                             }

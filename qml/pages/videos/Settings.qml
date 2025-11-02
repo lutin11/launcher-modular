@@ -60,10 +60,7 @@ Page {
                     onValueChanged: { launchermodular.settings.videoFontSize = sliderFontSize.value }
                     onPressedChanged: {
                         if (pressed) {
-                            pageSettings.visible = false
                             sliderFontSize.visible = true;
-                        } else {
-                            pageSettings.visible = true;
                         }
                     }
                 }

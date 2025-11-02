@@ -1,10 +1,12 @@
-project(launchermodular C CXX)
 cmake_minimum_required(VERSION 3.0.0)
+project(launchermodular C CXX)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(Qt5Core)
+find_package(Qt5Gui)
 find_package(Qt5Qml)
 find_package(Qt5Quick)
+
 
 # Automatically create moc files
 set(CMAKE_AUTOMOC ON)
@@ -23,6 +25,9 @@ set(FULL_PROJECT_NAME "launchermodular.lut11")
 set(CMAKE_INSTALL_PREFIX /)
 set(DATA_DIR /)
 set(DESKTOP_FILE_NAME ${PROJECT_NAME}.desktop)
+set(MAIN_SRC_FILES
+    windowcontroller.h
+    windowcontroller.cpp)
 
 # This command figures out the target architecture for use in the manifest file
 execute_process(
@@ -55,6 +60,11 @@ find_program(INTLTOOL_EXTRACT intltool-extract)
 if(NOT INTLTOOL_EXTRACT)
     message(FATAL_ERROR "Could not find intltool-extract, please install the intltool package")
 endif()
+
+# Include fonts
+set(RESOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc")
+qt5_add_resources(Resources ${RESOURCE_FILES})
+target_sources(${PROJECT_NAME} PRIVATE main.cpp ${Resources})
 
 add_custom_target(${DESKTOP_FILE_NAME} ALL
     COMMENT "Merging translations into ${DESKTOP_FILE_NAME}..."

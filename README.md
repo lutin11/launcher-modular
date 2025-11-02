@@ -54,13 +54,29 @@ Once clickable is installed you are ready to go.
 7. to launch on phone run clickable: `clickable` or on desktop: `clickable desktop`.
 8. to view logs: `clickable logs`
 
+font used: https://www.keshikan.net/fonts-e.html
+
 ### Fom 2.4.0 the branch develop and master have default framework is 24.04
-use `CLICKABLE_FRAMEWORK=ubuntu-touch-24.04-1.x clickable`
+Regarding the version you want to buid on apply one of the following commands:
+```
+CLICKABLE_FRAMEWORK=ubuntu-touch-24.04-1.x clickable
+CLICKABLE_FRAMEWORK=ubuntu-touch-20.04 clickable
+CLICKABLE_FRAMEWORK=ubuntu-sdk-16.04 clickable
+```
+
 if you switch from framwork you may need to execute the following command:
 `docker system prune -a --volumes`
 
-### for 22.04 framework 
-switch to develop-jammy and master-jammy
+If you are facing errors such as:
+```
+Architecture set to host arch "amd64"
+Cached image has a different base image
+Error response from daemon: No such image: clickable/amd64-20.04-amd64:latest
+```
+run the following command:
+```
+docker pull clickable/amd64-20.04-amd64:latest
+```
 
 
 

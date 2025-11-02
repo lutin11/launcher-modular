@@ -1,6 +1,6 @@
-import QtQuick 2.4
+import QtQuick 2.12
 import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.0
+import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import QtQuick.Controls 2.2
 import Ubuntu.Components 1.3
@@ -39,74 +39,79 @@ Page {
         Item {
             id: page1
 
-            property var emptyDescription:""
+            property string emptyDescription:""
             // 2.3.3
-            property var details1: i18n.tr("Set how many calls to display!")
-            property var description1: i18n.tr("To do this, long press on the widget to access its configuration page.")
-            property var details2: i18n.tr("Set how many messages to display!")
-            property var description2: i18n.tr("To do this, long press on the widget to access its configuration page.")
-            property var details3: i18n.tr("Set how many events to display!")
-            property var description3: i18n.tr("To do this, long press on the widget to access its configuration page.")
-            property var details4: i18n.tr("Call redirection to phone app works!")
-            property var description4: i18n.tr("On call settings, set the option for 'When clicked' to 'Open the dialer with number'")
-            property var details5: i18n.tr("Message redirection to messaging app works!")
-            property var description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'")
-            property var details6: i18n.tr("Force the event list to refresh by double-clicking on the event widget!")
-            property var details7: i18n.tr("The event list shows event from current day!")
-            property var details8: i18n.tr("Clicking on the 'Alarm' widget opens the clock!")
-            property var details9: i18n.tr("Open the photo by clicking on it!")
+            property string details1: i18n.tr("Set how many calls to display!")
+            property string description1: i18n.tr("To do this, long press on the widget to access its configuration page.")
+            property string details2: i18n.tr("Set how many messages to display!")
+            property string description2: i18n.tr("To do this, long press on the widget to access its configuration page.")
+            property string details3: i18n.tr("Set how many events to display!")
+            property string description3: i18n.tr("To do this, long press on the widget to access its configuration page.")
+            property string details4: i18n.tr("Call redirection to phone app works!")
+            property string description4: i18n.tr("On call settings, set the option for 'When clicked' to 'Open the dialer with number'")
+            property string details5: i18n.tr("Message redirection to messaging app works!")
+            property string description5: i18n.tr("On message settings, set the option for 'When clicked' to 'Open the application with message'")
+            property string details6: i18n.tr("Force the event list to refresh by double-clicking on the event widget!")
+            property string details7: i18n.tr("The event list shows event from current day!")
+            property string details8: i18n.tr("Clicking on the 'Alarm' widget opens the clock!")
+            property string details9: i18n.tr("Open the photo by clicking on it!")
             // 2.3.2
-            property var details10: i18n.tr("Enable Autostart")
-            property var description10: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart")
-            property var details11: i18n.tr("Correction for background display.")
-            property var details12: i18n.tr("Fix up 'Run a command in a terminal'")
+            property string details10: i18n.tr("Enable Autostart")
+            property string description10: i18n.tr("Swipe up to configure the launcher, and click on 'Autostart")
+            property string details11: i18n.tr("Correction for background display.")
+            property string details12: i18n.tr("Fix up 'Run a command in a terminal'")
             // 2.3.1
-            property var details13: i18n.tr("Resumption of the application.")
-            property var description13: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.")
+            property string details13: i18n.tr("Resumption of the application.")
+            property string description13: i18n.tr("This is the first release of Launcher Modular based on <a href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It contains, libraries updates and some fixes.")
             // 2.3.4
-            property var details14: i18n.tr("Addition of a new page for RSS feeds")
-            property var description14: i18n.tr("On Rss setting page, you can add a list of RSS feeds")
-            property var details15: i18n.tr("Update translations")
-            property var details16: i18n.tr("Improved 'Picture' page display performance")
+            property string details14: i18n.tr("Addition of a new page for RSS feeds")
+            property string description14: i18n.tr("On Rss setting page, you can add a list of RSS feeds")
+            property string details15: i18n.tr("Update translations")
+            property string details16: i18n.tr("Improved 'Picture' page display performance")
             // 2.3.5
-            property var details17: i18n.tr("Display contact name if exists on message and call widget")
-            property var details18: i18n.tr("Improved 'Picture' page display performance")
-            property var details19: i18n.tr("Update translations")
+            property string details17: i18n.tr("Display contact name if exists on message and call widget")
+            property string details18: i18n.tr("Improved 'Picture' page display performance")
+            property string details19: i18n.tr("Update translations")
             // 2.3.6
-            property var details20: i18n.tr("Fix launching Libertine applications")
-            property var details21: i18n.tr("Fix launching favorite applications")
-            property var details22: i18n.tr("Update weather on refreshing home page")
-            property var details23: i18n.tr("Added the ability to run a calculation from the search bar")
-            property var details24: i18n.tr("Update translations")
+            property string details20: i18n.tr("Fix launching Libertine applications")
+            property string details21: i18n.tr("Fix launching favorite applications")
+            property string details22: i18n.tr("Update weather on refreshing home page")
+            property string details23: i18n.tr("Added the ability to run a calculation from the search bar")
+            property string details24: i18n.tr("Update translations")
             // 2.3.6.1
-            property var details25: i18n.tr("Fix page management issue")
-            property var description25:i18n.tr("This is a hotfix release, as 'Page management' did not work anymore. Please feel free to report any issues throw https://github.com/lutin11/launcher-modular/issues or on Ubports forum")
+            property string details25: i18n.tr("Fix page management issue")
+            property string description25:i18n.tr("This is a hotfix release, as 'Page management' did not work anymore. Please feel free to report any issues throw https://github.com/lutin11/launcher-modular/issues or on Ubports forum")
             // 2.3.7
-            property var details26: i18n.tr("Add 'Music' page")
-            property var details27: i18n.tr("Add 'Video' page")
-            property var details28: i18n.tr("Corrected display of contact names")
-            property var details29: i18n.tr("Added filter on received messages")
-            property var details30: i18n.tr("Correction of home setting not displayed")
-            property var details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்")
-            property var details32: i18n.tr("Update Arabic translations thanks to Salah Khani")
+            property string details26: i18n.tr("Add 'Music' page")
+            property string details27: i18n.tr("Add 'Video' page")
+            property string details28: i18n.tr("Corrected display of contact names")
+            property string details29: i18n.tr("Added filter on received messages")
+            property string details30: i18n.tr("Correction of home setting not displayed")
+            property string details31: i18n.tr("Add Tamil translations thanks to தமிழ்நேரம்")
+            property string details32: i18n.tr("Update Arabic translations thanks to Salah Khani")
             // 2.3.8
-            property var details33: i18n.tr("Fix issue '#5 Valid RSS Feeds not accepted'")
+            property string details33: i18n.tr("Fix issue '#5 Valid RSS Feeds not accepted'")
             // 2.3.9
-            property var details34: i18n.tr("Change framework to 22.04")
+            property string details34: i18n.tr("Change framework to 22.04")
             // 2.4.0
-            property var details35: i18n.tr("Change framework to 24.04")
+            property string details35: i18n.tr("Change framework to 24.04")
             // 2.4.1
-            property var details36: i18n.tr("Fix superimposed pages at start up")
+            property string details36: i18n.tr("Fix superimposed pages at start up")
             // 2.4.2
-            property var details37: i18n.tr("The calendar limit of days is not settable")
+            property string details37: i18n.tr("The calendar limit of days is not settable")
             // 2.4.2.9
-            property var details38: i18n.tr("Fixup theme not well manage")
+            property string details38: i18n.tr("Fixup theme not well manage")
+            // 2.4.3.9
+            property string details39: i18n.tr("Add Clocke Page")
+            property string details40: i18n.tr("Fix background settings")
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "", date: "2025-10-31", details: details40, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.3.9", date: "2025-10-31", details: details39, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.2.9", date: "2025-10-18", details: details38, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.2", date: "2025-10-15", details: details37, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.1", date: "2025-09-19", details: details36, description: emptyDescription});
