@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-10-23 12:19+0000\n"
-"PO-Revision-Date: 2025-02-22 23:12+0000\n"
-"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"PO-Revision-Date: 2025-11-03 05:51+0000\n"
+"Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/ta/>\n"
 "Language: ta\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.1-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -140,7 +140,7 @@ msgstr "ஆர்எச்எச் ஊட்டங்களுக்கு ப�
 
 #: ../qml/ChangeLogs.qml:68
 msgid "On Rss setting page, you can add a list of RSS feeds"
-msgstr ""
+msgstr "Rss அமைப்பு பக்கத்தில், நீங்கள் RSS ஊட்டங்களின் பட்டியலைச் சேர்க்கலாம்"
 
 #: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
 msgid "Update translations"
@@ -180,6 +180,8 @@ msgid ""
 "feel free to report any issues throw https://github.com/lutin11/launcher-"
 "modular/issues or on Ubports forum"
 msgstr ""
+"'பேச் மேனேச்மென்ட்' வேலை செய்யாததால், இது ஆட்ஃபிக்ச் வெளியீடு. https://github.com/lutin11/"
+"launcher-modular/issues அல்லது Ubports மன்றத்தில் ஏதேனும் சிக்கல்கள் இருந்தால் தயங்காமல் புகாரளிக்கவும்"
 
 #: ../qml/ChangeLogs.qml:85
 msgid "Add 'Music' page"
@@ -212,26 +214,27 @@ msgstr "அரபு மொழிபெயர்ப்புகளைப் ப�
 #: ../qml/ChangeLogs.qml:93
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr ""
+"'#5 செல்லுபடியாகும் RSS ஊட்டங்கள் ஏற்கப்படவில்லை' என்ற சிக்கலை சரிசெய்யவும்"
 
 #: ../qml/ChangeLogs.qml:95
 msgid "Change framework to 22.04"
-msgstr ""
+msgstr "கட்டமைப்பை 22.04க்கு மாற்றவும்"
 
 #: ../qml/ChangeLogs.qml:97
 msgid "Change framework to 24.04"
-msgstr ""
+msgstr "கட்டமைப்பை 24.04க்கு மாற்றவும்"
 
 #: ../qml/ChangeLogs.qml:99
 msgid "Fix superimposed pages at start up"
-msgstr ""
+msgstr "தொடக்கத்தில் மிகைப்படுத்தப்பட்ட பக்கங்களை சரிசெய்யவும்"
 
 #: ../qml/ChangeLogs.qml:101
 msgid "The calendar limit of days is not settable"
-msgstr ""
+msgstr "நாட்களின் காலண்டர் வரம்பு அமைக்கப்படவில்லை"
 
 #: ../qml/ChangeLogs.qml:103
 msgid "Fixup theme not well manage"
-msgstr ""
+msgstr "சரிசெய் கருப்பொருள் நன்றாக நிர்வகிக்கவில்லை"
 
 #: ../qml/ChangeLogs.qml:186
 msgid "Version: "
@@ -519,43 +522,40 @@ msgid "By default 60 days"
 msgstr "இயல்பாக 60 நாட்கள்"
 
 #: ../qml/pages/clock/Settings.qml:60
-#, fuzzy
 msgid "Settings for 'Clock' page"
-msgstr "'இசை' பக்கத்திற்கான அமைப்புகள்"
+msgstr "'கடிகாரம்' பக்கத்திற்கான அமைப்புகள்"
 
 #: ../qml/pages/clock/Settings.qml:135
 msgid "Bold"
-msgstr ""
+msgstr "தடிமான"
 
 #: ../qml/pages/clock/Settings.qml:136
 msgid "BoldItalic"
-msgstr ""
+msgstr "போல்ட்இட்டாலிக்"
 
 #: ../qml/pages/clock/Settings.qml:137
 msgid "Regular"
-msgstr ""
+msgstr "வழக்கமான"
 
 #: ../qml/pages/clock/Settings.qml:138
 msgid "Italic"
-msgstr ""
+msgstr "சாய்வு"
 
 #: ../qml/pages/clock/Settings.qml:139
-#, fuzzy
 msgid "Light"
-msgstr "மெல்லிய காற்று"
+msgstr "ஒளி"
 
 #: ../qml/pages/clock/Settings.qml:140
-#, fuzzy
 msgid "LightItalic"
-msgstr "மெல்லிய காற்று"
+msgstr "இலகுவான"
 
 #: ../qml/pages/clock/Settings.qml:194
 msgid "Font type : "
-msgstr ""
+msgstr "எழுத்துரு வகை:"
 
 #: ../qml/pages/clock/Settings.qml:238
 msgid "Format : "
-msgstr ""
+msgstr "வடிவம்:"
 
 #: ../qml/pages/home/Settings.qml:107
 msgid "Favorite apps management"
@@ -959,9 +959,8 @@ msgid "or"
 msgstr "அல்லது"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
 msgid "Launcher Modular"
-msgstr "பயன்பாட்டைத் தொடங்கவும்"
+msgstr "துவக்கி மாடுலர்"
 
 #~ msgid "Modular launcher"
 #~ msgstr "மட்டு துவக்கி"
