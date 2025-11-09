@@ -84,7 +84,7 @@ MainView {
         property real backgroundOpacity: 0.7
         property int backgroundBlur: 0
 
-        property string folderimage: MySettings.getPicturesLocation()
+        property string folderImage: MySettings.getPicturesLocation()
         property string folderMusic: MySettings.getMusicLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
