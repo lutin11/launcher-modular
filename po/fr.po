@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-01 07:00+0000\n"
-"PO-Revision-Date: 2024-11-02 15:38+0000\n"
+"PO-Revision-Date: 2025-11-10 21:51+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -583,7 +583,7 @@ msgstr "Aucun"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"
-msgstr "Style d'icônes : "
+msgstr "Aucun style"
 
 #: ../qml/pages/home/Settings.qml:168
 msgid "Rounded"
