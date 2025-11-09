@@ -28,7 +28,7 @@ Item {
         FolderListModel {
             id: folderModel
             nameFilters: ["*.png", "*.jpg", "*.jpeg"]
-            folder: launchermodular.settings.folderimage
+            folder: launchermodular.settings.folderImage
             showDirs: false
         }
 

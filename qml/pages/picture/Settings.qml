@@ -66,12 +66,38 @@ Page {
                         anchors.right: parent.right
                         spacing: units.gu(2)
 
-                        TextField {
-                            objectName: "textfield_standard"
+                        Rectangle {
+                            id: searchBar
+                            height: units.gu(5)
                             width: parent.width
-                            text: launchermodular.settings.folderimage
-                            onTextChanged: { launchermodular.settings.folderimage = text }
-                            inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+                            color: "transparent"
+
+                            TextField {
+                                objectName: "textfield_standard"
+                                width: parent.width
+                                text: launchermodular.settings.folderImage
+                                onTextChanged: { launchermodular.settings.folderImage = text }
+                                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+                            }
+
+                            Icon {
+                                id: iconSearch
+                                anchors {
+                                    right: searchBar.right
+                                    rightMargin: units.gu(1)
+                                    leftMargin: units.gu(1)
+                                    verticalCenter: parent.verticalCenter
+                                }
+                                height: parent.height*0.5
+                                width: height
+                                name: "find"
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        pageStack.push(Qt.resolvedUrl("ImportPage.qml"));
+                                    }
+                                }
+                            }
                         }
                     }
                 }
