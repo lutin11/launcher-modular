@@ -58,7 +58,6 @@ Page {
                                 id: screenshotAppFavorite
                                 source: elem.icon
                                 smooth: true
-                                antialiasing: true
                             }
                             SlotsLayout.position: SlotsLayout.Leading;
                             width: units.gu(4)
@@ -123,7 +122,6 @@ Page {
                                     id: screenshotAppFavorite
                                     source: icon
                                     smooth: true
-                                    antialiasing: true
                                 }
                                 SlotsLayout.position: SlotsLayout.Leading;
                                 width: units.gu(4)

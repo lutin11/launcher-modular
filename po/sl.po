@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-01 07:00+0000\n"
+"POT-Creation-Date: 2025-11-13 07:13+0000\n"
 "PO-Revision-Date: 2023-02-12 14:38+0000\n"
 "Last-Translator: HudobniVolk <hudobni.volk@tuta.io>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/ubports/"
@@ -44,7 +44,8 @@ msgstr ""
 msgid "Change Log"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:18 ../qml/pages/rss/Settings.qml:24
+#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:26
+#: ../qml/pages/rss/Settings.qml:24
 msgid "Back"
 msgstr ""
 
@@ -316,80 +317,80 @@ msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
 
-#: ../qml/ImportPage.qml:10
+#: ../qml/ImportPage.qml:13
 msgid "Choose"
 msgstr "Izberite"
 
-#: ../qml/Main.qml:420
+#: ../qml/Main.qml:423
 msgid "Swipe up to configure the launcher"
 msgstr "Podrsajte navzgor za konfiguracijo zaganjalnika"
 
-#: ../qml/Main.qml:474
+#: ../qml/Main.qml:477
 msgid "Add custom icon"
 msgstr "Dodajte ikono po meri"
 
-#: ../qml/Main.qml:507
+#: ../qml/Main.qml:510
 msgid "Manage page"
 msgstr "Upravljanje strani"
 
-#: ../qml/Main.qml:540
+#: ../qml/Main.qml:543
 msgid "Configure Launcher"
 msgstr "Konfigurirajte zaganjalnik"
 
-#: ../qml/Main.qml:573
+#: ../qml/Main.qml:576
 msgid "Autostart"
 msgstr "Samodejni zagon"
 
-#: ../qml/Main.qml:606
+#: ../qml/Main.qml:609
 msgid "Help"
 msgstr "Pomoč"
 
-#: ../qml/Main.qml:639
+#: ../qml/Main.qml:642
 msgid "About"
 msgstr "O aplikaciji"
 
-#: ../qml/Main.qml:696
+#: ../qml/Main.qml:699
 msgid "Website"
 msgstr "Spletna stran"
 
-#: ../qml/Main.qml:696
+#: ../qml/Main.qml:699
 msgid "Open this URL in the web browser"
 msgstr "Odprite ta naslov URL v spletnem brskalniku"
 
-#: ../qml/Main.qml:697
+#: ../qml/Main.qml:700
 msgid "Terminal command"
 msgstr "Terminalski ukaz"
 
-#: ../qml/Main.qml:697
+#: ../qml/Main.qml:700
 msgid "Run a command in a terminal"
 msgstr "Zaženite ukaz v terminalu"
 
-#: ../qml/Main.qml:698
+#: ../qml/Main.qml:701
 msgid "Launch app"
 msgstr "Zaženi aplikacijo"
 
-#: ../qml/Main.qml:698
+#: ../qml/Main.qml:701
 msgid "Launch an app"
 msgstr "Zaženite eno aplikacijo"
 
-#: ../qml/Main.qml:722
+#: ../qml/Main.qml:725
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "Ikona SVG ali PNG formata. Razmerje 1:1"
 
-#: ../qml/Main.qml:735
+#: ../qml/Main.qml:738
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>Naslov</b>, ki bo prikazan na seznamu aplikacij"
 
-#: ../qml/Main.qml:759 ../qml/Main.qml:760 ../qml/Main.qml:761
+#: ../qml/Main.qml:762 ../qml/Main.qml:763 ../qml/Main.qml:764
 msgid "<b>Action</b> example: "
 msgstr "Primer <b>dejanja</b> : "
 
-#: ../qml/Main.qml:773
+#: ../qml/Main.qml:776
 msgid "Create icon"
 msgstr "Ustvari ikono"
 
-#: ../qml/Main.qml:816 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
-#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:80
+#: ../qml/Main.qml:819 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
+#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:79
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -405,7 +406,7 @@ msgstr "Izberite stran"
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:163
+#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:161
 msgid "General"
 msgstr "Splošno"
 
@@ -481,7 +482,7 @@ msgstr "Odmesti"
 msgid "Remove"
 msgstr "Odstrani"
 
-#: ../qml/pages/Music.qml:159
+#: ../qml/pages/Music.qml:160
 msgid "Search your music"
 msgstr ""
 
@@ -498,7 +499,7 @@ msgstr ""
 msgid "New todo"
 msgstr "novo opravilo"
 
-#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:137
 #: ../qml/pages/rss/Settings.qml:173
 msgid "Delete"
 msgstr "Izbriši"
@@ -509,7 +510,7 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/picture/Settings.qml:13 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr "Stran z nastavitvami"
@@ -561,59 +562,59 @@ msgstr ""
 msgid "Format : "
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:107
+#: ../qml/pages/home/Settings.qml:106
 msgid "Favorite apps management"
 msgstr "Upravljanje priljubljenih aplikacij"
 
-#: ../qml/pages/home/Settings.qml:167
+#: ../qml/pages/home/Settings.qml:165
 msgid "None"
 msgstr "Nič"
 
-#: ../qml/pages/home/Settings.qml:167
+#: ../qml/pages/home/Settings.qml:165
 msgid "Unstyled icons"
 msgstr "Nestilizirane ikone"
 
-#: ../qml/pages/home/Settings.qml:168
+#: ../qml/pages/home/Settings.qml:166
 msgid "Rounded"
 msgstr "Zaobljeno"
 
-#: ../qml/pages/home/Settings.qml:168
+#: ../qml/pages/home/Settings.qml:166
 msgid "Rounded icons"
 msgstr "Zaobljene ikone"
 
-#: ../qml/pages/home/Settings.qml:193
+#: ../qml/pages/home/Settings.qml:191
 msgid "Style Icons : "
 msgstr "Ikone sloga : "
 
-#: ../qml/pages/home/Settings.qml:237
+#: ../qml/pages/home/Settings.qml:235
 msgid "Search engine : "
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:248
+#: ../qml/pages/home/Settings.qml:246
 msgid "Widgets"
 msgstr "Namizni pripomočki"
 
-#: ../qml/pages/home/Settings.qml:253
+#: ../qml/pages/home/Settings.qml:251
 msgid "Show clock"
 msgstr "Pokaži uro"
 
-#: ../qml/pages/home/Settings.qml:262
+#: ../qml/pages/home/Settings.qml:260
 msgid "Show weather"
 msgstr "Pokaži vreme"
 
-#: ../qml/pages/home/Settings.qml:272
+#: ../qml/pages/home/Settings.qml:270
 msgid "Show alarms"
 msgstr "Pokaži alarme"
 
-#: ../qml/pages/home/Settings.qml:281
+#: ../qml/pages/home/Settings.qml:279
 msgid "Show last call"
 msgstr "Pokaži zadnji klic"
 
-#: ../qml/pages/home/Settings.qml:290
+#: ../qml/pages/home/Settings.qml:288
 msgid "Show last message"
 msgstr "Pokaži zadnje sporočilo"
 
-#: ../qml/pages/home/Settings.qml:299
+#: ../qml/pages/home/Settings.qml:297
 msgid "Show events"
 msgstr "Pokaži dogodke"
 
@@ -626,9 +627,27 @@ msgstr "Stran z nastavitvami"
 msgid "Exemple"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:52
-msgid "Image path"
+#: ../qml/pages/picture/SelectFolderPage.qml:7
+#, fuzzy
+msgid "Choose Folder"
+msgstr "Izberite"
+
+#: ../qml/pages/picture/SelectFolderPage.qml:43
+msgid "Select"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:54
+#, fuzzy
+msgid "Image folder path:"
 msgstr "Pot slike"
+
+#: ../qml/pages/picture/Settings.qml:111
+msgid "Sort type:"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:148
+msgid "Reverse sort:"
+msgstr ""
 
 #: ../qml/pages/rss/Settings.qml:99
 msgid "https://omgubuntu.co.uk/feed"

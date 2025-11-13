@@ -70,7 +70,7 @@ Page {
 
                 Row {
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: units.gu(2)
+                    spacing: units.gu(1)
 
                     Icon {
                         name: model.fileIsDir ? "folder-symbolic" : "image-symbolic"
@@ -81,6 +81,7 @@ Page {
 
                     Label {
                         text: fileName
+                        color:  "#FFFFFF"
                         anchors.verticalCenter: parent.verticalCenter
                         elide: Text.ElideRight
                     }

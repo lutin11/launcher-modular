@@ -73,7 +73,7 @@ Page {
                             placeholderText: i18n.tr("By default 60 days")
                             width: parent.width
                             text: launchermodular.settings.limiteDaysCalendar
-                            onTextChanged: { launchermodular.settings.limiteDaysCalendar = text }
+                            onTextChanged: launchermodular.settings.limiteDaysCalendar = text
                             inputMethodHints: Qt.ImhDigitsOnly;
                         }
                     }

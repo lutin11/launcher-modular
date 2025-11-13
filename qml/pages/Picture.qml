@@ -30,6 +30,8 @@ Item {
             nameFilters: ["*.png", "*.jpg", "*.jpeg"]
             folder: launchermodular.settings.folderImage
             showDirs: false
+            sortReversed: launchermodular.settings.reverseImagesSort
+            sortField: launchermodular.settings.imageSelectedSorting
         }
 
         delegate: Rectangle {

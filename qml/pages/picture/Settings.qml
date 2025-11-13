@@ -1,7 +1,9 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
+import Qt.labs.folderlistmodel 2.1
 import Lomiri.Components 1.3
+import Lomiri.Components.ListItems 1.3 as ListItemHeader
 
 Page {
     id: picturePageSettingsPicture
@@ -26,82 +28,138 @@ Page {
         anchors.topMargin: units.gu(6)
 
         Flickable {
-            id: flickablePictureSettings
+            id: pictureFlickableSettings
             anchors.fill: parent
             contentHeight: pictureColumnSettings.height
             flickableDirection: Flickable.VerticalFlick
-            clip: true
+            clip: false
 
             Column {
                 id: pictureColumnSettings
                 anchors {
                    fill: parent
-                   top: parent.top
                    topMargin: units.gu(2)
                    leftMargin: units.gu(1)
                    rightMargin: units.gu(1)
                 }
+                spacing: units.gu(2)
 
-                Item {
-                    id: pictureTemplateRow
+                Row {
+                    id: pictureTemplateRowLabel
                     width: parent.width
                     height: units.gu(4)
+                    spacing: units.gu(2)
 
                     Label {
-                        id: label
-                        text: i18n.tr("Image path")
-                        color:  "#FFFFFF"
-                        width: pictureTemplateRow.titleWidth
-                        anchors.left: parent.left
+                        text: i18n.tr("Image folder path:")
+                        color: "#FFFFFF"
                         anchors.verticalCenter: parent.verticalCenter
                         elide: Text.ElideRight
                         font.weight: Font.Light
                     }
+                }
 
-                    Row {
-                        id: pictureContentRow
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.left: label.right
-                        anchors.leftMargin: units.gu(2)
-                        anchors.right: parent.right
-                        spacing: units.gu(2)
+                Row {
+                    id: pictureTemplateRow
+                    width: parent.width
+                    height: units.gu(5)
+                    spacing: units.gu(2)
 
-                        Rectangle {
-                            id: searchBar
-                            height: units.gu(5)
-                            width: parent.width
-                            color: "transparent"
+                    Rectangle {
+                        id: searchBar
+                        width: parent.width
+                        height: units.gu(5)
+                        color: Theme.name.indexOf("Dark") !== -1 ? "#111111" : "white"
+                        radius: 5
+
+                        Row {
+                            anchors.fill: parent
+                            anchors.margins: units.gu(1)
+                            spacing: units.gu(1)
 
                             TextField {
-                                objectName: "textfield_standard"
-                                width: parent.width
+                                id: imageManualPath
                                 text: launchermodular.settings.folderImage
-                                onTextChanged: { launchermodular.settings.folderImage = text }
-                                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+                                anchors.verticalCenter: parent.verticalCenter
+                                width: parent.width - iconSearch.width - units.gu(1)
+                                verticalAlignment: Text.AlignVCenter
+                                onTextChanged: launchermodular.settings.folderImage = text
                             }
 
                             Icon {
                                 id: iconSearch
-                                anchors {
-                                    right: searchBar.right
-                                    rightMargin: units.gu(1)
-                                    leftMargin: units.gu(1)
-                                    verticalCenter: parent.verticalCenter
-                                }
-                                height: parent.height*0.5
+                                anchors.verticalCenter: parent.verticalCenter
+                                height: parent.height
                                 width: height
                                 name: "find"
                                 MouseArea {
                                     anchors.fill: parent
-                                    onClicked: {
-                                        pageStack.push(Qt.resolvedUrl("ImportPage.qml"));
-                                    }
+                                    onClicked: pageStack.push(Qt.resolvedUrl("SelectFolderPage.qml"))
                                 }
                             }
                         }
                     }
                 }
 
+                Row {
+                    id: rowSortingSelectorItem
+                    width: parent.width
+                    spacing: units.gu(2)
+
+                    Text {
+                        id: textStyleIcons
+                        text: i18n.tr("Sort type:")
+                        color: "#ffffff"
+                        verticalAlignment: Text.AlignVCenter
+                        height: units.gu(5)
+                    }
+
+                    ListItemHeader.ItemSelector {
+                        id: selectorSorting
+                        width: parent.width - textStyleIcons.width - units.gu(4)
+                        model: [
+                            { value: FolderListModel.Unsorted, label: "Unsorted" },
+                            { value: FolderListModel.Name,     label: "Name" },
+                            { value: FolderListModel.Time,     label: "Time" },
+                            { value: FolderListModel.Size,     label: "Size" },
+                            { value: FolderListModel.Type,     label: "Type" }
+                        ]
+                        delegate: OptionSelectorDelegate {
+                            property var item: model.modelData ? model.modelData : model
+                            text: item.label
+                        }
+                        onSelectedIndexChanged: {
+                            launchermodular.settings.imageSelectedSorting = model[selectedIndex].value
+                        }
+                        Component.onCompleted: {
+                            const v = launchermodular.settings.imageSelectedSorting
+                            selectedIndex = model.findIndex(m => m.value === v)
+                        }
+                    }
+                }
+
+                Row {
+                    id: choseSortRow
+                    width: parent.width
+                    spacing: units.gu(2)
+
+                    Text {
+                        id: reverseSortLabel
+                        text: i18n.tr("Reverse sort:")
+                        color: "#ffffff"
+                        verticalAlignment: Text.AlignVCenter
+                        height: units.gu(5)
+                    }
+
+                    ListItemHeader.Standard {
+                        width: parent.width - reverseSortLabel.width - units.gu(4)
+                        showDivider: false
+                        control: Switch {
+                            checked: launchermodular.settings.reverseImagesSort
+                            onClicked: launchermodular.settings.reverseImagesSort = !checked
+                        }
+                    }
+                }
             } // column
         } //flickable
     } //rectangle settings
