@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:25+0000\n"
+"POT-Creation-Date: 2025-11-13 07:40+0000\n"
 "PO-Revision-Date: 2023-02-17 04:45+0000\n"
 "Last-Translator: Raman <translations.0l5zc@simplelogin.com>\n"
 "Language-Team: Malayalam <https://hosted.weblate.org/projects/ubports/"
@@ -488,7 +488,7 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:13 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr ""
@@ -610,15 +610,15 @@ msgstr "തിരഞ്ഞെടുക്കുക"
 msgid "Select"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:54
+#: ../qml/pages/picture/Settings.qml:56
 msgid "Image folder path:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:119
+#: ../qml/pages/picture/Settings.qml:116
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:150
+#: ../qml/pages/picture/Settings.qml:153
 msgid "Reverse sort:"
 msgstr ""
 
