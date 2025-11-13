@@ -102,11 +102,11 @@ Page {
                     width: parent.width
                     spacing: units.gu(2)
                     property var selectorSortingModel: [
-                        { value: FolderListModel.Unsorted, label: "Unsorted" },
-                        { value: FolderListModel.Name,     label: "Name" },
-                        { value: FolderListModel.Time,     label: "Time" },
-                        { value: FolderListModel.Size,     label: "Size" },
-                        { value: FolderListModel.Type,     label: "Type" }
+                        { value: FolderListModel.Unsorted, label: i18n.tr("Unsorted") },
+                        { value: FolderListModel.Name,     label: i18n.tr("Name") },
+                        { value: FolderListModel.Time,     label: i18n.tr("Time") },
+                        { value: FolderListModel.Size,     label: i18n.tr("Size") },
+                        { value: FolderListModel.Type,     label: i18n.tr("Type") }
                     ]
                     property int selectedIndex: 0
 
