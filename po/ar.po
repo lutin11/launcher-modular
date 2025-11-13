@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 22:52+0000\n"
+"POT-Creation-Date: 2025-11-13 23:17+0000\n"
 "PO-Revision-Date: 2024-11-04 14:59+0000\n"
 "Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -644,6 +644,26 @@ msgstr ""
 #, fuzzy
 msgid "Image folder path:"
 msgstr "مسار الصورة"
+
+#: ../qml/pages/picture/Settings.qml:105
+msgid "Unsorted"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:106
+msgid "Name"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:107
+msgid "Time"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:108
+msgid "Size"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:109
+msgid "Type"
+msgstr ""
 
 #: ../qml/pages/picture/Settings.qml:115
 msgid "Sort type:"

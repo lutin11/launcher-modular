@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 22:52+0000\n"
+"POT-Creation-Date: 2025-11-13 23:17+0000\n"
 "PO-Revision-Date: 2024-11-02 15:38+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -652,6 +652,26 @@ msgstr ""
 #, fuzzy
 msgid "Image folder path:"
 msgstr "Chemin de l'image"
+
+#: ../qml/pages/picture/Settings.qml:105
+msgid "Unsorted"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:106
+msgid "Name"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:107
+msgid "Time"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:108
+msgid "Size"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:109
+msgid "Type"
+msgstr ""
 
 #: ../qml/pages/picture/Settings.qml:115
 msgid "Sort type:"
