@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-13 22:52+0000\n"
-"PO-Revision-Date: 2024-11-02 15:38+0000\n"
+"PO-Revision-Date: 2025-11-13 23:18+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -649,17 +649,16 @@ msgid "Select"
 msgstr ""
 
 #: ../qml/pages/picture/Settings.qml:55
-#, fuzzy
 msgid "Image folder path:"
-msgstr "Chemin de l'image"
+msgstr "Chemin du dossier image :"
 
 #: ../qml/pages/picture/Settings.qml:115
 msgid "Sort type:"
-msgstr ""
+msgstr "Type de trie :"
 
 #: ../qml/pages/picture/Settings.qml:190
 msgid "Reverse sort"
-msgstr ""
+msgstr "Inversion du sens du trie"
 
 #: ../qml/pages/rss/Settings.qml:99
 msgid "https://omgubuntu.co.uk/feed"
@@ -692,7 +691,7 @@ msgstr "à"
 
 #: ../qml/widgets/Calculator.qml:21
 msgid "Calcul result:"
-msgstr "Résultat du calcul:"
+msgstr "Résultat du calcul :"
 
 #: ../qml/widgets/Event.qml:100
 msgid "Events"
