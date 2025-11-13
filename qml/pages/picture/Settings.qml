@@ -5,6 +5,7 @@ import Qt.labs.folderlistmodel 2.1
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
+import QtQuick.Layouts 1.15
 
 Page {
     id: picturePageSettingsPicture
@@ -30,10 +31,8 @@ Page {
         Flickable {
             id: pictureFlickableSettings
             anchors.fill: parent
-            contentHeight: pictureColumnSettings.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
-            interactive: true
 
             Column {
                 id: pictureColumnSettings
@@ -43,7 +42,8 @@ Page {
                     right: parent.right
                     margins: units.gu(2)
                 }
-                spacing: units.gu(2)
+                //anchors.fill: parent
+                spacing: units.gu(1)
 
                 // --- Image folder path ---
                 Row {
@@ -121,9 +121,9 @@ Page {
                     Button {
                         id: openSelectorButton
                         text: sortingSection.selectorSortingModel[sortingSection.selectedIndex].label
-                        width: parent.width * 0.4
+                        width: sortingSection.width - sortLabel.width - units.gu(2)
                         height: units.gu(5)
-                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.verticalCenter: parent.right
                         onClicked: popupSelector.open()
                     }
 
@@ -180,25 +180,23 @@ Page {
                 }
 
                 // --- Reverse sort toggle ---
-                Row {
+                RowLayout {
                     id: choseSortRow
                     width: parent.width
-                    spacing: units.gu(2)
+                    spacing: units.gu(1)
+                    height: units.gu(5)
 
-                    Text {
-                        text: i18n.tr("Reverse sort:")
-                        color: "#ffffff"
-                        verticalAlignment: Text.AlignVCenter
-                        height: units.gu(5)
+                    Label {
+                        text: i18n.tr("Reverse sort")
+                        color: "white"
+                        Layout.alignment: Qt.AlignVCenter
+                        Layout.fillWidth: true
                     }
 
-                    ListItemHeader.Standard {
-                        width: parent.width / 2
-                        showDivider: false
-                        control: Switch {
-                            checked: launchermodular.settings.reverseImagesSort
-                            onClicked: launchermodular.settings.reverseImagesSort = !checked
-                        }
+                    Switch {
+                        checked: launchermodular.settings.reverseImagesSort
+                        onClicked: launchermodular.settings.reverseImagesSort = checked
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                     }
                 }
             } // Column

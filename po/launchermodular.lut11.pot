@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 08:37+0000\n"
+"POT-Creation-Date: 2025-11-13 17:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -485,7 +485,7 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:14 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr ""
@@ -614,8 +614,8 @@ msgstr ""
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:189
-msgid "Reverse sort:"
+#: ../qml/pages/picture/Settings.qml:190
+msgid "Reverse sort"
 msgstr ""
 
 #: ../qml/pages/rss/Settings.qml:99

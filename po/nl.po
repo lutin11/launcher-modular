@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 08:29+0000\n"
+"POT-Creation-Date: 2025-11-13 17:55+0000\n"
 "PO-Revision-Date: 2023-02-22 13:39+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -504,7 +504,7 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:14 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr "Instellingen"
@@ -639,8 +639,8 @@ msgstr "Afbeeldingslocatie"
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:189
-msgid "Reverse sort:"
+#: ../qml/pages/picture/Settings.qml:190
+msgid "Reverse sort"
 msgstr ""
 
 #: ../qml/pages/rss/Settings.qml:99
