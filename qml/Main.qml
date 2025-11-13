@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
+import Qt.labs.folderlistmodel 2.1
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import MySettings 1.0
@@ -84,7 +85,9 @@ MainView {
         property real backgroundOpacity: 0.7
         property int backgroundBlur: 0
 
-        property string folderimage: MySettings.getPicturesLocation()
+        property string folderImage: MySettings.getPicturesLocation()
+        property bool reverseImagesSort: false
+        property int imageSelectedSorting: FolderListModel.Time
         property string folderMusic: MySettings.getMusicLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
