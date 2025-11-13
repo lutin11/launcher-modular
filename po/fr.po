@@ -280,8 +280,8 @@ msgstr ""
 "soit (à votre choix) toute version ultérieure. Ce programme est distribué "
 "dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
 "garantie implicite de COMMERCIALISATION ou d'ADÉQUATION À UN USAGE "
-"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en."
-"html\">GNU General Public License</a> pour plus de détails."
+"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/"
+"gpl-3.0.en.html\">GNU General Public License</a> pour plus de détails."
 
 #: ../qml/ChangeLogs.qml:379
 msgid "SOURCE"
@@ -649,9 +649,8 @@ msgid "Select"
 msgstr ""
 
 #: ../qml/pages/picture/Settings.qml:55
-#, fuzzy
 msgid "Image folder path:"
-msgstr "Chemin de l'image"
+msgstr "Chemin du dossier image :"
 
 #: ../qml/pages/picture/Settings.qml:105
 msgid "Unsorted"
@@ -675,11 +674,11 @@ msgstr ""
 
 #: ../qml/pages/picture/Settings.qml:115
 msgid "Sort type:"
-msgstr ""
+msgstr "Type de trie :"
 
 #: ../qml/pages/picture/Settings.qml:190
 msgid "Reverse sort"
-msgstr ""
+msgstr "Inversion du sens du trie"
 
 #: ../qml/pages/rss/Settings.qml:99
 msgid "https://omgubuntu.co.uk/feed"
@@ -712,7 +711,7 @@ msgstr "à"
 
 #: ../qml/widgets/Calculator.qml:21
 msgid "Calcul result:"
-msgstr "Résultat du calcul:"
+msgstr "Résultat du calcul :"
 
 #: ../qml/widgets/Event.qml:100
 msgid "Events"
