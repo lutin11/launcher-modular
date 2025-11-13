@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-13 23:17+0000\n"
-"PO-Revision-Date: 2024-11-02 15:38+0000\n"
+"PO-Revision-Date: 2025-11-13 23:27+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -600,7 +600,7 @@ msgstr "Style d'icônes : "
 
 #: ../qml/pages/home/Settings.qml:235
 msgid "Search engine : "
-msgstr ""
+msgstr "Moteur de recherche :"
 
 #: ../qml/pages/home/Settings.qml:246
 msgid "Widgets"
@@ -637,7 +637,7 @@ msgstr "Pas de paramètres pour la page « TODO"
 
 #: ../qml/pages/music/Settings.qml:47 ../qml/pages/videos/Settings.qml:46
 msgid "Exemple"
-msgstr ""
+msgstr "Éxemple"
 
 #: ../qml/pages/picture/SelectFolderPage.qml:7
 #, fuzzy
@@ -646,7 +646,7 @@ msgstr "Choisir"
 
 #: ../qml/pages/picture/SelectFolderPage.qml:43
 msgid "Select"
-msgstr ""
+msgstr "Sélectionner"
 
 #: ../qml/pages/picture/Settings.qml:55
 msgid "Image folder path:"
@@ -654,23 +654,23 @@ msgstr "Chemin du dossier image :"
 
 #: ../qml/pages/picture/Settings.qml:105
 msgid "Unsorted"
-msgstr ""
+msgstr "Non trié"
 
 #: ../qml/pages/picture/Settings.qml:106
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: ../qml/pages/picture/Settings.qml:107
 msgid "Time"
-msgstr ""
+msgstr "Date"
 
 #: ../qml/pages/picture/Settings.qml:108
 msgid "Size"
-msgstr ""
+msgstr "Taille"
 
 #: ../qml/pages/picture/Settings.qml:109
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: ../qml/pages/picture/Settings.qml:115
 msgid "Sort type:"
