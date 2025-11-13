@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 08:07+0000\n"
+"POT-Creation-Date: 2025-11-13 08:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -610,11 +610,11 @@ msgstr ""
 msgid "Image folder path:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:116
+#: ../qml/pages/picture/Settings.qml:115
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:179
+#: ../qml/pages/picture/Settings.qml:189
 msgid "Reverse sort:"
 msgstr ""
 

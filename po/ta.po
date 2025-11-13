@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:55+0000\n"
+"POT-Creation-Date: 2025-11-13 08:29+0000\n"
 "PO-Revision-Date: 2025-02-22 23:12+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -644,12 +644,12 @@ msgstr ""
 msgid "Image folder path:"
 msgstr "படப் பாதை"
 
-#: ../qml/pages/picture/Settings.qml:116
+#: ../qml/pages/picture/Settings.qml:115
 #, fuzzy
 msgid "Sort type:"
 msgstr "எழுத்துரு வகை:"
 
-#: ../qml/pages/picture/Settings.qml:179
+#: ../qml/pages/picture/Settings.qml:189
 msgid "Reverse sort:"
 msgstr ""
 

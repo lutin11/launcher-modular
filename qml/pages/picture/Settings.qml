@@ -96,11 +96,11 @@ Page {
                     }
                 }
 
-                Column {
+                // --- Sorting selector ---
+                Row {
                     id: sortingSection
                     width: parent.width
-                    spacing: units.gu(1)
-
+                    spacing: units.gu(2)
                     property var selectorSortingModel: [
                         { value: FolderListModel.Unsorted, label: "Unsorted" },
                         { value: FolderListModel.Name,     label: "Name" },
@@ -108,11 +108,10 @@ Page {
                         { value: FolderListModel.Size,     label: "Size" },
                         { value: FolderListModel.Type,     label: "Type" }
                     ]
-
                     property int selectedIndex: 0
 
                     Text {
-                        id:textStyleIcons
+                        id: sortLabel
                         text: i18n.tr("Sort type:")
                         color: "#ffffff"
                         verticalAlignment: Text.AlignVCenter
@@ -121,8 +120,10 @@ Page {
 
                     Button {
                         id: openSelectorButton
-                        width: parent.width
                         text: sortingSection.selectorSortingModel[sortingSection.selectedIndex].label
+                        width: parent.width * 0.4
+                        height: units.gu(5)
+                        anchors.verticalCenter: parent.verticalCenter
                         onClicked: popupSelector.open()
                     }
 
@@ -131,21 +132,22 @@ Page {
                         modal: true
                         focus: true
                         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
-                        x: openSelectorButton.x
-                        y: openSelectorButton.y + openSelectorButton.height
+                        // On positionne la popup juste sous le bouton
+                        x: openSelectorButton.mapToItem(null, sortLabel.width + units.gu(2), 0).x
+                        y: openSelectorButton.mapToItem(null, 0, openSelectorButton.height).y
                         width: openSelectorButton.width
 
                         background: Rectangle {
                             color: "#222222"
-                            radius: 6
+                            radius: 5
                             border.color: "#555555"
                             border.width: 1
                         }
 
                         Column {
                             anchors.fill: parent
-                            anchors.margins: units.gu(0.5)
                             spacing: units.gu(0.5)
+                            width: openSelectorButton.width
 
                             Repeater {
                                 model: sortingSection.selectorSortingModel
@@ -159,6 +161,14 @@ Page {
                                     }
                                 }
                             }
+                        }
+
+                        enter: Transition {
+                            NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 150 }
+                            NumberAnimation { property: "scale"; from: 0.95; to: 1.0; duration: 150 }
+                        }
+                        exit: Transition {
+                            NumberAnimation { property: "opacity"; from: 1; to: 0; duration: 100 }
                         }
                     }
 

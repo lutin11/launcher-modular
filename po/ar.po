@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:55+0000\n"
+"POT-Creation-Date: 2025-11-13 08:29+0000\n"
 "PO-Revision-Date: 2024-11-04 14:59+0000\n"
 "Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -645,11 +645,11 @@ msgstr ""
 msgid "Image folder path:"
 msgstr "مسار الصورة"
 
-#: ../qml/pages/picture/Settings.qml:116
+#: ../qml/pages/picture/Settings.qml:115
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:179
+#: ../qml/pages/picture/Settings.qml:189
 msgid "Reverse sort:"
 msgstr ""
 
