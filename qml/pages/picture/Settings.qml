@@ -4,7 +4,6 @@ import Qt.labs.settings 1.0
 import Qt.labs.folderlistmodel 2.1
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
-import Lomiri.Components.Popups 1.3
 import Lomiri.Components.Themes 1.3
 
 Page {
@@ -33,7 +32,7 @@ Page {
             anchors.fill: parent
             contentHeight: pictureColumnSettings.height
             flickableDirection: Flickable.VerticalFlick
-            clip: true   // important pour le calcul du popup
+            clip: true
             interactive: true
 
             Column {
@@ -97,7 +96,6 @@ Page {
                     }
                 }
 
-                // --- Sorting type selector ---
                 Column {
                     id: sortingSection
                     width: parent.width
@@ -111,35 +109,63 @@ Page {
                         { value: FolderListModel.Type,     label: "Type" }
                     ]
 
+                    property int selectedIndex: 0
+
                     Text {
-                        id: textStyleIcons
+                        id:textStyleIcons
                         text: i18n.tr("Sort type:")
                         color: "#ffffff"
                         verticalAlignment: Text.AlignVCenter
                         height: units.gu(5)
                     }
 
-                    ListItemHeader.ItemSelector {
-                        id: selectorSorting
+                    Button {
+                        id: openSelectorButton
                         width: parent.width
-                        model: sortingSection.selectorSortingModel
-                        colourImage: true
+                        text: sortingSection.selectorSortingModel[sortingSection.selectedIndex].label
+                        onClicked: popupSelector.open()
+                    }
 
-                        delegate: OptionSelectorDelegate {
-                            property var item: model.modelData ? model.modelData : model
-                            text: item.label
-                            //color: "#ffffff"
+                    Popup {
+                        id: popupSelector
+                        modal: true
+                        focus: true
+                        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+                        x: openSelectorButton.x
+                        y: openSelectorButton.y + openSelectorButton.height
+                        width: openSelectorButton.width
+
+                        background: Rectangle {
+                            color: "#222222"
+                            radius: 6
+                            border.color: "#555555"
+                            border.width: 1
                         }
 
-                        onSelectedIndexChanged: {
-                            launchermodular.settings.imageSelectedSorting = model[selectedIndex].value
-                        }
+                        Column {
+                            anchors.fill: parent
+                            anchors.margins: units.gu(0.5)
+                            spacing: units.gu(0.5)
 
-                        Component.onCompleted: {
-                            const v = launchermodular.settings.imageSelectedSorting
-                            selectedIndex = model.findIndex(m => m.value === v)
-                            if (selectedIndex === -1) selectedIndex = 0
+                            Repeater {
+                                model: sortingSection.selectorSortingModel
+                                delegate: Button {
+                                    text: modelData.label
+                                    width: parent.width
+                                    onClicked: {
+                                        sortingSection.selectedIndex = index
+                                        launchermodular.settings.imageSelectedSorting = modelData.value
+                                        popupSelector.close()
+                                    }
+                                }
+                            }
                         }
+                    }
+
+                    Component.onCompleted: {
+                        const v = launchermodular.settings.imageSelectedSorting
+                        selectedIndex = selectorSortingModel.findIndex(m => m.value === v)
+                        if (selectedIndex === -1) selectedIndex = 0
                     }
                 }
 

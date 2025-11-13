@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:40+0000\n"
+"POT-Creation-Date: 2025-11-13 07:55+0000\n"
 "PO-Revision-Date: 2023-02-08 13:38+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/ubports/"
@@ -501,7 +501,7 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/picture/Settings.qml:14 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr "Página das Configurações"
@@ -627,7 +627,7 @@ msgstr "Escolher"
 msgid "Select"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:56
+#: ../qml/pages/picture/Settings.qml:55
 #, fuzzy
 msgid "Image folder path:"
 msgstr "Caminho da Imagem"
@@ -636,7 +636,7 @@ msgstr "Caminho da Imagem"
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:153
+#: ../qml/pages/picture/Settings.qml:179
 msgid "Reverse sort:"
 msgstr ""
 

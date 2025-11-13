@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:40+0000\n"
+"POT-Creation-Date: 2025-11-13 07:55+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -498,7 +498,7 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/picture/Settings.qml:14 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr "Страница Настроек"
@@ -624,7 +624,7 @@ msgstr "Выбрать"
 msgid "Select"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:56
+#: ../qml/pages/picture/Settings.qml:55
 #, fuzzy
 msgid "Image folder path:"
 msgstr "Путь к изображению"
@@ -633,7 +633,7 @@ msgstr "Путь к изображению"
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:153
+#: ../qml/pages/picture/Settings.qml:179
 msgid "Reverse sort:"
 msgstr ""
 

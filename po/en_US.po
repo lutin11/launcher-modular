@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:40+0000\n"
+"POT-Creation-Date: 2025-11-13 07:55+0000\n"
 "PO-Revision-Date: 2023-01-08 13:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
@@ -487,7 +487,7 @@ msgstr ""
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
+#: ../qml/pages/picture/Settings.qml:14 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
 msgstr ""
@@ -608,7 +608,7 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:56
+#: ../qml/pages/picture/Settings.qml:55
 msgid "Image folder path:"
 msgstr ""
 
@@ -616,7 +616,7 @@ msgstr ""
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:153
+#: ../qml/pages/picture/Settings.qml:179
 msgid "Reverse sort:"
 msgstr ""
 
