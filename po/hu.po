@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:13+0000\n"
+"POT-Creation-Date: 2025-11-13 07:25+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Lundrin <berenyi.vilmos@tutanota.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/ubports/"
@@ -614,11 +614,11 @@ msgstr ""
 msgid "Image folder path:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:111
+#: ../qml/pages/picture/Settings.qml:119
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:148
+#: ../qml/pages/picture/Settings.qml:150
 msgid "Reverse sort:"
 msgstr ""
 

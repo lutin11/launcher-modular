@@ -106,6 +106,14 @@ Page {
                     width: parent.width
                     spacing: units.gu(2)
 
+                    property var selectorSortingModel: [
+                        { value: FolderListModel.Unsorted, label: "Unsorted" },
+                        { value: FolderListModel.Name,     label: "Name" },
+                        { value: FolderListModel.Time,     label: "Time" },
+                        { value: FolderListModel.Size,     label: "Size" },
+                        { value: FolderListModel.Type,     label: "Type" }
+                    ]
+
                     Text {
                         id: textStyleIcons
                         text: i18n.tr("Sort type:")
@@ -117,13 +125,7 @@ Page {
                     ListItemHeader.ItemSelector {
                         id: selectorSorting
                         width: parent.width - textStyleIcons.width - units.gu(4)
-                        model: [
-                            { value: FolderListModel.Unsorted, label: "Unsorted" },
-                            { value: FolderListModel.Name,     label: "Name" },
-                            { value: FolderListModel.Time,     label: "Time" },
-                            { value: FolderListModel.Size,     label: "Size" },
-                            { value: FolderListModel.Type,     label: "Type" }
-                        ]
+                        model: rowSortingSelectorItem.selectorSortingModel
                         delegate: OptionSelectorDelegate {
                             property var item: model.modelData ? model.modelData : model
                             text: item.label

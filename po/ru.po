@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 07:13+0000\n"
+"POT-Creation-Date: 2025-11-13 07:25+0000\n"
 "PO-Revision-Date: 2023-10-27 09:27+0000\n"
 "Last-Translator: Serhii Horichenko <m@sgg.im>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -629,11 +629,11 @@ msgstr ""
 msgid "Image folder path:"
 msgstr "Путь к изображению"
 
-#: ../qml/pages/picture/Settings.qml:111
+#: ../qml/pages/picture/Settings.qml:119
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:148
+#: ../qml/pages/picture/Settings.qml:150
 msgid "Reverse sort:"
 msgstr ""
 
