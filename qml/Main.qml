@@ -447,6 +447,10 @@ MainView {
                 width: parent.width
                 visible: view.count > 1
 
+                background: Rectangle {
+                    color: "white"
+                }
+
                 onOpened: launchermodular.settings.firstRun = false
 
                 RowLayout {

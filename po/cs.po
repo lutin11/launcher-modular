@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 17:55+0000\n"
+"POT-Creation-Date: 2025-11-13 22:52+0000\n"
 "PO-Revision-Date: 2023-08-15 19:25+0000\n"
 "Last-Translator: Milan Korecky <milan.korecky@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -313,71 +313,71 @@ msgstr ""
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:477
+#: ../qml/Main.qml:481
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:510
+#: ../qml/Main.qml:514
 msgid "Manage page"
 msgstr ""
 
-#: ../qml/Main.qml:543
+#: ../qml/Main.qml:547
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:576
+#: ../qml/Main.qml:580
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:609
+#: ../qml/Main.qml:613
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:642
+#: ../qml/Main.qml:646
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:703
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:703
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:700
+#: ../qml/Main.qml:704
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:700
+#: ../qml/Main.qml:704
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:701
+#: ../qml/Main.qml:705
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:701
+#: ../qml/Main.qml:705
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:729
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:738
+#: ../qml/Main.qml:742
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:762 ../qml/Main.qml:763 ../qml/Main.qml:764
+#: ../qml/Main.qml:766 ../qml/Main.qml:767 ../qml/Main.qml:768
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:776
+#: ../qml/Main.qml:780
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:819 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
 #: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:79
 msgid "Cancel"
 msgstr "Zrušit"

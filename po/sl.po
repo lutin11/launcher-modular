@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 17:55+0000\n"
+"POT-Creation-Date: 2025-11-13 22:52+0000\n"
 "PO-Revision-Date: 2023-02-12 14:38+0000\n"
 "Last-Translator: HudobniVolk <hudobni.volk@tuta.io>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/ubports/"
@@ -325,71 +325,71 @@ msgstr "Izberite"
 msgid "Swipe up to configure the launcher"
 msgstr "Podrsajte navzgor za konfiguracijo zaganjalnika"
 
-#: ../qml/Main.qml:477
+#: ../qml/Main.qml:481
 msgid "Add custom icon"
 msgstr "Dodajte ikono po meri"
 
-#: ../qml/Main.qml:510
+#: ../qml/Main.qml:514
 msgid "Manage page"
 msgstr "Upravljanje strani"
 
-#: ../qml/Main.qml:543
+#: ../qml/Main.qml:547
 msgid "Configure Launcher"
 msgstr "Konfigurirajte zaganjalnik"
 
-#: ../qml/Main.qml:576
+#: ../qml/Main.qml:580
 msgid "Autostart"
 msgstr "Samodejni zagon"
 
-#: ../qml/Main.qml:609
+#: ../qml/Main.qml:613
 msgid "Help"
 msgstr "Pomoč"
 
-#: ../qml/Main.qml:642
+#: ../qml/Main.qml:646
 msgid "About"
 msgstr "O aplikaciji"
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:703
 msgid "Website"
 msgstr "Spletna stran"
 
-#: ../qml/Main.qml:699
+#: ../qml/Main.qml:703
 msgid "Open this URL in the web browser"
 msgstr "Odprite ta naslov URL v spletnem brskalniku"
 
-#: ../qml/Main.qml:700
+#: ../qml/Main.qml:704
 msgid "Terminal command"
 msgstr "Terminalski ukaz"
 
-#: ../qml/Main.qml:700
+#: ../qml/Main.qml:704
 msgid "Run a command in a terminal"
 msgstr "Zaženite ukaz v terminalu"
 
-#: ../qml/Main.qml:701
+#: ../qml/Main.qml:705
 msgid "Launch app"
 msgstr "Zaženi aplikacijo"
 
-#: ../qml/Main.qml:701
+#: ../qml/Main.qml:705
 msgid "Launch an app"
 msgstr "Zaženite eno aplikacijo"
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:729
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "Ikona SVG ali PNG formata. Razmerje 1:1"
 
-#: ../qml/Main.qml:738
+#: ../qml/Main.qml:742
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>Naslov</b>, ki bo prikazan na seznamu aplikacij"
 
-#: ../qml/Main.qml:762 ../qml/Main.qml:763 ../qml/Main.qml:764
+#: ../qml/Main.qml:766 ../qml/Main.qml:767 ../qml/Main.qml:768
 msgid "<b>Action</b> example: "
 msgstr "Primer <b>dejanja</b> : "
 
-#: ../qml/Main.qml:776
+#: ../qml/Main.qml:780
 msgid "Create icon"
 msgstr "Ustvari ikono"
 
-#: ../qml/Main.qml:819 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
 #: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:79
 msgid "Cancel"
 msgstr "Prekliči"
