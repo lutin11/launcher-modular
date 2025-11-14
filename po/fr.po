@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-14 07:31+0000\n"
-"PO-Revision-Date: 2025-11-14 07:27+0000\n"
+"PO-Revision-Date: 2025-11-15 07:51+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -176,9 +176,8 @@ msgstr ""
 "recherche"
 
 #: ../qml/ChangeLogs.qml:82
-#, fuzzy
 msgid "Fix page management issue"
-msgstr "Gestion des pages"
+msgstr "Correction de problèmes de gestion des pages"
 
 #: ../qml/ChangeLogs.qml:83
 msgid ""
@@ -203,9 +202,8 @@ msgid "Corrected display of contact names"
 msgstr "Correction de l'affichage des noms des contacts"
 
 #: ../qml/ChangeLogs.qml:88
-#, fuzzy
 msgid "Added filter on received messages"
-msgstr "Aucun message récent"
+msgstr "Ajout d'un filtre sur les messages reçus"
 
 #: ../qml/ChangeLogs.qml:89
 #, fuzzy
