@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
-"POT-Creation-Date: 2025-11-14 07:17+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-14 07:31+0000\n"
 "PO-Revision-Date: 2025-11-14 07:27+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -241,7 +241,7 @@ msgid "The calendar limit of days is not settable"
 msgstr "La limite du nombre de jours du calendrier n'est pas configurable"
 
 #: ../qml/ChangeLogs.qml:103
-msgid "Fixup theme not well manage"
+msgid "Fix themes not well manage"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:105

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-14 07:17+0000\n"
+"POT-Creation-Date: 2025-11-14 07:31+0000\n"
 "PO-Revision-Date: 2023-11-11 09:34+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -219,7 +219,7 @@ msgid "The calendar limit of days is not settable"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:103
-msgid "Fixup theme not well manage"
+msgid "Fix themes not well manage"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:105
