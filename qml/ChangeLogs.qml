@@ -100,7 +100,7 @@ Page {
             // 2.4.2
             property string details37: i18n.tr("The calendar limit of days is not settable")
             // 2.4.3
-            property string details38: i18n.tr("Fixup theme not well manage")
+            property string details38: i18n.tr("Fix themes not well manage")
             // 2.4.4
             property string details39: i18n.tr("Add Clock Page")
             property string details40: i18n.tr("Fix background settings")
