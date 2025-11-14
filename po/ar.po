@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 23:17+0000\n"
+"POT-Creation-Date: 2025-11-14 07:17+0000\n"
 "PO-Revision-Date: 2024-11-04 14:59+0000\n"
 "Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -238,30 +238,43 @@ msgid "Fixup theme not well manage"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:105
-msgid "Add Clocke Page"
-msgstr ""
+#, fuzzy
+msgid "Add Clock Page"
+msgstr "لا توجد إعدادات لصفحة \"TODO\"."
 
 #: ../qml/ChangeLogs.qml:106
 msgid "Fix background settings"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:191
+#: ../qml/ChangeLogs.qml:108
+msgid "Add browser to select picture folder"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:109
+msgid "Add sorting picture choice"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:110
+msgid "Add desc or asc sorting picture choice"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:198
 msgid "Version: "
 msgstr "النسخة:"
 
-#: ../qml/ChangeLogs.qml:197
+#: ../qml/ChangeLogs.qml:204
 msgid " | Date: "
 msgstr "| التاريخ:"
 
-#: ../qml/ChangeLogs.qml:323
+#: ../qml/ChangeLogs.qml:330
 msgid "If you like this app, please rank it on OpenStore"
 msgstr "إذا أعجبك هذا التطبيق، يرجى تصنيفه على OpenStore"
 
-#: ../qml/ChangeLogs.qml:350
+#: ../qml/ChangeLogs.qml:357
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "مشغل معياري ل Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:364
+#: ../qml/ChangeLogs.qml:371
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -279,23 +292,23 @@ msgstr ""
 "معين  راجع <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>رخصة "
 "الشبكة العامة للاتحاد العام </a> لمزيد من التفاصيل."
 
-#: ../qml/ChangeLogs.qml:379
+#: ../qml/ChangeLogs.qml:386
 msgid "SOURCE"
 msgstr "المصدر"
 
-#: ../qml/ChangeLogs.qml:379
+#: ../qml/ChangeLogs.qml:386
 msgid "ISSUES"
 msgstr "المشكلات"
 
-#: ../qml/ChangeLogs.qml:394
+#: ../qml/ChangeLogs.qml:401
 msgid "Maintainer"
 msgstr "المشرف"
 
-#: ../qml/ChangeLogs.qml:408
+#: ../qml/ChangeLogs.qml:415
 msgid "Copyright"
 msgstr "حقوق الطبع والنشر"
 
-#: ../qml/ChangeLogs.qml:423
+#: ../qml/ChangeLogs.qml:430
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr "a href='LAUNCHER MODULAR TRANSLATORS'>مترجمو المشغلات المعيارية</a>"
 

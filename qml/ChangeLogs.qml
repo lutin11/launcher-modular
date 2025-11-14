@@ -102,14 +102,21 @@ Page {
             // 2.4.3
             property string details38: i18n.tr("Fixup theme not well manage")
             // 2.4.4
-            property string details39: i18n.tr("Add Clocke Page")
+            property string details39: i18n.tr("Add Clock Page")
             property string details40: i18n.tr("Fix background settings")
+            // 2.4.5
+            property string details41: i18n.tr("Add browser to select picture folder")
+            property string details42: i18n.tr("Add sorting picture choice")
+            property string details43: i18n.tr("Add desc or asc sorting picture choice")
 
             ListModel {
                 id: changeLogModel
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "", date: "2025-11-17", details: details43, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "2025-11-17", details: details42, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.5", date: "2025-11-17", details: details41, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "2025-10-31", details: details40, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.4", date: "2025-10-31", details: details39, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.3", date: "2025-10-18", details: details38, description: emptyDescription});
