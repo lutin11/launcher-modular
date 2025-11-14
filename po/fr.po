@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-13 23:17+0000\n"
-"PO-Revision-Date: 2025-11-13 23:27+0000\n"
+"PO-Revision-Date: 2025-11-14 07:10+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -142,6 +142,7 @@ msgstr "Ajout d'une nouvelle page pour les flux RSS"
 #: ../qml/ChangeLogs.qml:68
 msgid "On Rss setting page, you can add a list of RSS feeds"
 msgstr ""
+"Sur la page des paramètres RSS, vous pouvez ajouter une liste de flux RSS"
 
 #: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
 msgid "Update translations"
@@ -154,10 +155,11 @@ msgstr "Amélioration des performances d'affichage des pages de photos"
 #: ../qml/ChangeLogs.qml:72
 msgid "Display contact name if exists on message and call widget"
 msgstr ""
+"Afficher le nom du contact s'il existe dans le message et appeler le widget"
 
 #: ../qml/ChangeLogs.qml:76
 msgid "Fix launching Libertine applications"
-msgstr ""
+msgstr "Corrige le d'amarrage d'applications Libertine"
 
 #: ../qml/ChangeLogs.qml:77
 msgid "Fix launching favorite applications"
@@ -165,11 +167,13 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:78
 msgid "Update weather on refreshing home page"
-msgstr ""
+msgstr "Mise à jour la météo lors du rafraîchissement de la page d'accueil"
 
 #: ../qml/ChangeLogs.qml:79
 msgid "Added the ability to run a calculation from the search bar"
 msgstr ""
+"Ajout de la possibilité d'effectuer un calcul à partir de la barre de "
+"recherche"
 
 #: ../qml/ChangeLogs.qml:82
 #, fuzzy
@@ -182,6 +186,9 @@ msgid ""
 "feel free to report any issues throw https://github.com/lutin11/launcher-"
 "modular/issues or on Ubports forum"
 msgstr ""
+"Il s'agit d'une version corrective, car la « gestion des pages » ne "
+"fonctionnait plus. N'hésitez pas à signaler tout problème à l'adresse "
+"https://github.com/lutin11/launcher-modular/issues ou sur le forum Ubports."
 
 #: ../qml/ChangeLogs.qml:85
 #, fuzzy
@@ -195,7 +202,7 @@ msgstr "Pas de paramètres pour la page « TODO"
 
 #: ../qml/ChangeLogs.qml:87
 msgid "Corrected display of contact names"
-msgstr ""
+msgstr "Correction de l'affichage des noms des contacts"
 
 #: ../qml/ChangeLogs.qml:88
 #, fuzzy
@@ -217,7 +224,7 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:93
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
-msgstr ""
+msgstr "Correction du problème « #5 Flux RSS valides non acceptés »"
 
 #: ../qml/ChangeLogs.qml:95
 msgid "Change framework to 22.04"
