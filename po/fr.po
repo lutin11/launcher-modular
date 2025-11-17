@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-14 07:31+0000\n"
-"PO-Revision-Date: 2025-11-17 20:23+0000\n"
+"PO-Revision-Date: 2025-11-17 20:31+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -232,7 +232,7 @@ msgstr "Gras"
 
 #: ../qml/ChangeLogs.qml:99
 msgid "Fix superimposed pages at start up"
-msgstr "Est"
+msgstr "Corriger les pages superposées au démarrage"
 
 #: ../qml/ChangeLogs.qml:101
 msgid "The calendar limit of days is not settable"
@@ -240,15 +240,15 @@ msgstr "SOURCE"
 
 #: ../qml/ChangeLogs.qml:103
 msgid "Fix themes not well manage"
-msgstr "Est-Nord-Est"
+msgstr "Correction des thèmes mal gérés"
 
 #: ../qml/ChangeLogs.qml:105
 msgid "Add Clock Page"
-msgstr "À propos"
+msgstr "Ajout d'une page Horloge"
 
 #: ../qml/ChangeLogs.qml:106
 msgid "Fix background settings"
-msgstr "Défaut"
+msgstr "Correction du réglage fond d'écran"
 
 #: ../qml/ChangeLogs.qml:108
 msgid "Add browser to select picture folder"
