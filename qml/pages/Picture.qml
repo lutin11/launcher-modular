@@ -58,7 +58,7 @@ Item {
                     visible: Math.abs(gview.contentY - y) < 2 * gview.cellHeight  // Lazy loading based on proximity to viewport
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true  // To load images without blocking the main UI thread
-                    cache: false
+                    cache: true
                 }
 
                 LomiriShape {

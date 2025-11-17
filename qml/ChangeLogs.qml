@@ -105,7 +105,7 @@ Page {
             property string details39: i18n.tr("Add Clock Page")
             property string details40: i18n.tr("Fix background settings")
             // 2.4.5
-            property string details41: i18n.tr("Add browser to select picture folder")
+            property string details41: i18n.tr("Added a file browser for selecting the image folder")
             property string details42: i18n.tr("Add sorting picture choice")
             property string details43: i18n.tr("Add desc or asc sorting picture choice")
 
