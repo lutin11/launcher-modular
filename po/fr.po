@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-14 07:31+0000\n"
-"PO-Revision-Date: 2025-11-15 07:51+0000\n"
+"PO-Revision-Date: 2025-11-17 20:23+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -212,11 +212,11 @@ msgstr "Correction pour l'affichage en arrière-plan."
 
 #: ../qml/ChangeLogs.qml:90
 msgid "Add Tamil translations thanks to தமிழ்நேரம்"
-msgstr ""
+msgstr "Ajouter des traductions en tamoul grâce à தமிழ்நேரம்"
 
 #: ../qml/ChangeLogs.qml:91
 msgid "Update Arabic translations thanks to Salah Khani"
-msgstr ""
+msgstr "Mise à jour des traductions en arabe grâce à Salah Khani"
 
 #: ../qml/ChangeLogs.qml:93
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
@@ -224,44 +224,43 @@ msgstr "Correction du problème « #5 Flux RSS valides non acceptés »"
 
 #: ../qml/ChangeLogs.qml:95
 msgid "Change framework to 22.04"
-msgstr ""
+msgstr "Effet de flou de l'arrière-plan"
 
 #: ../qml/ChangeLogs.qml:97
 msgid "Change framework to 24.04"
-msgstr ""
+msgstr "Gras"
 
 #: ../qml/ChangeLogs.qml:99
 msgid "Fix superimposed pages at start up"
-msgstr ""
+msgstr "Est"
 
 #: ../qml/ChangeLogs.qml:101
 msgid "The calendar limit of days is not settable"
-msgstr "La limite du nombre de jours du calendrier n'est pas configurable"
+msgstr "SOURCE"
 
 #: ../qml/ChangeLogs.qml:103
 msgid "Fix themes not well manage"
-msgstr ""
+msgstr "Est-Nord-Est"
 
 #: ../qml/ChangeLogs.qml:105
-#, fuzzy
 msgid "Add Clock Page"
-msgstr "Pas de paramètres pour la page « TODO"
+msgstr "À propos"
 
 #: ../qml/ChangeLogs.qml:106
 msgid "Fix background settings"
-msgstr ""
+msgstr "Défaut"
 
 #: ../qml/ChangeLogs.qml:108
 msgid "Add browser to select picture folder"
-msgstr ""
+msgstr "Ajout d'un navigateur de fichier pour le choix du dossier des images"
 
 #: ../qml/ChangeLogs.qml:109
 msgid "Add sorting picture choice"
-msgstr ""
+msgstr "Ajouter du choix du tri des images"
 
 #: ../qml/ChangeLogs.qml:110
 msgid "Add desc or asc sorting picture choice"
-msgstr ""
+msgstr "Ajout du tri descendant ou ascendant pour le choix des images"
 
 #: ../qml/ChangeLogs.qml:198
 msgid "Version: "
@@ -457,31 +456,31 @@ msgstr "Traducteurs/trices de Lanceur Modulaire :"
 
 #: ../qml/Translators.qml:95
 msgid "Arabic - "
-msgstr ""
+msgstr "Arabe -"
 
 #: ../qml/Translators.qml:109
 msgid "Dutch - "
-msgstr "Néerlandais - "
+msgstr "Néerlandais -"
 
 #: ../qml/Translators.qml:123
 msgid "French - "
-msgstr "Français - "
+msgstr "Français -"
 
 #: ../qml/Translators.qml:137
 msgid "German - "
-msgstr "Allemand - "
+msgstr "Allemand -"
 
 #: ../qml/Translators.qml:151
 msgid "Portuguese - "
-msgstr "Portugais "
+msgstr "Portugais -"
 
 #: ../qml/Translators.qml:165
 msgid "Russian - "
-msgstr "Russe - "
+msgstr "Russe -"
 
 #: ../qml/Translators.qml:179
 msgid "Tamil - "
-msgstr ""
+msgstr "Tamil -"
 
 #: ../qml/Translators.qml:194
 msgid ""
@@ -513,7 +512,7 @@ msgstr "Supprimer"
 
 #: ../qml/pages/Music.qml:160
 msgid "Search your music"
-msgstr ""
+msgstr "Recherchez votre musique"
 
 #: ../qml/pages/Rss.qml:154
 msgid "Loading feeds…"
@@ -534,14 +533,14 @@ msgstr "Supprimer"
 
 #: ../qml/pages/Videos.qml:159
 msgid "Search your video"
-msgstr ""
+msgstr "Recherchez vos vidéos"
 
 #: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
 #: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
 #: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
 #: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
 msgid "Settings Page"
-msgstr "Paramètres de la page"
+msgstr "Page des paramètres"
 
 #: ../qml/pages/calendar/Settings.qml:54 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
@@ -552,35 +551,32 @@ msgid "By default 60 days"
 msgstr "60 jours par défaut"
 
 #: ../qml/pages/clock/Settings.qml:60
-#, fuzzy
 msgid "Settings for 'Clock' page"
-msgstr "Pas de paramètres pour la page « TODO"
+msgstr "Page des paramètres pour la page « Horloge »"
 
 #: ../qml/pages/clock/Settings.qml:135
 msgid "Bold"
-msgstr ""
+msgstr "Gras"
 
 #: ../qml/pages/clock/Settings.qml:136
 msgid "BoldItalic"
-msgstr ""
+msgstr "Gras Italique"
 
 #: ../qml/pages/clock/Settings.qml:137
 msgid "Regular"
-msgstr ""
+msgstr "Standard"
 
 #: ../qml/pages/clock/Settings.qml:138
 msgid "Italic"
-msgstr ""
+msgstr "Italique"
 
 #: ../qml/pages/clock/Settings.qml:139
-#, fuzzy
 msgid "Light"
-msgstr "Très légère brise"
+msgstr "fin"
 
 #: ../qml/pages/clock/Settings.qml:140
-#, fuzzy
 msgid "LightItalic"
-msgstr "Très légère brise"
+msgstr "Italique fin"
 
 #: ../qml/pages/clock/Settings.qml:194
 msgid "Font type : "
@@ -991,9 +987,8 @@ msgid "View a summary"
 msgstr "Voir un aperçu"
 
 #: ../qml/widgets/lastmessage/Settings.qml:107
-#, fuzzy
 msgid "Filter on received messages"
-msgstr "Aucun message récent"
+msgstr "Filtrer les messages récents"
 
 #: ../qml/widgets/lastmessage/Settings.qml:119
 msgid "Open the application"
