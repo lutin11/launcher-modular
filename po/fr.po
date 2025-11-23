@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-14 07:31+0000\n"
-"PO-Revision-Date: 2025-11-17 20:31+0000\n"
+"PO-Revision-Date: 2025-11-23 08:27+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -326,9 +326,7 @@ msgstr "Aide de Lanceur Modulaire"
 
 #: ../qml/Help.qml:49
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
-msgstr ""
-"<br><b>Pour accéder au paramètres du widget, appuyez longuement sur le "
-"widget et ensuite vous pourrez modifier les paramètres du widget.</b>"
+msgstr "<br><b>Pour accéder aux paramètres du widget, restez appuyé dessus.</b>"
 
 #: ../qml/Help.qml:63
 msgid ""
@@ -643,9 +641,8 @@ msgid "Show events"
 msgstr "Afficher les évènements"
 
 #: ../qml/pages/music/Settings.qml:42
-#, fuzzy
 msgid "Settings for 'Music' page"
-msgstr "Pas de paramètres pour la page « TODO"
+msgstr "Paramètres pour la page « Musique »"
 
 #: ../qml/pages/music/Settings.qml:47 ../qml/pages/videos/Settings.qml:46
 msgid "Exemple"
@@ -702,12 +699,11 @@ msgstr "URL invalide"
 
 #: ../qml/pages/todo/Settings.qml:40
 msgid "No settings for 'TODO' page"
-msgstr "Pas de paramètres pour la page « TODO"
+msgstr "Pas de paramètres pour la page « TODO »"
 
 #: ../qml/pages/videos/Settings.qml:41
-#, fuzzy
 msgid "Settings for 'Video' page"
-msgstr "Pas de paramètres pour la page « TODO"
+msgstr "Paramètres pour la page « Vidéos »"
 
 #: ../qml/widgets/Alarm.qml:28
 msgid "Alarms"
