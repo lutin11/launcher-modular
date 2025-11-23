@@ -511,7 +511,7 @@ MainView {
                             anchors.top: iconPage.bottom
                             horizontalAlignment: Text.AlignHCenter
                             width: parent.width
-                            text: i18n.tr("Manage page")
+                            text: i18n.tr("Manage pages")
                             font.pointSize: units.gu(1)
                             wrapMode:Text.WordWrap
                         }
