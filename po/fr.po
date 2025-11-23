@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-23 15:52+0000\n"
-"PO-Revision-Date: 2025-11-23 09:38+0000\n"
-"Last-Translator: Steve <steve.kueffer.ch@gmail.com>\n"
+"PO-Revision-Date: 2025-11-23 16:12+0000\n"
+"Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
 "Language: fr\n"
@@ -358,9 +358,8 @@ msgid "Add custom icon"
 msgstr "Ajouter une icône personnalisée"
 
 #: ../qml/Main.qml:514
-#, fuzzy
 msgid "Manage pages"
-msgstr "Gérer la page"
+msgstr "Gérer les pages"
 
 #: ../qml/Main.qml:547
 msgid "Configure Launcher"
@@ -392,7 +391,7 @@ msgstr "Commande de terminal"
 
 #: ../qml/Main.qml:704
 msgid "Run a command in a terminal"
-msgstr "Lancer un ordre dans un terminal"
+msgstr "Lancer une commande dans un terminal"
 
 #: ../qml/Main.qml:705
 msgid "Launch app"
@@ -412,7 +411,7 @@ msgstr "Le <b>titre</b> à afficher dans la liste des applications"
 
 #: ../qml/Main.qml:766 ../qml/Main.qml:767 ../qml/Main.qml:768
 msgid "<b>Action</b> example: "
-msgstr "Exemple d'<b>action</b> : "
+msgstr "Exemple d'<b>action</b> :"
 
 #: ../qml/Main.qml:780
 msgid "Create icon"
@@ -453,7 +452,7 @@ msgstr "Traducteurs"
 
 #: ../qml/Translators.qml:76
 msgid "Modular Launcher-translators:"
-msgstr "Traducteurs/trices de Lanceur Modulaire :"
+msgstr "Traducteurs/trices de Lanceur Modulaire :"
 
 #: ../qml/Translators.qml:95
 msgid "Arabic - "
@@ -581,11 +580,11 @@ msgstr "Italique fin"
 
 #: ../qml/pages/clock/Settings.qml:194
 msgid "Font type : "
-msgstr ""
+msgstr "Type de police :"
 
 #: ../qml/pages/clock/Settings.qml:238
 msgid "Format : "
-msgstr ""
+msgstr "Format :"
 
 #: ../qml/pages/home/Settings.qml:106
 msgid "Favorite apps management"
@@ -609,7 +608,7 @@ msgstr "Arrondi"
 
 #: ../qml/pages/home/Settings.qml:191
 msgid "Style Icons : "
-msgstr "Style d'icônes : "
+msgstr "Style d'icônes :"
 
 #: ../qml/pages/home/Settings.qml:235
 msgid "Search engine : "
@@ -649,7 +648,7 @@ msgstr "Paramètres pour la page « Musique »"
 
 #: ../qml/pages/music/Settings.qml:47 ../qml/pages/videos/Settings.qml:46
 msgid "Exemple"
-msgstr "Éxemple"
+msgstr "Exemple"
 
 #: ../qml/pages/picture/SelectFolderPage.qml:7
 #, fuzzy
@@ -750,7 +749,7 @@ msgstr "Dernier appel"
 
 #: ../qml/widgets/Lastcall.qml:161
 msgid "No recent calls"
-msgstr "Aucun récent appel"
+msgstr "Aucun appel récent"
 
 #: ../qml/widgets/Lastmessage.qml:97
 msgid "Last Messages"
