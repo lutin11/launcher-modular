@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
-"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
-"POT-Creation-Date: 2025-11-14 07:31+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-23 15:52+0000\n"
 "PO-Revision-Date: 2025-11-23 09:40+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/launcher-modular/"
@@ -237,7 +237,7 @@ msgid "Fix background settings"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:108
-msgid "Add browser to select picture folder"
+msgid "Added a file browser for selecting the image folder"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:109
@@ -280,9 +280,9 @@ msgstr ""
 "Software Foundation, antingen version 3 av licensen, eller (efter eget val) "
 "vilken senare version som helst. Detta program distribueras i hopp om att "
 "det ska vara användbart, men UTAN NÅGON GARANTI; utan ens den underförstådda "
-"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a href="
-"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
-"a> för mer information."
+"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a "
+"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
+"License</a> för mer information."
 
 #: ../qml/ChangeLogs.qml:386
 msgid "SOURCE"
@@ -336,7 +336,8 @@ msgid "Add custom icon"
 msgstr "Lägg till anpassad ikon"
 
 #: ../qml/Main.qml:514
-msgid "Manage page"
+#, fuzzy
+msgid "Manage pages"
 msgstr "Hantera sida"
 
 #: ../qml/Main.qml:547

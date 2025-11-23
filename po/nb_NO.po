@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
-"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
-"POT-Creation-Date: 2025-11-14 07:31+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-23 15:52+0000\n"
 "PO-Revision-Date: 2025-11-23 09:39+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -237,7 +237,7 @@ msgid "Fix background settings"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:108
-msgid "Add browser to select picture folder"
+msgid "Added a file browser for selecting the image folder"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:109
@@ -280,8 +280,8 @@ msgstr ""
 "Software Foundation, enten versjon 3 av lisensen, eller (etter eget valg) "
 "hvilken som helst senere versjon. Dette programmet distribueres i håp om at "
 "det vil være nyttig, men UTEN NOEN GARANTI; selv uten underforstått garanti "
-"om SALGBARHET eller FORMÅLSTJENLIGHET. Mer info er å finne i <a href="
-"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
+"om SALGBARHET eller FORMÅLSTJENLIGHET. Mer info er å finne i <a "
+"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
 "License</a>."
 
 #: ../qml/ChangeLogs.qml:386
@@ -336,7 +336,8 @@ msgid "Add custom icon"
 msgstr "Legg til egendefinert ikon"
 
 #: ../qml/Main.qml:514
-msgid "Manage page"
+#, fuzzy
+msgid "Manage pages"
 msgstr "Håndter siden"
 
 #: ../qml/Main.qml:547

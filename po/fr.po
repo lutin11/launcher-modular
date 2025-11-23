@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
-"POT-Creation-Date: 2025-11-14 07:31+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-23 15:52+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Steve <steve.kueffer.ch@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -94,7 +94,8 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:55
 msgid "The event list shows event from current day!"
-msgstr "La liste des événements affiche les événements de la journée en cours !"
+msgstr ""
+"La liste des événements affiche les événements de la journée en cours !"
 
 #: ../qml/ChangeLogs.qml:56
 msgid "Clicking on the 'Alarm' widget opens the clock!"
@@ -295,8 +296,8 @@ msgstr ""
 "soit (à votre choix) toute version ultérieure. Ce programme est distribué "
 "dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
 "garantie implicite de COMMERCIALISATION ou d'ADÉQUATION À UN USAGE "
-"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\""
-">GNU General Public License</a> pour plus de détails."
+"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en."
+"html\">GNU General Public License</a> pour plus de détails."
 
 #: ../qml/ChangeLogs.qml:386
 msgid "SOURCE"
@@ -326,7 +327,8 @@ msgstr "Aide de Lanceur Modulaire"
 
 #: ../qml/Help.qml:49
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
-msgstr "<br><b>Pour accéder aux paramètres du widget, restez appuyé dessus.</b>"
+msgstr ""
+"<br><b>Pour accéder aux paramètres du widget, restez appuyé dessus.</b>"
 
 #: ../qml/Help.qml:63
 msgid ""
