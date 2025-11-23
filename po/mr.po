@@ -6,15 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 08:26+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
+"POT-Creation-Date: 2025-11-14 07:31+0000\n"
+"PO-Revision-Date: 2025-11-23 09:42+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Marathi <https://hosted.weblate.org/projects/launcher-modular/"
+"launchermodular-lut11/mr/>\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -228,7 +231,7 @@ msgid "Fix background settings"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:108
-msgid "Added a file browser for selecting the image folder"
+msgid "Add browser to select picture folder"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:109
@@ -319,7 +322,7 @@ msgid "Add custom icon"
 msgstr ""
 
 #: ../qml/Main.qml:514
-msgid "Manage pages"
+msgid "Manage page"
 msgstr ""
 
 #: ../qml/Main.qml:547

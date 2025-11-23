@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 08:26+0000\n"
-"PO-Revision-Date: 2024-11-04 14:59+0000\n"
-"Last-Translator: Salah Khani <salahkhani@hotmail.com>\n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
+"POT-Creation-Date: 2025-11-14 07:31+0000\n"
+"PO-Revision-Date: 2025-11-23 09:38+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -129,9 +129,9 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
-"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://github."
-"com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، تحديثات "
-"المكتبات وبعض الإصلاحات.English"
+"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://"
+"github.com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، "
+"تحديثات المكتبات وبعض الإصلاحات.English"
 
 #: ../qml/ChangeLogs.qml:67
 msgid "Addition of a new page for RSS feeds"
@@ -247,7 +247,7 @@ msgid "Fix background settings"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:108
-msgid "Added a file browser for selecting the image folder"
+msgid "Add browser to select picture folder"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:109
@@ -332,8 +332,8 @@ msgstr ""
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
-"<br><b>لتغيير إعدادات الصفحة، انتقل إلى \"إدارة الصفحة\" وانقر على الصفحة.</"
-"b>"
+"<br><b>لتغيير إعدادات الصفحة، انتقل إلى \"إدارة الصفحة\" وانقر على "
+"الصفحة.</b>"
 
 #: ../qml/ImportPage.qml:13
 msgid "Choose"
@@ -348,8 +348,7 @@ msgid "Add custom icon"
 msgstr "إضافة أيقونة مخصصة"
 
 #: ../qml/Main.qml:514
-#, fuzzy
-msgid "Manage pages"
+msgid "Manage page"
 msgstr "إدارة الصفحة"
 
 #: ../qml/Main.qml:547
