@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
-"POT-Creation-Date: 2025-11-14 07:31+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-23 08:26+0000\n"
 "PO-Revision-Date: 2025-11-17 20:31+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -251,7 +251,8 @@ msgid "Fix background settings"
 msgstr "Correction du réglage fond d'écran"
 
 #: ../qml/ChangeLogs.qml:108
-msgid "Add browser to select picture folder"
+#, fuzzy
+msgid "Added a file browser for selecting the image folder"
 msgstr "Ajout d'un navigateur de fichier pour le choix du dossier des images"
 
 #: ../qml/ChangeLogs.qml:109
@@ -358,7 +359,8 @@ msgid "Add custom icon"
 msgstr "Ajouter une icône personnalisée"
 
 #: ../qml/Main.qml:514
-msgid "Manage page"
+#, fuzzy
+msgid "Manage pages"
 msgstr "Gérer la page"
 
 #: ../qml/Main.qml:547

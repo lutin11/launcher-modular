@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-14 07:31+0000\n"
+"POT-Creation-Date: 2025-11-23 08:26+0000\n"
 "PO-Revision-Date: 2023-08-15 19:25+0000\n"
 "Last-Translator: Milan Korecky <milan.korecky@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -231,7 +231,7 @@ msgid "Fix background settings"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:108
-msgid "Add browser to select picture folder"
+msgid "Added a file browser for selecting the image folder"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:109
@@ -330,7 +330,7 @@ msgid "Add custom icon"
 msgstr ""
 
 #: ../qml/Main.qml:514
-msgid "Manage page"
+msgid "Manage pages"
 msgstr ""
 
 #: ../qml/Main.qml:547
