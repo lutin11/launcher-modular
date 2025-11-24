@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-31 04:46+0000\n"
+"POT-Creation-Date: 2025-11-24 22:06+0000\n"
 "PO-Revision-Date: 2023-02-17 04:45+0000\n"
 "Last-Translator: Raman <translations.0l5zc@simplelogin.com>\n"
 "Language-Team: Malayalam <https://hosted.weblate.org/projects/ubports/"
@@ -39,7 +39,8 @@ msgstr ""
 msgid "Change Log"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:18 ../qml/pages/rss/Settings.qml:24
+#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
+#: ../qml/pages/rss/Settings.qml:26
 msgid "Back"
 msgstr ""
 
@@ -222,23 +223,43 @@ msgstr ""
 msgid "Fixup theme not well manage"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:186
+#: ../qml/ChangeLogs.qml:105
+msgid "Add Clocke Page"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:106
+msgid "Fix background settings"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:108
+msgid "Added a file browser for selecting the image folder"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:109
+msgid "Add sorting picture choice"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:110
+msgid "Add desc or asc sorting picture choice"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:198
 msgid "Version: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:192
+#: ../qml/ChangeLogs.qml:204
 msgid " | Date: "
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:318
+#: ../qml/ChangeLogs.qml:330
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:345
+#: ../qml/ChangeLogs.qml:357
 msgid "A modular launcher for Ubuntu Touch"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:371
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -250,23 +271,23 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:386
 msgid "SOURCE"
 msgstr "ഉറവിടം"
 
-#: ../qml/ChangeLogs.qml:374
+#: ../qml/ChangeLogs.qml:386
 msgid "ISSUES"
 msgstr "പ്രശ്നങ്ങൾ"
 
-#: ../qml/ChangeLogs.qml:389
+#: ../qml/ChangeLogs.qml:401
 msgid "Maintainer"
 msgstr "പരിപാലകൻ"
 
-#: ../qml/ChangeLogs.qml:403
+#: ../qml/ChangeLogs.qml:415
 msgid "Copyright"
 msgstr "പകർപ്പവകാശം"
 
-#: ../qml/ChangeLogs.qml:418
+#: ../qml/ChangeLogs.qml:430
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
@@ -289,80 +310,80 @@ msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
 
-#: ../qml/ImportPage.qml:10
+#: ../qml/ImportPage.qml:13
 msgid "Choose"
 msgstr "തിരഞ്ഞെടുക്കുക"
 
-#: ../qml/Main.qml:420
+#: ../qml/Main.qml:423
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:474
+#: ../qml/Main.qml:481
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:507
-msgid "Manage page"
+#: ../qml/Main.qml:514
+msgid "Manage pages"
 msgstr ""
 
-#: ../qml/Main.qml:540
+#: ../qml/Main.qml:547
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:573
+#: ../qml/Main.qml:580
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:606
+#: ../qml/Main.qml:613
 msgid "Help"
 msgstr "സഹായം"
 
-#: ../qml/Main.qml:639
+#: ../qml/Main.qml:646
 msgid "About"
 msgstr "കുറിച്ച്"
 
-#: ../qml/Main.qml:696
+#: ../qml/Main.qml:703
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:696
+#: ../qml/Main.qml:703
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:697
+#: ../qml/Main.qml:704
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:697
+#: ../qml/Main.qml:704
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:698
+#: ../qml/Main.qml:705
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:698
+#: ../qml/Main.qml:705
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:722
+#: ../qml/Main.qml:729
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:735
+#: ../qml/Main.qml:742
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:759 ../qml/Main.qml:760 ../qml/Main.qml:761
+#: ../qml/Main.qml:766 ../qml/Main.qml:767 ../qml/Main.qml:768
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:773
+#: ../qml/Main.qml:780
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:816 ../qml/Pagemanagement.qml:142 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:80
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:164 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "റദ്ദാക്കുക"
 
@@ -452,7 +473,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Music.qml:159
+#: ../qml/pages/Music.qml:160
 msgid "Search your music"
 msgstr ""
 
@@ -469,7 +490,7 @@ msgid "New todo"
 msgstr ""
 
 #: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
-#: ../qml/pages/rss/Settings.qml:173
+#: ../qml/pages/rss/Settings.qml:175
 msgid "Delete"
 msgstr "ഇല്ലാതാക്കുക"
 
@@ -477,58 +498,71 @@ msgstr "ഇല്ലാതാക്കുക"
 msgid "Search your video"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
-#: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:11 ../qml/pages/rss/Settings.qml:19
-#: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
+#: ../qml/pages/calendar/Settings.qml:10
+msgid "calendar"
+msgstr ""
+
+#: ../qml/pages/calendar/Settings.qml:14 ../qml/pages/clock/Settings.qml:30
+#: ../qml/pages/home/Settings.qml:17 ../qml/pages/music/Settings.qml:15
+#: ../qml/pages/picture/Settings.qml:17 ../qml/pages/rss/Settings.qml:21
+#: ../qml/pages/todo/Settings.qml:14 ../qml/pages/videos/Settings.qml:14
 msgid "Settings Page"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:54 ../qml/widgets/event/Settings.qml:61
+#: ../qml/pages/calendar/Settings.qml:56 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
+#: ../qml/pages/calendar/Settings.qml:75 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:60
+#: ../qml/pages/clock/Settings.qml:13
+#, fuzzy
+msgid "clock"
+msgstr "ഘടികാരം കാണിക്കുക"
+
+#: ../qml/pages/clock/Settings.qml:61
 msgid "Settings for 'Clock' page"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:135
+#: ../qml/pages/clock/Settings.qml:136
 msgid "Bold"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:136
+#: ../qml/pages/clock/Settings.qml:137
 msgid "BoldItalic"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:137
+#: ../qml/pages/clock/Settings.qml:138
 msgid "Regular"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:138
+#: ../qml/pages/clock/Settings.qml:139
 msgid "Italic"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:139
+#: ../qml/pages/clock/Settings.qml:140
 msgid "Light"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:140
+#: ../qml/pages/clock/Settings.qml:141
 msgid "LightItalic"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:194
+#: ../qml/pages/clock/Settings.qml:195
 msgid "Font type : "
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:238
+#: ../qml/pages/clock/Settings.qml:239
 msgid "Format : "
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:107
+#: ../qml/pages/home/Settings.qml:13
+msgid "home"
+msgstr ""
+
+#: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
 msgstr ""
 
@@ -573,7 +607,7 @@ msgid "Show alarms"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:281
-msgid "Show last call"
+msgid "Show last calls"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:290
@@ -581,34 +615,86 @@ msgid "Show last message"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:299
-msgid "Show events"
+msgid "Show last events"
 msgstr ""
 
-#: ../qml/pages/music/Settings.qml:42
+#: ../qml/pages/music/Settings.qml:11
+msgid "music"
+msgstr ""
+
+#: ../qml/pages/music/Settings.qml:44
 msgid "Settings for 'Music' page"
 msgstr ""
 
-#: ../qml/pages/music/Settings.qml:47 ../qml/pages/videos/Settings.qml:46
+#: ../qml/pages/music/Settings.qml:49 ../qml/pages/videos/Settings.qml:48
 msgid "Exemple"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:52
-msgid "Image path"
+#: ../qml/pages/picture/SelectFolderPage.qml:42
+msgid "Select"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:99
+#: ../qml/pages/picture/Settings.qml:13
+msgid "picture"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:57
+msgid "Image folder path:"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:107
+msgid "Unsorted"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:108
+msgid "Name"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:109
+msgid "Time"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:110
+msgid "Size"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:111
+msgid "Type"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:117
+msgid "Sort type:"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:192
+msgid "Reverse sort"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:13
+msgid "rss"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:101
 msgid "https://omgubuntu.co.uk/feed"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:217
+#: ../qml/pages/rss/Settings.qml:219
 msgid "Invalid url"
 msgstr ""
 
-#: ../qml/pages/todo/Settings.qml:40
+#: ../qml/pages/todo/Settings.qml:10
+msgid "todo"
+msgstr ""
+
+#: ../qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
 msgstr ""
 
-#: ../qml/pages/videos/Settings.qml:41
+#: ../qml/pages/videos/Settings.qml:10
+msgid "videos"
+msgstr ""
+
+#: ../qml/pages/videos/Settings.qml:43
 msgid "Settings for 'Video' page"
 msgstr ""
 

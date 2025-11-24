@@ -3,10 +3,9 @@ import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
 import Ubuntu.Components 1.3
 import Qt.labs.folderlistmodel 2.1
-import Ubuntu.Components 1.3
 import Ubuntu.Components.ListItems 1.3 as ListItemHeader
 import Ubuntu.Components.Themes 1.3
-import QtQuick.Layouts 1.15
+import QtQuick.Layouts 1.12
 
 Page {
     id: picturePageSettingsPicture

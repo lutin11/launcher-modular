@@ -88,7 +88,7 @@ Page {
                             height: modelLayout2.height + (divider.visible ? divider.height : 0)
                             id: modelLayout2
                             title.text: i18n.tr(fileBaseName)
-                            LomiriShape {
+                            UbuntuShape {
                                 source: Image {
                                     id: customPageImage
                                     source: "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg"
@@ -133,7 +133,7 @@ Page {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3
                             title.text: i18n.tr(fileBaseName)
-                            LomiriShape {
+                            UbuntuShape {
                                 source: Image {
                                     id: pageImage
                                     source: "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg"
