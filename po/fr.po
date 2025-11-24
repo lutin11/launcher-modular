@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-24 20:49+0000\n"
-"PO-Revision-Date: 2025-11-23 16:12+0000\n"
+"PO-Revision-Date: 2025-11-24 21:10+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -631,9 +631,8 @@ msgid "Show alarms"
 msgstr "Afficher les alarmes"
 
 #: ../qml/pages/home/Settings.qml:279
-#, fuzzy
 msgid "Show last calls"
-msgstr "Afficher le dernier appel"
+msgstr "Afficher les derniers appels"
 
 #: ../qml/pages/home/Settings.qml:288
 msgid "Show last message"
