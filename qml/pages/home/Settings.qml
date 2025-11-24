@@ -276,7 +276,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last call")+"</font>"
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last calls")+"</font>"
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleLastcall
                         onClicked: launchermodular.settings.widgetVisibleLastcall = !launchermodular.settings.widgetVisibleLastcall
@@ -294,7 +294,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show events")+"</font>"
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last events")+"</font>"
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleEvent
                         onClicked: launchermodular.settings.widgetVisibleEvent = !launchermodular.settings.widgetVisibleEvent
