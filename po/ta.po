@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 15:52+0000\n"
+"POT-Creation-Date: 2025-11-24 20:49+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -626,7 +626,8 @@ msgid "Show alarms"
 msgstr "விழிப்பொலிகளைக் காட்டு"
 
 #: ../qml/pages/home/Settings.qml:279
-msgid "Show last call"
+#, fuzzy
+msgid "Show last calls"
 msgstr "கடைசி அழைப்பைக் காட்டு"
 
 #: ../qml/pages/home/Settings.qml:288
@@ -634,7 +635,8 @@ msgid "Show last message"
 msgstr "கடைசி செய்தியைக் காட்டு"
 
 #: ../qml/pages/home/Settings.qml:297
-msgid "Show events"
+#, fuzzy
+msgid "Show last events"
 msgstr "நிகழ்வுகளைக் காட்டு"
 
 #: ../qml/pages/music/Settings.qml:42

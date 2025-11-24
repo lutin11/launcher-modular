@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 15:52+0000\n"
+"POT-Creation-Date: 2025-11-24 20:49+0000\n"
 "PO-Revision-Date: 2025-11-23 09:41+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/launcher-"
@@ -622,7 +622,8 @@ msgid "Show alarms"
 msgstr "Показувати сигнали про тривогу"
 
 #: ../qml/pages/home/Settings.qml:279
-msgid "Show last call"
+#, fuzzy
+msgid "Show last calls"
 msgstr "Показати останній дзвінок"
 
 #: ../qml/pages/home/Settings.qml:288
@@ -630,7 +631,8 @@ msgid "Show last message"
 msgstr "Показати останнє повідомлення"
 
 #: ../qml/pages/home/Settings.qml:297
-msgid "Show events"
+#, fuzzy
+msgid "Show last events"
 msgstr "Показати події"
 
 #: ../qml/pages/music/Settings.qml:42

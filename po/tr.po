@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 15:52+0000\n"
+"POT-Creation-Date: 2025-11-24 20:49+0000\n"
 "PO-Revision-Date: 2025-11-23 09:42+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/launcher-modular/"
@@ -593,7 +593,7 @@ msgid "Show alarms"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:279
-msgid "Show last call"
+msgid "Show last calls"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:288
@@ -601,7 +601,7 @@ msgid "Show last message"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:297
-msgid "Show events"
+msgid "Show last events"
 msgstr ""
 
 #: ../qml/pages/music/Settings.qml:42

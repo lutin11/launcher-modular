@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 15:52+0000\n"
+"POT-Creation-Date: 2025-11-24 20:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -591,7 +591,7 @@ msgid "Show alarms"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:279
-msgid "Show last call"
+msgid "Show last calls"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:288
@@ -599,7 +599,7 @@ msgid "Show last message"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:297
-msgid "Show events"
+msgid "Show last events"
 msgstr ""
 
 #: ../qml/pages/music/Settings.qml:42

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher Modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 15:52+0000\n"
+"POT-Creation-Date: 2025-11-24 20:49+0000\n"
 "PO-Revision-Date: 2025-11-23 09:39+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/launcher-modular/"
@@ -599,7 +599,8 @@ msgid "Show alarms"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:279
-msgid "Show last call"
+#, fuzzy
+msgid "Show last calls"
 msgstr "Ultima chiamata"
 
 #: ../qml/pages/home/Settings.qml:288
@@ -607,7 +608,8 @@ msgid "Show last message"
 msgstr "Ultimo Messaggio"
 
 #: ../qml/pages/home/Settings.qml:297
-msgid "Show events"
+#, fuzzy
+msgid "Show last events"
 msgstr "Nessun evento"
 
 #: ../qml/pages/music/Settings.qml:42
