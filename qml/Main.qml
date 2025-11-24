@@ -1,7 +1,8 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.12
-import QtGraphicalEffects 1.0
+import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
+import Qt.labs.folderlistmodel 2.1
 import Ubuntu.Components 1.3
 import Ubuntu.Components.ListItems 1.3 as ListItem
 import MySettings 1.0
@@ -20,7 +21,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.4.3.9"
+    property string appVersion : "2.4.4.9"
     property ListModel customIconModel :  ListModel { id: customIconModel }
     property ListModel pageModel :  ListModel { id: pageModel }
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
@@ -84,7 +85,9 @@ MainView {
         property real backgroundOpacity: 0.7
         property int backgroundBlur: 0
 
-        property string folderimage: MySettings.getPicturesLocation()
+        property string folderImage: MySettings.getPicturesLocation()
+        property bool reverseImagesSort: false
+        property int imageSelectedSorting: FolderListModel.Time
         property string folderMusic: MySettings.getMusicLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
@@ -444,6 +447,10 @@ MainView {
                 width: parent.width
                 visible: view.count > 1
 
+                background: Rectangle {
+                    color: "white"
+                }
+
                 onOpened: launchermodular.settings.firstRun = false
 
                 RowLayout {
@@ -504,7 +511,7 @@ MainView {
                             anchors.top: iconPage.bottom
                             horizontalAlignment: Text.AlignHCenter
                             width: parent.width
-                            text: i18n.tr("Manage page")
+                            text: i18n.tr("Manage pages")
                             font.pointSize: units.gu(1)
                             wrapMode:Text.WordWrap
                         }

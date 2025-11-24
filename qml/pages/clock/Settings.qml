@@ -10,6 +10,7 @@ import QtSensors 5.12
 Page {
     id: clockSettingsPicture
 
+    property string clockPageName: i18n.tr("clock") // do not remove, use pour Po files
     property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
 
     function updateTime() {
@@ -126,7 +127,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: fontTypeList
-                    width: clocksettings.width - (fontTypeLabel.width + units.gu(4))
+                    width: (clocksettings.width - fontTypeLabel.width) - units.gu(8)
                     anchors.top: colorSelection.bottom
                     anchors.topMargin: units.gu(2)
                     anchors.right: parent.right
@@ -203,7 +204,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: clockFormat
-                    width: clocksettings.width - (clockFormatLabel.width + units.gu(4))
+                    width: (clocksettings.width - fontTypeLabel.width) - units.gu(8)
                     anchors.top: fontTypeList.bottom
                     anchors.topMargin: units.gu(2)
                     anchors.right: parent.right

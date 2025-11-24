@@ -28,8 +28,10 @@ Item {
         FolderListModel {
             id: folderModel
             nameFilters: ["*.png", "*.jpg", "*.jpeg"]
-            folder: launchermodular.settings.folderimage
+            folder: launchermodular.settings.folderImage
             showDirs: false
+            sortReversed: launchermodular.settings.reverseImagesSort
+            sortField: launchermodular.settings.imageSelectedSorting
         }
 
         delegate: Rectangle {
@@ -56,7 +58,7 @@ Item {
                     visible: Math.abs(gview.contentY - y) < 2 * gview.cellHeight  // Lazy loading based on proximity to viewport
                     fillMode: Image.PreserveAspectCrop
                     asynchronous: true  // To load images without blocking the main UI thread
-                    cache: false
+                    cache: true
                 }
 
                 UbuntuShape {

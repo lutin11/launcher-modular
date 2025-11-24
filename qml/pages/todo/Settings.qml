@@ -7,6 +7,8 @@ import Ubuntu.Components.ListItems 1.3 as ListItem
 Page {
     id: pageSettingsTodo
 
+    property string todoPageName: i18n.tr("todo") // do not remove, use pour Po files
+
     header: PageHeader {
         id: headerSettings
         title: i18n.tr("Settings Page");

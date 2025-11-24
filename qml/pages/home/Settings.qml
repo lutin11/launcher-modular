@@ -10,6 +10,8 @@ import Ubuntu.Components.Themes 1.3
 Page {
     id: pageSettingsHome
 
+    homePage: i18n.tr("home")
+
     header: PageHeader {
         id: headerHomeSettings
         title: i18n.tr("Settings Page");
@@ -58,7 +60,6 @@ Page {
                                 id: screenshotAppFavorite
                                 source: elem.icon
                                 smooth: true
-                                antialiasing: true
                             }
                             SlotsLayout.position: SlotsLayout.Leading;
                             width: units.gu(4)
@@ -123,7 +124,6 @@ Page {
                                     id: screenshotAppFavorite
                                     source: icon
                                     smooth: true
-                                    antialiasing: true
                                 }
                                 SlotsLayout.position: SlotsLayout.Leading;
                                 width: units.gu(4)
@@ -170,7 +170,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: styleIconList
-                    width: (parent.width-textStyleIcons.width)-units.gu(8)
+                    width: (parent.width-textStyleIcons.width)-units.gu(10)
                     colourImage: true
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(2)
@@ -211,7 +211,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: searchEngineList
-                    width: (parent.width-textStyleIcons.width)-units.gu(8)
+                    width: (parent.width-textStyleIcons.width)-units.gu(10)
                     colourImage: true
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(2)
@@ -278,7 +278,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last call")+"</font>"
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last calls")+"</font>"
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleLastcall
                         onClicked: launchermodular.settings.widgetVisibleLastcall = !launchermodular.settings.widgetVisibleLastcall
@@ -296,7 +296,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show events")+"</font>"
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last events")+"</font>"
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleEvent
                         onClicked: launchermodular.settings.widgetVisibleEvent = !launchermodular.settings.widgetVisibleEvent
