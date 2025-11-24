@@ -10,6 +10,8 @@ import Lomiri.Components.Themes 1.3
 Page {
     id: pageSettingsHome
 
+    homePage: i18n.tr("home")
+
     header: PageHeader {
         id: headerHomeSettings
         title: i18n.tr("Settings Page");

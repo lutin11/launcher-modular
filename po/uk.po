@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 21:08+0000\n"
+"POT-Creation-Date: 2025-11-24 21:44+0000\n"
 "PO-Revision-Date: 2025-11-23 09:41+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/launcher-"
@@ -45,7 +45,7 @@ msgid "Change Log"
 msgstr ""
 
 #: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
-#: ../qml/pages/rss/Settings.qml:24
+#: ../qml/pages/rss/Settings.qml:26
 msgid "Back"
 msgstr ""
 
@@ -404,8 +404,8 @@ msgstr "<b>Дія</b> Приклад: "
 msgid "Create icon"
 msgstr "Створити іконку"
 
-#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
-#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:79
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:57
+#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -421,7 +421,7 @@ msgstr "Виберіть сторінку"
 msgid "Settings"
 msgstr "Налаштування"
 
-#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:161
+#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:163
 msgid "General"
 msgstr "Загальне"
 
@@ -514,8 +514,8 @@ msgstr ""
 msgid "New todo"
 msgstr "нове завдання"
 
-#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:137
-#: ../qml/pages/rss/Settings.qml:173
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/rss/Settings.qml:175
 msgid "Delete"
 msgstr "Видалити"
 
@@ -523,124 +523,141 @@ msgstr "Видалити"
 msgid "Search your video"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
-#: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
-#: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
+#: ../qml/pages/calendar/Settings.qml:10
+msgid "calendar"
+msgstr ""
+
+#: ../qml/pages/calendar/Settings.qml:14 ../qml/pages/clock/Settings.qml:30
+#: ../qml/pages/home/Settings.qml:17 ../qml/pages/music/Settings.qml:15
+#: ../qml/pages/picture/Settings.qml:17 ../qml/pages/rss/Settings.qml:21
+#: ../qml/pages/todo/Settings.qml:14 ../qml/pages/videos/Settings.qml:14
 msgid "Settings Page"
 msgstr "Сторінка налаштувань"
 
-#: ../qml/pages/calendar/Settings.qml:54 ../qml/widgets/event/Settings.qml:61
+#: ../qml/pages/calendar/Settings.qml:56 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
 msgstr "Ліміт днів"
 
-#: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
+#: ../qml/pages/calendar/Settings.qml:75 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr "За замовчуванням 60 днів"
 
-#: ../qml/pages/clock/Settings.qml:60
+#: ../qml/pages/clock/Settings.qml:13
+#, fuzzy
+msgid "clock"
+msgstr "Показати годинник"
+
+#: ../qml/pages/clock/Settings.qml:61
 #, fuzzy
 msgid "Settings for 'Clock' page"
 msgstr "Сторінка налаштувань"
 
-#: ../qml/pages/clock/Settings.qml:135
+#: ../qml/pages/clock/Settings.qml:136
 msgid "Bold"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:136
+#: ../qml/pages/clock/Settings.qml:137
 msgid "BoldItalic"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:137
+#: ../qml/pages/clock/Settings.qml:138
 msgid "Regular"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:138
+#: ../qml/pages/clock/Settings.qml:139
 msgid "Italic"
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:139
+#: ../qml/pages/clock/Settings.qml:140
 #, fuzzy
 msgid "Light"
 msgstr "Легке повітря"
 
-#: ../qml/pages/clock/Settings.qml:140
+#: ../qml/pages/clock/Settings.qml:141
 #, fuzzy
 msgid "LightItalic"
 msgstr "Легке повітря"
 
-#: ../qml/pages/clock/Settings.qml:194
+#: ../qml/pages/clock/Settings.qml:195
 msgid "Font type : "
 msgstr ""
 
-#: ../qml/pages/clock/Settings.qml:238
+#: ../qml/pages/clock/Settings.qml:239
 msgid "Format : "
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:106
+#: ../qml/pages/home/Settings.qml:13
+msgid "home"
+msgstr ""
+
+#: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
 msgstr "Керування улюбленими програмами"
 
-#: ../qml/pages/home/Settings.qml:165
+#: ../qml/pages/home/Settings.qml:167
 msgid "None"
 msgstr "Нічого"
 
-#: ../qml/pages/home/Settings.qml:165
+#: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"
 msgstr "Нестилізовані іконки"
 
-#: ../qml/pages/home/Settings.qml:166
+#: ../qml/pages/home/Settings.qml:168
 msgid "Rounded"
 msgstr "Закруглені"
 
-#: ../qml/pages/home/Settings.qml:166
+#: ../qml/pages/home/Settings.qml:168
 msgid "Rounded icons"
 msgstr "Закруглені іконки"
 
-#: ../qml/pages/home/Settings.qml:191
+#: ../qml/pages/home/Settings.qml:193
 msgid "Style Icons : "
 msgstr "Стиль іконок : "
 
-#: ../qml/pages/home/Settings.qml:235
+#: ../qml/pages/home/Settings.qml:237
 msgid "Search engine : "
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:246
+#: ../qml/pages/home/Settings.qml:248
 msgid "Widgets"
 msgstr "Віджети"
 
-#: ../qml/pages/home/Settings.qml:251
+#: ../qml/pages/home/Settings.qml:253
 msgid "Show clock"
 msgstr "Показати годинник"
 
-#: ../qml/pages/home/Settings.qml:260
+#: ../qml/pages/home/Settings.qml:262
 msgid "Show weather"
 msgstr "Показати погоду"
 
-#: ../qml/pages/home/Settings.qml:270
+#: ../qml/pages/home/Settings.qml:272
 msgid "Show alarms"
 msgstr "Показувати сигнали про тривогу"
 
-#: ../qml/pages/home/Settings.qml:279
+#: ../qml/pages/home/Settings.qml:281
 #, fuzzy
 msgid "Show last calls"
 msgstr "Показати останній дзвінок"
 
-#: ../qml/pages/home/Settings.qml:288
+#: ../qml/pages/home/Settings.qml:290
 msgid "Show last message"
 msgstr "Показати останнє повідомлення"
 
-#: ../qml/pages/home/Settings.qml:297
+#: ../qml/pages/home/Settings.qml:299
 #, fuzzy
 msgid "Show last events"
 msgstr "Показати події"
 
-#: ../qml/pages/music/Settings.qml:42
+#: ../qml/pages/music/Settings.qml:11
+msgid "music"
+msgstr ""
+
+#: ../qml/pages/music/Settings.qml:44
 #, fuzzy
 msgid "Settings for 'Music' page"
 msgstr "Сторінка налаштувань"
 
-#: ../qml/pages/music/Settings.qml:47 ../qml/pages/videos/Settings.qml:46
+#: ../qml/pages/music/Settings.qml:49 ../qml/pages/videos/Settings.qml:48
 msgid "Exemple"
 msgstr ""
 
@@ -648,52 +665,69 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:55
+#: ../qml/pages/picture/Settings.qml:13
+msgid "picture"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:57
 #, fuzzy
 msgid "Image folder path:"
 msgstr "Шлях до зображення"
 
-#: ../qml/pages/picture/Settings.qml:105
+#: ../qml/pages/picture/Settings.qml:107
 msgid "Unsorted"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:106
+#: ../qml/pages/picture/Settings.qml:108
 msgid "Name"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:107
+#: ../qml/pages/picture/Settings.qml:109
 msgid "Time"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:108
+#: ../qml/pages/picture/Settings.qml:110
 msgid "Size"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:109
+#: ../qml/pages/picture/Settings.qml:111
 msgid "Type"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:115
+#: ../qml/pages/picture/Settings.qml:117
 msgid "Sort type:"
 msgstr ""
 
-#: ../qml/pages/picture/Settings.qml:190
+#: ../qml/pages/picture/Settings.qml:192
 msgid "Reverse sort"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:99
+#: ../qml/pages/rss/Settings.qml:13
+msgid "rss"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:101
 msgid "https://omgubuntu.co.uk/feed"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:217
+#: ../qml/pages/rss/Settings.qml:219
 msgid "Invalid url"
 msgstr ""
 
-#: ../qml/pages/todo/Settings.qml:40
+#: ../qml/pages/todo/Settings.qml:10
+#, fuzzy
+msgid "todo"
+msgstr "нове завдання"
+
+#: ../qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
 msgstr ""
 
-#: ../qml/pages/videos/Settings.qml:41
+#: ../qml/pages/videos/Settings.qml:10
+msgid "videos"
+msgstr ""
+
+#: ../qml/pages/videos/Settings.qml:43
 #, fuzzy
 msgid "Settings for 'Video' page"
 msgstr "Налаштування віджету погоди"

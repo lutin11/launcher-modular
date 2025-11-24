@@ -10,6 +10,8 @@ import QtQuick.Layouts 1.15
 Page {
     id: picturePageSettingsPicture
 
+    property string picturePageName: i18n.tr("picture") // do not remove, use pour Po files
+
     header: PageHeader {
         id: headerPictureSettings
         title: i18n.tr("Settings Page")

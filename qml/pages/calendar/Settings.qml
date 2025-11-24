@@ -7,6 +7,8 @@ import Lomiri.Components.ListItems 1.3 as ListItem
 Page {
     id: pageSettingsCalendar
 
+    property string calendarPageName: i18n.tr("calendar") // do not remove, use pour Po files
+
     header: PageHeader {
         id: calendarHeaderSettings
         title: i18n.tr("Settings Page");

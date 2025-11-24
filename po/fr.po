@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
-"POT-Creation-Date: 2025-11-24 21:08+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-24 21:44+0000\n"
 "PO-Revision-Date: 2025-11-24 21:14+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -39,7 +39,7 @@ msgid "Change Log"
 msgstr "Liste des changements"
 
 #: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
-#: ../qml/pages/rss/Settings.qml:24
+#: ../qml/pages/rss/Settings.qml:26
 msgid "Back"
 msgstr "Retour"
 
@@ -417,8 +417,8 @@ msgstr "Exemple d'<b>action</b> :"
 msgid "Create icon"
 msgstr "Créer une icône"
 
-#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:136 ../qml/pages/Home.qml:57
-#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:79
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:57
+#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -434,7 +434,7 @@ msgstr "Sélectionner une page"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:161
+#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:163
 msgid "General"
 msgstr "Général"
 
@@ -526,8 +526,8 @@ msgstr "Allez dans la gestion des pages pour ajouter des flux."
 msgid "New todo"
 msgstr "Nouvelle liste de choses à faire"
 
-#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:137
-#: ../qml/pages/rss/Settings.qml:173
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/rss/Settings.qml:175
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -535,118 +535,135 @@ msgstr "Supprimer"
 msgid "Search your video"
 msgstr "Recherchez vos vidéos"
 
-#: ../qml/pages/calendar/Settings.qml:12 ../qml/pages/clock/Settings.qml:29
-#: ../qml/pages/home/Settings.qml:15 ../qml/pages/music/Settings.qml:13
-#: ../qml/pages/picture/Settings.qml:15 ../qml/pages/rss/Settings.qml:19
-#: ../qml/pages/todo/Settings.qml:12 ../qml/pages/videos/Settings.qml:12
+#: ../qml/pages/calendar/Settings.qml:10
+msgid "calendar"
+msgstr ""
+
+#: ../qml/pages/calendar/Settings.qml:14 ../qml/pages/clock/Settings.qml:30
+#: ../qml/pages/home/Settings.qml:17 ../qml/pages/music/Settings.qml:15
+#: ../qml/pages/picture/Settings.qml:17 ../qml/pages/rss/Settings.qml:21
+#: ../qml/pages/todo/Settings.qml:14 ../qml/pages/videos/Settings.qml:14
 msgid "Settings Page"
 msgstr "Page des paramètres"
 
-#: ../qml/pages/calendar/Settings.qml:54 ../qml/widgets/event/Settings.qml:61
+#: ../qml/pages/calendar/Settings.qml:56 ../qml/widgets/event/Settings.qml:61
 msgid "Limit of days"
 msgstr "Limite de jours"
 
-#: ../qml/pages/calendar/Settings.qml:73 ../qml/widgets/event/Settings.qml:79
+#: ../qml/pages/calendar/Settings.qml:75 ../qml/widgets/event/Settings.qml:79
 msgid "By default 60 days"
 msgstr "60 jours par défaut"
 
-#: ../qml/pages/clock/Settings.qml:60
+#: ../qml/pages/clock/Settings.qml:13
+#, fuzzy
+msgid "clock"
+msgstr "Afficher l'horloge"
+
+#: ../qml/pages/clock/Settings.qml:61
 msgid "Settings for 'Clock' page"
 msgstr "Page des paramètres pour la page « Horloge »"
 
-#: ../qml/pages/clock/Settings.qml:135
+#: ../qml/pages/clock/Settings.qml:136
 msgid "Bold"
 msgstr "Gras"
 
-#: ../qml/pages/clock/Settings.qml:136
+#: ../qml/pages/clock/Settings.qml:137
 msgid "BoldItalic"
 msgstr "Gras Italique"
 
-#: ../qml/pages/clock/Settings.qml:137
+#: ../qml/pages/clock/Settings.qml:138
 msgid "Regular"
 msgstr "Standard"
 
-#: ../qml/pages/clock/Settings.qml:138
+#: ../qml/pages/clock/Settings.qml:139
 msgid "Italic"
 msgstr "Italique"
 
-#: ../qml/pages/clock/Settings.qml:139
+#: ../qml/pages/clock/Settings.qml:140
 msgid "Light"
 msgstr "fin"
 
-#: ../qml/pages/clock/Settings.qml:140
+#: ../qml/pages/clock/Settings.qml:141
 msgid "LightItalic"
 msgstr "Italique fin"
 
-#: ../qml/pages/clock/Settings.qml:194
+#: ../qml/pages/clock/Settings.qml:195
 msgid "Font type : "
 msgstr "Type de police :"
 
-#: ../qml/pages/clock/Settings.qml:238
+#: ../qml/pages/clock/Settings.qml:239
 msgid "Format : "
 msgstr "Format :"
 
-#: ../qml/pages/home/Settings.qml:106
+#: ../qml/pages/home/Settings.qml:13
+msgid "home"
+msgstr ""
+
+#: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
 msgstr "Gestion des applications favorites"
 
-#: ../qml/pages/home/Settings.qml:165
+#: ../qml/pages/home/Settings.qml:167
 msgid "None"
 msgstr "Aucun"
 
-#: ../qml/pages/home/Settings.qml:165
+#: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"
 msgstr "Aucun style"
 
-#: ../qml/pages/home/Settings.qml:166
+#: ../qml/pages/home/Settings.qml:168
 msgid "Rounded"
 msgstr "Arrondi"
 
-#: ../qml/pages/home/Settings.qml:166
+#: ../qml/pages/home/Settings.qml:168
 msgid "Rounded icons"
 msgstr "Arrondi"
 
-#: ../qml/pages/home/Settings.qml:191
+#: ../qml/pages/home/Settings.qml:193
 msgid "Style Icons : "
 msgstr "Style d'icônes :"
 
-#: ../qml/pages/home/Settings.qml:235
+#: ../qml/pages/home/Settings.qml:237
 msgid "Search engine : "
 msgstr "Moteur de recherche :"
 
-#: ../qml/pages/home/Settings.qml:246
+#: ../qml/pages/home/Settings.qml:248
 msgid "Widgets"
 msgstr "Widgets"
 
-#: ../qml/pages/home/Settings.qml:251
+#: ../qml/pages/home/Settings.qml:253
 msgid "Show clock"
 msgstr "Afficher l'horloge"
 
-#: ../qml/pages/home/Settings.qml:260
+#: ../qml/pages/home/Settings.qml:262
 msgid "Show weather"
 msgstr "Afficher la météo"
 
-#: ../qml/pages/home/Settings.qml:270
+#: ../qml/pages/home/Settings.qml:272
 msgid "Show alarms"
 msgstr "Afficher les alarmes"
 
-#: ../qml/pages/home/Settings.qml:279
+#: ../qml/pages/home/Settings.qml:281
 msgid "Show last calls"
 msgstr "Afficher les derniers appels"
 
-#: ../qml/pages/home/Settings.qml:288
+#: ../qml/pages/home/Settings.qml:290
 msgid "Show last message"
 msgstr "Afficher le dernier message"
 
-#: ../qml/pages/home/Settings.qml:297
+#: ../qml/pages/home/Settings.qml:299
 msgid "Show last events"
 msgstr "Afficher les derniers évènements"
 
-#: ../qml/pages/music/Settings.qml:42
+#: ../qml/pages/music/Settings.qml:11
+msgid "music"
+msgstr ""
+
+#: ../qml/pages/music/Settings.qml:44
 msgid "Settings for 'Music' page"
 msgstr "Paramètres pour la page « Musique »"
 
-#: ../qml/pages/music/Settings.qml:47 ../qml/pages/videos/Settings.qml:46
+#: ../qml/pages/music/Settings.qml:49 ../qml/pages/videos/Settings.qml:48
 msgid "Exemple"
 msgstr "Exemple"
 
@@ -654,51 +671,68 @@ msgstr "Exemple"
 msgid "Select"
 msgstr "Sélectionner"
 
-#: ../qml/pages/picture/Settings.qml:55
+#: ../qml/pages/picture/Settings.qml:13
+msgid "picture"
+msgstr ""
+
+#: ../qml/pages/picture/Settings.qml:57
 msgid "Image folder path:"
 msgstr "Chemin du dossier image :"
 
-#: ../qml/pages/picture/Settings.qml:105
+#: ../qml/pages/picture/Settings.qml:107
 msgid "Unsorted"
 msgstr "Non trié"
 
-#: ../qml/pages/picture/Settings.qml:106
+#: ../qml/pages/picture/Settings.qml:108
 msgid "Name"
 msgstr "Nom"
 
-#: ../qml/pages/picture/Settings.qml:107
+#: ../qml/pages/picture/Settings.qml:109
 msgid "Time"
 msgstr "Date"
 
-#: ../qml/pages/picture/Settings.qml:108
+#: ../qml/pages/picture/Settings.qml:110
 msgid "Size"
 msgstr "Taille"
 
-#: ../qml/pages/picture/Settings.qml:109
+#: ../qml/pages/picture/Settings.qml:111
 msgid "Type"
 msgstr "Type"
 
-#: ../qml/pages/picture/Settings.qml:115
+#: ../qml/pages/picture/Settings.qml:117
 msgid "Sort type:"
 msgstr "Type de trie :"
 
-#: ../qml/pages/picture/Settings.qml:190
+#: ../qml/pages/picture/Settings.qml:192
 msgid "Reverse sort"
 msgstr "Inversion du sens du trie"
 
-#: ../qml/pages/rss/Settings.qml:99
+#: ../qml/pages/rss/Settings.qml:13
+msgid "rss"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:101
 msgid "https://omgubuntu.co.uk/feed"
 msgstr "https://omgubuntu.co.uk/feed"
 
-#: ../qml/pages/rss/Settings.qml:217
+#: ../qml/pages/rss/Settings.qml:219
 msgid "Invalid url"
 msgstr "URL invalide"
 
-#: ../qml/pages/todo/Settings.qml:40
+#: ../qml/pages/todo/Settings.qml:10
+#, fuzzy
+msgid "todo"
+msgstr "Nouvelle liste de choses à faire"
+
+#: ../qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
 msgstr "Pas de paramètres pour la page « TODO »"
 
-#: ../qml/pages/videos/Settings.qml:41
+#: ../qml/pages/videos/Settings.qml:10
+msgid "videos"
+msgstr ""
+
+#: ../qml/pages/videos/Settings.qml:43
 msgid "Settings for 'Video' page"
 msgstr "Paramètres pour la page « Vidéos »"
 

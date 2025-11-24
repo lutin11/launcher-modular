@@ -8,6 +8,8 @@ import Lomiri.Components.Themes 1.3
 Page {
     id: musicSettingsPicture
 
+    property string musicPageName: i18n.tr("music") // do not remove, use pour Po files
+
     header: PageHeader {
         id: headerSettings
         title: i18n.tr("Settings Page");

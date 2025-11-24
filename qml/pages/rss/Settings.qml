@@ -10,6 +10,8 @@ Page {
     id: pageSettingsRss
     anchors.fill: parent
 
+    property string rssPageName: i18n.tr("rss") // do not remove, use pour Po files
+
     Component.onCompleted: {
         RssModel.dbInit()
     }

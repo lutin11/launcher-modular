@@ -10,6 +10,7 @@ import QtSensors 5.12
 Page {
     id: clockSettingsPicture
 
+    property string clockPageName: i18n.tr("clock") // do not remove, use pour Po files
     property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
 
     function updateTime() {
