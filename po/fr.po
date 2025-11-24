@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-24 21:08+0000\n"
-"PO-Revision-Date: 2025-11-23 16:12+0000\n"
+"PO-Revision-Date: 2025-11-24 21:14+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -639,9 +639,8 @@ msgid "Show last message"
 msgstr "Afficher le dernier message"
 
 #: ../qml/pages/home/Settings.qml:297
-#, fuzzy
 msgid "Show last events"
-msgstr "Afficher les évènements"
+msgstr "Afficher les derniers évènements"
 
 #: ../qml/pages/music/Settings.qml:42
 msgid "Settings for 'Music' page"
