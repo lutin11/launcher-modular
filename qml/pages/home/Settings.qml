@@ -168,7 +168,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: styleIconList
-                    width: (parent.width-textStyleIcons.width)-units.gu(8)
+                    width: (parent.width-textStyleIcons.width)-units.gu(10)
                     colourImage: true
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(2)
@@ -209,7 +209,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: searchEngineList
-                    width: (parent.width-textStyleIcons.width)-units.gu(8)
+                    width: (parent.width-textStyleIcons.width)-units.gu(10)
                     colourImage: true
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(2)
