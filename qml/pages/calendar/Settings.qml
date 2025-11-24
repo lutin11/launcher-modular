@@ -7,6 +7,8 @@ import Ubuntu.Components.ListItems 1.3 as ListItem
 Page {
     id: pageSettingsCalendar
 
+    property string calendarPageName: i18n.tr("calendar") // do not remove, use pour Po files
+
     header: PageHeader {
         id: calendarHeaderSettings
         title: i18n.tr("Settings Page");
@@ -73,7 +75,7 @@ Page {
                             placeholderText: i18n.tr("By default 60 days")
                             width: parent.width
                             text: launchermodular.settings.limiteDaysCalendar
-                            onTextChanged: { launchermodular.settings.limiteDaysCalendar = text }
+                            onTextChanged: launchermodular.settings.limiteDaysCalendar = text
                             inputMethodHints: Qt.ImhDigitsOnly;
                         }
                     }

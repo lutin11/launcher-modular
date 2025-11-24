@@ -114,6 +114,7 @@ Item {
             opacity: 0.3
             anchors.fill: parent
         }
+
         Icon {
             id: iconBack
             visible: musicFileModel.folder != "file://" + rootMusic && searchField.text.length === 0
@@ -172,6 +173,7 @@ Item {
                 }
             }
         }
+
         Icon {
             id: iconSearch
             anchors {
