@@ -126,7 +126,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: fontTypeList
-                    width: clocksettings.width - (fontTypeLabel.width + units.gu(4))
+                    width: (clocksettings.width - fontTypeLabel.width) - units.gu(8)
                     anchors.top: colorSelection.bottom
                     anchors.topMargin: units.gu(2)
                     anchors.right: parent.right
@@ -203,7 +203,7 @@ Page {
 
                 ListItemHeader.ItemSelector {
                     id: clockFormat
-                    width: clocksettings.width - (clockFormatLabel.width + units.gu(4))
+                    width: (clocksettings.width - fontTypeLabel.width) - units.gu(8)
                     anchors.top: fontTypeList.bottom
                     anchors.topMargin: units.gu(2)
                     anchors.right: parent.right
