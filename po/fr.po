@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-24 21:44+0000\n"
-"PO-Revision-Date: 2025-11-24 21:14+0000\n"
+"PO-Revision-Date: 2025-11-24 21:49+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/fr/>\n"
@@ -206,7 +206,6 @@ msgid "Added filter on received messages"
 msgstr "Ajout d'un filtre sur les messages reçus"
 
 #: ../qml/ChangeLogs.qml:89
-#, fuzzy
 msgid "Correction of home setting not displayed"
 msgstr "Correction pour l'affichage en arrière-plan."
 
@@ -251,7 +250,6 @@ msgid "Fix background settings"
 msgstr "Correction du réglage fond d'écran"
 
 #: ../qml/ChangeLogs.qml:108
-#, fuzzy
 msgid "Added a file browser for selecting the image folder"
 msgstr "Ajout d'un navigateur de fichier pour le choix du dossier des images"
 
@@ -537,7 +535,7 @@ msgstr "Recherchez vos vidéos"
 
 #: ../qml/pages/calendar/Settings.qml:10
 msgid "calendar"
-msgstr ""
+msgstr "Agenda"
 
 #: ../qml/pages/calendar/Settings.qml:14 ../qml/pages/clock/Settings.qml:30
 #: ../qml/pages/home/Settings.qml:17 ../qml/pages/music/Settings.qml:15
@@ -555,9 +553,8 @@ msgid "By default 60 days"
 msgstr "60 jours par défaut"
 
 #: ../qml/pages/clock/Settings.qml:13
-#, fuzzy
 msgid "clock"
-msgstr "Afficher l'horloge"
+msgstr "Horloge"
 
 #: ../qml/pages/clock/Settings.qml:61
 msgid "Settings for 'Clock' page"
@@ -597,7 +594,7 @@ msgstr "Format :"
 
 #: ../qml/pages/home/Settings.qml:13
 msgid "home"
-msgstr ""
+msgstr "Principale"
 
 #: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
@@ -657,7 +654,7 @@ msgstr "Afficher les derniers évènements"
 
 #: ../qml/pages/music/Settings.qml:11
 msgid "music"
-msgstr ""
+msgstr "Musiques"
 
 #: ../qml/pages/music/Settings.qml:44
 msgid "Settings for 'Music' page"
@@ -673,7 +670,7 @@ msgstr "Sélectionner"
 
 #: ../qml/pages/picture/Settings.qml:13
 msgid "picture"
-msgstr ""
+msgstr "Images"
 
 #: ../qml/pages/picture/Settings.qml:57
 msgid "Image folder path:"
@@ -709,7 +706,7 @@ msgstr "Inversion du sens du trie"
 
 #: ../qml/pages/rss/Settings.qml:13
 msgid "rss"
-msgstr ""
+msgstr "RSS"
 
 #: ../qml/pages/rss/Settings.qml:101
 msgid "https://omgubuntu.co.uk/feed"
@@ -720,9 +717,8 @@ msgid "Invalid url"
 msgstr "URL invalide"
 
 #: ../qml/pages/todo/Settings.qml:10
-#, fuzzy
 msgid "todo"
-msgstr "Nouvelle liste de choses à faire"
+msgstr "Choses à faire"
 
 #: ../qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
@@ -730,7 +726,7 @@ msgstr "Pas de paramètres pour la page « TODO »"
 
 #: ../qml/pages/videos/Settings.qml:10
 msgid "videos"
-msgstr ""
+msgstr "Vidéos"
 
 #: ../qml/pages/videos/Settings.qml:43
 msgid "Settings for 'Video' page"
