@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 20:49+0000\n"
+"POT-Creation-Date: 2025-11-24 21:08+0000\n"
 "PO-Revision-Date: 2023-01-08 13:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: English (United States) <https://hosted.weblate.org/projects/"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Change Log"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:26
+#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
 #: ../qml/pages/rss/Settings.qml:24
 msgid "Back"
 msgstr ""
@@ -612,11 +612,7 @@ msgstr ""
 msgid "Exemple"
 msgstr ""
 
-#: ../qml/pages/picture/SelectFolderPage.qml:7
-msgid "Choose Folder"
-msgstr ""
-
-#: ../qml/pages/picture/SelectFolderPage.qml:43
+#: ../qml/pages/picture/SelectFolderPage.qml:42
 msgid "Select"
 msgstr ""
 

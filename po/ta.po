@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 20:49+0000\n"
+"POT-Creation-Date: 2025-11-24 21:08+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Change Log"
 msgstr "பதிவை மாற்றவும்"
 
-#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:26
+#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
 #: ../qml/pages/rss/Settings.qml:24
 msgid "Back"
 msgstr "பின்"
@@ -647,12 +647,7 @@ msgstr "'இசை' பக்கத்திற்கான அமைப்ப�
 msgid "Exemple"
 msgstr "எடுத்துக்காட்டு"
 
-#: ../qml/pages/picture/SelectFolderPage.qml:7
-#, fuzzy
-msgid "Choose Folder"
-msgstr "தேர்வு"
-
-#: ../qml/pages/picture/SelectFolderPage.qml:43
+#: ../qml/pages/picture/SelectFolderPage.qml:42
 msgid "Select"
 msgstr ""
 
@@ -1026,6 +1021,10 @@ msgstr "அல்லது"
 #: launchermodular.desktop.in.h:1
 msgid "Launcher Modular"
 msgstr "துவக்கி மாடுலர்"
+
+#, fuzzy
+#~ msgid "Choose Folder"
+#~ msgstr "தேர்வு"
 
 #~ msgid "Modular launcher"
 #~ msgstr "மட்டு துவக்கி"

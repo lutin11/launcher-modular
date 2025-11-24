@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 20:49+0000\n"
+"POT-Creation-Date: 2025-11-24 21:08+0000\n"
 "PO-Revision-Date: 2025-11-23 09:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/launcher-modular/"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Change Log"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:26
+#: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
 #: ../qml/pages/rss/Settings.qml:24
 msgid "Back"
 msgstr ""
@@ -637,12 +637,7 @@ msgstr "Instellingen"
 msgid "Exemple"
 msgstr ""
 
-#: ../qml/pages/picture/SelectFolderPage.qml:7
-#, fuzzy
-msgid "Choose Folder"
-msgstr "Kiezen"
-
-#: ../qml/pages/picture/SelectFolderPage.qml:43
+#: ../qml/pages/picture/SelectFolderPage.qml:42
 msgid "Select"
 msgstr ""
 
@@ -1018,6 +1013,10 @@ msgstr "of"
 #, fuzzy
 msgid "Launcher Modular"
 msgstr "Launcher modular"
+
+#, fuzzy
+#~ msgid "Choose Folder"
+#~ msgstr "Kiezen"
 
 #, fuzzy
 #~ msgid "Use this folder"

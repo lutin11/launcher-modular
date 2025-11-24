@@ -4,7 +4,6 @@ import Qt.labs.folderlistmodel 2.12
 
 Page {
     id: folderPicker
-    title: i18n.tr("Choose Folder")
 
     property string rootPath: "/home/phablet"
 
