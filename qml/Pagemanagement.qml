@@ -81,7 +81,18 @@ Page {
                         ListItemLayout {
                             height: modelLayout2.height + (divider.visible ? divider.height : 0)
                             id: modelLayout2
-                            title.text: fileBaseName
+                            title.text: i18n.tr(fileBaseName)
+                            LomiriShape {
+                                source: Image {
+                                    id: customPageImage
+                                    source: "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg"
+                                    smooth: true
+                                }
+                                SlotsLayout.position: SlotsLayout.Leading;
+                                width: units.gu(4)
+                                height: width
+                                radius : "medium"
+                            }
                         }
                         divider.visible: false
                         onClicked: {
@@ -115,7 +126,18 @@ Page {
                         ListItemLayout {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3
-                            title.text: fileBaseName
+                            title.text: i18n.tr(fileBaseName)
+                            LomiriShape {
+                                source: Image {
+                                    id: pageImage
+                                    source: "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg"
+                                    smooth: true
+                                }
+                                SlotsLayout.position: SlotsLayout.Leading;
+                                width: units.gu(4)
+                                height: width
+                                radius : "medium"
+                            }
                         }
                         divider.visible: false
                         visible: if(fileName && fileName.split(".")[0] == "Home"){false; height = 0} else {true}
