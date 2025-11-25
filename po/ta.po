@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 21:44+0000\n"
+"POT-Creation-Date: 2025-11-25 16:45+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -48,134 +48,80 @@ msgid "Back"
 msgstr "பின்"
 
 #: ../qml/ChangeLogs.qml:44
-msgid "Set how many calls to display!"
-msgstr "காண்பிக்க எத்தனை அழைப்புகள் அமைக்கவும்!"
+msgid "Add desc or asc sorting picture choice"
+msgstr ""
 
-#: ../qml/ChangeLogs.qml:45 ../qml/ChangeLogs.qml:47 ../qml/ChangeLogs.qml:49
-msgid "To do this, long press on the widget to access its configuration page."
-msgstr "இதைச் செய்ய, அதன் உள்ளமைவு பக்கத்தை அணுக நிரல்பலகத்தில் நீண்ட அழுத்தவும்."
+#: ../qml/ChangeLogs.qml:45
+msgid "Add sorting picture choice"
+msgstr ""
 
 #: ../qml/ChangeLogs.qml:46
-msgid "Set how many messages to display!"
-msgstr "எத்தனை செய்திகளைக் காண்பிக்க அமைக்கவும்!"
+msgid "Added a file browser for selecting the image folder"
+msgstr ""
 
 #: ../qml/ChangeLogs.qml:48
-msgid "Set how many events to display!"
-msgstr "எத்தனை நிகழ்வுகளைக் காண்பிக்க வேண்டும்!"
+msgid "Fix background settings"
+msgstr ""
 
-#: ../qml/ChangeLogs.qml:50
-msgid "Call redirection to phone app works!"
-msgstr "தொலைபேசி பயன்பாட்டிற்கு அழைப்பு திருப்பிவிடுவது வேலை செய்கிறது!"
+#: ../qml/ChangeLogs.qml:49
+#, fuzzy
+msgid "Add Clock Page"
+msgstr "'இசை' பக்கத்தைச் சேர்"
 
 #: ../qml/ChangeLogs.qml:51
-msgid ""
-"On call settings, set the option for 'When clicked' to 'Open the dialer with "
-"number'"
-msgstr ""
-"அழைப்பு அமைப்புகளில், 'எண்ணுடன் சுழற்றியைத் திறக்க' 'சொடுக்கு செய்தபோது' விருப்பத்தை "
-"அமைக்கவும்"
-
-#: ../qml/ChangeLogs.qml:52
-msgid "Message redirection to messaging app works!"
-msgstr "செய்தியிடல் பயன்பாட்டிற்கு செய்தி திருப்பி வேலை செய்கிறது!"
+#, fuzzy
+msgid "Fix themes not well manage"
+msgstr "சரிசெய் கருப்பொருள் நன்றாக நிர்வகிக்கவில்லை"
 
 #: ../qml/ChangeLogs.qml:53
-msgid ""
-"On message settings, set the option for 'When clicked' to 'Open the "
-"application with message'"
-msgstr ""
-"செய்தி அமைப்புகளில், 'செய்தியுடன் பயன்பாட்டைத் திறக்க' 'சொடுக்கு செய்தபோது' விருப்பத்தை "
-"அமைக்கவும்"
-
-#: ../qml/ChangeLogs.qml:54
-msgid "Force the event list to refresh by double-clicking on the event widget!"
-msgstr ""
-"நிகழ்வு நிரல்பலகத்தில் இருமுறை சொடுக்கு செய்வதன் மூலம் நிகழ்வு பட்டியலைப் புதுப்பிக்கக் "
-"கட்டாயப்படுத்துங்கள்!"
+msgid "The calendar limit of days is not settable"
+msgstr "நாட்களின் காலண்டர் வரம்பு அமைக்கப்படவில்லை"
 
 #: ../qml/ChangeLogs.qml:55
-msgid "The event list shows event from current day!"
-msgstr "நிகழ்வுப் பட்டியல் தற்போதைய நாளிலிருந்து நிகழ்வுகளைக் காட்டுகிறது!"
-
-#: ../qml/ChangeLogs.qml:56
-msgid "Clicking on the 'Alarm' widget opens the clock!"
-msgstr "'விழிப்பொலி' நிரல்பலகத்தைக் சொடுக்கு செய்தால் கடிகாரத்தைத் திறக்கிறது!"
+msgid "Fix superimposed pages at start up"
+msgstr "தொடக்கத்தில் மிகைப்படுத்தப்பட்ட பக்கங்களை சரிசெய்யவும்"
 
 #: ../qml/ChangeLogs.qml:57
-msgid "Open the photo by clicking on it!"
-msgstr "புகைப்படத்தைச் சொடுக்கு செய்வதன் மூலம் திறக்கவும்!"
+msgid "Change framework to 24.04"
+msgstr "கட்டமைப்பை 24.04க்கு மாற்றவும்"
 
 #: ../qml/ChangeLogs.qml:59
-msgid "Enable Autostart"
-msgstr "தானிதொடக்கை இயக்கவும்"
-
-#: ../qml/ChangeLogs.qml:60
-msgid "Swipe up to configure the launcher, and click on 'Autostart"
-msgstr "துவக்கியை உள்ளமைக்க மேல்பக்கம் தேய்த்து, 'தானிதொடக்கு' என்பதைக் சொடுக்குக"
+msgid "Change framework to 22.04"
+msgstr "கட்டமைப்பை 22.04க்கு மாற்றவும்"
 
 #: ../qml/ChangeLogs.qml:61
-msgid "Correction for background display."
-msgstr "பின்னணி காட்சிக்கான திருத்தம்."
+msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
+msgstr "'#5 செல்லுபடியாகும் RSS ஊட்டங்கள் ஏற்கப்படவில்லை' என்ற சிக்கலை சரிசெய்யவும்"
 
-#: ../qml/ChangeLogs.qml:62
-msgid "Fix up 'Run a command in a terminal'"
-msgstr "'ஒரு முனையத்தில் ஒரு கட்டளையை இயக்கவும்' சரி செய்"
+#: ../qml/ChangeLogs.qml:63
+msgid "Add 'Music' page"
+msgstr "'இசை' பக்கத்தைச் சேர்"
 
 #: ../qml/ChangeLogs.qml:64
-msgid "Resumption of the application."
-msgstr "பயன்பாட்டின் மறுதொடக்கம்."
+msgid "Add 'Video' page"
+msgstr "'காணொளி' பக்கத்தைச் சேர்"
 
 #: ../qml/ChangeLogs.qml:65
-msgid ""
-"This is the first release of Launcher Modular based on <a href='https://"
-"github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
-"contains, libraries updates and some fixes."
-msgstr ""
-"<A href = 'https: //github.com/ruditimmemmans/launcher-modular'> "
-"ருடிடிமர்மன்சின்</a>, நூலகங்கள் புதுப்பிப்புகள் மற்றும் சில திருத்தங்களை அடிப்படையாகக் "
-"கொண்ட மட்டு துவக்கியின் முதல் வெளியீடு இதுவாகும்."
+msgid "Corrected display of contact names"
+msgstr "தொடர்பு பெயர்களின் சரிசெய்யப்பட்ட காட்சி"
+
+#: ../qml/ChangeLogs.qml:66
+msgid "Added filter on received messages"
+msgstr "பெறப்பட்ட செய்திகளில் வடிகட்டிச் சேர்க்கப்பட்டது"
 
 #: ../qml/ChangeLogs.qml:67
-msgid "Addition of a new page for RSS feeds"
-msgstr "ஆர்எச்எச் ஊட்டங்களுக்கு புதிய பக்கத்தைச் சேர்ப்பது"
+msgid "Correction of home setting not displayed"
+msgstr "பின்னணி காட்சிக்கான திருத்தம்."
 
 #: ../qml/ChangeLogs.qml:68
-msgid "On Rss setting page, you can add a list of RSS feeds"
-msgstr "Rss அமைப்பு பக்கத்தில், நீங்கள் RSS ஊட்டங்களின் பட்டியலைச் சேர்க்கலாம்"
+msgid "Add Tamil translations thanks to தமிழ்நேரம்"
+msgstr "தமிழ் மொழிபெயர்ப்புகளைச் சேர்த்த 'தமிழ்நேரம்' குழுவுக்கு நன்றி"
 
-#: ../qml/ChangeLogs.qml:69 ../qml/ChangeLogs.qml:74 ../qml/ChangeLogs.qml:80
-msgid "Update translations"
-msgstr "மொழிபெயர்ப்புகளைப் புதுப்பிக்கவும்"
+#: ../qml/ChangeLogs.qml:69
+msgid "Update Arabic translations thanks to Salah Khani"
+msgstr "அரபு மொழிபெயர்ப்புகளைப் புதுப்பித்த சலா கானிக்கு நன்றி"
 
-#: ../qml/ChangeLogs.qml:70 ../qml/ChangeLogs.qml:73
-msgid "Improved 'Picture' page display performance"
-msgstr "மேம்படுத்தப்பட்ட 'படம்' பக்க காட்சி செயல்திறன்"
-
-#: ../qml/ChangeLogs.qml:72
-msgid "Display contact name if exists on message and call widget"
-msgstr "செய்தியில் இருந்தால் தொடர்பு பெயரைக் காண்பி, நிரல்பலகத்தை அழைக்கவும்"
-
-#: ../qml/ChangeLogs.qml:76
-msgid "Fix launching Libertine applications"
-msgstr "லிபர்டைன் பயன்பாடுகளைத் தொடங்குவதை சரிசெய்யவும்"
-
-#: ../qml/ChangeLogs.qml:77
-msgid "Fix launching favorite applications"
-msgstr "பிடித்த பயன்பாடுகளைத் தொடங்குவதை சரிசெய்யவும்"
-
-#: ../qml/ChangeLogs.qml:78
-msgid "Update weather on refreshing home page"
-msgstr "புத்துணர்ச்சியூட்டும் முகப்பு பக்கத்தில் வானிலை புதுப்பிக்கவும்"
-
-#: ../qml/ChangeLogs.qml:79
-msgid "Added the ability to run a calculation from the search bar"
-msgstr "தேடல் பட்டியிலிருந்து ஒரு கணக்கீட்டை இயக்கும் திறனைச் சேர்த்தது"
-
-#: ../qml/ChangeLogs.qml:82
-msgid "Fix page management issue"
-msgstr "பக்க மேலாண்மை சிக்கலைச் சரிசெய்யவும்"
-
-#: ../qml/ChangeLogs.qml:83
+#: ../qml/ChangeLogs.qml:71
 msgid ""
 "This is a hotfix release, as 'Page management' did not work anymore. Please "
 "feel free to report any issues throw https://github.com/lutin11/launcher-"
@@ -185,98 +131,152 @@ msgstr ""
 "lutin11/launcher-modular/issues அல்லது Ubports மன்றத்தில் ஏதேனும் சிக்கல்கள் இருந்தால் "
 "தயங்காமல் புகாரளிக்கவும்"
 
+#: ../qml/ChangeLogs.qml:72
+msgid "Fix page management issue"
+msgstr "பக்க மேலாண்மை சிக்கலைச் சரிசெய்யவும்"
+
+#: ../qml/ChangeLogs.qml:74
+msgid "Fix launching Libertine applications"
+msgstr "லிபர்டைன் பயன்பாடுகளைத் தொடங்குவதை சரிசெய்யவும்"
+
+#: ../qml/ChangeLogs.qml:75
+msgid "Fix launching favorite applications"
+msgstr "பிடித்த பயன்பாடுகளைத் தொடங்குவதை சரிசெய்யவும்"
+
+#: ../qml/ChangeLogs.qml:76
+msgid "Update weather on refreshing home page"
+msgstr "புத்துணர்ச்சியூட்டும் முகப்பு பக்கத்தில் வானிலை புதுப்பிக்கவும்"
+
+#: ../qml/ChangeLogs.qml:77
+msgid "Added the ability to run a calculation from the search bar"
+msgstr "தேடல் பட்டியிலிருந்து ஒரு கணக்கீட்டை இயக்கும் திறனைச் சேர்த்தது"
+
+#: ../qml/ChangeLogs.qml:78 ../qml/ChangeLogs.qml:82 ../qml/ChangeLogs.qml:86
+msgid "Update translations"
+msgstr "மொழிபெயர்ப்புகளைப் புதுப்பிக்கவும்"
+
+#: ../qml/ChangeLogs.qml:80
+msgid "Display contact name if exists on message and call widget"
+msgstr "செய்தியில் இருந்தால் தொடர்பு பெயரைக் காண்பி, நிரல்பலகத்தை அழைக்கவும்"
+
+#: ../qml/ChangeLogs.qml:81 ../qml/ChangeLogs.qml:87
+msgid "Improved 'Picture' page display performance"
+msgstr "மேம்படுத்தப்பட்ட 'படம்' பக்க காட்சி செயல்திறன்"
+
+#: ../qml/ChangeLogs.qml:84
+msgid "On Rss setting page, you can add a list of RSS feeds"
+msgstr "Rss அமைப்பு பக்கத்தில், நீங்கள் RSS ஊட்டங்களின் பட்டியலைச் சேர்க்கலாம்"
+
 #: ../qml/ChangeLogs.qml:85
-msgid "Add 'Music' page"
-msgstr "'இசை' பக்கத்தைச் சேர்"
+msgid "Addition of a new page for RSS feeds"
+msgstr "ஆர்எச்எச் ஊட்டங்களுக்கு புதிய பக்கத்தைச் சேர்ப்பது"
 
-#: ../qml/ChangeLogs.qml:86
-msgid "Add 'Video' page"
-msgstr "'காணொளி' பக்கத்தைச் சேர்"
-
-#: ../qml/ChangeLogs.qml:87
-msgid "Corrected display of contact names"
-msgstr "தொடர்பு பெயர்களின் சரிசெய்யப்பட்ட காட்சி"
-
-#: ../qml/ChangeLogs.qml:88
-msgid "Added filter on received messages"
-msgstr "பெறப்பட்ட செய்திகளில் வடிகட்டிச் சேர்க்கப்பட்டது"
-
-#: ../qml/ChangeLogs.qml:89
-msgid "Correction of home setting not displayed"
-msgstr "பின்னணி காட்சிக்கான திருத்தம்."
+#: ../qml/ChangeLogs.qml:89 ../qml/ChangeLogs.qml:91 ../qml/ChangeLogs.qml:93
+msgid "To do this, long press on the widget to access its configuration page."
+msgstr "இதைச் செய்ய, அதன் உள்ளமைவு பக்கத்தை அணுக நிரல்பலகத்தில் நீண்ட அழுத்தவும்."
 
 #: ../qml/ChangeLogs.qml:90
-msgid "Add Tamil translations thanks to தமிழ்நேரம்"
-msgstr "தமிழ் மொழிபெயர்ப்புகளைச் சேர்த்த 'தமிழ்நேரம்' குழுவுக்கு நன்றி"
+msgid "Set how many calls to display!"
+msgstr "காண்பிக்க எத்தனை அழைப்புகள் அமைக்கவும்!"
 
-#: ../qml/ChangeLogs.qml:91
-msgid "Update Arabic translations thanks to Salah Khani"
-msgstr "அரபு மொழிபெயர்ப்புகளைப் புதுப்பித்த சலா கானிக்கு நன்றி"
+#: ../qml/ChangeLogs.qml:92
+msgid "Set how many messages to display!"
+msgstr "எத்தனை செய்திகளைக் காண்பிக்க அமைக்கவும்!"
 
-#: ../qml/ChangeLogs.qml:93
-msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
-msgstr "'#5 செல்லுபடியாகும் RSS ஊட்டங்கள் ஏற்கப்படவில்லை' என்ற சிக்கலை சரிசெய்யவும்"
+#: ../qml/ChangeLogs.qml:94
+msgid "Set how many events to display!"
+msgstr "எத்தனை நிகழ்வுகளைக் காண்பிக்க வேண்டும்!"
 
 #: ../qml/ChangeLogs.qml:95
-msgid "Change framework to 22.04"
-msgstr "கட்டமைப்பை 22.04க்கு மாற்றவும்"
+msgid ""
+"On call settings, set the option for 'When clicked' to 'Open the dialer with "
+"number'"
+msgstr ""
+"அழைப்பு அமைப்புகளில், 'எண்ணுடன் சுழற்றியைத் திறக்க' 'சொடுக்கு செய்தபோது' விருப்பத்தை "
+"அமைக்கவும்"
+
+#: ../qml/ChangeLogs.qml:96
+msgid "Call redirection to phone app works!"
+msgstr "தொலைபேசி பயன்பாட்டிற்கு அழைப்பு திருப்பிவிடுவது வேலை செய்கிறது!"
 
 #: ../qml/ChangeLogs.qml:97
-msgid "Change framework to 24.04"
-msgstr "கட்டமைப்பை 24.04க்கு மாற்றவும்"
+msgid ""
+"On message settings, set the option for 'When clicked' to 'Open the "
+"application with message'"
+msgstr ""
+"செய்தி அமைப்புகளில், 'செய்தியுடன் பயன்பாட்டைத் திறக்க' 'சொடுக்கு செய்தபோது' விருப்பத்தை "
+"அமைக்கவும்"
+
+#: ../qml/ChangeLogs.qml:98
+msgid "Message redirection to messaging app works!"
+msgstr "செய்தியிடல் பயன்பாட்டிற்கு செய்தி திருப்பி வேலை செய்கிறது!"
 
 #: ../qml/ChangeLogs.qml:99
-msgid "Fix superimposed pages at start up"
-msgstr "தொடக்கத்தில் மிகைப்படுத்தப்பட்ட பக்கங்களை சரிசெய்யவும்"
+msgid "Force the event list to refresh by double-clicking on the event widget!"
+msgstr ""
+"நிகழ்வு நிரல்பலகத்தில் இருமுறை சொடுக்கு செய்வதன் மூலம் நிகழ்வு பட்டியலைப் புதுப்பிக்கக் "
+"கட்டாயப்படுத்துங்கள்!"
+
+#: ../qml/ChangeLogs.qml:100
+msgid "The event list shows event from current day!"
+msgstr "நிகழ்வுப் பட்டியல் தற்போதைய நாளிலிருந்து நிகழ்வுகளைக் காட்டுகிறது!"
 
 #: ../qml/ChangeLogs.qml:101
-msgid "The calendar limit of days is not settable"
-msgstr "நாட்களின் காலண்டர் வரம்பு அமைக்கப்படவில்லை"
+msgid "Clicking on the 'Alarm' widget opens the clock!"
+msgstr "'விழிப்பொலி' நிரல்பலகத்தைக் சொடுக்கு செய்தால் கடிகாரத்தைத் திறக்கிறது!"
 
-#: ../qml/ChangeLogs.qml:103
-#, fuzzy
-msgid "Fix themes not well manage"
-msgstr "சரிசெய் கருப்பொருள் நன்றாக நிர்வகிக்கவில்லை"
+#: ../qml/ChangeLogs.qml:102
+msgid "Open the photo by clicking on it!"
+msgstr "புகைப்படத்தைச் சொடுக்கு செய்வதன் மூலம் திறக்கவும்!"
+
+#: ../qml/ChangeLogs.qml:104
+msgid "Swipe up to configure the launcher, and click on 'Autostart"
+msgstr "துவக்கியை உள்ளமைக்க மேல்பக்கம் தேய்த்து, 'தானிதொடக்கு' என்பதைக் சொடுக்குக"
 
 #: ../qml/ChangeLogs.qml:105
-#, fuzzy
-msgid "Add Clock Page"
-msgstr "'இசை' பக்கத்தைச் சேர்"
+msgid "Enable Autostart"
+msgstr "தானிதொடக்கை இயக்கவும்"
 
 #: ../qml/ChangeLogs.qml:106
-msgid "Fix background settings"
-msgstr ""
+msgid "Correction for background display."
+msgstr "பின்னணி காட்சிக்கான திருத்தம்."
 
-#: ../qml/ChangeLogs.qml:108
-msgid "Added a file browser for selecting the image folder"
-msgstr ""
+#: ../qml/ChangeLogs.qml:107
+msgid "Fix up 'Run a command in a terminal'"
+msgstr "'ஒரு முனையத்தில் ஒரு கட்டளையை இயக்கவும்' சரி செய்"
 
 #: ../qml/ChangeLogs.qml:109
-msgid "Add sorting picture choice"
+msgid ""
+"This is the first release of Launcher Modular based on <a href='https://"
+"github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
+"contains, libraries updates and some fixes."
 msgstr ""
+"<A href = 'https: //github.com/ruditimmemmans/launcher-modular'> "
+"ருடிடிமர்மன்சின்</a>, நூலகங்கள் புதுப்பிப்புகள் மற்றும் சில திருத்தங்களை அடிப்படையாகக் "
+"கொண்ட மட்டு துவக்கியின் முதல் வெளியீடு இதுவாகும்."
 
 #: ../qml/ChangeLogs.qml:110
-msgid "Add desc or asc sorting picture choice"
-msgstr ""
+msgid "Resumption of the application."
+msgstr "பயன்பாட்டின் மறுதொடக்கம்."
 
-#: ../qml/ChangeLogs.qml:198
+#: ../qml/ChangeLogs.qml:199
 msgid "Version: "
 msgstr "பதிப்பு:"
 
-#: ../qml/ChangeLogs.qml:204
+#: ../qml/ChangeLogs.qml:205
 msgid " | Date: "
 msgstr "| தேதி:"
 
-#: ../qml/ChangeLogs.qml:330
+#: ../qml/ChangeLogs.qml:331
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
 "இந்தப் பயன்பாட்டை நீங்கள் விரும்பினால், தயவுசெய்து அதைத் திறந்தகடையில் தரவரிசைப்படுத்தவும்"
 
-#: ../qml/ChangeLogs.qml:357
+#: ../qml/ChangeLogs.qml:358
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "உபுண்டு தொடுதலுக்கான ஒரு மட்டு துவக்கி"
 
-#: ../qml/ChangeLogs.qml:371
+#: ../qml/ChangeLogs.qml:372
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -295,23 +295,23 @@ msgstr ""
 "பொறுப்பு கூட இல்லாமல். மேலும் விவரங்களுக்கு <a href = 'https: //www.gnu.org/"
 "licenses/gpl-3.0.en.html'> குனு பொது பொது உரிமம் </a> ஐப் பார்க்கவும்."
 
-#: ../qml/ChangeLogs.qml:386
+#: ../qml/ChangeLogs.qml:387
 msgid "SOURCE"
 msgstr "மூலம்"
 
-#: ../qml/ChangeLogs.qml:386
+#: ../qml/ChangeLogs.qml:387
 msgid "ISSUES"
 msgstr "சிக்கல்கள்"
 
-#: ../qml/ChangeLogs.qml:401
+#: ../qml/ChangeLogs.qml:402
 msgid "Maintainer"
 msgstr "பராமரிப்பாளர்"
 
-#: ../qml/ChangeLogs.qml:415
+#: ../qml/ChangeLogs.qml:416
 msgid "Copyright"
 msgstr "பதிப்புரிமை"
 
-#: ../qml/ChangeLogs.qml:430
+#: ../qml/ChangeLogs.qml:431
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href='LAUNCHER MODULAR TRANSLATORS'> மட்டு துவக்கி மொழிபெயர்ப்பாளர்கள் </a>"
