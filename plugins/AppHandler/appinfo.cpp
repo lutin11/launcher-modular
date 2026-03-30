@@ -31,102 +31,29 @@ AppInfo::AppInfo(const QString& packagename, const QString& infos, bool isLibert
 	import(infos);
 }
 
-
-void AppInfo::import(const QString& filePath)
-{
-    QSettings settings(filePath, QSettings::IniFormat);
-    settings.setIniCodec("UTF-8");
-
-    settings.beginGroup("Desktop Entry");
-
-    const QStringList keys = settings.allKeys();
-    for (const QString& key : keys) {
-        QVariant value = settings.value(key);
-
-        // Stockage direct
-        _appinfo.insert(key, value.toString());
-
-        // Optionnel : version tableau comme dans ton code
-        _appinfo.insert(key + "[]", value.toString());
-    }
-
-    settings.endGroup();
-}
-
-
-void AppInfo::import(const QString& infos)
-{
-    _appinfo.clear();
-
-    bool read = false;
-
-    for (const QString& rawLine : infos.split("\n")) {
-
-        qDebug() << "New File";
-
-        QString line = rawLine.trimmed();
-
-	    QString locale = (QLocale() != QLocale::c()) ? QLocale().name().split("_").first() : "c";
-	    qDebug() << "Parsed line : " << line;
-
-        // Ignorer lignes vides et commentaires
-        if (line.isEmpty() || line.startsWith("#")) {
-            qDebug() << "return :" << line;
-            continue;
-        }
-
-        // Détection section
-        if (line == "[Desktop Entry]") {
-            read = true;
-            qDebug() << "continue :" << line;
-            continue;
-        }
-
-        if (line.startsWith("[")) {
-            read = false;
-            qDebug() << "stop :" << line;
-            continue;
-        }
-
-        if (!read) {
-            qDebug() << "return :" << line;
-            continue;
-        }
-
-        // Split propre : seulement au premier '='
-        int idx = line.indexOf('=');
-        if (idx == -1) {
-            qDebug() << "idx == -1";
-            continue;
-        }
-
-        QString key = line.left(idx).trimmed();
-        QString value = line.mid(idx + 1).trimmed();
-
-        // Debug optionnel conservé
-        if (getProp("package_name").contains("morph"))
-            qDebug() << key << value << !_appinfo.contains(key);
-
-        // Ne pas écraser
-        if (_appinfo.contains(key)) {
-            qDebug() << "clef contenue :" << key;
-            continue;
-        }
-
-        // Insertion principale
-        qDebug() << "inssertion :" << key << " " << value;
-        _appinfo.insert(key, value);
-
-        // Compat ancien comportement (clé[])
-        //if (!key.contains("["))
-        //    _appinfo.insert(key + "[]", value);
-    }
+void AppInfo::import(const QString& infos) {
+	bool read = false;
+	foreach (const QString& line , infos.split("\n")) {
+		if(line == "[Desktop Entry]") {
+			read = true;
+		}
+		else if(line.startsWith("[")) {
+			read = false;
+		}
+		else if(line != "" && read) {
+			QStringList keyvalue = line.split("=");
+			if(!_appinfo.contains(keyvalue.first())) {
+				if(!keyvalue.first().contains("["))
+					_appinfo.insert(keyvalue.first()+"[]",(keyvalue.size() > 1) ? keyvalue.at(1):"");
+				_appinfo.insert(keyvalue.first(),(keyvalue.size() > 1) ? keyvalue.at(1):"");
+			}
+		}
+	}
 }
 
 QString AppInfo::getProp(const QString& key)
 {
 	QString locale = (QLocale() != QLocale::c()) ? QLocale().name().split("_").first() : "c";
-    //qDebug() << "locale" <<QLocale().uiLanguages().first() << QLocale().name();
 	if ( _appinfo.contains(key+"["+locale+"]") )
 	{
 		return _appinfo.value(key+"["+locale+"]");
