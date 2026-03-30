@@ -83,28 +83,92 @@ void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& co
     }
     qDebug() << _appinfos.size() << " libertine desktop file read from " << path;
 }
+
+namespace {
+
+    QString readFile(const QString& path)
+    {
+        QFile file(path);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+            return QString();
+
+        QTextStream stream(&file);
+        stream.setCodec("UTF-8");
+        return stream.readAll();
+    }
+
+    void resolveIconFromSourcePath(AppInfo* app, const QString& fileName)
+    {
+        QString iconProp = app->getProp("Icon");
+
+        if (iconProp.isEmpty() ||
+            iconProp.endsWith(".png") ||
+            iconProp.endsWith(".svg") ||
+            iconProp.endsWith(".xpm"))
+            return;
+
+        QString sourceAppPath = app->getProp("Path");
+        if (sourceAppPath.isEmpty()) {
+            qDebug() << "No path for:" << app->name() << " " << fileName;
+            return;
+        }
+
+        QDir dir(sourceAppPath);
+        if (!dir.exists()) {
+            qDebug() << "Dir '" << sourceAppPath << "' not exists for:" << app->name();
+            return;
+        }
+
+        QStringList filters;
+        filters << iconProp + ".svg"
+                << iconProp + ".png"
+                << iconProp + ".xpm";
+
+        QFileInfoList files = dir.entryInfoList(filters, QDir::Files);
+        for (const QFileInfo &file : files) {
+            qDebug() << "Found icon:" << file.absoluteFilePath();
+            app->setIcon(file.absoluteFilePath());
+            return; // we take the first one
+        }
+    }
+
+    void importSubDesktop(AppInfo* app)
+    {
+        QString source = app->getProp("X-Lomiri-UAL-Source-Desktop");
+        if (source.isEmpty())
+            return;
+
+        QString content = readFile(source);
+        if (!content.isEmpty())
+            app->import(content);
+    }
+
+}
+
 void AppHandler::loadAppsFromDir(const QString& path)
 {
     QDir dir(path);
-    QStringList nameFilters;
-    nameFilters << "*.desktop";
-    QStringList fileList = dir.entryList(nameFilters, QDir::Files);
-    foreach (const QString &fileName, fileList) {
-      QFile file(dir.filePath(fileName));
-      file.open(QIODevice::ReadOnly | QIODevice::Text);
-      QTextStream filestream(&file);
-      filestream.setCodec("UTF-8");
-      _appinfos.append(new AppInfo(fileName.left(fileName.size() - QString(".desktop").size()), filestream.readAll()));
-      if(!_appinfos.last()->getProp("X-Lomiri-UAL-Source-Desktop").isEmpty()) {
-        QFile subfile(_appinfos.last()->getProp("X-Lomiri-UAL-Source-Desktop"));
-        subfile.open(QIODevice::ReadOnly | QIODevice::Text);
-        QTextStream subfilestream(&subfile);
-        subfilestream.setCodec("UTF-8");
-        _appinfos.last()->import(subfilestream.readAll());
-      }
+    QStringList fileList = dir.entryList({"*.desktop"}, QDir::Files);
+
+    for (const QString &fileName : fileList) {
+
+        QString filePath = dir.filePath(fileName);
+        QString content = readFile(filePath);
+        if (content.isEmpty())
+            continue;
+
+        QString appId = fileName;
+        appId.chop(QString(".desktop").size());
+
+        AppInfo* app = new AppInfo(appId, content);
+
+        importSubDesktop(app);
+        resolveIconFromSourcePath(app, fileName);
+
+        _appinfos.append(app);
     }
-    qDebug() << _appinfos.size() << " desktop file read from " << path;
 }
+
 void AppHandler::append_appinfo(QQmlListProperty<AppInfo> *list, AppInfo *appinfo)
 {
     AppHandler *appinfoBoard = qobject_cast<AppHandler*>(list->object);
