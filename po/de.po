@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
 "POT-Creation-Date: 2025-11-25 16:45+0000\n"
-"PO-Revision-Date: 2025-11-23 09:42+0000\n"
-"Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
+"PO-Revision-Date: 2026-04-02 09:09+0000\n"
+"Last-Translator: Marcel Tujetsch <tujetsch-marcel@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
 "launchermodular-lut11/de/>\n"
 "Language: de\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -21,6 +21,8 @@ msgstr "Standard App-Starter wieder herstellen"
 #: ../qml/Autostart.qml:45
 msgid "How to Autostart Modular Launcher after booting"
 msgstr ""
+"So stellen Sie den Modular Launcher so ein, dass er nach dem Hochfahren "
+"automatisch startet"
 
 #: ../qml/Autostart.qml:58
 msgid ""
@@ -37,23 +39,25 @@ msgstr "Änderungsprotokoll"
 #: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
 #: ../qml/pages/rss/Settings.qml:26
 msgid "Back"
-msgstr ""
+msgstr "Zurück"
 
 #: ../qml/ChangeLogs.qml:44
 msgid "Add desc or asc sorting picture choice"
 msgstr ""
+"Füge die Option hinzu, nach absteigender oder aufsteigender Reihenfolge zu "
+"sortieren"
 
 #: ../qml/ChangeLogs.qml:45
 msgid "Add sorting picture choice"
-msgstr ""
+msgstr "Sortierfunktion und Bildauswahl hinzufügen"
 
 #: ../qml/ChangeLogs.qml:46
 msgid "Added a file browser for selecting the image folder"
-msgstr ""
+msgstr "Es wurde ein Dateibrowser zur Auswahl des Bildordners hinzugefügt"
 
 #: ../qml/ChangeLogs.qml:48
 msgid "Fix background settings"
-msgstr ""
+msgstr "Korrigiere Hintergrund-Einstellungen"
 
 #: ../qml/ChangeLogs.qml:49
 #, fuzzy
@@ -62,41 +66,39 @@ msgstr "Einstellungsseite"
 
 #: ../qml/ChangeLogs.qml:51
 msgid "Fix themes not well manage"
-msgstr ""
+msgstr "Problem beheben, dass Themen nicht richtig verwaltet werden"
 
 #: ../qml/ChangeLogs.qml:53
 msgid "The calendar limit of days is not settable"
-msgstr ""
+msgstr "Die maximale Anzahl an Tagen im Kalender kann nicht festgelegt werden"
 
 #: ../qml/ChangeLogs.qml:55
 msgid "Fix superimposed pages at start up"
-msgstr ""
+msgstr "Überlappende Seiten beim Start beheben"
 
 #: ../qml/ChangeLogs.qml:57
 msgid "Change framework to 24.04"
-msgstr ""
+msgstr "Framework auf 24.04 aktualisieren"
 
 #: ../qml/ChangeLogs.qml:59
 msgid "Change framework to 22.04"
-msgstr ""
+msgstr "Framework auf 22.04 aktualisieren"
 
 #: ../qml/ChangeLogs.qml:61
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
-msgstr ""
+msgstr "Problem „#5 Gültige RSS-Feeds werden nicht akzeptiert“ beheben"
 
 #: ../qml/ChangeLogs.qml:63
-#, fuzzy
 msgid "Add 'Music' page"
-msgstr "Einstellungsseite"
+msgstr "\"Musik\" Seite hinzufügen"
 
 #: ../qml/ChangeLogs.qml:64
-#, fuzzy
 msgid "Add 'Video' page"
-msgstr "Einstellungen Widget"
+msgstr "\"Video\" Seite hinzufügen"
 
 #: ../qml/ChangeLogs.qml:65
 msgid "Corrected display of contact names"
-msgstr ""
+msgstr "Korrekte Anzeige von Kontaktnamen"
 
 #: ../qml/ChangeLogs.qml:66
 #, fuzzy
@@ -110,11 +112,11 @@ msgstr "Korrektur der Hintergrundanzeige."
 
 #: ../qml/ChangeLogs.qml:68
 msgid "Add Tamil translations thanks to தமிழ்நேரம்"
-msgstr ""
+msgstr "Tamil Übersetzungen hinzugefügt"
 
 #: ../qml/ChangeLogs.qml:69
 msgid "Update Arabic translations thanks to Salah Khani"
-msgstr ""
+msgstr "Arabische Übersetzungen hinzugefügt"
 
 #: ../qml/ChangeLogs.qml:71
 msgid ""
@@ -122,27 +124,30 @@ msgid ""
 "feel free to report any issues throw https://github.com/lutin11/launcher-"
 "modular/issues or on Ubports forum"
 msgstr ""
+"Dies ist ein Hotfix, da die „Seitenverwaltung“ nicht mehr funktionierte. "
+"Bitte zögern Sie nicht, uns etwaige Probleme zu melden: https://github.com/"
+"lutin11/launcher-modular/issues or on Ubports forum"
 
 #: ../qml/ChangeLogs.qml:72
-#, fuzzy
 msgid "Fix page management issue"
-msgstr "Seitenverwaltung"
+msgstr "Problem bei der Seitenverwaltung beheben"
 
 #: ../qml/ChangeLogs.qml:74
 msgid "Fix launching Libertine applications"
-msgstr ""
+msgstr "Korrektur Starten von Libertine Anwendungen"
 
 #: ../qml/ChangeLogs.qml:75
 msgid "Fix launching favorite applications"
-msgstr ""
+msgstr "Starten von Favoriten Apps korrigiert"
 
 #: ../qml/ChangeLogs.qml:76
 msgid "Update weather on refreshing home page"
-msgstr ""
+msgstr "Wetter Aktualisieren wenn Homepage aktualisiert"
 
 #: ../qml/ChangeLogs.qml:77
 msgid "Added the ability to run a calculation from the search bar"
 msgstr ""
+"Funktion hinzugefügt, um Berechnungen in der Suche-Leiste zu ermöglichen"
 
 #: ../qml/ChangeLogs.qml:78 ../qml/ChangeLogs.qml:82 ../qml/ChangeLogs.qml:86
 #, fuzzy
@@ -152,6 +157,7 @@ msgstr "Übersetzer"
 #: ../qml/ChangeLogs.qml:80
 msgid "Display contact name if exists on message and call widget"
 msgstr ""
+"Wenn vorhanden, wird Kontakt-Name im Nachrichten- und Anruf-Widget anzeigt"
 
 #: ../qml/ChangeLogs.qml:81 ../qml/ChangeLogs.qml:87
 #, fuzzy
@@ -161,6 +167,8 @@ msgstr "Verbesserung der Leistung von Bildseiten"
 #: ../qml/ChangeLogs.qml:84
 msgid "On Rss setting page, you can add a list of RSS feeds"
 msgstr ""
+"Auf der RSS Einstellungen-Seite, kann eine Liste von RRS-Feeds hinzugefügt "
+"werden"
 
 #: ../qml/ChangeLogs.qml:85
 msgid "Addition of a new page for RSS feeds"
@@ -248,6 +256,9 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
+"Dies ist das erste Release des \"Launcher Modular\" basierend auf <a "
+"href='https://github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> "
+"ones, es enthält Library Updates und einige Korrekturen."
 
 #: ../qml/ChangeLogs.qml:110
 msgid "Resumption of the application."
@@ -327,11 +338,15 @@ msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
+"Um eine neue Seite hinzuzufügen, gehen Sie zu „Seite verwalten“ und klicken "
+"Sie oben rechts auf das „+“."
 
 #: ../qml/Help.qml:77
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
+"Um die Seiteneinstellungen zu ändern, gehen Sie zu „Seite verwalten“ und "
+"klicken Sie auf die Seite."
 
 #: ../qml/ImportPage.qml:13
 msgid "Choose"
@@ -445,7 +460,7 @@ msgstr "Übersetzer von Launcher Modular:"
 
 #: ../qml/Translators.qml:95
 msgid "Arabic - "
-msgstr ""
+msgstr "Arabisch -"
 
 #: ../qml/Translators.qml:109
 msgid "Dutch - "
@@ -469,13 +484,15 @@ msgstr "Russisch - "
 
 #: ../qml/Translators.qml:179
 msgid "Tamil - "
-msgstr ""
+msgstr "Tamilisch -"
 
 #: ../qml/Translators.qml:194
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
 msgstr ""
+"Übersetzen Sie „Modular Launcher“ auf <a href=‚https://hosted.weblate.org/"
+"projects/launcher-modular/launchermodular-lut11‘>Hosted Weblate</a>."
 
 #: ../qml/pages/Calendar.qml:107
 msgid "Agenda"
@@ -499,7 +516,7 @@ msgstr "Entfernen"
 
 #: ../qml/pages/Music.qml:160
 msgid "Search your music"
-msgstr ""
+msgstr "Durchsuchen Sie Ihre Musik"
 
 #: ../qml/pages/Rss.qml:154
 msgid "Loading feeds…"
@@ -521,11 +538,11 @@ msgstr "Löschen"
 
 #: ../qml/pages/Videos.qml:159
 msgid "Search your video"
-msgstr ""
+msgstr "Suchen Sie Ihr Video"
 
 #: ../qml/pages/calendar/Settings.qml:10
 msgid "calendar"
-msgstr ""
+msgstr "Kalender"
 
 #: ../qml/pages/calendar/Settings.qml:14 ../qml/pages/clock/Settings.qml:30
 #: ../qml/pages/home/Settings.qml:17 ../qml/pages/music/Settings.qml:15
@@ -548,51 +565,48 @@ msgid "clock"
 msgstr "Zeige Uhr"
 
 #: ../qml/pages/clock/Settings.qml:61
-#, fuzzy
 msgid "Settings for 'Clock' page"
-msgstr "Einstellungsseite"
+msgstr "Einstellungsseite für Uhr"
 
 #: ../qml/pages/clock/Settings.qml:136
 msgid "Bold"
-msgstr ""
+msgstr "Fett"
 
 #: ../qml/pages/clock/Settings.qml:137
 msgid "BoldItalic"
-msgstr ""
+msgstr "Fett und kursiv"
 
 #: ../qml/pages/clock/Settings.qml:138
 msgid "Regular"
-msgstr ""
+msgstr "Standard"
 
 #: ../qml/pages/clock/Settings.qml:139
 msgid "Italic"
-msgstr ""
+msgstr "Kursiv"
 
 #: ../qml/pages/clock/Settings.qml:140
-#, fuzzy
 msgid "Light"
-msgstr "Leiser Zug"
+msgstr "Fein"
 
 #: ../qml/pages/clock/Settings.qml:141
-#, fuzzy
 msgid "LightItalic"
-msgstr "Leiser Zug"
+msgstr "Fein und kursiv"
 
 #: ../qml/pages/clock/Settings.qml:195
 msgid "Font type : "
-msgstr ""
+msgstr "Schrift-Typ:"
 
 #: ../qml/pages/clock/Settings.qml:239
 msgid "Format : "
-msgstr ""
+msgstr "Format:"
 
 #: ../qml/pages/home/Settings.qml:13
 msgid "home"
-msgstr ""
+msgstr "Home"
 
 #: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
-msgstr "Favouriten-App-Verwaltung"
+msgstr "Favoriten-App-Verwaltung"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "None"
@@ -600,7 +614,7 @@ msgstr "Keiner"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"
-msgstr "Iconstyle: "
+msgstr "Icons ohne Formatierung"
 
 #: ../qml/pages/home/Settings.qml:168
 msgid "Rounded"
@@ -608,15 +622,15 @@ msgstr "Abgerundet"
 
 #: ../qml/pages/home/Settings.qml:168
 msgid "Rounded icons"
-msgstr "Abgerundet"
+msgstr "Abgerundete Icons"
 
 #: ../qml/pages/home/Settings.qml:193
 msgid "Style Icons : "
-msgstr "Iconstyle: "
+msgstr "Icon Stil:"
 
 #: ../qml/pages/home/Settings.qml:237
 msgid "Search engine : "
-msgstr ""
+msgstr "Suchmaschine:"
 
 #: ../qml/pages/home/Settings.qml:248
 msgid "Widgets"
@@ -635,106 +649,100 @@ msgid "Show alarms"
 msgstr "Zeige Alarme"
 
 #: ../qml/pages/home/Settings.qml:281
-#, fuzzy
 msgid "Show last calls"
-msgstr "Zeige letzten Anruf"
+msgstr "Zeige letzten Anrufe"
 
 #: ../qml/pages/home/Settings.qml:290
 msgid "Show last message"
-msgstr "Zeige letze Nachricht"
+msgstr "Zeige letzte Nachricht"
 
 #: ../qml/pages/home/Settings.qml:299
-#, fuzzy
 msgid "Show last events"
-msgstr "Zeige Ereignisse"
+msgstr "Zeige letzte Ereignisse"
 
 #: ../qml/pages/music/Settings.qml:11
 msgid "music"
-msgstr ""
+msgstr "Musik"
 
 #: ../qml/pages/music/Settings.qml:44
-#, fuzzy
 msgid "Settings for 'Music' page"
-msgstr "Einstellungsseite"
+msgstr "Einstellungen für Musik-Seite"
 
 #: ../qml/pages/music/Settings.qml:49 ../qml/pages/videos/Settings.qml:48
 msgid "Exemple"
-msgstr ""
+msgstr "Beispiel"
 
 #: ../qml/pages/picture/SelectFolderPage.qml:42
 msgid "Select"
-msgstr ""
+msgstr "Wähle"
 
 #: ../qml/pages/picture/Settings.qml:13
 msgid "picture"
-msgstr ""
+msgstr "Bild"
 
 #: ../qml/pages/picture/Settings.qml:57
-#, fuzzy
 msgid "Image folder path:"
-msgstr "Bildpfad"
+msgstr "Bildpfad:"
 
 #: ../qml/pages/picture/Settings.qml:107
 msgid "Unsorted"
-msgstr ""
+msgstr "Unsortiert"
 
 #: ../qml/pages/picture/Settings.qml:108
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: ../qml/pages/picture/Settings.qml:109
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
 
 #: ../qml/pages/picture/Settings.qml:110
 msgid "Size"
-msgstr ""
+msgstr "Grösse"
 
 #: ../qml/pages/picture/Settings.qml:111
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: ../qml/pages/picture/Settings.qml:117
 msgid "Sort type:"
-msgstr ""
+msgstr "Sortierungs-Art"
 
 #: ../qml/pages/picture/Settings.qml:192
 msgid "Reverse sort"
-msgstr ""
+msgstr "Umgekehrt sortieren"
 
 #: ../qml/pages/rss/Settings.qml:13
 msgid "rss"
-msgstr ""
+msgstr "rss"
 
 #: ../qml/pages/rss/Settings.qml:101
 msgid "https://omgubuntu.co.uk/feed"
-msgstr ""
+msgstr "https://omgubuntu.co.uk/feed"
 
 #: ../qml/pages/rss/Settings.qml:219
 msgid "Invalid url"
 msgstr "Ungültige Url"
 
 #: ../qml/pages/todo/Settings.qml:10
-#, fuzzy
 msgid "todo"
-msgstr "Neue Aufgabe"
+msgstr "Aufgabe"
 
 #: ../qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
-msgstr ""
+msgstr "Keine Einstellungen für die \"TODO\" Seite"
 
 #: ../qml/pages/videos/Settings.qml:10
 msgid "videos"
-msgstr ""
+msgstr "Videos"
 
 #: ../qml/pages/videos/Settings.qml:43
-#, fuzzy
 msgid "Settings for 'Video' page"
-msgstr "Einstellungen Widget"
+msgstr "Einstellungen für \"Video\" Seite"
 
 #: ../qml/widgets/Alarm.qml:28
 msgid "Alarms"
-msgstr "Alarm"
+msgstr "Alarme"
 
 #: ../qml/widgets/Alarm.qml:39
 msgid "No active alarm"
@@ -746,7 +754,7 @@ msgstr "bei"
 
 #: ../qml/widgets/Calculator.qml:21
 msgid "Calcul result:"
-msgstr ""
+msgstr "Kalkulations-Resultat"
 
 #: ../qml/widgets/Event.qml:100
 msgid "Events"
@@ -758,7 +766,7 @@ msgstr "Keine Ereignisse"
 
 #: ../qml/widgets/FavoriteApp.qml:34
 msgid "Favorite Apps"
-msgstr "Favouriten"
+msgstr "Favoriten"
 
 #: ../qml/widgets/FavoriteContact.qml:32
 msgid "Favorite Contacts"
@@ -766,7 +774,7 @@ msgstr "Kontakt Favoriten"
 
 #: ../qml/widgets/Lastcall.qml:81
 msgid "Last Calls"
-msgstr "Letzter Anruf"
+msgstr "Letzter Anrufe"
 
 #: ../qml/widgets/Lastcall.qml:81
 msgid "Last Call"
@@ -778,7 +786,7 @@ msgstr "Keine vorherigen Anrufe"
 
 #: ../qml/widgets/Lastmessage.qml:97
 msgid "Last Messages"
-msgstr "Letzte Nachricht"
+msgstr "Letzte Nachrichten"
 
 #: ../qml/widgets/Lastmessage.qml:97
 msgid "Last Message"
@@ -802,7 +810,7 @@ msgstr "Windstille"
 
 #: ../qml/widgets/Weather.qml:170 ../qml/widgets/Weather.qml:198
 msgid "Light Air"
-msgstr "Leiser Zug"
+msgstr "Leiser Wind"
 
 #: ../qml/widgets/Weather.qml:172 ../qml/widgets/Weather.qml:200
 msgid "Light Breeze"
@@ -830,11 +838,11 @@ msgstr "Steifer Wind"
 
 #: ../qml/widgets/Weather.qml:184 ../qml/widgets/Weather.qml:212
 msgid "Gale"
-msgstr "Stürmischer Wind"
+msgstr "Sturm"
 
 #: ../qml/widgets/Weather.qml:186 ../qml/widgets/Weather.qml:214
 msgid "Severe Gale"
-msgstr "Sturm"
+msgstr "Starker Sturm"
 
 #: ../qml/widgets/Weather.qml:188 ../qml/widgets/Weather.qml:216
 msgid "Storm"
@@ -929,7 +937,7 @@ msgstr "Feuchtigkeit"
 
 #: ../qml/widgets/clock/Settings.qml:14
 msgid "Settings Widget Clock"
-msgstr "Uhren-Widget-Einstellungen"
+msgstr "Uhr-Widget Einstellungen"
 
 #: ../qml/widgets/clock/Settings.qml:49
 msgid "Show analog clock with digits"
@@ -1003,7 +1011,7 @@ msgstr "Nummer mit Telefon öffnen"
 
 #: ../qml/widgets/lastmessage/Settings.qml:65
 msgid "Number of displayed messages :"
-msgstr "Anzahl der angezeigten Meldungen :"
+msgstr "Anzahl der angezeigten Meldungen:"
 
 #: ../qml/widgets/lastmessage/Settings.qml:94
 msgid "View a summary"
@@ -1028,7 +1036,7 @@ msgstr "Die Nachricht in der Anwendung öffnen"
 
 #: ../qml/widgets/weather/Settings.qml:14
 msgid "Settings for weather widget"
-msgstr "Einstellungen Widget"
+msgstr "Einstellungen Wetter Widget"
 
 #: ../qml/widgets/weather/Settings.qml:59
 msgid "API Key"
@@ -1036,7 +1044,7 @@ msgstr "Api-Schlüssel"
 
 #: ../qml/widgets/weather/Settings.qml:78
 msgid "OpenWeatherMap API"
-msgstr "Api-openweathermap"
+msgstr "openweathermap API öffnen"
 
 #: ../qml/widgets/weather/Settings.qml:90
 msgid "Click to sign up for an API key"
@@ -1051,9 +1059,8 @@ msgid "or"
 msgstr "oder"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
 msgid "Launcher Modular"
-msgstr "App starten"
+msgstr "Launcher Modular"
 
 #, fuzzy
 #~ msgid "Choose Folder"
