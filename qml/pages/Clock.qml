@@ -116,9 +116,12 @@ Item {
         MouseArea {
             anchors.fill: parent
             onDoubleClicked: {
-              launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
-              WindowController.toggleFullScreen();
+                Haptics.play();
+                launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
+                WindowController.toggleFullScreen();
+                Haptics.play();
             }
+            onClicked: Haptics.play()
         }
 
     }
