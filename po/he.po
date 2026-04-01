@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-25 16:45+0000\n"
+"POT-Creation-Date: 2026-04-01 06:22+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/launcher-modular/"
@@ -382,8 +382,8 @@ msgstr ""
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:57
-#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:81
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr ""
 
@@ -457,19 +457,19 @@ msgstr ""
 msgid "Agenda"
 msgstr ""
 
-#: ../qml/pages/Home.qml:41
+#: ../qml/pages/Home.qml:40
 msgid "ok"
 msgstr ""
 
-#: ../qml/pages/Home.qml:211
+#: ../qml/pages/Home.qml:210
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:436
+#: ../qml/pages/Home.qml:435
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:436
+#: ../qml/pages/Home.qml:435
 msgid "Remove"
 msgstr ""
 

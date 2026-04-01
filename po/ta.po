@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-25 16:45+0000\n"
+"POT-Creation-Date: 2026-04-01 06:22+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -412,8 +412,8 @@ msgstr "<b> செயல் </b> எடுத்துக்காட்டு:"
 msgid "Create icon"
 msgstr "படவுருவை உருவாக்கவும்"
 
-#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:57
-#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:81
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "கைவிடு"
 
@@ -489,19 +489,19 @@ msgstr ""
 msgid "Agenda"
 msgstr "நிகழ்ச்சி நிரல்"
 
-#: ../qml/pages/Home.qml:41
+#: ../qml/pages/Home.qml:40
 msgid "ok"
 msgstr "சரி"
 
-#: ../qml/pages/Home.qml:211
+#: ../qml/pages/Home.qml:210
 msgid "Search your phone and online sources"
 msgstr "உங்கள் தொலைபேசி மற்றும் நிகழ்நிலை ஆதாரங்களைத் தேடுங்கள்"
 
-#: ../qml/pages/Home.qml:436
+#: ../qml/pages/Home.qml:435
 msgid "Uninstall"
 msgstr "நிறுவல் நீக்க"
 
-#: ../qml/pages/Home.qml:436
+#: ../qml/pages/Home.qml:435
 msgid "Remove"
 msgstr "அகற்று"
 

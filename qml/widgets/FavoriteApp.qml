@@ -117,6 +117,7 @@ Column {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    Haptics.play();
                     if(typeof container == 'undefined') {
                         container = "";
                     }

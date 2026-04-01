@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-25 16:45+0000\n"
+"POT-Creation-Date: 2026-04-01 06:22+0000\n"
 "PO-Revision-Date: 2025-11-24 21:49+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -294,8 +294,8 @@ msgstr ""
 "soit (à votre choix) toute version ultérieure. Ce programme est distribué "
 "dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
 "garantie implicite de COMMERCIALISATION ou d'ADÉQUATION À UN USAGE "
-"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en."
-"html\">GNU General Public License</a> pour plus de détails."
+"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html"
+"\">GNU General Public License</a> pour plus de détails."
 
 #: ../qml/ChangeLogs.qml:387
 msgid "SOURCE"
@@ -415,8 +415,8 @@ msgstr "Exemple d'<b>action</b> :"
 msgid "Create icon"
 msgstr "Créer une icône"
 
-#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:57
-#: ../qml/pages/Home.qml:477 ../qml/pages/home/Settings.qml:81
+#: ../qml/Main.qml:823 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -492,19 +492,19 @@ msgstr ""
 msgid "Agenda"
 msgstr "Agenda"
 
-#: ../qml/pages/Home.qml:41
+#: ../qml/pages/Home.qml:40
 msgid "ok"
 msgstr "ok"
 
-#: ../qml/pages/Home.qml:211
+#: ../qml/pages/Home.qml:210
 msgid "Search your phone and online sources"
 msgstr "Rechercher dans votre téléphone et en ligne"
 
-#: ../qml/pages/Home.qml:436
+#: ../qml/pages/Home.qml:435
 msgid "Uninstall"
 msgstr "Désinstaller"
 
-#: ../qml/pages/Home.qml:436
+#: ../qml/pages/Home.qml:435
 msgid "Remove"
 msgstr "Supprimer"
 
