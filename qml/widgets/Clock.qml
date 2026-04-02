@@ -27,6 +27,9 @@ Item {
             property int minutes: clock.now.getMinutes()
             property variant now: launchermodular.datenow
 
+            onMinutesChanged: {
+                clockNumeric.updateNow();
+            }
             // private:
             Image {
                 id: clockFace
