@@ -189,13 +189,13 @@ Page {
                     }
 
                     Text {
-                      id: textStyleIcons
-                      text: i18n.tr("Style Icons : ")
-                      height: units.gu(5)
-                      anchors.right: parent.left
-                      anchors.rightMargin: units.gu(2)
-                      color: "#ffffff"
-                      verticalAlignment: Text.AlignVCenter
+                        id: textStyleIcons
+                        text: i18n.tr("Style Icons : ")
+                        height: units.gu(5)
+                        anchors.right: parent.left
+                        anchors.rightMargin: units.gu(2)
+                        color: "#ffffff"
+                        verticalAlignment: Text.AlignVCenter
                     }
 
                 }
@@ -233,13 +233,13 @@ Page {
                     }
 
                     Text {
-                      id: searchEngineLabel
-                      text: i18n.tr("Search engine : ")
-                      height: units.gu(5)
-                      anchors.right: parent.left
-                      anchors.rightMargin: units.gu(2)
-                      color: "#ffffff"
-                      verticalAlignment: Text.AlignVCenter
+                        id: searchEngineLabel
+                        text: i18n.tr("Search engine : ")
+                        height: units.gu(5)
+                        anchors.right: parent.left
+                        anchors.rightMargin: units.gu(2)
+                        color: "#ffffff"
+                        verticalAlignment: Text.AlignVCenter
                     }
 
                 }
