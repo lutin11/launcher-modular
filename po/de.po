@@ -134,7 +134,7 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:75
 msgid "Fix launching favorite applications"
-msgstr ""
+msgstr "Lösung: Starten von bevorzugten Anwendungen"
 
 #: ../qml/ChangeLogs.qml:76
 msgid "Update weather on refreshing home page"
