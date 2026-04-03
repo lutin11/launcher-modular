@@ -21,7 +21,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.4.4.9"
+    property string appVersion : "2.4.5.9"
     property ListModel customIconModel :  ListModel { id: customIconModel }
     property ListModel pageModel :  ListModel { id: pageModel }
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
@@ -60,6 +60,22 @@ MainView {
 
         if (DEBUG_MODE) console.log("favoriteAppsModel to array, size : "+favoriteApps.length);
         return favoriteApps;
+    }
+
+    function compareVersions(v1, v2) {
+        const a = v1.split('.').map(Number);
+        const b = v2.split('.').map(Number);
+
+        const maxLength = Math.max(a.length, b.length);
+
+        for (let i = 0; i < maxLength; i++) {
+            const num1 = a[i] || 0;
+            const num2 = b[i] || 0;
+
+            if (num1 < num2) return -1;
+            if (num1 > num2) return 1;
+        }
+        return 0;
     }
 
     // persistent app settings:
@@ -163,7 +179,7 @@ MainView {
                     launchermodular.settings.firstRunNew = false
                 }
 
-                if(parseInt(launchermodular.settings.version.replace(/\./g, '')) <  parseInt(appVersion.replace(/\./g, ''))) {
+                if(compareVersions(launchermodular.settings.version, appVersion) < 0) {
                     pageStack.push(Qt.resolvedUrl("ChangeLogs.qml"))
                     launchermodular.settings.version = appVersion;
                 }
