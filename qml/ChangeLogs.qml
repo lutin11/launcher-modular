@@ -41,6 +41,11 @@ Page {
 
             property string emptyDescription:""
 
+            property string details46: i18n.tr("update German translation")
+            property string details45: i18n.tr("Fix numeric clock not refresh")
+            property string details44: i18n.tr("Fix app not available on launcher")
+            property string description44: i18n.tr("Tanks marcellotogg for bug reports.")
+
             property string details43: i18n.tr("Add desc or asc sorting picture choice")
             property string details42: i18n.tr("Add sorting picture choice")
             property string details41: i18n.tr("Added a file browser for selecting the image folder")
@@ -115,6 +120,9 @@ Page {
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.4.6", date: "2026-04-03", details: details44, description: description44});
+                changeLogModel.append({ version: "", date: "", details: details46, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details45, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.5", date: "2025-11-17", details: details43, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details42, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details41, description: emptyDescription});
@@ -180,7 +188,7 @@ Page {
 
                     delegate: Item {
                         id: changeLogContainer
-                        width: parent.width
+                        width: parent == null ? rectChangeLog.width : parent.width
                         height: versionLine.height + textDetail.implicitHeight + textDescription.implicitHeight + endLine.height
                         Rectangle {
                             id: changeLogItem
