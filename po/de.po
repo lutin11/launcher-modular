@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 22:10+0000\n"
+"POT-Creation-Date: 2026-04-04 21:15+0000\n"
 "PO-Revision-Date: 2025-11-23 09:42+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -49,7 +49,8 @@ msgstr "Aktualisierung der deutschen"
 
 #: ../qml/ChangeLogs.qml:45
 msgid "Fix numeric clock not refresh"
-msgstr "Wiederherstellung der Aktualisierung der digitalen Uhr auf der Startseite"
+msgstr ""
+"Wiederherstellung der Aktualisierung der digitalen Uhr auf der Startseite"
 
 #: ../qml/ChangeLogs.qml:46
 msgid "Fix app not available on launcher"
@@ -301,9 +302,9 @@ msgstr ""
 "Lizenz, oder (nach deiner Entscheidung) einer neueren Version. Das Programm "
 "wird verteilt in der Hoffnung, dass es nützlich ist, aber OHNE JEDWEDE "
 "GARANTIE; ohne auch nur eine implizierte Garantie der VERKÄUFLICHKEIT oder "
-"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> für weitere Details."
+"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> für weitere Details."
 
 #: ../qml/ChangeLogs.qml:395
 msgid "SOURCE"
@@ -419,8 +420,8 @@ msgstr "<b>Aktion</b> Beispiel: "
 msgid "Create icon"
 msgstr "Icon erstellen"
 
-#: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:164 ../qml/pages/Home.qml:55
+#: ../qml/pages/Home.qml:475 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -494,19 +495,19 @@ msgstr ""
 msgid "Agenda"
 msgstr "Agenda"
 
-#: ../qml/pages/Home.qml:40
+#: ../qml/pages/Home.qml:39
 msgid "ok"
 msgstr "ok"
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:209
 msgid "Search your phone and online sources"
 msgstr "Telefon und Ihre Online-Quellen durchsuchen"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:434
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:434
 msgid "Remove"
 msgstr "Entfernen"
 
