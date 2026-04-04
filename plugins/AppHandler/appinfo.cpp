@@ -1,6 +1,10 @@
 #include "appinfo.h"
+#include <QBuffer>
 #include <QDebug>
 #include <QLocale>
+#include <QSettings>
+#include <QStringList>
+#include <QVariant>
 
 AppInfo::AppInfo(const QString& infos)
 {
@@ -37,9 +41,7 @@ void AppInfo::import(const QString& infos) {
 			read = false;
 		}
 		else if(line != "" && read) {
-			QStringList keyvalue = line.split("="); 
-			if(getProp("package_name").contains("morph"))
-				qDebug() << keyvalue <<  !_appinfo.contains(keyvalue.first());
+			QStringList keyvalue = line.split("=");
 			if(!_appinfo.contains(keyvalue.first())) {
 				if(!keyvalue.first().contains("["))
 					_appinfo.insert(keyvalue.first()+"[]",(keyvalue.size() > 1) ? keyvalue.at(1):"");
@@ -52,7 +54,6 @@ void AppInfo::import(const QString& infos) {
 QString AppInfo::getProp(const QString& key)
 {
 	QString locale = (QLocale() != QLocale::c()) ? QLocale().name().split("_").first() : "c";
-    //qDebug() << "locale" <<QLocale().uiLanguages().first() << QLocale().name();
 	if ( _appinfo.contains(key+"["+locale+"]") )
 	{
 		return _appinfo.value(key+"["+locale+"]");

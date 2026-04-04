@@ -13,7 +13,6 @@ import CalculatorHelper 1.0
 import Ubuntu.Components.ListItems 1.3 as ListItem
 import Ubuntu.Components.Themes 1.3
 
-
 Item {
     id: home
 
@@ -494,10 +493,11 @@ Item {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
-
+                                    Haptics.play();
                                     listColumnApps.doAction(AppHandler.appsinfo[index])
                                 }
                                 onPressAndHold: {
+                                    Haptics.play();
                                     PopupUtils.open(appsDialog);
                                 }
                             }
