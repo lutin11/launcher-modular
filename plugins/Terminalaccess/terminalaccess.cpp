@@ -17,12 +17,14 @@ void Terminalaccess::prepare(const QString &cmdline) {
 }
 bool Terminalaccess::start(bool reset_err, bool reset_out) {
     _proc.kill();
-    _proc.waitForFinished();
-    if(reset_err)
-    qDebug() << "Process fail to start :" << _proc.readAllStandardError() << _err;
-		_err.clear();
-    if(reset_out)
-		_output.clear();
+    _proc.waitForFinished(5000);
+    if(reset_err) {
+        qDebug() << "Process fail to start :" << _proc.readAllStandardError() << _err;
+        _err.clear();
+    }
+    if(reset_out) {
+        _output.clear();
+    }
     _proc.start("sh", QStringList() << "-c" << _cmd);
     if(!_proc.waitForStarted()) {
         qDebug() << "Process fail to start :" << _cmd;
