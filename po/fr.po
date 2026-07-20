@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 22:37+0000\n"
+"POT-Creation-Date: 2026-07-20 22:53+0000\n"
 "PO-Revision-Date: 2025-11-24 21:49+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -433,7 +433,7 @@ msgid "Create icon"
 msgstr "Créer une icône"
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:474 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -513,15 +513,15 @@ msgstr "Agenda"
 msgid "ok"
 msgstr "ok"
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:208
 msgid "Search your phone and online sources"
 msgstr "Rechercher dans votre téléphone et en ligne"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:433
 msgid "Uninstall"
 msgstr "Désinstaller"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:433
 msgid "Remove"
 msgstr "Supprimer"
 

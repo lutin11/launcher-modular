@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 22:37+0000\n"
+"POT-Creation-Date: 2026-07-20 22:53+0000\n"
 "PO-Revision-Date: 2025-11-23 09:41+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -398,7 +398,7 @@ msgid "Create icon"
 msgstr ""
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:474 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr ""
 
@@ -476,15 +476,15 @@ msgstr ""
 msgid "ok"
 msgstr ""
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:208
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:433
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:433
 msgid "Remove"
 msgstr ""
 

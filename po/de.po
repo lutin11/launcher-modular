@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
-"Report-Msgid-Bugs-To: saveurlinux@disroot.org\n"
-"POT-Creation-Date: 2025-11-25 16:45+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-20 22:53+0000\n"
 "PO-Revision-Date: 2026-04-02 09:09+0000\n"
 "Last-Translator: Marcel Tujetsch <tujetsch-marcel@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -51,7 +51,8 @@ msgstr "Aktualisierung der deutschen"
 
 #: ../qml/ChangeLogs.qml:45
 msgid "Fix numeric clock not refresh"
-msgstr "Wiederherstellung der Aktualisierung der digitalen Uhr auf der Startseite"
+msgstr ""
+"Wiederherstellung der Aktualisierung der digitalen Uhr auf der Startseite"
 
 #: ../qml/ChangeLogs.qml:46
 msgid "Fix app not available on launcher"
@@ -67,11 +68,11 @@ msgstr ""
 "Füge die Option hinzu, nach absteigender oder aufsteigender Reihenfolge zu "
 "sortieren"
 
-#: ../qml/ChangeLogs.qml:45
+#: ../qml/ChangeLogs.qml:50
 msgid "Add sorting picture choice"
 msgstr "Sortierfunktion und Bildauswahl hinzufügen"
 
-#: ../qml/ChangeLogs.qml:46
+#: ../qml/ChangeLogs.qml:51
 msgid "Added a file browser for selecting the image folder"
 msgstr "Es wurde ein Dateibrowser zur Auswahl des Bildordners hinzugefügt"
 
@@ -111,7 +112,7 @@ msgstr "Problem „#5 Gültige RSS-Feeds werden nicht akzeptiert“ beheben"
 msgid "Add 'Music' page"
 msgstr "\"Musik\" Seite hinzufügen"
 
-#: ../qml/ChangeLogs.qml:64
+#: ../qml/ChangeLogs.qml:69
 msgid "Add 'Video' page"
 msgstr "\"Video\" Seite hinzufügen"
 
@@ -145,7 +146,7 @@ msgstr ""
 "Bitte zögern Sie nicht, uns etwaige Probleme zu melden: https://github.com/"
 "lutin11/launcher-modular/issues or on Ubports forum"
 
-#: ../qml/ChangeLogs.qml:72
+#: ../qml/ChangeLogs.qml:77
 msgid "Fix page management issue"
 msgstr "Problem bei der Seitenverwaltung beheben"
 
@@ -435,7 +436,7 @@ msgid "Create icon"
 msgstr "Icon erstellen"
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:474 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -515,15 +516,15 @@ msgstr "Agenda"
 msgid "ok"
 msgstr "ok"
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:208
 msgid "Search your phone and online sources"
 msgstr "Telefon und Ihre Online-Quellen durchsuchen"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:433
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:433
 msgid "Remove"
 msgstr "Entfernen"
 
