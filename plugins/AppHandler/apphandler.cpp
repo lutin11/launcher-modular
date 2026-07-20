@@ -61,11 +61,16 @@ void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& co
       QTextStream filestream(&file);
       filestream.setCodec("UTF-8");
 
-      AppInfo* app = _appinfos.last();
-      qDebug() << "Parsing libertine desktop app:" << fileName << "->" << fileName.left(fileName.size() - QString(".desktop").size()) << "OnlyShowIn:" << app->getProp("OnlyShowIn");
-      if(app->getProp("OnlyShowIn") == nullptr) {
-        _appinfos.append(new AppInfo(container, fileName.left(fileName.size() - QString(".desktop").size()), filestream.readAll(), true));
-        
+      QString content = filestream.readAll();
+      QString appId = fileName.left(fileName.size() - QString(".desktop").size());
+
+      // Check OnlyShowIn before creating the AppInfo
+      AppInfo tempApp(container, appId, content, true);
+      qDebug() << "Parsing libertine desktop app:" << fileName << "->" << appId << "OnlyShowIn:" << tempApp.getProp("OnlyShowIn");
+      if(tempApp.getProp("OnlyShowIn") == nullptr) {
+        AppInfo* app = new AppInfo(container, appId, content, true);
+        _appinfos.append(app);
+
         if(app->getProp("Icon").startsWith("/")) {
           app->setIcon(HOME_PATH + "/.cache/libertine-container/"+container+"/rootfs"+app->getProp("Icon"));
         }
