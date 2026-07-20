@@ -195,12 +195,15 @@ int AppHandler::count_fav_appinfo(QQmlListProperty<AppInfo> *list) {
 }
 void AppHandler::clear_appinfo(QQmlListProperty<AppInfo> *list) {
     AppHandler *apphandler = qobject_cast<AppHandler*>(list->object);
+    qDeleteAll(apphandler->_appinfos);
     apphandler->_appinfos.clear();
     emit apphandler->appinfoChanged();
 }
 void AppHandler::reload() {
-    _appinfos.clear();
+    qDeleteAll(_fav_appinfos);
     _fav_appinfos.clear();
+    qDeleteAll(_appinfos);
+    _appinfos.clear();
     loadAppsInfo();
 }
 void AppHandler::reloadFav() {
