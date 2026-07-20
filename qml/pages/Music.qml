@@ -253,10 +253,10 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 if (!fileIsDir) {
-                                    onClicked:Qt.openUrlExternally("music://" + model.filePath)
+                                    Qt.openUrlExternally("music://" + model.filePath)
                                 } else {
-                                     searchTerm = ""
-                                     musicFileModel.folder = model.filePath
+                                    searchTerm = ""
+                                    musicFileModel.folder = model.filePath
                                 }
                             }
                         }

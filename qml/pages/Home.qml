@@ -54,9 +54,7 @@ Item {
                         color: Theme.palette.normal.overlaySecondaryText
                     }
                     text: i18n.tr("Cancel")
-                    onClicked: {
-                        onClicked: PopupUtils.close(authentDialogue);
-                    }
+                    onClicked: PopupUtils.close(authentDialogue)
                 }
             }
         }
@@ -480,9 +478,7 @@ Item {
                                                 radius: units.gu(1.5)
                                                 color: Theme.palette.normal.overlaySecondaryText
                                             }
-                                            onClicked: {
-                                                onClicked: PopupUtils.close(appsDialogue);
-                                            }
+                                            onClicked: PopupUtils.close(appsDialogue)
                                         }
 
 

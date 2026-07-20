@@ -71,9 +71,7 @@ Item {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: {
-                        onClicked:Qt.openUrlExternally("photo://" + filePath)
-                    }
+                    onClicked: Qt.openUrlExternally("photo://" + filePath)
                 }
             } // Item
         }// delegate Rectangle
