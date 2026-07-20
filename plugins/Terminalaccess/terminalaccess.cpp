@@ -26,7 +26,7 @@ bool Terminalaccess::start(bool reset_err, bool reset_out) {
         _output.clear();
     }
     _proc.start("sh", QStringList() << "-c" << _cmd);
-    if(!_proc.waitForStarted()) {
+    if(!_proc.waitForStarted(5000)) {
         qDebug() << "Process fail to start :" << _cmd;
         return false;
     }
