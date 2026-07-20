@@ -58,15 +58,14 @@ void Terminalaccess::fetchError() {
     QString newerr=QString::fromLocal8Bit(_proc.readAllStandardError());
     if(newerr == "[sudo] password for phablet: ") {
         qDebug() << "Receive Terminalaccess::fetchError()";
-        emit(needSudoPassword());
-        needSudoPassword();
+        emit needSudoPassword();
     }
     _err+=newerr;
     qDebug() << "SLOT ERR : " << _err;
     if(newerr.contains("\n")){
         emit(newErrorLineAvailable());
     } else {
-        newErrorAvailable();
+        emit newErrorAvailable();
     }
 }
 void Terminalaccess::fetchOutput() {
