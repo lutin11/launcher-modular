@@ -77,6 +77,50 @@ Item {
 
     property bool reloading: false
 
+    function refreshFavorites() {
+        var favCount = launchermodular.favoriteAppsModel.count;
+        for (var i = favCount - 1; i >= 0; i--) {
+            var fav = launchermodular.favoriteAppsModel.get(i);
+            if (!fav.action || !fav.action.startsWith("application:///")) continue;
+
+            var desktopId = fav.action.replace("application:///", "");
+            var found = false;
+
+            for (var j = 0; j < AppHandler.appsinfo.length; j++) {
+                var app = AppHandler.appsinfo[j];
+                if (app.action === fav.action) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) continue;
+
+            for (var j = 0; j < AppHandler.appsinfo.length; j++) {
+                var app = AppHandler.appsinfo[j];
+                var pkgName = app.getProp("package_name");
+                if (pkgName && (pkgName + ".desktop") === desktopId) {
+                    launchermodular.favoriteAppsModel.setProperty(i, "action", app.action);
+                    launchermodular.favoriteAppsModel.setProperty(i, "icon", app.icon);
+                    found = true;
+                    if (DEBUG_MODE) console.log("refreshFavorites: updated action for " + fav.name);
+                    break;
+                }
+            }
+            if (found) continue;
+
+            for (var j = 0; j < AppHandler.appsinfo.length; j++) {
+                var app = AppHandler.appsinfo[j];
+                if (app.name === fav.name) {
+                    launchermodular.favoriteAppsModel.setProperty(i, "action", app.action);
+                    launchermodular.favoriteAppsModel.setProperty(i, "icon", app.icon);
+                    found = true;
+                    if (DEBUG_MODE) console.log("refreshFavorites: matched by name for " + fav.name);
+                    break;
+                }
+            }
+        }
+    }
+
     function refreshHomePage() {
         home.reloading = true
         AppHandler.reload()
@@ -87,6 +131,7 @@ Item {
         listCustomIcon.model = ""
         listCustomIcon.model = launchermodular.customIconModel
         AppHandler.sort()
+        refreshFavorites()
         if (launchermodular.settings.widgetVisibleWeather){
             weatherWidget.modelWeather.reload()
             weatherWidget.modelWeatherNext.reload()
@@ -542,6 +587,7 @@ Item {
                     //AppHandler.appsinfo.push(settingsButton)
 
                     AppHandler.sort()
+                    refreshFavorites()
                     if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].name);
                     if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].getProp("package_name"));
                     if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].getProp("Icon"));
