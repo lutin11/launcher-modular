@@ -36,6 +36,7 @@ A bottom bar that appears when music is playing:
 - Progress slider (seekable)
 - Current song name + elapsed/total time
 - Swipe down or tap close to dismiss (stops playback)
+- Volume controlled via system sound settings (no in-app volume control)
 
 **Qt Multimedia usage:**
 ```qml
@@ -87,7 +88,6 @@ New properties in `Main.qml` settings:
 property string currentPlaylistName: ""
 property var currentPlaylistSongs: []
 property int currentSongIndex: -1
-property real musicVolume: 0.8
 ```
 
 ## File Changes
