@@ -7,6 +7,5 @@ kill:
     "launchermodular.lut11"
 dependencies_target: [
     "libpam0g-dev",
-    "libgsettings-qt-dev",
-    "qml-module-qtmultimedia"
+    "libgsettings-qt-dev"
     ]

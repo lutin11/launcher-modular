@@ -1,7 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import Lomiri.Components 1.3
-import QtMultimedia 5.12
 
 Rectangle {
     id: musicPlayer
@@ -21,8 +20,7 @@ Rectangle {
     signal playingChanged(bool playing)
 
     function play(songPath) {
-        mediaPlayer.source = songPath
-        mediaPlayer.play()
+        Qt.openUrlExternally(songPath)
         isPlaying = true
         visible = true
         playingChanged(true)
@@ -39,19 +37,17 @@ Rectangle {
     }
 
     function pause() {
-        mediaPlayer.pause()
         isPlaying = false
         playingChanged(false)
     }
 
     function resume() {
-        mediaPlayer.play()
-        isPlaying = true
-        playingChanged(true)
+        if (currentIndex >= 0 && currentIndex < playlist.length) {
+            play(playlist[currentIndex].path)
+        }
     }
 
     function stop() {
-        mediaPlayer.stop()
         isPlaying = false
         visible = false
         currentIndex = -1
@@ -75,57 +71,14 @@ Rectangle {
         songChanged(currentSongName, currentIndex)
     }
 
-    MediaPlayer {
-        id: mediaPlayer
-        onPositionChanged: {
-            if (duration > 0) {
-                progressSlider.value = position / duration
-            }
-        }
-        onStatusChanged: {
-            if (status === MediaPlayer.EndOfMedia) {
-                musicPlayer.next()
-            }
-        }
-    }
-
-    AudioOutput {
-        id: audioOutput
-    }
-
-    // Connect player to audio output
-    Component.onCompleted: {
-        mediaPlayer.audioOutput = audioOutput
-    }
-
     Column {
         anchors.fill: parent
         anchors.margins: units.gu(1)
-
-        // Progress bar
-        Slider {
-            id: progressSlider
-            width: parent.width
-            minimumValue: 0
-            maximumValue: 1
-            live: false
-            onValueChanged: {
-                if (mediaPlayer.duration > 0 && !pressed) {
-                    // Seek handled by pressed check
-                }
-            }
-            onPressedChanged: {
-                if (!pressed && mediaPlayer.duration > 0) {
-                    mediaPlayer.seek(progressSlider.value * mediaPlayer.duration)
-                }
-            }
-        }
 
         RowLayout {
             width: parent.width
             spacing: units.gu(2)
 
-            // Previous
             Button {
                 Layout.fillWidth: false
                 width: units.gu(5)
@@ -134,7 +87,6 @@ Rectangle {
                 onClicked: musicPlayer.previous()
             }
 
-            // Play/Pause
             Button {
                 Layout.fillWidth: false
                 width: units.gu(6)
@@ -149,7 +101,6 @@ Rectangle {
                 }
             }
 
-            // Next
             Button {
                 Layout.fillWidth: false
                 width: units.gu(5)
@@ -158,7 +109,6 @@ Rectangle {
                 onClicked: musicPlayer.next()
             }
 
-            // Song name
             Label {
                 Layout.fillWidth: true
                 text: musicPlayer.currentSongName
@@ -167,7 +117,6 @@ Rectangle {
                 fontSize: "small"
             }
 
-            // Close
             Button {
                 Layout.fillWidth: false
                 width: units.gu(4)
