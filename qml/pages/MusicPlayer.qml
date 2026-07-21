@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import Lomiri.Components 1.3
+import QtMultimedia 5.12
 
 Rectangle {
     id: musicPlayer
@@ -20,7 +21,8 @@ Rectangle {
     signal playingChanged(bool playing)
 
     function play(songPath) {
-        Qt.openUrlExternally(songPath)
+        mediaPlayer.source = songPath
+        mediaPlayer.play()
         isPlaying = true
         visible = true
         playingChanged(true)
@@ -37,17 +39,19 @@ Rectangle {
     }
 
     function pause() {
+        mediaPlayer.pause()
         isPlaying = false
         playingChanged(false)
     }
 
     function resume() {
-        if (currentIndex >= 0 && currentIndex < playlist.length) {
-            play(playlist[currentIndex].path)
-        }
+        mediaPlayer.play()
+        isPlaying = true
+        playingChanged(true)
     }
 
     function stop() {
+        mediaPlayer.stop()
         isPlaying = false
         visible = false
         currentIndex = -1
@@ -71,9 +75,44 @@ Rectangle {
         songChanged(currentSongName, currentIndex)
     }
 
+    MediaPlayer {
+        id: mediaPlayer
+        onPositionChanged: {
+            if (duration > 0) {
+                progressSlider.value = position / duration
+            }
+        }
+        onStatusChanged: {
+            if (status === MediaPlayer.EndOfMedia) {
+                musicPlayer.next()
+            }
+        }
+    }
+
+    AudioOutput {
+        id: audioOutput
+    }
+
+    Component.onCompleted: {
+        mediaPlayer.audioOutput = audioOutput
+    }
+
     Column {
         anchors.fill: parent
         anchors.margins: units.gu(1)
+
+        Slider {
+            id: progressSlider
+            width: parent.width
+            minimumValue: 0
+            maximumValue: 1
+            live: false
+            onPressedChanged: {
+                if (!pressed && mediaPlayer.duration > 0) {
+                    mediaPlayer.seek(progressSlider.value * mediaPlayer.duration)
+                }
+            }
+        }
 
         RowLayout {
             width: parent.width
