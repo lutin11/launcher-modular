@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-20 22:53+0000\n"
+"POT-Creation-Date: 2026-07-21 06:17+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -426,7 +426,7 @@ msgid "Create icon"
 msgstr "إنشاء أيقونة"
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:474 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:519 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -506,15 +506,15 @@ msgstr "أجندة"
 msgid "ok"
 msgstr "أوكي"
 
-#: ../qml/pages/Home.qml:208
+#: ../qml/pages/Home.qml:253
 msgid "Search your phone and online sources"
 msgstr "ابحث عن هاتفك ومصادرك عبر الإنترنت"
 
-#: ../qml/pages/Home.qml:433
+#: ../qml/pages/Home.qml:478
 msgid "Uninstall"
 msgstr "إلغاء التثبيت"
 
-#: ../qml/pages/Home.qml:433
+#: ../qml/pages/Home.qml:478
 msgid "Remove"
 msgstr "حذف"
 
