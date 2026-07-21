@@ -20,7 +20,10 @@ Item {
         cellHeight: iconbasesize+units.gu(8)
         property real iconbasesize: units.gu(14)
         cellWidth: Math.floor(width/Math.floor(width/iconbasesize))
-        clip: true  // To avoid rendering content outside of the visible area
+        clip: true
+        cacheBuffer: height * 2
+        flickDeceleration: 1500
+        maximumFlickVelocity: 2500
 
         focus: true
         model: folderModel
@@ -55,9 +58,10 @@ Item {
                         width: parent.width
                         height: parent.height
                     }
-                    visible: Math.abs(gview.contentY - y) < 2 * gview.cellHeight  // Lazy loading based on proximity to viewport
+                    visible: true
                     fillMode: Image.PreserveAspectCrop
-                    asynchronous: true  // To load images without blocking the main UI thread
+                    smooth: !gview.moving
+                    asynchronous: true
                     cache: true
                 }
 
