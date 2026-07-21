@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 06:17+0000\n"
+"POT-Creation-Date: 2026-07-21 06:36+0000\n"
 "PO-Revision-Date: 2025-11-23 09:39+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -297,9 +297,9 @@ msgstr ""
 "Software Foundation, enten versjon 3 av lisensen, eller (etter eget valg) "
 "hvilken som helst senere versjon. Dette programmet distribueres i håp om at "
 "det vil være nyttig, men UTEN NOEN GARANTI; selv uten underforstått garanti "
-"om SALGBARHET eller FORMÅLSTJENLIGHET. Mer info er å finne i <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a>."
+"om SALGBARHET eller FORMÅLSTJENLIGHET. Mer info er å finne i <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a>."
 
 #: ../qml/ChangeLogs.qml:395
 msgid "SOURCE"
@@ -504,7 +504,7 @@ msgstr "Avinstaller"
 msgid "Remove"
 msgstr "Fjern"
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr ""
 
@@ -526,7 +526,7 @@ msgstr "Nytt gjøremål"
 msgid "Delete"
 msgstr "Slett"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 06:17+0000\n"
+"POT-Creation-Date: 2026-07-21 06:36+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -522,7 +522,7 @@ msgstr "நிறுவல் நீக்க"
 msgid "Remove"
 msgstr "அகற்று"
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr "உங்கள் இசையைத் தேடுங்கள்"
 
@@ -543,7 +543,7 @@ msgstr "புதிய செய்யவேண்டிய"
 msgid "Delete"
 msgstr "நீக்கு"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr "உங்கள் காணொளியைத் தேடு"
 

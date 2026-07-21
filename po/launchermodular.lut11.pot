@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 06:17+0000\n"
+"POT-Creation-Date: 2026-07-21 06:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -486,7 +486,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr ""
 
@@ -507,7 +507,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr ""
 

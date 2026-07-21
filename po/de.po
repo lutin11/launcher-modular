@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 06:17+0000\n"
+"POT-Creation-Date: 2026-07-21 06:36+0000\n"
 "PO-Revision-Date: 2026-04-02 09:09+0000\n"
 "Last-Translator: Marcel Tujetsch <tujetsch-marcel@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -313,9 +313,9 @@ msgstr ""
 "Lizenz, oder (nach deiner Entscheidung) einer neueren Version. Das Programm "
 "wird verteilt in der Hoffnung, dass es nützlich ist, aber OHNE JEDWEDE "
 "GARANTIE; ohne auch nur eine implizierte Garantie der VERKÄUFLICHKEIT oder "
-"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> für weitere Details."
+"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> für weitere Details."
 
 #: ../qml/ChangeLogs.qml:395
 msgid "SOURCE"
@@ -528,7 +528,7 @@ msgstr "Deinstallieren"
 msgid "Remove"
 msgstr "Entfernen"
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr "Durchsuchen Sie Ihre Musik"
 
@@ -549,7 +549,7 @@ msgstr "Neue Aufgabe"
 msgid "Delete"
 msgstr "Löschen"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr "Suchen Sie Ihr Video"
 
