@@ -107,6 +107,7 @@ MainView {
         property string folderMusic: MySettings.getMusicLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
+        property var playlistNames: []
         property color musicFontColor: "#E95420"
         property color videoFontColor: "#E95420"
 
