@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 06:36+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2026-04-02 09:09+0000\n"
 "Last-Translator: Marcel Tujetsch <tujetsch-marcel@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -792,7 +792,7 @@ msgstr "Letzter Anrufe"
 msgid "Last Call"
 msgstr "Letzter Anruf"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "Keine vorherigen Anrufe"
 
@@ -804,7 +804,7 @@ msgstr "Letzte Nachrichten"
 msgid "Last Message"
 msgstr "Letzte Nachricht"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "Keine vorhergehenden Nachrichten"
 

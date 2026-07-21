@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 06:36+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -792,7 +792,7 @@ msgstr "கடைசி அழைப்புகள்"
 msgid "Last Call"
 msgstr "கடைசி அழைப்பு"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "அண்மைக் கால அழைப்புகள் இல்லை"
 
@@ -804,7 +804,7 @@ msgstr "கடைசி செய்திகள்"
 msgid "Last Message"
 msgstr "கடைசி செய்தி"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "அண்மைக் கால செய்திகள் இல்லை"
 

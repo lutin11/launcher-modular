@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher Modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 06:36+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2025-11-23 09:39+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/launcher-modular/"
@@ -764,7 +764,7 @@ msgstr "Ultima chiamata"
 msgid "Last Call"
 msgstr "Ultima chiamata"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "Nessuna chiamata recente"
 
@@ -776,7 +776,7 @@ msgstr "Ultimo Messaggio"
 msgid "Last Message"
 msgstr "Ultimo Messaggio"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "Nessun messaggio recente"
 
