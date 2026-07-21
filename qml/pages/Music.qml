@@ -180,8 +180,8 @@ Item {
                 spacing: units.gu(1)
                 Button {
                     text: i18n.tr("Save")
-                    color: "#0E8420"
                     width: parent.width / 2
+                    background: Rectangle { color: "#0E8420"; radius: units.gu(1) }
                     onClicked: {
                         if (playlistNameField.text.length > 0) {
                             playlists.savePlaylist(playlistNameField.text, selectedSongs)
