@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 22:37+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -430,7 +430,7 @@ msgid "Create icon"
 msgstr "படவுருவை உருவாக்கவும்"
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:519 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "கைவிடு"
 
@@ -510,19 +510,19 @@ msgstr "நிகழ்ச்சி நிரல்"
 msgid "ok"
 msgstr "சரி"
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:253
 msgid "Search your phone and online sources"
 msgstr "உங்கள் தொலைபேசி மற்றும் நிகழ்நிலை ஆதாரங்களைத் தேடுங்கள்"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Uninstall"
 msgstr "நிறுவல் நீக்க"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Remove"
 msgstr "அகற்று"
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr "உங்கள் இசையைத் தேடுங்கள்"
 
@@ -543,7 +543,7 @@ msgstr "புதிய செய்யவேண்டிய"
 msgid "Delete"
 msgstr "நீக்கு"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr "உங்கள் காணொளியைத் தேடு"
 
@@ -792,7 +792,7 @@ msgstr "கடைசி அழைப்புகள்"
 msgid "Last Call"
 msgstr "கடைசி அழைப்பு"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "அண்மைக் கால அழைப்புகள் இல்லை"
 
@@ -804,7 +804,7 @@ msgstr "கடைசி செய்திகள்"
 msgid "Last Message"
 msgstr "கடைசி செய்தி"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "அண்மைக் கால செய்திகள் இல்லை"
 

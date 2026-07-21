@@ -237,7 +237,7 @@ Page {
                                     id: endLine
                                     width: changeLogContainer.width
                                     height: 1
-                                    color: if (index < changeLogModel.count && changeLogModel.get(index+1).version.length > 0){"#FFFFFF"} else {"#111111"}
+                                    color: (index < changeLogModel.count - 1 && changeLogModel.get(index + 1).version.length > 0) ? "#FFFFFF" : "#111111"
                                     anchors.horizontalCenter: parent.horizontalCenter
                                 }
                             }

@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools",
+        "vector-of-bool.cmake",
+        "ms-vscode.cmake-tools",
+        "theqtcompany.qt5cpp",
+        "qtproject.qml",
+        "qtproject.qt-creator",
+        "llvm-vs-code-extensions.clangd",
+        "austin.better-cpp-syntax"
+    ],
+    "unwantedRecommendations": []
+}

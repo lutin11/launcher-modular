@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 22:37+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/launcher-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: ../qml/Autostart.qml:15
@@ -421,7 +421,7 @@ msgid "Create icon"
 msgstr "Ustvari ikono"
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:519 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -501,19 +501,19 @@ msgstr "Agenda"
 msgid "ok"
 msgstr ""
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:253
 msgid "Search your phone and online sources"
 msgstr "Iskanje po telefonu in spletnih virih"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Uninstall"
 msgstr "Odmesti"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Remove"
 msgstr "Odstrani"
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr ""
 
@@ -535,7 +535,7 @@ msgstr "novo opravilo"
 msgid "Delete"
 msgstr "Izbriši"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr ""
 
@@ -788,7 +788,7 @@ msgstr "Zadnji klic"
 msgid "Last Call"
 msgstr "Zadnji klic"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "Ni nedavnih klicev"
 
@@ -800,7 +800,7 @@ msgstr "Zadnje sporočilo"
 msgid "Last Message"
 msgstr "Zadnje sporočilo"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "Ni nedavnih sporočil"
 

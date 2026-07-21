@@ -17,6 +17,7 @@ Item {
     property var folders: []
     property bool initialParsingDone: false
     property string parentFolder: MySettings.getMusicLocation()
+    property string pendingSearch: ""
 
     ListModel {
         id: searchModel
@@ -24,6 +25,13 @@ Item {
 
     ListModel {
         id: searchResults
+    }
+
+    Timer {
+        id: searchDebounce
+        interval: 200
+        repeat: false
+        onTriggered: searchMusic(pendingSearch)
     }
 
     FolderListModel {
@@ -92,12 +100,17 @@ Item {
     function searchMusic(term) {
         if (DEBUG_MODE) console.log("searchMusic with term:" + term)
         searchTerm = term
-        searchResults.clear()
+        var results = []
+        var termLower = term.toLowerCase()
         for (var i = 0; i < searchModel.count; i++) {
             var item = searchModel.get(i);
-            if (item.fileName.toLowerCase().indexOf(term.toLowerCase()) !== -1) {
-                searchResults.append(item);
+            if (item.fileName.toLowerCase().indexOf(termLower) !== -1) {
+                results.push({filePath: item.filePath, fileName: item.fileName, fileIsDir: item.fileIsDir});
             }
+        }
+        searchResults.clear()
+        for (var j = 0; j < results.length; j++) {
+            searchResults.append(results[j]);
         }
     }
 
@@ -164,8 +177,11 @@ Item {
             inputMethodHints: Qt.ImhNoPredictiveText
             onTextChanged: {
                 if(text.length > 0) {
-                    searchMusic(text)
+                    pendingSearch = text
+                    searchDebounce.restart()
                 } else {
+                    searchDebounce.stop()
+                    searchResults.clear()
                     if(musicFileModel.folder == "file://" + rootMusic) {
                         musicFileModel.folder = ""; // force refresh
                     }
@@ -253,10 +269,10 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 if (!fileIsDir) {
-                                    onClicked:Qt.openUrlExternally("music://" + model.filePath)
+                                    Qt.openUrlExternally("music://" + model.filePath)
                                 } else {
-                                     searchTerm = ""
-                                     musicFileModel.folder = model.filePath
+                                    searchTerm = ""
+                                    musicFileModel.folder = model.filePath
                                 }
                             }
                         }
