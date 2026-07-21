@@ -151,6 +151,10 @@ MainView {
         property int mainFeedSortAsc: 1
 
         property bool fullScreen: false
+
+        property string currentPlaylistName: ""
+        property var currentPlaylistSongs: []
+        property int currentSongIndex: -1
     }//settings
 
     Timer {
