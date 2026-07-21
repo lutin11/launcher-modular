@@ -39,7 +39,6 @@ Column {
     
     Column {
         id: rectContactSearchView
-        anchors.top: titleSearchContact.bottom
         width: launchermodular.width
 
         ContactModel {
