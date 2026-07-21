@@ -1,4 +1,5 @@
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(PLUGIN "NetworkHelper")
 
 set(
@@ -9,10 +10,10 @@ set(
 
 set(CMAKE_AUTOMOC ON)
 
+find_package(Qt5 REQUIRED COMPONENTS Core Qml Quick DBus)
 add_library(${PLUGIN} MODULE ${SRC})
 set_target_properties(${PLUGIN} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PLUGIN})
-
-qt5_use_modules(${PLUGIN} Qml Quick DBus)
+target_link_libraries(${PLUGIN} Qt5::Core Qt5::Qml Qt5::Quick Qt5::DBus)
 
 execute_process(
     COMMAND dpkg-architecture -qDEB_HOST_MULTIARCH

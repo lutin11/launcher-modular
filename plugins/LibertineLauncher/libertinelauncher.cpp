@@ -10,7 +10,7 @@ LibertineLauncher::LibertineLauncher(QObject *parent) : QObject(parent) {}
 
 void LibertineLauncher::launchLibertineApp(const QString &containerName, const QString &appName)
 {
-    LibertineWorker *worker = new LibertineWorker(containerName, appName);
+    LibertineWorker *worker = new LibertineWorker(containerName, appName, this);
     
     worker->run();
 }

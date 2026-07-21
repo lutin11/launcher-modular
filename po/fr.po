@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 09:03+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2025-11-24 21:49+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -364,77 +364,76 @@ msgstr ""
 msgid "Choose"
 msgstr "Choisir"
 
-#: ../qml/Main.qml:444
+#: ../qml/Main.qml:439
 msgid "Swipe up to configure the launcher"
 msgstr "Balayez vers le haut pour configurer le lanceur"
 
-#: ../qml/Main.qml:502
+#: ../qml/Main.qml:497
 msgid "Add custom icon"
 msgstr "Ajouter une icône personnalisée"
 
-#: ../qml/Main.qml:535
+#: ../qml/Main.qml:530
 msgid "Manage pages"
 msgstr "Gérer les pages"
 
-#: ../qml/Main.qml:568
+#: ../qml/Main.qml:563
 msgid "Configure Launcher"
 msgstr "Configurer le lanceur"
 
-#: ../qml/Main.qml:601
+#: ../qml/Main.qml:596
 msgid "Autostart"
 msgstr "Démarrage automatique"
 
-#: ../qml/Main.qml:634
+#: ../qml/Main.qml:629
 msgid "Help"
 msgstr "Aide"
 
-#: ../qml/Main.qml:667
+#: ../qml/Main.qml:662
 msgid "About"
 msgstr "À propos"
 
-#: ../qml/Main.qml:724
+#: ../qml/Main.qml:719
 msgid "Website"
 msgstr "Site internet"
 
-#: ../qml/Main.qml:724
+#: ../qml/Main.qml:719
 msgid "Open this URL in the web browser"
 msgstr "Ouvrez cette URL dans le navigateur web"
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:720
 msgid "Terminal command"
 msgstr "Commande de terminal"
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:720
 msgid "Run a command in a terminal"
 msgstr "Lancer une commande dans un terminal"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:721
 msgid "Launch app"
 msgstr "Lancer l'application"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:721
 msgid "Launch an app"
 msgstr "Lancer une application"
 
-#: ../qml/Main.qml:750
+#: ../qml/Main.qml:745
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "Icône SVG ou PNG au ratio 1:1"
 
-#: ../qml/Main.qml:763
+#: ../qml/Main.qml:758
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "Le <b>titre</b> à afficher dans la liste des applications"
 
-#: ../qml/Main.qml:787 ../qml/Main.qml:788 ../qml/Main.qml:789
+#: ../qml/Main.qml:782 ../qml/Main.qml:783 ../qml/Main.qml:784
 msgid "<b>Action</b> example: "
 msgstr "Exemple d'<b>action</b> :"
 
-#: ../qml/Main.qml:801
+#: ../qml/Main.qml:796
 msgid "Create icon"
 msgstr "Créer une icône"
 
-#: ../qml/Main.qml:844 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:478 ../qml/pages/Music.qml:198
-#: ../qml/pages/home/Settings.qml:81
+#: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:519 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -514,46 +513,21 @@ msgstr "Agenda"
 msgid "ok"
 msgstr "ok"
 
-#: ../qml/pages/Home.qml:212
+#: ../qml/pages/Home.qml:253
 msgid "Search your phone and online sources"
 msgstr "Rechercher dans votre téléphone et en ligne"
 
-#: ../qml/pages/Home.qml:437
+#: ../qml/pages/Home.qml:478
 msgid "Uninstall"
 msgstr "Désinstaller"
 
-#: ../qml/pages/Home.qml:437
+#: ../qml/pages/Home.qml:478
 msgid "Remove"
 msgstr "Supprimer"
 
-#: ../qml/pages/Music.qml:172
-msgid "Save Playlist"
-msgstr ""
-
-#: ../qml/pages/Music.qml:175
-#, fuzzy
-msgid "Playlist name"
-msgstr "Nom de la ville"
-
-#: ../qml/pages/Music.qml:182 ../qml/pages/Music.qml:322
-msgid "Save"
-msgstr ""
-
-#: ../qml/pages/Music.qml:255
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr "Recherchez votre musique"
-
-#: ../qml/pages/Music.qml:317
-msgid "Play (%1)"
-msgstr ""
-
-#: ../qml/pages/Music.qml:327
-msgid "All"
-msgstr ""
-
-#: ../qml/pages/Music.qml:332 ../qml/pages/home/Settings.qml:167
-msgid "None"
-msgstr "Aucun"
 
 #: ../qml/pages/Rss.qml:154
 msgid "Loading feeds…"
@@ -572,7 +546,7 @@ msgstr "Nouvelle liste de choses à faire"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr "Recherchez vos vidéos"
 
@@ -642,6 +616,10 @@ msgstr "Principale"
 #: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
 msgstr "Gestion des applications favorites"
+
+#: ../qml/pages/home/Settings.qml:167
+msgid "None"
+msgstr "Aucun"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"
@@ -811,7 +789,7 @@ msgstr "Derniers appels"
 msgid "Last Call"
 msgstr "Dernier appel"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "Aucun appel récent"
 
@@ -823,7 +801,7 @@ msgstr "Derniers messages"
 msgid "Last Message"
 msgstr "Dernier message"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "Aucun message récent"
 
