@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher Modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 22:37+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2025-11-23 09:39+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/launcher-modular/"
@@ -400,7 +400,7 @@ msgid "Create icon"
 msgstr ""
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:519 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -478,19 +478,19 @@ msgstr "Agenda"
 msgid "ok"
 msgstr ""
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:253
 msgid "Search your phone and online sources"
 msgstr "Cerca nel telefono e nelle fonti on-line"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Uninstall"
 msgstr "Disinstalla"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr ""
 
@@ -512,7 +512,7 @@ msgstr "Nuovo Promemoria"
 msgid "Delete"
 msgstr "Elimina"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr ""
 
@@ -764,7 +764,7 @@ msgstr "Ultima chiamata"
 msgid "Last Call"
 msgstr "Ultima chiamata"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "Nessuna chiamata recente"
 
@@ -776,7 +776,7 @@ msgstr "Ultimo Messaggio"
 msgid "Last Message"
 msgstr "Ultimo Messaggio"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "Nessun messaggio recente"
 

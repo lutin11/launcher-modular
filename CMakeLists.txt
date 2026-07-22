@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5)
 project(launchermodular C CXX)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -37,7 +37,7 @@ execute_process(
 )
 add_definitions(-D__ARCH_TRIPLET__="${ARCH_TRIPLET}")
 add_executable(${PROJECT_NAME} main.cpp ${MAIN_SRC_FILES})
-qt5_use_modules(${PROJECT_NAME} Gui Qml Quick)
+target_link_libraries(${PROJECT_NAME} Qt5::Gui Qt5::Qml Qt5::Quick)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
 
 

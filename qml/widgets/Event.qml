@@ -125,10 +125,16 @@ Item {
                 spacing: units.gu(0.7)
                 Text {
                     text: {
-                        var callendarEvent = item.detail(Detail.EventTime)
+                        if (!item) return "";
+                        var callendarEvent = item.detail ? item.detail(Detail.EventTime) : null;
+                        if (!callendarEvent) return "";
                         var eventStartTime = callendarEvent.startDateTime;
                         if(index != 0){
-                            var prevEventeventStartTime = widgetEventModel.get(index-1).item.detail(Detail.EventTime).startDateTime;
+                            var prevItem = widgetEventModel.get(index-1);
+                            if (!prevItem || !prevItem.item) return "";
+                            var prevDetail = prevItem.item.detail ? prevItem.item.detail(Detail.EventTime) : null;
+                            if (!prevDetail) return "";
+                            var prevEventeventStartTime = prevDetail.startDateTime;
                             if(Qt.formatDateTime(eventStartTime, "MMM d" ) != Qt.formatDateTime(prevEventeventStartTime, "MMM d" )){
                               return Qt.formatDateTime(eventStartTime, "MMM d" )
                             } else {
@@ -160,7 +166,9 @@ Item {
                     }
                     Text {
                         text: {
-                            var callendarEvent = item.detail(Detail.EventTime)
+                            if (!item) return "";
+                            var callendarEvent = item.detail ? item.detail(Detail.EventTime) : null;
+                            if (!callendarEvent) return "";
                             var eventStartTime = callendarEvent.startDateTime;
                             return Qt.formatDateTime(eventStartTime, "hh:mm" )+" "+item.description
                         }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-03 22:37+0000\n"
+"POT-Creation-Date: 2026-07-21 07:24+0000\n"
 "PO-Revision-Date: 2025-11-23 09:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/launcher-"
@@ -297,9 +297,9 @@ msgstr ""
 "Software Foundation, either version 3 of the License, or (at your option) "
 "any later version. This program is distributed in the hope that it will be "
 "useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> for more details."
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> for more details."
 
 #: ../qml/ChangeLogs.qml:395
 msgid "SOURCE"
@@ -414,7 +414,7 @@ msgid "Create icon"
 msgstr "Criar ícone"
 
 #: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:476 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:519 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -492,19 +492,19 @@ msgstr "Agenda"
 msgid "ok"
 msgstr ""
 
-#: ../qml/pages/Home.qml:210
+#: ../qml/pages/Home.qml:253
 msgid "Search your phone and online sources"
 msgstr "Procurar em fontes online e no dispositivo"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Uninstall"
 msgstr "Desinstalar"
 
-#: ../qml/pages/Home.qml:435
+#: ../qml/pages/Home.qml:478
 msgid "Remove"
 msgstr "Remover"
 
-#: ../qml/pages/Music.qml:160
+#: ../qml/pages/Music.qml:173
 msgid "Search your music"
 msgstr ""
 
@@ -526,7 +526,7 @@ msgstr "novo a fazer"
 msgid "Delete"
 msgstr "Eliminar"
 
-#: ../qml/pages/Videos.qml:159
+#: ../qml/pages/Videos.qml:172
 msgid "Search your video"
 msgstr ""
 
@@ -779,7 +779,7 @@ msgstr "Última Chamada"
 msgid "Last Call"
 msgstr "Última Chamada"
 
-#: ../qml/widgets/Lastcall.qml:161
+#: ../qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
 msgstr "Sem chamadas recentes"
 
@@ -791,7 +791,7 @@ msgstr "Última Mensagem"
 msgid "Last Message"
 msgstr "Última Mensagem"
 
-#: ../qml/widgets/Lastmessage.qml:201
+#: ../qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
 msgstr "Sem mensagens recentes"
 
