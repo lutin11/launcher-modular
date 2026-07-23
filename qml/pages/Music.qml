@@ -2,12 +2,10 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Lomiri.Components 1.3
+import Lomiri.Components.Popups 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
-import Lomiri.Components.Popups 1.3
 import MySettings 1.0
-
-import QtQuick.Controls 2.2
 
 Item {
     id: musics
@@ -21,6 +19,7 @@ Item {
     property string pendingSearch: ""
     property var selectedSongs: []
     property bool selectionMode: false
+    property bool showSaveOverlay: false
 
     // Components
     PlaylistManager { id: playlistManager }
@@ -28,6 +27,10 @@ Item {
 
     Component.onCompleted: {
         musicPlayer.cleanupCache()
+        musicPlayer.visible = true
+        musicPlayer.saveRequested.connect(function() {
+            showSaveOverlay = true
+        })
     }
 
     /**
@@ -211,10 +214,20 @@ Item {
             Row {
                 width: parent.width
                 spacing: units.gu(1)
-                Button {
-                    text: i18n.tr("Save")
+                AbstractButton {
+                    id: saveButton
                     width: parent.width / 2
-                    background: Rectangle { color: "#0E8420"; radius: units.gu(1) }
+                    height: units.gu(4)
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: units.gu(1.5)
+                        color: "#0E8420"
+                    }
+                    Label {
+                        anchors.centerIn: parent
+                        text: i18n.tr("Save")
+                        color: "white"
+                    }
                     onClicked: {
                         if (playlistNameField.text.length > 0) {
                             playlistManager.savePlaylist(playlistNameField.text, selectedSongs)
@@ -268,21 +281,41 @@ Item {
             }
         }
 
-        TextField {
+        Item {
             id: searchField
-            focus: false
             anchors {
                 left: iconBack.right
                 right: iconSearch.left
             }
             height: searchBar.height
-            color: launchermodular.settings.textColor
-            background: Rectangle {
-                height: parent.height
-                color: "transparent"
+
+            property alias text: searchInput.text
+
+            TextInput {
+                id: searchInput
+                anchors.fill: parent
+                anchors.leftMargin: units.gu(1)
+                verticalAlignment: TextInput.AlignVCenter
+                color: launchermodular.settings.textColor
+                clip: true
+                selectByMouse: true
+                inputMethodHints: Qt.ImhNoPredictiveText
+
+                onTextChanged: {
+                    if(text.length > 0) {
+                        pendingSearch = text
+                        searchDebounce.restart()
+                    } else {
+                        searchDebounce.stop()
+                        searchResults.clear()
+                        if(musicFileModel.folder == "file://" + rootMusic) {
+                            musicFileModel.folder = ""; // force refresh
+                        }
+                        musicFileModel.folder = rootMusic
+                    }
+                }
             }
 
-            placeholderText: ""
             // Custom placeholder
             Text {
                 anchors.fill: parent
@@ -290,22 +323,8 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 color: "#aaaaaa" // Light grey color for placeholder
                 text: i18n.tr("Search your music")
-                visible: searchField.text.length == 0
+                visible: searchInput.text.length == 0
                 font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
-            }
-            inputMethodHints: Qt.ImhNoPredictiveText
-            onTextChanged: {
-                if(text.length > 0) {
-                    pendingSearch = text
-                    searchDebounce.restart()
-                } else {
-                    searchDebounce.stop()
-                    searchResults.clear()
-                    if(musicFileModel.folder == "file://" + rootMusic) {
-                        musicFileModel.folder = ""; // force refresh
-                    }
-                    musicFileModel.folder = rootMusic
-                }
             }
         }
 
@@ -331,7 +350,7 @@ Item {
                 onClicked:{
                     if(searchField.text.length > 0){
                         searchField.text = ""
-                        searchField.focus = false
+                        searchInput.focus = false
                     } else if(musicFileModel.folder == "file://" + rootMusic) {
                         musicFileModel.folder = ""; // force refresh
                     }
