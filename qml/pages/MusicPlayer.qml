@@ -121,7 +121,11 @@ Rectangle {
 
     function play(songPath) {
         mediaPlayerPlaylist.clear()
-        mediaPlayerPlaylist.addItems([songPath])
+        deleteFromCache(currentCacheFile)
+        var cachedPath = copyToCache(songPath, 0)
+        copyIndex = 1
+        currentCacheFile = cachedPath
+        mediaPlayerPlaylist.addItems([cachedPath])
         mediaPlayerPlaylist.currentIndex = 0
         audioPlayer.play()
         currentSongPath = songPath
@@ -157,11 +161,16 @@ Rectangle {
 
     function stop() {
         audioPlayer.stop()
+        deleteFromCache(currentCacheFile)
         isPlaying = false
         visible = false
         currentIndex = -1
         currentSongName = ""
         currentSongPath = ""
+        currentCacheFile = ""
+        nextTrackIndex = -1
+        copyInProgress = false
+        copyTimer.stop()
         playingChanged(false)
     }
 
