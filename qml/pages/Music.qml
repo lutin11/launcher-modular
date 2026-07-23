@@ -4,6 +4,7 @@ import QtGraphicalEffects 1.12
 import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
+import Lomiri.Components.Popups 1.3
 import MySettings 1.0
 
 import QtQuick.Controls 2.2
@@ -18,6 +19,88 @@ Item {
     property bool initialParsingDone: false
     property string parentFolder: MySettings.getMusicLocation()
     property string pendingSearch: ""
+    property var selectedSongs: []
+    property bool selectionMode: false
+
+    // Components
+    PlaylistManager { id: playlistManager }
+    MusicPlayer { id: musicPlayer }
+
+    Component.onCompleted: {
+        musicPlayer.cleanupCache()
+    }
+
+    /**
+     * Play selected songs in Lomiri Music App
+     */
+    function playSelected() {
+        if (selectedSongs.length === 0) return
+
+        musicPlayer.playList(selectedSongs)
+        deselectAll()
+    }
+
+    /**
+     * Save selected songs as a playlist
+     */
+    function saveSelectedAsPlaylist() {
+        if (selectedSongs.length === 0) return
+        PopupUtils.open(savePlaylistDialog)
+    }
+
+    /**
+     * Toggle selection for a file
+     */
+    function toggleSelection(filePath, fileName) {
+        var idx = -1
+        for (var i = 0; i < selectedSongs.length; i++) {
+            if (selectedSongs[i].path === filePath) {
+                idx = i
+                break
+            }
+        }
+        if (idx !== -1) {
+            selectedSongs.splice(idx, 1)
+        } else {
+            selectedSongs.push({path: filePath, name: fileName})
+        }
+        selectedSongsChanged()
+        selectionMode = selectedSongs.length > 0
+    }
+
+    /**
+     * Check if a file is selected
+     */
+    function isSelected(filePath) {
+        for (var i = 0; i < selectedSongs.length; i++) {
+            if (selectedSongs[i].path === filePath) return true
+        }
+        return false
+    }
+
+    /**
+     * Select all music files in current view
+     */
+    function selectAll() {
+        selectedSongs = []
+        for (var i = 0; i < searchResults.count; i++) {
+            var item = searchResults.get(i)
+            if (!item.fileIsDir) {
+                selectedSongs.push({path: item.filePath, name: item.fileName})
+            }
+        }
+        selectedSongsChanged()
+        selectionMode = selectedSongs.length > 0
+    }
+
+    /**
+     * Deselect all files
+     */
+    function deselectAll() {
+        selectedSongs = []
+        selectedSongsChanged()
+        selectionMode = false
+    }
 
     ListModel {
         id: searchModel
@@ -114,6 +197,42 @@ Item {
         }
     }
 
+    // Save playlist dialog
+    Component {
+        id: savePlaylistDialog
+        Dialog {
+            id: saveDialog
+            title: i18n.tr("Save Playlist")
+            TextField {
+                id: playlistNameField
+                placeholderText: i18n.tr("Playlist name")
+                width: parent.width
+            }
+            Row {
+                width: parent.width
+                spacing: units.gu(1)
+                Button {
+                    text: i18n.tr("Save")
+                    width: parent.width / 2
+                    background: Rectangle { color: "#0E8420"; radius: units.gu(1) }
+                    onClicked: {
+                        if (playlistNameField.text.length > 0) {
+                            playlistManager.savePlaylist(playlistNameField.text, selectedSongs)
+                            PopupUtils.close(saveDialog)
+                            deselectAll()
+                        }
+                    }
+                }
+                Button {
+                    text: i18n.tr("Cancel")
+                    width: parent.width / 2
+                    onClicked: PopupUtils.close(saveDialog)
+                }
+            }
+        }
+    }
+
+    // Search bar
     Rectangle {
         id: searchBar
         height: units.gu(5)
@@ -159,8 +278,8 @@ Item {
             height: searchBar.height
             color: launchermodular.settings.textColor
             background: Rectangle {
-              height: parent.height
-              color: "transparent"
+                height: parent.height
+                color: "transparent"
             }
 
             placeholderText: ""
@@ -214,7 +333,7 @@ Item {
                         searchField.text = ""
                         searchField.focus = false
                     } else if(musicFileModel.folder == "file://" + rootMusic) {
-                            musicFileModel.folder = ""; // force refresh
+                        musicFileModel.folder = ""; // force refresh
                     }
                     musicFileModel.folder = rootMusic
                 }
@@ -222,6 +341,45 @@ Item {
         }
     }
 
+    // Selection action bar
+    Rectangle {
+        id: selectionBar
+        visible: selectionMode
+        height: visible ? units.gu(5) : 0
+        anchors.top: searchBar.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        color: "#E95420"
+
+        RowLayout {
+            anchors.fill: parent
+            anchors.margins: units.gu(1)
+            spacing: units.gu(1)
+
+            Button {
+                text: i18n.tr("Play (%1)").arg(selectedSongs.length)
+                Layout.fillWidth: true
+                onClicked: playSelected()
+            }
+            Button {
+                text: i18n.tr("Save")
+                Layout.fillWidth: true
+                onClicked: saveSelectedAsPlaylist()
+            }
+            Button {
+                text: i18n.tr("All")
+                Layout.fillWidth: true
+                onClicked: selectAll()
+            }
+            Button {
+                text: i18n.tr("None")
+                Layout.fillWidth: true
+                onClicked: deselectAll()
+            }
+        }
+    }
+
+    // Song list
     ListView {
         id: searchMusicView
         model: searchResults
@@ -231,25 +389,50 @@ Item {
             fill: parent
             rightMargin: units.gu(2)
             leftMargin: units.gu(2)
-            topMargin: units.gu(6)
+            topMargin: selectionMode ? units.gu(11) : units.gu(6)
+            bottomMargin: musicPlayer.visible ? units.gu(11) : 0
         }
         clip: true  // To avoid rendering content outside of the visible area
 
         focus: true
 
         delegate: Item {
-            width: searchMusicView.cellWidth
-            height: searchMusicViewName.implicitHeight
+            width: searchMusicView.width
+            height: searchMusicViewName.implicitHeight + units.gu(2)
 
             Rectangle {
                 id: searchMusicRectangle
                 opacity: 0.9
-                color: "#111111"
-                height: searchMusicViewName.implicitHeight
+                color: isSelected(filePath) ? "#333333" : "#111111"
+                height: parent.height
                 width: parent.width
 
                 Row {
                     spacing: units.gu(1)
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: units.gu(1)
+
+                    // Selection checkbox
+                    Rectangle {
+                        width: units.gu(2)
+                        height: units.gu(2)
+                        radius: units.gu(0.5)
+                        color: isSelected(filePath) ? "#E95420" : "transparent"
+                        border.color: "#FFFFFF"
+                        border.width: 1
+                        anchors.verticalCenter: parent.verticalCenter
+                        visible: !fileIsDir
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "\u2713"
+                            color: "#FFFFFF"
+                            visible: isSelected(filePath)
+                            font.pixelSize: units.gu(1.5)
+                        }
+                    }
+
                     Icon {
                         id: searchMusicViewItem
                         visible: true
@@ -264,17 +447,17 @@ Item {
                         font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
                         font.bold: fileIsDir ? true : false
                         color: launchermodular.settings.musicFontColor
+                    }
+                }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                if (!fileIsDir) {
-                                    Qt.openUrlExternally("music://" + model.filePath)
-                                } else {
-                                    searchTerm = ""
-                                    musicFileModel.folder = model.filePath
-                                }
-                            }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        if (fileIsDir) {
+                            searchTerm = ""
+                            musicFileModel.folder = model.filePath
+                        } else {
+                            toggleSelection(model.filePath, model.fileName)
                         }
                     }
                 }
