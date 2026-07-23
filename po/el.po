@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 07:24+0000\n"
+"POT-Creation-Date: 2026-07-23 22:09+0000\n"
 "PO-Revision-Date: 2025-11-23 09:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/launcher-modular/"
@@ -329,76 +329,77 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:439
+#: ../qml/Main.qml:444
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:497
+#: ../qml/Main.qml:502
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:530
+#: ../qml/Main.qml:535
 msgid "Manage pages"
 msgstr ""
 
-#: ../qml/Main.qml:563
+#: ../qml/Main.qml:568
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:596
+#: ../qml/Main.qml:601
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:629
+#: ../qml/Main.qml:634
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:662
+#: ../qml/Main.qml:667
 msgid "About"
 msgstr ""
 
-#: ../qml/Main.qml:719
+#: ../qml/Main.qml:724
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:719
+#: ../qml/Main.qml:724
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:720
+#: ../qml/Main.qml:725
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:720
+#: ../qml/Main.qml:725
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:721
+#: ../qml/Main.qml:726
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:721
+#: ../qml/Main.qml:726
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:745
+#: ../qml/Main.qml:750
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:758
+#: ../qml/Main.qml:763
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:782 ../qml/Main.qml:783 ../qml/Main.qml:784
+#: ../qml/Main.qml:787 ../qml/Main.qml:788 ../qml/Main.qml:789
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:796
+#: ../qml/Main.qml:801
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:839 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:519 ../qml/pages/home/Settings.qml:81
+#: ../qml/Main.qml:844 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:240
+#: ../qml/pages/PlaylistsView.qml:116 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr ""
 
@@ -476,20 +477,71 @@ msgstr ""
 msgid "ok"
 msgstr ""
 
-#: ../qml/pages/Home.qml:253
+#: ../qml/pages/Home.qml:255
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: ../qml/pages/Home.qml:478
+#: ../qml/pages/Home.qml:480
 msgid "Uninstall"
 msgstr ""
 
-#: ../qml/pages/Home.qml:478
+#: ../qml/pages/Home.qml:480
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Music.qml:173
+#: ../qml/pages/Music.qml:208
+msgid "Save Playlist"
+msgstr ""
+
+#: ../qml/pages/Music.qml:211
+msgid "Playlist name"
+msgstr ""
+
+#: ../qml/pages/Music.qml:228 ../qml/pages/Music.qml:384
+msgid "Save"
+msgstr ""
+
+#: ../qml/pages/Music.qml:325
 msgid "Search your music"
+msgstr ""
+
+#: ../qml/pages/Music.qml:379
+msgid "Play (%1)"
+msgstr ""
+
+#: ../qml/pages/Music.qml:389
+msgid "All"
+msgstr ""
+
+#: ../qml/pages/Music.qml:394 ../qml/pages/home/Settings.qml:167
+msgid "None"
+msgstr ""
+
+#: ../qml/pages/PlaylistsView.qml:99
+msgid "Delete Playlist"
+msgstr ""
+
+#: ../qml/pages/PlaylistsView.qml:100
+msgid "Are you sure you want to delete '%1'?"
+msgstr ""
+
+#: ../qml/pages/PlaylistsView.qml:105 ../qml/pages/Todo.qml:121
+#: ../qml/pages/home/Settings.qml:139 ../qml/pages/rss/Settings.qml:175
+msgid "Delete"
+msgstr ""
+
+#: ../qml/pages/PlaylistsView.qml:165
+msgid "Playlists"
+msgstr ""
+
+#: ../qml/pages/PlaylistsView.qml:241
+msgid "%1 tracks"
+msgstr ""
+
+#: ../qml/pages/PlaylistsView.qml:323
+msgid ""
+"No playlists yet.\n"
+"Select songs and tap Save to create a playlist."
 msgstr ""
 
 #: ../qml/pages/Rss.qml:154
@@ -502,11 +554,6 @@ msgstr ""
 
 #: ../qml/pages/Todo.qml:81
 msgid "New todo"
-msgstr ""
-
-#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
-#: ../qml/pages/rss/Settings.qml:175
-msgid "Delete"
 msgstr ""
 
 #: ../qml/pages/Videos.qml:172
@@ -578,10 +625,6 @@ msgstr ""
 
 #: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
-msgstr ""
-
-#: ../qml/pages/home/Settings.qml:167
-msgid "None"
 msgstr ""
 
 #: ../qml/pages/home/Settings.qml:167
