@@ -135,19 +135,38 @@ Rectangle {
     function playList(songs) {
         playlist = songs
         mediaPlayerPlaylist.clear()
+        deleteFromCache(currentCacheFile)
+        copyIndex = 0
+        nextTrackIndex = -1
+        copyInProgress = false
+        copyTimer.stop()
 
-        var sources = []
-        for (var i = 0; i < songs.length; i++) {
-            sources.push(songs[i].path)
-        }
-        mediaPlayerPlaylist.addItems(sources)
+        if (songs.length === 0) return
+
+        var firstPath = songs[0].path
+        var cachedPath = copyToCache(firstPath, copyIndex)
+        copyIndex++
+        currentCacheFile = cachedPath
+
+        mediaPlayerPlaylist.addItems([cachedPath])
+        mediaPlayerPlaylist.currentIndex = 0
+        audioPlayer.play()
 
         currentIndex = 0
-        if (songs.length > 0) {
-            mediaPlayerPlaylist.currentIndex = 0
-            audioPlayer.play()
-            currentSongName = songs[0].name
-            songChanged(currentSongName, currentIndex)
+        currentSongName = songs[0].name
+        currentSongPath = firstPath
+        songChanged(currentSongName, currentIndex)
+        visible = true
+
+        if (songs.length > 1) {
+            nextTrackIndex = 1
+            var nextPath = songs[1].path
+            var nextCachedPath = copyToCache(nextPath, copyIndex)
+            copyIndex++
+            copyInProgress = true
+            copyTimer.targetFile = nextCachedPath
+            copyTimer.isNextTrackCopy = true
+            copyTimer.start()
         }
     }
 
