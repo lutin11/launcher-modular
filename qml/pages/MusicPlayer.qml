@@ -38,30 +38,6 @@ Rectangle {
 
     Audio {
         id: audioPlayer
-        playlist: Playlist {
-            id: mediaPlayerPlaylist
-            playbackMode: {
-                if (shuffleMode) {
-                    Playlist.Random
-                } else if (repeatMode === "all") {
-                    Playlist.Loop
-                } else if (repeatMode === "single") {
-                    Playlist.CurrentItemInLoop
-                } else {
-                    Playlist.Sequential
-                }
-            }
-
-            onCurrentItemSourceChanged: {
-                var idx = mediaPlayerPlaylist.currentIndex
-                if (idx >= 0 && idx < musicPlayer.playlist.length) {
-                    musicPlayer.currentIndex = idx
-                    musicPlayer.currentSongName = musicPlayer.playlist[idx].name
-                    musicPlayer.currentSongPath = mediaPlayerPlaylist.currentItemSource.toString()
-                    musicPlayer.songChanged(musicPlayer.currentSongName, idx)
-                }
-            }
-        }
 
         onPlaybackStateChanged: {
             isPlaying = (playbackState === Audio.PlayingState)
@@ -87,6 +63,15 @@ Rectangle {
                         onCopyFinished(currentCacheFile)
                     } else if (nextTrackIndex === -1) {
                         stop()
+                    }
+                } else if (repeatMode === "all") {
+                    if (nextTrackIndex >= 0 && !copyInProgress) {
+                        onCopyFinished(currentCacheFile)
+                    } else if (nextTrackIndex === -1) {
+                        currentIndex = 0
+                        if (playlist.length > 0) {
+                            playList(playlist)
+                        }
                     }
                 }
             }
@@ -128,13 +113,11 @@ Rectangle {
     }
 
     function play(songPath) {
-        mediaPlayerPlaylist.clear()
         deleteFromCache(currentCacheFile)
         var cachedPath = copyToCache(songPath, 0)
         copyIndex = 1
         currentCacheFile = cachedPath
-        mediaPlayerPlaylist.addItems([cachedPath])
-        mediaPlayerPlaylist.currentIndex = 0
+        audioPlayer.source = cachedPath
         audioPlayer.play()
         currentSongPath = songPath
         visible = true
@@ -142,7 +125,6 @@ Rectangle {
 
     function playList(songs) {
         playlist = songs
-        mediaPlayerPlaylist.clear()
         deleteFromCache(currentCacheFile)
         copyIndex = 0
         nextTrackIndex = -1
@@ -156,8 +138,7 @@ Rectangle {
         copyIndex++
         currentCacheFile = cachedPath
 
-        mediaPlayerPlaylist.addItems([cachedPath])
-        mediaPlayerPlaylist.currentIndex = 0
+        audioPlayer.source = cachedPath
         audioPlayer.play()
 
         currentIndex = 0
@@ -188,6 +169,7 @@ Rectangle {
 
     function stop() {
         audioPlayer.stop()
+        audioPlayer.source = ""
         deleteFromCache(currentCacheFile)
         isPlaying = false
         visible = false
@@ -202,14 +184,36 @@ Rectangle {
     }
 
     function next() {
-        if (mediaPlayerPlaylist.canGoNext) {
-            mediaPlayerPlaylist.next()
+        if (currentIndex < playlist.length - 1) {
+            var nextIdx = currentIndex + 1
+            var nextPath = playlist[nextIdx].path
+            deleteFromCache(currentCacheFile)
+            var cachedPath = copyToCache(nextPath, copyIndex)
+            copyIndex++
+            currentCacheFile = cachedPath
+            audioPlayer.source = cachedPath
+            audioPlayer.play()
+            currentIndex = nextIdx
+            currentSongName = playlist[nextIdx].name
+            currentSongPath = nextPath
+            songChanged(currentSongName, currentIndex)
         }
     }
 
     function previous() {
-        if (mediaPlayerPlaylist.canGoPrevious) {
-            mediaPlayerPlaylist.previous()
+        if (currentIndex > 0) {
+            var prevIdx = currentIndex - 1
+            var prevPath = playlist[prevIdx].path
+            deleteFromCache(currentCacheFile)
+            var cachedPath = copyToCache(prevPath, copyIndex)
+            copyIndex++
+            currentCacheFile = cachedPath
+            audioPlayer.source = cachedPath
+            audioPlayer.play()
+            currentIndex = prevIdx
+            currentSongName = playlist[prevIdx].name
+            currentSongPath = prevPath
+            songChanged(currentSongName, currentIndex)
         }
     }
 
@@ -232,12 +236,12 @@ Rectangle {
             deleteFromCache(currentCacheFile)
             currentCacheFile = filePath
 
-            mediaPlayerPlaylist.addItems([filePath])
-            mediaPlayerPlaylist.currentIndex = mediaPlayerPlaylist.count - 1
+            audioPlayer.source = filePath
             audioPlayer.play()
 
+            currentIndex = nextTrackIndex
             currentSongName = playlist[nextTrackIndex].name
-            currentSongPath = filePath
+            currentSongPath = playlist[nextTrackIndex].path
             songChanged(currentSongName, nextTrackIndex)
 
             var nextIdx = nextTrackIndex + 1
@@ -274,6 +278,7 @@ Rectangle {
         var sourceClean = sourcePath.replace(/'/g, "'\\''")
         var destClean = destPath.replace(/'/g, "'\\''")
         Terminalaccess.run("cp '" + sourceClean + "' '" + destClean + "'")
+        Terminalaccess.outputUntilEnd()
         return destPath
     }
 
@@ -332,7 +337,7 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.preferredWidth: units.gu(5)
                 height: units.gu(4)
-                enabled: mediaPlayerPlaylist.canGoPrevious
+                enabled: currentIndex > 0
                 onClicked: previous()
 
                 Icon {
@@ -371,7 +376,7 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.preferredWidth: units.gu(5)
                 height: units.gu(4)
-                enabled: mediaPlayerPlaylist.canGoNext
+                enabled: currentIndex < playlist.length - 1
                 onClicked: next()
 
                 Icon {
