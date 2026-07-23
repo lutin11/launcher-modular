@@ -79,8 +79,16 @@ Rectangle {
         }
 
         onStatusChanged: {
-            if (status === Audio.EndOfMedia && repeatMode === "none") {
-                stop()
+            if (status === Audio.EndOfMedia) {
+                if (repeatMode === "single") {
+                    audioPlayer.play()
+                } else if (repeatMode === "none") {
+                    if (nextTrackIndex >= 0 && !copyInProgress) {
+                        onCopyFinished(currentCacheFile)
+                    } else if (nextTrackIndex === -1) {
+                        stop()
+                    }
+                }
             }
         }
 
