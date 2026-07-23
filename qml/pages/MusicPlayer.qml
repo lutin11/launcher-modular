@@ -172,6 +172,30 @@ Rectangle {
         Terminalaccess.run("rm -f " + tempCacheDir + "*.mp3 " + tempCacheDir + "*.aac " + tempCacheDir + "*.ogg " + tempCacheDir + "*.wav " + tempCacheDir + "*.flac " + tempCacheDir + "*.m4a " + tempCacheDir + "*.alac")
     }
 
+    function sanitizeName(filename) {
+        var dotIdx = filename.lastIndexOf(".")
+        var name = dotIdx > 0 ? filename.substring(0, dotIdx) : filename
+        var ext = dotIdx > 0 ? filename.substring(dotIdx) : ""
+        return name.replace(/[^a-zA-Z0-9]/g, "_") + ext
+    }
+
+    function copyToCache(sourcePath, index) {
+        var filename = sourcePath.split("/").pop()
+        var cachedName = index + "_" + sanitizeName(filename)
+        var destPath = tempCacheDir + cachedName
+        var sourceClean = sourcePath.replace(/'/g, "'\\''")
+        var destClean = destPath.replace(/'/g, "'\\''")
+        Terminalaccess.run("cp '" + sourceClean + "' '" + destClean + "'")
+        return destPath
+    }
+
+    function deleteFromCache(filePath) {
+        if (filePath.indexOf(tempCacheDir) === 0) {
+            var cleanPath = filePath.replace(/'/g, "'\\''")
+            Terminalaccess.run("rm -f '" + cleanPath + "'")
+        }
+    }
+
     MouseArea {
         id: swipeArea
         anchors.top: parent.top
