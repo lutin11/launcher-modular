@@ -89,6 +89,29 @@ Rectangle {
         }
     }
 
+    Timer {
+        id: copyTimer
+        interval: 200
+        repeat: true
+        property string targetFile: ""
+        property bool isNextTrackCopy: false
+
+        onTriggered: {
+            if (!copyInProgress) {
+                copyTimer.stop()
+                return
+            }
+            var finished = Terminalaccess.waitForFinished(0)
+            if (finished) {
+                copyInProgress = false
+                copyTimer.stop()
+                if (isNextTrackCopy && targetFile !== "") {
+                    onCopyFinished(targetFile)
+                }
+            }
+        }
+    }
+
     function formatTime(ms) {
         var totalSeconds = Math.floor(ms / 1000)
         var minutes = Math.floor(totalSeconds / 60)
@@ -165,6 +188,35 @@ Rectangle {
             repeatMode = "all"
         } else {
             repeatMode = "none"
+        }
+    }
+
+    function onCopyFinished(filePath) {
+        if (nextTrackIndex >= 0 && nextTrackIndex < playlist.length) {
+            deleteFromCache(currentCacheFile)
+            currentCacheFile = filePath
+
+            mediaPlayerPlaylist.addItems([filePath])
+            mediaPlayerPlaylist.currentIndex = mediaPlayerPlaylist.count - 1
+            audioPlayer.play()
+
+            currentSongName = playlist[nextTrackIndex].name
+            currentSongPath = filePath
+            songChanged(currentSongName, nextTrackIndex)
+
+            var nextIdx = nextTrackIndex + 1
+            if (nextIdx < playlist.length) {
+                nextTrackIndex = nextIdx
+                var nextPath = playlist[nextIdx].path
+                var cachedPath = copyToCache(nextPath, copyIndex)
+                copyIndex++
+                copyInProgress = true
+                copyTimer.targetFile = cachedPath
+                copyTimer.isNextTrackCopy = true
+                copyTimer.start()
+            } else {
+                nextTrackIndex = -1
+            }
         }
     }
 
