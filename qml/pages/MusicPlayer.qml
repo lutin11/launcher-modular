@@ -35,6 +35,7 @@ Rectangle {
     signal songChanged(string name, int index)
     signal playingChanged(bool playing)
     signal dismissed()
+    signal saveRequested()
 
     Audio {
         id: audioPlayer
@@ -59,20 +60,9 @@ Rectangle {
                 if (repeatMode === "single") {
                     audioPlayer.play()
                 } else if (repeatMode === "none") {
-                    if (nextTrackIndex >= 0 && !copyInProgress) {
-                        onCopyFinished(currentCacheFile)
-                    } else if (nextTrackIndex === -1) {
-                        stop()
-                    }
+                    advanceTrack()
                 } else if (repeatMode === "all") {
-                    if (nextTrackIndex >= 0 && !copyInProgress) {
-                        onCopyFinished(currentCacheFile)
-                    } else if (nextTrackIndex === -1) {
-                        currentIndex = 0
-                        if (playlist.length > 0) {
-                            playList(playlist)
-                        }
-                    }
+                    advanceTrack()
                 }
             }
         }
@@ -82,34 +72,23 @@ Rectangle {
         }
     }
 
-    Timer {
-        id: copyTimer
-        interval: 200
-        repeat: true
-        property string targetFile: ""
-        property bool isNextTrackCopy: false
-
-        onTriggered: {
-            if (!copyInProgress) {
-                copyTimer.stop()
-                return
-            }
-            var finished = Terminalaccess.waitForFinished(0)
-            if (finished) {
-                copyInProgress = false
-                copyTimer.stop()
-                if (isNextTrackCopy && targetFile !== "") {
-                    onCopyFinished(targetFile)
-                }
-            }
-        }
-    }
-
     function formatTime(ms) {
+        if (!ms || isNaN(ms) || ms < 0) return "0:00"
         var totalSeconds = Math.floor(ms / 1000)
         var minutes = Math.floor(totalSeconds / 60)
         var seconds = totalSeconds % 60
         return minutes + ":" + (seconds < 10 ? "0" : "") + seconds
+    }
+
+    function advanceTrack() {
+        if (currentIndex < playlist.length - 1) {
+            next()
+        } else if (repeatMode === "all") {
+            currentIndex = 0
+            playList(playlist)
+        } else {
+            stop()
+        }
     }
 
     function play(songPath) {
@@ -120,6 +99,7 @@ Rectangle {
         audioPlayer.source = cachedPath
         audioPlayer.play()
         currentSongPath = songPath
+        currentSongName = songPath.split("/").pop()
         visible = true
     }
 
@@ -127,9 +107,6 @@ Rectangle {
         playlist = songs
         deleteFromCache(currentCacheFile)
         copyIndex = 0
-        nextTrackIndex = -1
-        copyInProgress = false
-        copyTimer.stop()
 
         if (songs.length === 0) return
 
@@ -146,17 +123,6 @@ Rectangle {
         currentSongPath = firstPath
         songChanged(currentSongName, currentIndex)
         visible = true
-
-        if (songs.length > 1) {
-            nextTrackIndex = 1
-            var nextPath = songs[1].path
-            var nextCachedPath = copyToCache(nextPath, copyIndex)
-            copyIndex++
-            copyInProgress = true
-            copyTimer.targetFile = nextCachedPath
-            copyTimer.isNextTrackCopy = true
-            copyTimer.start()
-        }
     }
 
     function pause() {
@@ -172,14 +138,12 @@ Rectangle {
         audioPlayer.source = ""
         deleteFromCache(currentCacheFile)
         isPlaying = false
-        visible = false
+        //visible = false
         currentIndex = -1
         currentSongName = ""
         currentSongPath = ""
         currentCacheFile = ""
-        nextTrackIndex = -1
-        copyInProgress = false
-        copyTimer.stop()
+        copyIndex = 0
         playingChanged(false)
     }
 
@@ -213,7 +177,7 @@ Rectangle {
             currentIndex = prevIdx
             currentSongName = playlist[prevIdx].name
             currentSongPath = prevPath
-            songChanged(currentSongName, currentIndex)
+            songChanged(currentSongName, prevIdx)
         }
     }
 
@@ -371,7 +335,25 @@ Rectangle {
                 }
             }
 
-            // Next button
+            MouseArea {
+                Layout.fillWidth: false
+                Layout.preferredWidth: units.gu(6)
+                height: units.gu(5)
+                onClicked: {
+                    if (isPlaying) {
+                        stop()
+                    }
+                }
+
+                Icon {
+                    anchors.centerIn: parent
+                    height: units.gu(3)
+                    width: units.gu(3)
+                    name: "media-playback-stop"
+                    color: "#FFFFFF"
+                }
+            }
+
             MouseArea {
                 Layout.fillWidth: false
                 Layout.preferredWidth: units.gu(5)
@@ -404,6 +386,29 @@ Rectangle {
                     opacity: repeatMode !== "none" ? 1 : 0.4
                 }
             }
+
+            // Playlists / Save button (context-dependent)
+            MouseArea {
+                Layout.fillWidth: false
+                Layout.preferredWidth: units.gu(4)
+                height: units.gu(4)
+                onClicked: {
+                    if (musicPlayer.selectionMode) {
+                        musicPlayer.saveRequested()
+                    } else {
+                        musicPlayer.showPlaylists = !musicPlayer.showPlaylists
+                    }
+                }
+
+                Icon {
+                    anchors.centerIn: parent
+                    height: units.gu(2)
+                    width: units.gu(2)
+                    name: musicPlayer.selectionMode ? "media-floppy" : "media-playlist"
+                    color: musicPlayer.selectionMode ? "#FFFFFF" : (musicPlayer.showPlaylists ? "#E95420" : "#FFFFFF")
+                    opacity: musicPlayer.showPlaylists || musicPlayer.selectionMode ? 1 : 0.4
+                }
+            }
         }
 
         RowLayout {
@@ -422,8 +427,10 @@ Rectangle {
                 minimumValue: 0
                 maximumValue: audioPlayer.duration
                 value: audioPlayer.position
-                onValueChanged: {
-                    audioPlayer.seek(value)
+                onPressedChanged: {
+                    if (!pressed) {
+                        audioPlayer.seek(value)
+                    }
                 }
             }
 
