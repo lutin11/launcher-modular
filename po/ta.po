@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 22:09+0000\n"
+"POT-Creation-Date: 2026-07-24 23:27+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -430,7 +430,7 @@ msgid "Create icon"
 msgstr "படவுருவை உருவாக்கவும்"
 
 #: ../qml/Main.qml:844 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:240
+#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:244
 #: ../qml/pages/PlaylistsView.qml:116 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "கைவிடு"
@@ -523,34 +523,26 @@ msgstr "நிறுவல் நீக்க"
 msgid "Remove"
 msgstr "அகற்று"
 
-#: ../qml/pages/Music.qml:208
+#: ../qml/pages/Music.qml:212
 msgid "Save Playlist"
 msgstr ""
 
-#: ../qml/pages/Music.qml:211
+#: ../qml/pages/Music.qml:215
 #, fuzzy
 msgid "Playlist name"
 msgstr "நகரத்தின் பெயர்"
 
-#: ../qml/pages/Music.qml:228 ../qml/pages/Music.qml:384
+#: ../qml/pages/Music.qml:232
 msgid "Save"
 msgstr ""
 
-#: ../qml/pages/Music.qml:325
+#: ../qml/pages/Music.qml:329
 msgid "Search your music"
 msgstr "உங்கள் இசையைத் தேடுங்கள்"
 
-#: ../qml/pages/Music.qml:379
-msgid "Play (%1)"
+#: ../qml/pages/MusicPlayer.qml:375
+msgid "(%1)"
 msgstr ""
-
-#: ../qml/pages/Music.qml:389
-msgid "All"
-msgstr ""
-
-#: ../qml/pages/Music.qml:394 ../qml/pages/home/Settings.qml:167
-msgid "None"
-msgstr "எதுவுமில்லை"
 
 #: ../qml/pages/PlaylistsView.qml:99
 msgid "Delete Playlist"
@@ -662,6 +654,10 @@ msgstr ""
 #: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
 msgstr "பிடித்த பயன்பாடுகள் மேலாண்மை"
+
+#: ../qml/pages/home/Settings.qml:167
+msgid "None"
+msgstr "எதுவுமில்லை"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"

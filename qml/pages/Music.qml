@@ -64,8 +64,12 @@ Item {
         }
         if (idx !== -1) {
             selectedSongs.splice(idx, 1)
+            console.log("removeFromPlaylist...")
+            musicPlayer.removeFromPlaylist(filePath, fileName)
         } else {
             selectedSongs.push({path: filePath, name: fileName})
+            console.log("addToPlaylist...")
+            musicPlayer.addToPlaylist(filePath, fileName)
         }
         selectedSongsChanged()
         selectionMode = selectedSongs.length > 0
@@ -361,6 +365,7 @@ Item {
     }
 
     // Selection action bar
+    /**
     Rectangle {
         id: selectionBar
         visible: selectionMode
@@ -396,7 +401,7 @@ Item {
                 onClicked: deselectAll()
             }
         }
-    }
+    }**/
 
     // Song list
     ListView {
@@ -409,7 +414,7 @@ Item {
             rightMargin: units.gu(2)
             leftMargin: units.gu(2)
             topMargin: selectionMode ? units.gu(11) : units.gu(6)
-            bottomMargin: musicPlayer.visible ? units.gu(11) : 0
+            bottomMargin: musicPlayer.visible ? units.gu(16) : 0
         }
         clip: true  // To avoid rendering content outside of the visible area
 

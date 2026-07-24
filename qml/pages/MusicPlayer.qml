@@ -8,7 +8,7 @@ import MySettings 1.0
 Rectangle {
     id: musicPlayer
     visible: false
-    height: visible ? units.gu(10) : 0
+    height: visible ? units.gu(15) : 0
     color: "#111111"
     anchors.left: parent.left
     anchors.right: parent.right
@@ -103,6 +103,34 @@ Rectangle {
         visible = true
     }
 
+    function addToPlaylist(filePath, fileName) {
+        console.log("received addToPlaylist...")
+        console.log(playlist.length)
+        var newPlaylist = playlist.slice()
+        newPlaylist.push({path: filePath, name: fileName})
+        playlist = newPlaylist   // réassignation -> déclenche playlistChanged
+        playList(playlist)
+    }
+
+    function removeFromPlaylist(filePath, fileName) {
+        console.log("received removeFromPlaylist...")
+        console.log(playlist.length)
+        var idx = -1
+        for (var i = 0; i < playlist.length; i++) {
+            if (playlist[i].path === filePath) {
+                idx = i
+                break
+            }
+        }
+        if (idx !== -1) {
+            var newPlaylist = playlist.slice()
+            newPlaylist.splice(idx, 1)
+            playlist = newPlaylist   // réassignation -> déclenche playlistChanged
+        }
+
+        playList(playlist)
+    }
+
     function playList(songs) {
         playlist = songs
         deleteFromCache(currentCacheFile)
@@ -116,7 +144,7 @@ Rectangle {
         currentCacheFile = cachedPath
 
         audioPlayer.source = cachedPath
-        audioPlayer.play()
+        //audioPlayer.play()
 
         currentIndex = 0
         currentSongName = songs[0].name
@@ -278,6 +306,21 @@ Rectangle {
         RowLayout {
             width: parent.width
             spacing: units.gu(1)
+            visible: currentSongName.length > 0
+            height: units.gu(5)
+            Label {
+                Layout.fillWidth: true
+                text: currentSongName
+                color: "#FFFFFF"
+                elide: Text.ElideRight
+                fontSize: "small"
+            }
+
+        }
+
+        RowLayout {
+            width: parent.width
+            spacing: units.gu(1)
 
             // Shuffle button
             MouseArea {
@@ -324,6 +367,15 @@ Rectangle {
                     } else {
                         resume()
                     }
+                }
+
+                Label {
+                    //anchors.centerIn: parent
+                    Layout.fillWidth: true
+                    text: i18n.tr("(%1)").arg(playlist.length)
+                    color: "#FFFFFF"
+                    elide: Text.ElideRight
+                    fontSize: "small"
                 }
 
                 Icon {
@@ -405,8 +457,7 @@ Rectangle {
                     height: units.gu(2)
                     width: units.gu(2)
                     name: musicPlayer.selectionMode ? "media-floppy" : "media-playlist"
-                    color: musicPlayer.selectionMode ? "#FFFFFF" : (musicPlayer.showPlaylists ? "#E95420" : "#FFFFFF")
-                    opacity: musicPlayer.showPlaylists || musicPlayer.selectionMode ? 1 : 0.4
+                    color: "#FFFFFF"
                 }
             }
         }
@@ -438,27 +489,6 @@ Rectangle {
                 text: formatTime(audioPlayer.duration)
                 color: "#FFFFFF"
                 fontSize: "small"
-            }
-        }
-
-        RowLayout {
-            width: parent.width
-            spacing: units.gu(1)
-
-            Label {
-                Layout.fillWidth: true
-                text: musicPlayer.currentSongName
-                color: "#FFFFFF"
-                elide: Text.ElideRight
-                fontSize: "small"
-            }
-
-            Button {
-                Layout.fillWidth: false
-                width: units.gu(4)
-                height: units.gu(3)
-                text: "✕"
-                onClicked: musicPlayer.stop()
             }
         }
     }

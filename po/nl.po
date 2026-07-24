@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 22:09+0000\n"
+"POT-Creation-Date: 2026-07-24 23:27+0000\n"
 "PO-Revision-Date: 2025-11-23 09:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/launcher-modular/"
@@ -417,7 +417,7 @@ msgid "Create icon"
 msgstr "Pictogram maken"
 
 #: ../qml/Main.qml:844 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:240
+#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:244
 #: ../qml/pages/PlaylistsView.qml:116 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Annuleren"
@@ -508,34 +508,26 @@ msgstr "Deïnstalleren"
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: ../qml/pages/Music.qml:208
+#: ../qml/pages/Music.qml:212
 msgid "Save Playlist"
 msgstr ""
 
-#: ../qml/pages/Music.qml:211
+#: ../qml/pages/Music.qml:215
 #, fuzzy
 msgid "Playlist name"
 msgstr "Locatienaam"
 
-#: ../qml/pages/Music.qml:228 ../qml/pages/Music.qml:384
+#: ../qml/pages/Music.qml:232
 msgid "Save"
 msgstr ""
 
-#: ../qml/pages/Music.qml:325
+#: ../qml/pages/Music.qml:329
 msgid "Search your music"
 msgstr ""
 
-#: ../qml/pages/Music.qml:379
-msgid "Play (%1)"
+#: ../qml/pages/MusicPlayer.qml:375
+msgid "(%1)"
 msgstr ""
-
-#: ../qml/pages/Music.qml:389
-msgid "All"
-msgstr ""
-
-#: ../qml/pages/Music.qml:394 ../qml/pages/home/Settings.qml:167
-msgid "None"
-msgstr "Geen"
 
 #: ../qml/pages/PlaylistsView.qml:99
 msgid "Delete Playlist"
@@ -652,6 +644,10 @@ msgstr ""
 #: ../qml/pages/home/Settings.qml:108
 msgid "Favorite apps management"
 msgstr "Favoriete apps beheren"
+
+#: ../qml/pages/home/Settings.qml:167
+msgid "None"
+msgstr "Geen"
 
 #: ../qml/pages/home/Settings.qml:167
 msgid "Unstyled icons"
