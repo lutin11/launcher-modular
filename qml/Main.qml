@@ -156,6 +156,7 @@ MainView {
         property string currentPlaylistName: ""
         property var currentPlaylistSongs: []
         property int currentSongIndex: -1
+        property var selectedSongs: []
     }//settings
 
     Timer {

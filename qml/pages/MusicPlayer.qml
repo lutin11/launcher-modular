@@ -4,11 +4,12 @@ import Lomiri.Components 1.3
 import QtMultimedia 5.12
 import Terminalaccess 1.0
 import MySettings 1.0
+import Lomiri.Components.Popups 1.3
 
 Rectangle {
     id: musicPlayer
-    visible: false
-    height: visible ? units.gu(15) : 0
+    visible: true
+    height: currentSongName.length > 0 ? units.gu(15) : units.gu(1)
     color: "#111111"
     anchors.left: parent.left
     anchors.right: parent.right
@@ -31,6 +32,8 @@ Rectangle {
         Terminalaccess.run("mkdir -p " + tempCacheDir)
         cleanupCache()
     }
+
+    PlaylistManager { id: playlistManager }
 
     signal songChanged(string name, int index)
     signal playingChanged(bool playing)
@@ -100,7 +103,7 @@ Rectangle {
         audioPlayer.play()
         currentSongPath = songPath
         currentSongName = songPath.split("/").pop()
-        visible = true
+        //visible = true
     }
 
     function addToPlaylist(filePath, fileName) {
@@ -150,7 +153,7 @@ Rectangle {
         currentSongName = songs[0].name
         currentSongPath = firstPath
         songChanged(currentSongName, currentIndex)
-        visible = true
+        //visible = true
     }
 
     function pause() {
@@ -173,6 +176,26 @@ Rectangle {
         currentCacheFile = ""
         copyIndex = 0
         playingChanged(false)
+    }
+
+    function clear() {
+        selectionMode = false;
+        audioPlayer.stop()
+        audioPlayer.source = ""
+        deleteFromCache(currentCacheFile)
+        isPlaying = false
+        //visible = false
+        currentIndex = -1
+        currentSongName = ""
+        currentSongPath = ""
+        currentCacheFile = ""
+        copyIndex = 0
+        playlist = playlist.slice()   // réassignation -> déclenche playlistChanged
+        playlist = []
+        playList(playlist)
+        launchermodular.settings.selectedSongs.splice()
+        launchermodular.settings.selectedSongs = []
+        playingChanged(true)
     }
 
     function next() {
@@ -253,6 +276,8 @@ Rectangle {
     }
 
     function cleanupCache() {
+        launchermodular.settings.selectedSongs.slice()
+        launchermodular.settings.selectedSongs = []
         Terminalaccess.run("rm -f " + tempCacheDir + "*.mp3 " + tempCacheDir + "*.aac " + tempCacheDir + "*.ogg " + tempCacheDir + "*.wav " + tempCacheDir + "*.flac " + tempCacheDir + "*.m4a " + tempCacheDir + "*.alac")
     }
 
@@ -278,6 +303,51 @@ Rectangle {
         if (filePath.indexOf(tempCacheDir) === 0) {
             var cleanPath = filePath.replace(/'/g, "'\\''")
             Terminalaccess.run("rm -f '" + cleanPath + "'")
+        }
+    }
+
+
+    Component {
+        id: savePlaylistDialog
+        Dialog {
+            id: saveDialog
+            title: i18n.tr("Save Playlist")
+            TextField {
+                id: playlistNameField
+                placeholderText: i18n.tr("Playlist name")
+                width: parent.width
+            }
+            Row {
+                width: parent.width
+                spacing: units.gu(1)
+                AbstractButton {
+                    id: saveButton
+                    width: parent.width / 2
+                    height: units.gu(4)
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: units.gu(1.5)
+                        color: "#0E8420"
+                    }
+                    Label {
+                        anchors.centerIn: parent
+                        text: i18n.tr("Save")
+                        color: "white"
+                    }
+                    onClicked: {
+                        if (playlistNameField.text.length > 0) {
+                            playlistManager.savePlaylist(playlistNameField.text, launchermodular.settings.selectedSongs)
+                            PopupUtils.close(saveDialog)
+                            deselectAll()
+                        }
+                    }
+                }
+                Button {
+                    text: i18n.tr("Cancel")
+                    width: parent.width / 2
+                    onClicked: PopupUtils.close(saveDialog)
+                }
+            }
         }
     }
 
@@ -392,8 +462,10 @@ Rectangle {
                 Layout.preferredWidth: units.gu(6)
                 height: units.gu(5)
                 onClicked: {
-                    if (isPlaying) {
+                    if (isPlaying || playlist.length === 0) {
                         stop()
+                    } else {
+                        clear()
                     }
                 }
 
@@ -401,7 +473,7 @@ Rectangle {
                     anchors.centerIn: parent
                     height: units.gu(3)
                     width: units.gu(3)
-                    name: "media-playback-stop"
+                    name: isPlaying || playlist.length === 0 ? "media-playback-stop" : "edit-delete"
                     color: "#FFFFFF"
                 }
             }
@@ -445,11 +517,15 @@ Rectangle {
                 Layout.preferredWidth: units.gu(4)
                 height: units.gu(4)
                 onClicked: {
+                    PopupUtils.open(savePlaylistDialog)
+                    /**
                     if (musicPlayer.selectionMode) {
                         musicPlayer.saveRequested()
                     } else {
+                        //PopupUtils.open(savePlaylistDialog)
                         musicPlayer.showPlaylists = !musicPlayer.showPlaylists
                     }
+                        **/
                 }
 
                 Icon {

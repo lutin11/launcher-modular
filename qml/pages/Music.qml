@@ -413,8 +413,8 @@ Item {
             fill: parent
             rightMargin: units.gu(2)
             leftMargin: units.gu(2)
-            topMargin: selectionMode ? units.gu(11) : units.gu(6)
-            bottomMargin: musicPlayer.visible ? units.gu(16) : 0
+            topMargin: units.gu(6)
+            bottomMargin: units.gu(16) // leave space for player
         }
         clip: true  // To avoid rendering content outside of the visible area
 
@@ -427,7 +427,7 @@ Item {
             Rectangle {
                 id: searchMusicRectangle
                 opacity: 0.9
-                color: isSelected(filePath) ? "#333333" : "#111111"
+                color: "#111111" //isSelected(filePath) ? "#333333" : "#111111"
                 height: parent.height
                 width: parent.width
 
@@ -442,7 +442,7 @@ Item {
                         width: units.gu(2)
                         height: units.gu(2)
                         radius: units.gu(0.5)
-                        color: isSelected(filePath) ? "#E95420" : "transparent"
+                        color: !fileIsDir && isSelected(filePath) ? "#E95420" : "transparent"
                         border.color: "#FFFFFF"
                         border.width: 1
                         anchors.verticalCenter: parent.verticalCenter
@@ -452,7 +452,7 @@ Item {
                             anchors.centerIn: parent
                             text: "\u2713"
                             color: "#FFFFFF"
-                            visible: isSelected(filePath)
+                            visible: !fileIsDir && isSelected(filePath)
                             font.pixelSize: units.gu(1.5)
                         }
                     }
