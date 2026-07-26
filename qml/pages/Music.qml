@@ -20,27 +20,25 @@ Item {
     property string pendingSearch: ""
     readonly property bool selectionMode: musicPlayer.playlist.length > 0
 
-    // Components
-    PlaylistManager { id: playlistManager }
-    MusicPlayer { id: musicPlayer }
-
-    Component.onCompleted: {
-        musicPlayer.visible = true
-        musicPlayer.cleanupCache()
-        musicPlayer.saveRequested.connect(saveSelectedAsPlaylist)
-    }
-
     ScreenSaver {
         id: screenSaver
         screenSaverEnabled: true
     }
 
-    onVisibleChanged: {
-        if (visible) {
-            screenSaver.screenSaverEnabled = false
-        } else {
-            screenSaver.screenSaverEnabled = true
+    // Components
+    PlaylistManager { id: playlistManager }
+    MusicPlayer {
+        id: musicPlayer
+        onStateChanged: {
+            // Désactive la mise en veille tant qu'une musique est en cours de lecture
+            screenSaver.screenSaverEnabled = (newState !== MusicPlayer.Playing)
         }
+    }
+
+    Component.onCompleted: {
+        musicPlayer.visible = true
+        musicPlayer.cleanupCache()
+        musicPlayer.saveRequested.connect(saveSelectedAsPlaylist)
     }
 
     /**

@@ -32,15 +32,25 @@ Rectangle {
         cleanupCache()
     }
 
-    signal playingChanged()
+    enum PlaybackState { Stopped, Playing, Paused, Cleared }
+
+    signal stateChanged(int newState)
     signal saveRequested()
+    signal showPlaylists()
+    signal hidePlaylists()
 
     Audio {
         id: audioPlayer
 
         onPlaybackStateChanged: {
             isPlaying = (playbackState === Audio.PlayingState)
-            playingChanged()
+            if (isPlaying) {
+                stateChanged(MusicPlayer.Playing)
+            } else if (playbackState === Audio.PausedState) {
+                stateChanged(MusicPlayer.Paused)
+            } else {
+                stateChanged(MusicPlayer.Stopped)
+            }
         }
 
         onPositionChanged: {
@@ -174,13 +184,12 @@ Rectangle {
 
     function stop() {
         resetPlayback()
-        playingChanged()
     }
 
     function clear() {
         resetPlayback()
         playlist = []
-        playingChanged()
+        stateChanged(MusicPlayer.Cleared)
     }
 
     function next() {
