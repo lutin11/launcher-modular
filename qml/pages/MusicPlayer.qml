@@ -4,7 +4,6 @@ import Lomiri.Components 1.3
 import QtMultimedia 5.12
 import Terminalaccess 1.0
 import MySettings 1.0
-import Lomiri.Components.Popups 1.3
 
 Rectangle {
     id: musicPlayer
@@ -33,19 +32,15 @@ Rectangle {
         cleanupCache()
     }
 
-    //PlaylistManager { id: playlistManager }
-
-    //signal songChanged(string name, int index)
-    signal playingChanged(bool playing)
-    //signal dismissed()
-    //signal saveRequested()
+    signal playingChanged()
+    signal saveRequested()
 
     Audio {
         id: audioPlayer
 
         onPlaybackStateChanged: {
             isPlaying = (playbackState === Audio.PlayingState)
-            playingChanged(isPlaying)
+            playingChanged()
         }
 
         onPositionChanged: {
@@ -103,7 +98,6 @@ Rectangle {
         audioPlayer.play()
         currentSongPath = songPath
         currentSongName = songPath.split("/").pop()
-        //visible = true
     }
 
     function addToPlaylist(filePath, fileName) {
@@ -134,26 +128,40 @@ Rectangle {
         playList(playlist)
     }
 
-    function playList(songs) {
-        playlist = songs
+    function loadTrack(index, autoPlay) {
+        if (index < 0 || index >= playlist.length) return
+
+        var path = playlist[index].path
         deleteFromCache(currentCacheFile)
-        copyIndex = 0
-
-        if (songs.length === 0) return
-
-        var firstPath = songs[0].path
-        var cachedPath = copyToCache(firstPath, copyIndex)
+        var cachedPath = copyToCache(path, copyIndex)
         copyIndex++
         currentCacheFile = cachedPath
 
         audioPlayer.source = cachedPath
-        //audioPlayer.play()
+        if (autoPlay) audioPlayer.play()
 
-        currentIndex = 0
-        currentSongName = songs[0].name
-        currentSongPath = firstPath
-        //songChanged(currentSongName, currentIndex)
-        //visible = true
+        currentIndex = index
+        currentSongName = playlist[index].name
+        currentSongPath = path
+    }
+
+    function resetPlayback() {
+        audioPlayer.stop()
+        audioPlayer.source = ""
+        deleteFromCache(currentCacheFile)
+        isPlaying = false
+        currentIndex = -1
+        currentSongName = ""
+        currentSongPath = ""
+        currentCacheFile = ""
+        copyIndex = 0
+    }
+
+    function playList(songs) {
+        playlist = songs
+        resetPlayback()
+        if (songs.length === 0) return
+        loadTrack(0, false)
     }
 
     function pause() {
@@ -165,71 +173,22 @@ Rectangle {
     }
 
     function stop() {
-        audioPlayer.stop()
-        audioPlayer.source = ""
-        deleteFromCache(currentCacheFile)
-        isPlaying = false
-        //visible = false
-        currentIndex = -1
-        currentSongName = ""
-        currentSongPath = ""
-        currentCacheFile = ""
-        copyIndex = 0
-        playingChanged(false)
+        resetPlayback()
+        playingChanged()
     }
 
     function clear() {
-        selectionMode = false;
-        audioPlayer.stop()
-        audioPlayer.source = ""
-        deleteFromCache(currentCacheFile)
-        isPlaying = false
-        //visible = false
-        currentIndex = -1
-        currentSongName = ""
-        currentSongPath = ""
-        currentCacheFile = ""
-        copyIndex = 0
-        playlist = playlist.slice()   // réassignation -> déclenche playlistChanged
+        resetPlayback()
         playlist = []
-        playList(playlist)
-        playingChanged(true)
-        //launchermodular.settings.selectedSongs.splice()
-        //launchermodular.settings.selectedSongs = []
+        playingChanged()
     }
 
     function next() {
-        if (currentIndex < playlist.length - 1) {
-            var nextIdx = currentIndex + 1
-            var nextPath = playlist[nextIdx].path
-            deleteFromCache(currentCacheFile)
-            var cachedPath = copyToCache(nextPath, copyIndex)
-            copyIndex++
-            currentCacheFile = cachedPath
-            audioPlayer.source = cachedPath
-            audioPlayer.play()
-            currentIndex = nextIdx
-            currentSongName = playlist[nextIdx].name
-            currentSongPath = nextPath
-            //songChanged(currentSongName, currentIndex)
-        }
+        if (currentIndex < playlist.length - 1) loadTrack(currentIndex + 1, true)
     }
 
     function previous() {
-        if (currentIndex > 0) {
-            var prevIdx = currentIndex - 1
-            var prevPath = playlist[prevIdx].path
-            deleteFromCache(currentCacheFile)
-            var cachedPath = copyToCache(prevPath, copyIndex)
-            copyIndex++
-            currentCacheFile = cachedPath
-            audioPlayer.source = cachedPath
-            audioPlayer.play()
-            currentIndex = prevIdx
-            currentSongName = playlist[prevIdx].name
-            currentSongPath = prevPath
-            //songChanged(currentSongName, prevIdx)
-        }
+        if (currentIndex > 0) loadTrack(currentIndex - 1, true)
     }
 
     function toggleShuffle() {
@@ -257,7 +216,6 @@ Rectangle {
             currentIndex = nextTrackIndex
             currentSongName = playlist[nextTrackIndex].name
             currentSongPath = playlist[nextTrackIndex].path
-            //songChanged(currentSongName, nextTrackIndex)
 
             var nextIdx = nextTrackIndex + 1
             if (nextIdx < playlist.length) {
@@ -276,8 +234,6 @@ Rectangle {
     }
 
     function cleanupCache() {
-        //launchermodular.settings.selectedSongs.slice()
-        //launchermodular.settings.selectedSongs = []
         Terminalaccess.run("rm -f " + tempCacheDir + "*.mp3 " + tempCacheDir + "*.aac " + tempCacheDir + "*.ogg " + tempCacheDir + "*.wav " + tempCacheDir + "*.flac " + tempCacheDir + "*.m4a " + tempCacheDir + "*.alac")
     }
 
@@ -307,50 +263,6 @@ Rectangle {
     }
 
 
-    Component {
-        id: savePlaylistDialog
-        Dialog {
-            id: saveDialog
-            title: i18n.tr("Save Playlist")
-            TextField {
-                id: playlistNameField
-                placeholderText: i18n.tr("Playlist name")
-                width: parent.width
-            }
-            Row {
-                width: parent.width
-                spacing: units.gu(1)
-                AbstractButton {
-                    id: saveButton
-                    width: parent.width / 2
-                    height: units.gu(4)
-                    Rectangle {
-                        anchors.fill: parent
-                        radius: units.gu(1.5)
-                        color: "#0E8420"
-                    }
-                    Label {
-                        anchors.centerIn: parent
-                        text: i18n.tr("Save")
-                        color: "white"
-                    }
-                    onClicked: {
-                        if (playlistNameField.text.length > 0) {
-                            //playlistManager.savePlaylist(playlistNameField.text, selectedSongs)
-                            PopupUtils.close(saveDialog)
-                            deselectAll()
-                        }
-                    }
-                }
-                Button {
-                    text: i18n.tr("Cancel")
-                    width: parent.width / 2
-                    onClicked: PopupUtils.close(saveDialog)
-                }
-            }
-        }
-    }
-
     MouseArea {
         id: swipeArea
         anchors.top: parent.top
@@ -364,7 +276,6 @@ Rectangle {
         onReleased: {
             if (startY - mouseY > units.gu(3)) {
                 musicPlayer.stop()
-                //musicPlayer.dismissed()
             }
         }
     }
@@ -372,7 +283,6 @@ Rectangle {
     Column {
         anchors.fill: parent
         anchors.margins: units.gu(1)
-        visible: true
 
         RowLayout {
             width: parent.width
@@ -392,7 +302,6 @@ Rectangle {
         RowLayout {
             width: parent.width
             spacing: units.gu(1)
-            visible: true
 
             // Shuffle button
             MouseArea {
@@ -442,7 +351,6 @@ Rectangle {
                 }
 
                 Label {
-                    //anchors.centerIn: parent
                     Layout.fillWidth: true
                     text: i18n.tr("(%1)").arg(playlist.length)
                     color: "#FFFFFF"
@@ -513,28 +421,18 @@ Rectangle {
                 }
             }
 
-            // Playlists / Save button (context-dependent)
+            // Save current playlist (handled by Music.qml, which owns selectedSongs/playlistManager)
             MouseArea {
                 Layout.fillWidth: false
                 Layout.preferredWidth: units.gu(4)
                 height: units.gu(4)
-                onClicked: {
-                    PopupUtils.open(savePlaylistDialog)
-                    /**
-                    if (musicPlayer.selectionMode) {
-                        musicPlayer.saveRequested()
-                    } else {
-                        //PopupUtils.open(savePlaylistDialog)
-                        musicPlayer.showPlaylists = !musicPlayer.showPlaylists
-                    }
-                        **/
-                }
+                onClicked: saveRequested()
 
                 Icon {
                     anchors.centerIn: parent
                     height: units.gu(2)
                     width: units.gu(2)
-                    name: musicPlayer.selectionMode ? "media-floppy" : "media-playlist"
+                    name: "media-playlist"
                     color: "#FFFFFF"
                 }
             }

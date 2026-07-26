@@ -17,74 +17,39 @@ Item {
     property bool initialParsingDone: false
     property string parentFolder: MySettings.getMusicLocation()
     property string pendingSearch: ""
-    property var selectedSongs: []
-    property bool selectionMode: false
-    property bool showSaveOverlay: false
+    readonly property bool selectionMode: musicPlayer.playlist.length > 0
 
     // Components
     PlaylistManager { id: playlistManager }
     MusicPlayer { id: musicPlayer }
 
     Component.onCompleted: {
-        musicPlayer.cleanupCache()
         musicPlayer.visible = true
-        // musicPlayer.saveRequested.connect(function() {
-        //     showSaveOverlay = true
-        // })
-        musicPlayer.playingChanged.connect(function() {
-            console.log("MusicPlayer.playingChanged.connect()")
-            deselectAll()
-        })
-    }
-
-    /**
-     * Play selected songs in Lomiri Music App
-     */
-    function playSelected() {
-        if (selectedSongs.length === 0) return
-
-        musicPlayer.playList(selectedSongs)
-        deselectAll()
+        musicPlayer.cleanupCache()
+        musicPlayer.saveRequested.connect(saveSelectedAsPlaylist)
     }
 
     /**
      * Save selected songs as a playlist
      */
     function saveSelectedAsPlaylist() {
-        if (selectedSongs.length === 0) return
+        if (musicPlayer.playlist.length === 0) return
         PopupUtils.open(savePlaylistDialog)
     }
 
-    /**
-     * Toggle selection for a file
-     */
     function toggleSelection(filePath, fileName) {
-        var idx = -1
-        for (var i = 0; i < selectedSongs.length; i++) {
-            if (selectedSongs[i].path === filePath) {
-                idx = i
-                break
-            }
-        }
-        if (idx !== -1) {
-            selectedSongs.splice(idx, 1)
-            console.log("removeFromPlaylist...")
+        if (isSelected(filePath)) {
             musicPlayer.removeFromPlaylist(filePath, fileName)
         } else {
-            selectedSongs.push({path: filePath, name: fileName})
             console.log("addToPlaylist...")
             musicPlayer.addToPlaylist(filePath, fileName)
         }
-        selectedSongsChanged()
-        selectionMode = selectedSongs.length > 0
     }
 
-    /**
-     * Check if a file is selected
-     */
     function isSelected(filePath) {
-        for (var i = 0; i < selectedSongs.length; i++) {
-            if (selectedSongs[i].path === filePath) return true
+        var playlist = musicPlayer.playlist
+        for (var i = 0; i < playlist.length; i++) {
+            if (playlist[i].path === filePath) return true
         }
         return false
     }
@@ -93,24 +58,21 @@ Item {
      * Select all music files in current view
      */
     function selectAll() {
-        selectedSongs = []
+        var songs = []
         for (var i = 0; i < searchResults.count; i++) {
             var item = searchResults.get(i)
             if (!item.fileIsDir) {
-                selectedSongs.push({path: item.filePath, name: item.fileName})
+                songs.push({path: item.filePath, name: item.fileName})
             }
         }
-        selectedSongsChanged()
-        selectionMode = selectedSongs.length > 0
+        musicPlayer.playList(songs)
     }
 
     /**
      * Deselect all files
      */
     function deselectAll() {
-        selectedSongs = []
-        selectedSongsChanged()
-        selectionMode = false
+        musicPlayer.clear()
     }
 
     ListModel {
@@ -238,9 +200,8 @@ Item {
                     }
                     onClicked: {
                         if (playlistNameField.text.length > 0) {
-                            playlistManager.savePlaylist(playlistNameField.text, selectedSongs)
+                            playlistManager.savePlaylist(playlistNameField.text, musicPlayer.playlist)
                             PopupUtils.close(saveDialog)
-                            deselectAll()
                         }
                     }
                 }
@@ -368,45 +329,6 @@ Item {
         }
     }
 
-    // Selection action bar
-    /**
-    Rectangle {
-        id: selectionBar
-        visible: selectionMode
-        height: visible ? units.gu(5) : 0
-        anchors.top: searchBar.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        color: "#E95420"
-
-        RowLayout {
-            anchors.fill: parent
-            anchors.margins: units.gu(1)
-            spacing: units.gu(1)
-
-            Button {
-                text: i18n.tr("Play (%1)").arg(selectedSongs.length)
-                Layout.fillWidth: true
-                onClicked: playSelected()
-            }
-            Button {
-                text: i18n.tr("Save")
-                Layout.fillWidth: true
-                onClicked: saveSelectedAsPlaylist()
-            }
-            Button {
-                text: i18n.tr("All")
-                Layout.fillWidth: true
-                onClicked: selectAll()
-            }
-            Button {
-                text: i18n.tr("None")
-                Layout.fillWidth: true
-                onClicked: deselectAll()
-            }
-        }
-    }**/
-
     // Song list
     ListView {
         id: searchMusicView
@@ -431,7 +353,7 @@ Item {
             Rectangle {
                 id: searchMusicRectangle
                 opacity: 0.9
-                color: "#111111" //isSelected(filePath) ? "#333333" : "#111111"
+                color: !fileIsDir && isSelected(filePath) ? "#333333" : "#111111"
                 height: parent.height
                 width: parent.width
 
