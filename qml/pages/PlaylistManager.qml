@@ -1,10 +1,3 @@
-/*
- * PlaylistManager.qml - LocalStorage-based playlist management
- *
- * Provides functions to save, load, and delete playlists.
- * Playlists are stored in the app's LocalStorage database.
- */
-
 import QtQuick 2.4
 import QtQuick.LocalStorage 2.0
 
@@ -13,9 +6,12 @@ Item {
 
     property var db: null
 
+    property ListModel itemModel : ListModel {}
+
     // Initialize database on completion
     Component.onCompleted: {
         initDatabase()
+        buildModel()
     }
 
     function initDatabase() {
@@ -51,6 +47,7 @@ Item {
             }
             success = true
         })
+        if (success) buildModel()
         return success
     }
 
@@ -124,6 +121,7 @@ Item {
             tx.executeSql('DELETE FROM playlists WHERE name=?', [name])
             success = true
         })
+        if (success) buildModel()
         return success
     }
 
@@ -147,6 +145,15 @@ Item {
                 success = true
             }
         })
+        if (success) buildModel()
         return success
+    }
+
+    function buildModel() {
+        itemModel.clear()
+        var names = loadPlaylists()
+        for (var i = 0; i < names.length; i++) {
+            itemModel.append({name: names[i]})
+        }
     }
 }

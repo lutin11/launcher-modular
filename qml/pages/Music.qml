@@ -2,7 +2,6 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
 import Lomiri.Components 1.3
-import Lomiri.Components.Popups 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
 import MySettings 1.0
@@ -19,6 +18,7 @@ Item {
     property string parentFolder: MySettings.getMusicLocation()
     property string pendingSearch: ""
     readonly property bool selectionMode: musicPlayer.playlist.length > 0
+    property bool showingPlaylists: false
 
     ScreenSaver {
         id: screenSaver
@@ -29,8 +29,10 @@ Item {
     PlaylistManager { id: playlistManager }
     MusicPlayer {
         id: musicPlayer
+        showingPlaylists: musics.showingPlaylists
+        onShowPlaylists: musics.showingPlaylists = true
+        onHidePlaylists: musics.showingPlaylists = false
         onStateChanged: {
-            // Désactive la mise en veille tant qu'une musique est en cours de lecture
             screenSaver.screenSaverEnabled = (newState !== MusicPlayer.Playing)
         }
     }
@@ -38,15 +40,6 @@ Item {
     Component.onCompleted: {
         musicPlayer.visible = true
         musicPlayer.cleanupCache()
-        musicPlayer.saveRequested.connect(saveSelectedAsPlaylist)
-    }
-
-    /**
-     * Save selected songs as a playlist
-     */
-    function saveSelectedAsPlaylist() {
-        if (musicPlayer.playlist.length === 0) return
-        PopupUtils.open(savePlaylistDialog)
     }
 
     function toggleSelection(filePath, fileName) {
@@ -56,7 +49,7 @@ Item {
             musicPlayer.addToPlaylist(filePath, fileName)
         }
     }
-
+    Check if a file is selected
     function isSelected(filePath) {
         var playlist = musicPlayer.playlist
         for (var i = 0; i < playlist.length; i++) {
@@ -208,50 +201,6 @@ Item {
         }
     }
 
-    // Save playlist dialog
-    Component {
-        id: savePlaylistDialog
-        Dialog {
-            id: saveDialog
-            title: i18n.tr("Save Playlist")
-            TextField {
-                id: playlistNameField
-                placeholderText: i18n.tr("Playlist name")
-                width: parent.width
-            }
-            Row {
-                width: parent.width
-                spacing: units.gu(1)
-                AbstractButton {
-                    id: saveButton
-                    width: parent.width / 2
-                    height: units.gu(4)
-                    Rectangle {
-                        anchors.fill: parent
-                        radius: units.gu(1.5)
-                        color: "#0E8420"
-                    }
-                    Label {
-                        anchors.centerIn: parent
-                        text: i18n.tr("Save")
-                        color: "white"
-                    }
-                    onClicked: {
-                        if (playlistNameField.text.length > 0) {
-                            playlistManager.savePlaylist(playlistNameField.text, musicPlayer.playlist)
-                            PopupUtils.close(saveDialog)
-                        }
-                    }
-                }
-                Button {
-                    text: i18n.tr("Cancel")
-                    width: parent.width / 2
-                    onClicked: PopupUtils.close(saveDialog)
-                }
-            }
-        }
-    }
-
     // Search bar
     Rectangle {
         id: searchBar
@@ -371,6 +320,7 @@ Item {
     ListView {
         id: searchMusicView
         model: searchResults
+        visible: !showingPlaylists
 
         width: parent.width
         anchors {
@@ -416,7 +366,6 @@ Item {
 
                 Text {
                     text: isAllSelected() ? i18n.tr("Deselect all") : i18n.tr("Select all")
-                    font.bold: true
                     color: launchermodular.settings.musicFontColor
                     font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
                 }
@@ -495,5 +444,20 @@ Item {
                 }
             } // Item
         }// delegate Rectangle
+    }
+
+    // Playlists list — remplace song lists
+    PlaylistsView {
+        id: playlistsView
+        visible: showingPlaylists
+        anchors {
+            fill: parent
+            rightMargin: units.gu(2)
+            leftMargin: units.gu(2)
+            topMargin: units.gu(6)
+            bottomMargin: units.gu(16) // leave space for player
+        }
+        playlistManager: playlistManager
+        musicPlayer: musicPlayer
     }
 }

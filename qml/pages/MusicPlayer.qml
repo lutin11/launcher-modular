@@ -26,6 +26,7 @@ Rectangle {
     property int copyIndex: 0
     property bool copyInProgress: false
     property int nextTrackIndex: -1
+    property bool showingPlaylists: false
 
     Component.onCompleted: {
         Terminalaccess.run("mkdir -p " + tempCacheDir)
@@ -35,7 +36,6 @@ Rectangle {
     enum PlaybackState { Stopped, Playing, Paused, Cleared }
 
     signal stateChanged(int newState)
-    signal saveRequested()
     signal showPlaylists()
     signal hidePlaylists()
 
@@ -430,18 +430,20 @@ Rectangle {
                 }
             }
 
-            // Save current playlist (handled by Music.qml, which owns selectedSongs/playlistManager)
             MouseArea {
                 Layout.fillWidth: false
                 Layout.preferredWidth: units.gu(4)
                 height: units.gu(4)
-                onClicked: saveRequested()
+                onClicked: {
+                    if (showingPlaylists) hidePlaylists()
+                    else showPlaylists()
+                }
 
                 Icon {
                     anchors.centerIn: parent
                     height: units.gu(2)
                     width: units.gu(2)
-                    name: "media-playlist"
+                    name: showingPlaylists ? "go-previous" : "media-playlist"
                     color: "#FFFFFF"
                 }
             }
