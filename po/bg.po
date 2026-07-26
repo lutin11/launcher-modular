@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 12:53+0000\n"
+"POT-Creation-Date: 2026-07-26 22:23+0000\n"
 "PO-Revision-Date: 2025-11-23 09:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/launcher-"
@@ -398,8 +398,7 @@ msgid "Create icon"
 msgstr ""
 
 #: ../qml/Main.qml:845 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:235
-#: ../qml/pages/PlaylistsView.qml:116 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr ""
 
@@ -489,59 +488,33 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Music.qml:204
-msgid "Save Playlist"
-msgstr ""
-
-#: ../qml/pages/Music.qml:207
-msgid "Playlist name"
-msgstr ""
-
-#: ../qml/pages/Music.qml:224
-msgid "Save"
-msgstr ""
-
-#: ../qml/pages/Music.qml:320
+#: ../qml/pages/Music.qml:281
 msgid "Search your music"
 msgstr ""
 
-#: ../qml/pages/Music.qml:406
+#: ../qml/pages/Music.qml:368
 msgid "Deselect all"
 msgstr ""
 
-#: ../qml/pages/Music.qml:406
+#: ../qml/pages/Music.qml:368
 msgid "Select all"
 msgstr ""
 
-#: ../qml/pages/MusicPlayer.qml:355
+#: ../qml/pages/MusicPlayer.qml:364
 msgid "(%1)"
 msgstr ""
 
-#: ../qml/pages/PlaylistsView.qml:99
-msgid "Delete Playlist"
+#: ../qml/pages/PlaylistsView.qml:83
+msgid "New playlist"
 msgstr ""
 
-#: ../qml/pages/PlaylistsView.qml:100
-msgid "Are you sure you want to delete '%1'?"
-msgstr ""
-
-#: ../qml/pages/PlaylistsView.qml:105 ../qml/pages/Todo.qml:121
-#: ../qml/pages/home/Settings.qml:139 ../qml/pages/rss/Settings.qml:175
-msgid "Delete"
-msgstr ""
-
-#: ../qml/pages/PlaylistsView.qml:165
-msgid "Playlists"
-msgstr ""
-
-#: ../qml/pages/PlaylistsView.qml:241
+#: ../qml/pages/PlaylistsView.qml:108
 msgid "%1 tracks"
 msgstr ""
 
-#: ../qml/pages/PlaylistsView.qml:323
-msgid ""
-"No playlists yet.\n"
-"Select songs and tap Save to create a playlist."
+#: ../qml/pages/PlaylistsView.qml:123 ../qml/pages/Todo.qml:121
+#: ../qml/pages/home/Settings.qml:139 ../qml/pages/rss/Settings.qml:175
+msgid "Delete"
 msgstr ""
 
 #: ../qml/pages/Rss.qml:154
