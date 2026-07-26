@@ -133,9 +133,6 @@ Item {
                     checkbox.toggle()
                 }
             }
-        }       
-        
-    
-
+        }
     }
 }
