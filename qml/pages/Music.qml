@@ -41,7 +41,6 @@ Item {
         if (isSelected(filePath)) {
             musicPlayer.removeFromPlaylist(filePath, fileName)
         } else {
-            console.log("addToPlaylist...")
             musicPlayer.addToPlaylist(filePath, fileName)
         }
     }
@@ -73,6 +72,33 @@ Item {
      */
     function deselectAll() {
         musicPlayer.clear()
+    }
+
+    function hasSongsInView() {
+        for (var i = 0; i < searchResults.count; i++) {
+            if (!searchResults.get(i).fileIsDir) return true
+        }
+        return false
+    }
+
+    function isAllSelected() {
+        var anySong = false
+        for (var i = 0; i < searchResults.count; i++) {
+            var item = searchResults.get(i)
+            if (!item.fileIsDir) {
+                anySong = true
+                if (!isSelected(item.filePath)) return false
+            }
+        }
+        return anySong
+    }
+
+    function toggleSelectAll() {
+        if (isAllSelected()) {
+            deselectAll()
+        } else {
+            selectAll()
+        }
     }
 
     ListModel {
@@ -345,6 +371,50 @@ Item {
         clip: true  // To avoid rendering content outside of the visible area
 
         focus: true
+
+        header: Rectangle {
+            width: searchMusicView.width
+            height: hasSongsInView() ? units.gu(5) : 0
+            visible: hasSongsInView()
+            color: "transparent"
+
+            Row {
+                spacing: units.gu(1)
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.leftMargin: units.gu(1)
+
+                Rectangle {
+                    width: units.gu(2)
+                    height: units.gu(2)
+                    radius: units.gu(0.5)
+                    color: isAllSelected() ? "#E95420" : "transparent"
+                    border.color: "#FFFFFF"
+                    border.width: 1
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: "\u2713"
+                        color: "#FFFFFF"
+                        visible: isAllSelected()
+                        font.pixelSize: units.gu(1.5)
+                    }
+                }
+
+                Text {
+                    text: isAllSelected() ? i18n.tr("Deselect all") : i18n.tr("Select all")
+                    font.bold: true
+                    color: launchermodular.settings.musicFontColor
+                    font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: toggleSelectAll()
+            }
+        }
 
         delegate: Item {
             width: searchMusicView.width
