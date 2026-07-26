@@ -49,7 +49,7 @@ Item {
             musicPlayer.addToPlaylist(filePath, fileName)
         }
     }
-    Check if a file is selected
+
     function isSelected(filePath) {
         var playlist = musicPlayer.playlist
         for (var i = 0; i < playlist.length; i++) {
