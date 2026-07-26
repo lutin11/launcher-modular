@@ -8,8 +8,8 @@ import Lomiri.Components.Popups 1.3
 
 Rectangle {
     id: musicPlayer
-    visible: true
-    height: currentSongName.length > 0 ? units.gu(15) : units.gu(1)
+    visible: false
+    height: currentSongName.length > 0 ? units.gu(16) : units.gu(11)
     color: "#111111"
     anchors.left: parent.left
     anchors.right: parent.right
@@ -33,12 +33,12 @@ Rectangle {
         cleanupCache()
     }
 
-    PlaylistManager { id: playlistManager }
+    //PlaylistManager { id: playlistManager }
 
-    signal songChanged(string name, int index)
+    //signal songChanged(string name, int index)
     signal playingChanged(bool playing)
-    signal dismissed()
-    signal saveRequested()
+    //signal dismissed()
+    //signal saveRequested()
 
     Audio {
         id: audioPlayer
@@ -152,7 +152,7 @@ Rectangle {
         currentIndex = 0
         currentSongName = songs[0].name
         currentSongPath = firstPath
-        songChanged(currentSongName, currentIndex)
+        //songChanged(currentSongName, currentIndex)
         //visible = true
     }
 
@@ -193,9 +193,9 @@ Rectangle {
         playlist = playlist.slice()   // réassignation -> déclenche playlistChanged
         playlist = []
         playList(playlist)
-        launchermodular.settings.selectedSongs.splice()
-        launchermodular.settings.selectedSongs = []
         playingChanged(true)
+        //launchermodular.settings.selectedSongs.splice()
+        //launchermodular.settings.selectedSongs = []
     }
 
     function next() {
@@ -211,7 +211,7 @@ Rectangle {
             currentIndex = nextIdx
             currentSongName = playlist[nextIdx].name
             currentSongPath = nextPath
-            songChanged(currentSongName, currentIndex)
+            //songChanged(currentSongName, currentIndex)
         }
     }
 
@@ -228,7 +228,7 @@ Rectangle {
             currentIndex = prevIdx
             currentSongName = playlist[prevIdx].name
             currentSongPath = prevPath
-            songChanged(currentSongName, prevIdx)
+            //songChanged(currentSongName, prevIdx)
         }
     }
 
@@ -257,7 +257,7 @@ Rectangle {
             currentIndex = nextTrackIndex
             currentSongName = playlist[nextTrackIndex].name
             currentSongPath = playlist[nextTrackIndex].path
-            songChanged(currentSongName, nextTrackIndex)
+            //songChanged(currentSongName, nextTrackIndex)
 
             var nextIdx = nextTrackIndex + 1
             if (nextIdx < playlist.length) {
@@ -276,8 +276,8 @@ Rectangle {
     }
 
     function cleanupCache() {
-        launchermodular.settings.selectedSongs.slice()
-        launchermodular.settings.selectedSongs = []
+        //launchermodular.settings.selectedSongs.slice()
+        //launchermodular.settings.selectedSongs = []
         Terminalaccess.run("rm -f " + tempCacheDir + "*.mp3 " + tempCacheDir + "*.aac " + tempCacheDir + "*.ogg " + tempCacheDir + "*.wav " + tempCacheDir + "*.flac " + tempCacheDir + "*.m4a " + tempCacheDir + "*.alac")
     }
 
@@ -336,7 +336,7 @@ Rectangle {
                     }
                     onClicked: {
                         if (playlistNameField.text.length > 0) {
-                            playlistManager.savePlaylist(playlistNameField.text, launchermodular.settings.selectedSongs)
+                            //playlistManager.savePlaylist(playlistNameField.text, selectedSongs)
                             PopupUtils.close(saveDialog)
                             deselectAll()
                         }
@@ -364,7 +364,7 @@ Rectangle {
         onReleased: {
             if (startY - mouseY > units.gu(3)) {
                 musicPlayer.stop()
-                musicPlayer.dismissed()
+                //musicPlayer.dismissed()
             }
         }
     }
@@ -372,6 +372,7 @@ Rectangle {
     Column {
         anchors.fill: parent
         anchors.margins: units.gu(1)
+        visible: true
 
         RowLayout {
             width: parent.width
@@ -391,6 +392,7 @@ Rectangle {
         RowLayout {
             width: parent.width
             spacing: units.gu(1)
+            visible: true
 
             // Shuffle button
             MouseArea {

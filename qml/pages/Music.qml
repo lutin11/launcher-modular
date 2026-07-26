@@ -28,8 +28,12 @@ Item {
     Component.onCompleted: {
         musicPlayer.cleanupCache()
         musicPlayer.visible = true
-        musicPlayer.saveRequested.connect(function() {
-            showSaveOverlay = true
+        // musicPlayer.saveRequested.connect(function() {
+        //     showSaveOverlay = true
+        // })
+        musicPlayer.playingChanged.connect(function() {
+            console.log("MusicPlayer.playingChanged.connect()")
+            deselectAll()
         })
     }
 
