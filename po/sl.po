@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-24 23:27+0000\n"
+"POT-Creation-Date: 2026-07-26 12:53+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/launcher-"
@@ -351,77 +351,77 @@ msgstr ""
 msgid "Choose"
 msgstr "Izberite"
 
-#: ../qml/Main.qml:444
+#: ../qml/Main.qml:445
 msgid "Swipe up to configure the launcher"
 msgstr "Podrsajte navzgor za konfiguracijo zaganjalnika"
 
-#: ../qml/Main.qml:502
+#: ../qml/Main.qml:503
 msgid "Add custom icon"
 msgstr "Dodajte ikono po meri"
 
-#: ../qml/Main.qml:535
+#: ../qml/Main.qml:536
 #, fuzzy
 msgid "Manage pages"
 msgstr "Upravljanje strani"
 
-#: ../qml/Main.qml:568
+#: ../qml/Main.qml:569
 msgid "Configure Launcher"
 msgstr "Konfigurirajte zaganjalnik"
 
-#: ../qml/Main.qml:601
+#: ../qml/Main.qml:602
 msgid "Autostart"
 msgstr "Samodejni zagon"
 
-#: ../qml/Main.qml:634
+#: ../qml/Main.qml:635
 msgid "Help"
 msgstr "Pomoč"
 
-#: ../qml/Main.qml:667
+#: ../qml/Main.qml:668
 msgid "About"
 msgstr "O aplikaciji"
 
-#: ../qml/Main.qml:724
+#: ../qml/Main.qml:725
 msgid "Website"
 msgstr "Spletna stran"
 
-#: ../qml/Main.qml:724
+#: ../qml/Main.qml:725
 msgid "Open this URL in the web browser"
 msgstr "Odprite ta naslov URL v spletnem brskalniku"
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:726
 msgid "Terminal command"
 msgstr "Terminalski ukaz"
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:726
 msgid "Run a command in a terminal"
 msgstr "Zaženite ukaz v terminalu"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:727
 msgid "Launch app"
 msgstr "Zaženi aplikacijo"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:727
 msgid "Launch an app"
 msgstr "Zaženite eno aplikacijo"
 
-#: ../qml/Main.qml:750
+#: ../qml/Main.qml:751
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "Ikona SVG ali PNG formata. Razmerje 1:1"
 
-#: ../qml/Main.qml:763
+#: ../qml/Main.qml:764
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>Naslov</b>, ki bo prikazan na seznamu aplikacij"
 
-#: ../qml/Main.qml:787 ../qml/Main.qml:788 ../qml/Main.qml:789
+#: ../qml/Main.qml:788 ../qml/Main.qml:789 ../qml/Main.qml:790
 msgid "<b>Action</b> example: "
 msgstr "Primer <b>dejanja</b> : "
 
-#: ../qml/Main.qml:801
+#: ../qml/Main.qml:802
 msgid "Create icon"
 msgstr "Ustvari ikono"
 
-#: ../qml/Main.qml:844 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:244
+#: ../qml/Main.qml:845 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/pages/Home.qml:521 ../qml/pages/Music.qml:235
 #: ../qml/pages/PlaylistsView.qml:116 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Prekliči"
@@ -514,24 +514,32 @@ msgstr "Odmesti"
 msgid "Remove"
 msgstr "Odstrani"
 
-#: ../qml/pages/Music.qml:212
+#: ../qml/pages/Music.qml:204
 msgid "Save Playlist"
 msgstr ""
 
-#: ../qml/pages/Music.qml:215
+#: ../qml/pages/Music.qml:207
 #, fuzzy
 msgid "Playlist name"
 msgstr "Ime kraja"
 
-#: ../qml/pages/Music.qml:232
+#: ../qml/pages/Music.qml:224
 msgid "Save"
 msgstr ""
 
-#: ../qml/pages/Music.qml:329
+#: ../qml/pages/Music.qml:320
 msgid "Search your music"
 msgstr ""
 
-#: ../qml/pages/MusicPlayer.qml:375
+#: ../qml/pages/Music.qml:406
+msgid "Deselect all"
+msgstr ""
+
+#: ../qml/pages/Music.qml:406
+msgid "Select all"
+msgstr ""
+
+#: ../qml/pages/MusicPlayer.qml:355
 msgid "(%1)"
 msgstr ""
 
