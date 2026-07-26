@@ -6,6 +6,7 @@ import Lomiri.Components.Popups 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
 import MySettings 1.0
+import QtSystemInfo 5.0 // for screen saver
 
 Item {
     id: musics
@@ -27,6 +28,19 @@ Item {
         musicPlayer.visible = true
         musicPlayer.cleanupCache()
         musicPlayer.saveRequested.connect(saveSelectedAsPlaylist)
+    }
+
+    ScreenSaver {
+        id: screenSaver
+        screenSaverEnabled: true
+    }
+
+    onVisibleChanged: {
+        if (visible) {
+            screenSaver.screenSaverEnabled = false
+        } else {
+            screenSaver.screenSaverEnabled = true
+        }
     }
 
     /**
