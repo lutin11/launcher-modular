@@ -1,4 +1,6 @@
 #include <QDebug>
+#include <QFile>
+#include <QDir>
 #include "terminalaccess.h"
 
 Terminalaccess::Terminalaccess() : _proc(), _cmd(), _output(), _err() {
@@ -95,4 +97,56 @@ bool Terminalaccess::inputLine(QString newinput, bool printDebug) {
 void Terminalaccess::procFinished(int exitcode, QProcess::ExitStatus es) {
     qDebug() << "FINISHED" << exitcode;
     emit(finished(exitcode));
+}
+
+bool Terminalaccess::copyFile(const QString &source, const QString &destination) {
+    // QFile::copy() échoue si le fichier de destination existe déjà
+    if (QFile::exists(destination)) {
+        QFile::remove(destination);
+    }
+    bool ok = QFile::copy(source, destination);
+    if (!ok) {
+        qDebug() << "copyFile failed:" << source << "->" << destination;
+    }
+    return ok;
+}
+
+bool Terminalaccess::removeFile(const QString &path) {
+    if (path.isEmpty() || !QFile::exists(path)) {
+        return true; // rien à faire, ce n'est pas un échec
+    }
+    bool ok = QFile::remove(path);
+    if (!ok) {
+        qDebug() << "removeFile failed:" << path;
+    }
+    return ok;
+}
+
+bool Terminalaccess::makePath(const QString &path) {
+    bool ok = QDir().mkpath(path);
+    if (!ok) {
+        qDebug() << "makePath failed:" << path;
+    }
+    return ok;
+}
+
+int Terminalaccess::removeFilesWithExtensions(const QString &dirPath, const QStringList &extensions) {
+    QDir dir(dirPath);
+    if (!dir.exists()) return 0;
+
+    QStringList filters;
+    for (const QString &ext : extensions) {
+        filters << ("*." + ext);
+    }
+
+    QStringList files = dir.entryList(filters, QDir::Files);
+    int removed = 0;
+    for (const QString &file : files) {
+        if (dir.remove(file)) {
+            removed++;
+        } else {
+            qDebug() << "removeFilesWithExtensions failed for:" << file;
+        }
+    }
+    return removed;
 }

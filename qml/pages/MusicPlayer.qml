@@ -29,7 +29,7 @@ Rectangle {
     property bool showingPlaylists: false
 
     Component.onCompleted: {
-        Terminalaccess.run("mkdir -p " + tempCacheDir)
+        Terminalaccess.makePath(tempCacheDir)
         cleanupCache()
     }
 
@@ -214,36 +214,8 @@ Rectangle {
         }
     }
 
-    function onCopyFinished(filePath) {
-        if (nextTrackIndex >= 0 && nextTrackIndex < playlist.length) {
-            deleteFromCache(currentCacheFile)
-            currentCacheFile = filePath
-
-            audioPlayer.source = filePath
-            audioPlayer.play()
-
-            currentIndex = nextTrackIndex
-            currentSongName = playlist[nextTrackIndex].name
-            currentSongPath = playlist[nextTrackIndex].path
-
-            var nextIdx = nextTrackIndex + 1
-            if (nextIdx < playlist.length) {
-                nextTrackIndex = nextIdx
-                var nextPath = playlist[nextIdx].path
-                var cachedPath = copyToCache(nextPath, copyIndex)
-                copyIndex++
-                copyInProgress = true
-                copyTimer.targetFile = cachedPath
-                copyTimer.isNextTrackCopy = true
-                copyTimer.start()
-            } else {
-                nextTrackIndex = -1
-            }
-        }
-    }
-
     function cleanupCache() {
-        Terminalaccess.run("rm -f " + tempCacheDir + "*.mp3 " + tempCacheDir + "*.aac " + tempCacheDir + "*.ogg " + tempCacheDir + "*.wav " + tempCacheDir + "*.flac " + tempCacheDir + "*.m4a " + tempCacheDir + "*.alac")
+        Terminalaccess.removeFilesWithExtensions(tempCacheDir, ["mp3", "aac", "ogg", "wav", "flac", "m4a", "alac"])
     }
 
     function sanitizeName(filename) {
@@ -257,17 +229,13 @@ Rectangle {
         var filename = sourcePath.split("/").pop()
         var cachedName = index + "_" + sanitizeName(filename)
         var destPath = tempCacheDir + cachedName
-        var sourceClean = sourcePath.replace(/'/g, "'\\''")
-        var destClean = destPath.replace(/'/g, "'\\''")
-        Terminalaccess.run("cp '" + sourceClean + "' '" + destClean + "'")
-        Terminalaccess.outputUntilEnd()
+        Terminalaccess.copyFile(sourcePath, destPath)
         return destPath
     }
 
     function deleteFromCache(filePath) {
         if (filePath.indexOf(tempCacheDir) === 0) {
-            var cleanPath = filePath.replace(/'/g, "'\\''")
-            Terminalaccess.run("rm -f '" + cleanPath + "'")
+            Terminalaccess.removeFile(filePath)
         }
     }
 
