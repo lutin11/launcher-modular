@@ -24,8 +24,6 @@ Rectangle {
     property string tempCacheDir: MySettings.getHomeLocation() + "/.cache/launchermodular.lut11/"
     property string currentCacheFile: ""
     property int copyIndex: 0
-    property bool copyInProgress: false
-    property int nextTrackIndex: -1
     property bool showingPlaylists: false
 
     Component.onCompleted: {
