@@ -53,7 +53,7 @@ Rectangle {
         }
 
         onPositionChanged: {
-            if (!progressSlider.pressed) {
+            if (!progressSlider.pressed && !progressSlider.seeking) {
                 progressSlider.value = position
             }
         }
@@ -65,7 +65,7 @@ Rectangle {
         onStatusChanged: {
             if (status === Audio.EndOfMedia) {
                 if (repeatMode === MusicPlayer.Single) {
-                    audioPlayer.play()
+                    loadTrack(currentIndex, true)
                 } else if (repeatMode === MusicPlayer.None) {
                     advanceTrack()
                 } else if (repeatMode === MusicPlayer.All) {
@@ -431,10 +431,22 @@ Rectangle {
                 minimumValue: 0
                 maximumValue: audioPlayer.duration
                 value: audioPlayer.position
+                // Empêche onPositionChanged d'écraser la valeur qu'on vient de cliquer
+                // avec un signal transitoire encore basé sur l'ancienne position.
+                property bool seeking: false
+
                 onPressedChanged: {
                     if (!pressed) {
+                        seeking = true
                         audioPlayer.seek(value)
+                        seekGuardTimer.restart()
                     }
+                }
+
+                Timer {
+                    id: seekGuardTimer
+                    interval: 500
+                    onTriggered: progressSlider.seeking = false
                 }
             }
 
