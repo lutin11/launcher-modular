@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-26 22:23+0000\n"
+"POT-Creation-Date: 2026-07-28 10:19+0000\n"
 "PO-Revision-Date: 2026-04-02 09:09+0000\n"
 "Last-Translator: Marcel Tujetsch <tujetsch-marcel@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -541,7 +541,7 @@ msgstr ""
 msgid "Select all"
 msgstr "Wähle"
 
-#: ../qml/pages/MusicPlayer.qml:364
+#: ../qml/pages/MusicPlayer.qml:332
 msgid "(%1)"
 msgstr ""
 
