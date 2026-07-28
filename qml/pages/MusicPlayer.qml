@@ -20,7 +20,7 @@ Rectangle {
     property string currentSongName: ""
     property string currentSongPath: ""
     property bool shuffleMode: false
-    property string repeatMode: "none" // "none", "single", "all"
+    property int repeatMode: MusicPlayer.None // valeurs: MusicPlayer.None / Single / All
     property string tempCacheDir: MySettings.getHomeLocation() + "/.cache/launchermodular.lut11/"
     property string currentCacheFile: ""
     property int copyIndex: 0
@@ -31,6 +31,7 @@ Rectangle {
         cleanupCache()
     }
 
+    enum RepeatMode { None, Single, All }
     enum PlaybackState { Stopped, Playing, Paused, Cleared }
 
     signal stateChanged(int newState)
@@ -63,11 +64,11 @@ Rectangle {
 
         onStatusChanged: {
             if (status === Audio.EndOfMedia) {
-                if (repeatMode === "single") {
+                if (repeatMode === MusicPlayer.Single) {
                     audioPlayer.play()
-                } else if (repeatMode === "none") {
+                } else if (repeatMode === MusicPlayer.None) {
                     advanceTrack()
-                } else if (repeatMode === "all") {
+                } else if (repeatMode === MusicPlayer.All) {
                     advanceTrack()
                 }
             }
@@ -89,9 +90,8 @@ Rectangle {
     function advanceTrack() {
         if (currentIndex < playlist.length - 1) {
             next()
-        } else if (repeatMode === "all") {
-            currentIndex = 0
-            playList(playlist)
+        } else if (repeatMode === MusicPlayer.All) {
+            loadTrack(0, true)
         } else {
             stop()
         }
@@ -203,12 +203,12 @@ Rectangle {
     }
 
     function toggleRepeat() {
-        if (repeatMode === "none") {
-            repeatMode = "single"
-        } else if (repeatMode === "single") {
-            repeatMode = "all"
+        if (repeatMode === MusicPlayer.None) {
+            repeatMode = MusicPlayer.Single
+        } else if (repeatMode === MusicPlayer.Single) {
+            repeatMode = MusicPlayer.All
         } else {
-            repeatMode = "none"
+            repeatMode = MusicPlayer.None
         }
     }
 
@@ -390,9 +390,9 @@ Rectangle {
                     anchors.centerIn: parent
                     height: units.gu(2)
                     width: units.gu(2)
-                    name: repeatMode === "single" ? "media-playlist-repeat-one" : "media-playlist-repeat"
-                    color: repeatMode !== "none" ? "#E95420" : "#FFFFFF"
-                    opacity: repeatMode !== "none" ? 1 : 0.4
+                    name: repeatMode === MusicPlayer.Single ? "media-playlist-repeat-one" : "media-playlist-repeat"
+                    color: repeatMode !== MusicPlayer.None ? "#E95420" : "#FFFFFF"
+                    opacity: repeatMode !== MusicPlayer.None? 1 : 0.4
                 }
             }
 
