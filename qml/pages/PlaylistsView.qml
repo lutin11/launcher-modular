@@ -8,6 +8,8 @@ Item {
     property var playlistManager
     property var musicPlayer
 
+    signal playlistLoaded()
+
     function createPlaylist(name) {
         if (!name || name.length === 0) return
         if (!musicPlayer || musicPlayer.playlist.length === 0) return
@@ -134,6 +136,7 @@ Item {
                 onClicked: {
                     var tracks = playlistManager.loadPlaylist(model.name)
                     musicPlayer.playList(tracks)
+                    playlistLoaded()
                     musicPlayer.hidePlaylists()
                 }
             }

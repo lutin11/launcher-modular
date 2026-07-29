@@ -19,6 +19,10 @@ Item {
     property string pendingSearch: ""
     readonly property bool selectionMode: musicPlayer.playlist.length > 0
     property bool showingPlaylists: false
+    // true quand une playlist a été chargée explicitement depuis PlaylistsView : dans ce
+    // cas la liste affiche le contenu de la playlist plutôt que le dossier parcouru.
+    // Redevient false uniquement au clic sur la poubelle (cf. onPlaylistChanged ci-dessous).
+    property bool playlistViewActive: false
 
     ScreenSaver {
         id: screenSaver
@@ -34,6 +38,12 @@ Item {
         onHidePlaylists: musics.showingPlaylists = false
         onStateChanged: {
             screenSaver.screenSaverEnabled = (newState !== MusicPlayer.Playing)
+        }
+        onPlaylistChanged: {
+            rebuildPlaylistTracksModel()
+            // La poubelle (musicPlayer.clear()) vide la playlist : on revient
+            // alors automatiquement à l'affichage normal du dossier parcouru.
+            if (playlist.length === 0) playlistViewActive = false
         }
     }
 
@@ -62,9 +72,10 @@ Item {
      * Select all music files in current view
      */
     function selectAll() {
+        var m = activeModel()
         var songs = []
-        for (var i = 0; i < searchResults.count; i++) {
-            var item = searchResults.get(i)
+        for (var i = 0; i < m.count; i++) {
+            var item = m.get(i)
             if (!item.fileIsDir) {
                 songs.push({path: item.filePath, name: item.fileName})
             }
@@ -80,16 +91,18 @@ Item {
     }
 
     function hasSongsInView() {
-        for (var i = 0; i < searchResults.count; i++) {
-            if (!searchResults.get(i).fileIsDir) return true
+        var m = activeModel()
+        for (var i = 0; i < m.count; i++) {
+            if (!m.get(i).fileIsDir) return true
         }
         return false
     }
 
     function isAllSelected() {
+        var m = activeModel()
         var anySong = false
-        for (var i = 0; i < searchResults.count; i++) {
-            var item = searchResults.get(i)
+        for (var i = 0; i < m.count; i++) {
+            var item = m.get(i)
             if (!item.fileIsDir) {
                 anySong = true
                 if (!isSelected(item.filePath)) return false
@@ -112,6 +125,22 @@ Item {
 
     ListModel {
         id: searchResults
+    }
+
+    ListModel {
+        id: playlistTracksModel
+    }
+
+    function rebuildPlaylistTracksModel() {
+        playlistTracksModel.clear()
+        var pl = musicPlayer.playlist
+        for (var i = 0; i < pl.length; i++) {
+            playlistTracksModel.append({filePath: pl[i].path, fileName: pl[i].name, fileIsDir: false})
+        }
+    }
+
+    function activeModel() {
+        return playlistViewActive ? playlistTracksModel : searchResults
     }
 
     Timer {
@@ -204,6 +233,7 @@ Item {
     // Search bar
     Rectangle {
         id: searchBar
+        visible: !playlistViewActive
         height: units.gu(5)
         width: parent.width
         color: "transparent"
@@ -319,7 +349,7 @@ Item {
     // Song list
     ListView {
         id: searchMusicView
-        model: searchResults
+        model: activeModel()
         visible: !showingPlaylists
 
         width: parent.width
@@ -327,17 +357,17 @@ Item {
             fill: parent
             rightMargin: units.gu(2)
             leftMargin: units.gu(2)
-            topMargin: units.gu(6)
-            bottomMargin: units.gu(16) // leave space for player
+            topMargin: playlistViewActive ? units.gu(1) : units.gu(6)
+            bottomMargin: musicPlayer.currentSongName.length > 0 ? units.gu(21) : units.gu(16)  // leave space for player
         }
         clip: true  // To avoid rendering content outside of the visible area
 
         focus: true
 
         header: Rectangle {
+            visible: hasSongsInView() && !playlistViewActive
             width: searchMusicView.width
-            height: hasSongsInView() ? units.gu(5) : 0
-            visible: hasSongsInView()
+            height: hasSongsInView() && !playlistViewActive ? units.gu(5) : 0
             color: "transparent"
 
             Row {
@@ -384,7 +414,11 @@ Item {
             Rectangle {
                 id: searchMusicRectangle
                 opacity: 0.9
-                color: !fileIsDir && isSelected(filePath) ? "#333333" : "#111111"
+                color: {
+                    if (fileIsDir) return "#111111"
+                    if (playlistViewActive) return filePath === musicPlayer.currentSongPath ? "#333333" : "#111111"
+                    return isSelected(filePath) ? "#333333" : "#111111"
+                }
                 height: parent.height
                 width: parent.width
 
@@ -396,6 +430,7 @@ Item {
 
                     // Selection checkbox
                     Rectangle {
+                        visible: !fileIsDir && !playlistViewActive
                         width: units.gu(2)
                         height: units.gu(2)
                         radius: units.gu(0.5)
@@ -403,13 +438,12 @@ Item {
                         border.color: "#FFFFFF"
                         border.width: 1
                         anchors.verticalCenter: parent.verticalCenter
-                        visible: !fileIsDir
 
                         Text {
                             anchors.centerIn: parent
                             text: "\u2713"
                             color: "#FFFFFF"
-                            visible: !fileIsDir && isSelected(filePath)
+                            visible: !fileIsDir && !playlistViewActive && isSelected(filePath)
                             font.pixelSize: units.gu(1.5)
                         }
                     }
@@ -419,27 +453,29 @@ Item {
                         visible: true
                         height: units.gu(launchermodular.settings.musicFontSize)
                         width: units.gu(launchermodular.settings.musicFontSize)
-                        name: fileIsDir ? "folder-symbolic" : "stock_music"
-                        color: launchermodular.settings.musicFontColor
+                        name: fileIsDir ? "folder-symbolic" : (!fileIsDir && filePath === musicPlayer.currentSongPath ? "media-playback-start" : "stock_music")
+                        color: !fileIsDir && filePath === musicPlayer.currentSongPath ? "#E95420" : launchermodular.settings.musicFontColor
                     }
                     Text {
                         id: searchMusicViewName
                         text: fileName
                         font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
-                        font.bold: fileIsDir ? true : false
-                        color: launchermodular.settings.musicFontColor
+                        font.bold: fileIsDir || (!fileIsDir && filePath === musicPlayer.currentSongPath)
+                        color: !fileIsDir && filePath === musicPlayer.currentSongPath ? "#E95420" : launchermodular.settings.musicFontColor
                     }
                 }
 
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        if (fileIsDir) {
-                            searchTerm = ""
-                            musicFileModel.folder = model.filePath
-                        } else {
-                            toggleSelection(model.filePath, model.fileName)
-                        }
+                            if (fileIsDir) {
+                                searchTerm = ""
+                                musicFileModel.folder = model.filePath
+                        } else if (playlistViewActive) {
+                            musicPlayer.loadTrack(index, true)
+                            } else {
+                                toggleSelection(model.filePath, model.fileName)
+                            }
                     }
                 }
             } // Item
@@ -455,9 +491,10 @@ Item {
             rightMargin: units.gu(2)
             leftMargin: units.gu(2)
             topMargin: units.gu(6)
-            bottomMargin: units.gu(16) // leave space for player
+            bottomMargin: musicPlayer.currentSongName.length > 0 ? units.gu(21) : units.gu(16)  // leave space for player
         }
         playlistManager: playlistManager
         musicPlayer: musicPlayer
+        onPlaylistLoaded: playlistViewActive = true
     }
 }
