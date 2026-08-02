@@ -26,6 +26,12 @@ Rectangle {
     property int copyIndex: 0
     property bool showingPlaylists: false
 
+    // Lecture aléatoire : historique réel (pour "précédent") + pool des indices
+    // pas encore joués dans le cycle courant (pour "suivant").
+    property var playHistory: []
+    property int historyPosition: -1
+    property var shuffleRemaining: []
+
     Component.onCompleted: {
         Terminalaccess.makePath(tempCacheDir)
         cleanupCache()
@@ -40,16 +46,18 @@ Rectangle {
 
     Audio {
         id: audioPlayer
+        audioRole: "MusicRole"
 
-        onPlaybackStateChanged: {
-            isPlaying = (playbackState === Audio.PlayingState)
-            if (isPlaying) {
-                stateChanged(MusicPlayer.Playing)
-            } else if (playbackState === Audio.PausedState) {
-                stateChanged(MusicPlayer.Paused)
-            } else {
-                stateChanged(MusicPlayer.Stopped)
-            }
+        onPlaying: {
+            stateChanged(MusicPlayer.Playing)
+        }
+
+        onStopped: {
+            stateChanged(MusicPlayer.Stopped)
+        }
+
+        onPaused: {
+            stateChanged(MusicPlayer.Paused)
         }
 
         onPositionChanged: {
@@ -59,7 +67,10 @@ Rectangle {
         }
 
         onDurationChanged: {
-            progressSlider.maximumValue = duration
+            console.log("onDurationChanged:" + duration)
+            if (duration > 0) {
+                progressSlider.maximumValue = duration
+            }
         }
 
         onStatusChanged: {
@@ -88,7 +99,14 @@ Rectangle {
     }
 
     function advanceTrack() {
-        if (currentIndex < playlist.length - 1) {
+        if (shuffleMode) {
+            var idx = nextShuffleIndex()
+            if (idx < 0) {
+                stop()
+            } else {
+                loadTrack(idx, true)
+            }
+        } else if (currentIndex < playlist.length - 1) {
             next()
         } else if (repeatMode === MusicPlayer.All) {
             loadTrack(0, true)
@@ -97,15 +115,68 @@ Rectangle {
         }
     }
 
-    function play(songPath) {
-        deleteFromCache(currentCacheFile)
-        var cachedPath = copyToCache(songPath, 0)
-        copyIndex = 1
-        currentCacheFile = cachedPath
-        audioPlayer.source = cachedPath
-        audioPlayer.play()
-        currentSongPath = songPath
-        currentSongName = songPath.split("/").pop()
+    function nextShuffleIndex() {
+        if (historyPosition < playHistory.length - 1) {
+            return playHistory[historyPosition + 1]
+        }
+        return drawRandomShuffleIndex()
+    }
+
+    function resetShuffleCycle(excludeIndex) {
+        var remaining = []
+        for (var i = 0; i < playlist.length; i++) {
+            if (i !== excludeIndex) remaining.push(i)
+        }
+        shuffleRemaining = remaining // réassignation -> déclenche shuffleRemainingChanged
+    }
+
+    function drawRandomShuffleIndex() {
+        if (shuffleRemaining.length === 0) {
+            if (repeatMode === MusicPlayer.All) {
+                // Tout le cycle a été joué : nouveau cycle, en excluant la piste
+                // courante pour ne pas la relire consécutivement.
+                resetShuffleCycle(currentIndex)
+            } else {
+                return -1
+            }
+        }
+        if (shuffleRemaining.length === 0) return -1 // playlist à une seule piste
+
+        var randPos = Math.floor(Math.random() * shuffleRemaining.length)
+        var chosen = shuffleRemaining[randPos]
+        var remaining = shuffleRemaining.slice()
+        remaining.splice(randPos, 1)
+        shuffleRemaining = remaining // réassignation -> déclenche shuffleRemainingChanged
+        return chosen
+    }
+
+    function recordHistory(index) {
+        if (!shuffleMode) return
+
+        if (historyPosition >= 0 && historyPosition < playHistory.length && playHistory[historyPosition] === index) {
+            return // déjà la piste courante
+        }
+        if (historyPosition < playHistory.length - 1 && playHistory[historyPosition + 1] === index) {
+            historyPosition++
+            return
+        }
+
+        var isFreshStart = playHistory.length === 0
+        var newHistory = playHistory.slice(0, historyPosition + 1)
+        newHistory.push(index)
+        playHistory = newHistory // réassignation -> déclenche playHistoryChanged
+        historyPosition = playHistory.length - 1
+
+        if (isFreshStart) {
+            resetShuffleCycle(index)
+        } else {
+            var pos = shuffleRemaining.indexOf(index)
+            if (pos !== -1) {
+                var remaining = shuffleRemaining.slice()
+                remaining.splice(pos, 1)
+                shuffleRemaining = remaining // réassignation -> déclenche shuffleRemainingChanged
+            }
+        }
     }
 
     function addToPlaylist(filePath, fileName) {
@@ -139,6 +210,8 @@ Rectangle {
     function loadTrack(index, autoPlay) {
         if (index < 0 || index >= playlist.length) return
 
+        recordHistory(index)
+
         var path = playlist[index].path
         deleteFromCache(currentCacheFile)
         var cachedPath = copyToCache(path, copyIndex)
@@ -163,13 +236,17 @@ Rectangle {
         currentSongPath = ""
         currentCacheFile = ""
         copyIndex = 0
+        playHistory = []
+        historyPosition = -1
+        shuffleRemaining = []
     }
 
     function playList(songs) {
         playlist = songs
         resetPlayback()
         if (songs.length === 0) return
-        loadTrack(0, false)
+        var startIndex = shuffleMode ? Math.floor(Math.random() * songs.length) : 0
+        loadTrack(startIndex, false)
     }
 
     function pause() {
@@ -191,15 +268,45 @@ Rectangle {
     }
 
     function next() {
-        if (currentIndex < playlist.length - 1) loadTrack(currentIndex + 1, true)
+        if (shuffleMode) {
+            var idx = nextShuffleIndex()
+            if (idx < 0) return
+            loadTrack(idx, true)
+        } else if (currentIndex < playlist.length - 1) {
+            loadTrack(currentIndex + 1, true)
+        }
     }
 
     function previous() {
-        if (currentIndex > 0) loadTrack(currentIndex - 1, true)
+        if (shuffleMode) {
+            if (historyPosition > 0) {
+                historyPosition--
+                loadTrack(playHistory[historyPosition], true)
+            }
+            // sinon : pas d'historique antérieur, on ne fait rien
+        } else if (currentIndex > 0) {
+            loadTrack(currentIndex - 1, true)
+        }
+    }
+
+    function startPlayback() {
+        if (playlist.length === 0) return
+        playList(playlist)
+        resume()
     }
 
     function toggleShuffle() {
         shuffleMode = !shuffleMode
+        if (shuffleMode) {
+            // Start a new cycle from where it is
+            playHistory = currentIndex >= 0 ? [currentIndex] : []
+            historyPosition = playHistory.length - 1
+            if (currentIndex >= 0) resetShuffleCycle(currentIndex)
+        } else {
+            playHistory = []
+            historyPosition = -1
+            shuffleRemaining = []
+        }
     }
 
     function toggleRepeat() {
@@ -300,7 +407,7 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.preferredWidth: units.gu(5)
                 height: units.gu(4)
-                enabled: currentIndex > 0
+                enabled: shuffleMode ? historyPosition > 0 : currentIndex > 0
                 onClicked: previous()
 
                 Icon {
@@ -320,6 +427,8 @@ Rectangle {
                 onClicked: {
                     if (isPlaying) {
                         pause()
+                    } else if (currentIndex === -1) {
+                        startPlayback()
                     } else {
                         resume()
                     }
@@ -367,7 +476,7 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.preferredWidth: units.gu(5)
                 height: units.gu(4)
-                enabled: currentIndex < playlist.length - 1
+                enabled: shuffleMode ? (historyPosition < playHistory.length - 1 || shuffleRemaining.length > 0 || repeatMode === MusicPlayer.All) : currentIndex < playlist.length - 1
                 onClicked: next()
 
                 Icon {
@@ -428,6 +537,7 @@ Rectangle {
             Slider {
                 id: progressSlider
                 Layout.fillWidth: true
+                enabled: audioPlayer.duration > 0
                 minimumValue: 0
                 maximumValue: audioPlayer.duration
                 value: audioPlayer.position

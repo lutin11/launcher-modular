@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-28 10:19+0000\n"
+"POT-Creation-Date: 2026-08-02 21:45+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Asturian <https://hosted.weblate.org/projects/launcher-"
@@ -488,31 +488,31 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: ../qml/pages/Music.qml:281
+#: ../qml/pages/Music.qml:311
 msgid "Search your music"
 msgstr ""
 
-#: ../qml/pages/Music.qml:368
+#: ../qml/pages/Music.qml:398
 msgid "Deselect all"
 msgstr ""
 
-#: ../qml/pages/Music.qml:368
+#: ../qml/pages/Music.qml:398
 msgid "Select all"
 msgstr ""
 
-#: ../qml/pages/MusicPlayer.qml:332
+#: ../qml/pages/MusicPlayer.qml:439
 msgid "(%1)"
 msgstr ""
 
-#: ../qml/pages/PlaylistsView.qml:83
+#: ../qml/pages/PlaylistsView.qml:85
 msgid "New playlist"
 msgstr ""
 
-#: ../qml/pages/PlaylistsView.qml:108
+#: ../qml/pages/PlaylistsView.qml:110
 msgid "%1 tracks"
 msgstr ""
 
-#: ../qml/pages/PlaylistsView.qml:123 ../qml/pages/Todo.qml:121
+#: ../qml/pages/PlaylistsView.qml:125 ../qml/pages/Todo.qml:121
 #: ../qml/pages/home/Settings.qml:139 ../qml/pages/rss/Settings.qml:175
 msgid "Delete"
 msgstr ""
