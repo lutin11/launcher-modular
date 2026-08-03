@@ -6,6 +6,7 @@ A launcher modular for ubuntu touch
   <img src="/assets/samples/Home_Page.png" width="100" alt="Main page"/>
   <img src="/assets/samples/Home_Page_Toolbar.png" width="100" alt="Main page toolbar"/> 
   <img src="/assets/samples/Calendar_Page.png" width="100" alt="Calendar page"/>
+  <img src="/assets/samples/Music_Page.png" width="100" alt="Calendar page"/>
   <img src="assets/samples/TODO_Page.png" width="100" alt="Page note"/>
   <img src="assets/samples/RSS_Page.png" width="100" alt="RSS note"/>
   <img src="assets/samples/Picture_Page.png" width="100" alt="Picture page"/>
