@@ -121,6 +121,8 @@ Item {
         }
     }
 
+    MusicPlayer { id: homeMusicPlayer }
+
     function refreshHomePage() {
         home.reloading = true
         AppHandler.reload()

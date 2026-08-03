@@ -5,8 +5,7 @@ import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
 import MySettings 1.0
-
-import QtQuick.Controls 2.2
+import QtSystemInfo 5.0 // for screen saver
 
 Item {
     id: musics
@@ -18,6 +17,107 @@ Item {
     property bool initialParsingDone: false
     property string parentFolder: MySettings.getMusicLocation()
     property string pendingSearch: ""
+    readonly property bool selectionMode: musicPlayer.playlist.length > 0
+    property bool showingPlaylists: false
+    // true quand une playlist a été chargée explicitement depuis PlaylistsView : dans ce
+    // cas la liste affiche le contenu de la playlist plutôt que le dossier parcouru.
+    // Redevient false uniquement au clic sur la poubelle (cf. onPlaylistChanged ci-dessous).
+    property bool playlistViewActive: false
+
+    ScreenSaver {
+        id: screenSaver
+        screenSaverEnabled: true
+    }
+
+    // Components
+    PlaylistManager { id: playlistManager }
+    MusicPlayer {
+        id: musicPlayer
+        showingPlaylists: musics.showingPlaylists
+        onShowPlaylists: musics.showingPlaylists = true
+        onHidePlaylists: musics.showingPlaylists = false
+        onStateChanged: {
+            screenSaver.screenSaverEnabled = (newState !== MusicPlayer.Playing)
+        }
+        onPlaylistChanged: {
+            rebuildPlaylistTracksModel()
+            // La poubelle (musicPlayer.clear()) vide la playlist : on revient
+            // alors automatiquement à l'affichage normal du dossier parcouru.
+            if (playlist.length === 0) playlistViewActive = false
+        }
+    }
+
+    Component.onCompleted: {
+        musicPlayer.visible = true
+        musicPlayer.cleanupCache()
+    }
+
+    function toggleSelection(filePath, fileName) {
+        if (isSelected(filePath)) {
+            musicPlayer.removeFromPlaylist(filePath, fileName)
+        } else {
+            musicPlayer.addToPlaylist(filePath, fileName)
+        }
+    }
+
+    function isSelected(filePath) {
+        var playlist = musicPlayer.playlist
+        for (var i = 0; i < playlist.length; i++) {
+            if (playlist[i].path === filePath) return true
+        }
+        return false
+    }
+
+    /**
+     * Select all music files in current view
+     */
+    function selectAll() {
+        var m = activeModel()
+        var songs = []
+        for (var i = 0; i < m.count; i++) {
+            var item = m.get(i)
+            if (!item.fileIsDir) {
+                songs.push({path: item.filePath, name: item.fileName})
+            }
+        }
+        musicPlayer.playList(songs)
+    }
+
+    /**
+     * Deselect all files
+     */
+    function deselectAll() {
+        musicPlayer.clear()
+    }
+
+    function hasSongsInView() {
+        var m = activeModel()
+        for (var i = 0; i < m.count; i++) {
+            if (!m.get(i).fileIsDir) return true
+        }
+        return false
+    }
+
+    function isAllSelected() {
+        var m = activeModel()
+        var anySong = false
+        for (var i = 0; i < m.count; i++) {
+            var item = m.get(i)
+            if (!item.fileIsDir) {
+                anySong = true
+                if (!isSelected(item.filePath)) return false
+            }
+        }
+        return anySong
+    }
+
+    function toggleSelectAll() {
+        if (isAllSelected()) {
+            deselectAll()
+        } else {
+            selectAll()
+        }
+    }
 
     ListModel {
         id: searchModel
@@ -25,6 +125,22 @@ Item {
 
     ListModel {
         id: searchResults
+    }
+
+    ListModel {
+        id: playlistTracksModel
+    }
+
+    function rebuildPlaylistTracksModel() {
+        playlistTracksModel.clear()
+        var pl = musicPlayer.playlist
+        for (var i = 0; i < pl.length; i++) {
+            playlistTracksModel.append({filePath: pl[i].path, fileName: pl[i].name, fileIsDir: false})
+        }
+    }
+
+    function activeModel() {
+        return playlistViewActive ? playlistTracksModel : searchResults
     }
 
     Timer {
@@ -114,8 +230,10 @@ Item {
         }
     }
 
+    // Search bar
     Rectangle {
         id: searchBar
+        visible: !playlistViewActive
         height: units.gu(5)
         width: parent.width
         color: "transparent"
@@ -149,21 +267,41 @@ Item {
             }
         }
 
-        TextField {
+        Item {
             id: searchField
-            focus: false
             anchors {
                 left: iconBack.right
                 right: iconSearch.left
             }
             height: searchBar.height
-            color: launchermodular.settings.textColor
-            background: Rectangle {
-              height: parent.height
-              color: "transparent"
+
+            property alias text: searchInput.text
+
+            TextInput {
+                id: searchInput
+                anchors.fill: parent
+                anchors.leftMargin: units.gu(1)
+                verticalAlignment: TextInput.AlignVCenter
+                color: launchermodular.settings.textColor
+                clip: true
+                selectByMouse: true
+                inputMethodHints: Qt.ImhNoPredictiveText
+
+                onTextChanged: {
+                    if(text.length > 0) {
+                        pendingSearch = text
+                        searchDebounce.restart()
+                    } else {
+                        searchDebounce.stop()
+                        searchResults.clear()
+                        if(musicFileModel.folder == "file://" + rootMusic) {
+                            musicFileModel.folder = ""; // force refresh
+                        }
+                        musicFileModel.folder = rootMusic
+                    }
+                }
             }
 
-            placeholderText: ""
             // Custom placeholder
             Text {
                 anchors.fill: parent
@@ -171,22 +309,8 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 color: "#aaaaaa" // Light grey color for placeholder
                 text: i18n.tr("Search your music")
-                visible: searchField.text.length == 0
+                visible: searchInput.text.length == 0
                 font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
-            }
-            inputMethodHints: Qt.ImhNoPredictiveText
-            onTextChanged: {
-                if(text.length > 0) {
-                    pendingSearch = text
-                    searchDebounce.restart()
-                } else {
-                    searchDebounce.stop()
-                    searchResults.clear()
-                    if(musicFileModel.folder == "file://" + rootMusic) {
-                        musicFileModel.folder = ""; // force refresh
-                    }
-                    musicFileModel.folder = rootMusic
-                }
             }
         }
 
@@ -212,9 +336,9 @@ Item {
                 onClicked:{
                     if(searchField.text.length > 0){
                         searchField.text = ""
-                        searchField.focus = false
+                        searchInput.focus = false
                     } else if(musicFileModel.folder == "file://" + rootMusic) {
-                            musicFileModel.folder = ""; // force refresh
+                        musicFileModel.folder = ""; // force refresh
                     }
                     musicFileModel.folder = rootMusic
                 }
@@ -222,63 +346,155 @@ Item {
         }
     }
 
+    // Song list
     ListView {
         id: searchMusicView
-        model: searchResults
+        model: activeModel()
+        visible: !showingPlaylists
 
         width: parent.width
         anchors {
             fill: parent
             rightMargin: units.gu(2)
             leftMargin: units.gu(2)
-            topMargin: units.gu(6)
+            topMargin: playlistViewActive ? units.gu(1) : units.gu(6)
+            bottomMargin: musicPlayer.currentSongName.length > 0 ? units.gu(21) : units.gu(16)  // leave space for player
         }
         clip: true  // To avoid rendering content outside of the visible area
 
         focus: true
 
+        header: Rectangle {
+            visible: hasSongsInView() && !playlistViewActive
+            width: searchMusicView.width
+            height: hasSongsInView() && !playlistViewActive ? units.gu(5) : 0
+            color: "transparent"
+
+            Row {
+                spacing: units.gu(1)
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.leftMargin: units.gu(1)
+
+                Rectangle {
+                    width: units.gu(2)
+                    height: units.gu(2)
+                    radius: units.gu(0.5)
+                    color: isAllSelected() ? "#E95420" : "transparent"
+                    border.color: "#FFFFFF"
+                    border.width: 1
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: "\u2713"
+                        color: "#FFFFFF"
+                        visible: isAllSelected()
+                        font.pixelSize: units.gu(1.5)
+                    }
+                }
+
+                Text {
+                    text: isAllSelected() ? i18n.tr("Deselect all") : i18n.tr("Select all")
+                    color: launchermodular.settings.musicFontColor
+                    font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: toggleSelectAll()
+            }
+        }
+
         delegate: Item {
-            width: searchMusicView.cellWidth
-            height: searchMusicViewName.implicitHeight
+            width: searchMusicView.width
+            height: searchMusicViewName.implicitHeight + units.gu(2)
 
             Rectangle {
                 id: searchMusicRectangle
                 opacity: 0.9
-                color: "#111111"
-                height: searchMusicViewName.implicitHeight
+                color: {
+                    if (fileIsDir) return "#111111"
+                    if (playlistViewActive) return filePath === musicPlayer.currentSongPath ? "#333333" : "#111111"
+                    return isSelected(filePath) ? "#333333" : "#111111"
+                }
+                height: parent.height
                 width: parent.width
 
                 Row {
                     spacing: units.gu(1)
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: units.gu(1)
+
+                    // Selection checkbox
+                    Rectangle {
+                        visible: !fileIsDir && !playlistViewActive
+                        width: units.gu(2)
+                        height: units.gu(2)
+                        radius: units.gu(0.5)
+                        color: !fileIsDir && isSelected(filePath) ? "#E95420" : "transparent"
+                        border.color: "#FFFFFF"
+                        border.width: 1
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "\u2713"
+                            color: "#FFFFFF"
+                            visible: !fileIsDir && !playlistViewActive && isSelected(filePath)
+                            font.pixelSize: units.gu(1.5)
+                        }
+                    }
+
                     Icon {
                         id: searchMusicViewItem
                         visible: true
                         height: units.gu(launchermodular.settings.musicFontSize)
                         width: units.gu(launchermodular.settings.musicFontSize)
-                        name: fileIsDir ? "folder-symbolic" : "stock_music"
-                        color: launchermodular.settings.musicFontColor
+                        name: fileIsDir ? "folder-symbolic" : (!fileIsDir && filePath === musicPlayer.currentSongPath ? "media-playback-start" : "stock_music")
+                        color: !fileIsDir && filePath === musicPlayer.currentSongPath ? "#E95420" : launchermodular.settings.musicFontColor
                     }
                     Text {
                         id: searchMusicViewName
                         text: fileName
                         font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
-                        font.bold: fileIsDir ? true : false
-                        color: launchermodular.settings.musicFontColor
+                        font.bold: fileIsDir || (!fileIsDir && filePath === musicPlayer.currentSongPath)
+                        color: !fileIsDir && filePath === musicPlayer.currentSongPath ? "#E95420" : launchermodular.settings.musicFontColor
+                    }
+                }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                if (!fileIsDir) {
-                                    Qt.openUrlExternally("music://" + model.filePath)
-                                } else {
-                                    searchTerm = ""
-                                    musicFileModel.folder = model.filePath
-                                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                            if (fileIsDir) {
+                                searchTerm = ""
+                                musicFileModel.folder = model.filePath
+                        } else if (playlistViewActive) {
+                            musicPlayer.loadTrack(index, true)
+                            } else {
+                                toggleSelection(model.filePath, model.fileName)
                             }
-                        }
                     }
                 }
             } // Item
         }// delegate Rectangle
+    }
+
+    // Playlists list — remplace song lists
+    PlaylistsView {
+        id: playlistsView
+        visible: showingPlaylists
+        anchors {
+            fill: parent
+            rightMargin: units.gu(2)
+            leftMargin: units.gu(2)
+            topMargin: units.gu(6)
+            bottomMargin: musicPlayer.currentSongName.length > 0 ? units.gu(21) : units.gu(16)  // leave space for player
+        }
+        playlistManager: playlistManager
+        musicPlayer: musicPlayer
+        onPlaylistLoaded: playlistViewActive = true
     }
 }

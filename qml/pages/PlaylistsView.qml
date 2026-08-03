@@ -1,24 +1,28 @@
 import QtQuick 2.12
 import Lomiri.Components 1.3
 import QtQuick.Controls 2.2
-import "todo"
-import Qt.labs.settings 1.0
 
 Item {
-    id: todoPage
-    anchors.fill: parent
-    anchors {
-        rightMargin: units.gu(2)
-        leftMargin: units.gu(2)
-        topMargin: units.gu(2)
+    id: playlistsView
+
+    property var playlistManager
+    property var musicPlayer
+
+    signal playlistLoaded()
+
+    function createPlaylist(name) {
+        if (!name || name.length === 0) return
+        if (!musicPlayer || musicPlayer.playlist.length === 0) return
+
+        playlistManager.savePlaylist(name, musicPlayer.playlist)
     }
 
-    ListView{
-        id:todoList
+    ListView {
+        id: playlists
         anchors.fill: parent
 
-        header:Rectangle {
-            id: todo
+        header: Rectangle {
+            id: newPlaylistHeader
             height: units.gu(5)
             width: parent.width
             color: "transparent"
@@ -29,43 +33,43 @@ Item {
             }
 
             Rectangle {
-                id: colortodo
+                id: colorHeader
                 color: launchermodular.settings.backgroundColor
                 radius: units.gu(1)
                 opacity: 0.3
                 anchors.fill: parent
             }
+
             Icon {
                 id: iconNote
                 anchors {
-                    left: todo.left
+                    left: newPlaylistHeader.left
                     rightMargin: units.gu(1)
                     leftMargin: units.gu(1)
                 }
                 anchors.verticalCenter: parent.verticalCenter
-                height: parent.height*0.5
+                height: parent.height * 0.5
                 width: height
-                name: "note"
+                name: "save"
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked:{
-                        if(todoField.text.length > 0){
-                           todoField.text = ""
-                           todoField.focus = false
-                        }
+                    onClicked: {
+                        createPlaylist(playlistField.text)
+                        playlistField.text = ""
+                        playlistField.focus = false
                     }
                 }
             }
 
             TextField {
-                id: todoField
+                id: playlistField
                 focus: false
                 anchors {
                     left: iconNote.right
                     right: parent.right
                 }
-                height: todo.height
+                height: newPlaylistHeader.height
                 color: launchermodular.settings.textColor
                 background: Rectangle {
                     height: parent.height
@@ -78,39 +82,39 @@ Item {
                     anchors.leftMargin: units.gu(2)
                     verticalAlignment: Text.AlignVCenter
                     color: "#aaaaaa" // Light grey color for placeholder
-                    text: i18n.tr("New todo")
-                    visible: todoField.text.length == 0
+                    text: i18n.tr("New playlist")
+                    visible: playlistField.text.length == 0
                     font.pixelSize: units.gu(1.5)
                 }
                 inputMethodHints: Qt.ImhNoPredictiveText
                 Keys.onReturnPressed: {
-                    TodoModel.save(todoField.text)
-                    todoField.text = ""
+                    createPlaylist(playlistField.text)
+                    playlistField.text = ""
+                    playlistField.focus = false
                 }
                 maximumLength: 25
             }
         }
 
-        model:TodoModel.itemModel
-        delegate:ListItem {
+        model: playlistManager ? playlistManager.itemModel : null
+
+        delegate: ListItem {
             height: layout.height + (divider.visible ? divider.height : 0)
             divider.visible: false
+
             ListItemLayout {
                 id: layout
                 title.text: name
                 title.color: launchermodular.settings.textColor
-                title.font.strikeout: checkbox.checked
                 title.textSize: Label.Large
+                subtitle.text: playlistManager ? i18n.tr("%1 tracks").arg(playlistManager.getPlaylistCount(name)) : ""
 
-                CheckBox {
-                    id: checkbox
-                    SlotsLayout.position: SlotsLayout.Trailing
-                    checked: done
-                    indicator.width: units.gu(3)
-                    indicator.height: units.gu(3)
-                    onCheckedChanged: {
-                        TodoModel.done(index, checked)
-                    }
+                Icon {
+                    anchors.centerIn: parent
+                    height: units.gu(3)
+                    width: units.gu(3)
+                    name: "media-playlist"
+                    color: "#FFFFFF"
                 }
             }
 
@@ -121,7 +125,7 @@ Item {
                         text: i18n.tr("Delete")
                         iconName: "edit-delete"
                         onTriggered: {
-                            TodoModel.remove(index)
+                            playlistManager.deletePlaylist(model.name)
                         }
                     }
                 ]
@@ -129,8 +133,11 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked:{
-                    checkbox.toggle()
+                onClicked: {
+                    var tracks = playlistManager.loadPlaylist(model.name)
+                    musicPlayer.playList(tracks)
+                    playlistLoaded()
+                    musicPlayer.hidePlaylists()
                 }
             }
         }

@@ -39,7 +39,7 @@ Item {
               pageClockTimer.running = false
               screenSaver.screenSaverEnabled = true
           }
-      }
+    }
 
     function adjustFontSize() {
         targetFontSize = (OrientationReading.TopUp ||
