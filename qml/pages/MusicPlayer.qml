@@ -25,9 +25,6 @@ Rectangle {
     property string currentCacheFile: ""
     property int copyIndex: 0
     property bool showingPlaylists: false
-
-    // Lecture aléatoire : historique réel (pour "précédent") + pool des indices
-    // pas encore joués dans le cycle courant (pour "suivant").
     property var playHistory: []
     property int historyPosition: -1
     property var shuffleRemaining: []
@@ -49,14 +46,20 @@ Rectangle {
         audioRole: "MusicRole"
 
         onPlaying: {
+            isPlaying = true
             stateChanged(MusicPlayer.Playing)
+            durationRefreshTimer.attempts = 0
+            durationRefreshTimer.interval = 48
+            durationRefreshTimer.restart()
         }
 
         onStopped: {
+            isPlaying = false
             stateChanged(MusicPlayer.Stopped)
         }
 
         onPaused: {
+            isPlaying = false
             stateChanged(MusicPlayer.Paused)
         }
 
@@ -76,17 +79,43 @@ Rectangle {
         onStatusChanged: {
             if (status === Audio.EndOfMedia) {
                 if (repeatMode === MusicPlayer.Single) {
-                    loadTrack(currentIndex, true)
-                } else if (repeatMode === MusicPlayer.None) {
+                    audioPlayer.seek(0)
+                    audioPlayer.play()
+                } else {
                     advanceTrack()
-                } else if (repeatMode === MusicPlayer.All) {
-                    advanceTrack()
+                }
+            } else if (status === Audio.Loaded || status === Audio.Buffered) {
+                if (duration > 0) {
+                    progressSlider.maximumValue = duration
                 }
             }
         }
 
         onError: {
             console.log("Audio error:", errorString)
+        }
+    }
+
+    // FIXME: Workaround for pad.lv/1494031 by querying gst as it does not
+    // from lomiri-music-app
+    // emit until it changes to the PLAYING state. But by asking for a
+    // value we get gst to perform a query and return a result
+    // However this has to be done once the source is set, hence the delay
+    //
+    // NOTE: This does not solve when the currentIndex is removed though
+    Timer {
+        id: durationRefreshTimer
+        interval: 48
+        repeat: false
+        property int attempts: 0
+        onTriggered: {
+            if (audioPlayer.duration > 0) {
+                progressSlider.maximumValue = audioPlayer.duration
+            } else if (attempts < 5) {
+                attempts++
+                interval = interval * 2 // 48, 96, 192, 384, 768 ms
+                restart()
+            }
         }
     }
 
@@ -180,17 +209,23 @@ Rectangle {
     }
 
     function addToPlaylist(filePath, fileName) {
-        console.log("received addToPlaylist...")
-        console.log(playlist.length)
         var newPlaylist = playlist.slice()
         newPlaylist.push({path: filePath, name: fileName})
-        playlist = newPlaylist   // réassignation -> déclenche playlistChanged
-        playList(playlist)
+        playlist = newPlaylist // réassignation -> déclenche playlistChanged
+
+        if (currentIndex === -1) {
+            playList(playlist)
+            return
+        }
+
+        if (shuffleMode) {
+            var remaining = shuffleRemaining.slice()
+            remaining.push(newPlaylist.length - 1) // append : les index existants ne bougent pas
+            shuffleRemaining = remaining
+        }
     }
 
     function removeFromPlaylist(filePath, fileName) {
-        console.log("received removeFromPlaylist...")
-        console.log(playlist.length)
         var idx = -1
         for (var i = 0; i < playlist.length; i++) {
             if (playlist[i].path === filePath) {
@@ -198,17 +233,46 @@ Rectangle {
                 break
             }
         }
-        if (idx !== -1) {
-            var newPlaylist = playlist.slice()
-            newPlaylist.splice(idx, 1)
-            playlist = newPlaylist   // réassignation -> déclenche playlistChanged
+        if (idx === -1) return
+
+        var newPlaylist = playlist.slice()
+        newPlaylist.splice(idx, 1)
+
+        if (newPlaylist.length === 0) {
+            playlist = newPlaylist
+            resetPlayback()
+            return
         }
 
-        playList(playlist)
+        var removingCurrent = (idx === currentIndex)
+        var wasPlaying = isPlaying
+
+        // La suppression décale tous les index suivants de -1.
+        var newCurrentIndex = (idx < currentIndex) ? currentIndex - 1 : currentIndex
+
+        playlist = newPlaylist
+
+        if (removingCurrent) {
+            var nextIdx = Math.min(idx, newPlaylist.length - 1)
+            loadTrack(nextIdx, wasPlaying)
+        } else {
+            currentIndex = newCurrentIndex
+        }
+
+        if (shuffleMode) {
+            playHistory = currentIndex >= 0 ? [currentIndex] : []
+            historyPosition = playHistory.length - 1
+            if (currentIndex >= 0) resetShuffleCycle(currentIndex)
+        }
     }
 
     function loadTrack(index, autoPlay) {
         if (index < 0 || index >= playlist.length) return
+
+        if (index === currentIndex && currentCacheFile !== "") {
+            if (autoPlay) audioPlayer.play()
+            return
+        }
 
         recordHistory(index)
 
@@ -239,6 +303,9 @@ Rectangle {
         playHistory = []
         historyPosition = -1
         shuffleRemaining = []
+        durationRefreshTimer.stop()
+        progressSlider.value = 0
+        progressSlider.maximumValue = 0
     }
 
     function playList(songs) {
@@ -283,7 +350,6 @@ Rectangle {
                 historyPosition--
                 loadTrack(playHistory[historyPosition], true)
             }
-            // sinon : pas d'historique antérieur, on ne fait rien
         } else if (currentIndex > 0) {
             loadTrack(currentIndex - 1, true)
         }

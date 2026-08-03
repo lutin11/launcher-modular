@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 21:45+0000\n"
+"POT-Creation-Date: 2026-08-03 22:01+0000\n"
 "PO-Revision-Date: 2025-11-24 21:49+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -538,7 +538,7 @@ msgstr ""
 msgid "Select all"
 msgstr "Sélectionner"
 
-#: ../qml/pages/MusicPlayer.qml:439
+#: ../qml/pages/MusicPlayer.qml:524
 msgid "(%1)"
 msgstr ""
 

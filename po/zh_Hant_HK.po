@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 21:45+0000\n"
+"POT-Creation-Date: 2026-08-03 22:01+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Traditional Han script, Hong Kong) <https://hosted."
@@ -500,7 +500,7 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#: ../qml/pages/MusicPlayer.qml:439
+#: ../qml/pages/MusicPlayer.qml:524
 msgid "(%1)"
 msgstr ""
 
