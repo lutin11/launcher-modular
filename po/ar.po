@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 22:33+0000\n"
+"POT-Creation-Date: 2026-08-05 21:57+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -356,76 +356,76 @@ msgstr ""
 msgid "Choose"
 msgstr "إختار"
 
-#: ../qml/Main.qml:446
+#: ../qml/Main.qml:442
 msgid "Swipe up to configure the launcher"
 msgstr "اسحب لأعلى لإعداد المشغل"
 
-#: ../qml/Main.qml:504
+#: ../qml/Main.qml:500
 msgid "Add custom icon"
 msgstr "إضافة أيقونة مخصصة"
 
-#: ../qml/Main.qml:537
+#: ../qml/Main.qml:533
 #, fuzzy
 msgid "Manage pages"
 msgstr "إدارة الصفحة"
 
-#: ../qml/Main.qml:570
+#: ../qml/Main.qml:566
 msgid "Configure Launcher"
 msgstr "إعداد المشغل"
 
-#: ../qml/Main.qml:603
+#: ../qml/Main.qml:599
 msgid "Autostart"
 msgstr "التشغيل التلقائي"
 
-#: ../qml/Main.qml:636
+#: ../qml/Main.qml:632
 msgid "Help"
 msgstr "المساعدة"
 
-#: ../qml/Main.qml:669
+#: ../qml/Main.qml:665
 msgid "About"
 msgstr "حول"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:722
 msgid "Website"
 msgstr "الموقع"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:722
 msgid "Open this URL in the web browser"
 msgstr "افتح عنوان URL هذا في متصفح الويب"
 
-#: ../qml/Main.qml:727
+#: ../qml/Main.qml:723
 msgid "Terminal command"
 msgstr "أوامر الطرفية"
 
-#: ../qml/Main.qml:727
+#: ../qml/Main.qml:723
 msgid "Run a command in a terminal"
 msgstr "تشغيل أمر في الطرفية"
 
-#: ../qml/Main.qml:728
+#: ../qml/Main.qml:724
 msgid "Launch app"
 msgstr "شغل التطبيق"
 
-#: ../qml/Main.qml:728
+#: ../qml/Main.qml:724
 msgid "Launch an app"
 msgstr "شغل التطبيق"
 
-#: ../qml/Main.qml:752
+#: ../qml/Main.qml:748
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "أيقونة SVG أو PNG. نسبة 1:1"
 
-#: ../qml/Main.qml:765
+#: ../qml/Main.qml:761
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>العنوان</b> الذي سيتم عرضه في قائمة التطبيقات"
 
-#: ../qml/Main.qml:789 ../qml/Main.qml:790 ../qml/Main.qml:791
+#: ../qml/Main.qml:785 ../qml/Main.qml:786 ../qml/Main.qml:787
 msgid "<b>Action</b> example: "
 msgstr "مثال <b>الإجراء</b>:"
 
-#: ../qml/Main.qml:803
+#: ../qml/Main.qml:799
 msgid "Create icon"
 msgstr "إنشاء أيقونة"
 
-#: ../qml/Main.qml:846 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/Main.qml:842 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
 #: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "إلغاء"
@@ -498,7 +498,7 @@ msgstr ""
 "ترجمة المشغل المعياري على <a href='https://hosted.weblate.org/projects/"
 "launcher-modular/launchermodular-lut11'>Weblate المستضاف</a>"
 
-#: ../qml/pages/Calendar.qml:107
+#: ../qml/pages/Calendar.qml:111
 msgid "Agenda"
 msgstr "أجندة"
 
@@ -563,24 +563,32 @@ msgstr "todo جديد"
 msgid "Search your video"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:10
+#: ../qml/pages/calendar/Settings.qml:13
 msgid "calendar"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:14 ../qml/pages/clock/Settings.qml:30
+#: ../qml/pages/calendar/Settings.qml:17 ../qml/pages/clock/Settings.qml:30
 #: ../qml/pages/home/Settings.qml:17 ../qml/pages/music/Settings.qml:15
 #: ../qml/pages/picture/Settings.qml:17 ../qml/pages/rss/Settings.qml:21
 #: ../qml/pages/todo/Settings.qml:14 ../qml/pages/videos/Settings.qml:14
 msgid "Settings Page"
 msgstr "إعدادات الصفحة"
 
-#: ../qml/pages/calendar/Settings.qml:56 ../qml/widgets/event/Settings.qml:103
+#: ../qml/pages/calendar/Settings.qml:95 ../qml/widgets/event/Settings.qml:92
 msgid "Limit of days"
 msgstr "الحد من الأيام"
 
-#: ../qml/pages/calendar/Settings.qml:75 ../qml/widgets/event/Settings.qml:121
+#: ../qml/pages/calendar/Settings.qml:114 ../qml/widgets/event/Settings.qml:110
 msgid "By default 60 days"
 msgstr "افتراضيا 60 يوما"
+
+#: ../qml/pages/calendar/Settings.qml:137 ../qml/widgets/event/Settings.qml:175
+msgid "Calendars"
+msgstr ""
+
+#: ../qml/pages/calendar/Settings.qml:150 ../qml/widgets/event/Settings.qml:188
+msgid "No calendar found"
+msgstr ""
 
 #: ../qml/pages/clock/Settings.qml:13
 #, fuzzy
@@ -788,11 +796,11 @@ msgstr "في"
 msgid "Calcul result:"
 msgstr ""
 
-#: ../qml/widgets/Event.qml:130
+#: ../qml/widgets/Event.qml:119
 msgid "Events"
 msgstr "أحداث"
 
-#: ../qml/widgets/Event.qml:144
+#: ../qml/widgets/Event.qml:133
 msgid "No events"
 msgstr "لا يوجد أحداث"
 
@@ -975,28 +983,20 @@ msgstr "إعدادات الساعة"
 msgid "Show analog clock with digits"
 msgstr "عرض الساعة التناظرية مع اﻷرقام"
 
-#: ../qml/widgets/event/Settings.qml:55
+#: ../qml/widgets/event/Settings.qml:44
 #: ../qml/widgets/favoritecontact/Settings.qml:14
 #: ../qml/widgets/lastcall/Settings.qml:14
 #: ../qml/widgets/lastmessage/Settings.qml:15
 msgid "Settings Widget"
 msgstr "إعدادات القطعة"
 
-#: ../qml/widgets/event/Settings.qml:144
+#: ../qml/widgets/event/Settings.qml:133
 msgid "Limit of event"
 msgstr "حد الحدث"
 
-#: ../qml/widgets/event/Settings.qml:163
+#: ../qml/widgets/event/Settings.qml:152
 msgid "By default 3 event"
 msgstr "افتراضيا 3 الحدث"
-
-#: ../qml/widgets/event/Settings.qml:186
-msgid "Calendars"
-msgstr ""
-
-#: ../qml/widgets/event/Settings.qml:204
-msgid "No calendar found"
-msgstr ""
 
 #: ../qml/widgets/favoritecontact/Settings.qml:50
 #: ../qml/widgets/lastcall/Settings.qml:49

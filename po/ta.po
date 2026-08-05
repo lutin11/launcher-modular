@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 22:33+0000\n"
+"POT-Creation-Date: 2026-08-05 21:57+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -360,76 +360,76 @@ msgstr ""
 msgid "Choose"
 msgstr "தேர்வு"
 
-#: ../qml/Main.qml:446
+#: ../qml/Main.qml:442
 msgid "Swipe up to configure the launcher"
 msgstr "துவக்கியை உள்ளமைக்க மேலே தேய்க்கவும்"
 
-#: ../qml/Main.qml:504
+#: ../qml/Main.qml:500
 msgid "Add custom icon"
 msgstr "தனிப்பயன் படவுருவைச் சேர்"
 
-#: ../qml/Main.qml:537
+#: ../qml/Main.qml:533
 #, fuzzy
 msgid "Manage pages"
 msgstr "பக்கத்தை நிர்வகிக்கவும்"
 
-#: ../qml/Main.qml:570
+#: ../qml/Main.qml:566
 msgid "Configure Launcher"
 msgstr "துவக்கியை உள்ளமைக்கவும்"
 
-#: ../qml/Main.qml:603
+#: ../qml/Main.qml:599
 msgid "Autostart"
 msgstr "தானிதொடக்கு"
 
-#: ../qml/Main.qml:636
+#: ../qml/Main.qml:632
 msgid "Help"
 msgstr "உதவி"
 
-#: ../qml/Main.qml:669
+#: ../qml/Main.qml:665
 msgid "About"
 msgstr "பற்றி"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:722
 msgid "Website"
 msgstr "வலைத்தளம்"
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:722
 msgid "Open this URL in the web browser"
 msgstr "இந்த முகவரியை வலை உலாவியில் திறக்கவும்"
 
-#: ../qml/Main.qml:727
+#: ../qml/Main.qml:723
 msgid "Terminal command"
 msgstr "முனையக் கட்டளை"
 
-#: ../qml/Main.qml:727
+#: ../qml/Main.qml:723
 msgid "Run a command in a terminal"
 msgstr "ஒரு முனையத்தில் ஒரு கட்டளையை இயக்கவும்"
 
-#: ../qml/Main.qml:728
+#: ../qml/Main.qml:724
 msgid "Launch app"
 msgstr "பயன்பாட்டைத் தொடங்கவும்"
 
-#: ../qml/Main.qml:728
+#: ../qml/Main.qml:724
 msgid "Launch an app"
 msgstr "பயன்பாட்டைத் தொடங்கவும்"
 
-#: ../qml/Main.qml:752
+#: ../qml/Main.qml:748
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "எச்விசி அல்லது பிஎன்சி படவுரு. 1: 1 விகிதம்"
 
-#: ../qml/Main.qml:765
+#: ../qml/Main.qml:761
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "பயன்பாட்டு பட்டியலில் காட்டப்பட வேண்டிய <b> தலைப்பு </b>"
 
-#: ../qml/Main.qml:789 ../qml/Main.qml:790 ../qml/Main.qml:791
+#: ../qml/Main.qml:785 ../qml/Main.qml:786 ../qml/Main.qml:787
 msgid "<b>Action</b> example: "
 msgstr "<b> செயல் </b> எடுத்துக்காட்டு:"
 
-#: ../qml/Main.qml:803
+#: ../qml/Main.qml:799
 msgid "Create icon"
 msgstr "படவுருவை உருவாக்கவும்"
 
-#: ../qml/Main.qml:846 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/Main.qml:842 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
 #: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "கைவிடு"
@@ -502,7 +502,7 @@ msgstr ""
 "மட்டு துவக்கியை <a href = 'https: //hosted.weblate.org/projects/launcher-"
 "modular/launchermodular-lut11'> வலைபெயர்ப்பில்</a> மொழிபெயர்க்கவும்."
 
-#: ../qml/pages/Calendar.qml:107
+#: ../qml/pages/Calendar.qml:111
 msgid "Agenda"
 msgstr "நிகழ்ச்சி நிரல்"
 
@@ -567,24 +567,32 @@ msgstr "புதிய செய்யவேண்டிய"
 msgid "Search your video"
 msgstr "உங்கள் காணொளியைத் தேடு"
 
-#: ../qml/pages/calendar/Settings.qml:10
+#: ../qml/pages/calendar/Settings.qml:13
 msgid "calendar"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:14 ../qml/pages/clock/Settings.qml:30
+#: ../qml/pages/calendar/Settings.qml:17 ../qml/pages/clock/Settings.qml:30
 #: ../qml/pages/home/Settings.qml:17 ../qml/pages/music/Settings.qml:15
 #: ../qml/pages/picture/Settings.qml:17 ../qml/pages/rss/Settings.qml:21
 #: ../qml/pages/todo/Settings.qml:14 ../qml/pages/videos/Settings.qml:14
 msgid "Settings Page"
 msgstr "அமைப்புகள் பக்கம்"
 
-#: ../qml/pages/calendar/Settings.qml:56 ../qml/widgets/event/Settings.qml:103
+#: ../qml/pages/calendar/Settings.qml:95 ../qml/widgets/event/Settings.qml:92
 msgid "Limit of days"
 msgstr "நாட்களின் வரம்பு"
 
-#: ../qml/pages/calendar/Settings.qml:75 ../qml/widgets/event/Settings.qml:121
+#: ../qml/pages/calendar/Settings.qml:114 ../qml/widgets/event/Settings.qml:110
 msgid "By default 60 days"
 msgstr "இயல்பாக 60 நாட்கள்"
+
+#: ../qml/pages/calendar/Settings.qml:137 ../qml/widgets/event/Settings.qml:175
+msgid "Calendars"
+msgstr ""
+
+#: ../qml/pages/calendar/Settings.qml:150 ../qml/widgets/event/Settings.qml:188
+msgid "No calendar found"
+msgstr ""
 
 #: ../qml/pages/clock/Settings.qml:13
 #, fuzzy
@@ -788,11 +796,11 @@ msgstr "இல்"
 msgid "Calcul result:"
 msgstr "கணக்கீட்டு முடிவு:"
 
-#: ../qml/widgets/Event.qml:130
+#: ../qml/widgets/Event.qml:119
 msgid "Events"
 msgstr "நிகழ்வுகள்"
 
-#: ../qml/widgets/Event.qml:144
+#: ../qml/widgets/Event.qml:133
 msgid "No events"
 msgstr "நிகழ்வுகள் இல்லை"
 
@@ -975,28 +983,20 @@ msgstr "அமைப்புகள் நிரல்பலக கடிகா�
 msgid "Show analog clock with digits"
 msgstr "இலக்கங்களுடன் தொடர்முறை கடிகாரத்தைக் காட்டு"
 
-#: ../qml/widgets/event/Settings.qml:55
+#: ../qml/widgets/event/Settings.qml:44
 #: ../qml/widgets/favoritecontact/Settings.qml:14
 #: ../qml/widgets/lastcall/Settings.qml:14
 #: ../qml/widgets/lastmessage/Settings.qml:15
 msgid "Settings Widget"
 msgstr "அமைப்புகள் நிரல்பலகம்"
 
-#: ../qml/widgets/event/Settings.qml:144
+#: ../qml/widgets/event/Settings.qml:133
 msgid "Limit of event"
 msgstr "நிகழ்வின் வரம்பு"
 
-#: ../qml/widgets/event/Settings.qml:163
+#: ../qml/widgets/event/Settings.qml:152
 msgid "By default 3 event"
 msgstr "இயல்பாக 3 நிகழ்வு"
-
-#: ../qml/widgets/event/Settings.qml:186
-msgid "Calendars"
-msgstr ""
-
-#: ../qml/widgets/event/Settings.qml:204
-msgid "No calendar found"
-msgstr ""
 
 #: ../qml/widgets/favoritecontact/Settings.qml:50
 #: ../qml/widgets/lastcall/Settings.qml:49
