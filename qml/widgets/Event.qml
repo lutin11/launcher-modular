@@ -14,6 +14,12 @@ Item {
         return lowerToday
     }
 
+    // Empty table is for all calendar selected
+    CollectionFilter {
+        id: calendarCollectionFilter
+        ids: launchermodular.settings.selectedCalendarIds
+    }
+
     OrganizerModel {
         id: organizerModel
 
@@ -41,23 +47,36 @@ Item {
             }
         ]
 
-        onModelChanged: {
+        filter: (launchermodular.settings.selectedCalendarIds && launchermodular.settings.selectedCalendarIds.length > 0)
+            ? calendarCollectionFilter
+            : null
+
+        // Only load from backend details from selected calendar
+        fetchHint: FetchHint {
+            detailTypesHint: [Detail.EventTime, Detail.DisplayLabel, Detail.Description, Detail.Guid, Detail.ItemType]
+            optimizationHints: FetchHint.NoBinaryBlobs
+        }
+
+        onModelChanged: Qt.callLater(rebuildWidgetEventModel)
+
+        manager: "eds"
+    }
+
+    function rebuildWidgetEventModel() {
             widgetEventModel.clear();
-            var count = organizerModel.itemCount
+        var items = organizerModel.items; // mis en cache une seule fois, pas relu à chaque itération
+        var count = organizerModel.itemCount;
+        var limit = launchermodular.settings.limiteItemWidgetEvent;
+        var today = getTodayBaseLine();
             for ( var i = 0; i < count; i ++ ) {
-                var item = organizerModel.items[i];
-                var today = getTodayBaseLine();
+            if (widgetEventModel.count >= limit) break; // trié par date croissante : plus rien d'utile ensuite
+            var item = items[i];
                 var limitDown = item.startDateTime >= today
                 if(item.itemType !== 505 && limitDown){
-                    if(widgetEventModel.count < launchermodular.settings.limiteItemWidgetEvent){
                       widgetEventModel.append( {"item": item })
                     }
                 }
             }
-        }
-
-        manager: "eds"
-    }
 
     function updateModel() {
         organizerModel.updateCalendarModel()

@@ -148,6 +148,7 @@ MainView {
         property bool widgetVisibleLastmessage: true
         property bool widgetVisibleEvent: true
         property int itemsToLoadPerChannel: 7
+        property var selectedCalendarIds: []
 
         property int mainFeedSortAsc: 1
 
