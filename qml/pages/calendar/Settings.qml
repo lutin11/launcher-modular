@@ -130,7 +130,7 @@ Page {
                         leftMargin: units.gu(2)
                         topMargin: units.gu(2)
                     }
-                    height: calendarsColumn.height + units.gu(2)
+                    height: calendarsLabel.height + units.gu(1) + calendarsListView.height + units.gu(2)
 
                     Label {
                         id: calendarsLabel
@@ -142,29 +142,33 @@ Page {
                         font.weight: Font.Light
                     }
 
-                    Column {
-                        id: calendarsColumn
+                    Label {
+                        visible: calendarsPageModel.collections.length === 0
+                        anchors.top: calendarsLabel.bottom
+                        anchors.topMargin: units.gu(1)
+                        anchors.left: parent.left
+                        text: i18n.tr("No calendar found")
+                        color: "#AEA79F"
+                        font.pointSize: units.gu(1.2)
+                    }
+
+                    ListView {
+                        id: calendarsListView
+                        model: calendarsPageModel.collections
                         anchors.top: calendarsLabel.bottom
                         anchors.topMargin: units.gu(1)
                         anchors.left: parent.left
                         anchors.right: parent.right
+                        visible: calendarsPageModel.collections.length > 0
+                        height: contentHeight
+                        clip: true
+                        interactive: contentHeight > height
                         spacing: units.gu(1)
-
-                        Label {
-                            visible: calendarsPageModel.collections.length === 0
-                            text: i18n.tr("No calendar found")
-                            color: "#AEA79F"
-                            font.pointSize: units.gu(1.2)
-                        }
-
-                        Repeater {
-                            model: calendarsPageModel.collections
-                            delegate: CheckBox {
-                                width: calendarsColumn.width
-                                text: modelData.name
-                                checked: isCalendarSelected(modelData.collectionId)
-                                onCheckedChanged: toggleCalendarSelection(modelData.collectionId, checked)
-                            }
+                        delegate: CheckBox {
+                            width: calendarsListView.width
+                            text: modelData.name
+                            checked: isCalendarSelected(modelData.collectionId)
+                            onCheckedChanged: toggleCalendarSelection(modelData.collectionId, checked)
                         }
                     }
                 }
