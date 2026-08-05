@@ -149,15 +149,11 @@ MainView {
         property bool widgetVisibleEvent: true
         property int itemsToLoadPerChannel: 7
         property var selectedCalendarIds: []
+        property var selectedCalendarPageIds: []
 
         property int mainFeedSortAsc: 1
 
         property bool fullScreen: false
-
-        property string currentPlaylistName: ""
-        property var currentPlaylistSongs: []
-        property int currentSongIndex: -1
-        property var selectedSongs: []
     }//settings
 
     Timer {

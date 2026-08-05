@@ -64,19 +64,19 @@ Item {
 
     function rebuildWidgetEventModel() {
             widgetEventModel.clear();
-        var items = organizerModel.items; // mis en cache une seule fois, pas relu à chaque itération
+        var items = organizerModel.items;
         var count = organizerModel.itemCount;
         var limit = launchermodular.settings.limiteItemWidgetEvent;
         var today = getTodayBaseLine();
-            for ( var i = 0; i < count; i ++ ) {
-            if (widgetEventModel.count >= limit) break; // trié par date croissante : plus rien d'utile ensuite
+        for ( var i = 0; i < count; i ++ ) {
+            if (widgetEventModel.count >= limit) break;
             var item = items[i];
                 var limitDown = item.startDateTime >= today
                 if(item.itemType !== 505 && limitDown){
                       widgetEventModel.append( {"item": item })
-                    }
                 }
-            }
+        }
+    }
 
     function updateModel() {
         organizerModel.updateCalendarModel()

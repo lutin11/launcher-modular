@@ -2,7 +2,6 @@ import QtQuick 2.12
 import Lomiri.Components 1.3
 import QtOrganizer 5.0
 
-
 Item {
     id: calendar
 
@@ -14,8 +13,14 @@ Item {
         return lowerToday
     }
 
+    // Empty table is for all calendar selected
+    CollectionFilter {
+        id: calendarCollectionFilter
+        ids: launchermodular.settings.selectedCalendarPageIds
+    }
+
     OrganizerModel {
-        id: organizerModel
+        id: pageOrganizerModel
 
         function updateCalendarModel() {
             update()
@@ -33,7 +38,7 @@ Item {
 
         sortOrders: [
             SortOrder{
-              id: calendarSortOrder
+                id: calendarSortOrder
                 blankPolicy: SortOrder.BlanksFirst
                 detail: Detail.EventTime
                 field: EventTime.FieldStartDateTime
@@ -41,42 +46,41 @@ Item {
             }
         ]
 
-        onExportCompleted: {
-            if (DEBUG_MODE) console.log("onExportCompleted")
+        filter: (launchermodular.settings.selectedCalendarPageIds && launchermodular.settings.selectedCalendarPageIds.length > 0)
+            ? calendarCollectionFilter
+            : null
+
+        // Only load from backend details from selected calendar
+        fetchHint: FetchHint {
+            detailTypesHint: [Detail.EventTime, Detail.DisplayLabel, Detail.Description, Detail.Guid, Detail.ItemType]
+            optimizationHints: FetchHint.NoBinaryBlobs
         }
 
-        onImportCompleted: {
-            if (DEBUG_MODE) console.log("onImportCompleted")
-        }
+        onModelChanged: Qt.callLater(rebuildCalendarPageModel)
 
-        onItemsFetched: {
-            if (DEBUG_MODE) console.log("onItemsFetched")
-        }
-
-        onModelChanged: {
-            calandarEventModel.clear();
-            var count = organizerModel.itemCount
-            for ( var i = 0; i < count; i ++ ) {
-                var item = organizerModel.items[i];
-                var today = getTodayBaseLine();
-                var limitDown = item.startDateTime >= today
-                if(item.itemType !== 505 && limitDown && calandarEventModel.count < launchermodular.settings.limiteDaysCalendar){
-                    calandarEventModel.append( {"item": item })
-                }
-            }
-        }
-        onDataChanged: {
-            if (DEBUG_MODE) console.log("onDataChanged")
-        }
         manager: "eds"
     }
 
+    function rebuildCalendarPageModel() {
+        calendarPageModel.clear();
+        var items = pageOrganizerModel.items;
+        var count = pageOrganizerModel.itemCount;
+        var today = getTodayBaseLine();
+        for ( var i = 0; i < count; i ++ ) {
+            var item = items[i];
+            var limitDown = item.startDateTime >= today
+            if(item.itemType !== 505 && limitDown){
+                calendarPageModel.append( {"item": item })
+            }
+        }
+    }
+
     function updateModel() {
-        organizerModel.updateCalendarModel()
+        pageOrganizerModel.updateCalendarModel()
     }
 
     ListModel {
-        id: calandarEventModel
+        id: calendarPageModel
     }
 
     ListView {
@@ -86,7 +90,7 @@ Item {
         anchors.leftMargin: units.gu(2)
         width: parent.width
         height: contentHeight
-        model: calandarEventModel
+        model: calendarPageModel
 
         header: Item {
             id: textCalendar

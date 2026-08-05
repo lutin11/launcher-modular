@@ -9,21 +9,12 @@ import QtOrganizer 5.0
 Page {
     id: widgetSettingsEvent
 
-    // Uniquement pour lister les agendas disponibles (collections), pas pour
-    // afficher des événements.
     OrganizerModel {
         id: calendarsModel
         manager: "eds"
         autoUpdate: true
     }
 
-    /**
-     * Bascule un agenda dans/hors de la sélection. Un tableau vide dans les
-     * réglages signifie implicitement "tous les agendas" : au premier
-     * décochage, on le rend explicite (liste de tous les agendas sauf celui
-     * qu'on vient de décocher), plutôt que de simplement retirer un élément
-     * d'un tableau vide (qui ne ferait rien).
-     */
     function toggleCalendarSelection(collectionId, checked) {
         var allIds = []
         for (var i = 0; i < calendarsModel.collections.length; i++) {
@@ -40,8 +31,6 @@ Page {
             ids.splice(idx, 1)
         }
 
-        // Retour à la représentation implicite "tout sélectionné" (tableau
-        // vide) plutôt que de lister explicitement tous les agendas.
         launchermodular.settings.selectedCalendarIds = (ids.length === allIds.length) ? [] : ids
     }
 
