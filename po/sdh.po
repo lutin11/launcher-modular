@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-03 22:01+0000\n"
+"POT-Creation-Date: 2026-08-04 22:33+0000\n"
 "PO-Revision-Date: 2025-11-23 09:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Kurdish (Southern) <https://hosted.weblate.org/projects/"
@@ -329,75 +329,75 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:445
+#: ../qml/Main.qml:446
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:503
+#: ../qml/Main.qml:504
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:536
+#: ../qml/Main.qml:537
 msgid "Manage pages"
 msgstr ""
 
-#: ../qml/Main.qml:569
+#: ../qml/Main.qml:570
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:602
+#: ../qml/Main.qml:603
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:635
+#: ../qml/Main.qml:636
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:668
+#: ../qml/Main.qml:669
 msgid "About"
 msgstr ""
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:726
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:725
+#: ../qml/Main.qml:726
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:727
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:726
+#: ../qml/Main.qml:727
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:727
+#: ../qml/Main.qml:728
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:727
+#: ../qml/Main.qml:728
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:751
+#: ../qml/Main.qml:752
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:764
+#: ../qml/Main.qml:765
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:788 ../qml/Main.qml:789 ../qml/Main.qml:790
+#: ../qml/Main.qml:789 ../qml/Main.qml:790 ../qml/Main.qml:791
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:802
+#: ../qml/Main.qml:803
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:845 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/Main.qml:846 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
 #: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr ""
@@ -500,7 +500,7 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#: ../qml/pages/MusicPlayer.qml:524
+#: ../qml/pages/MusicPlayer.qml:505
 msgid "(%1)"
 msgstr ""
 
@@ -544,11 +544,11 @@ msgstr ""
 msgid "Settings Page"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:56 ../qml/widgets/event/Settings.qml:61
+#: ../qml/pages/calendar/Settings.qml:56 ../qml/widgets/event/Settings.qml:103
 msgid "Limit of days"
 msgstr ""
 
-#: ../qml/pages/calendar/Settings.qml:75 ../qml/widgets/event/Settings.qml:79
+#: ../qml/pages/calendar/Settings.qml:75 ../qml/widgets/event/Settings.qml:121
 msgid "By default 60 days"
 msgstr ""
 
@@ -748,11 +748,11 @@ msgstr ""
 msgid "Calcul result:"
 msgstr ""
 
-#: ../qml/widgets/Event.qml:100
+#: ../qml/widgets/Event.qml:130
 msgid "Events"
 msgstr ""
 
-#: ../qml/widgets/Event.qml:114
+#: ../qml/widgets/Event.qml:144
 msgid "No events"
 msgstr ""
 
@@ -935,19 +935,27 @@ msgstr ""
 msgid "Show analog clock with digits"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:13
+#: ../qml/widgets/event/Settings.qml:55
 #: ../qml/widgets/favoritecontact/Settings.qml:14
 #: ../qml/widgets/lastcall/Settings.qml:14
 #: ../qml/widgets/lastmessage/Settings.qml:15
 msgid "Settings Widget"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:102
+#: ../qml/widgets/event/Settings.qml:144
 msgid "Limit of event"
 msgstr ""
 
-#: ../qml/widgets/event/Settings.qml:121
+#: ../qml/widgets/event/Settings.qml:163
 msgid "By default 3 event"
+msgstr ""
+
+#: ../qml/widgets/event/Settings.qml:186
+msgid "Calendars"
+msgstr ""
+
+#: ../qml/widgets/event/Settings.qml:204
+msgid "No calendar found"
 msgstr ""
 
 #: ../qml/widgets/favoritecontact/Settings.qml:50
