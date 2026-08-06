@@ -299,7 +299,13 @@ MainView {
                                 id: pageLoader
                                 visible: index === view.currentIndex
                                 onLoaded: {
-                                    if (item) item.visible = visible
+                                    if (item) {
+                                        item.visible = visible
+                                        // Injecte the data used for the curent page
+                                        if (typeof item.pageData !== "undefined") {
+                                            item.pageData = model.data
+                                        }
+                                    }
                                 }
                                 onVisibleChanged: {
                                     if (item) item.visible = visible
