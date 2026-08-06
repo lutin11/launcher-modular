@@ -79,123 +79,6 @@ run the following command:
 docker pull clickable/amd64-20.04-amd64:latest
 ```
 
-## Créer une page personnalisée
-
-Launchermodular permet d'ajouter des pages personnalisées, sans modifier l'application elle-même. Une page est un composant QML autonome, accompagné de quelques fichiers annexes (réglages, icône, image de fond), suivant une convention de nommage précise.
-
-### 1. Emplacement
-
-Toutes les pages personnalisées vivent dans :
-
-```
-~/.launchermodular/pages/
-```
-
-(les pages intégrées à l'application suivent exactement la même structure, dans le dossier `pages/` du bundle de l'app — c'est un bon exemple à regarder si besoin).
-
-### 2. Structure de fichiers attendue
-
-Pour une page nommée `MaPage` (le nom que vous choisissez, en `PascalCase`), créez :
-
-```
-~/.launchermodular/pages/
-├── MaPage.qml                  ← composant principal, affiché sur le tableau de bord
-└── mapage/                     ← sous-dossier : nom en minuscules, sans espace
-    ├── Settings.qml            ← page de réglages (ouverte depuis "Page management")
-    └── assets/
-        ├── icon.svg            ← icône (liste "Choose a page", indicateur en bas d'écran)
-        └── page.png            ← image de fond affichée derrière la tuile de la page
-```
-
-**Points importants :**
-- Le nom du sous-dossier doit être **exactement** le nom du fichier `.qml` principal, tout en minuscules (`MaPage.qml` → `mapage/`). C'est cette convention qui relie les deux.
-- `MaPage.qml` doit être placé **directement** dans `~/.launchermodular/pages/` (pas dans le sous-dossier) — c'est ce fichier qui sera réellement chargé et affiché sur le tableau de bord.
-- `icon.svg` doit être au format SVG (formats bitmap non garantis).
-
-### 3. Le composant principal (`MaPage.qml`)
-
-C'est un composant QML standard (typiquement un `Item` ou un `Page`), chargé dynamiquement via `Qt.createComponent()` puis inséré dans le tableau de bord (un `SwipeView`, une page par entrée activée). Il n'a pas besoin d'implémenter d'interface particulière : l'application se contente de piloter sa propriété `visible` selon qu'il est la page actuellement affichée ou non.
-
-```qml
-import QtQuick 2.12
-
-Item {
-    id: maPage
-    // Votre contenu ici
-}
-```
-
-Vous pouvez utiliser les mêmes patterns que les pages existantes de l'application (imports Lomiri.Components, accès à `launchermodular.settings`, etc.).
-
-### 4. La page de réglages (`mapage/Settings.qml`)
-
-Ouverte quand l'utilisateur touche votre page dans l'écran "Page management" (`pageStack.push(...)`). C'est un composant `Page` classique :
-
-```qml
-import QtQuick 2.12
-import Lomiri.Components 1.3
-
-Page {
-    id: pageSettingsMaPage
-
-    header: PageHeader {
-        title: i18n.tr("Ma Page")
-        leadingActionBar.actions: [
-            Action {
-                iconName: "back"
-                onTriggered: pageStack.pop()
-            }
-        ]
-    }
-
-    // Vos réglages ici
-}
-```
-
-### 5. Stockage des réglages propres à votre page
-
-Chaque page ajoutée possède un champ `data` (objet JSON libre) qui lui est propre dans le modèle de pages de l'application, persisté automatiquement entre les redémarrages. Il est injecté dans votre composant principal via une propriété nommée **`pageData`** (pas `data` — voir la mise en garde ci-dessous) :
-
-```qml
-import QtQuick 2.12
-
-Item {
-    id: maPage
-    property var pageData: ({})   // reçoit le data persisté de cette page
-
-    Component.onCompleted: {
-        // pageData.maCle est disponible ici si déjà défini lors d'un lancement précédent
-    }
-
-    // Pour persister une valeur : mutez pageData EN PLACE, ne le remplacez pas
-    function saveSomething(valeur) {
-        pageData.maCle = valeur   // ✅ correct : sera repris automatiquement à la sauvegarde
-        // pageData = {maCle: valeur}   ❌ incorrect : casse la référence partagée avec pageModel
-    }
-}
-```
-
-**Pourquoi `pageData` et pas `data`** : `Item` (et donc `Page`, `Rectangle`, etc.) possède déjà nativement une propriété `data` — la liste de ses enfants. Déclarer une propriété `data` dans votre page entrerait en collision avec elle. Le champ reste appelé `data` dans le modèle interne de l'application (pour rester cohérent avec le reste du code) ; côté page, il vous est passé sous le nom `pageData`.
-
-**Pourquoi muter en place plutôt que réassigner** : `pageData` est passé par référence, pas copié. Si vous faites `pageData.maCle = valeur`, l'application récupère automatiquement la valeur à jour au moment de sauvegarder les réglages (aucun code de synchronisation à écrire). Si vous réassignez complètement `pageData = {...}`, vous créez un nouvel objet déconnecté de celui que l'application persistera — la modification sera perdue.
-
-### 6. Ajouter la page dans l'application
-
-1. Placez les fichiers ci-dessus dans `~/.launchermodular/pages/`.
-2. Dans Launchermodular, ouvrez **Page management** (bouton "+" en haut à droite).
-3. Votre page apparaît automatiquement dans la liste "Choose a page" (elle est détectée dès qu'un fichier `.qml` existe directement dans `~/.launchermodular/pages/`) — sélectionnez-la pour l'ajouter au tableau de bord.
-
-Aucun redémarrage de l'application ni déclaration supplémentaire n'est nécessaire : la détection se fait par scan du dossier à l'ouverture de "Page management".
-
-### Résumé — checklist
-
-- [ ] `~/.launchermodular/pages/MaPage.qml` existe (composant principal)
-- [ ] `~/.launchermodular/pages/mapage/Settings.qml` existe (nom en minuscules)
-- [ ] `~/.launchermodular/pages/mapage/assets/icon.svg` existe
-- [ ] `~/.launchermodular/pages/mapage/assets/page.png` existe
-- [ ] Si vous persistez des réglages propres à la page : `property var pageData: ({})` déclarée, mutée en place
-- [ ] La page apparaît dans "Page management" → "+" → "Choose a page"
-
 ## Creating a Custom Page
 
 Launchermodular lets you add custom pages without modifying the application itself. A page is a standalone QML component, accompanied by a few supporting files (settings, icon, background image), following a precise naming convention.
@@ -304,14 +187,110 @@ Item {
 
 No application restart or additional declaration is needed: detection happens by scanning the folder each time "Page management" is opened.
 
-### Summary — checklist
+## Créer une page personnalisée
 
-- [ ] `~/.launchermodular/pages/MyPage.qml` exists (main component)
-- [ ] `~/.launchermodular/pages/mypage/Settings.qml` exists (lowercase name)
-- [ ] `~/.launchermodular/pages/mypage/assets/icon.svg` exists
-- [ ] `~/.launchermodular/pages/mypage/assets/page.png` exists
-- [ ] If persisting page-specific settings: `property var pageData: ({})` declared, mutated in place
-- [ ] The page shows up in "Page management" → "+" → "Choose a page"
+Launchermodular permet d'ajouter des pages personnalisées, sans modifier l'application elle-même. Une page est un composant QML autonome, accompagné de quelques fichiers annexes (réglages, icône, image de fond), suivant une convention de nommage précise.
 
+### 1. Emplacement
 
+Toutes les pages personnalisées vivent dans :
 
+```
+~/.launchermodular/pages/
+```
+
+(les pages intégrées à l'application suivent exactement la même structure, dans le dossier `pages/` du bundle de l'app — c'est un bon exemple à regarder si besoin).
+
+### 2. Structure de fichiers attendue
+
+Pour une page nommée `MaPage` (le nom que vous choisissez, en `PascalCase`), créez :
+
+```
+~/.launchermodular/pages/
+├── MaPage.qml                  ← composant principal, affiché sur le tableau de bord
+└── mapage/                     ← sous-dossier : nom en minuscules, sans espace
+    ├── Settings.qml            ← page de réglages (ouverte depuis "Page management")
+    └── assets/
+        ├── icon.svg            ← icône (liste "Choose a page", indicateur en bas d'écran)
+        └── page.png            ← image de fond affichée derrière la tuile de la page
+```
+
+**Points importants :**
+- Le nom du sous-dossier doit être **exactement** le nom du fichier `.qml` principal, tout en minuscules (`MaPage.qml` → `mapage/`). C'est cette convention qui relie les deux.
+- `MaPage.qml` doit être placé **directement** dans `~/.launchermodular/pages/` (pas dans le sous-dossier) — c'est ce fichier qui sera réellement chargé et affiché sur le tableau de bord.
+- `icon.svg` doit être au format SVG (formats bitmap non garantis).
+
+### 3. Le composant principal (`MaPage.qml`)
+
+C'est un composant QML standard (typiquement un `Item` ou un `Page`), chargé dynamiquement via `Qt.createComponent()` puis inséré dans le tableau de bord (un `SwipeView`, une page par entrée activée). Il n'a pas besoin d'implémenter d'interface particulière : l'application se contente de piloter sa propriété `visible` selon qu'il est la page actuellement affichée ou non.
+
+```qml
+import QtQuick 2.12
+
+Item {
+    id: maPage
+    // Votre contenu ici
+}
+```
+
+Vous pouvez utiliser les mêmes patterns que les pages existantes de l'application (imports Lomiri.Components, accès à `launchermodular.settings`, etc.).
+
+### 4. La page de réglages (`mapage/Settings.qml`)
+
+Ouverte quand l'utilisateur touche votre page dans l'écran "Page management" (`pageStack.push(...)`). C'est un composant `Page` classique :
+
+```qml
+import QtQuick 2.12
+import Lomiri.Components 1.3
+
+Page {
+    id: pageSettingsMaPage
+
+    header: PageHeader {
+        title: i18n.tr("Ma Page")
+        leadingActionBar.actions: [
+            Action {
+                iconName: "back"
+                onTriggered: pageStack.pop()
+            }
+        ]
+    }
+
+    // Vos réglages ici
+}
+```
+
+### 5. Stockage des réglages propres à votre page
+
+Chaque page ajoutée possède un champ `data` (objet JSON libre) qui lui est propre dans le modèle de pages de l'application, persisté automatiquement entre les redémarrages. Il est injecté dans votre composant principal via une propriété nommée **`pageData`** (pas `data` — voir la mise en garde ci-dessous) :
+
+```qml
+import QtQuick 2.12
+
+Item {
+    id: maPage
+    property var pageData: ({})   // reçoit le data persisté de cette page
+
+    Component.onCompleted: {
+        // pageData.maCle est disponible ici si déjà défini lors d'un lancement précédent
+    }
+
+    // Pour persister une valeur : mutez pageData EN PLACE, ne le remplacez pas
+    function saveSomething(valeur) {
+        pageData.maCle = valeur   // ✅ correct : sera repris automatiquement à la sauvegarde
+        // pageData = {maCle: valeur}   ❌ incorrect : casse la référence partagée avec pageModel
+    }
+}
+```
+
+**Pourquoi `pageData` et pas `data`** : `Item` (et donc `Page`, `Rectangle`, etc.) possède déjà nativement une propriété `data` — la liste de ses enfants. Déclarer une propriété `data` dans votre page entrerait en collision avec elle. Le champ reste appelé `data` dans le modèle interne de l'application (pour rester cohérent avec le reste du code) ; côté page, il vous est passé sous le nom `pageData`.
+
+**Pourquoi muter en place plutôt que réassigner** : `pageData` est passé par référence, pas copié. Si vous faites `pageData.maCle = valeur`, l'application récupère automatiquement la valeur à jour au moment de sauvegarder les réglages (aucun code de synchronisation à écrire). Si vous réassignez complètement `pageData = {...}`, vous créez un nouvel objet déconnecté de celui que l'application persistera — la modification sera perdue.
+
+### 6. Ajouter la page dans l'application
+
+1. Placez les fichiers ci-dessus dans `~/.launchermodular/pages/`.
+2. Dans Launchermodular, ouvrez **Page management** (bouton "+" en haut à droite).
+3. Votre page apparaît automatiquement dans la liste "Choose a page" (elle est détectée dès qu'un fichier `.qml` existe directement dans `~/.launchermodular/pages/`) — sélectionnez-la pour l'ajouter au tableau de bord.
+
+Aucun redémarrage de l'application ni déclaration supplémentaire n'est nécessaire : la détection se fait par scan du dossier à l'ouverture de "Page management".
