@@ -41,6 +41,16 @@ Page {
 
             property string emptyDescription:""
 
+            // 2.4.7
+            property string details51: i18n.tr("Update Readme file to explain how user can create there own page")
+            property string description51:i18n.tr("Please, visit https://github.com/lutin11/launcher-modular")
+            property string details50: i18n.tr("Fix favorite applications not being launched after update")
+            property string details49: i18n.tr("Music page as integrated player")
+            property string description49:i18n.tr("Play your selected musics, create and play Playlists")
+            property string details48: i18n.tr("It's now possible to choose your calendar on widget and calendar page")
+            property string details47: i18n.tr("Prepare for QT6 migration")
+
+            // 2.4.6
             property string details46: i18n.tr("update German translation")
             property string details45: i18n.tr("Fix numeric clock not refresh")
             property string details44: i18n.tr("Fix app not available on launcher")
@@ -120,7 +130,12 @@ Page {
             }
 
             Component.onCompleted: {
-                changeLogModel.append({ version: "2.4.6", date: "2026-04-03", details: details44, description: description44});
+                changeLogModel.append({ version: "2.4.7", date: "2026-08-10", details: details51, description: description51});
+                changeLogModel.append({ version: "", date: "", details: details50, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details49, description: description49});
+                changeLogModel.append({ version: "", date: "", details: details48, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details47, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.6", date: "", details: details44, description: description44});
                 changeLogModel.append({ version: "", date: "", details: details46, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details45, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.5", date: "2025-11-17", details: details43, description: emptyDescription});
