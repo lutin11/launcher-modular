@@ -154,6 +154,10 @@ MainView {
         property int mainFeedSortAsc: 1
 
         property bool fullScreen: false
+
+        property string nextcloudUser: ''
+        property string nextcloudPassword: ''
+        property string nextcloudUrl: ''
     }//settings
 
     Timer {
