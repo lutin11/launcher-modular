@@ -9,9 +9,10 @@ import QtQuick.Layouts 1.12
 
 Page {
     id: pageSettingsNextcloudFolders
-    anchors.fill: parent
 
-    property bool testSucced: null
+    property string nextcloudPageName: i18n.tr("nextcloudFolders") // do not remove, use pour Po files
+
+    property string testSucced: ""
     property bool serverUrl: false
     property bool loading: false
     property string errorMessage: ""
@@ -35,7 +36,7 @@ Page {
             loading = false
 
             if (xhr.status === 207) {
-                testSucced = true
+                testSucced = "true"
             } else if (xhr.status === 401) {
                 errorMessage = i18n.tr("Authentication failed. Check username/app password.")
             } else if (xhr.status === 0) {
@@ -44,7 +45,7 @@ Page {
                 errorMessage = i18n.tr("Error %1 while loading folder.").arg(xhr.status)
             }
             if (errorMessage !== "") {
-                testSucced = false
+                testSucced = "false"
                 console.log(errorMessage)
             }
         }
@@ -62,9 +63,8 @@ Page {
         leadingActionBar.actions: [
             Action {
                 iconName: "back"
-                onTriggered: {
-                    pageStack.pop();
-                }
+                text: "Back"
+                onTriggered: pageStack.pop()
             }
         ]
     }
@@ -85,7 +85,6 @@ Page {
             Column {
                 id: settingsColumn
                 width: parent.width
-                anchors.top: parent.top
                 anchors.topMargin: units.gu(2)
                 spacing: units.gu(2)
 
@@ -173,9 +172,7 @@ Page {
 
                 Column {
                     width: parent.width - units.gu(4)
-                    anchors.top: parent.bottom
                     anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
 
                     Button {
                         id: testConnexionButton
@@ -183,8 +180,6 @@ Page {
                         width: (parent.width/2)-units.gu(2)
                         anchors.right: parent.right
                         anchors.rightMargin: units.gu(3)
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 20
                         color: "#0E8420"
                         text: i18n.tr("Test connexion")
 
@@ -196,17 +191,15 @@ Page {
 
                 Column {
                     width: parent.width - units.gu(4)
-                    anchors.top: parent.bottom
                     anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
 
                     Label {
-                        visible: testSucced != null
-                        anchors.fill: parent
-                        anchors.margins: units.gu(1)
-                        anchors.topMargin: webAppIcon.height / 1.4
-                        text: testSucced ? i18n.tr("Success !") : i18n.tr("Failed")
-                        wrapMode: Text.Wrap
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        visible: testSucced !== ""
+                        color: "#FFFFFF"
+                        width: parent.width
+                        wrapMode: Text.WordWrap
+                        text: testSucced === "true" ? i18n.tr("Success !") : i18n.tr("Failed")
                     }
                 }
 

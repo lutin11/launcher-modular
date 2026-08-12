@@ -158,6 +158,8 @@ MainView {
         property string nextcloudUser: ''
         property string nextcloudPassword: ''
         property string nextcloudUrl: ''
+        property string nextcloudBasePath: '/'
+
     }//settings
 
     Timer {
