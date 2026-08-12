@@ -25,6 +25,7 @@ public:
     Q_INVOKABLE bool removeFile(const QString &path);
     Q_INVOKABLE bool makePath(const QString &path);
     Q_INVOKABLE int removeFilesWithExtensions(const QString &dirPath, const QStringList &extensions);
+    Q_INVOKABLE bool writeBytes(const QString &path, const QByteArray &data);
 public slots:
     void fetchOutput();
     void fetchError();

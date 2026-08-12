@@ -130,6 +130,21 @@ bool Terminalaccess::makePath(const QString &path) {
     return ok;
 }
 
+bool Terminalaccess::writeBytes(const QString &path, const QByteArray &data) {
+    QFile file(path);
+    if (!file.open(QIODevice::WriteOnly)) {
+        qDebug() << "writeBytes failed to open:" << path;
+        return false;
+    }
+    qint64 written = file.write(data);
+    file.close();
+    if (written != data.size()) {
+        qDebug() << "writeBytes incomplete write:" << path << written << "/" << data.size();
+        return false;
+    }
+    return true;
+}
+
 int Terminalaccess::removeFilesWithExtensions(const QString &dirPath, const QStringList &extensions) {
     QDir dir(dirPath);
     if (!dir.exists()) return 0;
