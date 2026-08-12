@@ -12,7 +12,7 @@ Page {
 
     property string nextcloudPageName: i18n.tr("nextcloudFolders") // do not remove, use pour Po files
 
-    property string testSucced: ""
+    property string testSucced: i18n.tr("Test it !")
     property bool serverUrl: false
     property bool loading: false
     property string errorMessage: ""
@@ -24,6 +24,7 @@ Page {
 
     function testConnexion() {
         loading = true
+        testSucced = ""
 
         var xhr = new XMLHttpRequest()
         xhr.open("PROPFIND", davUrl())
@@ -36,7 +37,7 @@ Page {
             loading = false
 
             if (xhr.status === 207) {
-                testSucced = "true"
+                testSucced = i18n.tr("Success !")
             } else if (xhr.status === 401) {
                 errorMessage = i18n.tr("Authentication failed. Check username/app password.")
             } else if (xhr.status === 0) {
@@ -45,7 +46,7 @@ Page {
                 errorMessage = i18n.tr("Error %1 while loading folder.").arg(xhr.status)
             }
             if (errorMessage !== "") {
-                testSucced = "false"
+                testSucced = i18n.tr("Failed")
                 console.log(errorMessage)
             }
         }
@@ -170,16 +171,15 @@ Page {
                     }
                 }
 
-                Column {
+                Row {
                     width: parent.width - units.gu(4)
                     anchors.horizontalCenter: parent.horizontalCenter
+                    spacing: units.gu(1)
 
                     Button {
                         id: testConnexionButton
                         height: units.gu(4)
                         width: (parent.width/2)-units.gu(2)
-                        anchors.right: parent.right
-                        anchors.rightMargin: units.gu(3)
                         color: "#0E8420"
                         text: i18n.tr("Test connexion")
 
@@ -187,29 +187,23 @@ Page {
                             testConnexion()
                         }
                     }
-                }
-
-                Column {
-                    width: parent.width - units.gu(4)
-                    anchors.horizontalCenter: parent.horizontalCenter
 
                     Label {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        visible: testSucced !== ""
+                        anchors.verticalCenter: parent.verticalCenter
                         color: "#FFFFFF"
-                        width: parent.width
+                        //width: parent.width
                         wrapMode: Text.WordWrap
-                        text: testSucced === "true" ? i18n.tr("Success !") : i18n.tr("Failed")
+                        text: testSucced
                     }
                 }
 
-                ActivityIndicator {
-                    anchors.centerIn: parent
-                    running: loading
-                    visible: loading
-                }
-
             }
+        }
+
+        ActivityIndicator {
+            anchors.centerIn: parent
+            running: loading
+            visible: loading
         }
     }
 }
