@@ -141,9 +141,11 @@ Item {
     function openFolder(path) {
         // use slice() to force UI refresh
         var newHistory = pathHistory.slice()
-        newHistory.push(currentPath)
-        pathHistory = newHistory // réassignation -> déclenche pathHistoryChanged
-        fetchFolder(path)
+        if (path && currentPath !== path) {
+            newHistory.push(currentPath)
+            pathHistory = newHistory // réassignation -> déclenche pathHistoryChanged
+            fetchFolder(path)
+        }
     }
 
     function goBack() {
@@ -187,7 +189,6 @@ Item {
     function downloadSelectedFiles() {
         if (selectedFiles.length === 0) return
         var queue = selectedFiles.slice()
-        selectedFiles = [] // désélectionne visuellement tout de suite
         pendingDownloadedFiles = []
         downloadMessage = i18n.tr("Downloading 1/%1...").arg(queue.length)
         downloadNextFile(queue, 0)
@@ -201,7 +202,7 @@ Item {
             }
             return
         }
-
+        loading = true
         var file = queue[index]
         var xhr = new XMLHttpRequest()
         xhr.open("GET", davUrl(file.path))
@@ -228,23 +229,6 @@ Item {
             downloadNextFile(queue, index + 1)
         }
         xhr.send()
-
-
-        //        //var downloadDir = MySettings.getHomeLocation() + "/Downloads/"
-        //         //var commands = ["mkdir -p " + shellEscape(downloadDir)]
-        //         for (var i = 0; i < selectedFiles.length; i++) {
-        //             var file = selectedFiles[i]
-        //             var url = davUrl(file.path)
-        //             manager.download(url);
-        //             // var dest = downloadDir + file.name
-        //             // commands.push(
-        //             //     "curl -s -u " + shellEscape(launchermodular.settings.nextcloudUser + ":" + launchermodular.settings.nextcloudPassword) +
-        //             //     " -o " + shellEscape(dest) + " " + shellEscape(url)
-        //             // )
-        //         }
-        //         //Terminalaccess.run(commands.join(" && "))
-        //         downloadMessage = i18n.tr("Downloading %1 file(s) to Downloads...").arg(selectedFiles.length)
-        //         selectedFiles = []
     }
 
     ListModel {
@@ -277,11 +261,15 @@ Item {
             transfer.state = ContentTransfer.Charged
             exportPeerPicker.visible = false
             pendingDownloadedFiles = []
+            loading = false
+            selectedFiles = []
         }
 
         onCancelPressed: {
             exportPeerPicker.visible = false
             pendingDownloadedFiles = []
+            loading = false
+            selectedFiles = []
         }
     }
 
@@ -350,7 +338,11 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 anchors.margins: units.gu(-1)
-                onClicked: fetchFolder(currentPath)
+                onClicked: {
+                    loading = false
+                    selectedFiles = []
+                    fetchFolder(currentPath)
+                }
             }
         }
     }
