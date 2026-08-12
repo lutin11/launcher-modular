@@ -6,6 +6,7 @@ import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
 import MySettings 1.0
 import QtSystemInfo 5.0 // for screen saver
+import "./music/"
 
 Item {
     id: musics

@@ -12,7 +12,7 @@ import LibertineLauncher 1.0
 import CalculatorHelper 1.0
 import Lomiri.Components.ListItems 1.3 as ListItem
 import Lomiri.Components.Themes 1.3
-
+import "./music/"
 
 Item {
     id: home
