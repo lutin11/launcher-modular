@@ -5,7 +5,7 @@ import Qt.labs.folderlistmodel 2.12
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
-import QtQuick.Layouts 1.15
+import QtQuick.Layouts 1.12
 
 Page {
     id: picturePageSettingsPicture
@@ -125,7 +125,7 @@ Page {
                         text: sortingSection.selectorSortingModel[sortingSection.selectedIndex].label
                         width: sortingSection.width - sortLabel.width - units.gu(2)
                         height: units.gu(5)
-                        anchors.verticalCenter: parent.right
+                        //anchors.verticalCenter: parent.right
                         onClicked: popupSelector.open()
                     }
 
