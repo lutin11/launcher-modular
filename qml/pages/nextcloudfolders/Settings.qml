@@ -5,27 +5,20 @@ import Qt.labs.folderlistmodel 2.12
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
-import QtQuick.Layouts 1.15
+import QtQuick.Layouts 1.12
 
 Page {
     id: pageSettingsNextcloudFolders
     anchors.fill: parent
 
-    property var pageData: ({})
     property bool testSucced: null
     property bool serverUrl: false
     property bool loading: false
     property string errorMessage: ""
 
-    Component.onCompleted: {
-        pageData.username = launchermodular.settings.nextcloudUser
-        pageData.appPassword = launchermodular.settings.nextcloudPassword
-        pageData.serverUrl = launchermodular.settings.nextcloudUrl
-    }
-
     function davUrl() {
-        var base = pageData.serverUrl.replace(/\/+$/, "")
-        return base + "/remote.php/dav/files/" + encodeURIComponent(pageData.username) + "/"
+        var base = launchermodular.settings.nextcloudUrl.replace(/\/+$/, "")
+        return base + "/remote.php/dav/files/" + encodeURIComponent(launchermodular.settings.nextcloudUser) + "/"
     }
 
     function testConnexion() {
@@ -35,16 +28,13 @@ Page {
         xhr.open("PROPFIND", davUrl())
         xhr.setRequestHeader("Depth", "1")
         xhr.setRequestHeader("Content-Type", "application/xml; charset=utf-8")
-        xhr.setRequestHeader("Authorization", "Basic " + Qt.btoa(pageData.username + ":" + pageData.appPassword))
+        xhr.setRequestHeader("Authorization", "Basic " + Qt.btoa(launchermodular.settings.nextcloudUser + ":" + launchermodular.settings.nextcloudPassword))
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState !== XMLHttpRequest.DONE) return
             loading = false
 
             if (xhr.status === 207) {
-                launchermodular.settings.nextcloudUser = pageData.username
-                launchermodular.settings.nextcloudPassword = pageData.appPassword
-                launchermodular.settings.nextcloudUrl = pageData.serverUrl
                 testSucced = true
             } else if (xhr.status === 401) {
                 errorMessage = i18n.tr("Authentication failed. Check username/app password.")
@@ -73,9 +63,6 @@ Page {
             Action {
                 iconName: "back"
                 onTriggered: {
-                    launchermodular.settings.nextcloudUser = pageData.username
-                    launchermodular.settings.nextcloudPassword = pageData.appPassword
-                    launchermodular.settings.nextcloudUrl = pageData.serverUrl
                     pageStack.pop();
                 }
             }
@@ -116,8 +103,8 @@ Page {
                         width: parent.width
                         placeholderText: "https://cloud.example.com"
                         inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhNoPredictiveText
-                        text: pageData.serverUrl || ""
-                        onTextChanged: pageData.serverUrl = text
+                        text: launchermodular.settings.nextcloudUrl || ""
+                        onTextChanged: launchermodular.settings.nextcloudUrl = text
                     }
                 }
 
@@ -134,8 +121,8 @@ Page {
                         id: usernameField
                         width: parent.width
                         inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase
-                        text: pageData.username || ""
-                        onTextChanged: pageData.username = text
+                        text: launchermodular.settings.nextcloudUser || ""
+                        onTextChanged: launchermodular.settings.nextcloudUser = text
                     }
                 }
 
@@ -153,8 +140,8 @@ Page {
                         width: parent.width
                         echoMode: TextInput.Password
                         inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                        text: pageData.appPassword || ""
-                        onTextChanged: pageData.appPassword = text
+                        text: launchermodular.settings.nextcloudPassword || ""
+                        onTextChanged: launchermodular.settings.nextcloudPassword = text
                     }
                     Label {
                         width: parent.width
@@ -179,8 +166,8 @@ Page {
                         width: parent.width
                         placeholderText: "/"
                         inputMethodHints: Qt.ImhNoPredictiveText
-                        text: pageData.basePath || "/"
-                        onTextChanged: pageData.basePath = text.length > 0 ? text : "/"
+                        text: launchermodular.settings.nextcloudBasePath || "/"
+                        onTextChanged: launchermodular.settings.nextcloudBasePath = text.length > 0 ? text : "/"
                     }
                 }
 
