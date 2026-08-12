@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-11 10:17+0000\n"
+"POT-Creation-Date: 2026-08-12 10:20+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -551,61 +551,60 @@ msgstr "நிறுவல் நீக்க"
 msgid "Remove"
 msgstr "அகற்று"
 
-#: ../qml/pages/Music.qml:311
+#: ../qml/pages/Music.qml:312
 msgid "Search your music"
 msgstr "உங்கள் இசையைத் தேடுங்கள்"
 
-#: ../qml/pages/Music.qml:398
+#: ../qml/pages/Music.qml:399
 msgid "Deselect all"
 msgstr ""
 
-#: ../qml/pages/Music.qml:398
+#: ../qml/pages/Music.qml:399
 msgid "Select all"
 msgstr ""
 
-#: ../qml/pages/MusicPlayer.qml:505
-msgid "(%1)"
-msgstr ""
-
 #: ../qml/pages/NextcloudFolders.qml:126
-#: ../qml/pages/nextcloudfolders/Settings.qml:50
+#: ../qml/pages/nextcloudfolders/Settings.qml:40
 msgid "Authentication failed. Check username/app password."
 msgstr ""
 
 #: ../qml/pages/NextcloudFolders.qml:128
-#: ../qml/pages/nextcloudfolders/Settings.qml:52
+#: ../qml/pages/nextcloudfolders/Settings.qml:42
 msgid "Network error. Check server URL and connectivity."
 msgstr ""
 
 #: ../qml/pages/NextcloudFolders.qml:130
-#: ../qml/pages/nextcloudfolders/Settings.qml:54
+#: ../qml/pages/nextcloudfolders/Settings.qml:44
 msgid "Error %1 while loading folder."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:187
+#: ../qml/pages/NextcloudFolders.qml:192
+msgid "Downloading 1/%1..."
+msgstr ""
+
+#: ../qml/pages/NextcloudFolders.qml:221
+msgid "Failed to save %1 locally."
+msgstr ""
+
+#: ../qml/pages/NextcloudFolders.qml:224
+msgid "Failed to download %1 (error %2)."
+msgstr ""
+
+#: ../qml/pages/NextcloudFolders.qml:227
+msgid "Downloading %1/%2..."
+msgstr ""
+
+#: ../qml/pages/NextcloudFolders.qml:319
 msgid "Nextcloud"
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:220
+#: ../qml/pages/NextcloudFolders.qml:370
 msgid "Configure your Nextcloud server in this page's settings first."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:291
+#: ../qml/pages/NextcloudFolders.qml:482
 msgid "This folder is empty"
 msgstr ""
-
-#: ../qml/pages/PlaylistsView.qml:85
-msgid "New playlist"
-msgstr ""
-
-#: ../qml/pages/PlaylistsView.qml:110
-msgid "%1 tracks"
-msgstr ""
-
-#: ../qml/pages/PlaylistsView.qml:125 ../qml/pages/Todo.qml:121
-#: ../qml/pages/home/Settings.qml:139 ../qml/pages/rss/Settings.qml:175
-msgid "Delete"
-msgstr "நீக்கு"
 
 #: ../qml/pages/Rss.qml:154
 msgid "Loading feeds…"
@@ -618,6 +617,11 @@ msgstr "ஊட்டங்களைச் சேர்க்க பக்க ந
 #: ../qml/pages/Todo.qml:81
 msgid "New todo"
 msgstr "புதிய செய்யவேண்டிய"
+
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
+msgid "Delete"
+msgstr "நீக்கு"
 
 #: ../qml/pages/Videos.qml:172
 msgid "Search your video"
@@ -753,6 +757,18 @@ msgstr "கடைசி செய்தியைக் காட்டு"
 msgid "Show last events"
 msgstr "நிகழ்வுகளைக் காட்டு"
 
+#: ../qml/pages/music/MusicPlayer.qml:505
+msgid "(%1)"
+msgstr ""
+
+#: ../qml/pages/music/PlaylistsView.qml:85
+msgid "New playlist"
+msgstr ""
+
+#: ../qml/pages/music/PlaylistsView.qml:110
+msgid "%1 tracks"
+msgstr ""
+
 #: ../qml/pages/music/Settings.qml:11
 msgid "music"
 msgstr ""
@@ -765,43 +781,43 @@ msgstr "'இசை' பக்கத்திற்கான அமைப்ப�
 msgid "Exemple"
 msgstr "எடுத்துக்காட்டு"
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:71
+#: ../qml/pages/nextcloudfolders/Settings.qml:61
 msgid "Nextcloud folders"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:111
+#: ../qml/pages/nextcloudfolders/Settings.qml:98
 msgid "Server URL"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:130
+#: ../qml/pages/nextcloudfolders/Settings.qml:117
 msgid "Username"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:148
+#: ../qml/pages/nextcloudfolders/Settings.qml:135
 msgid "App password"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:164
+#: ../qml/pages/nextcloudfolders/Settings.qml:151
 msgid ""
 "Use a dedicated app password (Nextcloud Settings → Security → Devices & "
 "sessions), not your main account password. It can be revoked independently "
 "at any time."
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:174
+#: ../qml/pages/nextcloudfolders/Settings.qml:161
 #, fuzzy
 msgid "Starting folder"
 msgstr "அமைப்புகள் நிரல்பலகம்"
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:202
+#: ../qml/pages/nextcloudfolders/Settings.qml:189
 msgid "Test connexion"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:221
+#: ../qml/pages/nextcloudfolders/Settings.qml:208
 msgid "Success !"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:221
+#: ../qml/pages/nextcloudfolders/Settings.qml:208
 msgid "Failed"
 msgstr ""
 
