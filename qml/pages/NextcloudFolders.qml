@@ -22,9 +22,14 @@ Item {
 
     readonly property string downloadCacheDir: MySettings.getHomeLocation() + "/.cache/launchermodular.lut11/nextcloud-downloads/"
 
+    onVisibleChanged: {
+        if (visible && configured()) {
+            fetchFolder(currentPath)
+        }
+    }
+
     Component.onCompleted: {
         Terminalaccess.makePath(downloadCacheDir)
-        if (configured()) fetchFolder(currentPath)
     }
 
     function configured() {
@@ -75,7 +80,7 @@ Item {
         var blocks = xml.split(/<[^:>]*:?response[ >]/i).slice(1)
         var selfPath = expectedSelfPath(requestedPath).replace(/\/+$/, "")
 
-        for (var i = 0; i < blocks.length; i++) {
+        for (var i = 1; i < blocks.length; i++) {
             var block = blocks[i]
             var isCollection = /<[^:>]*:?collection\s*\/?>/i.test(block)
             //if (!isCollection) continue
@@ -88,11 +93,10 @@ Item {
 
             // Entrée correspondant au dossier demandé lui-même : pas un enfant, on l'ignore.
             if (normalizedHref === selfPath) continue
-
             var name = decodeXmlEntities(normalizedHref.split("/").pop())
             if (name.length === 0) continue
-
-            entries.push({ name: name, path: stripDavPrefix(href), isFolder: isCollection })
+            var hrefPath = stripDavPrefix(href)
+            entries.push({ name: name, path: hrefPath, isFolder: isCollection })
         }
         // Folder first, then ordered files
         entries.sort(function(a, b) {
