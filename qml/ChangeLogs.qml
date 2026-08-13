@@ -40,6 +40,9 @@ Page {
             id: page1
 
             property string emptyDescription:""
+            // 2.4.8
+            property string details53: i18n.tr("Add Nexctloud page")
+            property string details52: i18n.tr("Fix page selection showing more than real pages")
 
             // 2.4.7
             property string details51: i18n.tr("Update Readme file to explain how user can create there own page")
@@ -130,6 +133,8 @@ Page {
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.4.8", date: "2026-08-13", details: details53, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details52, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.7", date: "2026-08-10", details: details51, description: description51});
                 changeLogModel.append({ version: "", date: "", details: details50, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details49, description: description49});
