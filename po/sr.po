@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-12 10:20+0000\n"
+"POT-Creation-Date: 2026-08-13 15:11+0000\n"
 "PO-Revision-Date: 2025-11-23 09:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/launcher-modular/"
@@ -359,75 +359,75 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: ../qml/Main.qml:452
+#: ../qml/Main.qml:454
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: ../qml/Main.qml:510
+#: ../qml/Main.qml:512
 msgid "Add custom icon"
 msgstr ""
 
-#: ../qml/Main.qml:543
+#: ../qml/Main.qml:545
 msgid "Manage pages"
 msgstr ""
 
-#: ../qml/Main.qml:576
+#: ../qml/Main.qml:578
 msgid "Configure Launcher"
 msgstr ""
 
-#: ../qml/Main.qml:609
+#: ../qml/Main.qml:611
 msgid "Autostart"
 msgstr ""
 
-#: ../qml/Main.qml:642
+#: ../qml/Main.qml:644
 msgid "Help"
 msgstr ""
 
-#: ../qml/Main.qml:675
+#: ../qml/Main.qml:677
 msgid "About"
 msgstr ""
 
-#: ../qml/Main.qml:732
+#: ../qml/Main.qml:734
 msgid "Website"
 msgstr ""
 
-#: ../qml/Main.qml:732
+#: ../qml/Main.qml:734
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: ../qml/Main.qml:733
+#: ../qml/Main.qml:735
 msgid "Terminal command"
 msgstr ""
 
-#: ../qml/Main.qml:733
+#: ../qml/Main.qml:735
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: ../qml/Main.qml:734
+#: ../qml/Main.qml:736
 msgid "Launch app"
 msgstr ""
 
-#: ../qml/Main.qml:734
+#: ../qml/Main.qml:736
 msgid "Launch an app"
 msgstr ""
 
-#: ../qml/Main.qml:758
+#: ../qml/Main.qml:760
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: ../qml/Main.qml:771
+#: ../qml/Main.qml:773
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: ../qml/Main.qml:795 ../qml/Main.qml:796 ../qml/Main.qml:797
+#: ../qml/Main.qml:797 ../qml/Main.qml:798 ../qml/Main.qml:799
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: ../qml/Main.qml:809
+#: ../qml/Main.qml:811
 msgid "Create icon"
 msgstr ""
 
-#: ../qml/Main.qml:852 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/Main.qml:854 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
 #: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr ""
@@ -530,46 +530,46 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:126
-#: ../qml/pages/nextcloudfolders/Settings.qml:40
+#: ../qml/pages/NextcloudFolders.qml:130
+#: ../qml/pages/nextcloudfolders/Settings.qml:42
 msgid "Authentication failed. Check username/app password."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:128
-#: ../qml/pages/nextcloudfolders/Settings.qml:42
+#: ../qml/pages/NextcloudFolders.qml:132
+#: ../qml/pages/nextcloudfolders/Settings.qml:44
 msgid "Network error. Check server URL and connectivity."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:130
-#: ../qml/pages/nextcloudfolders/Settings.qml:44
+#: ../qml/pages/NextcloudFolders.qml:134
+#: ../qml/pages/nextcloudfolders/Settings.qml:46
 msgid "Error %1 while loading folder."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:192
+#: ../qml/pages/NextcloudFolders.qml:197
 msgid "Downloading 1/%1..."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:221
+#: ../qml/pages/NextcloudFolders.qml:226
 msgid "Failed to save %1 locally."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:224
+#: ../qml/pages/NextcloudFolders.qml:229
 msgid "Failed to download %1 (error %2)."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:227
+#: ../qml/pages/NextcloudFolders.qml:232
 msgid "Downloading %1/%2..."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:319
+#: ../qml/pages/NextcloudFolders.qml:311
 msgid "Nextcloud"
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:370
+#: ../qml/pages/NextcloudFolders.qml:366
 msgid "Configure your Nextcloud server in this page's settings first."
 msgstr ""
 
-#: ../qml/pages/NextcloudFolders.qml:482
+#: ../qml/pages/NextcloudFolders.qml:478
 msgid "This folder is empty"
 msgstr ""
 
@@ -745,7 +745,23 @@ msgstr ""
 msgid "Exemple"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:61
+#: ../qml/pages/nextcloudfolders/Settings.qml:13
+msgid "nextcloudFolders"
+msgstr ""
+
+#: ../qml/pages/nextcloudfolders/Settings.qml:15
+msgid "Test it !"
+msgstr ""
+
+#: ../qml/pages/nextcloudfolders/Settings.qml:40
+msgid "Success !"
+msgstr ""
+
+#: ../qml/pages/nextcloudfolders/Settings.qml:49
+msgid "Failed"
+msgstr ""
+
+#: ../qml/pages/nextcloudfolders/Settings.qml:63
 msgid "Nextcloud folders"
 msgstr ""
 
@@ -772,16 +788,8 @@ msgstr ""
 msgid "Starting folder"
 msgstr ""
 
-#: ../qml/pages/nextcloudfolders/Settings.qml:189
+#: ../qml/pages/nextcloudfolders/Settings.qml:184
 msgid "Test connexion"
-msgstr ""
-
-#: ../qml/pages/nextcloudfolders/Settings.qml:208
-msgid "Success !"
-msgstr ""
-
-#: ../qml/pages/nextcloudfolders/Settings.qml:208
-msgid "Failed"
 msgstr ""
 
 #: ../qml/pages/picture/SelectFolderPage.qml:42
