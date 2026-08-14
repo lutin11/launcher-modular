@@ -194,7 +194,7 @@ Item {
         if (selectedFiles.length === 0) return
         var queue = selectedFiles.slice()
         pendingDownloadedFiles = []
-        downloadMessagedownloadMessagedownloadMessage = i18n.tr("Downloading 1/%1...").arg(queue.length)
+        downloadMessage = i18n.tr("Downloading 1/%1...").arg(queue.length)
         downloadNextFile(queue, 0)
     }
 
