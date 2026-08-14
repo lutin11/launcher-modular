@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-13 15:20+0000\n"
+"POT-Creation-Date: 2026-08-14 08:25+0000\n"
 "PO-Revision-Date: 2025-11-24 21:49+0000\n"
 "Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
@@ -44,132 +44,141 @@ msgid "Back"
 msgstr "Retour"
 
 #: ../qml/ChangeLogs.qml:44
+msgid "Toggle Image full screen on clic"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:45
+msgid ""
+"Add option 'Open image on external application' on Picture settings page"
+msgstr ""
+
+#: ../qml/ChangeLogs.qml:48
 #, fuzzy
 msgid "Add Nexctloud page"
 msgstr "Ajout d'une page 'Vidéos'"
 
-#: ../qml/ChangeLogs.qml:45
+#: ../qml/ChangeLogs.qml:49
 msgid "Fix page selection showing more than real pages"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:48
+#: ../qml/ChangeLogs.qml:52
 msgid "Update Readme file to explain how user can create there own page"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:49
+#: ../qml/ChangeLogs.qml:53
 msgid "Please, visit https://github.com/lutin11/launcher-modular"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:50
+#: ../qml/ChangeLogs.qml:54
 msgid "Fix favorite applications not being launched after update"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:51
+#: ../qml/ChangeLogs.qml:55
 msgid "Music page as integrated player"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:52
+#: ../qml/ChangeLogs.qml:56
 msgid "Play your selected musics, create and play Playlists"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:53
+#: ../qml/ChangeLogs.qml:57
 msgid "It's now possible to choose your calendar on widget and calendar page"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:54
+#: ../qml/ChangeLogs.qml:58
 msgid "Prepare for QT6 migration"
 msgstr ""
 
-#: ../qml/ChangeLogs.qml:57
+#: ../qml/ChangeLogs.qml:61
 msgid "update German translation"
 msgstr "Mise à jour des traductions Allemandes"
 
-#: ../qml/ChangeLogs.qml:58
+#: ../qml/ChangeLogs.qml:62
 msgid "Fix numeric clock not refresh"
 msgstr "L'horloge numérique de la page principale s'actualise de nouveau"
 
-#: ../qml/ChangeLogs.qml:59
+#: ../qml/ChangeLogs.qml:63
 msgid "Fix app not available on launcher"
 msgstr "Correction de l'affichage de certaines applications"
 
-#: ../qml/ChangeLogs.qml:60
+#: ../qml/ChangeLogs.qml:64
 #, fuzzy
 msgid "Tanks marcellotogg for bug reports."
 msgstr "Merci au rapport d'anomalie de marcellotogg"
 
-#: ../qml/ChangeLogs.qml:62
+#: ../qml/ChangeLogs.qml:66
 msgid "Add desc or asc sorting picture choice"
 msgstr "Ajout du tri descendant ou ascendant pour le choix des images"
 
-#: ../qml/ChangeLogs.qml:63
+#: ../qml/ChangeLogs.qml:67
 msgid "Add sorting picture choice"
 msgstr "Ajouter du choix du tri des images"
 
-#: ../qml/ChangeLogs.qml:64
+#: ../qml/ChangeLogs.qml:68
 msgid "Added a file browser for selecting the image folder"
 msgstr "Ajout d'un navigateur de fichier pour le choix du dossier des images"
 
-#: ../qml/ChangeLogs.qml:66
+#: ../qml/ChangeLogs.qml:70
 msgid "Fix background settings"
 msgstr "Correction du réglage fond d'écran"
 
-#: ../qml/ChangeLogs.qml:67
+#: ../qml/ChangeLogs.qml:71
 msgid "Add Clock Page"
 msgstr "Ajout d'une page Horloge"
 
-#: ../qml/ChangeLogs.qml:69
+#: ../qml/ChangeLogs.qml:73
 msgid "Fix themes not well manage"
 msgstr "Correction des thèmes mal gérés"
 
-#: ../qml/ChangeLogs.qml:71
+#: ../qml/ChangeLogs.qml:75
 msgid "The calendar limit of days is not settable"
 msgstr "Correction sur limite d'événement du calendrier"
 
-#: ../qml/ChangeLogs.qml:73
+#: ../qml/ChangeLogs.qml:77
 msgid "Fix superimposed pages at start up"
 msgstr "Corriger les pages superposées au démarrage"
 
-#: ../qml/ChangeLogs.qml:75
+#: ../qml/ChangeLogs.qml:79
 msgid "Change framework to 24.04"
 msgstr "Passage du framweork en 24.04"
 
-#: ../qml/ChangeLogs.qml:77
+#: ../qml/ChangeLogs.qml:81
 msgid "Change framework to 22.04"
 msgstr "Passage du framweork en 22.04"
 
-#: ../qml/ChangeLogs.qml:79
+#: ../qml/ChangeLogs.qml:83
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
 msgstr "Correction du problème « #5 Flux RSS valides non acceptés »"
 
-#: ../qml/ChangeLogs.qml:81
+#: ../qml/ChangeLogs.qml:85
 msgid "Add 'Music' page"
 msgstr "Ajout d'une page 'Musiques'"
 
-#: ../qml/ChangeLogs.qml:82
+#: ../qml/ChangeLogs.qml:86
 msgid "Add 'Video' page"
 msgstr "Ajout d'une page 'Vidéos'"
 
-#: ../qml/ChangeLogs.qml:83
+#: ../qml/ChangeLogs.qml:87
 msgid "Corrected display of contact names"
 msgstr "Correction de l'affichage des noms des contacts"
 
-#: ../qml/ChangeLogs.qml:84
+#: ../qml/ChangeLogs.qml:88
 msgid "Added filter on received messages"
 msgstr "Ajout d'un filtre sur les messages reçus"
 
-#: ../qml/ChangeLogs.qml:85
+#: ../qml/ChangeLogs.qml:89
 msgid "Correction of home setting not displayed"
 msgstr "Correction pour l'affichage en arrière-plan."
 
-#: ../qml/ChangeLogs.qml:86
+#: ../qml/ChangeLogs.qml:90
 msgid "Add Tamil translations thanks to தமிழ்நேரம்"
 msgstr "Ajouter des traductions en tamoul grâce à தமிழ்நேரம்"
 
-#: ../qml/ChangeLogs.qml:87
+#: ../qml/ChangeLogs.qml:91
 msgid "Update Arabic translations thanks to Salah Khani"
 msgstr "Mise à jour des traductions en arabe grâce à Salah Khani"
 
-#: ../qml/ChangeLogs.qml:89
+#: ../qml/ChangeLogs.qml:93
 msgid ""
 "This is a hotfix release, as 'Page management' did not work anymore. Please "
 "feel free to report any issues throw https://github.com/lutin11/launcher-"
@@ -179,70 +188,71 @@ msgstr ""
 "fonctionnait plus. N'hésitez pas à signaler tout problème à l'adresse "
 "https://github.com/lutin11/launcher-modular/issues ou sur le forum Ubports."
 
-#: ../qml/ChangeLogs.qml:90
+#: ../qml/ChangeLogs.qml:94
 msgid "Fix page management issue"
 msgstr "Correction de problèmes de gestion des pages"
 
-#: ../qml/ChangeLogs.qml:92
+#: ../qml/ChangeLogs.qml:96
 msgid "Fix launching Libertine applications"
 msgstr "Corrige le d'amarrage d'applications Libertine"
 
-#: ../qml/ChangeLogs.qml:93
+#: ../qml/ChangeLogs.qml:97
 msgid "Fix launching favorite applications"
 msgstr "Corrige le lancement des applications favorites"
 
-#: ../qml/ChangeLogs.qml:94
+#: ../qml/ChangeLogs.qml:98
 msgid "Update weather on refreshing home page"
 msgstr "Mise à jour la météo lors du rafraîchissement de la page d'accueil"
 
-#: ../qml/ChangeLogs.qml:95
+#: ../qml/ChangeLogs.qml:99
 msgid "Added the ability to run a calculation from the search bar"
 msgstr ""
 "Ajout de la possibilité d'effectuer un calcul à partir de la barre de "
 "recherche"
 
-#: ../qml/ChangeLogs.qml:96 ../qml/ChangeLogs.qml:100 ../qml/ChangeLogs.qml:104
+#: ../qml/ChangeLogs.qml:100 ../qml/ChangeLogs.qml:104
+#: ../qml/ChangeLogs.qml:108
 msgid "Update translations"
 msgstr "Mettre à jour les traductions"
 
-#: ../qml/ChangeLogs.qml:98
+#: ../qml/ChangeLogs.qml:102
 msgid "Display contact name if exists on message and call widget"
 msgstr ""
 "Afficher le nom du contact s'il existe dans le message et appeler le widget"
 
-#: ../qml/ChangeLogs.qml:99 ../qml/ChangeLogs.qml:105
+#: ../qml/ChangeLogs.qml:103 ../qml/ChangeLogs.qml:109
 msgid "Improved 'Picture' page display performance"
 msgstr "Amélioration des performances d'affichage des pages de photos"
 
-#: ../qml/ChangeLogs.qml:102
+#: ../qml/ChangeLogs.qml:106
 msgid "On Rss setting page, you can add a list of RSS feeds"
 msgstr ""
 "Sur la page des paramètres RSS, vous pouvez ajouter une liste de flux RSS"
 
-#: ../qml/ChangeLogs.qml:103
+#: ../qml/ChangeLogs.qml:107
 msgid "Addition of a new page for RSS feeds"
 msgstr "Ajout d'une nouvelle page pour les flux RSS"
 
-#: ../qml/ChangeLogs.qml:107 ../qml/ChangeLogs.qml:109
-#: ../qml/ChangeLogs.qml:111
+#: ../qml/ChangeLogs.qml:111 ../qml/ChangeLogs.qml:113
+#: ../qml/ChangeLogs.qml:115
 msgid "To do this, long press on the widget to access its configuration page."
 msgstr ""
 "Pour ce faire, appuyez longuement sur le widget pour accéder à sa page de "
 "configuration."
 
-#: ../qml/ChangeLogs.qml:108
+#: ../qml/ChangeLogs.qml:112
 msgid "Set how many calls to display!"
 msgstr "Configurez combien d'appels visualiser !"
 
-#: ../qml/ChangeLogs.qml:110
+#: ../qml/ChangeLogs.qml:114
 msgid "Set how many messages to display!"
 msgstr "Configurez combien de messages visualiser !"
 
-#: ../qml/ChangeLogs.qml:112
+#: ../qml/ChangeLogs.qml:116
 msgid "Set how many events to display!"
 msgstr "Configurez combien d'événements visualiser !"
 
-#: ../qml/ChangeLogs.qml:113
+#: ../qml/ChangeLogs.qml:117
 msgid ""
 "On call settings, set the option for 'When clicked' to 'Open the dialer with "
 "number'"
@@ -250,11 +260,11 @@ msgstr ""
 "Dans les paramètres d'appel, définissez l'option 'Lorsque cliqué' sur "
 "'ouvrir le compositeur d'appel avec le numéro'"
 
-#: ../qml/ChangeLogs.qml:114
+#: ../qml/ChangeLogs.qml:118
 msgid "Call redirection to phone app works!"
 msgstr "La redirection vers un numéro de téléphone fonctionne !"
 
-#: ../qml/ChangeLogs.qml:115
+#: ../qml/ChangeLogs.qml:119
 msgid ""
 "On message settings, set the option for 'When clicked' to 'Open the "
 "application with message'"
@@ -262,47 +272,47 @@ msgstr ""
 "Dans les paramètres des messages, définissez l'option 'Lorsque cliqué' sur "
 "'Ouvrir l'application avec message'."
 
-#: ../qml/ChangeLogs.qml:116
+#: ../qml/ChangeLogs.qml:120
 msgid "Message redirection to messaging app works!"
 msgstr ""
 "La redirection des messages vers l'application de messagerie fonctionne !"
 
-#: ../qml/ChangeLogs.qml:117
+#: ../qml/ChangeLogs.qml:121
 msgid "Force the event list to refresh by double-clicking on the event widget!"
 msgstr ""
 "Forcez le rafraîchissement de la liste des événements en double-cliquant sur "
 "le widget de l'événement !"
 
-#: ../qml/ChangeLogs.qml:118
+#: ../qml/ChangeLogs.qml:122
 msgid "The event list shows event from current day!"
 msgstr ""
 "La liste des événements affiche les événements de la journée en cours !"
 
-#: ../qml/ChangeLogs.qml:119
+#: ../qml/ChangeLogs.qml:123
 msgid "Clicking on the 'Alarm' widget opens the clock!"
 msgstr "En cliquant sur le widget « Alarme », vous ouvrez l'horloge !"
 
-#: ../qml/ChangeLogs.qml:120
+#: ../qml/ChangeLogs.qml:124
 msgid "Open the photo by clicking on it!"
 msgstr "Visualiser la photo en cliquant dessus !"
 
-#: ../qml/ChangeLogs.qml:122
+#: ../qml/ChangeLogs.qml:126
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
 msgstr "Balayez vers le haut pour configurer le lanceur"
 
-#: ../qml/ChangeLogs.qml:123
+#: ../qml/ChangeLogs.qml:127
 msgid "Enable Autostart"
 msgstr "Activer le démarrage automatique"
 
-#: ../qml/ChangeLogs.qml:124
+#: ../qml/ChangeLogs.qml:128
 msgid "Correction for background display."
 msgstr "Correction pour l'affichage en arrière-plan."
 
-#: ../qml/ChangeLogs.qml:125
+#: ../qml/ChangeLogs.qml:129
 msgid "Fix up 'Run a command in a terminal'"
 msgstr "Lancer un ordre dans un terminal"
 
-#: ../qml/ChangeLogs.qml:127
+#: ../qml/ChangeLogs.qml:131
 msgid ""
 "This is the first release of Launcher Modular based on <a href='https://"
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
@@ -312,27 +322,27 @@ msgstr ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a>. Elle "
 "contient des mises à jour des bibliothèques et quelques corrections."
 
-#: ../qml/ChangeLogs.qml:128
+#: ../qml/ChangeLogs.qml:132
 msgid "Resumption of the application."
 msgstr "Ouvrir l'application"
 
-#: ../qml/ChangeLogs.qml:227
+#: ../qml/ChangeLogs.qml:233
 msgid "Version: "
 msgstr "Version : "
 
-#: ../qml/ChangeLogs.qml:233
+#: ../qml/ChangeLogs.qml:239
 msgid " | Date: "
 msgstr "| Date :"
 
-#: ../qml/ChangeLogs.qml:359
+#: ../qml/ChangeLogs.qml:365
 msgid "If you like this app, please rank it on OpenStore"
 msgstr "Si vous aimez cette application, likez-là sur OpenStore"
 
-#: ../qml/ChangeLogs.qml:386
+#: ../qml/ChangeLogs.qml:392
 msgid "A modular launcher for Ubuntu Touch"
 msgstr "Un lanceur modulaire pour Ubuntu Touch"
 
-#: ../qml/ChangeLogs.qml:400
+#: ../qml/ChangeLogs.qml:406
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -352,23 +362,23 @@ msgstr ""
 "PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html"
 "\">GNU General Public License</a> pour plus de détails."
 
-#: ../qml/ChangeLogs.qml:415
+#: ../qml/ChangeLogs.qml:421
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: ../qml/ChangeLogs.qml:415
+#: ../qml/ChangeLogs.qml:421
 msgid "ISSUES"
 msgstr "PROBLÈMES"
 
-#: ../qml/ChangeLogs.qml:430
+#: ../qml/ChangeLogs.qml:436
 msgid "Maintainer"
 msgstr "Mainteneur"
 
-#: ../qml/ChangeLogs.qml:444
+#: ../qml/ChangeLogs.qml:450
 msgid "Copyright"
 msgstr "Droits d'auteur"
 
-#: ../qml/ChangeLogs.qml:459
+#: ../qml/ChangeLogs.qml:465
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 "<a href=\"TRADUCTEURS DE LANCEUR MODULAIRE\">TRADUCTEURS DE LANCEUR "
@@ -402,75 +412,75 @@ msgstr ""
 msgid "Choose"
 msgstr "Choisir"
 
-#: ../qml/Main.qml:454
+#: ../qml/Main.qml:456
 msgid "Swipe up to configure the launcher"
 msgstr "Balayez vers le haut pour configurer le lanceur"
 
-#: ../qml/Main.qml:512
+#: ../qml/Main.qml:514
 msgid "Add custom icon"
 msgstr "Ajouter une icône personnalisée"
 
-#: ../qml/Main.qml:545
+#: ../qml/Main.qml:547
 msgid "Manage pages"
 msgstr "Gérer les pages"
 
-#: ../qml/Main.qml:578
+#: ../qml/Main.qml:580
 msgid "Configure Launcher"
 msgstr "Configurer le lanceur"
 
-#: ../qml/Main.qml:611
+#: ../qml/Main.qml:613
 msgid "Autostart"
 msgstr "Démarrage automatique"
 
-#: ../qml/Main.qml:644
+#: ../qml/Main.qml:646
 msgid "Help"
 msgstr "Aide"
 
-#: ../qml/Main.qml:677
+#: ../qml/Main.qml:679
 msgid "About"
 msgstr "À propos"
 
-#: ../qml/Main.qml:734
+#: ../qml/Main.qml:736
 msgid "Website"
 msgstr "Site internet"
 
-#: ../qml/Main.qml:734
+#: ../qml/Main.qml:736
 msgid "Open this URL in the web browser"
 msgstr "Ouvrez cette URL dans le navigateur web"
 
-#: ../qml/Main.qml:735
+#: ../qml/Main.qml:737
 msgid "Terminal command"
 msgstr "Commande de terminal"
 
-#: ../qml/Main.qml:735
+#: ../qml/Main.qml:737
 msgid "Run a command in a terminal"
 msgstr "Lancer une commande dans un terminal"
 
-#: ../qml/Main.qml:736
+#: ../qml/Main.qml:738
 msgid "Launch app"
 msgstr "Lancer l'application"
 
-#: ../qml/Main.qml:736
+#: ../qml/Main.qml:738
 msgid "Launch an app"
 msgstr "Lancer une application"
 
-#: ../qml/Main.qml:760
+#: ../qml/Main.qml:762
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "Icône SVG ou PNG au ratio 1:1"
 
-#: ../qml/Main.qml:773
+#: ../qml/Main.qml:775
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "Le <b>titre</b> à afficher dans la liste des applications"
 
-#: ../qml/Main.qml:797 ../qml/Main.qml:798 ../qml/Main.qml:799
+#: ../qml/Main.qml:799 ../qml/Main.qml:800 ../qml/Main.qml:801
 msgid "<b>Action</b> example: "
 msgstr "Exemple d'<b>action</b> :"
 
-#: ../qml/Main.qml:811
+#: ../qml/Main.qml:813
 msgid "Create icon"
 msgstr "Créer une icône"
 
-#: ../qml/Main.qml:854 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
+#: ../qml/Main.qml:856 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
 #: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
 msgid "Cancel"
 msgstr "Annuler"
@@ -880,6 +890,11 @@ msgstr "Type de trie :"
 #: ../qml/pages/picture/Settings.qml:192
 msgid "Reverse sort"
 msgstr "Inversion du sens du trie"
+
+#: ../qml/pages/picture/Settings.qml:212
+#, fuzzy
+msgid "Open image on external application"
+msgstr "Ouvrir l'application"
 
 #: ../qml/pages/rss/Settings.qml:13
 msgid "rss"
