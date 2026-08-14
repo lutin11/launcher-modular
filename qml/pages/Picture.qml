@@ -155,11 +155,15 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
-                        WindowController.toggleFullScreen();
-                        selectedImageFilePath = "image://thumbnailer/" + filePath
-                        selectedImageIndex = index
-                    } //Qt.openUrlExternally("photo://" + filePath)
+                        if (launchermodular.settings.openImageExternally) {
+                            Qt.openUrlExternally("photo://" + filePath)
+                        } else {
+                            launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
+                            WindowController.toggleFullScreen();
+                            selectedImageFilePath = "image://thumbnailer/" + filePath
+                            selectedImageIndex = index
+                        }
+                    }
                 }
             } // Item
         }// delegate Rectangle

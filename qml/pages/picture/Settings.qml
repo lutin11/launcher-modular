@@ -201,6 +201,26 @@ Page {
                         Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                     }
                 }
+
+                RowLayout {
+                    id: choseActionOnClick
+                    width: parent.width
+                    spacing: units.gu(1)
+                    height: units.gu(5)
+
+                    Label {
+                        text: i18n.tr("Open image on external application")
+                        color: "white"
+                        Layout.alignment: Qt.AlignVCenter
+                        Layout.fillWidth: true
+                    }
+
+                    Switch {
+                        checked: launchermodular.settings.openImageExternally
+                        onClicked: launchermodular.settings.openImageExternally = checked
+                        Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                    }
+                }
             } // Column
         } // Flickable
     } // Rectangle

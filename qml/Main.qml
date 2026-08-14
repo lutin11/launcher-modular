@@ -21,7 +21,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.4.8"
+    property string appVersion : "2.4.9"
     property ListModel customIconModel :  ListModel { id: customIconModel }
     property ListModel pageModel :  ListModel { id: pageModel }
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
@@ -104,6 +104,8 @@ MainView {
         property string folderImage: MySettings.getPicturesLocation()
         property bool reverseImagesSort: false
         property int imageSelectedSorting: FolderListModel.Time
+        property bool openImageExternally: false
+
         property string folderMusic: MySettings.getMusicLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
