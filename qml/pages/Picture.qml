@@ -10,7 +10,20 @@ Item {
     id: picture
 
     property string selectedImageFilePath: ""
+    property int selectedImageIndex: -1
     property real iconbasesize: units.gu(14)
+
+    function showPreviousImage() {
+        if (selectedImageIndex <= 0) return
+        selectedImageIndex--
+        selectedImageFilePath = "image://thumbnailer/" + folderModel.get(selectedImageIndex, "filePath")
+    }
+
+    function showNextImage() {
+        if (selectedImageIndex < 0 || selectedImageIndex >= folderModel.count - 1) return
+        selectedImageIndex++
+        selectedImageFilePath = "image://thumbnailer/" + folderModel.get(selectedImageIndex, "filePath")
+    }
 
     Image {
         id: img
@@ -28,9 +41,50 @@ Item {
             anchors.fill: parent
             onClicked: {
                 selectedImageFilePath = ""
+                selectedImageIndex = -1
                 launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
                 WindowController.toggleFullScreen();
             }
+        }
+    }
+
+    Icon {
+        id: previousImageChevron
+        anchors.left: parent.left
+        anchors.leftMargin: units.gu(2)
+        anchors.verticalCenter: parent.verticalCenter
+        source: "../../assets/back.svg"
+        height: units.gu(4)
+        width: units.gu(4)
+        color: "#FFFFFF"
+        antialiasing: true
+        visible: selectedImageFilePath !== "" && selectedImageIndex > 0
+        z: 1
+
+        MouseArea {
+            anchors.fill: parent
+            anchors.margins: units.gu(-2) // extend touch zone
+            onClicked: showPreviousImage()
+        }
+    }
+
+    Icon {
+        id: nextImageChevron
+        anchors.right: parent.right
+        anchors.rightMargin: units.gu(2)
+        anchors.verticalCenter: parent.verticalCenter
+        source: "../../assets/next.svg"
+        height: units.gu(4)
+        width: units.gu(4)
+        color: "#FFFFFF"
+        antialiasing: true
+        visible: selectedImageFilePath !== "" && selectedImageIndex < folderModel.count - 1
+        z: 1
+
+        MouseArea {
+            anchors.fill: parent
+            anchors.margins: units.gu(-2)
+            onClicked: showNextImage()
         }
     }
 
@@ -104,6 +158,7 @@ Item {
                         launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
                         WindowController.toggleFullScreen();
                         selectedImageFilePath = "image://thumbnailer/" + filePath
+                        selectedImageIndex = index
                     } //Qt.openUrlExternally("photo://" + filePath)
                 }
             } // Item
