@@ -9,8 +9,34 @@ import Lomiri.Thumbnailer 0.1
 Item {
     id: picture
 
+    property string selectedImageFilePath: ""
+    property real iconbasesize: units.gu(14)
+
+    Image {
+        id: img
+        source:  selectedImageFilePath;
+        visible: selectedImageFilePath !== ""
+        fillMode: Image.PreserveAspectFit
+        anchors.fill: parent
+
+        sourceSize {
+            width: parent.width
+            height: parent.height
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                selectedImageFilePath = ""
+                launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
+                WindowController.toggleFullScreen();
+            }
+        }
+    }
+
     GridView {
         id: gview
+        visible: selectedImageFilePath === ""
         anchors.fill: parent
         anchors {
             rightMargin: units.gu(2)
@@ -18,7 +44,6 @@ Item {
             topMargin: units.gu(2)
         }
         cellHeight: iconbasesize+units.gu(8)
-        property real iconbasesize: units.gu(14)
         cellWidth: Math.floor(width/Math.floor(width/iconbasesize))
         clip: true
         cacheBuffer: height * 2
@@ -75,7 +100,11 @@ Item {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: Qt.openUrlExternally("photo://" + filePath)
+                    onClicked: {
+                        launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
+                        WindowController.toggleFullScreen();
+                        selectedImageFilePath = "image://thumbnailer/" + filePath
+                    } //Qt.openUrlExternally("photo://" + filePath)
                 }
             } // Item
         }// delegate Rectangle
