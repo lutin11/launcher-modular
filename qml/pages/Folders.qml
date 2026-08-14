@@ -7,6 +7,7 @@ import Lomiri.Thumbnailer 0.1
 import MySettings 1.0
 
 import QtQuick.Controls 2.2
+import Lomiri.Content 1.3
 
 Item {
     id: lomiriFolders
@@ -18,6 +19,7 @@ Item {
     property bool initialParsingDone: false
     property string parentFolder: MySettings.getHomeLocation()
     property string pendingSearch: ""
+    property string selectedFilePath: ""
 
     ListModel {
         id: searchModel
@@ -34,6 +36,42 @@ Item {
         onTriggered: searchFile(pendingSearch)
     }
 
+    Component {
+        id: contentItemComponent
+        ContentItem {}
+    }
+
+    // Display ("Send to...")
+    ContentPeerPicker {
+        id: exportPeerPicker
+        visible: false
+        anchors.fill: parent
+        z: 10
+        handler: ContentHandler.Destination
+        contentType: ContentType.All
+
+        onPeerSelected: {
+            if (selectedFilePath !== "") {
+                var items = []
+                items.push(contentItemComponent.createObject(lomiriFolders, {
+                    "url": "file://" + selectedFilePath
+                }))
+
+                var transfer = peer.request()
+                transfer.items = items
+                transfer.state = ContentTransfer.Charged
+                exportPeerPicker.visible = false
+                selectedFilePath = ""
+            }
+
+        }
+
+        onCancelPressed: {
+            exportPeerPicker.visible = false
+            selectedFilePath = ""
+        }
+    }
+
     FolderListModel {
         id: lomiriFileModel
         folder: lomiriRootFolder
@@ -41,23 +79,40 @@ Item {
         showDirsFirst: true
         showDirs: true
         showFiles: true
-        nameFilters: folderNameFilters
+        //nameFilters: folderNameFilters
         rootFolder: lomiriRootFolder
 
         onFolderChanged: {
             if (!String(folder).startsWith("file://" + lomiriRootFolder)) {
                 lomiriFileModel.folder = lomiriRootFolder; // Revenir à la racine
-            } else {
-                lomiriFileModel.folder = folder
             }
         }
+        // Affiche le dossier courant dès qu'il est prêt, indépendamment du
+        // parcours récursif ci-dessous (qui ne sert qu'à la recherche) :
+        // plus d'attente d'un parcours complet de tout le dossier personnel
+        // avant de voir quoi que ce soit.
         onStatusChanged: if (lomiriFileModel.status == FolderListModel.Ready) {
-            if (!initialParsingDone) {
-                parseForder()
-            } else {
-                initSearchModel()
-            }
+            initSearchModel()
         }
+    }
+
+    // Modèle séparé, dédié uniquement à l'indexation en arrière-plan pour la
+    // recherche (parcours récursif complet de lomiriRootFolder). N'affecte
+    // jamais ce qui est affiché à l'écran, contrairement à lomiriFileModel
+    // ci-dessus : c'est ce découplage qui corrige l'attente indéfinie.
+    FolderListModel {
+        id: searchIndexModel
+        showDotAndDotDot: false
+        showDirs: true
+        showFiles: true
+
+        onStatusChanged: if (searchIndexModel.status == FolderListModel.Ready) {
+            parseForder()
+        }
+    }
+
+    Component.onCompleted: {
+        searchIndexModel.folder = lomiriRootFolder
     }
 
     function initSearchModel() {
@@ -72,10 +127,10 @@ Item {
     }
 
     function parseForder() {
-        for (var i = 0; i < lomiriFileModel.count; i++) {
-            let filePath = lomiriFileModel.get(i, "filePath")
-            let fileName = lomiriFileModel.get(i, "fileName")
-            let fileIsDir = lomiriFileModel.get(i, "fileIsDir")
+        for (var i = 0; i < searchIndexModel.count; i++) {
+            let filePath = searchIndexModel.get(i, "filePath")
+            let fileName = searchIndexModel.get(i, "fileName")
+            let fileIsDir = searchIndexModel.get(i, "fileIsDir")
 
             if (!fileIsDir) {
                 searchModel.append({filePath : filePath, fileName : fileName, fileIsDir: fileIsDir});
@@ -89,10 +144,9 @@ Item {
     function parseNextFolder() {
         if(folders.length > 0) {
             let aFolder = folders.pop();
-            lomiriFileModel.folder = aFolder;
+            searchIndexModel.folder = aFolder;
         } else {
             initialParsingDone = true;
-            lomiriFileModel.folder = lomiriRootFolder;
             if (DEBUG_MODE) console.log("searching model complet")
         }
     }
@@ -237,19 +291,19 @@ Item {
 
         delegate: Item {
             width: searchFileView.cellWidth
-            height: searchVideoViewName.implicitHeight
+            height: searchFileViewName.implicitHeight
 
             Rectangle {
-                id: searchVideoRectangle
+                id: searchFileRectangle
                 opacity: 0.9
                 color: "#111111"
-                height: searchVideoViewName.implicitHeight
+                height: searchFileViewName.implicitHeight
                 width: parent.width
 
                 Row {
                     spacing: units.gu(1)
                     Icon {
-                        id: searchVideoViewItem
+                        id: searchFileViewItem
                         visible: true
                         height: units.gu(launchermodular.settings.folderFontSize)
                         width: units.gu(launchermodular.settings.folderFontSize)
@@ -257,7 +311,7 @@ Item {
                         color: "#E95420"
                     }
                     Text {
-                        id: searchVideoViewName
+                        id: searchFileViewName
                         text: fileName
                         font.pixelSize: units.gu(launchermodular.settings.folderFontSize)
                         font.bold: fileIsDir ? true : false
@@ -267,6 +321,8 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 if (!fileIsDir) {
+                                    selectedFilePath = model.filePath
+                                    exportPeerPicker.visible = true
                                     //Qt.openUrlExternally("video://" + model.filePath)
                                 } else {
                                     searchTerm = ""
