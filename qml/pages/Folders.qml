@@ -308,14 +308,13 @@ Item {
                         height: units.gu(launchermodular.settings.folderFontSize)
                         width: units.gu(launchermodular.settings.folderFontSize)
                         name: fileIsDir ? "folder-symbolic" : "text-x-generic-symbolic"
-                        color: "#E95420"
+                        color: launchermodular.settings.folderFontColor
                     }
                     Text {
                         id: searchFileViewName
                         text: fileName
                         font.pixelSize: units.gu(launchermodular.settings.folderFontSize)
-                        font.bold: fileIsDir ? true : false
-                        color: "#E95420"
+                        color: launchermodular.settings.folderFontColor
 
                         MouseArea {
                             anchors.fill: parent

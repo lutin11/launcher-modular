@@ -39,17 +39,32 @@ Page {
                 id: settingsColumn
 
                 ListItem.Header {
-                    id: titleCalendarManagement
+                    id: titleFoldersSettings
                     text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'folder' page")+"</font>"
                 }
 
-                Text {
+                Row {
+                    spacing: units.gu(1)
                     anchors.horizontalCenter: parent.horizontalCenter;
-                    text: i18n.tr("Exemple")
-                    font.pixelSize: units.gu(launchermodular.settings.folderFontSize)
-                    color: launchermodular.settings.folderFontColor
-                }
 
+                    Icon {
+                        id: iconBack
+                        height: parent.height*0.5
+                        anchors {
+                            left: parent.left
+                            rightMargin: units.gu(launchermodular.settings.folderFontSize)
+                            leftMargin: units.gu(launchermodular.settings.folderFontSize)
+                        }
+                        width: height
+                        name: "revert"
+                    }
+
+                    Text {
+                        text: i18n.tr("Exemple")
+                        font.pixelSize: units.gu(launchermodular.settings.folderFontSize)
+                        color: launchermodular.settings.folderFontColor
+                    }
+                }
 
                 Slider {
                     id: sliderFontSize

@@ -461,7 +461,6 @@ Item {
                         id: searchMusicViewName
                         text: fileName
                         font.pixelSize: units.gu(launchermodular.settings.musicFontSize)
-                        font.bold: fileIsDir || (!fileIsDir && filePath === musicPlayer.currentSongPath)
                         color: !fileIsDir && filePath === musicPlayer.currentSongPath ? "#E95420" : launchermodular.settings.musicFontColor
                     }
                 }
