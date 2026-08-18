@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 08:25+0000\n"
+"POT-Creation-Date: 2026-08-18 07:30+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/launcher-"
@@ -469,7 +469,7 @@ msgid "Create icon"
 msgstr "Ustvari ikono"
 
 #: ../qml/Main.qml:856 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:69
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -485,7 +485,7 @@ msgstr "Izberite stran"
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:163
+#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:181
 msgid "General"
 msgstr "Splošno"
 
@@ -629,7 +629,7 @@ msgstr ""
 msgid "New todo"
 msgstr "novo opravilo"
 
-#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:157
 #: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
 msgid "Delete"
 msgstr "Izbriši"
@@ -713,60 +713,65 @@ msgstr ""
 msgid "home"
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:108
+#: ../qml/pages/home/Settings.qml:85
+#, fuzzy
+msgid "Add a favorite application"
+msgstr "Odprite aplikacijo"
+
+#: ../qml/pages/home/Settings.qml:126
 msgid "Favorite apps management"
 msgstr "Upravljanje priljubljenih aplikacij"
 
-#: ../qml/pages/home/Settings.qml:167
+#: ../qml/pages/home/Settings.qml:185
 msgid "None"
 msgstr "Nič"
 
-#: ../qml/pages/home/Settings.qml:167
+#: ../qml/pages/home/Settings.qml:185
 msgid "Unstyled icons"
 msgstr "Nestilizirane ikone"
 
-#: ../qml/pages/home/Settings.qml:168
+#: ../qml/pages/home/Settings.qml:186
 msgid "Rounded"
 msgstr "Zaobljeno"
 
-#: ../qml/pages/home/Settings.qml:168
+#: ../qml/pages/home/Settings.qml:186
 msgid "Rounded icons"
 msgstr "Zaobljene ikone"
 
-#: ../qml/pages/home/Settings.qml:193
+#: ../qml/pages/home/Settings.qml:211
 msgid "Style Icons : "
 msgstr "Ikone sloga : "
 
-#: ../qml/pages/home/Settings.qml:237
+#: ../qml/pages/home/Settings.qml:255
 msgid "Search engine : "
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:248
+#: ../qml/pages/home/Settings.qml:266
 msgid "Widgets"
 msgstr "Namizni pripomočki"
 
-#: ../qml/pages/home/Settings.qml:253
+#: ../qml/pages/home/Settings.qml:271
 msgid "Show clock"
 msgstr "Pokaži uro"
 
-#: ../qml/pages/home/Settings.qml:262
+#: ../qml/pages/home/Settings.qml:280
 msgid "Show weather"
 msgstr "Pokaži vreme"
 
-#: ../qml/pages/home/Settings.qml:272
+#: ../qml/pages/home/Settings.qml:290
 msgid "Show alarms"
 msgstr "Pokaži alarme"
 
-#: ../qml/pages/home/Settings.qml:281
+#: ../qml/pages/home/Settings.qml:299
 #, fuzzy
 msgid "Show last calls"
 msgstr "Pokaži zadnji klic"
 
-#: ../qml/pages/home/Settings.qml:290
+#: ../qml/pages/home/Settings.qml:308
 msgid "Show last message"
 msgstr "Pokaži zadnje sporočilo"
 
-#: ../qml/pages/home/Settings.qml:299
+#: ../qml/pages/home/Settings.qml:317
 #, fuzzy
 msgid "Show last events"
 msgstr "Pokaži dogodke"

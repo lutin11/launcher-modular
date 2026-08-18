@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-14 08:25+0000\n"
+"POT-Creation-Date: 2026-08-18 07:30+0000\n"
 "PO-Revision-Date: 2025-11-23 09:41+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/launcher-"
@@ -470,7 +470,7 @@ msgid "Create icon"
 msgstr "Створити іконку"
 
 #: ../qml/Main.qml:856 ../qml/Pagemanagement.qml:158 ../qml/pages/Home.qml:56
-#: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:81
+#: ../qml/pages/Home.qml:521 ../qml/pages/home/Settings.qml:69
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -486,7 +486,7 @@ msgstr "Виберіть сторінку"
 msgid "Settings"
 msgstr "Налаштування"
 
-#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:163
+#: ../qml/Settings.qml:50 ../qml/pages/home/Settings.qml:181
 msgid "General"
 msgstr "Загальне"
 
@@ -630,7 +630,7 @@ msgstr ""
 msgid "New todo"
 msgstr "нове завдання"
 
-#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:139
+#: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:157
 #: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
 msgid "Delete"
 msgstr "Видалити"
@@ -714,60 +714,65 @@ msgstr ""
 msgid "home"
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:108
+#: ../qml/pages/home/Settings.qml:85
+#, fuzzy
+msgid "Add a favorite application"
+msgstr "Відкрити програму"
+
+#: ../qml/pages/home/Settings.qml:126
 msgid "Favorite apps management"
 msgstr "Керування улюбленими програмами"
 
-#: ../qml/pages/home/Settings.qml:167
+#: ../qml/pages/home/Settings.qml:185
 msgid "None"
 msgstr "Нічого"
 
-#: ../qml/pages/home/Settings.qml:167
+#: ../qml/pages/home/Settings.qml:185
 msgid "Unstyled icons"
 msgstr "Нестилізовані іконки"
 
-#: ../qml/pages/home/Settings.qml:168
+#: ../qml/pages/home/Settings.qml:186
 msgid "Rounded"
 msgstr "Закруглені"
 
-#: ../qml/pages/home/Settings.qml:168
+#: ../qml/pages/home/Settings.qml:186
 msgid "Rounded icons"
 msgstr "Закруглені іконки"
 
-#: ../qml/pages/home/Settings.qml:193
+#: ../qml/pages/home/Settings.qml:211
 msgid "Style Icons : "
 msgstr "Стиль іконок : "
 
-#: ../qml/pages/home/Settings.qml:237
+#: ../qml/pages/home/Settings.qml:255
 msgid "Search engine : "
 msgstr ""
 
-#: ../qml/pages/home/Settings.qml:248
+#: ../qml/pages/home/Settings.qml:266
 msgid "Widgets"
 msgstr "Віджети"
 
-#: ../qml/pages/home/Settings.qml:253
+#: ../qml/pages/home/Settings.qml:271
 msgid "Show clock"
 msgstr "Показати годинник"
 
-#: ../qml/pages/home/Settings.qml:262
+#: ../qml/pages/home/Settings.qml:280
 msgid "Show weather"
 msgstr "Показати погоду"
 
-#: ../qml/pages/home/Settings.qml:272
+#: ../qml/pages/home/Settings.qml:290
 msgid "Show alarms"
 msgstr "Показувати сигнали про тривогу"
 
-#: ../qml/pages/home/Settings.qml:281
+#: ../qml/pages/home/Settings.qml:299
 #, fuzzy
 msgid "Show last calls"
 msgstr "Показати останній дзвінок"
 
-#: ../qml/pages/home/Settings.qml:290
+#: ../qml/pages/home/Settings.qml:308
 msgid "Show last message"
 msgstr "Показати останнє повідомлення"
 
-#: ../qml/pages/home/Settings.qml:299
+#: ../qml/pages/home/Settings.qml:317
 #, fuzzy
 msgid "Show last events"
 msgstr "Показати події"
