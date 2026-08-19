@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 07:30+0000\n"
+"POT-Creation-Date: 2026-08-19 05:13+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/launcher-modular/"
@@ -512,7 +512,7 @@ msgstr ""
 #: ../qml/Translators.qml:194
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
-"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
+"ubports/launcher-modular/'>Hosted Weblate</a>."
 msgstr ""
 
 #: ../qml/pages/Calendar.qml:111
