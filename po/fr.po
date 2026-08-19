@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-19 05:13+0000\n"
-"PO-Revision-Date: 2025-11-24 21:49+0000\n"
-"Last-Translator: saveurlinux <saveurlinux@disroot.org>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/launcher-modular/"
-"launchermodular-lut11/fr/>\n"
+"PO-Revision-Date: 2026-08-20 00:50+0000\n"
+"Last-Translator: libermax <libremax@protonmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/ubports/launcher-"
+"modular/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -45,66 +45,75 @@ msgstr "Retour"
 
 #: ../qml/ChangeLogs.qml:44
 msgid "Toggle Image full screen on clic"
-msgstr ""
+msgstr "Afficher l'image en plein écran en cliquant dessus"
 
 #: ../qml/ChangeLogs.qml:45
 msgid ""
 "Add option 'Open image on external application' on Picture settings page"
 msgstr ""
+"Ajouter l'option « Ouvrir l'image dans une application externe » sur la page "
+"des paramètres d'image"
 
 #: ../qml/ChangeLogs.qml:48
-#, fuzzy
 msgid "Add Nexctloud page"
-msgstr "Ajout d'une page 'Vidéos'"
+msgstr "Ajouter une page Nexctloud"
 
 #: ../qml/ChangeLogs.qml:49
 msgid "Fix page selection showing more than real pages"
 msgstr ""
+"Corriger la sélection de pages qui en affiche plus qu'existant réellement"
 
 #: ../qml/ChangeLogs.qml:52
 msgid "Update Readme file to explain how user can create there own page"
 msgstr ""
+"Mettre à jour le fichier « Readme » pour expliquer à l'utilisateur comment "
+"créer sa propre page"
 
 #: ../qml/ChangeLogs.qml:53
 msgid "Please, visit https://github.com/lutin11/launcher-modular"
 msgstr ""
+"N'hésitez pas à consulter le site https://github.com/lutin11/launcher-modular"
 
 #: ../qml/ChangeLogs.qml:54
 msgid "Fix favorite applications not being launched after update"
 msgstr ""
+"Résoudre le problème lié au fait que certaines applications favorites ne "
+"s'ouvrent plus après la mise à jour"
 
 #: ../qml/ChangeLogs.qml:55
 msgid "Music page as integrated player"
-msgstr ""
+msgstr "Page des musiques avec lecteur intégré"
 
 #: ../qml/ChangeLogs.qml:56
 msgid "Play your selected musics, create and play Playlists"
 msgstr ""
+"Écouter les morceaux de votre choix, créer et écouter des listes de lecture"
 
 #: ../qml/ChangeLogs.qml:57
 msgid "It's now possible to choose your calendar on widget and calendar page"
 msgstr ""
+"Il est désormais possible de choisir son calendrier sur la page des widgets "
+"et du calendrier"
 
 #: ../qml/ChangeLogs.qml:58
 msgid "Prepare for QT6 migration"
-msgstr ""
+msgstr "Préparer la migration vers QT6"
 
 #: ../qml/ChangeLogs.qml:61
 msgid "update German translation"
-msgstr "Mise à jour des traductions Allemandes"
+msgstr "Mise à jour de la traduction en allemand"
 
 #: ../qml/ChangeLogs.qml:62
 msgid "Fix numeric clock not refresh"
-msgstr "L'horloge numérique de la page principale s'actualise de nouveau"
+msgstr "Corriger le problème d'actualisation de l'horloge numérique"
 
 #: ../qml/ChangeLogs.qml:63
 msgid "Fix app not available on launcher"
-msgstr "Correction de l'affichage de certaines applications"
+msgstr "Résoudre le problème d'une application indisponible dans le lanceur"
 
 #: ../qml/ChangeLogs.qml:64
-#, fuzzy
 msgid "Tanks marcellotogg for bug reports."
-msgstr "Merci au rapport d'anomalie de marcellotogg"
+msgstr "Merci à marcellotogg pour les rapports d'anomalie."
 
 #: ../qml/ChangeLogs.qml:66
 msgid "Add desc or asc sorting picture choice"
@@ -112,7 +121,7 @@ msgstr "Ajout du tri descendant ou ascendant pour le choix des images"
 
 #: ../qml/ChangeLogs.qml:67
 msgid "Add sorting picture choice"
-msgstr "Ajouter du choix du tri des images"
+msgstr "Ajout du choix du tri des images"
 
 #: ../qml/ChangeLogs.qml:68
 msgid "Added a file browser for selecting the image folder"
@@ -136,7 +145,7 @@ msgstr "Correction sur limite d'événement du calendrier"
 
 #: ../qml/ChangeLogs.qml:77
 msgid "Fix superimposed pages at start up"
-msgstr "Corriger les pages superposées au démarrage"
+msgstr "Correction des pages superposées au démarrage"
 
 #: ../qml/ChangeLogs.qml:79
 msgid "Change framework to 24.04"
@@ -168,7 +177,7 @@ msgstr "Ajout d'un filtre sur les messages reçus"
 
 #: ../qml/ChangeLogs.qml:89
 msgid "Correction of home setting not displayed"
-msgstr "Correction pour l'affichage en arrière-plan."
+msgstr "Correction pour l'affichage en arrière-plan"
 
 #: ../qml/ChangeLogs.qml:90
 msgid "Add Tamil translations thanks to தமிழ்நேரம்"
@@ -190,11 +199,11 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:94
 msgid "Fix page management issue"
-msgstr "Correction de problèmes de gestion des pages"
+msgstr "Correction du problème de gestion des pages"
 
 #: ../qml/ChangeLogs.qml:96
 msgid "Fix launching Libertine applications"
-msgstr "Corrige le d'amarrage d'applications Libertine"
+msgstr "Corrige le lancement d'applications Libertine"
 
 #: ../qml/ChangeLogs.qml:97
 msgid "Fix launching favorite applications"
@@ -202,7 +211,7 @@ msgstr "Corrige le lancement des applications favorites"
 
 #: ../qml/ChangeLogs.qml:98
 msgid "Update weather on refreshing home page"
-msgstr "Mise à jour la météo lors du rafraîchissement de la page d'accueil"
+msgstr "Mise à jour de la météo lors du rafraîchissement de la page d'accueil"
 
 #: ../qml/ChangeLogs.qml:99
 msgid "Added the ability to run a calculation from the search bar"
@@ -213,16 +222,17 @@ msgstr ""
 #: ../qml/ChangeLogs.qml:100 ../qml/ChangeLogs.qml:104
 #: ../qml/ChangeLogs.qml:108
 msgid "Update translations"
-msgstr "Mettre à jour les traductions"
+msgstr "Mise à jour des traductions"
 
 #: ../qml/ChangeLogs.qml:102
 msgid "Display contact name if exists on message and call widget"
 msgstr ""
-"Afficher le nom du contact s'il existe dans le message et appeler le widget"
+"Affiche le nom du contact, s'il existe, dans le widget de messages et "
+"d'appels"
 
 #: ../qml/ChangeLogs.qml:103 ../qml/ChangeLogs.qml:109
 msgid "Improved 'Picture' page display performance"
-msgstr "Amélioration des performances d'affichage des pages de photos"
+msgstr "Amélioration des performances d'affichage de la page \"Photos\""
 
 #: ../qml/ChangeLogs.qml:106
 msgid "On Rss setting page, you can add a list of RSS feeds"
@@ -302,7 +312,7 @@ msgstr "Balayez vers le haut pour configurer le lanceur"
 
 #: ../qml/ChangeLogs.qml:127
 msgid "Enable Autostart"
-msgstr "Activer le démarrage automatique"
+msgstr "Active le démarrage automatique"
 
 #: ../qml/ChangeLogs.qml:128
 msgid "Correction for background display."
@@ -381,17 +391,17 @@ msgstr "Droits d'auteur"
 #: ../qml/ChangeLogs.qml:465
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
-"<a href=\"TRADUCTEURS DE LANCEUR MODULAIRE\">TRADUCTEURS DE LANCEUR "
-"MODULAIRE</a>"
+"<a href=\"Traducteurs de LAUNCHER MODULAR\">traducteurs de Modular Launcher</"
+"a>"
 
 #: ../qml/Help.qml:15
 msgid "Modular Launcher Help"
-msgstr "Aide de Lanceur Modulaire"
+msgstr "Aide de Modular Launcher"
 
 #: ../qml/Help.qml:49
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr ""
-"<br><b>Pour accéder aux paramètres du widget, restez appuyé dessus.</b>"
+"<br><b>Pour accéder aux paramètres du widget, maintenir appuyé dessus.</b>"
 
 #: ../qml/Help.qml:63
 msgid ""
@@ -515,7 +525,7 @@ msgstr "Traducteurs"
 
 #: ../qml/Translators.qml:76
 msgid "Modular Launcher-translators:"
-msgstr "Traducteurs/trices de Lanceur Modulaire :"
+msgstr "Traducteurs de Modular Launcher :"
 
 #: ../qml/Translators.qml:95
 msgid "Arabic - "
@@ -543,16 +553,15 @@ msgstr "Russe -"
 
 #: ../qml/Translators.qml:179
 msgid "Tamil - "
-msgstr "Tamil -"
+msgstr "Tamoul - "
 
 #: ../qml/Translators.qml:194
-#, fuzzy
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "ubports/launcher-modular/'>Hosted Weblate</a>."
 msgstr ""
-"Traduisez Modular Launcher sur <a href='https://hosted.weblate.org/projects/"
-"launcher-modular/launchermodular-lut11'>Hosted Weblate</a>."
+"Traduire Modular Launcher sur   <a href=\"https://hosted.weblate.org/"
+"projects/ubports/launcher-modular/\">Hosted Weblate</a>."
 
 #: ../qml/pages/Calendar.qml:111
 msgid "Agenda"
@@ -580,55 +589,57 @@ msgstr "Recherchez votre musique"
 
 #: ../qml/pages/Music.qml:399
 msgid "Deselect all"
-msgstr ""
+msgstr "Tout désélectionner"
 
 #: ../qml/pages/Music.qml:399
-#, fuzzy
 msgid "Select all"
-msgstr "Sélectionner"
+msgstr "Tout sélectionner"
 
 #: ../qml/pages/NextcloudFolders.qml:130
 #: ../qml/pages/nextcloudfolders/Settings.qml:42
 msgid "Authentication failed. Check username/app password."
 msgstr ""
+"Échec de l'authentification. Vérifiez le nom d'utilisateur et le mot de "
+"passe de l'application."
 
 #: ../qml/pages/NextcloudFolders.qml:132
 #: ../qml/pages/nextcloudfolders/Settings.qml:44
 msgid "Network error. Check server URL and connectivity."
-msgstr ""
+msgstr "Erreur réseau. Vérifiez l'URL du serveur et la connexion."
 
 #: ../qml/pages/NextcloudFolders.qml:134
 #: ../qml/pages/nextcloudfolders/Settings.qml:46
 msgid "Error %1 while loading folder."
-msgstr ""
+msgstr "Erreur %1 lors du chargement du dossier."
 
 #: ../qml/pages/NextcloudFolders.qml:197
 msgid "Downloading 1/%1..."
-msgstr ""
+msgstr "Téléchargement de 1/%1..."
 
 #: ../qml/pages/NextcloudFolders.qml:226
 msgid "Failed to save %1 locally."
-msgstr ""
+msgstr "Impossible d'enregistrer %1 localement."
 
 #: ../qml/pages/NextcloudFolders.qml:229
 msgid "Failed to download %1 (error %2)."
-msgstr ""
+msgstr "Échec du téléchargement de %1 (erreur %2)."
 
 #: ../qml/pages/NextcloudFolders.qml:232
 msgid "Downloading %1/%2..."
-msgstr ""
+msgstr "Téléchargement de %1/%2..."
 
 #: ../qml/pages/NextcloudFolders.qml:311
 msgid "Nextcloud"
-msgstr ""
+msgstr "Nextcloud"
 
 #: ../qml/pages/NextcloudFolders.qml:366
 msgid "Configure your Nextcloud server in this page's settings first."
 msgstr ""
+"Configurer d'abord votre serveur Nextcloud dans les paramètres de cette page."
 
 #: ../qml/pages/NextcloudFolders.qml:478
 msgid "This folder is empty"
-msgstr ""
+msgstr "Ce dossier est vide"
 
 #: ../qml/pages/Rss.qml:154
 msgid "Loading feeds…"
@@ -649,7 +660,7 @@ msgstr "Supprimer"
 
 #: ../qml/pages/Videos.qml:172
 msgid "Search your video"
-msgstr "Recherchez vos vidéos"
+msgstr "Rechercher votre vidéo"
 
 #: ../qml/pages/calendar/Settings.qml:13
 msgid "calendar"
@@ -671,14 +682,12 @@ msgid "By default 60 days"
 msgstr "60 jours par défaut"
 
 #: ../qml/pages/calendar/Settings.qml:137 ../qml/widgets/event/Settings.qml:175
-#, fuzzy
 msgid "Calendars"
-msgstr "Agenda"
+msgstr "Agendas"
 
 #: ../qml/pages/calendar/Settings.qml:150 ../qml/widgets/event/Settings.qml:188
-#, fuzzy
 msgid "No calendar found"
-msgstr "Agenda"
+msgstr "Aucun agenda trouvé"
 
 #: ../qml/pages/clock/Settings.qml:13
 msgid "clock"
@@ -686,7 +695,7 @@ msgstr "Horloge"
 
 #: ../qml/pages/clock/Settings.qml:61
 msgid "Settings for 'Clock' page"
-msgstr "Page des paramètres pour la page « Horloge »"
+msgstr "Paramètres pour la page « Horloge »"
 
 #: ../qml/pages/clock/Settings.qml:136
 msgid "Bold"
@@ -698,7 +707,7 @@ msgstr "Gras Italique"
 
 #: ../qml/pages/clock/Settings.qml:138
 msgid "Regular"
-msgstr "Standard"
+msgstr "Normal"
 
 #: ../qml/pages/clock/Settings.qml:139
 msgid "Italic"
@@ -722,12 +731,11 @@ msgstr "Format :"
 
 #: ../qml/pages/home/Settings.qml:13
 msgid "home"
-msgstr "Principale"
+msgstr "Accueil"
 
 #: ../qml/pages/home/Settings.qml:85
-#, fuzzy
 msgid "Add a favorite application"
-msgstr "Corrige le lancement des applications favorites"
+msgstr "Ajouter une application favorite"
 
 #: ../qml/pages/home/Settings.qml:126
 msgid "Favorite apps management"
@@ -747,7 +755,7 @@ msgstr "Arrondi"
 
 #: ../qml/pages/home/Settings.qml:186
 msgid "Rounded icons"
-msgstr "Arrondi"
+msgstr "Icônes arrondies"
 
 #: ../qml/pages/home/Settings.qml:211
 msgid "Style Icons : "
@@ -787,15 +795,15 @@ msgstr "Afficher les derniers évènements"
 
 #: ../qml/pages/music/MusicPlayer.qml:505
 msgid "(%1)"
-msgstr ""
+msgstr "(%1)"
 
 #: ../qml/pages/music/PlaylistsView.qml:85
 msgid "New playlist"
-msgstr ""
+msgstr "Nouvelle liste de lecture"
 
 #: ../qml/pages/music/PlaylistsView.qml:110
 msgid "%1 tracks"
-msgstr ""
+msgstr "%1 titres"
 
 #: ../qml/pages/music/Settings.qml:11
 msgid "music"
@@ -803,7 +811,7 @@ msgstr "Musiques"
 
 #: ../qml/pages/music/Settings.qml:44
 msgid "Settings for 'Music' page"
-msgstr "Paramètres pour la page « Musique »"
+msgstr "Paramètres pour la page « Musiques »"
 
 #: ../qml/pages/music/Settings.qml:49 ../qml/pages/videos/Settings.qml:48
 msgid "Exemple"
@@ -811,35 +819,35 @@ msgstr "Exemple"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:13
 msgid "nextcloudFolders"
-msgstr ""
+msgstr "Dossiers Nextcloud"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:15
 msgid "Test it !"
-msgstr ""
+msgstr "Essayez-le !"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:40
 msgid "Success !"
-msgstr ""
+msgstr "Succès !"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:49
 msgid "Failed"
-msgstr ""
+msgstr "Échec"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:63
 msgid "Nextcloud folders"
-msgstr ""
+msgstr "Dossiers Nextcloud"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:98
 msgid "Server URL"
-msgstr ""
+msgstr "URL du serveur"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:117
 msgid "Username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:135
 msgid "App password"
-msgstr ""
+msgstr "Mot de passe de l'application"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:151
 msgid ""
@@ -847,15 +855,18 @@ msgid ""
 "sessions), not your main account password. It can be revoked independently "
 "at any time."
 msgstr ""
+"Utilisez un mot de passe dédié à l'application (Paramètres Nextcloud → "
+"Sécurité → Appareils et sessions), et non le mot de passe de votre compte "
+"principal. Il peut être révoqué à tout moment, indépendamment de votre "
+"compte principal."
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:161
-#, fuzzy
 msgid "Starting folder"
-msgstr "Paramètres du Widget"
+msgstr "Dossier de départ"
 
 #: ../qml/pages/nextcloudfolders/Settings.qml:184
 msgid "Test connexion"
-msgstr ""
+msgstr "Tester la connexion"
 
 #: ../qml/pages/picture/SelectFolderPage.qml:42
 msgid "Select"
@@ -891,16 +902,15 @@ msgstr "Type"
 
 #: ../qml/pages/picture/Settings.qml:117
 msgid "Sort type:"
-msgstr "Type de trie :"
+msgstr "Type de tri :"
 
 #: ../qml/pages/picture/Settings.qml:192
 msgid "Reverse sort"
-msgstr "Inversion du sens du trie"
+msgstr "Tri inversé"
 
 #: ../qml/pages/picture/Settings.qml:212
-#, fuzzy
 msgid "Open image on external application"
-msgstr "Ouvrir l'application"
+msgstr "Ouvrir l'image dans une application externe"
 
 #: ../qml/pages/rss/Settings.qml:13
 msgid "rss"
@@ -916,11 +926,11 @@ msgstr "URL invalide"
 
 #: ../qml/pages/todo/Settings.qml:10
 msgid "todo"
-msgstr "Choses à faire"
+msgstr "À faire"
 
 #: ../qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
-msgstr "Pas de paramètres pour la page « TODO »"
+msgstr "Pas de paramètres pour la page « À faire »"
 
 #: ../qml/pages/videos/Settings.qml:10
 msgid "videos"
@@ -1079,7 +1089,7 @@ msgstr "Est"
 
 #: ../qml/widgets/Weather.qml:243
 msgid "East-Southeast"
-msgstr "Est-Sud-Sst"
+msgstr "Est-Sud-Est"
 
 #: ../qml/widgets/Weather.qml:245
 msgid "Southeast"
@@ -1142,7 +1152,7 @@ msgstr "Paramètres du Widget"
 
 #: ../qml/widgets/event/Settings.qml:133
 msgid "Limit of event"
-msgstr "Limite d'événements"
+msgstr "Limite d'événement"
 
 #: ../qml/widgets/event/Settings.qml:152
 msgid "By default 3 event"
@@ -1184,7 +1194,7 @@ msgstr "Nombre d'appels affichés"
 #: ../qml/widgets/lastcall/Settings.qml:83
 #: ../qml/widgets/lastmessage/Settings.qml:83
 msgid "By default 1"
-msgstr "60 jours par défaut"
+msgstr "Par défaut 1"
 
 #: ../qml/widgets/lastcall/Settings.qml:93
 #: ../qml/widgets/lastmessage/Settings.qml:119
