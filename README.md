@@ -18,6 +18,7 @@ A launcher modular for ubuntu touch
 
 This application is a fork from https://github.com/ruditimmermans/launcher-modular
 
+Contributions are welcomes, you may help translation using Weblate on https://hosted.weblate.org/projects/ubports/launcher-modular/
 ### The “Launcher Modular” lets you quickly view information such as:
 - time
 - weather forecast
