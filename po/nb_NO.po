@@ -345,9 +345,9 @@ msgstr ""
 "Software Foundation, enten versjon 3 av lisensen, eller (etter eget valg) "
 "hvilken som helst senere versjon. Dette programmet distribueres i håp om at "
 "det vil være nyttig, men UTEN NOEN GARANTI; selv uten underforstått garanti "
-"om SALGBARHET eller FORMÅLSTJENLIGHET. Mer info er å finne i <a href="
-"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
-"a>."
+"om SALGBARHET eller FORMÅLSTJENLIGHET. Mer info er å finne i <a "
+"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
+"License</a>."
 
 #: ../qml/ChangeLogs.qml:421
 msgid "SOURCE"

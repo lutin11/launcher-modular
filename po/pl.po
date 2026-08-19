@@ -340,8 +340,8 @@ msgstr ""
 "lub którejś z późniejszych wersji. Niniejszy program rozpowszechniany jest z "
 "nadzieją, iż będzie on użyteczny - jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet "
 "domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH "
-"ZASTOSOWAŃ.  W celu uzyskania bliższych informacji kliknij w link: <a href="
-"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">Powszechna Licencja "
+"ZASTOSOWAŃ.  W celu uzyskania bliższych informacji kliknij w link: <a "
+"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">Powszechna Licencja "
 "Publiczna GNU</a>."
 
 #: ../qml/ChangeLogs.qml:421

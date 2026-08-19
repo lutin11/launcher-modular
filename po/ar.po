@@ -315,9 +315,9 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
-"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://github."
-"com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، تحديثات "
-"المكتبات وبعض الإصلاحات.English"
+"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://"
+"github.com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، "
+"تحديثات المكتبات وبعض الإصلاحات.English"
 
 #: ../qml/ChangeLogs.qml:132
 msgid "Resumption of the application."

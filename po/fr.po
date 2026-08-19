@@ -359,8 +359,8 @@ msgstr ""
 "soit (à votre choix) toute version ultérieure. Ce programme est distribué "
 "dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
 "garantie implicite de COMMERCIALISATION ou d'ADÉQUATION À UN USAGE "
-"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html"
-"\">GNU General Public License</a> pour plus de détails."
+"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/"
+"gpl-3.0.en.html\">GNU General Public License</a> pour plus de détails."
 
 #: ../qml/ChangeLogs.qml:421
 msgid "SOURCE"
