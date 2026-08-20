@@ -110,6 +110,11 @@ Page {
                         }
 
                         Keys.onReturnPressed: {
+                            if (!rssField.isValidUrl(rssField.text)) {
+                                errorLine.visible = true
+                                invalidTextError.text = i18n.tr("Invalid URL format")
+                                return
+                            }
                             rssField.urlToSave = rssField.text;  // Store text in temporary property
                             NetworkHelper.checkUrlReachable(rssField.text)
                         }
