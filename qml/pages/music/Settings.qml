@@ -40,7 +40,7 @@ Page {
                 id: settingsColumn
 
                 ListItem.Header {
-                    id: titleCalendarManagement
+                    id: titleMusicSettings
                     text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'Music' page")+"</font>"
                 }
 
