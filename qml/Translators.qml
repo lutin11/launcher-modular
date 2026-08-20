@@ -191,7 +191,7 @@ Page {
                     height: translation.height + units.gu(4)
                     Label {
                         id: translation
-                        text: i18n.tr("Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/launcher-modular/launchermodular-lut11'>Hosted Weblate</a>.")
+                        text: i18n.tr("Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/ubports/launcher-modular/'>Hosted Weblate</a>.")
                         onLinkActivated: Qt.openUrlExternally(link)
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere

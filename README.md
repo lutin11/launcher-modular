@@ -16,6 +16,9 @@ A launcher modular for ubuntu touch
   <img src="assets/samples/RSS_Setings.png" width="100" alt="RSS setings"/>
 </p>
 
+This application is a fork from https://github.com/ruditimmermans/launcher-modular
+
+Contributions are welcomes, you may help translation using Weblate on https://hosted.weblate.org/projects/ubports/launcher-modular/
 ### The “Launcher Modular” lets you quickly view information such as:
 - time
 - weather forecast
@@ -38,8 +41,17 @@ A launcher modular for ubuntu touch
 - RSS feeds
 - Music
 - Videos
+- Nextcloud
 
-### The main search bar will search your contacts, applications and the web at the same time
+### You can create your own pages,  see https://github.com/lutin11/launcher-modular#creating-a-custom-page
+
+### The main search bar
+
+- The main search bar does
+  - search your contacts, 
+  - search applications 
+  - redirect search on the web <img src="qml/pages/home/assets/websearch.svg" width="12" alt="web search"/>
+  - performe computation (2+2 ⇒ 4)
 
 ## How to build
 
