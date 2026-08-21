@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 05:13+0000\n"
+"POT-Creation-Date: 2026-08-21 20:03+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/launcher-modular/"
@@ -626,11 +626,11 @@ msgstr ""
 msgid "This folder is empty"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:227
 msgid "Loading feeds…"
 msgstr "ஊட்டங்களை ஏற்றுகிறது…"
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:228
 msgid "Go to the page management to add feeds."
 msgstr "ஊட்டங்களைச் சேர்க்க பக்க நிர்வாகத்திற்குச் செல்லவும்."
 
@@ -639,7 +639,7 @@ msgid "New todo"
 msgstr "புதிய செய்யவேண்டிய"
 
 #: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:157
-#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
+#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr "நீக்கு"
 
@@ -905,11 +905,17 @@ msgstr "பயன்பாட்டைத் திற"
 msgid "rss"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:101
-msgid "https://omgubuntu.co.uk/feed"
+#: ../qml/pages/rss/Settings.qml:103
+#, fuzzy
+msgid "ex: https://omgubuntu.co.uk/feed"
 msgstr "https://omgubuntu.co.uk/feed"
 
-#: ../qml/pages/rss/Settings.qml:219
+#: ../qml/pages/rss/Settings.qml:117
+#, fuzzy
+msgid "Invalid URL format"
+msgstr "தவறான முகவரி"
+
+#: ../qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
 msgstr "தவறான முகவரி"
 

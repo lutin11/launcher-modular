@@ -47,7 +47,7 @@ Page {
             }
             if (errorMessage !== "") {
                 testSucced = i18n.tr("Failed")
-                console.log(errorMessage)
+                if (DEBUG_MODE) console.log(errorMessage)
             }
         }
 

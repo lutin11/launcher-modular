@@ -70,7 +70,7 @@ Rectangle {
         }
 
         onDurationChanged: {
-            console.log("onDurationChanged:" + duration)
+            if (DEBUG_MODE) console.log("onDurationChanged:" + duration)
             if (duration > 0) {
                 progressSlider.maximumValue = duration
             }
@@ -92,7 +92,7 @@ Rectangle {
         }
 
         onError: {
-            console.log("Audio error:", errorString)
+            if (DEBUG_MODE) console.log("Audio error:", errorString)
         }
     }
 

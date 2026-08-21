@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 05:13+0000\n"
+"POT-Creation-Date: 2026-08-21 20:03+0000\n"
 "PO-Revision-Date: 2026-04-02 09:09+0000\n"
 "Last-Translator: Marcel Tujetsch <tujetsch-marcel@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -361,9 +361,9 @@ msgstr ""
 "Lizenz, oder (nach deiner Entscheidung) einer neueren Version. Das Programm "
 "wird verteilt in der Hoffnung, dass es nützlich ist, aber OHNE JEDWEDE "
 "GARANTIE; ohne auch nur eine implizierte Garantie der VERKÄUFLICHKEIT oder "
-"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> für weitere Details."
+"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> für weitere Details."
 
 #: ../qml/ChangeLogs.qml:421
 msgid "SOURCE"
@@ -633,11 +633,11 @@ msgstr ""
 msgid "This folder is empty"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:227
 msgid "Loading feeds…"
 msgstr "Laden von Feeds…"
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:228
 msgid "Go to the page management to add feeds."
 msgstr "Gehen Sie zur Seitenverwaltung, um Feeds hinzuzufügen."
 
@@ -646,7 +646,7 @@ msgid "New todo"
 msgstr "Neue Aufgabe"
 
 #: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:157
-#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
+#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr "Löschen"
 
@@ -909,11 +909,17 @@ msgstr "Die Anwendung öffnen"
 msgid "rss"
 msgstr "rss"
 
-#: ../qml/pages/rss/Settings.qml:101
-msgid "https://omgubuntu.co.uk/feed"
+#: ../qml/pages/rss/Settings.qml:103
+#, fuzzy
+msgid "ex: https://omgubuntu.co.uk/feed"
 msgstr "https://omgubuntu.co.uk/feed"
 
-#: ../qml/pages/rss/Settings.qml:219
+#: ../qml/pages/rss/Settings.qml:117
+#, fuzzy
+msgid "Invalid URL format"
+msgstr "Ungültige Url"
+
+#: ../qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
 msgstr "Ungültige Url"
 
