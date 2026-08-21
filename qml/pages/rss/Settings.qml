@@ -85,22 +85,13 @@ Page {
                         anchors {
                             left: iconRss.right
                             leftMargin: units.gu(1)
+                            right: headerRss.right
                             rightMargin: units.gu(1)
                             verticalCenter: parent.verticalCenter
                         }
                         height: parent.height*0.5
-                        width: parent.width - iconRss.width - units.gu(1)
                         inputMethodHints: Qt.ImhUrlCharactersOnly
-                        placeholderText: ""
-                        // Custom placeholder
-                        Text {
-                            anchors.fill: parent
-                            anchors.leftMargin: 5
-                            verticalAlignment: Text.AlignVCenter
-                            color: "#aaaaaa" // Light grey color for placeholder
-                            text: i18n.tr("https://omgubuntu.co.uk/feed")
-                            visible: rssField.text.length == 0
-                        }
+                        placeholderText: i18n.tr("ex: https://omgubuntu.co.uk/feed")
 
                         property string urlToSave: ""
 
