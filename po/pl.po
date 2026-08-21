@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 05:13+0000\n"
+"POT-Creation-Date: 2026-08-21 20:03+0000\n"
 "PO-Revision-Date: 2025-11-23 09:36+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/launcher-modular/"
@@ -340,8 +340,8 @@ msgstr ""
 "lub którejś z późniejszych wersji. Niniejszy program rozpowszechniany jest z "
 "nadzieją, iż będzie on użyteczny - jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet "
 "domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH "
-"ZASTOSOWAŃ.  W celu uzyskania bliższych informacji kliknij w link: <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">Powszechna Licencja "
+"ZASTOSOWAŃ.  W celu uzyskania bliższych informacji kliknij w link: <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">Powszechna Licencja "
 "Publiczna GNU</a>."
 
 #: ../qml/ChangeLogs.qml:421
@@ -602,11 +602,11 @@ msgstr ""
 msgid "This folder is empty"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:227
 msgid "Loading feeds…"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:228
 msgid "Go to the page management to add feeds."
 msgstr ""
 
@@ -615,7 +615,7 @@ msgid "New todo"
 msgstr ""
 
 #: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:157
-#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
+#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr "Usuń"
 
@@ -873,11 +873,15 @@ msgstr ""
 msgid "rss"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:101
-msgid "https://omgubuntu.co.uk/feed"
+#: ../qml/pages/rss/Settings.qml:103
+msgid "ex: https://omgubuntu.co.uk/feed"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:219
+#: ../qml/pages/rss/Settings.qml:117
+msgid "Invalid URL format"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
 msgstr ""
 

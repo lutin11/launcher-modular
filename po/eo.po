@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 05:13+0000\n"
+"POT-Creation-Date: 2026-08-21 20:03+0000\n"
 "PO-Revision-Date: 2025-11-23 09:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/launcher-"
@@ -345,9 +345,9 @@ msgstr ""
 "Free Software Foundation — aŭ versio 3 de la Licenco, aŭ (laŭplaĉe) ajna "
 "posta versio. Ĉi tiu programo estas distribuata kun la espero, ke ĝi estos "
 "utila, sed SEN AJNA GARANTIO; sen eĉ la implicita garantio de "
-"PRIKOMERCEBLECO aŭ TAŬGECO POR IU CELO. Vidu la <a href=\"https://"
-"www.gnu.org/licenses/gpl-3.0.en.html\">Ĝeneralan Publikan Licencon GNU</a> "
-"por pliaj detaloj."
+"PRIKOMERCEBLECO aŭ TAŬGECO POR IU CELO. Vidu la <a href=\"https://www.gnu."
+"org/licenses/gpl-3.0.en.html\">Ĝeneralan Publikan Licencon GNU</a> por pliaj "
+"detaloj."
 
 #: ../qml/ChangeLogs.qml:421
 msgid "SOURCE"
@@ -607,11 +607,11 @@ msgstr ""
 msgid "This folder is empty"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:227
 msgid "Loading feeds…"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:228
 msgid "Go to the page management to add feeds."
 msgstr ""
 
@@ -621,7 +621,7 @@ msgid "New todo"
 msgstr "nova farendaĵo"
 
 #: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:157
-#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
+#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr "Forviŝi"
 
@@ -890,11 +890,15 @@ msgstr "Malfermi la programon"
 msgid "rss"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:101
-msgid "https://omgubuntu.co.uk/feed"
+#: ../qml/pages/rss/Settings.qml:103
+msgid "ex: https://omgubuntu.co.uk/feed"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:219
+#: ../qml/pages/rss/Settings.qml:117
+msgid "Invalid URL format"
+msgstr ""
+
+#: ../qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
 msgstr ""
 

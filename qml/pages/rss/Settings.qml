@@ -73,8 +73,8 @@ Page {
                             anchors.fill: parent
                             onClicked:{
                                 if(rssField.text.length > 0){
-                                   rssField.text = ""
-                                   rssField.focus = false
+                                    rssField.text = ""
+                                    rssField.focus = false
                                 }
                             }
                         }
@@ -85,21 +85,23 @@ Page {
                         anchors {
                             left: iconRss.right
                             leftMargin: units.gu(1)
+                            right: headerRss.right
                             rightMargin: units.gu(1)
                             verticalCenter: parent.verticalCenter
                         }
                         height: parent.height*0.5
-                        width: parent.width - iconRss.width - units.gu(1)
-                        inputMethodHints: Qt.ImhUrlCharactersOnly
+                        inputMethodHints: Qt.ImhNoPredictiveText
                         placeholderText: ""
-                        // Custom placeholder
+                        // to have a placeholder color that is different that from theme
                         Text {
                             anchors.fill: parent
-                            anchors.leftMargin: 5
+                            anchors.leftMargin: units.gu(1)
+                            anchors.rightMargin: units.gu(0.5)
                             verticalAlignment: Text.AlignVCenter
-                            color: "#aaaaaa" // Light grey color for placeholder
-                            text: i18n.tr("https://omgubuntu.co.uk/feed")
-                            visible: rssField.text.length == 0
+                            elide: Text.ElideRight
+                            color: "#aaaaaa"
+                            text: i18n.tr("ex: https://omgubuntu.co.uk/feed")
+                            visible: rssField.text.length === 0
                         }
 
                         property string urlToSave: ""
@@ -110,6 +112,11 @@ Page {
                         }
 
                         Keys.onReturnPressed: {
+                            if (!rssField.isValidUrl(rssField.text)) {
+                                errorLine.visible = true
+                                invalidTextError.text = i18n.tr("Invalid URL format")
+                                return
+                            }
                             rssField.urlToSave = rssField.text;  // Store text in temporary property
                             NetworkHelper.checkUrlReachable(rssField.text)
                         }
@@ -124,6 +131,7 @@ Page {
                                 RssModel.save(rssField.urlToSave);
                                 rssField.text = ""
                                 errorLine.visible = false
+                                launchermodular.settings.rssFeedChanged = true
                             } else if (reachable) {
                                 if (DEBUG_MODE) console.log("URL is reachable but not a valid RSS feed");
                                 errorLine.visible = true
@@ -140,6 +148,10 @@ Page {
                 delegate: Item {
                     width: parent.width
                     height: units.gu(6)
+                    anchors {
+                        rightMargin: units.gu(2)
+                        leftMargin: units.gu(2)
+                    }
 
                     Column {
                         id: aRssLine

@@ -145,7 +145,7 @@ Page {
                         text: item.name
                     }
                     onSelectedIndexChanged: {
-                        console.log("selectedIndex :"+selectedIndex);
+                        if (DEBUG_MODE) console.log("selectedIndex :"+selectedIndex);
                         var typeChoice = model[selectedIndex].value
                         if (selectedIndex === 0) {
                             launchermodular.settings.clockFontWeight = Font.Bold
