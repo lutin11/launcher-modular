@@ -90,8 +90,19 @@ Page {
                             verticalCenter: parent.verticalCenter
                         }
                         height: parent.height*0.5
-                        inputMethodHints: Qt.ImhUrlCharactersOnly
-                        placeholderText: i18n.tr("ex: https://omgubuntu.co.uk/feed")
+                        inputMethodHints: Qt.ImhNoPredictiveText
+                        placeholderText: ""
+                        // to have a placeholder color that is different that from theme
+                        Text {
+                            anchors.fill: parent
+                            anchors.leftMargin: units.gu(1)
+                            anchors.rightMargin: units.gu(0.5)
+                            verticalAlignment: Text.AlignVCenter
+                            elide: Text.ElideRight
+                            color: "#aaaaaa"
+                            text: i18n.tr("https://omgubuntu.co.uk/feed")
+                            visible: rssField.text.length === 0
+                        }
 
                         property string urlToSave: ""
 
