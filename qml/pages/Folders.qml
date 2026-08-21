@@ -87,19 +87,13 @@ Item {
                 lomiriFileModel.folder = lomiriRootFolder; // Revenir à la racine
             }
         }
-        // Affiche le dossier courant dès qu'il est prêt, indépendamment du
-        // parcours récursif ci-dessous (qui ne sert qu'à la recherche) :
-        // plus d'attente d'un parcours complet de tout le dossier personnel
-        // avant de voir quoi que ce soit.
+        // Display current folder
         onStatusChanged: if (lomiriFileModel.status == FolderListModel.Ready) {
             initSearchModel()
         }
     }
 
-    // Modèle séparé, dédié uniquement à l'indexation en arrière-plan pour la
-    // recherche (parcours récursif complet de lomiriRootFolder). N'affecte
-    // jamais ce qui est affiché à l'écran, contrairement à lomiriFileModel
-    // ci-dessus : c'est ce découplage qui corrige l'attente indéfinie.
+    // Model used for search
     FolderListModel {
         id: searchIndexModel
         showDotAndDotDot: false

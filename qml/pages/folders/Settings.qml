@@ -43,27 +43,11 @@ Page {
                     text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'folder' page")+"</font>"
                 }
 
-                Row {
-                    spacing: units.gu(1)
+                Text {
                     anchors.horizontalCenter: parent.horizontalCenter;
-
-                    Icon {
-                        id: iconBack
-                        height: parent.height*0.5
-                        anchors {
-                            left: parent.left
-                            rightMargin: units.gu(launchermodular.settings.folderFontSize)
-                            leftMargin: units.gu(launchermodular.settings.folderFontSize)
-                        }
-                        width: height
-                        name: "revert"
-                    }
-
-                    Text {
-                        text: i18n.tr("Exemple")
-                        font.pixelSize: units.gu(launchermodular.settings.folderFontSize)
-                        color: launchermodular.settings.folderFontColor
-                    }
+                    text: i18n.tr("Exemple")
+                    font.pixelSize: units.gu(launchermodular.settings.folderFontSize)
+                    color: launchermodular.settings.folderFontColor
                 }
 
                 Slider {
