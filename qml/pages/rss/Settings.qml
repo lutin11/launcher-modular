@@ -73,8 +73,8 @@ Page {
                             anchors.fill: parent
                             onClicked:{
                                 if(rssField.text.length > 0){
-                                   rssField.text = ""
-                                   rssField.focus = false
+                                    rssField.text = ""
+                                    rssField.focus = false
                                 }
                             }
                         }
@@ -100,7 +100,7 @@ Page {
                             verticalAlignment: Text.AlignVCenter
                             elide: Text.ElideRight
                             color: "#aaaaaa"
-                            text: i18n.tr("https://omgubuntu.co.uk/feed")
+                            text: i18n.tr("ex: https://omgubuntu.co.uk/feed")
                             visible: rssField.text.length === 0
                         }
 
@@ -131,6 +131,7 @@ Page {
                                 RssModel.save(rssField.urlToSave);
                                 rssField.text = ""
                                 errorLine.visible = false
+                                launchermodular.settings.rssFeedChanged = true
                             } else if (reachable) {
                                 if (DEBUG_MODE) console.log("URL is reachable but not a valid RSS feed");
                                 errorLine.visible = true
@@ -147,6 +148,10 @@ Page {
                 delegate: Item {
                     width: parent.width
                     height: units.gu(6)
+                    anchors {
+                        rightMargin: units.gu(2)
+                        leftMargin: units.gu(2)
+                    }
 
                     Column {
                         id: aRssLine

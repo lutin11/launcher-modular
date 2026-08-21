@@ -590,10 +590,12 @@ Item {
 
                     AppHandler.sort()
                     refreshFavorites()
-                    if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].name);
-                    if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].getProp("package_name"));
-                    if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].getProp("Icon"));
-                    if (DEBUG_MODE) console.log(Qt.locale().name);
+                    if (DEBUG_MODE) {
+                        console.log(AppHandler.appsinfo[0].name);
+                        console.log(AppHandler.appsinfo[0].getProp("package_name"));
+                        console.log(AppHandler.appsinfo[0].getProp("Icon"));
+                        console.log(Qt.locale().name);
+                    }
 
                 }
             }

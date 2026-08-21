@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 05:13+0000\n"
+"POT-Creation-Date: 2026-08-21 20:03+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -315,9 +315,9 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
-"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://"
-"github.com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، "
-"تحديثات المكتبات وبعض الإصلاحات.English"
+"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://github."
+"com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، تحديثات "
+"المكتبات وبعض الإصلاحات.English"
 
 #: ../qml/ChangeLogs.qml:132
 msgid "Resumption of the application."
@@ -622,11 +622,11 @@ msgstr ""
 msgid "This folder is empty"
 msgstr ""
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:227
 msgid "Loading feeds…"
 msgstr "جارٍ تحميل الخلاصات…"
 
-#: ../qml/pages/Rss.qml:154
+#: ../qml/pages/Rss.qml:228
 msgid "Go to the page management to add feeds."
 msgstr "انتقل إلى إدارة الصفحة لإضافة الخلاصات."
 
@@ -635,7 +635,7 @@ msgid "New todo"
 msgstr "todo جديد"
 
 #: ../qml/pages/Todo.qml:121 ../qml/pages/home/Settings.qml:157
-#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:175
+#: ../qml/pages/music/PlaylistsView.qml:125 ../qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr "حذف"
 
@@ -904,11 +904,17 @@ msgstr "افتح التطبيق"
 msgid "rss"
 msgstr ""
 
-#: ../qml/pages/rss/Settings.qml:101
-msgid "https://omgubuntu.co.uk/feed"
+#: ../qml/pages/rss/Settings.qml:103
+#, fuzzy
+msgid "ex: https://omgubuntu.co.uk/feed"
 msgstr "https://omgubuntu.co.uk/feed"
 
-#: ../qml/pages/rss/Settings.qml:219
+#: ../qml/pages/rss/Settings.qml:117
+#, fuzzy
+msgid "Invalid URL format"
+msgstr "عنوان URL غير صالح"
+
+#: ../qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
 msgstr "عنوان URL غير صالح"
 
