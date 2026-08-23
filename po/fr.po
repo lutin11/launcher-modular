@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-21 21:12+0000\n"
+"POT-Creation-Date: 2026-08-23 16:26+0000\n"
 "PO-Revision-Date: 2026-08-20 00:50+0000\n"
 "Last-Translator: libermax <libremax@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -567,7 +567,7 @@ msgstr ""
 msgid "Agenda"
 msgstr "Agenda"
 
-#: ../qml/pages/Folders.qml:220
+#: ../qml/pages/Folders.qml:664
 #, fuzzy
 msgid "Search a file"
 msgstr "Rechercher votre vidéo"
