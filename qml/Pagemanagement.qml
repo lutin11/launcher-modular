@@ -140,7 +140,6 @@ Page {
                             }
                         }
                         divider.visible: false
-                        visible: !(fileName && fileName.split(".")[0] === "Home")
                         onClicked: {
                             launchermodular.pageModel.append({
                                 "name": fileName,
