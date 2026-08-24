@@ -120,7 +120,7 @@ Page {
                     height: trans2Label.height + units.gu(2)
                     Label {
                         id: trans2Label
-                        text: i18n.tr("French - ") + "Stanwood77, Steve Kueffer"
+                        text: i18n.tr("French - ") + "Stanwood77, Steve Kueffer, Libermax"
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         horizontalAlignment: Text.AlignHCenter
