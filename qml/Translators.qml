@@ -106,7 +106,7 @@ Page {
                     height: trans1Label.height + units.gu(2)
                     Label {
                         id: trans1Label
-                        text: i18n.tr("Dutch - ") + "Sander Klootwijk"
+                        text: i18n.tr("Dutch - ") + "Sander Klootwijk, Heimen Stoffels"
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         horizontalAlignment: Text.AlignHCenter
