@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: ../qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -36,12 +36,12 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:14
 msgid "Change Log"
-msgstr ""
+msgstr "Wijzigingslog"
 
 #: ../qml/ChangeLogs.qml:18 ../qml/pages/picture/SelectFolderPage.qml:25
 #: ../qml/pages/rss/Settings.qml:26
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 #: ../qml/ChangeLogs.qml:44
 msgid "Remove utilities pages from the page selector"
@@ -66,17 +66,18 @@ msgstr ""
 
 #: ../qml/ChangeLogs.qml:51
 msgid "Toggle Image full screen on clic"
-msgstr ""
+msgstr "Afbeeldingen schermvullend tonen na aanraken"
 
 #: ../qml/ChangeLogs.qml:52
 msgid ""
 "Add option 'Open image on external application' on Picture settings page"
 msgstr ""
+"Nieuw: optie om afbeeldingen in externe apps te tonen op de "
+"instellingenpagina"
 
 #: ../qml/ChangeLogs.qml:55
-#, fuzzy
 msgid "Add Nexctloud page"
-msgstr "Instellingenwidget"
+msgstr "Nieuw: Nextcloudpagina"
 
 #: ../qml/ChangeLogs.qml:56
 msgid "Fix page selection showing more than real pages"
@@ -339,15 +340,17 @@ msgstr "Versie: "
 
 #: ../qml/ChangeLogs.qml:250
 msgid " | Date: "
-msgstr ""
+msgstr " | Datum: "
 
 #: ../qml/ChangeLogs.qml:376
 msgid "If you like this app, please rank it on OpenStore"
 msgstr ""
+"Als je deze app graag gebruikt, laat dan een beoordeling achter in de "
+"OpenStore"
 
 #: ../qml/ChangeLogs.qml:403
 msgid "A modular launcher for Ubuntu Touch"
-msgstr "Een modulaire launcher voor Ubuntu Touch"
+msgstr "Een modulaire starter voor Ubuntu Touch"
 
 #: ../qml/ChangeLogs.qml:417
 msgid ""
@@ -388,11 +391,11 @@ msgstr "Auteursrecht"
 
 #: ../qml/ChangeLogs.qml:476
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
-msgstr "<a href='LAUNCHER MODULAR VERTALERS'>LAUNCHER MODULAR VERTALERS</a>"
+msgstr "<a href=\"LAUNCHER MODULAR VERTALERS\">LAUNCHER MODULAR-VERTALERS</a>"
 
 #: ../qml/Help.qml:15
 msgid "Modular Launcher Help"
-msgstr "Launcher Modular Help"
+msgstr "Launcher Modular-hulp"
 
 #: ../qml/Help.qml:49
 #, fuzzy
