@@ -40,6 +40,13 @@ Page {
             id: page1
 
             property string emptyDescription:""
+            // 2.5.0
+            property string details59: i18n.tr("Remove utilities pages from the page selector")
+            property string details58: i18n.tr("Add folder page")
+            property string details57: i18n.tr("Fix adding RSS feeds not working")
+            property string details56: i18n.tr("Change weblate repo")
+            property string description56:i18n.tr("Use now https://hosted.weblate.org/projects/ubports/launcher-modular/")
+
             // 2.4.9
             property string details55: i18n.tr("Toggle Image full screen on clic")
             property string details54: i18n.tr("Add option 'Open image on external application' on Picture settings page")
@@ -137,6 +144,10 @@ Page {
             }
 
             Component.onCompleted: {
+                changeLogModel.append({ version: "2.5.0", date: "2026-08-24", details: details59, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details58, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details57, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details56, description: description56});
                 changeLogModel.append({ version: "2.4.9", date: "2026-08-14", details: details55, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details54, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.8", date: "2026-08-13", details: details53, description: emptyDescription});
