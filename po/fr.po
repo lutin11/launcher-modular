@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-24 07:33+0000\n"
-"PO-Revision-Date: 2026-08-20 00:50+0000\n"
+"PO-Revision-Date: 2026-08-25 18:37+0000\n"
 "Last-Translator: libermax <libremax@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/ubports/launcher-"
 "modular/fr/>\n"
@@ -45,27 +45,25 @@ msgstr "Retour"
 
 #: ../qml/ChangeLogs.qml:44
 msgid "Remove utilities pages from the page selector"
-msgstr ""
+msgstr "Suppression des pages utilities du sélecteur de pages"
 
 #: ../qml/ChangeLogs.qml:45
-#, fuzzy
 msgid "Add folder page"
-msgstr "Ajout d'une page 'Vidéos'"
+msgstr "Ajout d'une page dossiers"
 
 #: ../qml/ChangeLogs.qml:46
 msgid "Fix adding RSS feeds not working"
-msgstr ""
+msgstr "Correction d'un problème empêchant l'ajout de flux RSS"
 
 #: ../qml/ChangeLogs.qml:47
 msgid "Change weblate repo"
-msgstr ""
+msgstr "Modification du dépôt Weblate"
 
 #: ../qml/ChangeLogs.qml:48
-#, fuzzy
 msgid "Use now https://hosted.weblate.org/projects/ubports/launcher-modular/"
 msgstr ""
-"Traduire Modular Launcher sur   <a href=\"https://hosted.weblate.org/"
-"projects/ubports/launcher-modular/\">Hosted Weblate</a>."
+"Utiliser maintenant https://hosted.weblate.org/projects/ubports/launcher-"
+"modular/"
 
 #: ../qml/ChangeLogs.qml:51
 msgid "Toggle Image full screen on clic"
@@ -592,9 +590,8 @@ msgid "Agenda"
 msgstr "Agenda"
 
 #: ../qml/pages/Folders.qml:664
-#, fuzzy
 msgid "Search a file"
-msgstr "Rechercher votre vidéo"
+msgstr "Rechercher un fichier"
 
 #: ../qml/pages/Home.qml:40
 msgid "ok"
@@ -761,12 +758,11 @@ msgstr "Format :"
 
 #: ../qml/pages/folders/Settings.qml:10
 msgid "folders"
-msgstr ""
+msgstr "dossiers"
 
 #: ../qml/pages/folders/Settings.qml:43
-#, fuzzy
 msgid "Settings for 'folder' page"
-msgstr "Paramètres pour la page « Vidéos »"
+msgstr "Paramètres pour la page « dossiers »"
 
 #: ../qml/pages/folders/Settings.qml:48 ../qml/pages/music/Settings.qml:49
 #: ../qml/pages/videos/Settings.qml:48
@@ -957,14 +953,12 @@ msgid "rss"
 msgstr "RSS"
 
 #: ../qml/pages/rss/Settings.qml:103
-#, fuzzy
 msgid "ex: https://omgubuntu.co.uk/feed"
-msgstr "https://omgubuntu.co.uk/feed"
+msgstr "ex : https://omgubuntu.co.uk/feed"
 
 #: ../qml/pages/rss/Settings.qml:117
-#, fuzzy
 msgid "Invalid URL format"
-msgstr "URL invalide"
+msgstr "Format d'URL invalide"
 
 #: ../qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
