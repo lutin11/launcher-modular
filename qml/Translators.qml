@@ -106,7 +106,7 @@ Page {
                     height: trans1Label.height + units.gu(2)
                     Label {
                         id: trans1Label
-                        text: i18n.tr("Dutch - ") + "Sander Klootwijk"
+                        text: i18n.tr("Dutch - ") + "Sander Klootwijk, Heimen Stoffels"
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         horizontalAlignment: Text.AlignHCenter
@@ -120,7 +120,7 @@ Page {
                     height: trans2Label.height + units.gu(2)
                     Label {
                         id: trans2Label
-                        text: i18n.tr("French - ") + "Stanwood77, Steve Kueffer"
+                        text: i18n.tr("French - ") + "Stanwood77, Steve Kueffer, Libermax"
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                         horizontalAlignment: Text.AlignHCenter
@@ -191,7 +191,7 @@ Page {
                     height: translation.height + units.gu(4)
                     Label {
                         id: translation
-                        text: i18n.tr("Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/launcher-modular/launchermodular-lut11'>Hosted Weblate</a>.")
+                        text: i18n.tr("Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/ubports/launcher-modular/'>Hosted Weblate</a>.")
                         onLinkActivated: Qt.openUrlExternally(link)
                         anchors.centerIn: parent
                         wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere

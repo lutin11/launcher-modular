@@ -20,7 +20,7 @@ void LibertineWorker::run() {
         libertineProcess.start("ubuntu-app-launch", QStringList() << m_containerName + "_" + m_appName);
 
         if (!libertineProcess.waitForStarted()) {
-            qDebug() << "Erreur : Failed to start application" << m_appName;
+            qDebug() << "Error: Failed to start application" << m_appName;
         } else {
             qDebug() << "Application " << m_appName << " starting into containers " << m_containerName;
         }

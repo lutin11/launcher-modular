@@ -14,6 +14,12 @@ Item {
         return lowerToday
     }
 
+    // Empty table is for all calendar selected
+    CollectionFilter {
+        id: calendarCollectionFilter
+        ids: launchermodular.settings.selectedCalendarIds
+    }
+
     OrganizerModel {
         id: organizerModel
 
@@ -41,22 +47,35 @@ Item {
             }
         ]
 
-        onModelChanged: {
-            widgetEventModel.clear();
-            var count = organizerModel.itemCount
-            for ( var i = 0; i < count; i ++ ) {
-                var item = organizerModel.items[i];
-                var today = getTodayBaseLine();
-                var limitDown = item.startDateTime >= today
-                if(item.itemType !== 505 && limitDown){
-                    if(widgetEventModel.count < launchermodular.settings.limiteItemWidgetEvent){
-                      widgetEventModel.append( {"item": item })
-                    }
-                }
-            }
+        filter: (launchermodular.settings.selectedCalendarIds && launchermodular.settings.selectedCalendarIds.length > 0)
+            ? calendarCollectionFilter
+            : null
+
+        // Only load from backend details from selected calendar
+        fetchHint: FetchHint {
+            detailTypesHint: [Detail.EventTime, Detail.DisplayLabel, Detail.Description, Detail.Guid, Detail.ItemType]
+            optimizationHints: FetchHint.NoBinaryBlobs
         }
 
+        onModelChanged: Qt.callLater(rebuildWidgetEventModel)
+
         manager: "eds"
+    }
+
+    function rebuildWidgetEventModel() {
+            widgetEventModel.clear();
+        var items = organizerModel.items;
+        var count = organizerModel.itemCount;
+        var limit = launchermodular.settings.limiteItemWidgetEvent;
+        var today = getTodayBaseLine();
+        for ( var i = 0; i < count; i ++ ) {
+            if (widgetEventModel.count >= limit) break;
+            var item = items[i];
+                var limitDown = item.startDateTime >= today
+                if(item.itemType !== 505 && limitDown){
+                      widgetEventModel.append( {"item": item })
+                }
+        }
     }
 
     function updateModel() {
@@ -125,10 +144,16 @@ Item {
                 spacing: units.gu(0.7)
                 Text {
                     text: {
-                        var callendarEvent = item.detail(Detail.EventTime)
+                        if (!item) return "";
+                        var callendarEvent = item.detail ? item.detail(Detail.EventTime) : null;
+                        if (!callendarEvent) return "";
                         var eventStartTime = callendarEvent.startDateTime;
                         if(index != 0){
-                            var prevEventeventStartTime = widgetEventModel.get(index-1).item.detail(Detail.EventTime).startDateTime;
+                            var prevItem = widgetEventModel.get(index-1);
+                            if (!prevItem || !prevItem.item) return "";
+                            var prevDetail = prevItem.item.detail ? prevItem.item.detail(Detail.EventTime) : null;
+                            if (!prevDetail) return "";
+                            var prevEventeventStartTime = prevDetail.startDateTime;
                             if(Qt.formatDateTime(eventStartTime, "MMM d" ) != Qt.formatDateTime(prevEventeventStartTime, "MMM d" )){
                               return Qt.formatDateTime(eventStartTime, "MMM d" )
                             } else {
@@ -160,7 +185,9 @@ Item {
                     }
                     Text {
                         text: {
-                            var callendarEvent = item.detail(Detail.EventTime)
+                            if (!item) return "";
+                            var callendarEvent = item.detail ? item.detail(Detail.EventTime) : null;
+                            if (!callendarEvent) return "";
                             var eventStartTime = callendarEvent.startDateTime;
                             return Qt.formatDateTime(eventStartTime, "hh:mm" )+" "+item.description
                         }

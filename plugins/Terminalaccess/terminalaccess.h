@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QStringList>
 #include <QProcess>
 
 class Terminalaccess: public QObject {
@@ -20,6 +21,11 @@ public:
     Q_INVOKABLE QString outputUntilEnd();
     Q_INVOKABLE bool input(QString input, bool print = true);
     Q_INVOKABLE bool inputLine(QString input, bool print = true);
+    Q_INVOKABLE bool copyFile(const QString &source, const QString &destination);
+    Q_INVOKABLE bool removeFile(const QString &path);
+    Q_INVOKABLE bool makePath(const QString &path);
+    Q_INVOKABLE int removeFilesWithExtensions(const QString &dirPath, const QStringList &extensions);
+    Q_INVOKABLE bool writeBytes(const QString &path, const QByteArray &data);
 public slots:
     void fetchOutput();
     void fetchError();

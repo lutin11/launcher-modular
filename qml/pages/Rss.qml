@@ -11,172 +11,260 @@ import "rss"
 import NetworkHelper 1.0
 
 Item {
-    id:_mainFeed
+    id: _mainFeed
 
-    clip:true
+    clip: true
 
-    property var model : RssModel.itemModel
-    property var refreshing:  cachedHttpRequestInstance.waitingForResults
-    property var currentSearch : null
-    property var currentSection : null
-    property var channelsList : []
+    property var model: RssModel.itemModel
+    property var refreshing: cachedHttpRequestInstance.waitingForResults
+    property var currentSearch: null
+    property var currentSection: null
+    property var channelsList: []
     property bool isFeeds: false
+    property bool completed: false
 
     Component.onCompleted: {
         RssModel.dbInit()
-        updateFeedsTimer.start();
-
+        updateFeedsTimer.start()
+        completed = true
     }
 
-    onRefreshingChanged: if(!refreshing) {
-        //listSortingTimer.restart();
-    }
+    onVisibleChanged: {
+        if (visible &&
+            completed &&
+            (launchermodular.settings.rssFeedChanged ||
+                !RssModel.itemModel ||
+                RssModel.itemModel.length === 0 ||
+                _mainFeed.refreshing ||
+                listSortingTimer.running)) {
 
-    //------------------------------ Components -----------------------------
+            if (DEBUG_MODE) console.log("reload")
+
+            _mainFeed.updateFeed()
+
+            launchermodular.settings.rssFeedChanged = false
+        }
+    }
 
     Component {
-        id:channelComponent
+        id: channelComponent
+
         RssChannel {
         }
     }
 
     Component {
-        id:channelItemsComponent
+        id: channelItemsComponent
+
         RssChannelItems {
-            id:channelItemsComponentObj
+            id: channelItemsComponentObj
         }
     }
 
     WorkerScript {
-        id:feedItemsParser
-        source : "../Jslibs/Processing/FeedItemsParser.js"
+        id: feedItemsParser
 
-        onMessage :  (message) => {
-            var item = message.item
-            feedList.model.append(item);
+        source: "../Jslibs/Processing/FeedItemsParser.js"
+
+        onMessage: (message) => {
+            try {
+                var item = message.item
+
+                if (item) {
+                    feedList.model.append(item)
+                }
+            } catch (e) {
+                console.log("Feed item append failed:", e)
+            }
         }
     }
 
     // Timer  used to allow  for multiple updates that  result in a single sorting
     Timer {
-        id:listSortingTimer
-        interval:1000
+        id: listSortingTimer
+
+        interval: 1000
         repeat: false
-        running:false
-        onTriggered : {
+        running: false
+
+        onTriggered: {
             if (DEBUG_MODE) console.log("Timer Sorting..")
-            feedList.model.sort();
-            var sortFunctions = {
-                "Publication Date" : function sortByPubDate(a,b) {
-                    return  (new Date(b['firstEntryPubDate'] )).getTime() - (new Date( a['firstEntryPubDate'])).getTime();
-                },
-                "Title" : function sortByTitle(a,b) {
-                    return  a['titleText'].localeCompare (b['titleText']);
-                }
-            }
+
+            feedList.model.sort()
         }
     }
+
     Timer {
-        id:updateFeedsTimer
-        interval:10
+        id: updateFeedsTimer
+
+        interval: 10
         repeat: false
-        running:false
-        onTriggered : {
+        running: false
+
+        onTriggered: {
             if (DEBUG_MODE) console.log("Timer updating..")
+
             RssModel.buildModel()
-            _mainFeed.updateFeed();
+            _mainFeed.updateFeed()
         }
     }
 
     CachedHttpRequest {
-        id:cachedHttpRequestInstance
-        isResultJSON : false;
-        isLoggingEnabled:false;
-        onlyReturnFreshCache: Connectivity.status !== NetworkingStatus.Offline ;
-        cachingTimeMiliSec: appSettings.feedCacheTimeout * 60000;
-        recachingFactor: 0.25;
-        cachedResponseIsEnough:true
+        id: cachedHttpRequestInstance
+
+        isResultJSON: false
+        isLoggingEnabled: false
+
+        onlyReturnFreshCache:
+            Connectivity.status !== NetworkingStatus.Offline
+
+        cachingTimeMiliSec:
+            appSettings.feedCacheTimeout * 60000
+
+        recachingFactor: 0.25
+        cachedResponseIsEnough: true
     }
 
     //--------------------------------- Functions ----------------------------------
 
     function updateFeed() {
-        if( !RssModel.itemModel || RssModel.itemModel.length ==  0 ||  _mainFeed.refreshing ||  listSortingTimer.running ) {
-            _mainFeed.isFeeds = false;
-            return;
-        }
-        if(Connectivity.status == NetworkingStatus.Offline  ) {
-            if (DEBUG_MODE) console.log("Limited connectivity... not updating.");
-            if( feedList.model && feedList.model.length) {
-              return;
-            }
+        if (!RssModel.itemModel ||
+            RssModel.itemModel.length === 0 ||
+            _mainFeed.refreshing ||
+            listSortingTimer.running) {
+
+            _mainFeed.isFeeds = false
+            return
         }
 
-        if (DEBUG_MODE) console.log("updating the feeds..");
-        feedList.model.clear();
-        channelsList = [];
-        _mainFeed.isFeeds = RssModel.itemModel.count > 0
-        for(let i=0; i < RssModel.itemModel.count;i++) {
-    			let url = RssModel.itemModel.get(i);
-    			cachedHttpRequestInstance.send(url.rss_uri, {"url": url.rss_uri});
-    	}
+        if (Connectivity.status === NetworkingStatus.Offline) {
+            if (DEBUG_MODE) console.log("Limited connectivity... not updating.")
+
+            if (feedList.model && feedList.model.length)
+                return
+        }
+
+        if (DEBUG_MODE) console.log("updating the feeds..")
+
+        feedList.model.clear()
+        channelsList = []
+
+        _mainFeed.isFeeds =
+            RssModel.itemModel.count > 0
+
+        for (let i = 0;
+             i < RssModel.itemModel.count;
+             ++i) {
+
+            const url = RssModel.itemModel.get(i)
+
+            cachedHttpRequestInstance.send(
+                url.rss_uri,
+                {
+                    "url": url.rss_uri
+                }
+            )
+        }
+    }
+
+    function detectFeedType(xml) {
+        if (!xml)
+            return "unknown"
+
+        const text = String(xml).trim()
+
+        /*
+         * <feed xmlns="http://www.w3.org/2005/Atom">
+         */
+
+        if (/<rss(?:\s|>)/i.test(text))
+            return "rss"
+
+        if (/<feed(?:\s|>)/i.test(text))
+            return "atom"
+
+        if (/<rdf:RDF(?:\s|>)/i.test(text))
+            return "rdf"
+
+        return "unknown"
     }
 
     Feed {
-        id:feedList
+        id: feedList
 
         anchors {
-            fill:parent
+            fill: parent
         }
 
         model: FeedsModel {
-            id:feedModel
+            id: feedModel
         }
 
         Rectangle {
-            anchors {
-                fill:parent
-            }
-            z:1
+            anchors.fill: parent
+
+            z: 1
             opacity: 0.6
-            visible:  _mainFeed.isFeeds == false
+
+            visible: _mainFeed.isFeeds === false
+
             color: "transparent"
+
             ProgressBar {
                 anchors {
-                    horizontalCenter:parent.horizontalCenter
-                    margins:units.gu(2)
+                    horizontalCenter: parent.horizontalCenter
+                    margins: units.gu(2)
                 }
-                indeterminate:true
+
+                indeterminate: true
                 visible: _mainFeed.isFeeds
             }
+
             Label {
                 id: noFeeds
-                text: _mainFeed.isFeeds ? i18n.tr("Loading feeds…") : i18n.tr("Go to the page management to add feeds.")
+
+                text: _mainFeed.isFeeds
+                    ? i18n.tr("Loading feeds…")
+                    : i18n.tr("Go to the page management to add feeds.")
+
                 color: launchermodular.settings.textColor
+
                 font.weight: Font.Bold
+
                 wrapMode: Text.Wrap
-                horizontalAlignment:Text.AlignHCenter
+
+                horizontalAlignment: Text.AlignHCenter
+
                 anchors {
-                    verticalCenter:parent.verticalCenter
-                    left:parent.left
-                    right:parent.right
-                    margins:units.gu(2)
+                    verticalCenter: parent.verticalCenter
+                    left: parent.left
+                    right: parent.right
+                    margins: units.gu(2)
                 }
             }
         }
 
         pullToRefresh {
             enabled: true
-            refreshing: feedList.model.count == 0  || listSortingTimer.running || _mainFeed.refreshing
-            onRefresh: _mainFeed.updateFeed()
+
+            refreshing:
+                feedList.model.count === 0 ||
+                listSortingTimer.running ||
+                _mainFeed.refreshing
+
+            onRefresh: {
+                _mainFeed.updateFeed()
+            }
         }
 
         delegate: FeedItem {
-            visible: !_mainFeed.currentSection || _mainFeed.currentSection == itemData['channel']
+            visible:
+                !_mainFeed.currentSection ||
+                _mainFeed.currentSection === itemData["channel"]
 
-            onClicked:{
-                feedList.currentIndex = index;
-                Qt.openUrlExternally(itemData.url);
+            onClicked: {
+                feedList.currentIndex = index
+                Qt.openUrlExternally(itemData.url)
             }
         }
     }
@@ -184,79 +272,309 @@ Item {
     Connections {
         target: cachedHttpRequestInstance
 
-        onResponseDataUpdated: (response, data) => {
+        function onResponseDataUpdated(response, data) {
             try {
-                const channel = channelComponent.createObject(null, {});
+                if (!response) {
+                    if (DEBUG_MODE) {
+                        console.log(
+                        "Empty response for:",
+                        data ? data.url : "unknown URL")
+                    }
+                    return
+                }
+
+                const feedUrl =
+                        data && data.url
+                    ? data.url
+                    : "unknown URL"
+
+                const feedType =
+                    _mainFeed.detectFeedType(response)
+
+                if (DEBUG_MODE) {
+                    console.log(
+                        "Feed URL:",
+                        feedUrl
+                    )
+
+                    console.log(
+                        "Feed type:",
+                        feedType
+                    )
+
+                    console.log(
+                        "Feed response length:",
+                        String(response).length
+                    )
+                }
+
+                /*
+                 * The response isn't XML/RSS/Atom, ignore it
+                 */
+                if (feedType === "unknown") {
+                    if (DEBUG_MODE) {
+                        console.log(
+                            "Unable to detect RSS/Atom XML for:",
+                            feedUrl
+                        )
+
+                        console.log(
+                            String(response).substring(0, 500)
+                        )
+                    }
+
+                    return
+                }
+
+                const channel =
+                    channelComponent.createObject(
+                        null,
+                        {}
+                    )
+
+                if (!channel) {
+                    if (DEBUG_MODE) {
+                        console.log(
+                            "Could not create RssChannel for:",
+                            feedUrl
+                        )
+                    }
+                    return
+                }
+
                 const loadChannelData = function() {
-                    if (channel.status !== XmlListModel.Ready) return;
+                    if (channel.status === XmlListModel.Error) {
+                        if (DEBUG_MODE) {
+                            console.log(
+                                "RssChannel XML error for:",
+                                feedUrl
+                            )
 
-                    let channelData = channel.get(0);
+                            console.log(
+                                "RssChannel error:",
+                                channel.errorString
+                            )
+                        }
+                        channel.statusChanged.disconnect(
+                            loadChannelData
+                        )
 
-                    // Set namespace declaration if channelData is empty
+                        channel.destroy()
+
+                        return
+                    }
+
+                    if (channel.status !== XmlListModel.Ready) return
+
+                    let channelData = null
+
+                    if (channel.count > 0) channelData = channel.get(0)
+
+
+                    if (!channelData && feedType === "atom") {
+                        channel.statusChanged.disconnect(
+                            loadChannelData
+                        )
+
+                        channel.namespaceDeclarations =
+                            "declare default element namespace " +
+                            "'http://www.w3.org/2005/Atom';"
+
+                        channel.statusChanged.connect(
+                            loadChannelData
+                        )
+
+                        channel.xml = response
+
+                        return
+                    }
+
                     if (!channelData) {
-                        channel.namespaceDeclarations = "declare default element namespace 'http://www.w3.org/2005/Atom';";
-                        channel.xml = response;
-                        return;
+                        if (DEBUG_MODE) {
+                            console.log(
+                                "No channel data found for:",
+                                feedUrl
+                            )
+                        }
+
+                        channel.statusChanged.disconnect(
+                            loadChannelData
+                        )
+
+                        channel.destroy()
+
+                        return
                     }
 
-                    // Check if Atom feed and store additional data
-                    if (channel.namespaceDeclarations == "declare default element namespace 'http://www.w3.org/2005/Atom';") {
-                        channelData.isAtom = true;
+                    channelData.isAtom = feedType === "atom";
+
+                    channelData.feedUrl = feedUrl
+                    channelData.fullXml = response
+
+                    if (DEBUG_MODE) {
+                        console.log(
+                            "channel:",
+                            JSON.stringify(channelData)
+                        )
                     }
 
-                    if (DEBUG_MODE) console.log("channel:", JSON.stringify(channelData));
-                    channelData.feedUrl = data.url;
-                    channelData.fullXml = response;
-                    channelsList.push(channelData);
+                    channelsList.push(channelData)
 
-                    loadChannelItems(channelData);
-                    channel.statusChanged.disconnect(loadChannelData);
-                };
+                    channel.statusChanged.disconnect(
+                        loadChannelData
+                    )
 
-                channel.statusChanged.connect(loadChannelData);
-                channel.xml = response;
+                    loadChannelItems(channelData)
+
+                    channel.destroy()
+                }
+
+                channel.statusChanged.connect(
+                    loadChannelData
+                )
+
+                /*
+                 * Configure Atom before assigning XML.
+                 */
+                if (feedType === "atom") {
+                    channel.namespaceDeclarations =
+                        "declare default element namespace " +
+                        "'http://www.w3.org/2005/Atom';"
+
+                    channelData = null
+                }
+
+                channel.xml = response
 
             } catch (e) {
-                if (DEBUG_MODE) console.log("Failed to load channel:", e);
+                console.log(
+                    "Failed to load channel:",
+                    e
+                )
             }
-        }
-
-        onRequestError: (error, errorResult) => {
-            console.log("ERROR: Failed to load channel:", error, "Results:", errorResult);
         }
 
         function loadChannelItems(channelData) {
-            const channelItems = channelItemsComponent.createObject(null, {});
+            if (!channelData ||
+                !channelData.fullXml) {
+                if (DEBUG_MODE) {
+                    console.log(
+                        "Invalid channel data; cannot load items."
+                    )
+                }
+
+                return
+            }
+
+            const channelItems =
+                channelItemsComponent.createObject(
+                    null,
+                    {}
+                )
+
+            if (!channelItems) {
+                if (DEBUG_MODE) {
+                    console.log(
+                        "Could not create RssChannelItems."
+                    )
+                }
+
+                return
+            }
 
             if (channelData.isAtom) {
-                channelItems.namespaceDeclarations = "declare default element namespace 'http://www.w3.org/2005/Atom';";
+                channelItems.namespaceDeclarations =
+                    "declare default element namespace " +
+                    "'http://www.w3.org/2005/Atom';"
             }
 
             const parseChannelItems = function() {
-                if (channelItems.status !== XmlListModel.Ready) return;
+                if (channelItems.status === XmlListModel.Error) {
+                    if (DEBUG_MODE) {
+                        console.log(
+                            "RssChannelItems XML error for:",
+                            channelData.feedUrl
+                        )
 
-                if (channelItems.count == 0) {
-                    channelItems.statusChanged.disconnect(parseChannelItems);
-                    channelItems.destroy();
-                    return;
+                        console.log(
+                            "RssChannelItems error:",
+                            channelItems.errorString
+                        )
+                    }
+
+                    channelItems.statusChanged.disconnect(
+                        parseChannelItems
+                    )
+
+                    channelItems.destroy()
+
+                    return
                 }
 
-                for (let i = 0; i < Math.min(channelItems.count, appSettings.itemsToLoadPerChannel); i++) {
+                if (channelItems.status !== XmlListModel.Ready)
+                    return
+
+                if (channelItems.count === 0) {
+                    if (DEBUG_MODE) {
+                        console.log(
+                            "No feed items found for:",
+                            channelData.feedUrl
+                        )
+                    }
+
+                    channelItems.statusChanged.disconnect(
+                        parseChannelItems
+                    )
+
+                    channelItems.destroy()
+
+                    return
+                }
+
+                const count =
+                    Math.min(
+                        channelItems.count,
+                        appSettings.itemsToLoadPerChannel
+                    )
+
+                for (let i = 0; i < count; ++i) {
                     try {
-                        const item = channelItems.get(i);
-                        feedItemsParser.sendMessage({ item, channelData });
+                        const item =
+                            channelItems.get(i)
+
+                        if (item) {
+                            feedItemsParser.sendMessage({
+                                item: item,
+                                channelData: channelData
+                            })
+                        }
+
                     } catch (e) {
-                        console.log("Couldn't parse item:", i, "for:", channelData.feedUrl);
+                        console.log(
+                            "Couldn't parse item:",
+                            i,
+                            "for:",
+                            channelData.feedUrl,
+                            e
+                        )
                     }
                 }
 
-                listSortingTimer.restart();
-                channelItems.statusChanged.disconnect(parseChannelItems);
-            };
+                listSortingTimer.restart()
 
-            channelItems.statusChanged.connect(parseChannelItems);
-            channelItems.xml = channelData.fullXml;
+                channelItems.statusChanged.disconnect(
+                    parseChannelItems
+                )
+
+                channelItems.destroy()
+            }
+
+            channelItems.statusChanged.connect(
+                parseChannelItems
+            )
+
+            channelItems.xml =
+                channelData.fullXml
         }
     }
-
 }

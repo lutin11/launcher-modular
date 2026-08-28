@@ -34,7 +34,7 @@ Column {
     Connections {
         target: CalculatorHelper
         onResultReady: function(result) {
-            console.log("Signal received with result: " + result);
+            if (DEBUG_MODE) console.log("Signal received with result: " + result);
             if (result) {
                 calculResult.text = result;
             }

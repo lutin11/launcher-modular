@@ -25,18 +25,6 @@ Page {
                 }
             }
         ]
-        trailingActionBar {
-            actions: [
-                Action {
-                    iconName: "add"
-                    text: "add"
-                    onTriggered: {
-                        PopupUtils.open(listHomeAppDialog);
-                    }
-                }
-           ]
-           numberOfSlots: 2
-        }
     }
 
     Component {
@@ -87,10 +75,40 @@ Page {
     }
 
     Rectangle {
-        id:homeMainsettings
+        id:homeFavoritAppAdd
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
+
+        Text {
+            id: addFavoritAppLabel
+            text: i18n.tr("Add a favorite application")
+            height: units.gu(5)
+            anchors.left: parent.left
+            anchors.leftMargin: units.gu(2)
+            color: "#ffffff"
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        ActionBar {
+            anchors.right: parent.right
+            actions: [
+                Action {
+                    iconName: "add"
+                    onTriggered: {
+                        PopupUtils.open(listHomeAppDialog);
+                    }
+                }
+            ]
+            numberOfSlots: 1
+        }
+    }
+
+    Rectangle {
+        id:homeMainsettings
+        anchors.fill: parent
+        color: "#111111"
+        anchors.topMargin: units.gu(12)
 
         Flickable {
             id: homeFlickableSettings

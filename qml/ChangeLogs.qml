@@ -40,7 +40,31 @@ Page {
             id: page1
 
             property string emptyDescription:""
+            // 2.5.0
+            property string details59: i18n.tr("Remove utilities pages from the page selector")
+            property string details58: i18n.tr("Add folder page")
+            property string details57: i18n.tr("Fix adding RSS feeds not working")
+            property string details56: i18n.tr("Change weblate repo")
+            property string description56:i18n.tr("Use now https://hosted.weblate.org/projects/ubports/launcher-modular/")
 
+            // 2.4.9
+            property string details55: i18n.tr("Toggle Image full screen on clic")
+            property string details54: i18n.tr("Add option 'Open image on external application' on Picture settings page")
+
+            // 2.4.8
+            property string details53: i18n.tr("Add Nexctloud page")
+            property string details52: i18n.tr("Fix page selection showing more than real pages")
+
+            // 2.4.7
+            property string details51: i18n.tr("Update Readme file to explain how user can create there own page")
+            property string description51:i18n.tr("Please, visit https://github.com/lutin11/launcher-modular")
+            property string details50: i18n.tr("Fix favorite applications not being launched after update")
+            property string details49: i18n.tr("Music page as integrated player")
+            property string description49:i18n.tr("Play your selected musics, create and play Playlists")
+            property string details48: i18n.tr("It's now possible to choose your calendar on widget and calendar page")
+            property string details47: i18n.tr("Prepare for QT6 migration")
+
+            // 2.4.6
             property string details46: i18n.tr("update German translation")
             property string details45: i18n.tr("Fix numeric clock not refresh")
             property string details44: i18n.tr("Fix app not available on launcher")
@@ -120,7 +144,20 @@ Page {
             }
 
             Component.onCompleted: {
-                changeLogModel.append({ version: "2.4.6", date: "2026-04-03", details: details44, description: description44});
+                changeLogModel.append({ version: "2.5.0", date: "2026-08-24", details: details59, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details58, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details57, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details56, description: description56});
+                changeLogModel.append({ version: "2.4.9", date: "2026-08-14", details: details55, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details54, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.8", date: "2026-08-13", details: details53, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details52, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.7", date: "2026-08-10", details: details51, description: description51});
+                changeLogModel.append({ version: "", date: "", details: details50, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details49, description: description49});
+                changeLogModel.append({ version: "", date: "", details: details48, description: emptyDescription});
+                changeLogModel.append({ version: "", date: "", details: details47, description: emptyDescription});
+                changeLogModel.append({ version: "2.4.6", date: "", details: details44, description: description44});
                 changeLogModel.append({ version: "", date: "", details: details46, description: emptyDescription});
                 changeLogModel.append({ version: "", date: "", details: details45, description: emptyDescription});
                 changeLogModel.append({ version: "2.4.5", date: "2025-11-17", details: details43, description: emptyDescription});
@@ -237,7 +274,7 @@ Page {
                                     id: endLine
                                     width: changeLogContainer.width
                                     height: 1
-                                    color: if (index < changeLogModel.count && changeLogModel.get(index+1).version.length > 0){"#FFFFFF"} else {"#111111"}
+                                    color: (index < changeLogModel.count - 1 && changeLogModel.get(index + 1).version.length > 0) ? "#FFFFFF" : "#111111"
                                     anchors.horizontalCenter: parent.horizontalCenter
                                 }
                             }

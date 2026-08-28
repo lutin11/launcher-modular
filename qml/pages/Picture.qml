@@ -9,8 +9,88 @@ import Ubuntu.Thumbnailer 0.1
 Item {
     id: picture
 
+    property string selectedImageFilePath: ""
+    property int selectedImageIndex: -1
+    property real iconbasesize: units.gu(14)
+
+    function showPreviousImage() {
+        if (selectedImageIndex <= 0) return
+        selectedImageIndex--
+        selectedImageFilePath = "image://thumbnailer/" + folderModel.get(selectedImageIndex, "filePath")
+    }
+
+    function showNextImage() {
+        if (selectedImageIndex < 0 || selectedImageIndex >= folderModel.count - 1) return
+        selectedImageIndex++
+        selectedImageFilePath = "image://thumbnailer/" + folderModel.get(selectedImageIndex, "filePath")
+    }
+
+    Image {
+        id: img
+        source:  selectedImageFilePath;
+        visible: selectedImageFilePath !== ""
+        fillMode: Image.PreserveAspectFit
+        anchors.fill: parent
+
+        sourceSize {
+            width: parent.width
+            height: parent.height
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                selectedImageFilePath = ""
+                selectedImageIndex = -1
+                launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
+                WindowController.toggleFullScreen();
+            }
+        }
+    }
+
+    Icon {
+        id: previousImageChevron
+        anchors.left: parent.left
+        anchors.leftMargin: units.gu(2)
+        anchors.verticalCenter: parent.verticalCenter
+        source: "../../assets/back.svg"
+        height: units.gu(4)
+        width: units.gu(4)
+        color: "#FFFFFF"
+        antialiasing: true
+        visible: selectedImageFilePath !== "" && selectedImageIndex > 0
+        z: 1
+
+        MouseArea {
+            anchors.fill: parent
+            anchors.margins: units.gu(-2) // extend touch zone
+            onClicked: showPreviousImage()
+        }
+    }
+
+    Icon {
+        id: nextImageChevron
+        anchors.right: parent.right
+        anchors.rightMargin: units.gu(2)
+        anchors.verticalCenter: parent.verticalCenter
+        source: "../../assets/next.svg"
+        height: units.gu(4)
+        width: units.gu(4)
+        color: "#FFFFFF"
+        antialiasing: true
+        visible: selectedImageFilePath !== "" && selectedImageIndex < folderModel.count - 1
+        z: 1
+
+        MouseArea {
+            anchors.fill: parent
+            anchors.margins: units.gu(-2)
+            onClicked: showNextImage()
+        }
+    }
+
     GridView {
         id: gview
+        visible: selectedImageFilePath === ""
         anchors.fill: parent
         anchors {
             rightMargin: units.gu(2)
@@ -18,9 +98,11 @@ Item {
             topMargin: units.gu(2)
         }
         cellHeight: iconbasesize+units.gu(8)
-        property real iconbasesize: units.gu(14)
         cellWidth: Math.floor(width/Math.floor(width/iconbasesize))
-        clip: true  // To avoid rendering content outside of the visible area
+        clip: true
+        cacheBuffer: height * 2
+        flickDeceleration: 1500
+        maximumFlickVelocity: 2500
 
         focus: true
         model: folderModel
@@ -55,9 +137,10 @@ Item {
                         width: parent.width
                         height: parent.height
                     }
-                    visible: Math.abs(gview.contentY - y) < 2 * gview.cellHeight  // Lazy loading based on proximity to viewport
+                    visible: true
                     fillMode: Image.PreserveAspectCrop
-                    asynchronous: true  // To load images without blocking the main UI thread
+                    smooth: !gview.moving
+                    asynchronous: true
                     cache: true
                 }
 
@@ -72,7 +155,14 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        onClicked:Qt.openUrlExternally("photo://" + filePath)
+                        if (launchermodular.settings.openImageExternally) {
+                            Qt.openUrlExternally("photo://" + filePath)
+                        } else {
+                            launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
+                            WindowController.toggleFullScreen();
+                            selectedImageFilePath = "image://thumbnailer/" + filePath
+                            selectedImageIndex = index
+                        }
                     }
                 }
             } // Item

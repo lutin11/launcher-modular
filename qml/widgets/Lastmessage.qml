@@ -138,7 +138,7 @@ Item {
 
             delegate: Item {
                 id: listMessageItem
-                width:parent.width;
+                width: parent ? parent.width : 0
                 height: units.gu(3)
 
                 MouseArea {
@@ -156,8 +156,7 @@ Item {
                 }
                 Column {
                     id: visibleContent
-                    anchors.fill: parent
-                    width:parent.width
+                    width: parent.width
                     spacing: 0
 
                     Text {

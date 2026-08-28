@@ -21,7 +21,7 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    property string appVersion : "2.4.5.9"
+    property string appVersion : "2.5.0"
     property ListModel customIconModel :  ListModel { id: customIconModel }
     property ListModel pageModel :  ListModel { id: pageModel }
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
@@ -104,11 +104,17 @@ MainView {
         property string folderImage: MySettings.getPicturesLocation()
         property bool reverseImagesSort: false
         property int imageSelectedSorting: FolderListModel.Time
+        property bool openImageExternally: false
+
         property string folderMusic: MySettings.getMusicLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
+        property real folderFontSize: 2.0
+
+        property var playlistNames: []
         property color musicFontColor: "#E95420"
         property color videoFontColor: "#E95420"
+        property color folderFontColor: "#E95420"
 
         property string clockFontColor: "#E95420"
         property string clockFontFamily: "DSEG7Classic"
@@ -147,10 +153,18 @@ MainView {
         property bool widgetVisibleLastmessage: true
         property bool widgetVisibleEvent: true
         property int itemsToLoadPerChannel: 7
+        property var selectedCalendarIds: []
+        property var selectedCalendarPageIds: []
 
         property int mainFeedSortAsc: 1
 
         property bool fullScreen: false
+
+        property string nextcloudUser: ''
+        property string nextcloudPassword: ''
+        property string nextcloudUrl: ''
+        property string nextcloudBasePath: '/'
+
     }//settings
 
     Timer {
@@ -296,7 +310,13 @@ MainView {
                                 id: pageLoader
                                 visible: index === view.currentIndex
                                 onLoaded: {
-                                    if (item) item.visible = visible
+                                    if (item) {
+                                        item.visible = visible
+                                        // Injecte the data used for the curent page
+                                        if (typeof item.pageData !== "undefined") {
+                                            item.pageData = model.data
+                                        }
+                                    }
                                 }
                                 onVisibleChanged: {
                                     if (item) item.visible = visible

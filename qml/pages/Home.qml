@@ -12,6 +12,7 @@ import LibertineLauncher 1.0
 import CalculatorHelper 1.0
 import Ubuntu.Components.ListItems 1.3 as ListItem
 import Ubuntu.Components.Themes 1.3
+import "./music/"
 
 Item {
     id: home
@@ -53,9 +54,7 @@ Item {
                         color: Theme.palette.normal.overlaySecondaryText
                     }
                     text: i18n.tr("Cancel")
-                    onClicked: {
-                        onClicked: PopupUtils.close(authentDialogue);
-                    }
+                    onClicked: PopupUtils.close(authentDialogue)
                 }
             }
         }
@@ -78,6 +77,52 @@ Item {
 
     property bool reloading: false
 
+    function refreshFavorites() {
+        var favCount = launchermodular.favoriteAppsModel.count;
+        for (var i = favCount - 1; i >= 0; i--) {
+            var fav = launchermodular.favoriteAppsModel.get(i);
+            if (!fav.action || !fav.action.startsWith("application:///")) continue;
+
+            var desktopId = fav.action.replace("application:///", "");
+            var found = false;
+
+            for (var j = 0; j < AppHandler.appsinfo.length; j++) {
+                var app = AppHandler.appsinfo[j];
+                if (app.action === fav.action) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) continue;
+
+            for (var j = 0; j < AppHandler.appsinfo.length; j++) {
+                var app = AppHandler.appsinfo[j];
+                var pkgName = app.getProp("package_name");
+                if (pkgName && (pkgName + ".desktop") === desktopId) {
+                    launchermodular.favoriteAppsModel.setProperty(i, "action", app.action);
+                    launchermodular.favoriteAppsModel.setProperty(i, "icon", app.icon);
+                    found = true;
+                    if (DEBUG_MODE) console.log("refreshFavorites: updated action for " + fav.name);
+                    break;
+                }
+            }
+            if (found) continue;
+
+            for (var j = 0; j < AppHandler.appsinfo.length; j++) {
+                var app = AppHandler.appsinfo[j];
+                if (app.name === fav.name) {
+                    launchermodular.favoriteAppsModel.setProperty(i, "action", app.action);
+                    launchermodular.favoriteAppsModel.setProperty(i, "icon", app.icon);
+                    found = true;
+                    if (DEBUG_MODE) console.log("refreshFavorites: matched by name for " + fav.name);
+                    break;
+                }
+            }
+        }
+    }
+
+    MusicPlayer { id: homeMusicPlayer }
+
     function refreshHomePage() {
         home.reloading = true
         AppHandler.reload()
@@ -88,6 +133,7 @@ Item {
         listCustomIcon.model = ""
         listCustomIcon.model = launchermodular.customIconModel
         AppHandler.sort()
+        refreshFavorites()
         if (launchermodular.settings.widgetVisibleWeather){
             weatherWidget.modelWeather.reload()
             weatherWidget.modelWeatherNext.reload()
@@ -479,9 +525,7 @@ Item {
                                                 radius: units.gu(1.5)
                                                 color: Theme.palette.normal.overlaySecondaryText
                                             }
-                                            onClicked: {
-                                                onClicked: PopupUtils.close(appsDialogue);
-                                            }
+                                            onClicked: PopupUtils.close(appsDialogue)
                                         }
 
 
@@ -545,10 +589,13 @@ Item {
                     //AppHandler.appsinfo.push(settingsButton)
 
                     AppHandler.sort()
-                    if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].name);
-                    if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].getProp("package_name"));
-                    if (DEBUG_MODE) console.log(AppHandler.appsinfo[0].getProp("Icon"));
-                    if (DEBUG_MODE) console.log(Qt.locale().name);
+                    refreshFavorites()
+                    if (DEBUG_MODE) {
+                        console.log(AppHandler.appsinfo[0].name);
+                        console.log(AppHandler.appsinfo[0].getProp("package_name"));
+                        console.log(AppHandler.appsinfo[0].getProp("Icon"));
+                        console.log(Qt.locale().name);
+                    }
 
                 }
             }

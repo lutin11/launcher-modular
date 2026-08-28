@@ -17,7 +17,15 @@ void NetworkHelper::checkUrlReachable(const QString &url) {
         emit urlCheckCompleted(false, false);
         return;
     }
-    manager->get(QNetworkRequest(qurl));
+
+    QNetworkRequest request(qurl);
+    // To redirect to https.
+    request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
+    // Add User-Agent
+    request.setHeader(QNetworkRequest::UserAgentHeader,
+                       QStringLiteral("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"));
+
+    manager->get(request);
 }
 
 void NetworkHelper::onReplyFinished(QNetworkReply *reply) {
@@ -27,22 +35,19 @@ void NetworkHelper::onReplyFinished(QNetworkReply *reply) {
     if (isReachable) {
         // Check for RSS-compatible content types
         QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
-
         qDebug() << "Content Type:" << contentType;
-
-        if (contentType.contains("rss") || contentType.contains("xml") || contentType.contains("html")) {
-            // Parse XML content to identify RSS elements
-            qDebug() << "RSS url feed reachable";
-            QXmlStreamReader xml(reply);
-            while (!xml.atEnd() && !xml.hasError()) {
-                xml.readNext();
-                qDebug() << "RSS readNext";
-                if (xml.isStartElement()) {
-                    qDebug() << "RSS name:" << xml.name();
-                    if (xml.name() == "rss" || xml.name() == "feed" || xml.name() == "channel") {
-                        isRssFeed = true;
-                        break;
-                    }
+        QXmlStreamReader xml(reply);
+        while (!xml.atEnd() && !xml.hasError()) {
+            xml.readNext();
+            qDebug() << "RSS readNext";
+            if (xml.isStartElement()) {
+                qDebug() << "RSS name:" << xml.name();
+                if (xml.name() == QLatin1String("rss") ||
+                    xml.name() == QLatin1String("feed") ||
+                    xml.name() == QLatin1String("channel") ||
+                    xml.name() == QLatin1String("RDF")) {
+                    isRssFeed = true;
+                    break;
                 }
             }
         }

@@ -130,8 +130,7 @@ Item {
                 }
                 Column {
                     id: visibleContent
-                    anchors.fill: parent
-                    width:parent.width;
+                    width: parent.width
                     spacing: 0
 
                     Text {
