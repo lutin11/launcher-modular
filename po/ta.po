@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-26 07:59+0000\n"
-"PO-Revision-Date: 2026-08-28 18:42+0000\n"
+"PO-Revision-Date: 2026-08-30 08:12+0000\n"
 "Last-Translator: Alagirisamy Rengaraj <radhaalagirisamy@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ubports/launcher-"
 "modular/ta/>\n"
@@ -66,11 +66,10 @@ msgid "Change weblate repo"
 msgstr ""
 
 #: qml/ChangeLogs.qml:48
-#, fuzzy
 msgid "Use now https://hosted.weblate.org/projects/ubports/launcher-modular/"
 msgstr ""
-"மட்டு துவக்கியை <a href = 'https: //hosted.weblate.org/projects/launcher-"
-"modular/launchermodular-lut11'> வலைபெயர்ப்பில்</a> மொழிபெயர்க்கவும்."
+"இப்பொழுது பயன்படுத்தவும் https: //hosted.weblate.org/projects/ubports/launcher-"
+"modular/"
 
 #: qml/ChangeLogs.qml:51
 msgid "Toggle Image full screen on clic"
@@ -199,7 +198,7 @@ msgstr "பெறப்பட்ட செய்திகளில் வடி�
 
 #: qml/ChangeLogs.qml:96
 msgid "Correction of home setting not displayed"
-msgstr "பின்னணி காட்சிக்கான திருத்தம்."
+msgstr "காட்சிப்படுத்தாத முகப்பு அமைப்புக்கு திருத்தம்"
 
 #: qml/ChangeLogs.qml:97
 msgid "Add Tamil translations thanks to தமிழ்நேரம்"
@@ -349,7 +348,7 @@ msgstr "பயன்பாட்டின் மறுதொடக்கம்."
 
 #: qml/ChangeLogs.qml:244
 msgid "Version: "
-msgstr "பதிப்பு:"
+msgstr "பதிப்பு:. "
 
 #: qml/ChangeLogs.qml:250
 msgid " | Date: "
@@ -493,7 +492,7 @@ msgstr "பயன்பாட்டு பட்டியலில் காட�
 
 #: qml/Main.qml:802 qml/Main.qml:803 qml/Main.qml:804
 msgid "<b>Action</b> example: "
-msgstr "<b> செயல் </b> எடுத்துக்காட்டு:"
+msgstr "<b> செயல் </b> எடுத்துக்காட்டு:. "
 
 #: qml/Main.qml:816
 msgid "Create icon"
@@ -737,11 +736,11 @@ msgstr "இலகுவான"
 
 #: qml/pages/clock/Settings.qml:195
 msgid "Font type : "
-msgstr "எழுத்துரு வகை:"
+msgstr "எழுத்துரு வகை:. "
 
 #: qml/pages/clock/Settings.qml:239
 msgid "Format : "
-msgstr "வடிவம்:"
+msgstr "வடிவம்:. "
 
 #: qml/pages/folders/Settings.qml:10
 msgid "folders"
@@ -788,11 +787,11 @@ msgstr "வட்டமான சின்னங்கள்"
 
 #: qml/pages/home/Settings.qml:211
 msgid "Style Icons : "
-msgstr "பாணி படவுருகள்:"
+msgstr "பாணி படவுருகள்:. "
 
 #: qml/pages/home/Settings.qml:255
 msgid "Search engine : "
-msgstr "தேடுபொறி:"
+msgstr "தேடுபொறி:. "
 
 #: qml/pages/home/Settings.qml:266
 msgid "Widgets"
@@ -901,9 +900,8 @@ msgid "picture"
 msgstr ""
 
 #: qml/pages/picture/Settings.qml:57
-#, fuzzy
 msgid "Image folder path:"
-msgstr "படப் பாதை"
+msgstr "பட கோப்புறைப் பாதை:"
 
 #: qml/pages/picture/Settings.qml:107
 msgid "Unsorted"
@@ -1217,7 +1215,7 @@ msgstr "லின்பேசி திற"
 #: qml/widgets/lastcall/Settings.qml:119
 #: qml/widgets/lastmessage/Settings.qml:144
 msgid "When clicked : "
-msgstr "சொடுக்கு செய்யும்போது:"
+msgstr "சொடுக்கிய போது:. "
 
 #: qml/widgets/lastcall/Settings.qml:65
 msgid "Number of displayed calls :"
