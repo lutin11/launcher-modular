@@ -8,24 +8,23 @@ msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-26 07:59+0000\n"
-"PO-Revision-Date: 2025-11-23 09:41+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/launcher-"
-"modular/launchermodular-lut11/uk/>\n"
+"PO-Revision-Date: 2026-08-31 20:15+0000\n"
+"Last-Translator: Serhii Horichenko <serhii@horichenko.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/ubports/"
+"launcher-modular/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
 msgstr "Автозапуск Modular Launcher"
 
 #: qml/Autostart.qml:45
-#, fuzzy
 msgid "How to Autostart Modular Launcher after booting"
 msgstr "Як запустити Modular Launcher після завантаження"
 
@@ -43,175 +42,171 @@ msgstr ""
 
 #: qml/ChangeLogs.qml:14
 msgid "Change Log"
-msgstr ""
+msgstr "Журнал змін"
 
 #: qml/ChangeLogs.qml:18 qml/pages/picture/SelectFolderPage.qml:25
 #: qml/pages/rss/Settings.qml:26
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: qml/ChangeLogs.qml:44
 msgid "Remove utilities pages from the page selector"
-msgstr ""
+msgstr "Прибрані службові сторінки з вибору сторінок"
 
 #: qml/ChangeLogs.qml:45
-#, fuzzy
 msgid "Add folder page"
-msgstr "Налаштування віджету погоди"
+msgstr "Додана сторінка теки"
 
 #: qml/ChangeLogs.qml:46
 msgid "Fix adding RSS feeds not working"
-msgstr ""
+msgstr "Виправлений функціонал додавання стрічок RSS"
 
 #: qml/ChangeLogs.qml:47
 msgid "Change weblate repo"
-msgstr ""
+msgstr "Змінений репозиторій Weblate"
 
 #: qml/ChangeLogs.qml:48
-#, fuzzy
 msgid "Use now https://hosted.weblate.org/projects/ubports/launcher-modular/"
 msgstr ""
-"Перекладіть Modular Launcher на <a href=\"https://hosted.weblate.org/"
-"projects/ubports/launcher-modular/\">Hosted Weblate</a>."
+"Тепер користуйтеся https://hosted.weblate.org/projects/ubports/launcher-"
+"modular/"
 
 #: qml/ChangeLogs.qml:51
 msgid "Toggle Image full screen on clic"
-msgstr ""
+msgstr "Перемикання кліком відтворення на весь екран"
 
 #: qml/ChangeLogs.qml:52
 msgid ""
 "Add option 'Open image on external application' on Picture settings page"
 msgstr ""
+"На сторінці налаштувань зображення додана опція \"Відкрити зображення у "
+"зовнішній програмі\""
 
 #: qml/ChangeLogs.qml:55
-#, fuzzy
 msgid "Add Nexctloud page"
-msgstr "Налаштування віджету погоди"
+msgstr "Додано сторінку Nexctloud"
 
 #: qml/ChangeLogs.qml:56
 msgid "Fix page selection showing more than real pages"
-msgstr ""
+msgstr "Виправлено сторінку вибору зі збільшеними розмірами сторінок"
 
 #: qml/ChangeLogs.qml:59
 msgid "Update Readme file to explain how user can create there own page"
 msgstr ""
+"Оновлено файл Readme поясненнями як користувач може створити власну сторінку"
 
 #: qml/ChangeLogs.qml:60
 msgid "Please, visit https://github.com/lutin11/launcher-modular"
-msgstr ""
+msgstr "Відвідайте, будь ласка, https://github.com/lutin11/launcher-modular"
 
 #: qml/ChangeLogs.qml:61
 msgid "Fix favorite applications not being launched after update"
-msgstr ""
+msgstr "Виправлено запуск улюблених програм після оновлення"
 
 #: qml/ChangeLogs.qml:62
 msgid "Music page as integrated player"
-msgstr ""
+msgstr "Музична сторінка як вбудований плеєр"
 
 #: qml/ChangeLogs.qml:63
 msgid "Play your selected musics, create and play Playlists"
-msgstr ""
+msgstr "Відтворюйте обрану музику, створюйте власні списки"
 
 #: qml/ChangeLogs.qml:64
 msgid "It's now possible to choose your calendar on widget and calendar page"
 msgstr ""
+"Тепер можна на віджеті та на сторінці з календарем обирати свій календар"
 
 #: qml/ChangeLogs.qml:65
 msgid "Prepare for QT6 migration"
-msgstr ""
+msgstr "Підготування для міграції на QT6"
 
 #: qml/ChangeLogs.qml:68
-#, fuzzy
 msgid "update German translation"
-msgstr "Перекладачі"
+msgstr "Оновлення перекладу німецькою"
 
 #: qml/ChangeLogs.qml:69
 msgid "Fix numeric clock not refresh"
-msgstr ""
+msgstr "Виправлення оновлення цифрового годинника"
 
 #: qml/ChangeLogs.qml:70
 msgid "Fix app not available on launcher"
-msgstr ""
+msgstr "Виправлення недоступності програми в лаунчері"
 
 #: qml/ChangeLogs.qml:71
 msgid "Tanks marcellotogg for bug reports."
-msgstr ""
+msgstr "Подяка marcellotogg за звіти про помилки."
 
 #: qml/ChangeLogs.qml:73
 msgid "Add desc or asc sorting picture choice"
-msgstr ""
+msgstr "Додано опції сортування вгору/вниз для вибору зображень"
 
 #: qml/ChangeLogs.qml:74
 msgid "Add sorting picture choice"
-msgstr ""
+msgstr "Додано сортування для вибору зображень"
 
 #: qml/ChangeLogs.qml:75
 msgid "Added a file browser for selecting the image folder"
-msgstr ""
+msgstr "Додано Файловий менеджер для вибору зображень"
 
 #: qml/ChangeLogs.qml:77
 msgid "Fix background settings"
-msgstr ""
+msgstr "Виправлення налаштувань для фонових зображень"
 
 #: qml/ChangeLogs.qml:78
-#, fuzzy
 msgid "Add Clock Page"
-msgstr "Сторінка налаштувань"
+msgstr "Додано сторінку годинника"
 
 #: qml/ChangeLogs.qml:80
 msgid "Fix themes not well manage"
-msgstr ""
+msgstr "Виправлення неправильного керування темами"
 
 #: qml/ChangeLogs.qml:82
 msgid "The calendar limit of days is not settable"
-msgstr ""
+msgstr "Обмеження календаря кількістю днів не працювало"
 
 #: qml/ChangeLogs.qml:84
 msgid "Fix superimposed pages at start up"
-msgstr ""
+msgstr "Виправлено перекриття сторінок під час запуску"
 
 #: qml/ChangeLogs.qml:86
 msgid "Change framework to 24.04"
-msgstr ""
+msgstr "Зміна фреймворку на 24.04"
 
 #: qml/ChangeLogs.qml:88
 msgid "Change framework to 22.04"
-msgstr ""
+msgstr "Зміна фреймворку на 22.04"
 
 #: qml/ChangeLogs.qml:90
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
-msgstr ""
+msgstr "Виправлення помилки '#5 Дійсні RSS-канали не приймаються'"
 
 #: qml/ChangeLogs.qml:92
-#, fuzzy
 msgid "Add 'Music' page"
-msgstr "Сторінка налаштувань"
+msgstr "Додавання сторінки \"Музика\""
 
 #: qml/ChangeLogs.qml:93
-#, fuzzy
 msgid "Add 'Video' page"
-msgstr "Налаштування віджету погоди"
+msgstr "Додавання сторінки \"Відео\""
 
 #: qml/ChangeLogs.qml:94
 msgid "Corrected display of contact names"
-msgstr ""
+msgstr "Виправлення відображення імен контактів"
 
 #: qml/ChangeLogs.qml:95
-#, fuzzy
 msgid "Added filter on received messages"
-msgstr "Немає останніх повідомлень"
+msgstr "Додано фільтр отриманих повідомлень"
 
 #: qml/ChangeLogs.qml:96
 msgid "Correction of home setting not displayed"
-msgstr ""
+msgstr "Виправлення відтворювання налаштувань"
 
 #: qml/ChangeLogs.qml:97
 msgid "Add Tamil translations thanks to தமிழ்நேரம்"
-msgstr ""
+msgstr "Подяка தமிழ்நேரம் за переклад тамільською"
 
 #: qml/ChangeLogs.qml:98
 msgid "Update Arabic translations thanks to Salah Khani"
-msgstr ""
+msgstr "Оновлення арабського перекладу завдяки Salah Khani"
 
 #: qml/ChangeLogs.qml:100
 msgid ""
@@ -219,19 +214,21 @@ msgid ""
 "feel free to report any issues throw https://github.com/lutin11/launcher-"
 "modular/issues or on Ubports forum"
 msgstr ""
+"Це випуск гарячих виправлень для \"Керування сторінками\", яке не працювало. "
+"Будь ласка, якщо помітите щось ще, створіть звіт на https://github.com/"
+"lutin11/launcher-modular/issues або на форумі Ubports"
 
 #: qml/ChangeLogs.qml:101
-#, fuzzy
 msgid "Fix page management issue"
-msgstr "Керування сторінками"
+msgstr "Виправлення проблем з керуванням сторінками"
 
 #: qml/ChangeLogs.qml:103
 msgid "Fix launching Libertine applications"
-msgstr ""
+msgstr "Виправлення запуску програм Libertine"
 
 #: qml/ChangeLogs.qml:104
 msgid "Fix launching favorite applications"
-msgstr ""
+msgstr "Виправлення запуску улюблених програм"
 
 #: qml/ChangeLogs.qml:105
 msgid "Update weather on refreshing home page"
