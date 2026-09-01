@@ -1,13 +1,13 @@
-import QtQuick 2.12
+import QtQuick 2.4
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.12
-import Lomiri.Components 1.3
+import Ubuntu.Components 1.3
 import Qt.labs.folderlistmodel 2.12
-import Lomiri.Thumbnailer 0.1
+import Ubuntu.Thumbnailer 0.1
 import MySettings 1.0
 
 import QtQuick.Controls 2.2
-import Lomiri.Content 1.3
+import Ubuntu.Content 1.3
 
 Item {
     id: lomiriFolders

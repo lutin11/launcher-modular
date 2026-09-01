@@ -1,9 +1,9 @@
-import QtQuick 2.12
+import QtQuick 2.4
 import QtQuick.Layouts 1.12
-import Lomiri.Components 1.3
-import Lomiri.Content 1.3
+import Ubuntu.Components 1.3
+import Ubuntu.Content 1.3
 import MySettings 1.0
-import Lomiri.DownloadManager 1.2
+import Ubuntu.DownloadManager 1.2
 import Terminalaccess 1.0
 
 Item {

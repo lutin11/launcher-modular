@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-26 07:59+0000\n"
+"POT-Creation-Date: 2026-08-28 21:32+0000\n"
 "PO-Revision-Date: 2026-08-25 18:37+0000\n"
 "Last-Translator: libermax <libremax@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -390,8 +390,8 @@ msgstr ""
 "soit (à votre choix) toute version ultérieure. Ce programme est distribué "
 "dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la "
 "garantie implicite de COMMERCIALISATION ou d'ADÉQUATION À UN USAGE "
-"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/"
-"gpl-3.0.en.html\">GNU General Public License</a> pour plus de détails."
+"PARTICULIER.  Voir  <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html"
+"\">GNU General Public License</a> pour plus de détails."
 
 #: qml/ChangeLogs.qml:432
 msgid "SOURCE"
@@ -511,7 +511,7 @@ msgstr "Exemple d'<b>action</b> :"
 msgid "Create icon"
 msgstr "Créer une icône"
 
-#: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
+#: qml/Main.qml:859 qml/Pagemanagement.qml:163 qml/pages/Home.qml:56
 #: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
 msgid "Cancel"
 msgstr "Annuler"
@@ -687,11 +687,11 @@ msgstr "Supprimer"
 msgid "Search your video"
 msgstr "Rechercher votre vidéo"
 
-#: qml/pages/calendar/Settings.qml:13
+#: qml/pages/calendar/Settings.qml:14
 msgid "calendar"
 msgstr "Agenda"
 
-#: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
+#: qml/pages/calendar/Settings.qml:18 qml/pages/clock/Settings.qml:30
 #: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
 #: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
@@ -699,19 +699,19 @@ msgstr "Agenda"
 msgid "Settings Page"
 msgstr "Page des paramètres"
 
-#: qml/pages/calendar/Settings.qml:95 qml/widgets/event/Settings.qml:92
+#: qml/pages/calendar/Settings.qml:96 qml/widgets/event/Settings.qml:92
 msgid "Limit of days"
 msgstr "Limite de jours"
 
-#: qml/pages/calendar/Settings.qml:114 qml/widgets/event/Settings.qml:110
+#: qml/pages/calendar/Settings.qml:115 qml/widgets/event/Settings.qml:110
 msgid "By default 60 days"
 msgstr "60 jours par défaut"
 
-#: qml/pages/calendar/Settings.qml:137 qml/widgets/event/Settings.qml:175
+#: qml/pages/calendar/Settings.qml:138 qml/widgets/event/Settings.qml:175
 msgid "Calendars"
 msgstr "Agendas"
 
-#: qml/pages/calendar/Settings.qml:150 qml/widgets/event/Settings.qml:188
+#: qml/pages/calendar/Settings.qml:151 qml/widgets/event/Settings.qml:188
 msgid "No calendar found"
 msgstr "Aucun agenda trouvé"
 

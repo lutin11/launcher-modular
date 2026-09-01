@@ -129,7 +129,7 @@ For a page named `MyPage` (the name you choose, in `PascalCase`), create:
 This is a standard QML component (typically an `Item` or a `Page`), loaded dynamically via `Qt.createComponent()` and inserted into the dashboard (a `SwipeView`, one page per enabled entry). It doesn't need to implement any particular interface: the application simply drives its `visible` property depending on whether it's the currently displayed page or not.
 
 ```qml
-import QtQuick 2.12
+import QtQuick 2.4
 
 Item {
     id: myPage
@@ -137,15 +137,15 @@ Item {
 }
 ```
 
-You can use the same patterns as the application's existing pages (Lomiri.Components imports, access to `launchermodular.settings`, etc.).
+You can use the same patterns as the application's existing pages (Ubuntu.Components imports, access to `launchermodular.settings`, etc.).
 
 ### 4. The settings page (`mypage/Settings.qml`)
 
 Opened when the user taps your page in the "Page management" screen (`pageStack.push(...)`). It's a standard `Page` component:
 
 ```qml
-import QtQuick 2.12
-import Lomiri.Components 1.3
+import QtQuick 2.4
+import Ubuntu.Components 1.3
 
 Page {
     id: pageSettingsMyPage
@@ -169,7 +169,7 @@ Page {
 Every added page has a `data` field (a free-form JSON object) of its own in the application's page model, automatically persisted across restarts. It's injected into your main component through a property named **`pageData`** (not `data` — see the warning below):
 
 ```qml
-import QtQuick 2.12
+import QtQuick 2.4
 
 Item {
     id: myPage
@@ -237,7 +237,7 @@ Pour une page nommée `MaPage` (le nom que vous choisissez, en `PascalCase`), cr
 C'est un composant QML standard (typiquement un `Item` ou un `Page`), chargé dynamiquement via `Qt.createComponent()` puis inséré dans le tableau de bord (un `SwipeView`, une page par entrée activée). Il n'a pas besoin d'implémenter d'interface particulière : l'application se contente de piloter sa propriété `visible` selon qu'il est la page actuellement affichée ou non.
 
 ```qml
-import QtQuick 2.12
+import QtQuick 2.4
 
 Item {
     id: maPage
@@ -245,15 +245,15 @@ Item {
 }
 ```
 
-Vous pouvez utiliser les mêmes patterns que les pages existantes de l'application (imports Lomiri.Components, accès à `launchermodular.settings`, etc.).
+Vous pouvez utiliser les mêmes patterns que les pages existantes de l'application (imports Ubuntu.Components, accès à `launchermodular.settings`, etc.).
 
 ### 4. La page de réglages (`mapage/Settings.qml`)
 
 Ouverte quand l'utilisateur touche votre page dans l'écran "Page management" (`pageStack.push(...)`). C'est un composant `Page` classique :
 
 ```qml
-import QtQuick 2.12
-import Lomiri.Components 1.3
+import QtQuick 2.4
+import Ubuntu.Components 1.3
 
 Page {
     id: pageSettingsMaPage
@@ -277,7 +277,7 @@ Page {
 Chaque page ajoutée possède un champ `data` (objet JSON libre) qui lui est propre dans le modèle de pages de l'application, persisté automatiquement entre les redémarrages. Il est injecté dans votre composant principal via une propriété nommée **`pageData`** (pas `data` — voir la mise en garde ci-dessous) :
 
 ```qml
-import QtQuick 2.12
+import QtQuick 2.4
 
 Item {
     id: maPage

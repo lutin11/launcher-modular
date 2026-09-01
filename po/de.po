@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Launcher modular\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-26 07:59+0000\n"
+"POT-Creation-Date: 2026-08-28 21:32+0000\n"
 "PO-Revision-Date: 2026-04-02 09:09+0000\n"
 "Last-Translator: Marcel Tujetsch <tujetsch-marcel@proton.me>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/launcher-modular/"
@@ -384,9 +384,9 @@ msgstr ""
 "Lizenz, oder (nach deiner Entscheidung) einer neueren Version. Das Programm "
 "wird verteilt in der Hoffnung, dass es nützlich ist, aber OHNE JEDWEDE "
 "GARANTIE; ohne auch nur eine implizierte Garantie der VERKÄUFLICHKEIT oder "
-"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> für weitere Details."
+"DER GEEIGNETHEIT FÜR EINEN BESTIMMTEN ZWECK. Siehe auch hier: <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> für weitere Details."
 
 #: qml/ChangeLogs.qml:432
 msgid "SOURCE"
@@ -506,7 +506,7 @@ msgstr "<b>Aktion</b> Beispiel: "
 msgid "Create icon"
 msgstr "Icon erstellen"
 
-#: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
+#: qml/Main.qml:859 qml/Pagemanagement.qml:163 qml/pages/Home.qml:56
 #: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -682,11 +682,11 @@ msgstr "Löschen"
 msgid "Search your video"
 msgstr "Suchen Sie Ihr Video"
 
-#: qml/pages/calendar/Settings.qml:13
+#: qml/pages/calendar/Settings.qml:14
 msgid "calendar"
 msgstr "Kalender"
 
-#: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
+#: qml/pages/calendar/Settings.qml:18 qml/pages/clock/Settings.qml:30
 #: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
 #: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
@@ -694,20 +694,20 @@ msgstr "Kalender"
 msgid "Settings Page"
 msgstr "Einstellungsseite"
 
-#: qml/pages/calendar/Settings.qml:95 qml/widgets/event/Settings.qml:92
+#: qml/pages/calendar/Settings.qml:96 qml/widgets/event/Settings.qml:92
 msgid "Limit of days"
 msgstr "Limit von Tagen"
 
-#: qml/pages/calendar/Settings.qml:114 qml/widgets/event/Settings.qml:110
+#: qml/pages/calendar/Settings.qml:115 qml/widgets/event/Settings.qml:110
 msgid "By default 60 days"
 msgstr "Standardmäßig 60 Tage"
 
-#: qml/pages/calendar/Settings.qml:137 qml/widgets/event/Settings.qml:175
+#: qml/pages/calendar/Settings.qml:138 qml/widgets/event/Settings.qml:175
 #, fuzzy
 msgid "Calendars"
 msgstr "Kalender"
 
-#: qml/pages/calendar/Settings.qml:150 qml/widgets/event/Settings.qml:188
+#: qml/pages/calendar/Settings.qml:151 qml/widgets/event/Settings.qml:188
 #, fuzzy
 msgid "No calendar found"
 msgstr "Kalender"

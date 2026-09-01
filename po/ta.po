@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-26 07:59+0000\n"
+"POT-Creation-Date: 2026-08-28 21:32+0000\n"
 "PO-Revision-Date: 2026-08-28 18:42+0000\n"
 "Last-Translator: Alagirisamy Rengaraj <radhaalagirisamy@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -375,12 +375,13 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
-"இந்த திட்டம் இலவச மென்பொருள்: நீங்கள் அதை மறுபகிர்வு செய்யலாம் மற்றும்/அல்லது இலவச மென்பொருள் "
-"அறக்கட்டளையால் வெளியிடப்பட்ட குனு  பொது உரிமத்தின் விதிமுறைகளின் கீழ் மாற்றலாம், உரிமத்தின் "
-"பதிப்பு 3 அல்லது (உங்கள் விருப்பத்தில்) பின்வரும் பதிப்பும். இந்தத் திட்டம் பயனுள்ளதாக "
-"இருக்கும் என்ற நம்பிக்கையில் பகிரப்படுகிறது ஆனால் எந்த உத்தரவாதமும் இல்லாமல்; ஒரு குறிப்பிட்ட "
-"நோக்கத்திற்காக வணிகத்தன்மை அல்லது பொருத்தப்பாடு ஆகியவற்றின் மறைமுக பொறுப்பு கூட இல்லாமல். "
-"மேலும் விவரங்களுக்கு <a> குனு பொது உரிமம் </a> ஐப் பார்க்கவும்."
+"இந்த திட்டம் இலவச மென்பொருள்: நீங்கள் அதை மறுபகிர்வு செய்யலாம் மற்றும்/அல்லது இலவச "
+"மென்பொருள் அறக்கட்டளையால் வெளியிடப்பட்ட குனு  பொது உரிமத்தின் விதிமுறைகளின் கீழ் "
+"மாற்றலாம், உரிமத்தின் பதிப்பு 3 அல்லது (உங்கள் விருப்பத்தில்) பின்வரும் பதிப்பும். இந்தத் "
+"திட்டம் பயனுள்ளதாக இருக்கும் என்ற நம்பிக்கையில் பகிரப்படுகிறது ஆனால் எந்த உத்தரவாதமும் "
+"இல்லாமல்; ஒரு குறிப்பிட்ட நோக்கத்திற்காக வணிகத்தன்மை அல்லது பொருத்தப்பாடு ஆகியவற்றின் "
+"மறைமுக பொறுப்பு கூட இல்லாமல். மேலும் விவரங்களுக்கு <a> குனு பொது உரிமம் </a> ஐப் "
+"பார்க்கவும்."
 
 #: qml/ChangeLogs.qml:432
 msgid "SOURCE"
@@ -499,7 +500,7 @@ msgstr "<b> செயல் </b> எடுத்துக்காட்டு:"
 msgid "Create icon"
 msgstr "படவுருவை உருவாக்கவும்"
 
-#: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
+#: qml/Main.qml:859 qml/Pagemanagement.qml:163 qml/pages/Home.qml:56
 #: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
 msgid "Cancel"
 msgstr "கைவிடு"
@@ -674,11 +675,11 @@ msgstr "நீக்கு"
 msgid "Search your video"
 msgstr "உங்கள் காணொளியைத் தேடு"
 
-#: qml/pages/calendar/Settings.qml:13
+#: qml/pages/calendar/Settings.qml:14
 msgid "calendar"
 msgstr ""
 
-#: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
+#: qml/pages/calendar/Settings.qml:18 qml/pages/clock/Settings.qml:30
 #: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
 #: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
@@ -686,19 +687,19 @@ msgstr ""
 msgid "Settings Page"
 msgstr "அமைப்புகள் பக்கம்"
 
-#: qml/pages/calendar/Settings.qml:95 qml/widgets/event/Settings.qml:92
+#: qml/pages/calendar/Settings.qml:96 qml/widgets/event/Settings.qml:92
 msgid "Limit of days"
 msgstr "நாட்களின் வரம்பு"
 
-#: qml/pages/calendar/Settings.qml:114 qml/widgets/event/Settings.qml:110
+#: qml/pages/calendar/Settings.qml:115 qml/widgets/event/Settings.qml:110
 msgid "By default 60 days"
 msgstr "இயல்பாக 60 நாட்கள்"
 
-#: qml/pages/calendar/Settings.qml:137 qml/widgets/event/Settings.qml:175
+#: qml/pages/calendar/Settings.qml:138 qml/widgets/event/Settings.qml:175
 msgid "Calendars"
 msgstr ""
 
-#: qml/pages/calendar/Settings.qml:150 qml/widgets/event/Settings.qml:188
+#: qml/pages/calendar/Settings.qml:151 qml/widgets/event/Settings.qml:188
 msgid "No calendar found"
 msgstr ""
 

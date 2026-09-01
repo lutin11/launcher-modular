@@ -77,7 +77,7 @@ Page {
                     top: parent.top
                     left: parent.left
                     right: parent.right
-                   topMargin: units.gu(2)
+                    topMargin: units.gu(2)
                 }
 
                 Item {

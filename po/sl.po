@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-26 07:59+0000\n"
+"POT-Creation-Date: 2026-08-28 21:32+0000\n"
 "PO-Revision-Date: 2025-11-23 09:43+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/launcher-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: qml/Autostart.qml:15
@@ -491,7 +491,7 @@ msgstr "Primer <b>dejanja</b> : "
 msgid "Create icon"
 msgstr "Ustvari ikono"
 
-#: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
+#: qml/Main.qml:859 qml/Pagemanagement.qml:163 qml/pages/Home.qml:56
 #: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
 msgid "Cancel"
 msgstr "Prekliči"
@@ -666,11 +666,11 @@ msgstr "Izbriši"
 msgid "Search your video"
 msgstr ""
 
-#: qml/pages/calendar/Settings.qml:13
+#: qml/pages/calendar/Settings.qml:14
 msgid "calendar"
 msgstr ""
 
-#: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
+#: qml/pages/calendar/Settings.qml:18 qml/pages/clock/Settings.qml:30
 #: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
 #: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
@@ -678,19 +678,19 @@ msgstr ""
 msgid "Settings Page"
 msgstr "Stran z nastavitvami"
 
-#: qml/pages/calendar/Settings.qml:95 qml/widgets/event/Settings.qml:92
+#: qml/pages/calendar/Settings.qml:96 qml/widgets/event/Settings.qml:92
 msgid "Limit of days"
 msgstr "Omejitev števila dni"
 
-#: qml/pages/calendar/Settings.qml:114 qml/widgets/event/Settings.qml:110
+#: qml/pages/calendar/Settings.qml:115 qml/widgets/event/Settings.qml:110
 msgid "By default 60 days"
 msgstr "Privzeto 60 dni"
 
-#: qml/pages/calendar/Settings.qml:137 qml/widgets/event/Settings.qml:175
+#: qml/pages/calendar/Settings.qml:138 qml/widgets/event/Settings.qml:175
 msgid "Calendars"
 msgstr ""
 
-#: qml/pages/calendar/Settings.qml:150 qml/widgets/event/Settings.qml:188
+#: qml/pages/calendar/Settings.qml:151 qml/widgets/event/Settings.qml:188
 msgid "No calendar found"
 msgstr ""
 
