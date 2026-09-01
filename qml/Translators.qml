@@ -188,6 +188,21 @@ Page {
 
                 Item {
                     width: parent.width
+                    height: trans7Label.height + units.gu(2)
+                    Label {
+                        id: trans7Label
+                        text: i18n.tr("Ukrainian - ") + + "Serhii Horichenko"
+                        onLinkActivated: Qt.openUrlExternally(link)
+                        anchors.centerIn: parent
+                        wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
+                        horizontalAlignment: Text.AlignHCenter
+                        width: parent.width - units.gu(12)
+                        color: "#ffffff"
+                    }
+                }
+
+                Item {
+                    width: parent.width
                     height: translation.height + units.gu(4)
                     Label {
                         id: translation
