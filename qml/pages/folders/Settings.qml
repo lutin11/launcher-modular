@@ -45,7 +45,7 @@ Page {
 
                 Text {
                     anchors.horizontalCenter: parent.horizontalCenter;
-                    text: i18n.tr("Exemple")
+                    text: i18n.tr("Example")
                     font.pixelSize: units.gu(launchermodular.settings.folderFontSize)
                     color: launchermodular.settings.folderFontColor
                 }
