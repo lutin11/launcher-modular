@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-26 07:59+0000\n"
-"PO-Revision-Date: 2026-08-31 20:15+0000\n"
-"Last-Translator: Serhii Horichenko <serhii@horichenko.com>\n"
+"PO-Revision-Date: 2026-09-06 12:51+0000\n"
+"Last-Translator: Serhii H <serhii@horichenko.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/ubports/"
 "launcher-modular/uk/>\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.9.1.dev0\n"
 
 #: qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -59,7 +59,7 @@ msgstr "Додана сторінка теки"
 
 #: qml/ChangeLogs.qml:46
 msgid "Fix adding RSS feeds not working"
-msgstr "Виправлений функціонал додавання стрічок RSS"
+msgstr "Виправлений функціонал додавання каналів RSS"
 
 #: qml/ChangeLogs.qml:47
 msgid "Change weblate repo"
@@ -232,100 +232,105 @@ msgstr "Виправлення запуску улюблених програм"
 
 #: qml/ChangeLogs.qml:105
 msgid "Update weather on refreshing home page"
-msgstr ""
+msgstr "Оновлення даних про погоду з оновленням домашньої сторінки"
 
 #: qml/ChangeLogs.qml:106
 msgid "Added the ability to run a calculation from the search bar"
-msgstr ""
+msgstr "Додано можливість виконувати обчислення у рядку пошуку"
 
 #: qml/ChangeLogs.qml:107 qml/ChangeLogs.qml:111 qml/ChangeLogs.qml:115
-#, fuzzy
 msgid "Update translations"
-msgstr "Перекладачі"
+msgstr "Оновлені переклади"
 
 #: qml/ChangeLogs.qml:109
 msgid "Display contact name if exists on message and call widget"
-msgstr ""
+msgstr "Якщо є ім'я контакту, показувати його у віджеті повідомлень та дзвінків"
 
 #: qml/ChangeLogs.qml:110 qml/ChangeLogs.qml:116
 msgid "Improved 'Picture' page display performance"
-msgstr ""
+msgstr "Покращена продуктивність відтворення сторінки \"Зображення\""
 
 #: qml/ChangeLogs.qml:113
 msgid "On Rss setting page, you can add a list of RSS feeds"
-msgstr ""
+msgstr "На сторінці налаштувань RSS можна додавати списки каналів RSS"
 
 #: qml/ChangeLogs.qml:114
 msgid "Addition of a new page for RSS feeds"
-msgstr ""
+msgstr "Додавання нової сторінки для RSS-каналів"
 
 #: qml/ChangeLogs.qml:118 qml/ChangeLogs.qml:120 qml/ChangeLogs.qml:122
 msgid "To do this, long press on the widget to access its configuration page."
-msgstr ""
+msgstr "Для доступу до налаштувань потрібно натиснути та утримати віджет."
 
 #: qml/ChangeLogs.qml:119
 msgid "Set how many calls to display!"
-msgstr ""
+msgstr "Налаштуйте, скільки показувати дзвінків!"
 
 #: qml/ChangeLogs.qml:121
 msgid "Set how many messages to display!"
-msgstr ""
+msgstr "Налаштуйте, скільки показувати повідомлень!"
 
 #: qml/ChangeLogs.qml:123
 msgid "Set how many events to display!"
-msgstr ""
+msgstr "Налаштуйте, скільки показувати подій!"
 
 #: qml/ChangeLogs.qml:124
 msgid ""
 "On call settings, set the option for 'When clicked' to 'Open the dialer with "
 "number'"
 msgstr ""
+"У налаштуваннях викликів виберіть для пункту \"При натисканні\" значення "
+"\"Відкрити телефон з номером\""
 
 #: qml/ChangeLogs.qml:125
 msgid "Call redirection to phone app works!"
-msgstr ""
+msgstr "Переадресація дзвінків до телефонного застосунку працює!"
 
 #: qml/ChangeLogs.qml:126
 msgid ""
 "On message settings, set the option for 'When clicked' to 'Open the "
 "application with message'"
 msgstr ""
+"У налаштуваннях повідомлень виберіть для пункту \"При натисканні\" значення "
+"\"Відкрити програму з повідомленням\""
 
 #: qml/ChangeLogs.qml:127
 msgid "Message redirection to messaging app works!"
-msgstr ""
+msgstr "Переадресація повідомлень до застосунку повідомлень працює!"
 
 #: qml/ChangeLogs.qml:128
 msgid "Force the event list to refresh by double-clicking on the event widget!"
 msgstr ""
+"Примусове оновлення списку подій при подвійному клацанні на віджеті події!"
 
 #: qml/ChangeLogs.qml:129
 msgid "The event list shows event from current day!"
-msgstr ""
+msgstr "Список подій показує події поточного дня!"
 
 #: qml/ChangeLogs.qml:130
 msgid "Clicking on the 'Alarm' widget opens the clock!"
-msgstr ""
+msgstr "Клацання на віджеті \"Будильник\" відкриває годинник!"
 
 #: qml/ChangeLogs.qml:131
 msgid "Open the photo by clicking on it!"
-msgstr "Відкрити програму"
+msgstr "Клацання на фото відкриває його!"
 
 #: qml/ChangeLogs.qml:133
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
-msgstr "Проведіть вгору, щоб налаштувати лаунчер"
+msgstr ""
+"Для налаштування лаунчера потягніть екран вгору та клацніть \"Автозапуск\""
 
 #: qml/ChangeLogs.qml:134
 msgid "Enable Autostart"
-msgstr "Автозапуск"
+msgstr "Увімкнути Автозапуск"
 
 #: qml/ChangeLogs.qml:135
 msgid "Correction for background display."
-msgstr ""
+msgstr "Корекція фонового відтворення."
 
 #: qml/ChangeLogs.qml:136
 msgid "Fix up 'Run a command in a terminal'"
-msgstr "Запустити команду в терміналі"
+msgstr "Виправлення запуску команди в терміналі"
 
 #: qml/ChangeLogs.qml:138
 msgid ""
@@ -333,22 +338,25 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
+"Цей перший випуск Launcher Modular заснований на коді проєкту від <a "
+"href=\"https://github.com/ruditimmermans/launcher-modular\">Rudi Timmermans</"
+"a>. Він містить оновлені бібліотеки та деякі виправлення."
 
 #: qml/ChangeLogs.qml:139
 msgid "Resumption of the application."
-msgstr "Відкрити програму"
+msgstr "Відновлення програми."
 
 #: qml/ChangeLogs.qml:244
 msgid "Version: "
-msgstr ""
+msgstr "Версія: "
 
 #: qml/ChangeLogs.qml:250
 msgid " | Date: "
-msgstr ""
+msgstr " | Дата: "
 
 #: qml/ChangeLogs.qml:376
 msgid "If you like this app, please rank it on OpenStore"
-msgstr ""
+msgstr "Якщо Вам подобається застосунок, підтримайте його в OpenStore"
 
 #: qml/ChangeLogs.qml:403
 msgid "A modular launcher for Ubuntu Touch"
@@ -400,21 +408,23 @@ msgid "Modular Launcher Help"
 msgstr "Допомога Modular Launcher"
 
 #: qml/Help.qml:49
-#, fuzzy
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
-msgstr ""
-"<br><b>Натисніть і утримуйте віджет, а потім змініть його налаштування.</b>"
+msgstr "<br><b>Для налаштування віджета клацніть на нього та утримуйте.</b>"
 
 #: qml/Help.qml:63
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
+"<br><b>Щоб додати нову сторінку, перейдіть до \"Керування сторінками\" та "
+"клацніть зверху справа \"+\".</b>"
 
 #: qml/Help.qml:77
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
+"<br><b>Для зміни налаштувань сторінки перейдіть до \"Керування сторінкою\" "
+"та клацніть на сторінці.</b>"
 
 #: qml/ImportPage.qml:13
 msgid "Choose"
@@ -429,9 +439,8 @@ msgid "Add custom icon"
 msgstr "Додати власну іконку"
 
 #: qml/Main.qml:550
-#, fuzzy
 msgid "Manage pages"
-msgstr "Керувати сторінкою"
+msgstr "Керування сторінками"
 
 #: qml/Main.qml:583
 msgid "Configure Launcher"
@@ -528,7 +537,7 @@ msgstr "Перекладачі Modular Launcher:"
 
 #: qml/Translators.qml:95
 msgid "Arabic - "
-msgstr ""
+msgstr "Арабська - "
 
 #: qml/Translators.qml:109
 msgid "Dutch - "
@@ -552,10 +561,9 @@ msgstr "Російська- "
 
 #: qml/Translators.qml:179
 msgid "Tamil - "
-msgstr ""
+msgstr "Тамільська - "
 
 #: qml/Translators.qml:194
-#, fuzzy
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "ubports/launcher-modular/'>Hosted Weblate</a>."
@@ -569,11 +577,11 @@ msgstr "Порядок денний"
 
 #: qml/pages/Folders.qml:664
 msgid "Search a file"
-msgstr ""
+msgstr "Пошук файлів"
 
 #: qml/pages/Home.qml:40
 msgid "ok"
-msgstr ""
+msgstr "ОК"
 
 #: qml/pages/Home.qml:255
 msgid "Search your phone and online sources"
@@ -589,71 +597,70 @@ msgstr "Прибрати"
 
 #: qml/pages/Music.qml:312
 msgid "Search your music"
-msgstr ""
+msgstr "Шукайте свою музику"
 
 #: qml/pages/Music.qml:399
 msgid "Deselect all"
-msgstr ""
+msgstr "Зняти вибір"
 
 #: qml/pages/Music.qml:399
 msgid "Select all"
-msgstr ""
+msgstr "Вибати все"
 
 #: qml/pages/NextcloudFolders.qml:130
 #: qml/pages/nextcloudfolders/Settings.qml:42
 msgid "Authentication failed. Check username/app password."
-msgstr ""
+msgstr "Помилка Автентифікації. Перевірте пароль користувача/застосунку."
 
 #: qml/pages/NextcloudFolders.qml:132
 #: qml/pages/nextcloudfolders/Settings.qml:44
 msgid "Network error. Check server URL and connectivity."
-msgstr ""
+msgstr "Помилка мережі. Перевірте URL сервера та його доступність."
 
 #: qml/pages/NextcloudFolders.qml:134
 #: qml/pages/nextcloudfolders/Settings.qml:46
 msgid "Error %1 while loading folder."
-msgstr ""
+msgstr "Помилка %1 під час завантаження теки."
 
 #: qml/pages/NextcloudFolders.qml:197
 msgid "Downloading 1/%1..."
-msgstr ""
+msgstr "Завантаження 1/%1..."
 
 #: qml/pages/NextcloudFolders.qml:226
 msgid "Failed to save %1 locally."
-msgstr ""
+msgstr "Помилка локального збереження %1."
 
 #: qml/pages/NextcloudFolders.qml:229
 msgid "Failed to download %1 (error %2)."
-msgstr ""
+msgstr "Помилка отримання %1 (помилка %2)."
 
 #: qml/pages/NextcloudFolders.qml:232
 msgid "Downloading %1/%2..."
-msgstr ""
+msgstr "Завантаження %1/%2..."
 
 #: qml/pages/NextcloudFolders.qml:311
 msgid "Nextcloud"
-msgstr ""
+msgstr "Nextcloud"
 
 #: qml/pages/NextcloudFolders.qml:366
 msgid "Configure your Nextcloud server in this page's settings first."
-msgstr ""
+msgstr "Спочатку налаштуйте на сторінці налаштувань свій сервер Nextcloud."
 
 #: qml/pages/NextcloudFolders.qml:478
 msgid "This folder is empty"
-msgstr ""
+msgstr "Ця тека порожня"
 
 #: qml/pages/Rss.qml:227
 msgid "Loading feeds…"
-msgstr ""
+msgstr "Завантажуються канали…"
 
 #: qml/pages/Rss.qml:228
 msgid "Go to the page management to add feeds."
-msgstr ""
+msgstr "Щоб додати канали, перейдіть до керування сторінкою."
 
 #: qml/pages/Todo.qml:81
-#, fuzzy
 msgid "New todo"
-msgstr "нове завдання"
+msgstr "Нове завдання"
 
 #: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:157
 #: qml/pages/music/PlaylistsView.qml:125 qml/pages/rss/Settings.qml:187
@@ -662,11 +669,11 @@ msgstr "Видалити"
 
 #: qml/pages/Videos.qml:172
 msgid "Search your video"
-msgstr ""
+msgstr "Шукайте свої відео"
 
 #: qml/pages/calendar/Settings.qml:13
 msgid "calendar"
-msgstr ""
+msgstr "календар"
 
 #: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
 #: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
@@ -686,78 +693,72 @@ msgstr "За замовчуванням 60 днів"
 
 #: qml/pages/calendar/Settings.qml:137 qml/widgets/event/Settings.qml:175
 msgid "Calendars"
-msgstr ""
+msgstr "Календарі"
 
 #: qml/pages/calendar/Settings.qml:150 qml/widgets/event/Settings.qml:188
 msgid "No calendar found"
-msgstr ""
+msgstr "Календарі не знайдено"
 
 #: qml/pages/clock/Settings.qml:13
-#, fuzzy
 msgid "clock"
-msgstr "Показати годинник"
+msgstr "годинник"
 
 #: qml/pages/clock/Settings.qml:61
-#, fuzzy
 msgid "Settings for 'Clock' page"
-msgstr "Сторінка налаштувань"
+msgstr "Налаштування сторінки \"Годинник\""
 
 #: qml/pages/clock/Settings.qml:136
 msgid "Bold"
-msgstr ""
+msgstr "Жирний"
 
 #: qml/pages/clock/Settings.qml:137
 msgid "BoldItalic"
-msgstr ""
+msgstr "Жирний курсив"
 
 #: qml/pages/clock/Settings.qml:138
 msgid "Regular"
-msgstr ""
+msgstr "Звичайний"
 
 #: qml/pages/clock/Settings.qml:139
 msgid "Italic"
-msgstr ""
+msgstr "Курсив"
 
 #: qml/pages/clock/Settings.qml:140
-#, fuzzy
 msgid "Light"
-msgstr "Легке повітря"
+msgstr "Тонкий"
 
 #: qml/pages/clock/Settings.qml:141
-#, fuzzy
 msgid "LightItalic"
-msgstr "Легке повітря"
+msgstr "Тонкий курсив"
 
 #: qml/pages/clock/Settings.qml:195
 msgid "Font type : "
-msgstr ""
+msgstr "Тип шрифта : "
 
 #: qml/pages/clock/Settings.qml:239
 msgid "Format : "
-msgstr ""
+msgstr "Формат : "
 
 #: qml/pages/folders/Settings.qml:10
 msgid "folders"
-msgstr ""
+msgstr "теки"
 
 #: qml/pages/folders/Settings.qml:43
-#, fuzzy
 msgid "Settings for 'folder' page"
-msgstr "Налаштування віджету погоди"
+msgstr "Налаштування сторінки \"тека\""
 
 #: qml/pages/folders/Settings.qml:48 qml/pages/music/Settings.qml:49
 #: qml/pages/videos/Settings.qml:48
 msgid "Exemple"
-msgstr ""
+msgstr "Зразок"
 
 #: qml/pages/home/Settings.qml:13
 msgid "home"
-msgstr ""
+msgstr "домівка"
 
 #: qml/pages/home/Settings.qml:85
-#, fuzzy
 msgid "Add a favorite application"
-msgstr "Відкрити програму"
+msgstr "Додайте улюблену програму"
 
 #: qml/pages/home/Settings.qml:126
 msgid "Favorite apps management"
@@ -785,7 +786,7 @@ msgstr "Стиль іконок : "
 
 #: qml/pages/home/Settings.qml:255
 msgid "Search engine : "
-msgstr ""
+msgstr "Рушій пошуку : "
 
 #: qml/pages/home/Settings.qml:266
 msgid "Widgets"
@@ -804,71 +805,68 @@ msgid "Show alarms"
 msgstr "Показувати сигнали про тривогу"
 
 #: qml/pages/home/Settings.qml:299
-#, fuzzy
 msgid "Show last calls"
-msgstr "Показати останній дзвінок"
+msgstr "Показати останні виклики"
 
 #: qml/pages/home/Settings.qml:308
 msgid "Show last message"
 msgstr "Показати останнє повідомлення"
 
 #: qml/pages/home/Settings.qml:317
-#, fuzzy
 msgid "Show last events"
-msgstr "Показати події"
+msgstr "Показати останні події"
 
 #: qml/pages/music/MusicPlayer.qml:505
 msgid "(%1)"
-msgstr ""
+msgstr "(%1)"
 
 #: qml/pages/music/PlaylistsView.qml:85
 msgid "New playlist"
-msgstr ""
+msgstr "Новий список відтворення"
 
 #: qml/pages/music/PlaylistsView.qml:110
 msgid "%1 tracks"
-msgstr ""
+msgstr "%1 треків"
 
 #: qml/pages/music/Settings.qml:11
 msgid "music"
-msgstr ""
+msgstr "музика"
 
 #: qml/pages/music/Settings.qml:44
-#, fuzzy
 msgid "Settings for 'Music' page"
-msgstr "Сторінка налаштувань"
+msgstr "Налаштування сторінки \"Музика\""
 
 #: qml/pages/nextcloudfolders/Settings.qml:13
 msgid "nextcloudFolders"
-msgstr ""
+msgstr "nextcloudFolders"
 
 #: qml/pages/nextcloudfolders/Settings.qml:15
 msgid "Test it !"
-msgstr ""
+msgstr "Спробуй це !"
 
 #: qml/pages/nextcloudfolders/Settings.qml:40
 msgid "Success !"
-msgstr ""
+msgstr "Успішно!"
 
 #: qml/pages/nextcloudfolders/Settings.qml:49
 msgid "Failed"
-msgstr ""
+msgstr "Збій"
 
 #: qml/pages/nextcloudfolders/Settings.qml:63
 msgid "Nextcloud folders"
-msgstr ""
+msgstr "Теки Nextcloud"
 
 #: qml/pages/nextcloudfolders/Settings.qml:98
 msgid "Server URL"
-msgstr ""
+msgstr "URL сервера"
 
 #: qml/pages/nextcloudfolders/Settings.qml:117
 msgid "Username"
-msgstr ""
+msgstr "Ім'я користувача"
 
 #: qml/pages/nextcloudfolders/Settings.qml:135
 msgid "App password"
-msgstr ""
+msgstr "Пароль застосунку"
 
 #: qml/pages/nextcloudfolders/Settings.qml:151
 msgid ""
@@ -876,95 +874,94 @@ msgid ""
 "sessions), not your main account password. It can be revoked independently "
 "at any time."
 msgstr ""
+"Замість використання свого основного пароля використовуйте окремий пароль "
+"застосунку (Налаштування Nextcloud → Безпека → Пристрої та сеанси). Його "
+"можна буде відкликати у будь-який час."
 
 #: qml/pages/nextcloudfolders/Settings.qml:161
-#, fuzzy
 msgid "Starting folder"
-msgstr "Налаштування віджету"
+msgstr "Початкова тека"
 
 #: qml/pages/nextcloudfolders/Settings.qml:184
 msgid "Test connexion"
-msgstr ""
+msgstr "Перевірка з'єднання"
 
 #: qml/pages/picture/SelectFolderPage.qml:42
 msgid "Select"
-msgstr ""
+msgstr "Вибрати"
 
 #: qml/pages/picture/Settings.qml:13
 msgid "picture"
-msgstr ""
+msgstr "зображення"
 
 #: qml/pages/picture/Settings.qml:57
-#, fuzzy
 msgid "Image folder path:"
-msgstr "Шлях до зображення"
+msgstr "Шлях до зображення:"
 
 #: qml/pages/picture/Settings.qml:107
 msgid "Unsorted"
-msgstr ""
+msgstr "Без сортування"
 
 #: qml/pages/picture/Settings.qml:108
 msgid "Name"
-msgstr ""
+msgstr "Назва"
 
 #: qml/pages/picture/Settings.qml:109
 msgid "Time"
-msgstr ""
+msgstr "Час"
 
 #: qml/pages/picture/Settings.qml:110
 msgid "Size"
-msgstr ""
+msgstr "Розмір"
 
 #: qml/pages/picture/Settings.qml:111
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: qml/pages/picture/Settings.qml:117
 msgid "Sort type:"
-msgstr ""
+msgstr "Тип сортування:"
 
 #: qml/pages/picture/Settings.qml:192
 msgid "Reverse sort"
-msgstr ""
+msgstr "Зворотне сортування"
 
 #: qml/pages/picture/Settings.qml:212
-#, fuzzy
 msgid "Open image on external application"
-msgstr "Відкрити програму"
+msgstr "Відкрити зображення в іншій програмі"
 
 #: qml/pages/rss/Settings.qml:13
 msgid "rss"
-msgstr ""
+msgstr "rss"
 
 #: qml/pages/rss/Settings.qml:103
 msgid "ex: https://omgubuntu.co.uk/feed"
 msgstr ""
+"напр: https://linux.org.ua/index.php?action=rss, https://omgubuntu.co.uk/feed"
 
 #: qml/pages/rss/Settings.qml:117
 msgid "Invalid URL format"
-msgstr ""
+msgstr "Хибний формат URL-посилання"
 
 #: qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
-msgstr ""
+msgstr "Хибне посилання"
 
 #: qml/pages/todo/Settings.qml:10
-#, fuzzy
 msgid "todo"
-msgstr "нове завдання"
+msgstr "завдання"
 
 #: qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
-msgstr ""
+msgstr "Налаштувань для сторінки \"Завдання\" немає"
 
 #: qml/pages/videos/Settings.qml:10
 msgid "videos"
-msgstr ""
+msgstr "відео"
 
 #: qml/pages/videos/Settings.qml:43
-#, fuzzy
 msgid "Settings for 'Video' page"
-msgstr "Налаштування віджету погоди"
+msgstr "Налаштування сторінки \"Відео\""
 
 #: qml/widgets/Alarm.qml:28
 msgid "Alarms"
@@ -980,7 +977,7 @@ msgstr "в"
 
 #: qml/widgets/Calculator.qml:21
 msgid "Calcul result:"
-msgstr ""
+msgstr "Результат:"
 
 #: qml/widgets/Event.qml:119
 msgid "Events"
@@ -1213,7 +1210,7 @@ msgstr "При натисканні: "
 
 #: qml/widgets/lastcall/Settings.qml:65
 msgid "Number of displayed calls :"
-msgstr ""
+msgstr "Кількість викликів :"
 
 #: qml/widgets/lastcall/Settings.qml:83 qml/widgets/lastmessage/Settings.qml:83
 msgid "By default 1"
@@ -1234,16 +1231,15 @@ msgstr "Відкрити телефон з номером"
 
 #: qml/widgets/lastmessage/Settings.qml:65
 msgid "Number of displayed messages :"
-msgstr ""
+msgstr "Кількість повідомлень :"
 
 #: qml/widgets/lastmessage/Settings.qml:94
 msgid "View a summary"
 msgstr "Переглянути резюме"
 
 #: qml/widgets/lastmessage/Settings.qml:107
-#, fuzzy
 msgid "Filter on received messages"
-msgstr "Немає останніх повідомлень"
+msgstr "Фільтр за отриманими повідомленнями"
 
 #: qml/widgets/lastmessage/Settings.qml:119
 msgid "Open the application"
@@ -1282,9 +1278,8 @@ msgid "or"
 msgstr "або"
 
 #: launchermodular.desktop.in.h:1
-#, fuzzy
 msgid "Launcher Modular"
-msgstr "Запустити програму"
+msgstr "Launcher Modular"
 
 #, fuzzy
 #~ msgid "Playlist name"
