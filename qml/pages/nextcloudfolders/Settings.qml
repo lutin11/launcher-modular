@@ -181,7 +181,7 @@ Page {
                         height: units.gu(4)
                         width: (parent.width/2)-units.gu(2)
                         color: "#0E8420"
-                        text: i18n.tr("Test connexion")
+                        text: i18n.tr("Test connection")
 
                         onClicked: {
                             testConnexion()
