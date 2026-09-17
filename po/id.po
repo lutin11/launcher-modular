@@ -8,24 +8,24 @@ msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-26 07:59+0000\n"
-"PO-Revision-Date: 2025-11-23 09:39+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/launcher-"
-"modular/launchermodular-lut11/id/>\n"
+"PO-Revision-Date: 2026-09-19 23:14+0000\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/ubports/"
+"launcher-modular/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
-msgstr ""
+msgstr "Peluncur Modular Autostart"
 
 #: qml/Autostart.qml:45
 msgid "How to Autostart Modular Launcher after booting"
-msgstr ""
+msgstr "Cara Mengaktifkan Autostart Peluncur Modular setelah booting"
 
 #: qml/Autostart.qml:58
 msgid ""
@@ -34,168 +34,180 @@ msgid ""
 "modular-service'>how to add a Modular Launcher systemd user service file to/"
 "on your device</a>"
 msgstr ""
+"Cara mengatur Peluncur Modular agar dimulai secara otomatis saat perangkat "
+"dinyalakan. <br><br>Detail selengkapnya di <a href=\"https://github.com/"
+"lutin11/launcher-modular-service\">cara menambahkan berkas layanan pengguna "
+"systemd Peluncur Modular ke/pada perangkat Anda</a>"
 
 #: qml/ChangeLogs.qml:14
 msgid "Change Log"
-msgstr ""
+msgstr "Catatan Perubahan"
 
 #: qml/ChangeLogs.qml:18 qml/pages/picture/SelectFolderPage.qml:25
 #: qml/pages/rss/Settings.qml:26
 msgid "Back"
-msgstr ""
+msgstr "Kembali"
 
 #: qml/ChangeLogs.qml:44
 msgid "Remove utilities pages from the page selector"
-msgstr ""
+msgstr "Hapus halaman utilitas dari pemilih halaman"
 
 #: qml/ChangeLogs.qml:45
 msgid "Add folder page"
-msgstr ""
+msgstr "Tambahkan halaman folder"
 
 #: qml/ChangeLogs.qml:46
 msgid "Fix adding RSS feeds not working"
-msgstr ""
+msgstr "Perbaiki penambahan feed RSS yang tidak berfungsi"
 
 #: qml/ChangeLogs.qml:47
 msgid "Change weblate repo"
-msgstr ""
+msgstr "Ubah repositori Weblate"
 
 #: qml/ChangeLogs.qml:48
 msgid "Use now https://hosted.weblate.org/projects/ubports/launcher-modular/"
 msgstr ""
+"Sekarang gunakan https://hosted.weblate.org/projects/ubports/launcher-"
+"modular/"
 
 #: qml/ChangeLogs.qml:51
 msgid "Toggle Image full screen on clic"
-msgstr ""
+msgstr "Alihkan gambar ke layar penuh saat diklik"
 
 #: qml/ChangeLogs.qml:52
 msgid ""
 "Add option 'Open image on external application' on Picture settings page"
 msgstr ""
+"Tambahkan opsi 'Buka gambar di aplikasi eksternal' pada halaman pengaturan "
+"Gambar"
 
 #: qml/ChangeLogs.qml:55
 msgid "Add Nexctloud page"
-msgstr ""
+msgstr "Tambahkan halaman Nextcloud"
 
 #: qml/ChangeLogs.qml:56
 msgid "Fix page selection showing more than real pages"
 msgstr ""
+"Perbaiki pemilihan halaman yang menampilkan lebih banyak halaman daripada "
+"jumlah sebenarnya"
 
 #: qml/ChangeLogs.qml:59
 msgid "Update Readme file to explain how user can create there own page"
 msgstr ""
+"Perbarui berkas Readme untuk menjelaskan cara pengguna dapat membuat halaman "
+"mereka sendiri"
 
 #: qml/ChangeLogs.qml:60
 msgid "Please, visit https://github.com/lutin11/launcher-modular"
-msgstr ""
+msgstr "Silakan kunjungi https://github.com/lutin11/launcher-modular"
 
 #: qml/ChangeLogs.qml:61
 msgid "Fix favorite applications not being launched after update"
-msgstr ""
+msgstr "Perbaiki aplikasi favorit yang tidak diluncurkan setelah pembaruan"
 
 #: qml/ChangeLogs.qml:62
 msgid "Music page as integrated player"
-msgstr ""
+msgstr "Halaman Musik sebagai pemutar terintegrasi"
 
 #: qml/ChangeLogs.qml:63
 msgid "Play your selected musics, create and play Playlists"
-msgstr ""
+msgstr "Putar musik pilihan Anda, buat dan putar playlist"
 
 #: qml/ChangeLogs.qml:64
 msgid "It's now possible to choose your calendar on widget and calendar page"
-msgstr ""
+msgstr "Sekarang Anda dapat memilih kalender pada widget dan halaman kalender"
 
 #: qml/ChangeLogs.qml:65
 msgid "Prepare for QT6 migration"
-msgstr ""
+msgstr "Persiapan untuk migrasi ke QT6"
 
 #: qml/ChangeLogs.qml:68
 msgid "update German translation"
-msgstr ""
+msgstr "memperbarui terjemahan bahasa Jerman"
 
 #: qml/ChangeLogs.qml:69
 msgid "Fix numeric clock not refresh"
-msgstr ""
+msgstr "Perbaiki jam numerik yang tidak diperbarui"
 
 #: qml/ChangeLogs.qml:70
 msgid "Fix app not available on launcher"
-msgstr ""
+msgstr "Perbaiki aplikasi yang tidak tersedia di peluncur"
 
 #: qml/ChangeLogs.qml:71
 msgid "Tanks marcellotogg for bug reports."
-msgstr ""
+msgstr "Terima kasih kepada marcellotogg atas laporan bugnya."
 
 #: qml/ChangeLogs.qml:73
 msgid "Add desc or asc sorting picture choice"
-msgstr ""
+msgstr "Tambahkan pilihan pengurutan gambar naik atau turun"
 
 #: qml/ChangeLogs.qml:74
 msgid "Add sorting picture choice"
-msgstr ""
+msgstr "Tambahkan pilihan pengurutan gambar"
 
 #: qml/ChangeLogs.qml:75
 msgid "Added a file browser for selecting the image folder"
-msgstr ""
+msgstr "Tambahkan peramban berkas untuk memilih folder gambar"
 
 #: qml/ChangeLogs.qml:77
 msgid "Fix background settings"
-msgstr ""
+msgstr "Perbaiki pengaturan latar belakang"
 
 #: qml/ChangeLogs.qml:78
 msgid "Add Clock Page"
-msgstr ""
+msgstr "Tambahkan Halaman Jam"
 
 #: qml/ChangeLogs.qml:80
 msgid "Fix themes not well manage"
-msgstr ""
+msgstr "Perbaiki pengelolaan tema yang kurang baik"
 
 #: qml/ChangeLogs.qml:82
 msgid "The calendar limit of days is not settable"
-msgstr ""
+msgstr "Batas jumlah hari pada kalender tidak dapat diatur"
 
 #: qml/ChangeLogs.qml:84
 msgid "Fix superimposed pages at start up"
-msgstr ""
+msgstr "Perbaiki halaman yang saling menumpuk saat aplikasi dimulai"
 
 #: qml/ChangeLogs.qml:86
 msgid "Change framework to 24.04"
-msgstr ""
+msgstr "Ubah framework ke 24.04"
 
 #: qml/ChangeLogs.qml:88
 msgid "Change framework to 22.04"
-msgstr ""
+msgstr "Ubah framework ke 22.04"
 
 #: qml/ChangeLogs.qml:90
 msgid "Fix issue '#5 Valid RSS Feeds not accepted'"
-msgstr ""
+msgstr "Perbaiki masalah '#5 Feed RSS valid tidak diterima'"
 
 #: qml/ChangeLogs.qml:92
 msgid "Add 'Music' page"
-msgstr ""
+msgstr "Tambahkan halaman 'Musik'"
 
 #: qml/ChangeLogs.qml:93
 msgid "Add 'Video' page"
-msgstr ""
+msgstr "Tambahkan halaman 'Video'"
 
 #: qml/ChangeLogs.qml:94
 msgid "Corrected display of contact names"
-msgstr ""
+msgstr "Perbaiki tampilan nama kontak"
 
 #: qml/ChangeLogs.qml:95
 msgid "Added filter on received messages"
-msgstr ""
+msgstr "Tambahkan filter pada pesan yang diterima"
 
 #: qml/ChangeLogs.qml:96
 msgid "Correction of home setting not displayed"
-msgstr ""
+msgstr "Perbaiki pengaturan beranda yang tidak ditampilkan"
 
 #: qml/ChangeLogs.qml:97
 msgid "Add Tamil translations thanks to தமிழ்நேரம்"
-msgstr ""
+msgstr "Tambahkan terjemahan bahasa Tamil, terima kasih kepada தமிழ்நேரம்"
 
 #: qml/ChangeLogs.qml:98
 msgid "Update Arabic translations thanks to Salah Khani"
-msgstr ""
+msgstr "Perbarui terjemahan bahasa Arab, terima kasih kepada Salah Khani"
 
 #: qml/ChangeLogs.qml:100
 msgid ""
@@ -203,114 +215,123 @@ msgid ""
 "feel free to report any issues throw https://github.com/lutin11/launcher-"
 "modular/issues or on Ubports forum"
 msgstr ""
+"Ini adalah rilis hotfix karena 'Manajemen halaman' tidak lagi berfungsi. "
+"Silakan laporkan masalah melalui https://github.com/lutin11/launcher-modular/"
+"issues atau di forum Ubports"
 
 #: qml/ChangeLogs.qml:101
 msgid "Fix page management issue"
-msgstr ""
+msgstr "Perbaiki masalah manajemen halaman"
 
 #: qml/ChangeLogs.qml:103
 msgid "Fix launching Libertine applications"
-msgstr ""
+msgstr "Perbaiki peluncuran aplikasi Libertine"
 
 #: qml/ChangeLogs.qml:104
 msgid "Fix launching favorite applications"
-msgstr ""
+msgstr "Perbaiki peluncuran aplikasi favorit"
 
 #: qml/ChangeLogs.qml:105
 msgid "Update weather on refreshing home page"
-msgstr ""
+msgstr "Perbarui cuaca saat halaman beranda dimuat ulang"
 
 #: qml/ChangeLogs.qml:106
 msgid "Added the ability to run a calculation from the search bar"
-msgstr ""
+msgstr "Tambahkan kemampuan untuk menjalankan perhitungan dari bilah pencarian"
 
 #: qml/ChangeLogs.qml:107 qml/ChangeLogs.qml:111 qml/ChangeLogs.qml:115
 msgid "Update translations"
-msgstr ""
+msgstr "Perbarui terjemahan"
 
 #: qml/ChangeLogs.qml:109
 msgid "Display contact name if exists on message and call widget"
-msgstr ""
+msgstr "Tampilkan nama kontak jika tersedia pada widget pesan dan panggilan"
 
 #: qml/ChangeLogs.qml:110 qml/ChangeLogs.qml:116
 msgid "Improved 'Picture' page display performance"
-msgstr ""
+msgstr "Tingkatkan kinerja tampilan halaman 'Gambar'"
 
 #: qml/ChangeLogs.qml:113
 msgid "On Rss setting page, you can add a list of RSS feeds"
-msgstr ""
+msgstr "Pada halaman pengaturan RSS, Anda dapat menambahkan daftar feed RSS"
 
 #: qml/ChangeLogs.qml:114
 msgid "Addition of a new page for RSS feeds"
-msgstr ""
+msgstr "Tambahkan halaman baru untuk feed RSS"
 
 #: qml/ChangeLogs.qml:118 qml/ChangeLogs.qml:120 qml/ChangeLogs.qml:122
 msgid "To do this, long press on the widget to access its configuration page."
 msgstr ""
+"Untuk melakukannya, tekan lama widget untuk mengakses halaman konfigurasinya."
 
 #: qml/ChangeLogs.qml:119
 msgid "Set how many calls to display!"
-msgstr ""
+msgstr "Atur jumlah panggilan yang ditampilkan!"
 
 #: qml/ChangeLogs.qml:121
 msgid "Set how many messages to display!"
-msgstr ""
+msgstr "Atur jumlah pesan yang ditampilkan!"
 
 #: qml/ChangeLogs.qml:123
 msgid "Set how many events to display!"
-msgstr ""
+msgstr "Atur jumlah acara yang ditampilkan!"
 
 #: qml/ChangeLogs.qml:124
 msgid ""
 "On call settings, set the option for 'When clicked' to 'Open the dialer with "
 "number'"
 msgstr ""
+"Pada pengaturan panggilan, atur opsi 'Saat diklik' menjadi 'Buka dialer "
+"dengan nomor'"
 
 #: qml/ChangeLogs.qml:125
 msgid "Call redirection to phone app works!"
-msgstr ""
+msgstr "Pengalihan panggilan ke aplikasi telepon berfungsi!"
 
 #: qml/ChangeLogs.qml:126
 msgid ""
 "On message settings, set the option for 'When clicked' to 'Open the "
 "application with message'"
 msgstr ""
+"Pada pengaturan pesan, atur opsi 'Saat diklik' menjadi 'Buka aplikasi dengan "
+"pesan'"
 
 #: qml/ChangeLogs.qml:127
 msgid "Message redirection to messaging app works!"
-msgstr ""
+msgstr "Pengalihan pesan ke aplikasi perpesanan berfungsi!"
 
 #: qml/ChangeLogs.qml:128
 msgid "Force the event list to refresh by double-clicking on the event widget!"
 msgstr ""
+"Paksa daftar acara untuk diperbarui dengan mengeklik dua kali widget acara!"
 
 #: qml/ChangeLogs.qml:129
 msgid "The event list shows event from current day!"
-msgstr ""
+msgstr "Daftar acara menampilkan acara dari hari ini!"
 
 #: qml/ChangeLogs.qml:130
 msgid "Clicking on the 'Alarm' widget opens the clock!"
-msgstr ""
+msgstr "Mengeklik widget 'Alarm' akan membuka jam!"
 
 #: qml/ChangeLogs.qml:131
 msgid "Open the photo by clicking on it!"
-msgstr ""
+msgstr "Buka foto dengan mengekliknya!"
 
 #: qml/ChangeLogs.qml:133
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
-msgstr ""
+msgstr "Geser ke atas untuk mengonfigurasi peluncur, lalu klik 'Autostart"
 
 #: qml/ChangeLogs.qml:134
 msgid "Enable Autostart"
-msgstr ""
+msgstr "Aktifkan Autostart"
 
 #: qml/ChangeLogs.qml:135
 msgid "Correction for background display."
-msgstr ""
+msgstr "Perbaikan tampilan latar belakang."
 
 #: qml/ChangeLogs.qml:136
 msgid "Fix up 'Run a command in a terminal'"
-msgstr ""
+msgstr "Perbaiki 'Jalankan perintah di terminal'"
 
 #: qml/ChangeLogs.qml:138
 msgid ""
@@ -318,26 +339,29 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
+"Ini adalah rilis pertama Peluncur Modular yang didasarkan pada milik <a "
+"href=\"https://github.com/ruditimmermans/launcher-modular\">Ruditimmermans</"
+"a>. Rilis ini mencakup pembaruan pustaka dan beberapa perbaikan."
 
 #: qml/ChangeLogs.qml:139
 msgid "Resumption of the application."
-msgstr ""
+msgstr "Melanjutkan pengembangan aplikasi."
 
 #: qml/ChangeLogs.qml:244
 msgid "Version: "
-msgstr ""
+msgstr "Versi: "
 
 #: qml/ChangeLogs.qml:250
 msgid " | Date: "
-msgstr ""
+msgstr " | Tanggal: "
 
 #: qml/ChangeLogs.qml:376
 msgid "If you like this app, please rank it on OpenStore"
-msgstr ""
+msgstr "Jika Anda menyukai aplikasi ini, silakan beri penilaian di OpenStore"
 
 #: qml/ChangeLogs.qml:403
 msgid "A modular launcher for Ubuntu Touch"
-msgstr ""
+msgstr "Peluncur modular untuk Ubuntu Touch"
 
 #: qml/ChangeLogs.qml:417
 msgid ""
@@ -350,292 +374,310 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
+"Program ini adalah perangkat lunak bebas: Anda dapat mendistribusikan ulang "
+"dan/atau memodifikasinya berdasarkan ketentuan GNU General Public License "
+"sebagaimana diterbitkan oleh Free Software Foundation, baik versi 3 dari "
+"Lisensi tersebut maupun (sesuai pilihan Anda) versi yang lebih baru. Program "
+"ini didistribusikan dengan harapan akan bermanfaat, tetapi TANPA JAMINAN APA "
+"PUN; bahkan tanpa jaminan tersirat atas KELAYAKAN UNTUK DIPERDAGANGKAN atau "
+"KESESUAIAN UNTUK TUJUAN TERTENTU. Lihat <a href=\"https://www.gnu.org/"
+"licenses/gpl-3.0.en.html\">GNU General Public License</a> untuk detail lebih "
+"lanjut."
 
 #: qml/ChangeLogs.qml:432
 msgid "SOURCE"
-msgstr ""
+msgstr "SUMBER"
 
 #: qml/ChangeLogs.qml:432
 msgid "ISSUES"
-msgstr ""
+msgstr "MASALAH"
 
 #: qml/ChangeLogs.qml:447
 msgid "Maintainer"
-msgstr ""
+msgstr "Pemelihara"
 
 #: qml/ChangeLogs.qml:461
 msgid "Copyright"
-msgstr ""
+msgstr "Hak Cipta"
 
 #: qml/ChangeLogs.qml:476
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
+"<a href=\"LAUNCHER MODULAR TRANSLATORS\">Penerjemah Modular Launcher</a>"
 
 #: qml/Help.qml:15
 msgid "Modular Launcher Help"
-msgstr ""
+msgstr "Bantuan Modular Launcher"
 
 #: qml/Help.qml:49
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
-msgstr ""
+msgstr "<br><b>Tekan dan tahan widget untuk mengubah pengaturannya.</b>"
 
 #: qml/Help.qml:63
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
+"<br><b>Untuk menambahkan halaman baru, buka 'Kelola halaman' lalu klik '+' "
+"di kanan atas.</b>"
 
 #: qml/Help.qml:77
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
+"<br><b>Untuk mengubah pengaturan halaman, buka 'Kelola halaman' lalu klik "
+"halaman tersebut.</b>"
 
 #: qml/ImportPage.qml:13
 msgid "Choose"
-msgstr ""
+msgstr "Pilih"
 
 #: qml/Main.qml:459
 msgid "Swipe up to configure the launcher"
-msgstr ""
+msgstr "Geser ke atas untuk mengonfigurasi launcher"
 
 #: qml/Main.qml:517
 msgid "Add custom icon"
-msgstr ""
+msgstr "Tambahkan ikon kustom"
 
 #: qml/Main.qml:550
 msgid "Manage pages"
-msgstr ""
+msgstr "Kelola halaman"
 
 #: qml/Main.qml:583
 msgid "Configure Launcher"
-msgstr ""
+msgstr "Konfigurasi Launcher"
 
 #: qml/Main.qml:616
 msgid "Autostart"
-msgstr ""
+msgstr "Mulai otomatis"
 
 #: qml/Main.qml:649
 msgid "Help"
-msgstr ""
+msgstr "Bantuan"
 
 #: qml/Main.qml:682
 msgid "About"
-msgstr ""
+msgstr "Tentang"
 
 #: qml/Main.qml:739
 msgid "Website"
-msgstr ""
+msgstr "Situs web"
 
 #: qml/Main.qml:739
 msgid "Open this URL in the web browser"
-msgstr ""
+msgstr "Buka URL ini di peramban web"
 
 #: qml/Main.qml:740
 msgid "Terminal command"
-msgstr ""
+msgstr "Perintah terminal"
 
 #: qml/Main.qml:740
 msgid "Run a command in a terminal"
-msgstr ""
+msgstr "Jalankan perintah di terminal"
 
 #: qml/Main.qml:741
 msgid "Launch app"
-msgstr ""
+msgstr "Luncurkan aplikasi"
 
 #: qml/Main.qml:741
 msgid "Launch an app"
-msgstr ""
+msgstr "Luncurkan aplikasi"
 
 #: qml/Main.qml:765
 msgid "SVG or PNG icon. 1:1 ratio"
-msgstr ""
+msgstr "Ikon SVG atau PNG. Rasio 1:1"
 
 #: qml/Main.qml:778
 msgid "The <b>title</b> to be shown in the app list"
-msgstr ""
+msgstr "<b>Judul</b> yang akan ditampilkan dalam daftar aplikasi"
 
 #: qml/Main.qml:802 qml/Main.qml:803 qml/Main.qml:804
 msgid "<b>Action</b> example: "
-msgstr ""
+msgstr "Contoh <b>tindakan</b>: "
 
 #: qml/Main.qml:816
 msgid "Create icon"
-msgstr ""
+msgstr "Buat ikon"
 
 #: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
 #: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 #: qml/Pagemanagement.qml:18
 msgid "Page management"
-msgstr ""
+msgstr "Pengelolaan halaman"
 
 #: qml/Pagemanagement.qml:48
 msgid "Choose a page"
-msgstr ""
+msgstr "Pilih halaman"
 
 #: qml/Settings.qml:16
 msgid "Settings"
-msgstr ""
+msgstr "Pengaturan"
 
 #: qml/Settings.qml:50 qml/pages/home/Settings.qml:181
 msgid "General"
-msgstr ""
+msgstr "Umum"
 
 #: qml/Settings.qml:55
 msgid "Dark background"
-msgstr ""
+msgstr "Latar belakang gelap"
 
 #: qml/Settings.qml:91
 msgid "Background blur effect"
-msgstr ""
+msgstr "Efek buram pada latar belakang"
 
 #: qml/Translators.qml:14
 msgid "Translators"
-msgstr ""
+msgstr "Penerjemah"
 
 #: qml/Translators.qml:76
 msgid "Modular Launcher-translators:"
-msgstr ""
+msgstr "Penerjemah Modular Launcher:"
 
 #: qml/Translators.qml:95
 msgid "Arabic - "
-msgstr ""
+msgstr "Arab - "
 
 #: qml/Translators.qml:109
 msgid "Dutch - "
-msgstr ""
+msgstr "Belanda - "
 
 #: qml/Translators.qml:123
 msgid "French - "
-msgstr ""
+msgstr "Prancis - "
 
 #: qml/Translators.qml:137
 msgid "German - "
-msgstr ""
+msgstr "Jerman - "
 
 #: qml/Translators.qml:151
 msgid "Portuguese - "
-msgstr ""
+msgstr "Portugis - "
 
 #: qml/Translators.qml:165
 msgid "Russian - "
-msgstr ""
+msgstr "Rusia - "
 
 #: qml/Translators.qml:179
 msgid "Tamil - "
-msgstr ""
+msgstr "Tamil - "
 
 #: qml/Translators.qml:194
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "ubports/launcher-modular/'>Hosted Weblate</a>."
 msgstr ""
+"Terjemahkan Modular Launcher di <a href=\"https://hosted.weblate.org/"
+"projects/ubports/launcher-modular/\">Hosted Weblate</a>."
 
 #: qml/pages/Calendar.qml:111
 msgid "Agenda"
-msgstr ""
+msgstr "Agenda"
 
 #: qml/pages/Folders.qml:664
 msgid "Search a file"
-msgstr ""
+msgstr "Cari berkas"
 
 #: qml/pages/Home.qml:40
 msgid "ok"
-msgstr ""
+msgstr "ok"
 
 #: qml/pages/Home.qml:255
 msgid "Search your phone and online sources"
-msgstr ""
+msgstr "Cari di ponsel dan sumber daring Anda"
 
 #: qml/pages/Home.qml:480
 msgid "Uninstall"
-msgstr ""
+msgstr "Copot pemasangan"
 
 #: qml/pages/Home.qml:480
 msgid "Remove"
-msgstr ""
+msgstr "Hapus"
 
 #: qml/pages/Music.qml:312
 msgid "Search your music"
-msgstr ""
+msgstr "Cari musik Anda"
 
 #: qml/pages/Music.qml:399
 msgid "Deselect all"
-msgstr ""
+msgstr "Batalkan pilihan semua"
 
 #: qml/pages/Music.qml:399
 msgid "Select all"
-msgstr ""
+msgstr "Pilih semua"
 
 #: qml/pages/NextcloudFolders.qml:130
 #: qml/pages/nextcloudfolders/Settings.qml:42
 msgid "Authentication failed. Check username/app password."
-msgstr ""
+msgstr "Autentikasi gagal. Periksa nama pengguna/kata sandi aplikasi."
 
 #: qml/pages/NextcloudFolders.qml:132
 #: qml/pages/nextcloudfolders/Settings.qml:44
 msgid "Network error. Check server URL and connectivity."
-msgstr ""
+msgstr "Kesalahan jaringan. Periksa URL server dan konektivitas."
 
 #: qml/pages/NextcloudFolders.qml:134
 #: qml/pages/nextcloudfolders/Settings.qml:46
 msgid "Error %1 while loading folder."
-msgstr ""
+msgstr "Kesalahan %1 saat memuat folder."
 
 #: qml/pages/NextcloudFolders.qml:197
 msgid "Downloading 1/%1..."
-msgstr ""
+msgstr "Mengunduh 1/%1..."
 
 #: qml/pages/NextcloudFolders.qml:226
 msgid "Failed to save %1 locally."
-msgstr ""
+msgstr "Gagal menyimpan %1 secara lokal."
 
 #: qml/pages/NextcloudFolders.qml:229
 msgid "Failed to download %1 (error %2)."
-msgstr ""
+msgstr "Gagal mengunduh %1 (kesalahan %2)."
 
 #: qml/pages/NextcloudFolders.qml:232
 msgid "Downloading %1/%2..."
-msgstr ""
+msgstr "Mengunduh %1/%2..."
 
 #: qml/pages/NextcloudFolders.qml:311
 msgid "Nextcloud"
-msgstr ""
+msgstr "Nextcloud"
 
 #: qml/pages/NextcloudFolders.qml:366
 msgid "Configure your Nextcloud server in this page's settings first."
 msgstr ""
+"Konfigurasikan server Nextcloud Anda terlebih dahulu dalam pengaturan "
+"halaman ini."
 
 #: qml/pages/NextcloudFolders.qml:478
 msgid "This folder is empty"
-msgstr ""
+msgstr "Folder ini kosong"
 
 #: qml/pages/Rss.qml:227
 msgid "Loading feeds…"
-msgstr ""
+msgstr "Memuat feed…"
 
 #: qml/pages/Rss.qml:228
 msgid "Go to the page management to add feeds."
-msgstr ""
+msgstr "Buka pengelolaan halaman untuk menambahkan feed."
 
 #: qml/pages/Todo.qml:81
 msgid "New todo"
-msgstr ""
+msgstr "Tugas baru"
 
 #: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:157
 #: qml/pages/music/PlaylistsView.qml:125 qml/pages/rss/Settings.qml:187
 msgid "Delete"
-msgstr ""
+msgstr "Hapus"
 
 #: qml/pages/Videos.qml:172
 msgid "Search your video"
-msgstr ""
+msgstr "Cari video Anda"
 
 #: qml/pages/calendar/Settings.qml:13
 msgid "calendar"
-msgstr ""
+msgstr "kalender"
 
 #: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
 #: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
@@ -643,192 +685,192 @@ msgstr ""
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
 #: qml/pages/videos/Settings.qml:14
 msgid "Settings Page"
-msgstr ""
+msgstr "Halaman Pengaturan"
 
 #: qml/pages/calendar/Settings.qml:95 qml/widgets/event/Settings.qml:92
 msgid "Limit of days"
-msgstr ""
+msgstr "Batas hari"
 
 #: qml/pages/calendar/Settings.qml:114 qml/widgets/event/Settings.qml:110
 msgid "By default 60 days"
-msgstr ""
+msgstr "Secara default 60 hari"
 
 #: qml/pages/calendar/Settings.qml:137 qml/widgets/event/Settings.qml:175
 msgid "Calendars"
-msgstr ""
+msgstr "Kalender"
 
 #: qml/pages/calendar/Settings.qml:150 qml/widgets/event/Settings.qml:188
 msgid "No calendar found"
-msgstr ""
+msgstr "Tidak ada kalender yang ditemukan"
 
 #: qml/pages/clock/Settings.qml:13
 msgid "clock"
-msgstr ""
+msgstr "jam"
 
 #: qml/pages/clock/Settings.qml:61
 msgid "Settings for 'Clock' page"
-msgstr ""
+msgstr "Pengaturan untuk halaman 'Jam'"
 
 #: qml/pages/clock/Settings.qml:136
 msgid "Bold"
-msgstr ""
+msgstr "Tebal"
 
 #: qml/pages/clock/Settings.qml:137
 msgid "BoldItalic"
-msgstr ""
+msgstr "Tebal Miring"
 
 #: qml/pages/clock/Settings.qml:138
 msgid "Regular"
-msgstr ""
+msgstr "Reguler"
 
 #: qml/pages/clock/Settings.qml:139
 msgid "Italic"
-msgstr ""
+msgstr "Miring"
 
 #: qml/pages/clock/Settings.qml:140
 msgid "Light"
-msgstr ""
+msgstr "Tipis"
 
 #: qml/pages/clock/Settings.qml:141
 msgid "LightItalic"
-msgstr ""
+msgstr "Tipis Miring"
 
 #: qml/pages/clock/Settings.qml:195
 msgid "Font type : "
-msgstr ""
+msgstr "Jenis font : "
 
 #: qml/pages/clock/Settings.qml:239
 msgid "Format : "
-msgstr ""
+msgstr "Format : "
 
 #: qml/pages/folders/Settings.qml:10
 msgid "folders"
-msgstr ""
+msgstr "folder"
 
 #: qml/pages/folders/Settings.qml:43
 msgid "Settings for 'folder' page"
-msgstr ""
+msgstr "Pengaturan untuk halaman 'folder'"
 
 #: qml/pages/folders/Settings.qml:48 qml/pages/music/Settings.qml:49
 #: qml/pages/videos/Settings.qml:48
 msgid "Exemple"
-msgstr ""
+msgstr "Contoh"
 
 #: qml/pages/home/Settings.qml:13
 msgid "home"
-msgstr ""
+msgstr "beranda"
 
 #: qml/pages/home/Settings.qml:85
 msgid "Add a favorite application"
-msgstr ""
+msgstr "Tambahkan aplikasi favorit"
 
 #: qml/pages/home/Settings.qml:126
 msgid "Favorite apps management"
-msgstr ""
+msgstr "Pengelolaan aplikasi favorit"
 
 #: qml/pages/home/Settings.qml:185
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 #: qml/pages/home/Settings.qml:185
 msgid "Unstyled icons"
-msgstr ""
+msgstr "Ikon tanpa gaya"
 
 #: qml/pages/home/Settings.qml:186
 msgid "Rounded"
-msgstr ""
+msgstr "Membulat"
 
 #: qml/pages/home/Settings.qml:186
 msgid "Rounded icons"
-msgstr ""
+msgstr "Ikon membulat"
 
 #: qml/pages/home/Settings.qml:211
 msgid "Style Icons : "
-msgstr ""
+msgstr "Gaya Ikon : "
 
 #: qml/pages/home/Settings.qml:255
 msgid "Search engine : "
-msgstr ""
+msgstr "Mesin pencari : "
 
 #: qml/pages/home/Settings.qml:266
 msgid "Widgets"
-msgstr ""
+msgstr "Widget"
 
 #: qml/pages/home/Settings.qml:271
 msgid "Show clock"
-msgstr ""
+msgstr "Tampilkan jam"
 
 #: qml/pages/home/Settings.qml:280
 msgid "Show weather"
-msgstr ""
+msgstr "Tampilkan cuaca"
 
 #: qml/pages/home/Settings.qml:290
 msgid "Show alarms"
-msgstr ""
+msgstr "Tampilkan alarm"
 
 #: qml/pages/home/Settings.qml:299
 msgid "Show last calls"
-msgstr ""
+msgstr "Tampilkan panggilan terakhir"
 
 #: qml/pages/home/Settings.qml:308
 msgid "Show last message"
-msgstr ""
+msgstr "Tampilkan pesan terakhir"
 
 #: qml/pages/home/Settings.qml:317
 msgid "Show last events"
-msgstr ""
+msgstr "Tampilkan acara terakhir"
 
 #: qml/pages/music/MusicPlayer.qml:505
 msgid "(%1)"
-msgstr ""
+msgstr "(%1)"
 
 #: qml/pages/music/PlaylistsView.qml:85
 msgid "New playlist"
-msgstr ""
+msgstr "Daftar putar baru"
 
 #: qml/pages/music/PlaylistsView.qml:110
 msgid "%1 tracks"
-msgstr ""
+msgstr "%1 lagu"
 
 #: qml/pages/music/Settings.qml:11
 msgid "music"
-msgstr ""
+msgstr "musik"
 
 #: qml/pages/music/Settings.qml:44
 msgid "Settings for 'Music' page"
-msgstr ""
+msgstr "Pengaturan untuk halaman 'Musik'"
 
 #: qml/pages/nextcloudfolders/Settings.qml:13
 msgid "nextcloudFolders"
-msgstr ""
+msgstr "folderNextcloud"
 
 #: qml/pages/nextcloudfolders/Settings.qml:15
 msgid "Test it !"
-msgstr ""
+msgstr "Uji!"
 
 #: qml/pages/nextcloudfolders/Settings.qml:40
 msgid "Success !"
-msgstr ""
+msgstr "Berhasil!"
 
 #: qml/pages/nextcloudfolders/Settings.qml:49
 msgid "Failed"
-msgstr ""
+msgstr "Gagal"
 
 #: qml/pages/nextcloudfolders/Settings.qml:63
 msgid "Nextcloud folders"
-msgstr ""
+msgstr "Folder Nextcloud"
 
 #: qml/pages/nextcloudfolders/Settings.qml:98
 msgid "Server URL"
-msgstr ""
+msgstr "URL server"
 
 #: qml/pages/nextcloudfolders/Settings.qml:117
 msgid "Username"
-msgstr ""
+msgstr "Nama pengguna"
 
 #: qml/pages/nextcloudfolders/Settings.qml:135
 msgid "App password"
-msgstr ""
+msgstr "Kata sandi aplikasi"
 
 #: qml/pages/nextcloudfolders/Settings.qml:151
 msgid ""
@@ -836,206 +878,209 @@ msgid ""
 "sessions), not your main account password. It can be revoked independently "
 "at any time."
 msgstr ""
+"Gunakan kata sandi aplikasi khusus (Pengaturan Nextcloud → Keamanan → "
+"Perangkat &amp; sesi), bukan kata sandi akun utama Anda. Kata sandi tersebut "
+"dapat dicabut secara terpisah kapan saja."
 
 #: qml/pages/nextcloudfolders/Settings.qml:161
 msgid "Starting folder"
-msgstr ""
+msgstr "Folder awal"
 
 #: qml/pages/nextcloudfolders/Settings.qml:184
 msgid "Test connexion"
-msgstr ""
+msgstr "Uji koneksi"
 
 #: qml/pages/picture/SelectFolderPage.qml:42
 msgid "Select"
-msgstr ""
+msgstr "Pilih"
 
 #: qml/pages/picture/Settings.qml:13
 msgid "picture"
-msgstr ""
+msgstr "gambar"
 
 #: qml/pages/picture/Settings.qml:57
 msgid "Image folder path:"
-msgstr ""
+msgstr "Jalur folder gambar:"
 
 #: qml/pages/picture/Settings.qml:107
 msgid "Unsorted"
-msgstr ""
+msgstr "Tidak diurutkan"
 
 #: qml/pages/picture/Settings.qml:108
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 #: qml/pages/picture/Settings.qml:109
 msgid "Time"
-msgstr ""
+msgstr "Waktu"
 
 #: qml/pages/picture/Settings.qml:110
 msgid "Size"
-msgstr ""
+msgstr "Ukuran"
 
 #: qml/pages/picture/Settings.qml:111
 msgid "Type"
-msgstr ""
+msgstr "Jenis"
 
 #: qml/pages/picture/Settings.qml:117
 msgid "Sort type:"
-msgstr ""
+msgstr "Jenis pengurutan:"
 
 #: qml/pages/picture/Settings.qml:192
 msgid "Reverse sort"
-msgstr ""
+msgstr "Balik urutan"
 
 #: qml/pages/picture/Settings.qml:212
 msgid "Open image on external application"
-msgstr ""
+msgstr "Buka gambar di aplikasi eksternal"
 
 #: qml/pages/rss/Settings.qml:13
 msgid "rss"
-msgstr ""
+msgstr "rss"
 
 #: qml/pages/rss/Settings.qml:103
 msgid "ex: https://omgubuntu.co.uk/feed"
-msgstr ""
+msgstr "contoh: https://omgubuntu.co.uk/feed"
 
 #: qml/pages/rss/Settings.qml:117
 msgid "Invalid URL format"
-msgstr ""
+msgstr "Format URL tidak valid"
 
 #: qml/pages/rss/Settings.qml:231
 msgid "Invalid url"
-msgstr ""
+msgstr "URL tidak valid"
 
 #: qml/pages/todo/Settings.qml:10
 msgid "todo"
-msgstr ""
+msgstr "tugas"
 
 #: qml/pages/todo/Settings.qml:42
 msgid "No settings for 'TODO' page"
-msgstr ""
+msgstr "Tidak ada pengaturan untuk halaman 'TODO'"
 
 #: qml/pages/videos/Settings.qml:10
 msgid "videos"
-msgstr ""
+msgstr "video"
 
 #: qml/pages/videos/Settings.qml:43
 msgid "Settings for 'Video' page"
-msgstr ""
+msgstr "Pengaturan untuk halaman 'Video'"
 
 #: qml/widgets/Alarm.qml:28
 msgid "Alarms"
-msgstr ""
+msgstr "Alarm"
 
 #: qml/widgets/Alarm.qml:39
 msgid "No active alarm"
-msgstr ""
+msgstr "Tidak ada alarm aktif"
 
 #: qml/widgets/Alarm.qml:54
 msgid "at"
-msgstr ""
+msgstr "pada"
 
 #: qml/widgets/Calculator.qml:21
 msgid "Calcul result:"
-msgstr ""
+msgstr "Hasil perhitungan:"
 
 #: qml/widgets/Event.qml:119
 msgid "Events"
-msgstr ""
+msgstr "Acara"
 
 #: qml/widgets/Event.qml:133
 msgid "No events"
-msgstr ""
+msgstr "Tidak ada acara"
 
 #: qml/widgets/FavoriteApp.qml:34
 msgid "Favorite Apps"
-msgstr ""
+msgstr "Aplikasi Favorit"
 
 #: qml/widgets/FavoriteContact.qml:32
 msgid "Favorite Contacts"
-msgstr ""
+msgstr "Kontak Favorit"
 
 #: qml/widgets/Lastcall.qml:81
 msgid "Last Calls"
-msgstr ""
+msgstr "Panggilan Terakhir"
 
 #: qml/widgets/Lastcall.qml:81
 msgid "Last Call"
-msgstr ""
+msgstr "Panggilan Terakhir"
 
 #: qml/widgets/Lastcall.qml:160
 msgid "No recent calls"
-msgstr ""
+msgstr "Tidak ada panggilan terbaru"
 
 #: qml/widgets/Lastmessage.qml:97
 msgid "Last Messages"
-msgstr ""
+msgstr "Pesan Terakhir"
 
 #: qml/widgets/Lastmessage.qml:97
 msgid "Last Message"
-msgstr ""
+msgstr "Pesan Terakhir"
 
 #: qml/widgets/Lastmessage.qml:200
 msgid "No recent messages"
-msgstr ""
+msgstr "Tidak ada pesan terbaru"
 
 #: qml/widgets/SearchContact.qml:35
 msgid "Search Contacts"
-msgstr ""
+msgstr "Cari Kontak"
 
 #: qml/widgets/Weather.qml:27
 msgid "Please long press here to configure"
-msgstr ""
+msgstr "Tekan dan tahan di sini untuk mengonfigurasi"
 
 #: qml/widgets/Weather.qml:168 qml/widgets/Weather.qml:196
 msgid "Calm"
-msgstr ""
+msgstr "Tenang"
 
 #: qml/widgets/Weather.qml:170 qml/widgets/Weather.qml:198
 msgid "Light Air"
-msgstr ""
+msgstr "Udara Ringan"
 
 #: qml/widgets/Weather.qml:172 qml/widgets/Weather.qml:200
 msgid "Light Breeze"
-msgstr ""
+msgstr "Angin Sepoi-sepoi"
 
 #: qml/widgets/Weather.qml:174 qml/widgets/Weather.qml:202
 msgid "Gentle Breeze"
-msgstr ""
+msgstr "Angin Lembut"
 
 #: qml/widgets/Weather.qml:176 qml/widgets/Weather.qml:204
 msgid "Moderate Breeze"
-msgstr ""
+msgstr "Angin Sedang"
 
 #: qml/widgets/Weather.qml:178 qml/widgets/Weather.qml:206
 msgid "Fresh Breeze"
-msgstr ""
+msgstr "Angin Kencang"
 
 #: qml/widgets/Weather.qml:180 qml/widgets/Weather.qml:208
 msgid "Strong Breeze"
-msgstr ""
+msgstr "Angin Sangat Kencang"
 
 #: qml/widgets/Weather.qml:182 qml/widgets/Weather.qml:210
 msgid "Near Gale"
-msgstr ""
+msgstr "Hampir Badai"
 
 #: qml/widgets/Weather.qml:184 qml/widgets/Weather.qml:212
 msgid "Gale"
-msgstr ""
+msgstr "Badai"
 
 #: qml/widgets/Weather.qml:186 qml/widgets/Weather.qml:214
 msgid "Severe Gale"
-msgstr ""
+msgstr "Badai Hebat"
 
 #: qml/widgets/Weather.qml:188 qml/widgets/Weather.qml:216
 msgid "Storm"
-msgstr ""
+msgstr "Badai Dahsyat"
 
 #: qml/widgets/Weather.qml:190 qml/widgets/Weather.qml:218
 msgid "Violent Storm"
-msgstr ""
+msgstr "Badai Sangat Dahsyat"
 
 #: qml/widgets/Weather.qml:192 qml/widgets/Weather.qml:220
 msgid "Hurricane"
-msgstr ""
+msgstr "Badai Topan"
 
 #: qml/widgets/Weather.qml:233 qml/widgets/Weather.qml:235
 #: qml/widgets/Weather.qml:237 qml/widgets/Weather.qml:239
@@ -1046,195 +1091,195 @@ msgstr ""
 #: qml/widgets/Weather.qml:257 qml/widgets/Weather.qml:259
 #: qml/widgets/Weather.qml:261 qml/widgets/Weather.qml:263
 msgid "of"
-msgstr ""
+msgstr "dari"
 
 #: qml/widgets/Weather.qml:233
 msgid "North"
-msgstr ""
+msgstr "Utara"
 
 #: qml/widgets/Weather.qml:235
 msgid "North-Northeast"
-msgstr ""
+msgstr "Utara-Timur Laut"
 
 #: qml/widgets/Weather.qml:237
 msgid "Northeast"
-msgstr ""
+msgstr "Timur Laut"
 
 #: qml/widgets/Weather.qml:239
 msgid "East-Northeast"
-msgstr ""
+msgstr "Timur-Timur Laut"
 
 #: qml/widgets/Weather.qml:241
 msgid "East"
-msgstr ""
+msgstr "Timur"
 
 #: qml/widgets/Weather.qml:243
 msgid "East-Southeast"
-msgstr ""
+msgstr "Timur-Tenggara"
 
 #: qml/widgets/Weather.qml:245
 msgid "Southeast"
-msgstr ""
+msgstr "Tenggara"
 
 #: qml/widgets/Weather.qml:247
 msgid "South-Southeast"
-msgstr ""
+msgstr "Selatan-Tenggara"
 
 #: qml/widgets/Weather.qml:249
 msgid "South"
-msgstr ""
+msgstr "Selatan"
 
 #: qml/widgets/Weather.qml:251
 msgid "South-Southwest"
-msgstr ""
+msgstr "Selatan-Barat Daya"
 
 #: qml/widgets/Weather.qml:253
 msgid "Southwest"
-msgstr ""
+msgstr "Barat Daya"
 
 #: qml/widgets/Weather.qml:255
 msgid "West-Southwest"
-msgstr ""
+msgstr "Barat-Barat Daya"
 
 #: qml/widgets/Weather.qml:257
 msgid "West"
-msgstr ""
+msgstr "Barat"
 
 #: qml/widgets/Weather.qml:259
 msgid "West-Northwest"
-msgstr ""
+msgstr "Barat-Barat Laut"
 
 #: qml/widgets/Weather.qml:261
 msgid "Northwest"
-msgstr ""
+msgstr "Barat Laut"
 
 #: qml/widgets/Weather.qml:263
 msgid "North-Northwest"
-msgstr ""
+msgstr "Utara-Barat Laut"
 
 #: qml/widgets/Weather.qml:274
 msgid "humidity"
-msgstr ""
+msgstr "kelembapan"
 
 #: qml/widgets/clock/Settings.qml:14
 msgid "Settings Widget Clock"
-msgstr ""
+msgstr "Pengaturan Widget Jam"
 
 #: qml/widgets/clock/Settings.qml:49
 msgid "Show analog clock with digits"
-msgstr ""
+msgstr "Tampilkan jam analog dengan angka"
 
 #: qml/widgets/event/Settings.qml:44
 #: qml/widgets/favoritecontact/Settings.qml:14
 #: qml/widgets/lastcall/Settings.qml:14 qml/widgets/lastmessage/Settings.qml:15
 msgid "Settings Widget"
-msgstr ""
+msgstr "Pengaturan Widget"
 
 #: qml/widgets/event/Settings.qml:133
 msgid "Limit of event"
-msgstr ""
+msgstr "Batas acara"
 
 #: qml/widgets/event/Settings.qml:152
 msgid "By default 3 event"
-msgstr ""
+msgstr "Secara default 3 acara"
 
 #: qml/widgets/favoritecontact/Settings.qml:50
 #: qml/widgets/lastcall/Settings.qml:49 qml/widgets/lastmessage/Settings.qml:49
 msgid "Generals"
-msgstr ""
+msgstr "Umum"
 
 #: qml/widgets/favoritecontact/Settings.qml:54
 msgid "Dialer"
-msgstr ""
+msgstr "Penelepon"
 
 #: qml/widgets/favoritecontact/Settings.qml:54
 #: qml/widgets/lastcall/Settings.qml:93
 msgid "Open the dialer"
-msgstr ""
+msgstr "Buka aplikasi telepon"
 
 #: qml/widgets/favoritecontact/Settings.qml:55
 msgid "Linphone"
-msgstr ""
+msgstr "Linphone"
 
 #: qml/widgets/favoritecontact/Settings.qml:55
 msgid "Open Linphone"
-msgstr ""
+msgstr "Buka Linphone"
 
 #: qml/widgets/favoritecontact/Settings.qml:80
 #: qml/widgets/lastcall/Settings.qml:119
 #: qml/widgets/lastmessage/Settings.qml:144
 msgid "When clicked : "
-msgstr ""
+msgstr "Saat diklik : "
 
 #: qml/widgets/lastcall/Settings.qml:65
 msgid "Number of displayed calls :"
-msgstr ""
+msgstr "Jumlah panggilan yang ditampilkan:"
 
 #: qml/widgets/lastcall/Settings.qml:83 qml/widgets/lastmessage/Settings.qml:83
 msgid "By default 1"
-msgstr ""
+msgstr "Secara default 1"
 
 #: qml/widgets/lastcall/Settings.qml:93
 #: qml/widgets/lastmessage/Settings.qml:119
 msgid "Default"
-msgstr ""
+msgstr "Bawaan"
 
 #: qml/widgets/lastcall/Settings.qml:94
 msgid "Call"
-msgstr ""
+msgstr "Panggilan"
 
 #: qml/widgets/lastcall/Settings.qml:94
 msgid "Open the dialer with number"
-msgstr ""
+msgstr "Buka aplikasi telepon dengan nomor"
 
 #: qml/widgets/lastmessage/Settings.qml:65
 msgid "Number of displayed messages :"
-msgstr ""
+msgstr "Jumlah pesan yang ditampilkan:"
 
 #: qml/widgets/lastmessage/Settings.qml:94
 msgid "View a summary"
-msgstr ""
+msgstr "Lihat ringkasan"
 
 #: qml/widgets/lastmessage/Settings.qml:107
 msgid "Filter on received messages"
-msgstr ""
+msgstr "Filter pesan yang diterima"
 
 #: qml/widgets/lastmessage/Settings.qml:119
 msgid "Open the application"
-msgstr ""
+msgstr "Buka aplikasi"
 
 #: qml/widgets/lastmessage/Settings.qml:120
 msgid "Open Message"
-msgstr ""
+msgstr "Buka Pesan"
 
 #: qml/widgets/lastmessage/Settings.qml:120
 msgid "Open the application with message"
-msgstr ""
+msgstr "Buka aplikasi dengan pesan"
 
 #: qml/widgets/weather/Settings.qml:14
 msgid "Settings for weather widget"
-msgstr ""
+msgstr "Pengaturan untuk widget cuaca"
 
 #: qml/widgets/weather/Settings.qml:59
 msgid "API Key"
-msgstr ""
+msgstr "Kunci API"
 
 #: qml/widgets/weather/Settings.qml:78
 msgid "OpenWeatherMap API"
-msgstr ""
+msgstr "OpenWeatherMap API"
 
 #: qml/widgets/weather/Settings.qml:90
 msgid "Click to sign up for an API key"
-msgstr ""
+msgstr "Klik untuk mendaftar kunci API"
 
 #: qml/widgets/weather/Settings.qml:108
 msgid "City name"
-msgstr ""
+msgstr "Nama kota"
 
 #: qml/widgets/weather/Settings.qml:127
 msgid "or"
-msgstr ""
+msgstr "atau"
 
 #: launchermodular.desktop.in.h:1
 msgid "Launcher Modular"
-msgstr ""
+msgstr "Launcher Modular"
