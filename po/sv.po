@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-26 07:59+0000\n"
-"PO-Revision-Date: 2025-11-23 09:40+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/launcher-modular/"
-"launchermodular-lut11/sv/>\n"
+"PO-Revision-Date: 2026-09-30 14:48+0000\n"
+"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/ubports/launcher-"
+"modular/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -303,7 +303,7 @@ msgstr ""
 
 #: qml/ChangeLogs.qml:131
 msgid "Open the photo by clicking on it!"
-msgstr "Öppna applikationen"
+msgstr "Öppna fotot genom att klicka på det!"
 
 #: qml/ChangeLogs.qml:133
 msgid "Swipe up to configure the launcher, and click on 'Autostart"
@@ -330,7 +330,7 @@ msgstr ""
 
 #: qml/ChangeLogs.qml:139
 msgid "Resumption of the application."
-msgstr "Öppna applikationen"
+msgstr "Återupptagande av ansökan."
 
 #: qml/ChangeLogs.qml:244
 msgid "Version: "
@@ -757,7 +757,7 @@ msgstr "Ingen"
 
 #: qml/pages/home/Settings.qml:185
 msgid "Unstyled icons"
-msgstr "Stilikoner : "
+msgstr "Ikoner utan stil"
 
 #: qml/pages/home/Settings.qml:186
 msgid "Rounded"
@@ -883,9 +883,8 @@ msgid "picture"
 msgstr ""
 
 #: qml/pages/picture/Settings.qml:57
-#, fuzzy
 msgid "Image folder path:"
-msgstr "Bildsökväg"
+msgstr "Genväg till bild-mapp:"
 
 #: qml/pages/picture/Settings.qml:107
 msgid "Unsorted"
