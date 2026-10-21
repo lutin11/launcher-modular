@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-26 07:59+0000\n"
-"PO-Revision-Date: 2026-09-30 14:48+0000\n"
-"Last-Translator: aimar orbe <aimar.orbe@ehu.eus>\n"
+"PO-Revision-Date: 2026-10-21 17:38+0000\n"
+"Last-Translator: aimar orbe <aimar@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/ubports/launcher-"
 "modular/eu/>\n"
 "Language: eu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: qml/Autostart.qml:15
 msgid "Autostart Modular Launcher"
@@ -361,7 +361,7 @@ msgstr ""
 
 #: qml/ChangeLogs.qml:447
 msgid "Maintainer"
-msgstr ""
+msgstr "Mantentzailea"
 
 #: qml/ChangeLogs.qml:461
 msgid "Copyright"
@@ -420,7 +420,7 @@ msgstr ""
 
 #: qml/Main.qml:682
 msgid "About"
-msgstr ""
+msgstr "Honi buruz"
 
 #: qml/Main.qml:739
 msgid "Website"
@@ -481,7 +481,7 @@ msgstr "Ezarpenak"
 
 #: qml/Settings.qml:50 qml/pages/home/Settings.qml:181
 msgid "General"
-msgstr ""
+msgstr "Orokorra"
 
 #: qml/Settings.qml:55
 msgid "Dark background"
