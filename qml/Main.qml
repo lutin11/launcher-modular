@@ -8,6 +8,7 @@ import Lomiri.Components.ListItems 1.3 as ListItem
 import MySettings 1.0
 import AppHandler 1.0
 import "pages"
+import "components"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
 import Lomiri.Components.Themes 1.3
@@ -27,6 +28,8 @@ MainView {
     property ListModel favoriteAppsModel :  ListModel { id: favoriteAppsModel }
     property variant datenow: new Date()
     property string iconCustomUrl: "../assets/placeholder-app-icon.svg"
+    /// Set by the help page to replay the guided tour once back on the launcher
+    property bool tutorialRequested: false
 
 
     function getCustomIconArray() {
@@ -84,6 +87,7 @@ MainView {
 
         property bool firstRun: true
         property bool firstRunNew: true
+        property bool tutorialSeen: false
         property bool developerModeEnabled: false
         property string version: '0'
 
@@ -198,6 +202,11 @@ MainView {
                     launchermodular.settings.version = appVersion;
                 }
 
+                // show the guided tour once, after the launcher has settled
+                if (!launchermodular.settings.tutorialSeen) {
+                    tutorialStart.start()
+                }
+
                 if (DEBUG_MODE) console.log("###### on Component completion #####")
 
                 if(typeof launchermodular.settings.customIcon == 'undefined') {
@@ -305,6 +314,7 @@ MainView {
                         interactive: !launchermodular.settings.fullScreen
 
                         Repeater {
+                            id: pageRepeater
                             model: launchermodular.pageModel
                             Loader {
                                 id: pageLoader
@@ -430,7 +440,8 @@ MainView {
                 // first time running
                 Rectangle {
                     id: tutorialConfig
-                    visible: launchermodular.settings.firstRun
+                    // the guided tour explains the same gesture
+                    visible: launchermodular.settings.firstRun && !launchermodular.tutorialRequested
                     color:"#111111"
                     height: units.gu(5)
 
@@ -881,6 +892,41 @@ MainView {
                         }
                     }
                 }
+            }
+
+            /* ******************************** LE MASQUE PEDAGOGIQUE ******************************** */
+
+            Tutorial {
+                id: tutorial
+
+                anchors.fill: parent
+
+                // asked for at the first run (Main.qml) or from the help page
+                // (Help.qml), and shown only once back on the launcher itself
+                visible: launchermodular.tutorialRequested && pageStack.depth === 1
+
+                bottomBar: bottomBarLayout
+                pageView: view
+                pageRepeater: pageRepeater
+
+                // the automatic tour is a one-off, from the first run on
+                onVisibleChanged: {
+                    if (visible) {
+                        launchermodular.settings.tutorialSeen = true
+                    }
+                }
+
+                onFinished: launchermodular.tutorialRequested = false
+            }
+
+            /* Gives the launcher the time to settle before the tour is asked
+               for: a first run also opens the change log page, and the tour has
+               to wait for it instead of flashing over it. The first page needs
+               this time to load, as the tour points at its parts. */
+            Timer {
+                id: tutorialStart
+                interval: 1500
+                onTriggered: launchermodular.tutorialRequested = true
             }
         }
     }
