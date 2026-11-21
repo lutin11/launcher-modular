@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-26 07:59+0000\n"
+"POT-Creation-Date: 2026-11-21 16:31+0000\n"
 "PO-Revision-Date: 2025-11-23 09:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Kurdish (Northern) <https://hosted.weblate.org/projects/"
@@ -375,17 +375,21 @@ msgstr ""
 msgid "Modular Launcher Help"
 msgstr ""
 
-#: qml/Help.qml:49
+#: qml/Help.qml:48
+msgid "How to use"
+msgstr ""
+
+#: qml/Help.qml:61
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr ""
 
-#: qml/Help.qml:63
+#: qml/Help.qml:75
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
 
-#: qml/Help.qml:77
+#: qml/Help.qml:89
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
@@ -394,76 +398,76 @@ msgstr ""
 msgid "Choose"
 msgstr ""
 
-#: qml/Main.qml:459
+#: qml/Main.qml:470
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: qml/Main.qml:517
+#: qml/Main.qml:528
 msgid "Add custom icon"
 msgstr ""
 
-#: qml/Main.qml:550
+#: qml/Main.qml:561
 msgid "Manage pages"
 msgstr ""
 
-#: qml/Main.qml:583
+#: qml/Main.qml:594
 msgid "Configure Launcher"
 msgstr ""
 
-#: qml/Main.qml:616
+#: qml/Main.qml:627
 msgid "Autostart"
 msgstr ""
 
-#: qml/Main.qml:649
+#: qml/Main.qml:660
 msgid "Help"
 msgstr ""
 
-#: qml/Main.qml:682
+#: qml/Main.qml:693
 msgid "About"
 msgstr ""
 
-#: qml/Main.qml:739
+#: qml/Main.qml:750
 msgid "Website"
 msgstr ""
 
-#: qml/Main.qml:739
+#: qml/Main.qml:750
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: qml/Main.qml:740
+#: qml/Main.qml:751
 msgid "Terminal command"
 msgstr ""
 
-#: qml/Main.qml:740
+#: qml/Main.qml:751
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: qml/Main.qml:741
+#: qml/Main.qml:752
 msgid "Launch app"
 msgstr ""
 
-#: qml/Main.qml:741
+#: qml/Main.qml:752
 msgid "Launch an app"
 msgstr ""
 
-#: qml/Main.qml:765
+#: qml/Main.qml:776
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: qml/Main.qml:778
+#: qml/Main.qml:789
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: qml/Main.qml:802 qml/Main.qml:803 qml/Main.qml:804
+#: qml/Main.qml:813 qml/Main.qml:814 qml/Main.qml:815
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: qml/Main.qml:816
+#: qml/Main.qml:827
 msgid "Create icon"
 msgstr ""
 
-#: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
-#: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
+#: qml/Main.qml:870 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
+#: qml/pages/Home.qml:532 qml/pages/home/Settings.qml:69
 msgid "Cancel"
 msgstr ""
 
@@ -528,9 +532,121 @@ msgid "Tamil - "
 msgstr ""
 
 #: qml/Translators.qml:194
+msgid "Ukrainian - "
+msgstr ""
+
+#: qml/Translators.qml:209
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "ubports/launcher-modular/'>Hosted Weblate</a>."
+msgstr ""
+
+#: qml/components/Tutorial.qml:90
+msgid "Welcome to Modular Launcher"
+msgstr ""
+
+#: qml/components/Tutorial.qml:91
+msgid ""
+"Every screen of this launcher is a page you add and configure yourself. This "
+"tour shows the parts of the Home page. You can leave it at any time and find "
+"it again in the help."
+msgstr ""
+
+#: qml/components/Tutorial.qml:95
+msgid "The search bar"
+msgstr ""
+
+#: qml/components/Tutorial.qml:96
+msgid ""
+"Type to filter the applications of this page. The same field finds your "
+"contacts and calculates an expression. The icon on its right opens a web "
+"search, with the engine chosen in the settings of this page."
+msgstr ""
+
+#: qml/components/Tutorial.qml:100
+msgid "The widgets"
+msgstr ""
+
+#: qml/components/Tutorial.qml:101
+msgid ""
+"The clock, the weather, the alarms, the last calls, the last messages and "
+"the events live here. Press and hold a widget to open its own settings, and "
+"choose the ones to show in the settings of this page."
+msgstr ""
+
+#: qml/components/Tutorial.qml:105
+msgid "The favorite applications"
+msgstr ""
+
+#: qml/components/Tutorial.qml:106
+msgid ""
+"The applications you choose stay at the top of this page, above the others. "
+"Add, remove and reorder them in the settings of this page."
+msgstr ""
+
+#: qml/components/Tutorial.qml:110
+msgid "The applications"
+msgstr ""
+
+#: qml/components/Tutorial.qml:111
+msgid ""
+"All the applications installed on the device, and the custom icons you "
+"create. Touch one to launch it, press and hold it to uninstall it or to take "
+"a custom icon off, and pull down to refresh the list."
+msgstr ""
+
+#: qml/components/Tutorial.qml:116
+msgid "Moving between pages"
+msgstr ""
+
+#: qml/components/Tutorial.qml:117
+msgid ""
+"The bar at the bottom shows one icon per page of the launcher. Touch an icon "
+"to jump to that page, or swipe left and right, on this bar or on the page "
+"itself, to go from one page to the next."
+msgstr ""
+
+#: qml/components/Tutorial.qml:122
+msgid "The configuration bar"
+msgstr ""
+
+#: qml/components/Tutorial.qml:123
+msgid ""
+"Swipe up from the bottom of the screen to open it: add a custom icon, manage "
+"the pages, configure the launcher and its autostart, open the help and the "
+"about page."
+msgstr ""
+
+#: qml/components/Tutorial.qml:127
+msgid "Configuring the pages"
+msgstr ""
+
+#: qml/components/Tutorial.qml:128
+msgid ""
+"In that bar, Manage pages opens the list of your pages. The plus sign adds "
+"one: another home, a clock, a calendar, photos, music, videos, news feeds, "
+"tasks, folders or your Nextcloud files. Touching a page opens its own "
+"settings. Enjoy your launcher."
+msgstr ""
+
+#: qml/components/Tutorial.qml:501
+msgid "Step %1 of %2"
+msgstr ""
+
+#: qml/components/Tutorial.qml:511
+msgid "Skip"
+msgstr ""
+
+#: qml/components/Tutorial.qml:518
+msgid "Previous"
+msgstr ""
+
+#: qml/components/Tutorial.qml:524
+msgid "Get started"
+msgstr ""
+
+#: qml/components/Tutorial.qml:524
+msgid "Next"
 msgstr ""
 
 #: qml/pages/Calendar.qml:111
@@ -545,15 +661,15 @@ msgstr ""
 msgid "ok"
 msgstr ""
 
-#: qml/pages/Home.qml:255
+#: qml/pages/Home.qml:266
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: qml/pages/Home.qml:480
+#: qml/pages/Home.qml:491
 msgid "Uninstall"
 msgstr ""
 
-#: qml/pages/Home.qml:480
+#: qml/pages/Home.qml:491
 msgid "Remove"
 msgstr ""
 
@@ -711,7 +827,7 @@ msgstr ""
 
 #: qml/pages/folders/Settings.qml:48 qml/pages/music/Settings.qml:49
 #: qml/pages/videos/Settings.qml:48
-msgid "Exemple"
+msgid "Example"
 msgstr ""
 
 #: qml/pages/home/Settings.qml:13
@@ -842,7 +958,7 @@ msgid "Starting folder"
 msgstr ""
 
 #: qml/pages/nextcloudfolders/Settings.qml:184
-msgid "Test connexion"
+msgid "Test connection"
 msgstr ""
 
 #: qml/pages/picture/SelectFolderPage.qml:42
