@@ -332,6 +332,14 @@ Pas de dépendance C++ vers un autre plugin.
   `Home.qml` : `search`, `widgets`, `widgetsMore`, `favorites`, `apps`) et ids
   `view`, `pageRepeater`, `bottomBarLayout` de `Main.qml`. Renommer l'un d'eux
   fait disparaître l'étape correspondante de la visite, sans erreur.
+- `PageStack` (Lomiri Components 1.3, déprécié) : `pageLauncher` est un enfant
+  déclaratif du `PageStack` et n'y est jamais poussée (`PageStack.qml` du
+  framework place les enfants dans un nœud inactif). Sur le lanceur, `depth`
+  vaut donc `0` et `currentPage` vaut `null` ; `depth === 1` signifie « une
+  page poussée par-dessus le lanceur ». Pour tester « l'utilisateur est sur le
+  lanceur », écrire `!pageStack.currentPage` — la condition posée sur l'instance
+  de `Tutorial` dans `Main.qml`. Tous les boutons « retour » reposent sur cette
+  pile à un seul niveau.
 - Plugins indépendants ; la composition se fait uniquement en QML.
 - `Terminalaccess` : un seul `QProcess` partagé, appels bloquants — ne pas
   empiler de commandes concurrentes ni ajouter d'appels bloquants.

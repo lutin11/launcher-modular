@@ -902,8 +902,11 @@ MainView {
                 anchors.fill: parent
 
                 // asked for at the first run (Main.qml) or from the help page
-                // (Help.qml), and shown only once back on the launcher itself
-                visible: launchermodular.tutorialRequested && pageStack.depth === 1
+                // (Help.qml), and shown only once back on the launcher itself.
+                // The page of the launcher is never pushed on the stack, so
+                // whatever covers it is the current page, and there is none
+                // while the launcher is the screen the user sees
+                visible: launchermodular.tutorialRequested && !pageStack.currentPage
 
                 bottomBar: bottomBarLayout
                 pageView: view
