@@ -11,6 +11,9 @@ import "pages"
 import QtQuick.Controls 2.2
 import Lomiri.Components.Popups 1.3
 import Lomiri.Components.Themes 1.3
+import Platform 1.0
+import "components"
+import "helpers/PageRequirements.js" as PageRequirements
 
 MainView {
     id: launchermodular
@@ -297,6 +300,13 @@ MainView {
                     anchors.fill: parent
                     color: "transparent"
 
+                    // Shown instead of a page that cannot be loaded, most of the
+                    // time because an external module is missing.
+                    Component {
+                        id: pageUnavailableComponent
+                        PageUnavailable { }
+                    }
+
                     /* ******************************** LES PAGES COMMENCE ICI ******************************** */
                     SwipeView {
                         id: view
@@ -312,6 +322,11 @@ MainView {
                                 onLoaded: {
                                     if (item) {
                                         item.visible = visible
+                                        // Empty state: hand it what it must display
+                                        if (typeof item.dependencies !== "undefined") {
+                                            item.pageName = model.name
+                                            item.dependencies = PageRequirements.missingModules(Platform, model.name)
+                                        }
                                         // Injecte the data used for the curent page
                                         if (typeof item.pageData !== "undefined") {
                                             item.pageData = model.data
@@ -322,10 +337,17 @@ MainView {
                                     if (item) item.visible = visible
                                 }
                                 sourceComponent: {
+                                    // A page that needs a missing module cannot be loaded at
+                                    // all: show an empty state naming the missing module
+                                    // instead of a blank page.
+                                    if (model.directory === "pages/"
+                                            && !PageRequirements.isAvailable(Platform, model.name)) {
+                                        return pageUnavailableComponent
+                                    }
                                     var comp = Qt.createComponent(model.directory + model.name);
                                     if (comp.status === Component.Error) {
                                         console.error("Failed to load component: " + model.directory + model.name + ", error: " + comp.errorString());
-                                        return null;
+                                        return pageUnavailableComponent;
                                     }
                                     return comp;
                                 }
@@ -754,7 +776,14 @@ MainView {
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
-                                        pageStack.push(Qt.resolvedUrl("ImportPage.qml"));
+                                        // Picking an image goes through the content hub
+                                        // (Lomiri.Content). Without that module the page
+                                        // cannot open, so the click would do nothing.
+                                        if (Platform.hasContentModule) {
+                                            pageStack.push(Qt.resolvedUrl("ImportPage.qml"));
+                                        } else {
+                                            console.log("Icon picker unavailable: Lomiri.Content module missing")
+                                        }
                                     }
                                 }
                                 Label {

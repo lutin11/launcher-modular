@@ -52,7 +52,10 @@ foreach(PO_FILE ${PO_FILES})
     )
     add_custom_target(mo_${LANG} ALL DEPENDS ${GMO_FILE})
 
-    set(INSTALL_DIR /share/locale/${LANG}/LC_MESSAGES)
+    # Relative on purpose: the click builder installs with prefix / (files land
+    # in /share/locale as before), while a desktop install follows the prefix
+    # (/usr/share/locale) instead of writing to the filesystem root.
+    set(INSTALL_DIR share/locale/${LANG}/LC_MESSAGES)
     install(FILES ${GMO_FILE}
             DESTINATION ${INSTALL_DIR}
             RENAME ${DOMAIN}.mo)

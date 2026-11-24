@@ -5,6 +5,8 @@ import Qt.labs.settings 1.0
 import QtQuick.Controls 2.2
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
+import Lomiri.Components.Popups 1.3
+import Platform 1.0
 import "pages"
 
 Page {
@@ -80,6 +82,53 @@ Page {
                         horizontalAlignment: Text.AlignHCenter
                         width: parent.width - units.gu(12)
                         color: "#ffffff"
+                    }
+                }
+
+                Item {
+                    width: parent.width
+                    height: diagnosticButton.height + units.gu(2)
+
+                    Button {
+                        id: diagnosticButton
+                        anchors.centerIn: parent
+                        text: i18n.tr("Diagnostic")
+                        onClicked: PopupUtils.open(diagnosticDialog)
+                    }
+
+                    // List of the dependencies really found on this machine. The
+                    // content is not translated: it is technical state, meant to
+                    // be copied into a bug report.
+                    Component {
+                        id: diagnosticDialog
+                        Dialog {
+                            id: diagnosticDialogue
+                            title: i18n.tr("Diagnostic")
+
+                            Flickable {
+                                width: units.gu(24)
+                                height: units.gu(30)
+                                contentHeight: diagnosticText.height
+                                clip: true
+
+                                TextEdit {
+                                    id: diagnosticText
+                                    width: parent.width
+                                    readOnly: true
+                                    selectByMouse: true
+                                    text: Platform.diagnostics()
+                                    color: "#ffffff"
+                                    font.family: "Monospace"
+                                    font.pixelSize: units.gu(1.6)
+                                    wrapMode: Text.WordWrap
+                                }
+                            }
+
+                            Button {
+                                text: i18n.tr("Close")
+                                onClicked: PopupUtils.close(diagnosticDialogue)
+                            }
+                        }
                     }
                 }
             }

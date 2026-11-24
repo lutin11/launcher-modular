@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-26 07:59+0000\n"
+"POT-Creation-Date: 2026-11-24 07:49+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -338,9 +338,9 @@ msgid ""
 "github.com/ruditimmermans/launcher-modular'>Ruditimmermans</a> ones, It "
 "contains, libraries updates and some fixes."
 msgstr ""
-"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://"
-"github.com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، "
-"تحديثات المكتبات وبعض الإصلاحات.English"
+"هذا هو الإصدار الأول من Launcher Modular استنادًا إلى <a href='https://github."
+"com/ruditimmermans/launcher-modular'>روديتيمرمانس</a>، ويحتوي على، تحديثات "
+"المكتبات وبعض الإصلاحات.English"
 
 #: qml/ChangeLogs.qml:139
 msgid "Resumption of the application."
@@ -400,15 +400,15 @@ msgstr "حقوق الطبع والنشر"
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr "a href='LAUNCHER MODULAR TRANSLATORS'>مترجمو المشغلات المعيارية</a>"
 
-#: qml/Help.qml:15
+#: qml/Help.qml:17
 msgid "Modular Launcher Help"
 msgstr "المساعدة للمشغل المعياري"
 
-#: qml/Help.qml:49
+#: qml/Help.qml:51
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr "<br><b>انقر مع الاستمرار على الأداة لتغيير إعداداتها.</b>"
 
-#: qml/Help.qml:63
+#: qml/Help.qml:65
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
@@ -416,96 +416,104 @@ msgstr ""
 "<br><b>لإضافة صفحة جديدة، انتقل إلى \"إدارة الصفحة\" وانقر على \"+\" في "
 "الجزء العلوي الأيسر.</b>"
 
-#: qml/Help.qml:77
+#: qml/Help.qml:79
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
 msgstr ""
 "<br><b>لتغيير إعدادات الصفحة، انتقل إلى \"إدارة الصفحة\" وانقر على الصفحة.</"
 "b>"
 
+#: qml/Help.qml:95 qml/Help.qml:106
+msgid "Diagnostic"
+msgstr ""
+
+#: qml/Help.qml:128
+msgid "Close"
+msgstr ""
+
 #: qml/ImportPage.qml:13
 msgid "Choose"
 msgstr "إختار"
 
-#: qml/Main.qml:459
+#: qml/Main.qml:481
 msgid "Swipe up to configure the launcher"
 msgstr "اسحب لأعلى لإعداد المشغل"
 
-#: qml/Main.qml:517
+#: qml/Main.qml:539
 msgid "Add custom icon"
 msgstr "إضافة أيقونة مخصصة"
 
-#: qml/Main.qml:550
+#: qml/Main.qml:572
 #, fuzzy
 msgid "Manage pages"
 msgstr "إدارة الصفحة"
 
-#: qml/Main.qml:583
+#: qml/Main.qml:605
 msgid "Configure Launcher"
 msgstr "إعداد المشغل"
 
-#: qml/Main.qml:616
+#: qml/Main.qml:638
 msgid "Autostart"
 msgstr "التشغيل التلقائي"
 
-#: qml/Main.qml:649
+#: qml/Main.qml:671
 msgid "Help"
 msgstr "المساعدة"
 
-#: qml/Main.qml:682
+#: qml/Main.qml:704
 msgid "About"
 msgstr "حول"
 
-#: qml/Main.qml:739
+#: qml/Main.qml:761
 msgid "Website"
 msgstr "الموقع"
 
-#: qml/Main.qml:739
+#: qml/Main.qml:761
 msgid "Open this URL in the web browser"
 msgstr "افتح عنوان URL هذا في متصفح الويب"
 
-#: qml/Main.qml:740
+#: qml/Main.qml:762
 msgid "Terminal command"
 msgstr "أوامر الطرفية"
 
-#: qml/Main.qml:740
+#: qml/Main.qml:762
 msgid "Run a command in a terminal"
 msgstr "تشغيل أمر في الطرفية"
 
-#: qml/Main.qml:741
+#: qml/Main.qml:763
 msgid "Launch app"
 msgstr "شغل التطبيق"
 
-#: qml/Main.qml:741
+#: qml/Main.qml:763
 msgid "Launch an app"
 msgstr "شغل التطبيق"
 
-#: qml/Main.qml:765
+#: qml/Main.qml:794
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "أيقونة SVG أو PNG. نسبة 1:1"
 
-#: qml/Main.qml:778
+#: qml/Main.qml:807
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>العنوان</b> الذي سيتم عرضه في قائمة التطبيقات"
 
-#: qml/Main.qml:802 qml/Main.qml:803 qml/Main.qml:804
+#: qml/Main.qml:831 qml/Main.qml:832 qml/Main.qml:833
 msgid "<b>Action</b> example: "
 msgstr "مثال <b>الإجراء</b>:"
 
-#: qml/Main.qml:816
+#: qml/Main.qml:845
 msgid "Create icon"
 msgstr "إنشاء أيقونة"
 
-#: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
-#: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
+#: qml/Main.qml:888 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
+#: qml/pages/Home.qml:564 qml/pages/home/Settings.qml:70
 msgid "Cancel"
 msgstr "إلغاء"
 
-#: qml/Pagemanagement.qml:18
+#: qml/Pagemanagement.qml:20
 msgid "Page management"
 msgstr "إدارة الصفحة"
 
-#: qml/Pagemanagement.qml:48
+#: qml/Pagemanagement.qml:50
 msgid "Choose a page"
 msgstr "اختر صفحة"
 
@@ -513,7 +521,7 @@ msgstr "اختر صفحة"
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: qml/Settings.qml:50 qml/pages/home/Settings.qml:181
+#: qml/Settings.qml:50 qml/pages/home/Settings.qml:182
 msgid "General"
 msgstr "عام"
 
@@ -562,6 +570,10 @@ msgid "Tamil - "
 msgstr ""
 
 #: qml/Translators.qml:194
+msgid "Ukrainian - "
+msgstr ""
+
+#: qml/Translators.qml:209
 #, fuzzy
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
@@ -569,6 +581,22 @@ msgid ""
 msgstr ""
 "ترجمة المشغل المعياري على <a href='https://hosted.weblate.org/projects/"
 "launcher-modular/launchermodular-lut11'>Weblate المستضاف</a>"
+
+#: qml/components/PageUnavailable.qml:23
+msgid "This page is not available"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:37
+msgid "It requires a module that is not installed on this system: %1"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:39
+msgid "One of its components is missing on this system."
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:48
+msgid "You can remove this page in the configuration bar."
+msgstr ""
 
 #: qml/pages/Calendar.qml:111
 msgid "Agenda"
@@ -578,19 +606,19 @@ msgstr "أجندة"
 msgid "Search a file"
 msgstr ""
 
-#: qml/pages/Home.qml:40
+#: qml/pages/Home.qml:41
 msgid "ok"
 msgstr "أوكي"
 
-#: qml/pages/Home.qml:255
+#: qml/pages/Home.qml:263
 msgid "Search your phone and online sources"
 msgstr "ابحث عن هاتفك ومصادرك عبر الإنترنت"
 
-#: qml/pages/Home.qml:480
+#: qml/pages/Home.qml:516
 msgid "Uninstall"
 msgstr "إلغاء التثبيت"
 
-#: qml/pages/Home.qml:480
+#: qml/pages/Home.qml:516
 msgid "Remove"
 msgstr "حذف"
 
@@ -661,7 +689,7 @@ msgstr "انتقل إلى إدارة الصفحة لإضافة الخلاصات.
 msgid "New todo"
 msgstr "todo جديد"
 
-#: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:157
+#: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:158
 #: qml/pages/music/PlaylistsView.qml:125 qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr "حذف"
@@ -675,7 +703,7 @@ msgid "calendar"
 msgstr ""
 
 #: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
-#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
+#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:18
 #: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
 #: qml/pages/videos/Settings.qml:14
@@ -753,72 +781,72 @@ msgstr "لا توجد إعدادات لصفحة \"TODO\"."
 
 #: qml/pages/folders/Settings.qml:48 qml/pages/music/Settings.qml:49
 #: qml/pages/videos/Settings.qml:48
-msgid "Exemple"
+msgid "Example"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:13
+#: qml/pages/home/Settings.qml:14
 msgid "home"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:85
+#: qml/pages/home/Settings.qml:86
 #, fuzzy
 msgid "Add a favorite application"
 msgstr "افتح التطبيق"
 
-#: qml/pages/home/Settings.qml:126
+#: qml/pages/home/Settings.qml:127
 msgid "Favorite apps management"
 msgstr "إدارة التطبيقات المفضلة"
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "None"
 msgstr "لاشئ"
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "Unstyled icons"
 msgstr "أيقونات غير نمطية"
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded"
 msgstr "مدور"
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded icons"
 msgstr "أيقونات مدورة"
 
-#: qml/pages/home/Settings.qml:211
+#: qml/pages/home/Settings.qml:212
 msgid "Style Icons : "
 msgstr "نمط اﻷيقونات:"
 
-#: qml/pages/home/Settings.qml:255
+#: qml/pages/home/Settings.qml:256
 msgid "Search engine : "
 msgstr ""
 
-#: qml/pages/home/Settings.qml:266
+#: qml/pages/home/Settings.qml:267
 msgid "Widgets"
 msgstr "القطعة"
 
-#: qml/pages/home/Settings.qml:271
+#: qml/pages/home/Settings.qml:272
 msgid "Show clock"
 msgstr "عرض الساعة"
 
-#: qml/pages/home/Settings.qml:280
+#: qml/pages/home/Settings.qml:281
 msgid "Show weather"
 msgstr "عرض الطقس"
 
-#: qml/pages/home/Settings.qml:290
+#: qml/pages/home/Settings.qml:291
 msgid "Show alarms"
 msgstr "عرض المنبه"
 
-#: qml/pages/home/Settings.qml:299
+#: qml/pages/home/Settings.qml:300
 #, fuzzy
 msgid "Show last calls"
 msgstr "عرض آخر مكالمة"
 
-#: qml/pages/home/Settings.qml:308
+#: qml/pages/home/Settings.qml:312
 msgid "Show last message"
 msgstr "عرض آخر رسالة"
 
-#: qml/pages/home/Settings.qml:317
+#: qml/pages/home/Settings.qml:322
 #, fuzzy
 msgid "Show last events"
 msgstr "عرض اﻷحداث"
@@ -889,7 +917,7 @@ msgid "Starting folder"
 msgstr "إعدادات القطعة"
 
 #: qml/pages/nextcloudfolders/Settings.qml:184
-msgid "Test connexion"
+msgid "Test connection"
 msgstr ""
 
 #: qml/pages/picture/SelectFolderPage.qml:42
@@ -1002,7 +1030,7 @@ msgstr "لا يوجد أحداث"
 msgid "Favorite Apps"
 msgstr "التطبيقات المفضلة"
 
-#: qml/widgets/FavoriteContact.qml:32
+#: qml/widgets/FavoriteContact.qml:33
 msgid "Favorite Contacts"
 msgstr "جهات اﻹتصال المفضلة"
 
@@ -1030,7 +1058,7 @@ msgstr "آخر رسالة"
 msgid "No recent messages"
 msgstr "لا توجد رسائل حالية"
 
-#: qml/widgets/SearchContact.qml:35
+#: qml/widgets/SearchContact.qml:36
 msgid "Search Contacts"
 msgstr "البحث عن جهات اﻹتصال"
 

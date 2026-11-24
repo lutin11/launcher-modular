@@ -9,6 +9,8 @@ import Lomiri.Components.Popups 1.3
 import Lomiri.Components.Themes 1.3
 import Qt.labs.folderlistmodel 2.12
 import MySettings 1.0
+import Platform 1.0
+import "helpers/PageRequirements.js" as PageRequirements
 
 Page {
     id: pageSettings
@@ -123,6 +125,15 @@ Page {
                     }
 
                     delegate: ListItem {
+                        // Pages that need an external module missing from this machine
+                        // cannot be added, so they are not offered. Personal pages are
+                        // never filtered. Qt.labs.folderlistmodel has no pattern property
+                        // to drop them from the model, so the row is collapsed and made
+                        // inert instead: an invisible item receives no click.
+                        property bool usable: PageRequirements.isAvailable(Platform, fileName)
+                        visible: usable
+                        height: usable ? (modelLayout3.height + (divider.visible ? divider.height : 0)) : 0
+
                         ListItemLayout {
                             height: modelLayout3.height + (divider.visible ? divider.height : 0)
                             id: modelLayout3

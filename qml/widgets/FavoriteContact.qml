@@ -2,6 +2,7 @@ import QtQuick 2.12
 import Lomiri.Components 1.3
 import QtContacts 5.0
 import QtGraphicalEffects 1.12
+import Platform 1.0
 
 Column {
     id: widgetFavoriteContacts
@@ -64,7 +65,7 @@ Column {
             value: true
             matchFlags: DetailFilter.MatchExactly
         }
-        manager: "galera"
+        manager: Platform.preferredContactManager
     }
                     
     GridView {

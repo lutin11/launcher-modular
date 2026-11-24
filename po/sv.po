@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-26 07:59+0000\n"
+"POT-Creation-Date: 2026-11-24 07:49+0000\n"
 "PO-Revision-Date: 2026-11-09 21:51+0000\n"
-"Last-Translator: Kristoffer Grundström "
-"<umeaboy@users.noreply.hosted.weblate.org>\n"
+"Last-Translator: Kristoffer Grundström <umeaboy@users.noreply.hosted.weblate."
+"org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/ubports/launcher-"
 "modular/sv/>\n"
 "Language: sv\n"
@@ -365,9 +365,9 @@ msgstr ""
 "Software Foundation, antingen version 3 av licensen, eller (efter eget val) "
 "vilken senare version som helst. Detta program distribueras i hopp om att "
 "det ska vara användbart, men UTAN NÅGON GARANTI; utan ens den underförstådda "
-"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a "
-"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
-"License</a> för mer information."
+"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a href="
+"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
+"a> för mer information."
 
 #: qml/ChangeLogs.qml:432
 msgid "SOURCE"
@@ -389,108 +389,116 @@ msgstr "Copyright"
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
-#: qml/Help.qml:15
+#: qml/Help.qml:17
 msgid "Modular Launcher Help"
 msgstr "Konfigurera Launcher"
 
-#: qml/Help.qml:49
+#: qml/Help.qml:51
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr ""
 
-#: qml/Help.qml:63
+#: qml/Help.qml:65
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
 
-#: qml/Help.qml:77
+#: qml/Help.qml:79
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
+msgstr ""
+
+#: qml/Help.qml:95 qml/Help.qml:106
+msgid "Diagnostic"
+msgstr ""
+
+#: qml/Help.qml:128
+msgid "Close"
 msgstr ""
 
 #: qml/ImportPage.qml:13
 msgid "Choose"
 msgstr "Välj"
 
-#: qml/Main.qml:459
+#: qml/Main.qml:481
 msgid "Swipe up to configure the launcher"
 msgstr "Svep uppåt för att konfigurera startprogrammet"
 
-#: qml/Main.qml:517
+#: qml/Main.qml:539
 msgid "Add custom icon"
 msgstr "Lägg till anpassad ikon"
 
-#: qml/Main.qml:550
+#: qml/Main.qml:572
 #, fuzzy
 msgid "Manage pages"
 msgstr "Hantera sida"
 
-#: qml/Main.qml:583
+#: qml/Main.qml:605
 msgid "Configure Launcher"
 msgstr "Konfigurera Launcher"
 
-#: qml/Main.qml:616
+#: qml/Main.qml:638
 msgid "Autostart"
 msgstr "Autostart"
 
-#: qml/Main.qml:649
+#: qml/Main.qml:671
 msgid "Help"
 msgstr "Hjälp"
 
-#: qml/Main.qml:682
+#: qml/Main.qml:704
 msgid "About"
 msgstr "Om"
 
-#: qml/Main.qml:739
+#: qml/Main.qml:761
 msgid "Website"
 msgstr "Webbsida"
 
-#: qml/Main.qml:739
+#: qml/Main.qml:761
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: qml/Main.qml:740
+#: qml/Main.qml:762
 msgid "Terminal command"
 msgstr "Terminalkommando"
 
-#: qml/Main.qml:740
+#: qml/Main.qml:762
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: qml/Main.qml:741
+#: qml/Main.qml:763
 msgid "Launch app"
 msgstr "Starta app"
 
-#: qml/Main.qml:741
+#: qml/Main.qml:763
 msgid "Launch an app"
 msgstr "Starta en app"
 
-#: qml/Main.qml:765
+#: qml/Main.qml:794
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "SVG eller PNG ikon. 1:1 ratio"
 
-#: qml/Main.qml:778
+#: qml/Main.qml:807
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>titeln</b> som ska visas i applistan"
 
-#: qml/Main.qml:802 qml/Main.qml:803 qml/Main.qml:804
+#: qml/Main.qml:831 qml/Main.qml:832 qml/Main.qml:833
 msgid "<b>Action</b> example: "
 msgstr "<b>Åtgärd</b> exempel: "
 
-#: qml/Main.qml:816
+#: qml/Main.qml:845
 msgid "Create icon"
 msgstr "Skapa ikon"
 
-#: qml/Main.qml:859 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
-#: qml/pages/Home.qml:521 qml/pages/home/Settings.qml:69
+#: qml/Main.qml:888 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
+#: qml/pages/Home.qml:564 qml/pages/home/Settings.qml:70
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: qml/Pagemanagement.qml:18
+#: qml/Pagemanagement.qml:20
 msgid "Page management"
 msgstr "Sidhantering"
 
-#: qml/Pagemanagement.qml:48
+#: qml/Pagemanagement.qml:50
 msgid "Choose a page"
 msgstr "Välj en sida"
 
@@ -498,7 +506,7 @@ msgstr "Välj en sida"
 msgid "Settings"
 msgstr "Inställningar"
 
-#: qml/Settings.qml:50 qml/pages/home/Settings.qml:181
+#: qml/Settings.qml:50 qml/pages/home/Settings.qml:182
 msgid "General"
 msgstr "Allmänt"
 
@@ -547,9 +555,29 @@ msgid "Tamil - "
 msgstr ""
 
 #: qml/Translators.qml:194
+msgid "Ukrainian - "
+msgstr ""
+
+#: qml/Translators.qml:209
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "ubports/launcher-modular/'>Hosted Weblate</a>."
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:23
+msgid "This page is not available"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:37
+msgid "It requires a module that is not installed on this system: %1"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:39
+msgid "One of its components is missing on this system."
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:48
+msgid "You can remove this page in the configuration bar."
 msgstr ""
 
 #: qml/pages/Calendar.qml:111
@@ -560,19 +588,19 @@ msgstr "Agenda"
 msgid "Search a file"
 msgstr ""
 
-#: qml/pages/Home.qml:40
+#: qml/pages/Home.qml:41
 msgid "ok"
 msgstr "ok"
 
-#: qml/pages/Home.qml:255
+#: qml/pages/Home.qml:263
 msgid "Search your phone and online sources"
 msgstr "Sök i din telefon och onlinekällor"
 
-#: qml/pages/Home.qml:480
+#: qml/pages/Home.qml:516
 msgid "Uninstall"
 msgstr "Avinstallera"
 
-#: qml/pages/Home.qml:480
+#: qml/pages/Home.qml:516
 msgid "Remove"
 msgstr "Ta bort"
 
@@ -644,7 +672,7 @@ msgstr ""
 msgid "New todo"
 msgstr "ny att göra"
 
-#: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:157
+#: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:158
 #: qml/pages/music/PlaylistsView.qml:125 qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr "Ta bort"
@@ -658,7 +686,7 @@ msgid "calendar"
 msgstr "kalender"
 
 #: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
-#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
+#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:18
 #: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
 #: qml/pages/videos/Settings.qml:14
@@ -736,72 +764,73 @@ msgstr "Inställningar Widget"
 
 #: qml/pages/folders/Settings.qml:48 qml/pages/music/Settings.qml:49
 #: qml/pages/videos/Settings.qml:48
-msgid "Exemple"
+#, fuzzy
+msgid "Example"
 msgstr "Exempel"
 
-#: qml/pages/home/Settings.qml:13
+#: qml/pages/home/Settings.qml:14
 msgid "home"
 msgstr "hem"
 
-#: qml/pages/home/Settings.qml:85
+#: qml/pages/home/Settings.qml:86
 #, fuzzy
 msgid "Add a favorite application"
 msgstr "Öppna applikationen"
 
-#: qml/pages/home/Settings.qml:126
+#: qml/pages/home/Settings.qml:127
 msgid "Favorite apps management"
 msgstr "Hantering av favoritappar"
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "None"
 msgstr "Ingen"
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "Unstyled icons"
 msgstr "Ikoner utan stil"
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded"
 msgstr "Rundad"
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded icons"
 msgstr "Rundad"
 
-#: qml/pages/home/Settings.qml:211
+#: qml/pages/home/Settings.qml:212
 msgid "Style Icons : "
 msgstr "Stilikoner : "
 
-#: qml/pages/home/Settings.qml:255
+#: qml/pages/home/Settings.qml:256
 msgid "Search engine : "
 msgstr ""
 
-#: qml/pages/home/Settings.qml:266
+#: qml/pages/home/Settings.qml:267
 msgid "Widgets"
 msgstr "Widgets"
 
-#: qml/pages/home/Settings.qml:271
+#: qml/pages/home/Settings.qml:272
 msgid "Show clock"
 msgstr "Visa klocka"
 
-#: qml/pages/home/Settings.qml:280
+#: qml/pages/home/Settings.qml:281
 msgid "Show weather"
 msgstr "Visa väder"
 
-#: qml/pages/home/Settings.qml:290
+#: qml/pages/home/Settings.qml:291
 msgid "Show alarms"
 msgstr "Visa alarm"
 
-#: qml/pages/home/Settings.qml:299
+#: qml/pages/home/Settings.qml:300
 #, fuzzy
 msgid "Show last calls"
 msgstr "Visa senaste samtal"
 
-#: qml/pages/home/Settings.qml:308
+#: qml/pages/home/Settings.qml:312
 msgid "Show last message"
 msgstr "Visa senaste meddelande"
 
-#: qml/pages/home/Settings.qml:317
+#: qml/pages/home/Settings.qml:322
 #, fuzzy
 msgid "Show last events"
 msgstr "Visa evenemang"
@@ -872,7 +901,7 @@ msgid "Starting folder"
 msgstr "Inställningar Widget"
 
 #: qml/pages/nextcloudfolders/Settings.qml:184
-msgid "Test connexion"
+msgid "Test connection"
 msgstr ""
 
 #: qml/pages/picture/SelectFolderPage.qml:42
@@ -982,7 +1011,7 @@ msgstr "Inga evenemang"
 msgid "Favorite Apps"
 msgstr "Favoritappar"
 
-#: qml/widgets/FavoriteContact.qml:32
+#: qml/widgets/FavoriteContact.qml:33
 msgid "Favorite Contacts"
 msgstr "Favoritkontakter"
 
@@ -1010,7 +1039,7 @@ msgstr "Senaste meddelandet"
 msgid "No recent messages"
 msgstr "Inga senaste meddelanden"
 
-#: qml/widgets/SearchContact.qml:35
+#: qml/widgets/SearchContact.qml:36
 msgid "Search Contacts"
 msgstr "Sök efter kontakter"
 
