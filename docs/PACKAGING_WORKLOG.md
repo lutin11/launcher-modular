@@ -305,6 +305,20 @@ Décisions et préparation :
 
 ## 6. Recettes et pièges
 
+- **Lancement manuel des recettes (validé le 24/11)** — uniquement dans le
+  conteneur SDK, pas sur l'hôte ; depuis la racine du dépôt :
+  - `.deb` : `mkdir -p out && docker run --rm --entrypoint sh -v "$PWD":/src:ro
+    -v "$PWD/out:/out" clickable/amd64-ut24.04-1.x-amd64:latest -c
+    'sh /src/packaging/desktop/build-deb.sh'` ;
+  - AppImage : idem + `-v <outils>:/tools:ro` (les trois `.AppImage` —
+    linuxdeploy, linuxdeploy-plugin-qt, appimagetool-954 — sont dans
+    `/home/david/tmp/opencode/appimage-tools/`) + éventuellement
+    `-e INCLUDE_TEST_PLATFORMS=1`. Dans `desktop.yml` le job AppImage
+    télécharge lui-même les outils (version épinglée).
+  Les scripts détectent maintenant un lancement hors conteneur (message
+  d'erreur explicite) et `chown` les artefacts de `/out` à l'utilisateur du
+  dépôt (vérifié : deb 14 Mo rendu `david:david`). `out/` ajouté au
+  `.gitignore`.
 - **Traductions hors préfixe (corrigé le 24/11)** : `po/CMakeLists.txt`
   installait les `.mo` avec `DESTINATION /share/locale/...` (chemin
   **absolu**) : dans le `.deb` ils finissaient à `./share/locale` et, au

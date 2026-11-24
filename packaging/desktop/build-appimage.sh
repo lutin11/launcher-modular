@@ -27,6 +27,13 @@ SRC="${1:-/src}"
 OUT="${2:-/out}"
 TOOLS="${3:-/tools}"
 
+if [ ! -f "$SRC/manifest.json.in" ]; then
+    echo "error: no source tree at $SRC. This script must run inside the" >&2
+    echo "Clickable SDK container, with the AppImage tools mounted at /tools" >&2
+    echo "(see docs/PACKAGING_WORKLOG.md, section 6, or .github/workflows/desktop.yml)." >&2
+    exit 1
+fi
+
 ARCH="${ARCH:-x86_64}"
 VERSION="$(grep -o '"version": *"[^"]*"' "$SRC/manifest.json.in" | sed 's/.*"\([0-9][^"]*\)"$/\1/')"
 export ARCH VERSION APPIMAGE_EXTRACT_AND_RUN=1
@@ -106,4 +113,7 @@ fi
 
 mkdir -p "$OUT"
 cp "$AI" "$OUT"/
+# Artifacts are built as root inside the container: hand them back to the
+# owner of the source tree (the calling user on the host, the runner in CI).
+OWNER="$(stat -c '%u:%g' "$SRC" 2>/dev/null)" && [ -n "$OWNER" ] && chown -R "$OWNER" "$OUT" || true
 echo "artifacts: $(ls "$OUT")"
