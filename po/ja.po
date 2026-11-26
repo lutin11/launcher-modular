@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 16:31+0000\n"
+"POT-Creation-Date: 2026-11-26 17:21+0000\n"
 "PO-Revision-Date: 2025-11-23 09:42+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/launcher-"
@@ -371,111 +371,119 @@ msgstr ""
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
-#: qml/Help.qml:15
+#: qml/Help.qml:17
 msgid "Modular Launcher Help"
 msgstr ""
 
-#: qml/Help.qml:48
+#: qml/Help.qml:50
 msgid "How to use"
 msgstr ""
 
-#: qml/Help.qml:61
+#: qml/Help.qml:63
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr ""
 
-#: qml/Help.qml:75
+#: qml/Help.qml:77
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
 
-#: qml/Help.qml:89
+#: qml/Help.qml:91
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
+msgstr ""
+
+#: qml/Help.qml:107 qml/Help.qml:118
+msgid "Diagnostic"
+msgstr ""
+
+#: qml/Help.qml:140
+msgid "Close"
 msgstr ""
 
 #: qml/ImportPage.qml:13
 msgid "Choose"
 msgstr ""
 
-#: qml/Main.qml:470
+#: qml/Main.qml:499
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: qml/Main.qml:528
+#: qml/Main.qml:630
 msgid "Add custom icon"
 msgstr ""
 
-#: qml/Main.qml:561
+#: qml/Main.qml:663
 msgid "Manage pages"
 msgstr ""
 
-#: qml/Main.qml:594
+#: qml/Main.qml:696
 msgid "Configure Launcher"
 msgstr ""
 
-#: qml/Main.qml:627
+#: qml/Main.qml:729
 msgid "Autostart"
 msgstr ""
 
-#: qml/Main.qml:660
+#: qml/Main.qml:762
 msgid "Help"
 msgstr ""
 
-#: qml/Main.qml:693
+#: qml/Main.qml:795
 msgid "About"
 msgstr ""
 
-#: qml/Main.qml:750
+#: qml/Main.qml:852
 msgid "Website"
 msgstr ""
 
-#: qml/Main.qml:750
+#: qml/Main.qml:852
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: qml/Main.qml:751
+#: qml/Main.qml:853
 msgid "Terminal command"
 msgstr ""
 
-#: qml/Main.qml:751
+#: qml/Main.qml:853
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: qml/Main.qml:752
+#: qml/Main.qml:854
 msgid "Launch app"
 msgstr ""
 
-#: qml/Main.qml:752
+#: qml/Main.qml:854
 msgid "Launch an app"
 msgstr ""
 
-#: qml/Main.qml:776
+#: qml/Main.qml:885
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: qml/Main.qml:789
+#: qml/Main.qml:898
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: qml/Main.qml:813 qml/Main.qml:814 qml/Main.qml:815
+#: qml/Main.qml:922 qml/Main.qml:923 qml/Main.qml:924
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: qml/Main.qml:827
+#: qml/Main.qml:936
 msgid "Create icon"
 msgstr ""
 
-#: qml/Main.qml:870 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
-#: qml/pages/Home.qml:532 qml/pages/home/Settings.qml:69
+#: qml/Main.qml:979 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
+#: qml/pages/Home.qml:575 qml/pages/home/Settings.qml:70
 msgid "Cancel"
 msgstr ""
 
-#: qml/Pagemanagement.qml:18
+#: qml/Pagemanagement.qml:20
 msgid "Page management"
 msgstr ""
 
-#: qml/Pagemanagement.qml:48
+#: qml/Pagemanagement.qml:50
 msgid "Choose a page"
 msgstr ""
 
@@ -483,7 +491,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: qml/Settings.qml:50 qml/pages/home/Settings.qml:181
+#: qml/Settings.qml:50 qml/pages/home/Settings.qml:182
 msgid "General"
 msgstr ""
 
@@ -539,6 +547,22 @@ msgstr ""
 msgid ""
 "Translate Modular Launcher at <a href='https://hosted.weblate.org/projects/"
 "ubports/launcher-modular/'>Hosted Weblate</a>."
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:23
+msgid "This page is not available"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:37
+msgid "It requires a module that is not installed on this system: %1"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:39
+msgid "One of its components is missing on this system."
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:48
+msgid "You can remove this page in the configuration bar."
 msgstr ""
 
 #: qml/components/Tutorial.qml:90
@@ -657,19 +681,19 @@ msgstr ""
 msgid "Search a file"
 msgstr ""
 
-#: qml/pages/Home.qml:40
+#: qml/pages/Home.qml:41
 msgid "ok"
 msgstr ""
 
-#: qml/pages/Home.qml:266
+#: qml/pages/Home.qml:274
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: qml/pages/Home.qml:491
+#: qml/pages/Home.qml:527
 msgid "Uninstall"
 msgstr ""
 
-#: qml/pages/Home.qml:491
+#: qml/pages/Home.qml:527
 msgid "Remove"
 msgstr ""
 
@@ -740,7 +764,7 @@ msgstr ""
 msgid "New todo"
 msgstr ""
 
-#: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:157
+#: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:158
 #: qml/pages/music/PlaylistsView.qml:125 qml/pages/rss/Settings.qml:187
 msgid "Delete"
 msgstr ""
@@ -754,7 +778,7 @@ msgid "calendar"
 msgstr ""
 
 #: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
-#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
+#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:18
 #: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
 #: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
 #: qml/pages/videos/Settings.qml:14
@@ -830,67 +854,67 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:13
+#: qml/pages/home/Settings.qml:14
 msgid "home"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:85
+#: qml/pages/home/Settings.qml:86
 msgid "Add a favorite application"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:126
+#: qml/pages/home/Settings.qml:127
 msgid "Favorite apps management"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "None"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "Unstyled icons"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded icons"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:211
+#: qml/pages/home/Settings.qml:212
 msgid "Style Icons : "
 msgstr ""
 
-#: qml/pages/home/Settings.qml:255
+#: qml/pages/home/Settings.qml:256
 msgid "Search engine : "
 msgstr ""
 
-#: qml/pages/home/Settings.qml:266
+#: qml/pages/home/Settings.qml:267
 msgid "Widgets"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:271
+#: qml/pages/home/Settings.qml:272
 msgid "Show clock"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:280
+#: qml/pages/home/Settings.qml:281
 msgid "Show weather"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:290
+#: qml/pages/home/Settings.qml:291
 msgid "Show alarms"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:299
+#: qml/pages/home/Settings.qml:300
 msgid "Show last calls"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:308
+#: qml/pages/home/Settings.qml:312
 msgid "Show last message"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:317
+#: qml/pages/home/Settings.qml:322
 msgid "Show last events"
 msgstr ""
 
@@ -1065,7 +1089,7 @@ msgstr ""
 msgid "Favorite Apps"
 msgstr ""
 
-#: qml/widgets/FavoriteContact.qml:32
+#: qml/widgets/FavoriteContact.qml:33
 msgid "Favorite Contacts"
 msgstr ""
 
@@ -1093,7 +1117,7 @@ msgstr ""
 msgid "No recent messages"
 msgstr ""
 
-#: qml/widgets/SearchContact.qml:35
+#: qml/widgets/SearchContact.qml:36
 msgid "Search Contacts"
 msgstr ""
 
