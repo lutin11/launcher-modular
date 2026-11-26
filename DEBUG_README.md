@@ -78,8 +78,8 @@ Modes `click`/`drag` (XTEST) conservés dans le script mais **sans effet** ici.
 | Objectif | Commande |
 |---|---|
 | Retour (flèche haut-gauche des pages empilées) | `sclick 18 20` (ou `sclick 20 26` en grande fenêtre) |
-| Ouvrir la barre du bas (`Drawer` `Qt.BottomEdge`) | swipe lent : press en `y = hauteur-1`, puis motions vers le haut (voir `sdrag`) |
-| Fermer la barre du bas | `sclick 180 300` (clic hors du popup, `CloseOnReleaseOutside`) |
+| Ouvrir la barre du bas (item ancré au bord bas) | swipe lent : press en `y = hauteur-1`, puis motions vers le haut (voir `sdrag`) |
+| Fermer la barre du bas | `sclick 180 300` (clic sur la couche de fermeture) |
 | Swipe haut rapide | préférer des motions progressives de ~8 px tous les ~40 ms |
 
 ## 6. Données de test (profils)
@@ -94,15 +94,20 @@ Modes `click`/`drag` (XTEST) conservés dans le script mais **sans effet** ici.
 
 ## 7. Limites connues de la méthode
 
-- **Clics synthétiques non livrés au contenu des popups** (ex. entrées du
-  `Drawer` du bas) : le clic *hors* popup fonctionne (le ferme), le contenu du
-  popup doit être testé par vrai tactile, ou via un code de test temporaire.
+- La barre du bas n'est plus un popup (item ordinaire depuis le correctif de
+  rotation, voir §8) : les clics synthétiques doivent l'atteindre comme le reste
+  de la page — à re-vérifier. Les vrais popups (dialogues Lomiri, par exemple la
+  sélection de page) restent à tester au tactile.
 - Délai entre l'action et le contenu visible de la capture : attendre ~0,5–1 s
   (ou forcer un repaint, p. ex. `resize`) avant de capturer.
 - Après tout build (`clickable desktop`, CPack), **`po/*.po` sont réécrits**
   (horodatages + n° de lignes `Main.qml`) : nettoyer avec
   `git checkout -- 'po/*.po'` (sauf demande contraire).
 - `xgrab.py`/`xact.py` supposent une profondeur 24 / 32 bpp, BGRA (standard).
+- `error: XDG_RUNTIME_DIR not set in the environment.` (répété) à l'ouverture
+  de la page Musique : message de **libpulse** (backend `Audio` de QtMultimedia),
+  pas une erreur de l'app — `clickable desktop` ne définit pas `XDG_RUNTIME_DIR`
+  et le son n'y fonctionne pas. Sur appareil, la session le définit.
 
 ## 8. Exemple complet (vérification de la barre du bas, correctif `bottomBarSettings`)
 

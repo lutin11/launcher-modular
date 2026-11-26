@@ -383,14 +383,21 @@ MainView {
                 MouseArea {
                     anchors.fill: parent
                     property real startMouseX
+                    property real startMouseY
                     onPressed: {
                        startMouseX = mouseX
+                       startMouseY = mouseY
                     }
                     onPositionChanged: {
-                        if (mouseX - startMouseX > units.gu(4)) {
+                        var dx = mouseX - startMouseX
+                        var dy = startMouseY - mouseY
+                        if (dy > units.gu(2) && dy > Math.abs(dx)) {
+                            // upward swipe: open the settings bar
+                            bottomBarSettings.open()
+                        } else if (dx > units.gu(4)) {
                             view.setCurrentIndex((view.currentIndex+1)%view.count)
                             startMouseX += units.gu(4)
-                        } else if (startMouseX - mouseX > units.gu(4)) {
+                        } else if (-dx > units.gu(4)) {
                             view.setCurrentIndex((view.currentIndex-1+view.count)%view.count)
                             startMouseX -= units.gu(4)
                         }
@@ -498,22 +505,91 @@ MainView {
 
             }
 
-            Drawer {
-                id: bottomBarSettings
-                edge: Qt.BottomEdge
-                height: units.gu(9)
-                width: parent.width
-                // Do not bind 'visible' (e.g. to view.count > 1): a Popup made visible
-                // while still at position 0 shows an empty background strip at the bottom
-                // and is misplaced (vertically) when the window is resized. Visibility is
-                // driven by open()/close() only; dragging the bottom edge opens the drawer
-                // even while it is closed (the window overlay handles edge drags).
+            // Dim + dismiss layer of the settings bar (replaces the modal
+            // behaviour of the former Drawer).
+            Rectangle {
+                anchors.fill: parent
+                visible: bottomBarSettings.position > 0
+                color: "#40000000"
 
-                background: Rectangle {
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: bottomBarSettings.close()
+                }
+            }
+
+            // Full screen hides the bottom bar: keep a thin edge strip so the
+            // settings bar can still be opened.
+            MouseArea {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+                height: units.gu(1.5)
+                visible: launchermodular.settings.fullScreen
+                property real startX: 0
+                property real startY: 0
+                onPressed: {
+                    startX = mouseX
+                    startY = mouseY
+                }
+                onPositionChanged: {
+                    var dy = startY - mouseY
+                    if (dy > units.gu(1.5) && dy > Math.abs(mouseX - startX)) {
+                        bottomBarSettings.open()
+                    }
+                }
+            }
+
+            // Settings bar of the bottom edge. A plain item and not a
+            // QtQuick.Controls Drawer: the Drawer is reparented into the window
+            // overlay, which rotates its popups by 90° when the window is wider
+            // than tall (QQuickOverlay + contentOrientation). The page content is
+            // not rotated, so the bar showed up as a vertical strip along the
+            // left edge and left a grey band at the bottom after a desktop
+            // window resize. An item follows the page geometry.
+            Item {
+                id: bottomBarSettings
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+                height: units.gu(9)
+                // 0 = closed (below the page edge), 1 = fully open.
+                property real position: 0
+                y: parent.height - position * height
+
+                function open() {
+                    position = 1
+                    launchermodular.settings.firstRun = false
+                }
+
+                function close() {
+                    position = 0
+                }
+
+                Behavior on position {
+                    NumberAnimation { duration: 200; easing.type: Easing.OutCubic }
+                }
+
+                Rectangle {
+                    anchors.fill: parent
                     color: "white"
                 }
 
-                onOpened: launchermodular.settings.firstRun = false
+                // Swipe down on an empty part of the bar closes it; the entry
+                // items have their own MouseArea and keep priority.
+                MouseArea {
+                    anchors.fill: parent
+                    property real startY: 0
+                    onPressed: startY = mouseY
+                    onPositionChanged: {
+                        if (mouseY - startY > units.gu(2)) {
+                            bottomBarSettings.close()
+                        }
+                    }
+                }
 
                 RowLayout {
                     width: parent.width

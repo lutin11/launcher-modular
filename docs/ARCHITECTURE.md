@@ -51,7 +51,8 @@ qml/Main.qml   (MainView Lomiri) -- nœud central
   - Settings (Qt.labs.settings) : tous les réglages persistés
   - ListModel : pageModel, customIconModel, favoriteAppsModel
   - SwipeView : charge les pages (Qt.createComponent + Loader)
-  - barre basse + Drawer : Settings, Pagemanagement, Autostart, Help
+  - barre basse + panneau de réglages du bord bas (item, pas un Drawer) :
+    Settings, Pagemanagement, Autostart, Help
       |                                   |
       | imports statiques                 | chargement dynamique
       v                                   v
@@ -126,8 +127,8 @@ Hors plugins : `WindowController` (plein écran), utilisé par `Clock` et
 ### 6.1 `Main.qml`
 
 Cœur de l'application : bloc `Settings` (≈65 propriétés persistées), trois
-`ListModel` persistés, `SwipeView` des pages, barre de navigation, tiroir
-d'administration et dialogue de création d'icône personnalisée. C'est aussi le
+`ListModel` persistés, `SwipeView` des pages, barre de navigation, panneau de
+réglages du bord bas et dialogue de création d'icône personnalisée. C'est aussi le
 principal point de couplage : presque toutes les pages, widgets et composants
 référencent `launchermodular`, `settings` et les `ListModel` racine.
 
