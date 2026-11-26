@@ -51,7 +51,8 @@ qml/Main.qml   (MainView Lomiri) -- nœud central
   - Settings (Qt.labs.settings) : tous les réglages persistés
   - ListModel : pageModel, customIconModel, favoriteAppsModel
   - SwipeView : charge les pages (Qt.createComponent + Loader)
-  - barre basse + Drawer : Settings, Pagemanagement, Autostart, Help
+  - barre basse + panneau de réglages du bord bas (item, pas un Drawer) :
+    Settings, Pagemanagement, Autostart, Help
       |                                   |
       | imports statiques                 | chargement dynamique
       v                                   v
@@ -116,6 +117,7 @@ plugins sont indépendants entre eux** et ne communiquent que par QML.
 | `ContactHelper` | Nom d'un contact depuis son id (backend `galera` codé en dur) | Qml, Quick, DBus, Contacts | `Lastcall`, `Lastmessage` |
 | `LibertineLauncher` | Lance une app Libertine via `lomiri-app-launch` | Core, Qml, Quick, DBus | `Home` |
 | `CalculatorHelper` | Mini-calculatrice (regex puis `QJSEngine`) | Core, Qml, Quick, DBus | `Home`, `widgets/Calculator` |
+| `Platform` | Dépendances réellement présentes (fichiers, binaires du `PATH`, providers, un seul service D-Bus évalué paresseusement) et texte de diagnostic | Core, Qml, Quick, DBus | `Main`, `Home`, `Help`, `Pagemanagement`, `home/Settings`, `SearchContact`, `FavoriteContact` |
 
 Hors plugins : `WindowController` (plein écran), utilisé par `Clock` et
 `Picture`.
@@ -125,8 +127,8 @@ Hors plugins : `WindowController` (plein écran), utilisé par `Clock` et
 ### 6.1 `Main.qml`
 
 Cœur de l'application : bloc `Settings` (≈65 propriétés persistées), trois
-`ListModel` persistés, `SwipeView` des pages, barre de navigation, tiroir
-d'administration, dialogue de création d'icône personnalisée et masque
+`ListModel` persistés, `SwipeView` des pages, barre de navigation, panneau de
+réglages du bord bas et dialogue de création d'icône personnalisée et masque
 pédagogique (`Tutorial`, présenté au premier lancement et relançable depuis
 l'aide). C'est aussi le principal point de couplage : presque toutes les pages,
 widgets et composants référencent `launchermodular`, `settings` et les
@@ -164,10 +166,35 @@ pages/
   `Alarm`, `Calculator`, `FavoriteApp`, `FavoriteContact`, `SearchContact`.
 - Singletons QML (`pragma Singleton`, via `qmldir`) : `RssModel`, `TodoModel`.
 - `qml/components/` : `FeedsModel`, `Feed`, `FeedItem`, `RssChannel`,
-  `RssChannelItems` (modèles RSS), `Tutorial` (masque pédagogique « visite
+  `RssChannelItems` (modèles RSS),  `Tutorial` (masque pédagogique « visite
   guidée », instancié par `Main.qml` ; voit l'application à travers les ids que
   `Main.qml` lui passe et la propriété `tutorialTargets` de la page affichée).
-  `qml/helpers/` : `CachedHttpRequest` (worker + cache U1db).
+  `PageUnavailable` (état vide d'une page non chargeable).
+  `qml/helpers/` : `CachedHttpRequest` (worker + cache U1db),
+  `PageRequirements.js` (table page embarquée → modules extérieurs requis).
+
+### 6.4 Capacités : que faire d'une dépendance absente
+
+Le lanceur peut se retrouver sur une machine où un module QML, un binaire ou un
+provider manque (versions desktop, `.click` sans pile téléphonique). Règles :
+
+- **l'état vient du plugin `Platform`** (§5), jamais d'une recherche faite dans
+  un fichier QML ;
+- **une dépendance fausse retire de la composition** : `Loader { active:
+  Platform.<capacité> ; source: "…" }`. Un `visible: false` ne suffit **pas** :
+  un `import` absent dans un fichier enfant fait échouer tout le composant
+  parent, quelle que soit la propriété ;
+- **une page déjà enregistrée** dont le module manque est remplacée par
+  `components/PageUnavailable.qml`, qui nomme le module (§7, table dans
+  `helpers/PageRequirements.js`) ;
+- **les listes de sélection** (ajouter une page, réglages des widgets) ne
+  proposent pas ce qui ne peut pas fonctionner ;
+- **providers contacts et agenda** : `Platform.hasContactsFeature` et
+  `hasCalendarFeature` valent vrai sur Ubuntu Touch (pile attendue, non sondable
+  depuis le conteneur de référence) et exigent un provider exploitable ailleurs ;
+  le nom du provider vient de `Platform.preferredContactManager`.
+
+Détails, vérifications et limites : `docs/PACKAGING_DESKTOP.md` §10.
 
 ## 7. Dépendances
 
@@ -187,6 +214,12 @@ par la CI**) :
   `QtContacts 5.0`, `QtSystemInfo 5.0`, `QtSensors 5.12`,
   `QtQuick.LocalStorage 2.0`, `QtQml.Models`
 - Tiers : `U1db 1.0` (cache RSS)
+
+Ces modules ne sont **pas** garantis hors Ubuntu Touch. `Platform` (§5) teste
+ceux dont dépend une fonctionnalité, et le code QML retire la fonction plutôt
+que de l'afficher vide (§6.4). Les modules importés par `Main.qml`
+(`QtGraphicalEffects`, `Qt.labs.folderlistmodel`, `Lomiri.Components`) restent
+des dépendances **dures** du démarrage.
 
 ## 8. Données et persistance
 
@@ -231,6 +264,12 @@ Les `ListModel` racine sont sauvegardés dans `Component.onDestruction` de
 - CI (`.github/workflows/main.yml`) : matrice `arch × framework`,
   `clickable build --libs --app`, artefacts `.click`.
   **Aucun test automatisé n'existe ; la CI ne fait que compiler.**
+- **Versions desktop (`.deb`, AppImage) : non réalisées.** Clickable ne produit
+  que du `.click` ; l'installation est pensée pour ce format
+  (`CMAKE_INSTALL_PREFIX` et `DATA_DIR` valant `/`). L'étude de faisabilité —
+  contrainte d'installation, dépendances réelles, fonctions indisponibles hors
+  Ubuntu Touch, détection des capacités à ajouter, coûts de maintenance — est
+  dans `PACKAGING_DESKTOP.md` (même répertoire).
 
 ## 11. Procédures
 
@@ -267,7 +306,12 @@ l'exécution.
    "directory": "pages/"}`.
 3. Ajouter les chaînes avec `i18n.tr(...)` ; les `.po` sont régénérés via la
    cible CMake `generate_pot`, pas à la main.
-4. Vérifier que tout import QML utilisé existe sur le framework cible.
+4. Vérifier que tout import QML utilisé existe sur le framework cible. Si la
+   page dépend d'un module **extérieur au projet** (`Lomiri.Thumbnailer`,
+   `Lomiri.Content`, `QtMultimedia`…), l'inscrire dans
+   `qml/helpers/PageRequirements.js` : la liste « ajouter une page » la retirera
+   et `Main.qml` affichera `PageUnavailable` là où elle est déjà configurée
+   (§6.4).
 5. Facultatif — offrir la visite guidée (`qml/components/Tutorial.qml`) :
    exposer à la racine de la page une carte `tutorialTargets` dont les clés sont
    citées par les étapes et les valeurs les éléments à encadrer.
@@ -288,7 +332,11 @@ l'exécution.
 
 ### Ajouter un widget
 Créer `widgets/Nom.qml` et `widgets/nom/Settings.qml`, puis l'intégrer à
-`pages/Home.qml` en suivant un widget existant (par exemple `Calculator`).
+`pages/Home.qml` en suivant un widget existant (par exemple `Calculator`). Si le
+widget importe un module extérieur, l'insérer dans un
+`Loader { active: Platform.<capacité> ; source: "…" }` comme `Lastcall` ou
+`Event`, et masquer l'interrupteur correspondant dans `pages/home/Settings.qml`
+(§6.4).
 
 ### Ajouter un plugin C++
 Créer `plugins/<Nom>/` sur le modèle d'un plugin existant
@@ -304,7 +352,7 @@ add_subdirectory(plugins)
 # plugins/CMakeLists.txt — une ligne par plugin
 add_subdirectory(AppHandler)
 # ... (MySettings, NetworkHelper, Terminalaccess, ContactHelper,
-#      LibertineLauncher, CalculatorHelper)
+#      LibertineLauncher, CalculatorHelper, Platform)
 ```
 
 Chaque plugin s'installe avec son propre `CMakeLists.txt` (le modèle à
@@ -341,6 +389,10 @@ Pas de dépendance C++ vers un autre plugin.
   de `Tutorial` dans `Main.qml`. Tous les boutons « retour » reposent sur cette
   pile à un seul niveau.
 - Plugins indépendants ; la composition se fait uniquement en QML.
+- Détection des dépendances : un seul producteur, le plugin `Platform`. Une
+  capacité fausse **retire** la fonction de la composition (`Loader`), ne la
+  cache pas avec `visible` — un `import` manquant casse le composant parent
+  (§6.4).
 - `Terminalaccess` : un seul `QProcess` partagé, appels bloquants — ne pas
   empiler de commandes concurrentes ni ajouter d'appels bloquants.
 - Versions dupliquées à modifier ensemble : `manifest.json.in`, `appVersion`

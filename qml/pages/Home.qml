@@ -10,6 +10,7 @@ import Lomiri.Components.Popups 1.3
 import Terminalaccess 1.0
 import LibertineLauncher 1.0
 import CalculatorHelper 1.0
+import Platform 1.0
 import Lomiri.Components.ListItems 1.3 as ListItem
 import Lomiri.Components.Themes 1.3
 import "./music/"
@@ -132,7 +133,14 @@ Item {
         }
     }
 
-    MusicPlayer { id: homeMusicPlayer }
+    // The music player needs QtMultimedia. Without the module, simply creating
+    // the object would make the whole home page fail. An inactive Loader does
+    // not load the file at all, so the missing import cannot do any harm.
+    Loader {
+        id: homeMusicPlayer
+        active: Platform.hasMultimediaModule
+        source: "music/MusicPlayer.qml"
+    }
 
     function refreshHomePage() {
         home.reloading = true
@@ -149,15 +157,15 @@ Item {
             weatherWidget.modelWeather.reload()
             weatherWidget.modelWeatherNext.reload()
         }
-        if (launchermodular.settings.widgetVisibleLastmessage) {
-            widgetLastMessage.updateFilteredModelFunction();
+        if (launchermodular.settings.widgetVisibleLastmessage && widgetLastMessage.item) {
+            widgetLastMessage.item.updateFilteredModelFunction();
         }
-        if (launchermodular.settings.widgetVisibleLastcall) {
-            widgetLastCall.updateFilteredModelFunction();
+        if (launchermodular.settings.widgetVisibleLastcall && widgetLastCall.item) {
+            widgetLastCall.item.updateFilteredModelFunction();
         }
 
-        if (launchermodular.settings.widgetVisibleEvent) {
-            widgetEvent.updateModel();
+        if (launchermodular.settings.widgetVisibleEvent && widgetEvent.item) {
+            widgetEvent.item.updateModel();
         }
 
 
@@ -350,20 +358,33 @@ Item {
                         id: widgetAlarm
                         visible: launchermodular.settings.widgetVisibleAlarm
                     }
-                    Lastcall {
+                    // Last call and last messages need Lomiri.History and
+                    // Lomiri.Contacts, which are not installed everywhere. The
+                    // components are therefore created on demand and leave the
+                    // space empty when a module is missing.
+                    Loader {
                         id: widgetLastCall
+                        active: Platform.hasHistoryModule && Platform.hasContactsModule
                         visible: launchermodular.settings.widgetVisibleLastcall
+                        source: "../widgets/Lastcall.qml"
                     }
-                    Lastmessage {
+                    Loader {
                         id: widgetLastMessage
+                        active: Platform.hasHistoryModule && Platform.hasContactsModule
                         visible: launchermodular.settings.widgetVisibleLastmessage
+                        source: "../widgets/Lastmessage.qml"
                     }
 
                 }
 
-                Event {
+                // The event widget needs QtOrganizer and a calendar provider;
+                // hasCalendarFeature keeps the widget on Ubuntu Touch, where
+                // the provider cannot be probed from here.
+                Loader {
                   id: widgetEvent
+                  active: Platform.hasOrganizerModule && Platform.hasCalendarFeature
                   visible: launchermodular.settings.widgetVisibleEvent
+                  source: "../widgets/Event.qml"
                 }
 
             }
@@ -373,9 +394,14 @@ Item {
                 width: parent.width
             }
 
-            SearchContact {
+            // Contact search needs the QtContacts module and a usable provider;
+            // hasContactsFeature keeps the widget on Ubuntu Touch, where the
+            // provider cannot be probed from here.
+            Loader {
                 id: searchContactWidget
                 width: parent.width
+                active: Platform.hasQtContactsModule && Platform.hasContactsFeature
+                source: "../widgets/SearchContact.qml"
             }
 
             FavoriteApp {
@@ -383,9 +409,11 @@ Item {
                 width: parent.width
             }
 
-            FavoriteContact {
+            Loader {
                 id: favoriteContactWidget
                 width: parent.width
+                active: Platform.hasQtContactsModule && Platform.hasContactsFeature
+                source: "../widgets/FavoriteContact.qml"
             }
 
             Item {
@@ -406,7 +434,15 @@ Item {
                 function doLaunchAction(action, container) {
                     if (DEBUG_MODE) console.log("app:", JSON.stringify(action));
                     if(container.length > 0) {
-                        LibertineLauncher.launchLibertineApp(container, action);
+                        // A Libertine container application can only be started
+                        // through lomiri-app-launch. Without it nothing would
+                        // happen, so the console says so instead of leaving the
+                        // user clicking on nothing.
+                        if (Platform.canLaunchLibertine) {
+                            LibertineLauncher.launchLibertineApp(container, action);
+                        } else {
+                            console.log("Libertine launch skipped: lomiri-app-launch or container missing")
+                        }
                     } else if(action.startsWith("application:///")) {
                         Qt.openUrlExternally(action);
                     } else if(action.startsWith("terminal:///")) {
@@ -508,8 +544,15 @@ Item {
                                                 PopupUtils.close(appsDialogue);
 
                                                 if (AppHandler.appsinfo[index].getProp("package_name")){
-
-                                                    Terminalaccess.run("sudo -S click unregister --user=phablet "+AppHandler.appsinfo[index].getProp("package_name").split("_")[0])
+                                                    // Uninstalling a click package runs
+                                                    // "sudo -S click unregister". Outside Ubuntu
+                                                    // Touch the command does not exist and the
+                                                    // password would be asked for nothing.
+                                                    if (Platform.canUninstallApps) {
+                                                        Terminalaccess.run("sudo -S click unregister --user=phablet "+AppHandler.appsinfo[index].getProp("package_name").split("_")[0])
+                                                    } else {
+                                                        console.log("Uninstall skipped: click tool not available")
+                                                    }
 
                                                 } else {
                                                     for (var i = 0; i < launchermodular.customIconModel.count; i++) {

@@ -2,10 +2,8 @@
 /.idea
 /.qtc_clangd
 /CMakeLists.txt.user
-/.clickable/amd64/Dockerfile
-/.clickable/amd64/image.json
-/.clickable/arm64/Dockerfile
-/.clickable/arm64/image.json
-/.clickable/armhf/Dockerfile
-/.clickable/armhf/image.json
 launcher-modular.creator.user
+*.iml
+/.clickable/
+/out
+/.ci-tools

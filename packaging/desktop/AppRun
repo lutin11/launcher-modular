@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# AppRun for launchermodular: keeps linuxdeploy's Qt relocation (qt.conf next
+# to the binary) and adds the application's private QML modules, whose
+# compiled-in path (/usr/lib/<triplet>/launchermodular) points outside the
+# AppImage mount.
+HERE="$(dirname "$(readlink -f "$0")")"
+# The AppImage runtime sets $APPDIR only when mounting; keep our own tree
+# resolvable when the AppImage was extracted (--appimage-extract, no FUSE).
+export APPDIR="${APPDIR:-$HERE}"
+for d in "$HERE"/usr/lib/*/launchermodular; do
+    [ -d "$d" ] || continue
+    export QML2_IMPORT_PATH="$d${QML2_IMPORT_PATH:+:$QML2_IMPORT_PATH}"
+done
+exec "$HERE"/usr/bin/launchermodular "$@"

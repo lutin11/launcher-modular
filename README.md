@@ -91,6 +91,58 @@ run the following command:
 docker pull clickable/amd64-20.04-amd64:latest
 ```
 
+## Building the desktop packages (.deb and AppImage)
+
+The desktop packages are built inside the Clickable SDK container (Ubuntu
+24.04, Qt 5.15); you only need Docker, not the Qt development packages on
+your machine. The build recipes live in `packaging/desktop/` and are run by
+the "Desktop Build" GitHub workflow (`.github/workflows/desktop.yml`), which
+uploads the results as CI artifacts. See `docs/PACKAGING_DESKTOP.md` for the
+full study and `docs/PACKAGING_WORKLOG.md` for the tested recipes.
+
+From the repository root:
+
+1. `.deb` (the build runs on a copy of the sources, they stay untouched):
+   ```
+   mkdir -p out
+   docker run --rm --entrypoint sh \
+     -v "$PWD":/src:ro -v "$PWD/out:/out" \
+     clickable/amd64-ut24.04-1.x-amd64:latest \
+     -c 'sh /src/packaging/desktop/build-deb.sh'
+   ```
+
+2. AppImage. It needs three packaging tools (download once into a folder,
+   e.g. `../appimage-tools`):
+   - [linuxdeploy](https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage)
+   - [linuxdeploy-plugin-qt](https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage)
+   - [appimagetool](https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-954-x86_64.AppImage)
+     (build 954, renamed to `appimagetool-x86_64.AppImage`)
+
+   then:
+   ```
+   mkdir -p out
+   docker run --rm --entrypoint sh \
+     -v "$PWD":/src:ro \
+     -v "$PWD/../appimage-tools":/tools:ro \
+     -v "$PWD/out:/out" \
+     clickable/amd64-ut24.04-1.x-amd64:latest \
+     -c 'sh /src/packaging/desktop/build-appimage.sh'
+   ```
+
+The results are written to `out/`: `launchermodular-<version>-Linux.deb` and
+`Launcher_Modular-<version>-x86_64.AppImage`. Both run outside Ubuntu Touch
+as a normal desktop application: features that need phone services (calls,
+SMS, online accounts, Libertine) hide themselves when unavailable.
+
+Notes:
+- The packages are built on Ubuntu 24.04, so they need **glibc >= 2.39** on
+  the target machine (`ldd --version` tells you yours). For older
+  distributions, build the same way from an older container.
+- Running the AppImage needs FUSE (`/dev/fuse`); where FUSE is unavailable,
+  extract and run it with `./Launcher_Modular-*.AppImage --appimage-extract`.
+- The AppImage starts on X11 (QtWayland is not bundled; under a Wayland
+  session it runs through XWayland).
+
 ## Creating a Custom Page
 
 Launchermodular lets you add custom pages without modifying the application itself. A page is a standalone QML component, accompanied by a few supporting files (settings, icon, background image), following a precise naming convention.

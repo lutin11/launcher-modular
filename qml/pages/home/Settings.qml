@@ -6,6 +6,7 @@ import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import AppHandler 1.0
 import Lomiri.Components.Popups 1.3
 import Lomiri.Components.Themes 1.3
+import Platform 1.0
 
 Page {
     id: pageSettingsHome
@@ -297,6 +298,9 @@ Page {
                 ListItemHeader.Standard {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Show last calls")+"</font>"
+                    // The widget needs Lomiri.History and Lomiri.Contacts: without
+                    // them offering the option would be pointless.
+                    visible: Platform.hasHistoryModule && Platform.hasContactsModule
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleLastcall
                         onClicked: launchermodular.settings.widgetVisibleLastcall = !launchermodular.settings.widgetVisibleLastcall
@@ -306,6 +310,7 @@ Page {
                 ListItemHeader.Standard {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Show last message")+"</font>"
+                    visible: Platform.hasHistoryModule && Platform.hasContactsModule
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleLastmessage
                         onClicked: launchermodular.settings.widgetVisibleLastmessage = !launchermodular.settings.widgetVisibleLastmessage
@@ -315,6 +320,8 @@ Page {
                 ListItemHeader.Standard {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Show last events")+"</font>"
+                    // The widget needs QtOrganizer and a calendar provider.
+                    visible: Platform.hasOrganizerModule && Platform.hasCalendarFeature
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleEvent
                         onClicked: launchermodular.settings.widgetVisibleEvent = !launchermodular.settings.widgetVisibleEvent

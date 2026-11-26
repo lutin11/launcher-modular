@@ -1,0 +1,71 @@
+name: Desktop Build
+
+# .deb (CPack) and AppImage, built inside the Clickable SDK container
+# (Ubuntu 24.04, Qt 5.15, Lomiri stack from the image's PPA configuration).
+# The click jobs in main.yml are unaffected. See docs/PACKAGING_DESKTOP.md.
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  deb:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build .deb in the Clickable container
+        run: |
+          mkdir -p desktop-artifacts
+          docker run --rm --entrypoint sh \
+            -v "$GITHUB_WORKSPACE:/src:ro" \
+            -v "$GITHUB_WORKSPACE/desktop-artifacts:/out" \
+            clickable/amd64-ut24.04-1.x-amd64:latest \
+            /src/packaging/desktop/build-deb.sh
+
+      - name: Upload .deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: launchermodular-deb
+          path: desktop-artifacts/*.deb
+          if-no-files-found: error
+
+  appimage:
+    runs-on: ubuntu-24.04
+    env:
+      # go-appimage publishes continuous builds with the build number in the
+      # file name; pin it so CI does not break on a renamed asset.
+      APPIMAGETOOL_VERSION: "954"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch AppImage tools
+        run: |
+          mkdir -p .ci-tools desktop-artifacts
+          curl -sfL -o .ci-tools/linuxdeploy-x86_64.AppImage \
+            https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+          curl -sfL -o .ci-tools/linuxdeploy-plugin-qt-x86_64.AppImage \
+            https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
+          curl -sfL -o .ci-tools/appimagetool-x86_64.AppImage \
+            "https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-${APPIMAGETOOL_VERSION}-x86_64.AppImage"
+
+      - name: Build AppImage in the Clickable container
+        env:
+          INCLUDE_TEST_PLATFORMS: "1"
+        run: |
+          docker run --rm --entrypoint sh \
+            -e INCLUDE_TEST_PLATFORMS \
+            -v "$GITHUB_WORKSPACE:/src:ro" \
+            -v "$GITHUB_WORKSPACE/.ci-tools:/tools:ro" \
+            -v "$GITHUB_WORKSPACE/desktop-artifacts:/out" \
+            clickable/amd64-ut24.04-1.x-amd64:latest \
+            /src/packaging/desktop/build-appimage.sh
+
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: launchermodular-appimage
+          path: |
+            desktop-artifacts/*.AppImage
+            desktop-artifacts/appimage-run.log
+          if-no-files-found: error
