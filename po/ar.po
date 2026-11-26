@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 07:49+0000\n"
+"POT-Creation-Date: 2026-11-26 06:37+0000\n"
 "PO-Revision-Date: 2025-11-23 09:38+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/launcher-modular/"
@@ -439,72 +439,72 @@ msgstr "إختار"
 msgid "Swipe up to configure the launcher"
 msgstr "اسحب لأعلى لإعداد المشغل"
 
-#: qml/Main.qml:539
+#: qml/Main.qml:543
 msgid "Add custom icon"
 msgstr "إضافة أيقونة مخصصة"
 
-#: qml/Main.qml:572
+#: qml/Main.qml:576
 #, fuzzy
 msgid "Manage pages"
 msgstr "إدارة الصفحة"
 
-#: qml/Main.qml:605
+#: qml/Main.qml:609
 msgid "Configure Launcher"
 msgstr "إعداد المشغل"
 
-#: qml/Main.qml:638
+#: qml/Main.qml:642
 msgid "Autostart"
 msgstr "التشغيل التلقائي"
 
-#: qml/Main.qml:671
+#: qml/Main.qml:675
 msgid "Help"
 msgstr "المساعدة"
 
-#: qml/Main.qml:704
+#: qml/Main.qml:708
 msgid "About"
 msgstr "حول"
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Website"
 msgstr "الموقع"
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Open this URL in the web browser"
 msgstr "افتح عنوان URL هذا في متصفح الويب"
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Terminal command"
 msgstr "أوامر الطرفية"
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Run a command in a terminal"
 msgstr "تشغيل أمر في الطرفية"
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch app"
 msgstr "شغل التطبيق"
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch an app"
 msgstr "شغل التطبيق"
 
-#: qml/Main.qml:794
+#: qml/Main.qml:798
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "أيقونة SVG أو PNG. نسبة 1:1"
 
-#: qml/Main.qml:807
+#: qml/Main.qml:811
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>العنوان</b> الذي سيتم عرضه في قائمة التطبيقات"
 
-#: qml/Main.qml:831 qml/Main.qml:832 qml/Main.qml:833
+#: qml/Main.qml:835 qml/Main.qml:836 qml/Main.qml:837
 msgid "<b>Action</b> example: "
 msgstr "مثال <b>الإجراء</b>:"
 
-#: qml/Main.qml:845
+#: qml/Main.qml:849
 msgid "Create icon"
 msgstr "إنشاء أيقونة"
 
-#: qml/Main.qml:888 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
+#: qml/Main.qml:892 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
 #: qml/pages/Home.qml:564 qml/pages/home/Settings.qml:70
 msgid "Cancel"
 msgstr "إلغاء"

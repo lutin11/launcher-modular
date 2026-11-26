@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 07:49+0000\n"
+"POT-Creation-Date: 2026-11-26 06:37+0000\n"
 "PO-Revision-Date: 2026-11-09 21:51+0000\n"
 "Last-Translator: Kristoffer Grundström <umeaboy@users.noreply.hosted.weblate."
 "org>\n"
@@ -365,9 +365,9 @@ msgstr ""
 "Software Foundation, antingen version 3 av licensen, eller (efter eget val) "
 "vilken senare version som helst. Detta program distribueras i hopp om att "
 "det ska vara användbart, men UTAN NÅGON GARANTI; utan ens den underförstådda "
-"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a href="
-"\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public License</"
-"a> för mer information."
+"garantin för SÄLJBARHET eller LÄMPLIGHET FÖR ETT SÄRSKILT SYFTE. Se <a "
+"href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU General Public "
+"License</a> för mer information."
 
 #: qml/ChangeLogs.qml:432
 msgid "SOURCE"
@@ -424,72 +424,72 @@ msgstr "Välj"
 msgid "Swipe up to configure the launcher"
 msgstr "Svep uppåt för att konfigurera startprogrammet"
 
-#: qml/Main.qml:539
+#: qml/Main.qml:543
 msgid "Add custom icon"
 msgstr "Lägg till anpassad ikon"
 
-#: qml/Main.qml:572
+#: qml/Main.qml:576
 #, fuzzy
 msgid "Manage pages"
 msgstr "Hantera sida"
 
-#: qml/Main.qml:605
+#: qml/Main.qml:609
 msgid "Configure Launcher"
 msgstr "Konfigurera Launcher"
 
-#: qml/Main.qml:638
+#: qml/Main.qml:642
 msgid "Autostart"
 msgstr "Autostart"
 
-#: qml/Main.qml:671
+#: qml/Main.qml:675
 msgid "Help"
 msgstr "Hjälp"
 
-#: qml/Main.qml:704
+#: qml/Main.qml:708
 msgid "About"
 msgstr "Om"
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Website"
 msgstr "Webbsida"
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Terminal command"
 msgstr "Terminalkommando"
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch app"
 msgstr "Starta app"
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch an app"
 msgstr "Starta en app"
 
-#: qml/Main.qml:794
+#: qml/Main.qml:798
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "SVG eller PNG ikon. 1:1 ratio"
 
-#: qml/Main.qml:807
+#: qml/Main.qml:811
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "<b>titeln</b> som ska visas i applistan"
 
-#: qml/Main.qml:831 qml/Main.qml:832 qml/Main.qml:833
+#: qml/Main.qml:835 qml/Main.qml:836 qml/Main.qml:837
 msgid "<b>Action</b> example: "
 msgstr "<b>Åtgärd</b> exempel: "
 
-#: qml/Main.qml:845
+#: qml/Main.qml:849
 msgid "Create icon"
 msgstr "Skapa ikon"
 
-#: qml/Main.qml:888 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
+#: qml/Main.qml:892 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
 #: qml/pages/Home.qml:564 qml/pages/home/Settings.qml:70
 msgid "Cancel"
 msgstr "Avbryt"

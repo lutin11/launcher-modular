@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 07:49+0000\n"
+"POT-Creation-Date: 2026-11-26 06:37+0000\n"
 "PO-Revision-Date: 2026-08-30 08:12+0000\n"
 "Last-Translator: Alagirisamy Rengaraj <radhaalagirisamy@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ubports/launcher-"
@@ -442,72 +442,72 @@ msgstr "தேர்வு"
 msgid "Swipe up to configure the launcher"
 msgstr "துவக்கியை உள்ளமைக்க மேலே தேய்க்கவும்"
 
-#: qml/Main.qml:539
+#: qml/Main.qml:543
 msgid "Add custom icon"
 msgstr "தனிப்பயன் படவுருவைச் சேர்"
 
-#: qml/Main.qml:572
+#: qml/Main.qml:576
 #, fuzzy
 msgid "Manage pages"
 msgstr "பக்கத்தை நிர்வகிக்கவும்"
 
-#: qml/Main.qml:605
+#: qml/Main.qml:609
 msgid "Configure Launcher"
 msgstr "துவக்கியை உள்ளமைக்கவும்"
 
-#: qml/Main.qml:638
+#: qml/Main.qml:642
 msgid "Autostart"
 msgstr "தானிதொடக்கு"
 
-#: qml/Main.qml:671
+#: qml/Main.qml:675
 msgid "Help"
 msgstr "உதவி"
 
-#: qml/Main.qml:704
+#: qml/Main.qml:708
 msgid "About"
 msgstr "பற்றி"
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Website"
 msgstr "வலைத்தளம்"
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Open this URL in the web browser"
 msgstr "இந்த முகவரியை வலை உலாவியில் திறக்கவும்"
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Terminal command"
 msgstr "முனையக் கட்டளை"
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Run a command in a terminal"
 msgstr "ஒரு முனையத்தில் ஒரு கட்டளையை இயக்கவும்"
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch app"
 msgstr "பயன்பாட்டைத் தொடங்கவும்"
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch an app"
 msgstr "பயன்பாட்டைத் தொடங்கவும்"
 
-#: qml/Main.qml:794
+#: qml/Main.qml:798
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr "எச்விசி அல்லது பிஎன்சி படவுரு. 1: 1 விகிதம்"
 
-#: qml/Main.qml:807
+#: qml/Main.qml:811
 msgid "The <b>title</b> to be shown in the app list"
 msgstr "பயன்பாட்டு பட்டியலில் காட்டப்பட வேண்டிய <b> தலைப்பு </b>"
 
-#: qml/Main.qml:831 qml/Main.qml:832 qml/Main.qml:833
+#: qml/Main.qml:835 qml/Main.qml:836 qml/Main.qml:837
 msgid "<b>Action</b> example: "
 msgstr "<b> செயல் </b> எடுத்துக்காட்டு:. "
 
-#: qml/Main.qml:845
+#: qml/Main.qml:849
 msgid "Create icon"
 msgstr "படவுருவை உருவாக்கவும்"
 
-#: qml/Main.qml:888 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
+#: qml/Main.qml:892 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
 #: qml/pages/Home.qml:564 qml/pages/home/Settings.qml:70
 msgid "Cancel"
 msgstr "கைவிடு"

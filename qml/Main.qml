@@ -503,7 +503,11 @@ MainView {
                 edge: Qt.BottomEdge
                 height: units.gu(9)
                 width: parent.width
-                visible: view.count > 1
+                // Do not bind 'visible' (e.g. to view.count > 1): a Popup made visible
+                // while still at position 0 shows an empty background strip at the bottom
+                // and is misplaced (vertically) when the window is resized. Visibility is
+                // driven by open()/close() only; dragging the bottom edge opens the drawer
+                // even while it is closed (the window overlay handles edge drags).
 
                 background: Rectangle {
                     color: "white"

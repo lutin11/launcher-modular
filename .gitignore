@@ -6,3 +6,4 @@ launcher-modular.creator.user
 *.iml
 /.clickable/
 /out
+/.ci-tools

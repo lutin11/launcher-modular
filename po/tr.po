@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 07:49+0000\n"
+"POT-Creation-Date: 2026-11-26 06:37+0000\n"
 "PO-Revision-Date: 2025-11-23 09:42+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/launcher-modular/"
@@ -406,71 +406,71 @@ msgstr ""
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: qml/Main.qml:539
+#: qml/Main.qml:543
 msgid "Add custom icon"
 msgstr ""
 
-#: qml/Main.qml:572
+#: qml/Main.qml:576
 msgid "Manage pages"
 msgstr ""
 
-#: qml/Main.qml:605
+#: qml/Main.qml:609
 msgid "Configure Launcher"
 msgstr ""
 
-#: qml/Main.qml:638
+#: qml/Main.qml:642
 msgid "Autostart"
 msgstr ""
 
-#: qml/Main.qml:671
+#: qml/Main.qml:675
 msgid "Help"
 msgstr ""
 
-#: qml/Main.qml:704
+#: qml/Main.qml:708
 msgid "About"
 msgstr ""
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Website"
 msgstr ""
 
-#: qml/Main.qml:761
+#: qml/Main.qml:765
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Terminal command"
 msgstr ""
 
-#: qml/Main.qml:762
+#: qml/Main.qml:766
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch app"
 msgstr ""
 
-#: qml/Main.qml:763
+#: qml/Main.qml:767
 msgid "Launch an app"
 msgstr ""
 
-#: qml/Main.qml:794
+#: qml/Main.qml:798
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: qml/Main.qml:807
+#: qml/Main.qml:811
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: qml/Main.qml:831 qml/Main.qml:832 qml/Main.qml:833
+#: qml/Main.qml:835 qml/Main.qml:836 qml/Main.qml:837
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: qml/Main.qml:845
+#: qml/Main.qml:849
 msgid "Create icon"
 msgstr ""
 
-#: qml/Main.qml:888 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
+#: qml/Main.qml:892 qml/Pagemanagement.qml:168 qml/pages/Home.qml:57
 #: qml/pages/Home.qml:564 qml/pages/home/Settings.qml:70
 msgid "Cancel"
 msgstr ""
