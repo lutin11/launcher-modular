@@ -89,6 +89,11 @@ Page {
     }
 
     function saveAndList() {
+        if (serverUrlField.text.trim().length === 0 || usernameField.text.trim().length === 0
+                || appPasswordField.text.length === 0) {
+            statusText = i18n.tr("Complete the server URL, the username and the app password")
+            return
+        }
         storeFields()
         persist()
         NextcloudCalendarModel.configureAccounts(accounts)
