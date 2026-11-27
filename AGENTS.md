@@ -91,7 +91,10 @@ Main repository: `github.com/lutin11/launcher-modular` (fork of
 2. **Page contract**: pages are loaded with `Qt.createComponent` in the context
    of `Main.qml` and access the `launchermodular` id and `DEBUG_MODE`, including
    custom pages from `~/.launchermodular/pages/`. Do not rename or remove these
-   ids without agreement: they form the API for third-party pages.
+   ids without agreement: they form the API for third-party pages. A page may
+   also expose `property var tutorialTargets` (name to item) to take part in the
+   guided tour (`qml/components/Tutorial.qml`): optional, a page without it
+   simply keeps the steps which need no target.
 3. **Page convention**: `pages/NamePage.qml` + `pages/namepage/Settings.qml`
    (+ `assets/`). Widgets follow the same logic in `widgets/`.
 4. **QML arrays**: `.push()` and `.splice()` on a property do not notify

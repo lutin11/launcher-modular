@@ -97,6 +97,21 @@ Maintenance: when an item is fixed, remove it here (or mark it `fixed in
    dialog already does).
 7. **`LibertineWorker::run()` re-injects `DISPLAY` with a `":0"` default**
    (`TODO` in the code) — fragile under Wayland/XWayland.
+8. **The configuration drawer depends on the page count, and on a binding
+   broken at first use**: `bottomBarSettings` in `qml/Main.qml` is a
+   `QtQuick.Controls 2` `Drawer` (`Main.qml` imports `QtQuick.Controls 2.2`
+   after `Lomiri.Components 1.3`, and Lomiri exposes no `Drawer` type), opened
+   with `visible: view.count > 1`. That drawer is the only entry point to
+   `Settings.qml` and `Pagemanagement.qml`. Two consequences, to confirm on a
+   device: with a single page — a fresh install — the drawer is not shown,
+   while the first-run hint in the bottom bar still reads "Swipe up to
+   configure the launcher"; and each of its six buttons calls
+   `bottomBarSettings.close()`, an imperative write which destroys the
+   `visible` binding, after which the drawer can no longer follow the page
+   count. → Keep `visible` free of bindings and open/close the drawer
+   explicitly, with the same condition for the hint. (The guided tour,
+   `qml/components/Tutorial.qml`, explains the swipe-up gesture without
+   changing this drawer.)
 
 ## 3. Portability and framework compliance
 
@@ -184,3 +199,4 @@ Maintenance: when an item is fixed, remove it here (or mark it `fixed in
 | 8 | First test baseline (QTest / QML `TestCase` on pure functions: WebDAV parsing, feed sorting, version comparison) | Medium | Medium |
 | 9 | Single source of truth for the version | Low | Low |
 | 10 | Split `Main.qml` / `Home.qml` and freeze an explicit API for custom pages | Medium | High |
+| 11 | Make the configuration drawer reachable on a fresh install and after a button press (see §2.8) | Medium | Low |

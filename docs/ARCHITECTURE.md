@@ -128,9 +128,11 @@ Hors plugins : `WindowController` (plein écran), utilisé par `Clock` et
 
 Cœur de l'application : bloc `Settings` (≈65 propriétés persistées), trois
 `ListModel` persistés, `SwipeView` des pages, barre de navigation, panneau de
-réglages du bord bas et dialogue de création d'icône personnalisée. C'est aussi le
-principal point de couplage : presque toutes les pages, widgets et composants
-référencent `launchermodular`, `settings` et les `ListModel` racine.
+réglages du bord bas, dialogue de création d'icône personnalisée et masque
+pédagogique (`Tutorial`, présenté au premier lancement et relançable depuis
+l'aide). C'est aussi le principal point de couplage : presque toutes les pages,
+widgets et composants référencent `launchermodular`, `settings` et les
+`ListModel` racine.
 
 ### 6.2 Pages (`qml/pages/`)
 
@@ -165,6 +167,9 @@ pages/
 - Singletons QML (`pragma Singleton`, via `qmldir`) : `RssModel`, `TodoModel`.
 - `qml/components/` : `FeedsModel`, `Feed`, `FeedItem`, `RssChannel`,
   `RssChannelItems`, `PageUnavailable` (état vide d'une page non chargeable).
+  `Tutorial` (masque pédagogique « visite guidée », instancié par `Main.qml` ;
+  voit l'application à travers les ids que `Main.qml` lui passe et la propriété
+  `tutorialTargets` de la page affichée).
   `qml/helpers/` : `CachedHttpRequest` (worker + cache U1db),
   `PageRequirements.js` (table page embarquée → modules extérieurs requis).
 
@@ -313,6 +318,24 @@ l'exécution.
    `qml/helpers/PageRequirements.js` : la liste « ajouter une page » la retirera
    et `Main.qml` affichera `PageUnavailable` là où elle est déjà configurée
    (§6.4).
+4. Vérifier que tout import QML utilisé existe sur le framework cible.
+5. Facultatif — offrir la visite guidée (`qml/components/Tutorial.qml`) :
+   exposer à la racine de la page une carte `tutorialTargets` dont les clés sont
+   citées par les étapes et les valeurs les éléments à encadrer.
+
+   ```qml
+   // pages/Home.qml
+   property var tutorialTargets: ({
+       "search": search, "widgets": rowWidgets, "widgetsMore": rowWidgetsM,
+       "favorites": favoriteAppWidget, "apps": listColumnApps
+   })
+   ```
+
+   Une page sans `tutorialTargets` reste compatible : la visite ne garde alors
+   que les étapes sans cible (bienvenue, gestion des pages). Le nom
+   `main.bottomBar` désigne la barre de navigation que `Main.qml` passe à
+   `Tutorial`, commune à toutes les pages ; un autre nom en `main.` ne
+   correspond à rien et son étape est écartée.
 
 ### Ajouter un widget
 Créer `widgets/Nom.qml` et `widgets/nom/Settings.qml`, puis l'intégrer à
@@ -360,6 +383,18 @@ Pas de dépendance C++ vers un autre plugin.
 - L'id `launchermodular` et `DEBUG_MODE` restent accessibles aux pages
   (compatibilité des pages tierces).
 - Convention de nommage des pages et de leurs `Settings.qml`.
+- Visite guidée : contrat optionnel `tutorialTargets` (clés offertes par
+  `Home.qml` : `search`, `widgets`, `widgetsMore`, `favorites`, `apps`) et ids
+  `view`, `pageRepeater`, `bottomBarLayout` de `Main.qml`. Renommer l'un d'eux
+  fait disparaître l'étape correspondante de la visite, sans erreur.
+- `PageStack` (Lomiri Components 1.3, déprécié) : `pageLauncher` est un enfant
+  déclaratif du `PageStack` et n'y est jamais poussée (`PageStack.qml` du
+  framework place les enfants dans un nœud inactif). Sur le lanceur, `depth`
+  vaut donc `0` et `currentPage` vaut `null` ; `depth === 1` signifie « une
+  page poussée par-dessus le lanceur ». Pour tester « l'utilisateur est sur le
+  lanceur », écrire `!pageStack.currentPage` — la condition posée sur l'instance
+  de `Tutorial` dans `Main.qml`. Tous les boutons « retour » reposent sur cette
+  pile à un seul niveau.
 - Plugins indépendants ; la composition se fait uniquement en QML.
 - Détection des dépendances : un seul producteur, le plugin `Platform`. Une
   capacité fausse **retire** la fonction de la composition (`Loader`), ne la

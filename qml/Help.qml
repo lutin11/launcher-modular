@@ -44,6 +44,18 @@ Page {
                     right: parent.right
                 }
 
+                Button {
+                    id: howToUseButton
+                    width: parent.width - units.gu(12)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: i18n.tr("How to use")
+                    onClicked: {
+                        // the tour belongs to the launcher, so ask for it and go back to it
+                        launchermodular.tutorialRequested = true
+                        pageStack.pop()
+                    }
+                }
+
                 Item {
                     width: parent.width
                     height: widgetSettingHelp.height + units.gu(2)

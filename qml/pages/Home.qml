@@ -78,6 +78,17 @@ Item {
 
     property bool reloading: false
 
+    // Elements the guided tour (qml/components/Tutorial.qml) points at. A page
+    // may expose such a map by name; the tour skips the steps of a page which
+    // offers none.
+    property var tutorialTargets: ({
+        "search": search,
+        "widgets": rowWidgets,
+        "widgetsMore": rowWidgetsM,
+        "favorites": favoriteAppWidget,
+        "apps": listColumnApps
+    })
+
     function refreshFavorites() {
         var favCount = launchermodular.favoriteAppsModel.count;
         for (var i = favCount - 1; i >= 0; i--) {
