@@ -242,6 +242,17 @@ Item {
                     margins: units.gu(2)
                 }
             }
+
+            Button {
+                anchors {
+                    top: noFeeds.bottom
+                    topMargin: units.gu(2)
+                    horizontalCenter: parent.horizontalCenter
+                }
+                visible: !_mainFeed.isFeeds
+                text: i18n.tr("Add feeds")
+                onClicked: pageStack.push(Qt.resolvedUrl("rss/Settings.qml"))
+            }
         }
 
         pullToRefresh {
