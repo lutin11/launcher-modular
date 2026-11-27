@@ -65,6 +65,36 @@ MainView {
         return favoriteApps;
     }
 
+    readonly property int pageCount: launchermodular.pageModel.count
+
+    // Circular paging. With more than one page the SwipeView holds two extra
+    // entries: a clone of the last page at index 0 and a clone of the first at
+    // index pageCount+1. The real page of a display index:
+    function displayToReal(display) {
+        if (pageCount <= 1)
+            return 0
+        if (display === 0)
+            return pageCount - 1
+        if (display === pageCount + 1)
+            return 0
+        return display - 1
+    }
+
+    // Icon of a page. Profiles created before the icon was stored, or entries
+    // added without one, get the icon of the page directory instead of the
+    // generic smiley.
+    function pageIcon(page) {
+        if (page && page.icon && page.icon.length > 0)
+            return page.icon
+        if (page && page.name)
+            return "pages/" + page.name.replace(".qml", "").toLowerCase() + "/assets/icon.svg"
+        return "../assets/happy-full.svg"
+    }
+
+    function realToDisplay(real) {
+        return pageCount <= 1 ? 0 : real + 1
+    }
+
     function compareVersions(v1, v2) {
         const a = v1.split('.').map(Number);
         const b = v2.split('.').map(Number);
@@ -170,6 +200,9 @@ MainView {
         // Calendar chosen on the Nextcloud calendar page: path of the
         // collection on the server, and its display name for the UI.
         property string nextcloudCalendarHref: ''
+        // Accounts of the Nextcloud calendar page(s), as JSON: nested lists in
+        // the page data are not serialised by the settings backend.
+        property string nextcloudAccountsJson: ''
         property string nextcloudCalendarName: ''
 
     }//settings
@@ -314,26 +347,52 @@ MainView {
                     /* ******************************** LES PAGES COMMENCE ICI ******************************** */
                     SwipeView {
                         id: view
-                        currentIndex: 0
+                        // Display order: [clone of the last page, real pages…,
+                        // clone of the first page]; starting at 1 shows the
+                        // first real page.
+                        currentIndex: 1
                         anchors.fill: parent
                         interactive: !launchermodular.settings.fullScreen
 
+                        Component.onCompleted: currentIndex = launchermodular.pageCount > 1 ? 1 : 0
+
+                        // Once settled on a clone, jump to the real page it
+                        // duplicates: the content is identical, so the switch is
+                        // invisible and the swipe can wrap again.
+                        onCurrentIndexChanged: {
+                            if (launchermodular.pageCount <= 1)
+                                return
+                            if (currentIndex === 0)
+                                currentIndex = launchermodular.pageCount
+                            else if (currentIndex === launchermodular.pageCount + 1)
+                                currentIndex = 1
+                        }
+
                         Repeater {
-                            model: launchermodular.pageModel
+                            // Two extra entries for the circular paging.
+                            model: launchermodular.pageCount > 1 ? launchermodular.pageCount + 2
+                                                                 : launchermodular.pageCount
                             Loader {
                                 id: pageLoader
+                                property int realIndex: launchermodular.displayToReal(index)
                                 visible: index === view.currentIndex
                                 onLoaded: {
                                     if (item) {
+                                        var page = launchermodular.pageModel.get(realIndex)
                                         item.visible = visible
                                         // Empty state: hand it what it must display
                                         if (typeof item.dependencies !== "undefined") {
-                                            item.pageName = model.name
-                                            item.dependencies = PageRequirements.missingModules(Platform, model.name)
+                                            item.pageName = page.name
+                                            item.dependencies = PageRequirements.missingModules(Platform, page.name)
                                         }
                                         // Injecte the data used for the curent page
                                         if (typeof item.pageData !== "undefined") {
-                                            item.pageData = model.data
+                                            item.pageData = page.data
+                                        }
+                                        // Per-page settings need to find their own
+                                        // entry in the page model.
+                                        if (typeof item.pageIndex !== "undefined") {
+                                            item.pageIndex = realIndex
                                         }
                                     }
                                 }
@@ -341,16 +400,17 @@ MainView {
                                     if (item) item.visible = visible
                                 }
                                 sourceComponent: {
+                                    var page = launchermodular.pageModel.get(realIndex)
                                     // A page that needs a missing module cannot be loaded at
                                     // all: show an empty state naming the missing module
                                     // instead of a blank page.
-                                    if (model.directory === "pages/"
-                                            && !PageRequirements.isAvailable(Platform, model.name)) {
+                                    if (page.directory === "pages/"
+                                            && !PageRequirements.isAvailable(Platform, page.name)) {
                                         return pageUnavailableComponent
                                     }
-                                    var comp = Qt.createComponent(model.directory + model.name);
+                                    var comp = Qt.createComponent(page.directory + page.name);
                                     if (comp.status === Component.Error) {
-                                        console.error("Failed to load component: " + model.directory + model.name + ", error: " + comp.errorString());
+                                        console.error("Failed to load component: " + page.directory + page.name + ", error: " + comp.errorString());
                                         return pageUnavailableComponent;
                                     }
                                     return comp;
@@ -399,10 +459,12 @@ MainView {
                             // upward swipe: open the settings bar
                             bottomBarSettings.open()
                         } else if (dx > units.gu(4)) {
-                            view.setCurrentIndex((view.currentIndex+1)%view.count)
+                            var nextReal = (launchermodular.displayToReal(view.currentIndex) + 1) % launchermodular.pageCount
+                            view.setCurrentIndex(launchermodular.realToDisplay(nextReal))
                             startMouseX += units.gu(4)
                         } else if (-dx > units.gu(4)) {
-                            view.setCurrentIndex((view.currentIndex-1+view.count)%view.count)
+                            var previousReal = (launchermodular.displayToReal(view.currentIndex) - 1 + launchermodular.pageCount) % launchermodular.pageCount
+                            view.setCurrentIndex(launchermodular.realToDisplay(previousReal))
                             startMouseX -= units.gu(4)
                         }
                     }
@@ -412,7 +474,7 @@ MainView {
                     PageIndicator {
                         id: indicator
                         count: view.count
-                        currentIndex: view.currentIndex
+                        currentIndex: launchermodular.displayToReal(view.currentIndex)
                         interactive: false //= dont intercept press
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
@@ -426,11 +488,11 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
                                 source: (index >= 0 && index < launchermodular.pageModel.count)
-                                        ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                        ? launchermodular.pageIcon(launchermodular.pageModel.get(index))
                                         : "../assets/happy-full.svg"
                                 height: units.gu(2)
                                 width: units.gu(2)
-                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
+                                color: index === launchermodular.displayToReal(view.currentIndex) ? "#E95420" : "#FFFFFF"
                                 id: iconBottomBar
                                 antialiasing: true
                                 visible: false
@@ -440,7 +502,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
                                 source: iconBottomBar
-                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
+                                color: index === launchermodular.displayToReal(view.currentIndex) ? "#E95420" : "#FFFFFF"
                                 antialiasing: true
                             }
 
@@ -449,10 +511,10 @@ MainView {
                                 propagateComposedEvents: true
                                 onPressed: {
                                     mouse.accepted = false
-                                    if(index !== view.currentIndex) {
-                                        view.setCurrentIndex(index);
+                                    if(index !== launchermodular.displayToReal(view.currentIndex)) {
+                                        view.setCurrentIndex(launchermodular.realToDisplay(index));
                                         iconBottomBar.source = (index >= 0 && index < launchermodular.pageModel.count)
-                                           ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                           ? launchermodular.pageIcon(launchermodular.pageModel.get(index))
                                            : "../assets/happy-full.svg"
                                     }
                                 }

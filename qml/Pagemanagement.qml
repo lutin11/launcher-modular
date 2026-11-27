@@ -282,7 +282,10 @@ Page {
                 onPressAndHold: ListView.view.ViewItems.dragMode = !ListView.view.ViewItems.dragMode
 
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"));
+                    // The settings page of a page can read and write its own
+                    // configuration in the page model (per-page settings).
+                    pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"),
+                                   { pageIndex: index, pageName: name });
                 }
 
 
