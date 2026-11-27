@@ -27,6 +27,12 @@ Item {
         RssModel.dbInit()
         updateFeedsTimer.start()
         completed = true
+        // Load the configured feeds once, even if the page was created while
+        // it was not the current one.
+        if (RssModel.itemModel && RssModel.itemModel.length > 0) {
+            RssModel.buildModel()
+            _mainFeed.updateFeed()
+        }
     }
 
     onVisibleChanged: {
