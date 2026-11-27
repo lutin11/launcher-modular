@@ -162,6 +162,8 @@ Page {
             // height: binding the height to contentHeight made a binding loop.
             height: Math.max(implicitHeight, editArea.height)
             placeholderText: i18n.tr("Write in Markdown…")
+            // Default control colour is a light grey, hard to read on black.
+            color: launchermodular.settings.textColor
             wrapMode: TextArea.Wrap
             font.pixelSize: units.gu(1.8)
             onTextChanged: editor.dirty = true
