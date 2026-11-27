@@ -11,7 +11,11 @@ import "./music/"
 Item {
     id: musics
 
-    property string rootMusic: MySettings.getMusicLocation()
+    // The folder can be changed in the page settings; the platform default is
+    // used when the setting is empty.
+    property string rootMusic: launchermodular.settings.folderMusic.length > 0
+                             ? launchermodular.settings.folderMusic
+                             : MySettings.getMusicLocation()
     property var musicNameFilters: ["*.mp3", "*.aac", "*.ogg", "*.wav", "*.flac", "*.m4a", "*.alac"]
     property string searchTerm: ""
     property var folders: []

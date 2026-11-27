@@ -4,6 +4,7 @@ import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import Lomiri.Components.Themes 1.3
+import MySettings 1.0
 
 Page {
     id: musicSettingsPicture
@@ -42,6 +43,25 @@ Page {
                 ListItem.Header {
                     id: titleMusicSettings
                     text: "<font color=\"#ffffff\">"+i18n.tr("Settings for 'Music' page")+"</font>"
+                }
+
+                ListItem.Header {
+                    text: "<font color=\"#ffffff\">"+i18n.tr("Music folder")+"</font>"
+                }
+
+                TextField {
+                    id: musicFolderField
+                    width: parent.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    placeholderText: i18n.tr("Folder containing the music")
+                    text: launchermodular.settings.folderMusic
+                    onTextChanged: launchermodular.settings.folderMusic = text
+                }
+
+                Button {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: i18n.tr("Use the default folder")
+                    onClicked: launchermodular.settings.folderMusic = MySettings.getMusicLocation()
                 }
 
                 Text {
