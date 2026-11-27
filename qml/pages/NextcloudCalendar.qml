@@ -13,6 +13,10 @@ Item {
     property int viewMode: 2       // 0 day, 1 week, 2 month, 3 year
     property date currentDate: new Date()
 
+    // The day view feeds a ListModel: a ListView whose model is a JS array
+    // rebuilt by a function loops forever (binding loop on "model").
+    ListModel { id: dayModel }
+
     // Content of the event dialog.
     property int editingIndex: -1
     property string eventSummary: ""
@@ -31,7 +35,16 @@ Item {
 
     Component.onCompleted: {
         configureModel()
+        refreshDayModel()
         NextcloudCalendarModel.refresh(60, 180)
+    }
+
+    onCurrentDateChanged: refreshDayModel()
+    onViewModeChanged: if (viewMode === 0) refreshDayModel()
+
+    Connections {
+        target: NextcloudCalendarModel
+        onUpdated: calendarPage.refreshDayModel()
     }
 
     function configureModel() {
@@ -67,6 +80,23 @@ Item {
         return first.getFullYear() === second.getFullYear()
                 && first.getMonth() === second.getMonth()
                 && first.getDate() === second.getDate()
+    }
+
+    function refreshDayModel() {
+        dayModel.clear()
+        var events = calendarPage.eventsForDay(calendarPage.currentDate)
+        for (var index = 0; index < events.length; index++) {
+            var event = events[index]
+            dayModel.append({
+                summary: event.event.summary,
+                description: event.event.description,
+                location: event.event.location,
+                start: event.event.start,
+                end: event.event.end,
+                allDay: event.event.allDay,
+                sourceIndex: event.index
+            })
+        }
     }
 
     function eventsForDay(day) {
@@ -348,11 +378,29 @@ Item {
             Repeater {
                 model: calendarPage.monthCells(calendarPage.currentDate)
                 Rectangle {
+                    id: monthCell
                     width: monthView.width / 7
                     height: units.gu(6)
                     color: modelData.inMonth ? "#22ffffff" : "transparent"
                     border.color: "#33ffffff"
                     border.width: 1
+
+                    // Two event titles at most, in a ListModel: a Repeater fed
+                    // by a function returning a JS array loops on "model".
+                    ListModel { id: cellEvents }
+
+                    function loadCellEvents() {
+                        cellEvents.clear()
+                        var events = calendarPage.eventsForDay(modelData.day)
+                        for (var eventIndex = 0; eventIndex < events.length && eventIndex < 2; eventIndex++)
+                            cellEvents.append({ summary: events[eventIndex].event.summary })
+                    }
+
+                    Component.onCompleted: loadCellEvents()
+                    Connections {
+                        target: NextcloudCalendarModel
+                        onUpdated: monthCell.loadCellEvents()
+                    }
 
                     Rectangle {
                         width: parent.width
@@ -375,13 +423,13 @@ Item {
                         anchors.left: parent.left
                         anchors.right: parent.right
                         Repeater {
-                            model: calendarPage.eventsForDay(modelData.day).slice(0, 2)
+                            model: cellEvents
                             Label {
                                 width: parent.width
                                 elide: Text.ElideRight
                                 fontSize: "x-small"
                                 color: "#E95420"
-                                text: modelData.event.summary
+                                text: summary
                             }
                         }
                     }
@@ -411,43 +459,74 @@ Item {
         model: 7
 
         delegate: Column {
+            id: weekDay
             width: weekView.width
             spacing: units.gu(0.3)
 
             property date day: calendarPage.addDays(calendarPage.startOfDay(calendarPage.currentDate), index)
 
+            // A ListModel per day: a Repeater fed by a JS array rebuilt by a
+            // function loops on its "model" property.
+            ListModel { id: weekDayEvents }
+
+            function loadEvents() {
+                weekDayEvents.clear()
+                var events = calendarPage.eventsForDay(weekDay.day)
+                for (var eventIndex = 0; eventIndex < events.length; eventIndex++) {
+                    weekDayEvents.append({
+                        summary: events[eventIndex].event.summary,
+                        start: events[eventIndex].event.start,
+                        allDay: events[eventIndex].event.allDay,
+                        sourceIndex: events[eventIndex].index
+                    })
+                }
+            }
+
+            Component.onCompleted: loadEvents()
+            onDayChanged: loadEvents()
+
+            Connections {
+                target: NextcloudCalendarModel
+                onUpdated: weekDay.loadEvents()
+            }
+
             Label {
-                text: Qt.formatDate(parent.day, "dddd d MMMM")
+                text: Qt.formatDate(weekDay.day, "dddd d MMMM")
                 color: launchermodular.settings.textColor
                 fontSize: "small"
             }
             Repeater {
-                model: calendarPage.eventsForDay(parent.day)
-                Row {
+                model: weekDayEvents
+                Item {
                     width: weekView.width
-                    spacing: units.gu(0.5)
-                    Label {
-                        width: units.gu(5)
-                        fontSize: "x-small"
-                        color: "#AEA79F"
-                        text: modelData.event.allDay ? i18n.tr("All day")
-                                                     : Qt.formatTime(new Date(modelData.event.start), "HH:mm")
-                    }
-                    Label {
-                        width: weekView.width - units.gu(6)
-                        elide: Text.ElideRight
-                        fontSize: "x-small"
-                        color: launchermodular.settings.textColor
-                        text: modelData.event.summary
+                    height: weekRow.height
+                    Row {
+                        id: weekRow
+                        width: parent.width
+                        spacing: units.gu(0.5)
+                        Label {
+                            width: units.gu(5)
+                            fontSize: "x-small"
+                            color: "#AEA79F"
+                            text: allDay ? i18n.tr("All day")
+                                         : Qt.formatTime(new Date(start), "HH:mm")
+                        }
+                        Label {
+                            width: weekView.width - units.gu(6)
+                            elide: Text.ElideRight
+                            fontSize: "x-small"
+                            color: launchermodular.settings.textColor
+                            text: summary
+                        }
                     }
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: calendarPage.openEvent(modelData.index)
+                        onClicked: calendarPage.openEvent(sourceIndex)
                     }
                 }
             }
             Label {
-                visible: calendarPage.eventsForDay(parent.day).length === 0
+                visible: weekDayEvents.count === 0
                 text: i18n.tr("No event")
                 fontSize: "x-small"
                 color: "#AEA79F"
@@ -465,7 +544,7 @@ Item {
         anchors.bottom: parent.bottom
         visible: viewMode === 0
         clip: true
-        model: calendarPage.eventsForDay(calendarPage.currentDate)
+        model: dayModel
 
         delegate: Rectangle {
             width: dayView.width
@@ -481,22 +560,24 @@ Item {
                 anchors.left: parent.left
                 anchors.leftMargin: units.gu(1)
                 anchors.verticalCenter: parent.verticalCenter
-                width: units.gu(7)
+                width: units.gu(10)
+                wrapMode: Text.NoWrap
+                elide: Text.ElideRight
                 color: "#AEA79F"
-                text: modelData.event.allDay ? i18n.tr("All day")
-                                             : Qt.formatTime(new Date(modelData.event.start), "HH:mm")
-                        + (modelData.event.allDay ? "" : " – " + Qt.formatTime(new Date(modelData.event.end), "HH:mm"))
+                text: allDay ? i18n.tr("All day")
+                             : Qt.formatTime(new Date(start), "HH:mm")
+                               + " – " + Qt.formatTime(new Date(end), "HH:mm")
             }
             Column {
                 anchors.left: parent.left
-                anchors.leftMargin: units.gu(8.5)
+                anchors.leftMargin: units.gu(11.5)
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 Label {
                     width: parent.width
                     elide: Text.ElideRight
                     color: launchermodular.settings.textColor
-                    text: modelData.event.summary
+                    text: summary
                 }
                 Label {
                     width: parent.width
@@ -504,12 +585,12 @@ Item {
                     fontSize: "x-small"
                     color: "#AEA79F"
                     visible: text.length > 0
-                    text: modelData.event.location
+                    text: location
                 }
             }
             MouseArea {
                 anchors.fill: parent
-                onClicked: calendarPage.openEvent(modelData.index)
+                onClicked: calendarPage.openEvent(sourceIndex)
             }
         }
     }

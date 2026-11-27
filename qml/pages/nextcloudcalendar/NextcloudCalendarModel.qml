@@ -1,5 +1,6 @@
 pragma Singleton
 import QtQuick 2.12
+import NetworkHelper 1.0
 import "CalDav.js" as CalDav
 
 // Events of the Nextcloud calendar chosen by the user.
@@ -19,6 +20,22 @@ QtObject {
 
     readonly property bool configured: baseUrl.length > 0 && user.length > 0 && password.length > 0
     property bool syncing: false
+    // Pending requests, by tag: NetworkHelper answers with the same tag.
+    property var callbacks: ({})
+    property int requestCounter: 0
+
+    // QML's XMLHttpRequest refuses the REPORT verb ("Unsupported HTTP method
+    // type"), so the requests go through NetworkHelper (QNetworkAccessManager).
+    property var network: Connections {
+        target: NetworkHelper
+        onRequestFinished: function (tag, status, body) {
+            var callback = model.callbacks[tag]
+            if (callback) {
+                delete model.callbacks[tag]
+                callback(status, body)
+            }
+        }
+    }
     property bool ready: false
     property string lastError: ""
 
@@ -47,29 +64,15 @@ QtObject {
         }
     }
 
-    // extraHeaders is "Name: value" lines separated by \n: a string survives
-    // the QML/JS boundary unchanged, whereas an object literal passed to a
-    // function of a QML singleton is converted and its keys are not enumerable
-    // (the Depth header was silently lost).
+    // extraHeaders is "Name: value" lines separated by \n.
     function request(method, path, body, extraHeaders, callback) {
-        var xhr = new XMLHttpRequest()
-        xhr.open(method, origin() + path)
-        xhr.setRequestHeader("Authorization", "Basic " + Qt.btoa(user + ":" + password))
-        if (extraHeaders) {
-            var lines = extraHeaders.split("\n")
-            for (var index = 0; index < lines.length; index++) {
-                var colon = lines[index].indexOf(":")
-                if (colon > 0)
-                    xhr.setRequestHeader(lines[index].substring(0, colon).trim(),
-                                         lines[index].substring(colon + 1).trim())
-            }
-        }
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== XMLHttpRequest.DONE)
-                return
-            callback(xhr.status, xhr.responseText)
-        }
-        xhr.send(body ? body : null)
+        requestCounter++
+        var tag = method + ":" + requestCounter
+        callbacks[tag] = callback
+        var headers = "Authorization: Basic " + Qt.btoa(user + ":" + password)
+        if (extraHeaders)
+            headers += "\n" + extraHeaders
+        NetworkHelper.sendRequest(tag, method, origin() + path, body ? body : "", headers)
     }
 
     // Finds the calendars of the account, then keeps the one already chosen or
