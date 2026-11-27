@@ -243,7 +243,7 @@ if(DESKTOP_INSTALL)
     # what is missing and leaves the feature out of the composition instead of
     # failing (docs/PACKAGING_DESKTOP.md, section 10).
     set(CPACK_DEBIAN_PACKAGE_RECOMMENDS
-        "lomiri-app-launch, qml-module-qtmultimedia, qml-module-qtsensors, qml-module-qtsysteminfo, qml-module-qtquick-localstorage, qml-module-lomiri-thumbnailer, qml-module-lomiri-content, qml-module-lomiri-downloadmanager, qml-module-lomiri-connectivity, qml-module-lomiri-history, qml-module-u1db")
+        "libqt5multimedia5-plugins, lomiri-app-launch, qml-module-qtmultimedia, qml-module-qtsensors, qml-module-qtsysteminfo, qml-module-qtquick-localstorage, qml-module-lomiri-thumbnailer, qml-module-lomiri-content, qml-module-lomiri-downloadmanager, qml-module-lomiri-connectivity, qml-module-lomiri-history, qml-module-u1db")
     # QtContacts and QtOrganizer are only useful together with a provider
     # (galera, eds, sqlite); without one the widgets are left out.
     # qml-module-lomiri-contacts is suggested, not recommended on purpose: apt
