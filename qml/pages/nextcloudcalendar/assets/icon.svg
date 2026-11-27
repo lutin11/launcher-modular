@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect x="8" y="10" width="48" height="46" rx="6" fill="none" stroke="#ffffff" stroke-width="4"/>
-  <line x1="8" y1="24" x2="56" y2="24" stroke="#ffffff" stroke-width="4"/>
-  <line x1="20" y1="6" x2="20" y2="14" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-  <line x1="44" y1="6" x2="44" y2="14" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="22" cy="34" r="3" fill="#ffffff"/>
-  <circle cx="32" cy="34" r="3" fill="#ffffff"/>
-  <circle cx="42" cy="34" r="3" fill="#ffffff"/>
-  <circle cx="22" cy="44" r="3" fill="#ffffff"/>
-  <circle cx="32" cy="44" r="3" fill="#ffffff"/>
+  <rect x="10" y="12" width="44" height="42" rx="4" fill="none" stroke="#808080" stroke-width="3"/>
+  <line x1="10" y1="24" x2="54" y2="24" stroke="#808080" stroke-width="3"/>
+  <line x1="22" y1="8" x2="22" y2="16" stroke="#808080" stroke-width="3" stroke-linecap="round"/>
+  <line x1="42" y1="8" x2="42" y2="16" stroke="#808080" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="22" cy="34" r="2.5" fill="#808080"/>
+  <circle cx="32" cy="34" r="2.5" fill="#808080"/>
+  <circle cx="42" cy="34" r="2.5" fill="#808080"/>
+  <circle cx="22" cy="44" r="2.5" fill="#808080"/>
+  <circle cx="32" cy="44" r="2.5" fill="#808080"/>
 </svg>

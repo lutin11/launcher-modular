@@ -3,29 +3,36 @@ import QtQuick 2.12
 import NetworkHelper 1.0
 import "CalDav.js" as CalDav
 
-// Events of the Nextcloud calendar chosen by the user.
+// Events of the Nextcloud calendars used by the launcher.
 //
-// The page and the Event widget both call configure() with the settings of the
-// launcher, then refresh(); the model is shared, so a single request serves
-// both views. Requests are plain XMLHttpRequest with Basic authentication,
-// like the Nextcloud folders page: no credential is stored anywhere else.
+// Several accounts are supported: each page can hold its own list of accounts
+// (page data), and the events of all of them are merged in one model. Every
+// event keeps the index of its account, so updating or deleting it reaches the
+// right server.
 QtObject {
     id: model
 
-    property string baseUrl: ""
-    property string user: ""
-    property string password: ""
-    property string calendarHref: ""
-    property string calendarName: ""
+    // {url, user, password, href, name}
+    property var accounts: []
+    // Calendars of the account last listed (settings page).
+    property var calendars: []
+    property int calendarsAccount: -1
 
-    readonly property bool configured: baseUrl.length > 0 && user.length > 0 && password.length > 0
     property bool syncing: false
-    // Pending requests, by tag: NetworkHelper answers with the same tag.
+    property bool ready: false
+    property string lastError: ""
+
+    // uid, etag, href, summary, description, location, start, end, allDay, account
+    property ListModel events: ListModel {}
+
     property var callbacks: ({})
     property int requestCounter: 0
+    property var collected: []
 
-    // QML's XMLHttpRequest refuses the REPORT verb ("Unsupported HTTP method
-    // type"), so the requests go through NetworkHelper (QNetworkAccessManager).
+    readonly property bool configured: accounts.length > 0
+
+    signal updated()
+
     property var network: Connections {
         target: NetworkHelper
         onRequestFinished: function (tag, status, body) {
@@ -36,98 +43,106 @@ QtObject {
             }
         }
     }
-    property bool ready: false
-    property string lastError: ""
 
-    // uid, etag, href, summary, description, location, start, end (ms), allDay
-    property ListModel events: ListModel {}
-    // Calendars found on the account: [{href, displayName}]
-    property var calendars: []
-
-    signal updated()
-    signal calendarSelected(string href, string name)
-
-    function origin() {
-        var match = baseUrl.match(/^(https?:\/\/[^\/]+)/)
-        return match ? match[1] : ""
+    function accountAt(index) {
+        return (index >= 0 && index < accounts.length) ? accounts[index]
+                                                       : ({ url: "", user: "", password: "", href: "", name: "" })
     }
 
     function configure(url, login, secret, href) {
-        var changed = baseUrl !== url || user !== login || password !== secret
-        baseUrl = url || ""
-        user = login || ""
-        password = secret || ""
-        calendarHref = href || ""
-        if (changed) {
-            events.clear()
-            ready = false
-        }
+        configureAccounts([{ url: url, user: login, password: secret, href: href || "", name: "" }])
     }
 
-    // extraHeaders is "Name: value" lines separated by \n.
-    function request(method, path, body, extraHeaders, callback) {
+    function configureAccounts(list) {
+        var clean = []
+        for (var index = 0; list && index < list.length; index++) {
+            var account = list[index]
+            if (account && account.url && account.user && account.password)
+                clean.push({ url: account.url, user: account.user, password: account.password,
+                             href: account.href || "", name: account.name || "" })
+        }
+        if (JSON.stringify(clean) === JSON.stringify(accounts))
+            return
+        accounts = clean
+        events.clear()
+        ready = false
+    }
+
+    function setAccountHref(index, href, name) {
+        if (index < 0 || index >= accounts.length)
+            return
+        var copy = accounts.slice()
+        var account = copy[index]
+        copy[index] = { url: account.url, user: account.user, password: account.password,
+                        href: href, name: name || account.name }
+        accounts = copy
+        calendarSelected(href, name)
+    }
+
+    signal calendarSelected(string href, string name)
+
+    function origin(account) {
+        var match = account.url.match(/^(https?:\/\/[^\/]+)/)
+        return match ? match[1] : ""
+    }
+
+    function request(account, method, path, body, extraHeaders, callback) {
         requestCounter++
         var tag = method + ":" + requestCounter
         callbacks[tag] = callback
-        var headers = "Authorization: Basic " + Qt.btoa(user + ":" + password)
+        var headers = "Authorization: Basic " + Qt.btoa(account.user + ":" + account.password)
         if (extraHeaders)
             headers += "\n" + extraHeaders
-        NetworkHelper.sendRequest(tag, method, origin() + path, body ? body : "", headers)
+        NetworkHelper.sendRequest(tag, method, origin(account) + path, body ? body : "", headers)
     }
 
-    // Finds the calendars of the account, then keeps the one already chosen or
-    // the first one, and scans it.
+    // Sequential sync: one account after the other, then a single model fill.
     function refresh(daysBack, daysForward) {
-        if (!configured || syncing)
+        if (accounts.length === 0 || syncing)
             return
         syncing = true
         lastError = ""
-        if (calendarHref.length > 0) {
-            queryEvents(daysBack, daysForward)
-            return
-        }
-        listCalendars(function (list) {
-            if (list.length === 0) {
-                syncing = false
-                return
-            }
-            selectCalendar(list[0].href, list[0].displayName)
-            queryEvents(daysBack, daysForward)
-        })
+        collected = []
+        syncAccount(0, daysBack, daysForward)
     }
 
-    // Lists the calendars and keeps them for the settings page.
-    function listCalendars(callback) {
-        if (!configured) {
-            callback([])
+    function syncAccount(index, daysBack, daysForward) {
+        if (index >= accounts.length) {
+            fill(collected)
+            collected = []
+            syncing = false
             return
         }
-        request("PROPFIND", "/remote.php/dav/calendars/" + encodeURIComponent(user) + "/",
+        var account = accounts[index]
+        var next = function () { syncAccount(index + 1, daysBack, daysForward) }
+
+        if (account.href && account.href.length > 0) {
+            queryEvents(index, daysBack, daysForward, next)
+            return
+        }
+        request(account, "PROPFIND",
+                "/remote.php/dav/calendars/" + encodeURIComponent(account.user) + "/",
                 CalDav.calendarListBody(),
                 "Depth: 1\nContent-Type: application/xml; charset=utf-8",
                 function (status, text) {
                     if (status !== 207 && status !== 200) {
                         lastError = i18n.tr("Cannot list the calendars (HTTP %1)").arg(status)
-                        syncing = false
-                        callback([])
+                        next()
                         return
                     }
-                    calendars = CalDav.parseCalendarList(text)
-                    if (calendars.length === 0)
+                    var list = CalDav.parseCalendarList(text)
+                    if (list.length === 0) {
                         lastError = i18n.tr("No calendar found on this account")
-                    callback(calendars)
+                        next()
+                        return
+                    }
+                    setAccountHref(index, list[0].href, list[0].displayName)
+                    queryEvents(index, daysBack, daysForward, next)
                 })
     }
 
-    function selectCalendar(href, name) {
-        calendarHref = href
-        calendarName = name || ""
-        events.clear()
-        ready = false
-        calendarSelected(href, calendarName)
-    }
-
-    function queryEvents(daysBack, daysForward) {
+    function queryEvents(index, daysBack, daysForward, done) {
+        var account = accounts[index]
         var start = new Date()
         start.setDate(start.getDate() - (daysBack || 30))
         start.setHours(0, 0, 0, 0)
@@ -135,22 +150,23 @@ QtObject {
         end.setDate(end.getDate() + (daysForward || 90))
         end.setHours(23, 59, 59, 0)
 
-        request("REPORT", calendarHref,
-                CalDav.calendarQueryBody(start, end),
+        request(account, "REPORT", account.href, CalDav.calendarQueryBody(start, end),
                 "Depth: 1\nContent-Type: application/xml; charset=utf-8",
                 function (status, text) {
-                    syncing = false
-                    if (status !== 207 && status !== 200) {
+                    if (status === 207 || status === 200) {
+                        var parsed = CalDav.parseEventResponses(text)
+                        for (var eventIndex = 0; eventIndex < parsed.length; eventIndex++)
+                            parsed[eventIndex].account = index
+                        collected = collected.concat(parsed)
+                    } else if (lastError.length === 0) {
                         lastError = i18n.tr("Cannot read the calendar (HTTP %1)").arg(status)
-                        return
                     }
-                    var parsed = CalDav.parseEventResponses(text)
-                    fill(parsed)
+                    done()
                 })
     }
 
     function fill(parsed) {
-        parsed.sort(function (a, b) { return a.start.getTime() - b.start.getTime() })
+        parsed.sort(function (first, second) { return first.start.getTime() - second.start.getTime() })
         events.clear()
         for (var index = 0; index < parsed.length; index++) {
             var event = parsed[index]
@@ -163,59 +179,82 @@ QtObject {
                 location: event.location,
                 start: event.start.getTime(),
                 end: event.end.getTime(),
-                allDay: event.allDay
+                allDay: event.allDay,
+                account: event.account
             })
         }
         ready = true
         updated()
     }
 
+    // Lists the calendars of one account (settings page).
+    function listCalendars(index, callback) {
+        var account = accountAt(index)
+        if (!account.url) {
+            callback([])
+            return
+        }
+        request(account, "PROPFIND",
+                "/remote.php/dav/calendars/" + encodeURIComponent(account.user) + "/",
+                CalDav.calendarListBody(),
+                "Depth: 1\nContent-Type: application/xml; charset=utf-8",
+                function (status, text) {
+                    if (status !== 207 && status !== 200) {
+                        lastError = i18n.tr("Cannot list the calendars (HTTP %1)").arg(status)
+                        callback([])
+                        return
+                    }
+                    calendars = CalDav.parseCalendarList(text)
+                    calendarsAccount = index
+                    callback(calendars)
+                })
+    }
+
     function createEvent(fields, callback) {
-        if (!configured || calendarHref.length === 0) {
-            callback(false, i18n.tr("The calendar is not configured"))
+        createEventIn(0, fields, callback)
+    }
+
+    function createEventIn(index, fields, callback) {
+        var account = accountAt(index)
+        if (!account.url || !account.href) {
+            callback(false, -1)
             return
         }
         var built = CalDav.buildEventIcs(fields)
-        var path = calendarHref.replace(/\/$/, "") + "/" + encodeURIComponent(built.uid) + ".ics"
-        request("PUT", path, built.ics,
+        var path = account.href.replace(/\/$/, "") + "/" + encodeURIComponent(built.uid) + ".ics"
+        request(account, "PUT", path, built.ics,
                 "Content-Type: text/calendar; charset=utf-8\nIf-None-Match: *",
-                function (status) {
-                    callback(status === 201 || status === 204, status)
-                })
+                function (status) { callback(status === 201 || status === 204, status) })
     }
 
     function updateEvent(index, fields, callback) {
         var event = events.get(index)
         if (!event) {
-            callback(false, i18n.tr("Event not found"))
+            callback(false, -1)
             return
         }
         fields.uid = event.uid
         var built = CalDav.buildEventIcs(fields)
-        request("PUT", event.href, built.ics,
+        request(accountAt(event.account), "PUT", event.href, built.ics,
                 "Content-Type: text/calendar; charset=utf-8\nIf-Match: " + event.etag,
-                function (status) {
-                    callback(status === 201 || status === 204, status)
-                })
+                function (status) { callback(status === 201 || status === 204, status) })
     }
 
     function deleteEvent(index, callback) {
         var event = events.get(index)
         if (!event) {
-            callback(false, i18n.tr("Event not found"))
+            callback(false, -1)
             return
         }
-        request("DELETE", event.href, null, "If-Match: " + event.etag,
-                function (status) {
-                    callback(status === 200 || status === 204, status)
-                })
+        request(accountAt(event.account), "DELETE", event.href, null,
+                "If-Match: " + event.etag,
+                function (status) { callback(status === 200 || status === 204, status) })
     }
 
-    // Entries for the Event widget: the next events from 'from' (a Date) to
-    // 'days' later, sorted. Plain objects so the caller owns its own model.
+    // Entries for the Event widget, sorted, from 'from' (a Date) to 'days'.
     function upcoming(days, from) {
         var result = []
-        if (!configured || events.count === 0)
+        if (accounts.length === 0 || events.count === 0)
             return result
         var limit = from.getTime() + days * 86400000
         for (var index = 0; index < events.count; index++) {

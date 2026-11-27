@@ -12,7 +12,15 @@ Item {
     // Not used, but for compatibility with the one injected from Main.qml
     property var pageData: ({})
 
-    property string currentPath: launchermodular.settings.nextcloudBasePath || "/"
+    // Each Nextcloud page has its own account, stored in the page data. The
+    // global settings remain the fallback for pages created before this.
+    property int pageIndex: -1
+    property string accountUrl: ""
+    property string accountUser: ""
+    property string accountPassword: ""
+    property string accountBasePath: "/"
+
+    property string currentPath: ""
     property var pathHistory: []
     property bool loading: false
     property string errorMessage: ""
@@ -23,17 +31,45 @@ Item {
     readonly property string downloadCacheDir: MySettings.getHomeLocation() + "/.cache/launchermodular.lut11/nextcloud-downloads/"
 
     onVisibleChanged: {
-        if (visible && configured()) {
-            fetchFolder(currentPath)
+        if (visible) {
+            loadAccount()
+            if (configured() && currentPath.length > 0)
+                fetchFolder(currentPath)
         }
     }
 
     Component.onCompleted: {
         Terminalaccess.makePath(downloadCacheDir)
+        loadAccount()
+    }
+
+    function pageConfig() {
+        if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
+            var data = launchermodular.pageModel.get(pageIndex).data
+            if (data && typeof data === "object")
+                return data
+        }
+        return ({})
+    }
+
+    // Reads this page's account: its own configuration when set, the global
+    // settings otherwise.
+    function loadAccount() {
+        var config = pageConfig()
+        accountUrl = config.nextcloudUrl || launchermodular.settings.nextcloudUrl || ""
+        accountUser = config.nextcloudUser || launchermodular.settings.nextcloudUser || ""
+        accountPassword = config.nextcloudPassword || launchermodular.settings.nextcloudPassword || ""
+        var base = config.nextcloudBasePath || launchermodular.settings.nextcloudBasePath || "/"
+        if (accountBasePath !== base) {
+            accountBasePath = base
+            currentPath = base
+        } else if (currentPath.length === 0) {
+            currentPath = base
+        }
     }
 
     function configured() {
-        return !!(launchermodular.settings.nextcloudUrl && launchermodular.settings.nextcloudUser && launchermodular.settings.nextcloudPassword)
+        return !!(accountUrl && accountUser && accountPassword)
     }
 
     /**
@@ -41,9 +77,9 @@ Item {
      * /remote.php/dav/files/<username>/<chemin>
      */
     function davUrl(path) {
-        var base = launchermodular.settings.nextcloudUrl.replace(/\/+$/, "")
+        var base = accountUrl.replace(/\/+$/, "")
         var cleanPath = path.split("/").map(encodeURIComponent).join("/")
-        return base + "/remote.php/dav/files/" + encodeURIComponent(launchermodular.settings.nextcloudUser) + cleanPath
+        return base + "/remote.php/dav/files/" + encodeURIComponent(accountUser) + cleanPath
     }
 
     function decodeXmlEntities(s) {
@@ -56,7 +92,7 @@ Item {
 
     function expectedSelfPath(path) {
         var cleanPath = path.split("/").map(encodeURIComponent).join("/")
-        return "/remote.php/dav/files/" + encodeURIComponent(launchermodular.settings.nextcloudUser) + cleanPath
+        return "/remote.php/dav/files/" + encodeURIComponent(accountUser) + cleanPath
     }
 
     /**
@@ -64,7 +100,7 @@ Item {
      **/
     function stripDavPrefix(href) {
         var decoded = decodeURIComponent(href)
-        var prefix = "/remote.php/dav/files/" + launchermodular.settings.nextcloudUser
+        var prefix = "/remote.php/dav/files/" + accountUser
         var idx = decoded.indexOf(prefix)
         if (idx !== -1) {
             return decoded.substring(idx + prefix.length) || "/"
@@ -113,7 +149,7 @@ Item {
         xhr.open("PROPFIND", davUrl(path))
         xhr.setRequestHeader("Depth", "1")
         xhr.setRequestHeader("Content-Type", "application/xml; charset=utf-8")
-        xhr.setRequestHeader("Authorization", "Basic " + Qt.btoa(launchermodular.settings.nextcloudUser + ":" + launchermodular.settings.nextcloudPassword))
+        xhr.setRequestHeader("Authorization", "Basic " + Qt.btoa(accountUser + ":" + accountPassword))
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState !== XMLHttpRequest.DONE) return
@@ -211,7 +247,7 @@ Item {
         var xhr = new XMLHttpRequest()
         xhr.open("GET", davUrl(file.path))
         xhr.responseType = "arraybuffer"
-        xhr.setRequestHeader("Authorization", "Basic " + Qt.btoa(launchermodular.settings.nextcloudUser + ":" + launchermodular.settings.nextcloudPassword))
+        xhr.setRequestHeader("Authorization", "Basic " + Qt.btoa(accountUser + ":" + accountPassword))
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState !== XMLHttpRequest.DONE) return
@@ -281,7 +317,8 @@ Item {
         id: header
         width: parent.width
         height: units.gu(5)
-        color: "#111111"
+        // Same as the other pages: the launcher background shows through.
+        color: "transparent"
 
         Icon {
             id: backIcon

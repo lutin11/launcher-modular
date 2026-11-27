@@ -2,6 +2,7 @@ import QtQuick 2.12
 import Lomiri.Components 1.3
 import QtQuick.Controls 2.2 as QControls
 import Lomiri.Components.Popups 1.3
+import Lomiri.Components.Themes 1.3
 import "nextcloudcalendar"
 
 // Calendar of the Nextcloud account: day, week, month and year views, with
@@ -12,6 +13,15 @@ Item {
 
     property int viewMode: 2       // 0 day, 1 week, 2 month, 3 year
     property date currentDate: new Date()
+
+    // Account of this page, stored in the page data (pageIndex injected by
+    // Main.qml). The global settings are the fallback for pages created
+    // before per-page configuration existed.
+    property int pageIndex: -1
+    // Accounts of this page: [{url, user, password, href, name}]
+    property var accounts: []
+    // Account receiving a new event when several are configured.
+    property int targetAccount: 0
 
     // The day view feeds a ListModel: a ListView whose model is a JS array
     // rebuilt by a function loops forever (binding loop on "model").
@@ -34,9 +44,65 @@ Item {
     ]
 
     Component.onCompleted: {
-        configureModel()
+        loadAccounts()
         refreshDayModel()
         NextcloudCalendarModel.refresh(60, 180)
+    }
+
+    onVisibleChanged: {
+        if (visible) {
+            loadAccounts()
+            NextcloudCalendarModel.refresh(60, 180)
+        }
+    }
+
+    function pageConfig() {
+        if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
+            var data = launchermodular.pageModel.get(pageIndex).data
+            if (data && typeof data === "object")
+                return data
+        }
+        return ({})
+    }
+
+    // Several accounts can be attached to one page (page data
+    // "nextcloudAccounts"). A page without any falls back to the single account
+    // of its data, then to the global settings.
+    // The model is shared by all the calendar pages and the Event widget: it
+    // holds the union of their accounts, so both always see the same events.
+    function loadAccounts() {
+        var list = []
+        for (var index = 0; index < launchermodular.pageModel.count; index++) {
+            var page = launchermodular.pageModel.get(index)
+            if (page.name !== "NextcloudCalendar.qml" || !page.data)
+                continue
+            var data = page.data
+            var raw = data.nextcloudAccountsJson
+            if (raw && raw.length > 0) {
+                try { list = list.concat(JSON.parse(raw)) } catch (error) { }
+            } else if (data.nextcloudAccounts && data.nextcloudAccounts.length > 0) {
+                for (var accountIndex = 0; accountIndex < data.nextcloudAccounts.length; accountIndex++)
+                    list.push(data.nextcloudAccounts[accountIndex])
+            } else if (data.nextcloudUrl && data.nextcloudUser && data.nextcloudPassword) {
+                list.push({ url: data.nextcloudUrl, user: data.nextcloudUser,
+                            password: data.nextcloudPassword,
+                            href: data.nextcloudCalendarHref || "", name: "" })
+            }
+        }
+        if (list.length === 0 && launchermodular.settings.nextcloudAccountsJson.length > 0) {
+            try { list = JSON.parse(launchermodular.settings.nextcloudAccountsJson) } catch (error) { list = [] }
+        }
+        if (list.length === 0 && launchermodular.settings.nextcloudUrl
+                && launchermodular.settings.nextcloudUser && launchermodular.settings.nextcloudPassword) {
+            list.push({ url: launchermodular.settings.nextcloudUrl,
+                        user: launchermodular.settings.nextcloudUser,
+                        password: launchermodular.settings.nextcloudPassword,
+                        href: launchermodular.settings.nextcloudCalendarHref || "", name: "" })
+        }
+        accounts = list
+        if (targetAccount >= accounts.length)
+            targetAccount = 0
+        NextcloudCalendarModel.configureAccounts(accounts)
     }
 
     onCurrentDateChanged: refreshDayModel()
@@ -47,20 +113,6 @@ Item {
         onUpdated: calendarPage.refreshDayModel()
     }
 
-    function configureModel() {
-        NextcloudCalendarModel.configure(launchermodular.settings.nextcloudUrl,
-                                        launchermodular.settings.nextcloudUser,
-                                        launchermodular.settings.nextcloudPassword,
-                                        launchermodular.settings.nextcloudCalendarHref)
-    }
-
-    Connections {
-        target: NextcloudCalendarModel
-        onCalendarSelected: {
-            launchermodular.settings.nextcloudCalendarHref = href
-            launchermodular.settings.nextcloudCalendarName = name
-        }
-    }
 
     // --- dates -------------------------------------------------------------
 
@@ -231,7 +283,7 @@ Item {
         if (editingIndex >= 0)
             NextcloudCalendarModel.updateEvent(editingIndex, fields, done)
         else
-            NextcloudCalendarModel.createEvent(fields, done)
+            NextcloudCalendarModel.createEventIn(targetAccount, fields, done)
     }
 
     // --- header ------------------------------------------------------------
@@ -651,77 +703,101 @@ Item {
             id: eventDialogItem
             title: calendarPage.editingIndex >= 0 ? i18n.tr("Edit event") : i18n.tr("New event")
 
-            QControls.TextField {
-                id: summaryField
+            // The dialog holds many fields: without a bounded, scrollable
+            // area, the last rows (All day) are cut on a phone screen.
+            Flickable {
                 width: parent.width
-                placeholderText: i18n.tr("Title")
-                text: calendarPage.eventSummary
-                onTextChanged: calendarPage.eventSummary = text
-            }
-            QControls.TextField {
-                id: locationField
-                width: parent.width
-                placeholderText: i18n.tr("Location")
-                text: calendarPage.eventLocation
-                onTextChanged: calendarPage.eventLocation = text
-            }
-            QControls.TextArea {
-                id: descriptionField
-                width: parent.width
-                height: units.gu(8)
-                placeholderText: i18n.tr("Description")
-                text: calendarPage.eventDescription
-                onTextChanged: calendarPage.eventDescription = text
-            }
-            Row {
-                spacing: units.gu(0.5)
-                QControls.TextField {
-                    width: units.gu(12)
-                    placeholderText: i18n.tr("Start date")
-                    text: calendarPage.eventStartDate
-                    onTextChanged: calendarPage.eventStartDate = text
+                height: units.gu(36)
+                contentHeight: fieldsColumn.height
+                clip: true
+
+                Column {
+                    id: fieldsColumn
+                    width: parent.width
+                    spacing: units.gu(0.6)
+
+                    QControls.TextField {
+                        id: summaryField
+                        width: parent.width
+                        placeholderText: i18n.tr("Title")
+                        text: calendarPage.eventSummary
+                        onTextChanged: calendarPage.eventSummary = text
+                    }
+                    QControls.TextField {
+                        id: locationField
+                        width: parent.width
+                        placeholderText: i18n.tr("Location")
+                        text: calendarPage.eventLocation
+                        onTextChanged: calendarPage.eventLocation = text
+                    }
+                    QControls.TextArea {
+                        id: descriptionField
+                        width: parent.width
+                        height: units.gu(8)
+                        placeholderText: i18n.tr("Description")
+                        text: calendarPage.eventDescription
+                        onTextChanged: calendarPage.eventDescription = text
+                    }
+                    Row {
+                        width: parent.width
+                        spacing: units.gu(0.5)
+                        QControls.TextField {
+                            width: units.gu(12)
+                            placeholderText: i18n.tr("Start date")
+                            text: calendarPage.eventStartDate
+                            onTextChanged: calendarPage.eventStartDate = text
+                        }
+                        QControls.TextField {
+                            width: units.gu(7)
+                            placeholderText: i18n.tr("Time")
+                            text: calendarPage.eventStartTime
+                            enabled: !calendarPage.eventAllDay
+                            onTextChanged: calendarPage.eventStartTime = text
+                        }
+                    }
+                    Row {
+                        width: parent.width
+                        spacing: units.gu(0.5)
+                        QControls.TextField {
+                            width: units.gu(12)
+                            placeholderText: i18n.tr("End date")
+                            text: calendarPage.eventEndDate
+                            onTextChanged: calendarPage.eventEndDate = text
+                        }
+                        QControls.TextField {
+                            width: units.gu(7)
+                            placeholderText: i18n.tr("Time")
+                            text: calendarPage.eventEndTime
+                            enabled: !calendarPage.eventAllDay
+                            onTextChanged: calendarPage.eventEndTime = text
+                        }
+                    }
+                    // Visible again: it was the row cut by the dialog height.
+                    Row {
+                        width: parent.width
+                        height: units.gu(4)
+                        spacing: units.gu(1)
+                        Label {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: i18n.tr("All day")
+                            // The dialog has the light Lomiri surface: the
+                            // launcher text colour would be white on white.
+                            color: Theme.palette.normal.backgroundText
+                        }
+                        QControls.Switch {
+                            anchors.verticalCenter: parent.verticalCenter
+                            checked: calendarPage.eventAllDay
+                            onCheckedChanged: calendarPage.eventAllDay = checked
+                        }
+                    }
+                    Label {
+                        id: dialogError
+                        width: parent.width
+                        wrapMode: Text.WordWrap
+                        color: "#ED3146"
+                        text: ""
+                    }
                 }
-                QControls.TextField {
-                    width: units.gu(7)
-                    placeholderText: i18n.tr("Time")
-                    text: calendarPage.eventStartTime
-                    enabled: !calendarPage.eventAllDay
-                    onTextChanged: calendarPage.eventStartTime = text
-                }
-            }
-            Row {
-                spacing: units.gu(0.5)
-                QControls.TextField {
-                    width: units.gu(12)
-                    placeholderText: i18n.tr("End date")
-                    text: calendarPage.eventEndDate
-                    onTextChanged: calendarPage.eventEndDate = text
-                }
-                QControls.TextField {
-                    width: units.gu(7)
-                    placeholderText: i18n.tr("Time")
-                    text: calendarPage.eventEndTime
-                    enabled: !calendarPage.eventAllDay
-                    onTextChanged: calendarPage.eventEndTime = text
-                }
-            }
-            Row {
-                spacing: units.gu(1)
-                Label {
-                    text: i18n.tr("All day")
-                    color: launchermodular.settings.textColor
-                }
-                QControls.Switch {
-                    checked: calendarPage.eventAllDay
-                    onCheckedChanged: calendarPage.eventAllDay = checked
-                }
-            }
-            Label {
-                id: dialogError
-                width: parent.width
-                wrapMode: Text.WordWrap
-                color: "#ED3146"
-                text: ""
             }
             Row {
                 spacing: units.gu(1)
