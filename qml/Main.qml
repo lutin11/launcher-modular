@@ -167,6 +167,10 @@ MainView {
         property string nextcloudPassword: ''
         property string nextcloudUrl: ''
         property string nextcloudBasePath: '/'
+        // Calendar chosen on the Nextcloud calendar page: path of the
+        // collection on the server, and its display name for the UI.
+        property string nextcloudCalendarHref: ''
+        property string nextcloudCalendarName: ''
 
     }//settings
 
