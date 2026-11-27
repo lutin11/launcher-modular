@@ -8,6 +8,12 @@ import "."
 Page {
     id: pageSettingsNotes
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string notesPageName: i18n.tr("notes") // do not remove, used by the po files
 
     header: PageHeader {

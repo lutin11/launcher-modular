@@ -37,6 +37,10 @@ c'est la variable d'environnement `CLICKABLE_FRAMEWORK` qui sélectionne le
 framework (README, CI). CI : `amd64`, `arm64`, `armhf` croisés avec
 `ubuntu-touch-24.04-1.x` et `ubuntu-sdk-20.04`.
 
+Qt 5.15 reste la cible de référence : le port Qt 6 de Lomiri est en cours. Le
+code est préparé pour Qt 6 (CMake `-DUSE_QT6=ON`, C++17, APIs C++ compatibles)
+et les blocages restants sont listés dans `docs/QT6.md`.
+
 ## 3. Architecture d'exécution
 
 ```
@@ -300,11 +304,18 @@ l'exécution.
                                 // ou absolu pour une page personnalisée
        "data": {},              // objet JSON libre persisté, injecté dans la
                                 // page sous le nom "pageData"
-       "directory": "pages/"    // page embarquée ; page personnalisée :
+       "directory": "pages/",   // page embarquée ; page personnalisée :
                                 // MySettings.getHomeLocation()
                                 //   + "/.launchermodular/pages/"
+       "uid": "p…"              // identifiant stable, généré par
+                                // launchermodular.newPageUid() ; il indexe
+                                // settings.pageConfigsJson
    }
    ```
+
+La page de réglages reçoit `pageIndex` (position), `pageName` et `pageUid`
+(stable) via `pageStack.push()`. Une page tierce doit déclarer ces trois
+propriétés pour les recevoir sans avertissement.
 
    Le `Loader` de `Main.qml` instancie `Qt.createComponent(model.directory +
    model.name)` ; l'entrée par défaut créée au premier lancement est

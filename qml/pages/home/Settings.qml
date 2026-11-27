@@ -11,6 +11,12 @@ import Platform 1.0
 Page {
     id: pageSettingsHome
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string homePage: i18n.tr("home")
 
     header: PageHeader {

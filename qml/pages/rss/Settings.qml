@@ -2,12 +2,19 @@ import QtQuick 2.12
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
+import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import MySettings 1.0
 import NetworkHelper 1.0
 
 
 Page {
     id: pageSettingsRss
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     anchors.fill: parent
 
     property string rssPageName: i18n.tr("rss") // do not remove, use pour Po files
@@ -38,9 +45,22 @@ Page {
         anchors.topMargin: units.gu(6)
         height: units.gu(60)
 
+        ListItemHeader.Header {
+            id: rssSettingsHeader
+            width: parent.width
+            text: "<font color=\"#ffffff\">"
+                  + i18n.tr("Settings for 'RSS' page")
+                  + "</font>"
+        }
+
         Flickable {
             id: flickableRssSettings
-            anchors.fill: parent
+            anchors {
+                top: rssSettingsHeader.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
             //contentHeight: rssList.height
             flickableDirection: Flickable.VerticalFlick
             clip: true

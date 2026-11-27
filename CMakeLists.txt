@@ -1,11 +1,20 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 project(launchermodular C CXX)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-find_package(Qt5Core)
-find_package(Qt5Gui)
-find_package(Qt5Qml)
-find_package(Qt5Quick)
+# Qt 5 remains the reference: Ubuntu Touch 24.04 ships Qt 5.15 and the Lomiri
+# Qt 6 migration is still in progress (see docs/QT6.md). USE_QT6 prepares a
+# Qt 6 build for the day the toolkits are ported.
+option(USE_QT6 "Build against Qt 6 instead of Qt 5 (experimental)" OFF)
+if(USE_QT6)
+    find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
+    set(QT_VERSION_MAJOR 6)
+else()
+    find_package(Qt5 5.12 REQUIRED COMPONENTS Core Gui Qml Quick)
+    set(QT_VERSION_MAJOR 5)
+endif()
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 # Automatically create moc files
@@ -84,7 +93,7 @@ add_definitions(-D__ARCH_TRIPLET__="${ARCH_TRIPLET}")
 add_definitions(-DLAUNCHERMODULAR_DATA_DIR="${APP_DATA_PATH}")
 add_definitions(-DLAUNCHERMODULAR_IMPORT_DIR="${APP_IMPORT_PATH}")
 add_executable(${PROJECT_NAME} main.cpp ${MAIN_SRC_FILES})
-target_link_libraries(${PROJECT_NAME} Qt5::Gui Qt5::Qml Qt5::Quick)
+target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Qml Qt${QT_VERSION_MAJOR}::Quick)
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${BIN_DIR})
 
 
@@ -112,7 +121,12 @@ endif()
 
 # Include fonts
 set(RESOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/resources.qrc")
-qt5_add_resources(Resources ${RESOURCE_FILES})
+# qt_add_resources is the Qt 5.15+/Qt 6 command; Qt 5.12 only has qt5_add_resources.
+if(COMMAND qt_add_resources)
+    qt_add_resources(Resources ${RESOURCE_FILES})
+else()
+    qt5_add_resources(Resources ${RESOURCE_FILES})
+endif()
 target_sources(${PROJECT_NAME} PRIVATE main.cpp ${Resources})
 
 # The .desktop file shipped for the click package refers to the icon by a path

@@ -54,16 +54,20 @@ MainView {
 
     function getPageConfig(uid) {
         if (!uid) return ({});
-        var all = {};
+        var all;
         try { all = JSON.parse(launchermodular.settings.pageConfigsJson || "{}"); } catch (error) { all = {}; }
+        if (!all || typeof all !== "object")
+            all = {};
         var config = all[uid];
         return (config && typeof config === "object") ? config : ({});
     }
 
     function setPageConfig(uid, config) {
         if (!uid) return;
-        var all = {};
+        var all;
         try { all = JSON.parse(launchermodular.settings.pageConfigsJson || "{}"); } catch (error) { all = {}; }
+        if (!all || typeof all !== "object")
+            all = {};
         all[uid] = config;
         launchermodular.settings.pageConfigsJson = JSON.stringify(all);
     }
@@ -91,6 +95,11 @@ MainView {
     }
 
     readonly property int pageCount: launchermodular.pageModel.count
+    // The page list is filled entry by entry at startup. Loading the pages
+    // before it is complete re-created every Loader at each insertion (and
+    // therefore reloaded the RSS feeds and other network pages several
+    // times). The Repeater only builds the pages once the list is ready.
+    property bool pagesReady: false
 
     // Circular paging. With more than one page the SwipeView holds two extra
     // entries: a clone of the last page at index 0 and a clone of the first at
@@ -118,6 +127,43 @@ MainView {
 
     function realToDisplay(real) {
         return pageCount <= 1 ? 0 : real + 1
+    }
+
+    // The SwipeView resets its currentIndex when its content model changes
+    // (a page added or removed). Remember the real page the user is on and put
+    // it back once the layout has settled, so the circular jump and the
+    // bottom-bar indicator always point at a real page. Without this the
+    // index could become out of range (no orange icon, no swipe).
+    property int lastRealIndex: 0
+    property bool pageCountChanging: false
+
+    function rememberRealIndex() {
+        if (!view || pageCount <= 0 || pageCountChanging)
+            return;
+        var total = pageCount > 1 ? pageCount + 2 : pageCount;
+        var index = view.currentIndex;
+        if (index < 0 || index >= total)
+            return;
+        var real = displayToReal(index);
+        if (real >= 0 && real < pageCount)
+            lastRealIndex = real;
+    }
+
+    function clampViewIndex() {
+        if (!view || pageCount <= 0)
+            return;
+        lastRealIndex = Math.max(0, Math.min(pageCount - 1, lastRealIndex));
+        var target = realToDisplay(lastRealIndex);
+        if (view.currentIndex !== target)
+            view.currentIndex = target;
+    }
+
+    onPageCountChanged: {
+        pageCountChanging = true;
+        Qt.callLater(function() {
+            clampViewIndex();
+            pageCountChanging = false;
+        });
     }
 
     function compareVersions(v1, v2) {
@@ -167,6 +213,7 @@ MainView {
         property bool openImageExternally: false
 
         property string folderMusic: MySettings.getMusicLocation()
+        property string folderVideo: MySettings.getVideoLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
         property real folderFontSize: 2.0
@@ -230,6 +277,8 @@ MainView {
         // Accounts of the Nextcloud calendar page(s), as JSON: nested lists in
         // the page data are not serialised by the settings backend.
         property string nextcloudAccountsJson: ''
+        // Set when a feed is added in the RSS settings; the RSS page reloads.
+        property bool rssFeedChanged: false
         // Per-page configurations, indexed by the stable page uid and stored as
         // JSON because the settings backend does not serialise nested maps.
         property string pageConfigsJson: '{}'
@@ -243,7 +292,7 @@ MainView {
         running: true
         repeat: true
         onTriggered: {
-            if(clockUpdater.interval != 60000){clockUpdater.interval = 60000}
+            if (clockUpdater.interval !== 60000) { clockUpdater.interval = 60000 }
             launchermodular.datenow = new Date()
         }
     }
@@ -260,6 +309,17 @@ MainView {
             Component.onCompleted: {
 
                 launchermodular.settings.fullScreen = false
+
+                // A desktop package must not keep the pablet paths of the
+                // click build: they do not exist and the pages stayed empty.
+                if (!Platform.isTouch) {
+                    if (launchermodular.settings.folderImage.indexOf("/home/phablet") === 0)
+                        launchermodular.settings.folderImage = Platform.picturesLocation()
+                    if (launchermodular.settings.folderMusic.indexOf("/home/phablet") === 0)
+                        launchermodular.settings.folderMusic = MySettings.getMusicLocation()
+                    if (launchermodular.settings.folderVideo.indexOf("/home/phablet") === 0)
+                        launchermodular.settings.folderVideo = MySettings.getVideoLocation()
+                }
 
                 if(launchermodular.settings.firstRunNew){
                     launchermodular.settings.page = undefined
@@ -278,7 +338,7 @@ MainView {
 
                 if (DEBUG_MODE) console.log("###### on Component completion #####")
 
-                if(typeof launchermodular.settings.customIcon == 'undefined') {
+                if (typeof launchermodular.settings.customIcon === 'undefined') {
                      launchermodular.settings.customIcon = [];
                 }
                 if (DEBUG_MODE) console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elements");
@@ -288,7 +348,7 @@ MainView {
                     launchermodular.customIconModel.insert(i,{"name": customIcon.name, "icon": customIcon.icon, "action": customIcon.action})
                 }
 
-                if(typeof launchermodular.settings.favoriteApps == 'undefined') {
+                if (typeof launchermodular.settings.favoriteApps === 'undefined') {
                      launchermodular.settings.favoriteApps = [];
                 }
                 if (DEBUG_MODE) console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elements");
@@ -299,8 +359,12 @@ MainView {
                     launchermodular.favoriteAppsModel.insert(f,{"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action, "container" : itemApps.container})
                 }
 
-                if(typeof launchermodular.settings.page == 'undefined') {
-                    if (DEBUG_MODE) console.log("page is undefined, let's create a new one");
+                // An empty list (corrupted save, interrupted first run) must
+                // not leave the launcher without any page: Home is required.
+                if (typeof launchermodular.settings.page === 'undefined'
+                        || !launchermodular.settings.page
+                        || launchermodular.settings.page.length === 0) {
+                    if (DEBUG_MODE) console.log("page is undefined or empty, let's create a new one");
                     launchermodular.settings.page = [{"name": "Home.qml", "icon": "pages/home/assets/icon.svg","data":{}, "directory": "pages/"}];
                 }
 
@@ -314,6 +378,13 @@ MainView {
                     launchermodular.pageModel.insert(p,{"name": itemPage.name, "icon": itemPage.icon, "data":itemPage.data, "directory":itemPage.directory, "uid": pageUid})
                 }
 
+                // Store the identifiers now: a uid generated for a page created
+                // before they existed must be the same on the next run, or the
+                // configuration stored for it would be lost.
+                launchermodular.settings.page = getPageArray();
+
+                // The list is complete: the pages can be instantiated once.
+                launchermodular.pagesReady = true;
             }
 
             Component.onDestruction: {
@@ -401,22 +472,42 @@ MainView {
                         // duplicates: the content is identical, so the switch is
                         // invisible and the swipe can wrap again.
                         onCurrentIndexChanged: {
+                            launchermodular.rememberRealIndex()
                             if (launchermodular.pageCount <= 1)
                                 return
-                            if (currentIndex === 0)
-                                currentIndex = launchermodular.pageCount
-                            else if (currentIndex === launchermodular.pageCount + 1)
-                                currentIndex = 1
+                            // Defer the jump: changing currentIndex while the
+                            // content model is being updated left the view on
+                            // an out-of-range index.
+                            if (currentIndex < 0
+                                    || currentIndex >= launchermodular.pageCount + 2
+                                    || currentIndex === 0
+                                    || currentIndex === launchermodular.pageCount + 1)
+                                Qt.callLater(launchermodular.clampViewIndex)
                         }
 
                         Repeater {
                             id: pageRepeater
                             // Two extra entries for the circular paging.
-                            model: launchermodular.pageCount > 1 ? launchermodular.pageCount + 2
-                                                                 : launchermodular.pageCount
+                            model: launchermodular.pagesReady
+                                   ? (launchermodular.pageCount > 1 ? launchermodular.pageCount + 2
+                                                                    : launchermodular.pageCount)
+                                   : 0
                             Loader {
                                 id: pageLoader
                                 property int realIndex: launchermodular.displayToReal(index)
+                                // The page and its two neighbours are created;
+                                // the others wait until they come close. Every
+                                // page used to be built at startup, which
+                                // delayed the first frame. The circular paging
+                                // makes the first and last pages neighbours.
+                                readonly property int displayDistance: {
+                                    if (launchermodular.pageCount <= 1)
+                                        return index === view.currentIndex ? 0 : 1
+                                    var total = launchermodular.pageCount + 2
+                                    var distance = Math.abs(index - view.currentIndex)
+                                    return Math.min(distance, total - distance)
+                                }
+                                active: displayDistance <= 1
                                 visible: index === view.currentIndex
                                 onLoaded: {
                                     if (item) {
@@ -985,7 +1076,7 @@ MainView {
                                     }
                                 }
                                 Label {
-                                    visible: imageSource.source == "../assets/placeholder-app-icon.svg" ? true : false
+                                    visible: imageSource.source === "../assets/placeholder-app-icon.svg"
                                     anchors.fill: parent
                                     anchors.margins: units.gu(1)
                                     anchors.topMargin: webAppIcon.height / 1.4
@@ -1026,9 +1117,9 @@ MainView {
                                 }
                                 inputMethodHints: Qt.ImhNoAutoUppercase
                                 placeholderText: {
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
-                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
-                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
                                     else ""
                                 }
                             }
@@ -1061,9 +1152,9 @@ MainView {
 
                                     onClicked: {
 
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "website"){ okButton.actionIcon = "browser:///"+appAction.text }
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){ okButton.actionIcon = "browser:///"+appAction.text }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
                                         launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon})
                                         launchermodular.settings.customIcon = launchermodular.getCustomIconArray()
                                         AppHandler.sort();

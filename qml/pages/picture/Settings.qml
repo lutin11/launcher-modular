@@ -11,6 +11,12 @@ import MySettings 1.0
 Page {
     id: picturePageSettingsPicture
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string picturePageName: i18n.tr("picture") // do not remove, use pour Po files
 
     header: PageHeader {

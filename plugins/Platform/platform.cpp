@@ -118,7 +118,11 @@ Platform::Platform(QObject *parent)
     // tested for itself.
     const bool launchedByClick = !m_appId.isEmpty();
     const bool ubportsImage = QFile::exists(QStringLiteral("/etc/ubports/version"));
-    m_isTouch = launchedByClick || ubportsImage;
+    // clickable desktop runs a click package on the host for testing: APP_ID
+    // is set, but the session (paths, icons, window) is a desktop one.
+    const bool clickableDesktop =
+            !env.value(QStringLiteral("CLICKABLE_DESKTOP_MODE")).isEmpty();
+    m_isTouch = !clickableDesktop && (launchedByClick || ubportsImage);
 
     // --- binaries -----------------------------------------------------------
     m_hasClickTool = !QStandardPaths::findExecutable(QStringLiteral("click")).isEmpty();

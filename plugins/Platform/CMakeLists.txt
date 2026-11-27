@@ -1,5 +1,10 @@
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# The top-level build sets this; keep a standalone configure working on Qt 5.
+if(NOT DEFINED QT_VERSION_MAJOR)
+    set(QT_VERSION_MAJOR 5)
+endif()
 set(PLUGIN Platform)
 
 set(
@@ -10,10 +15,10 @@ set(
 
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt5 REQUIRED COMPONENTS Core Qml Quick DBus)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Qml Quick DBus)
 add_library(${PLUGIN} MODULE ${SRC})
 set_target_properties(${PLUGIN} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PLUGIN})
-target_link_libraries(${PLUGIN} Qt5::Core Qt5::Qml Qt5::Quick Qt5::DBus)
+target_link_libraries(${PLUGIN} Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Qml Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::DBus)
 
 # Where this QML module is installed. The top level project sets it: a click
 # package and a system install do not use the same layout. The fallback keeps

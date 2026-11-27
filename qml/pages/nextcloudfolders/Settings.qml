@@ -119,7 +119,7 @@ Page {
 
     header: PageHeader {
         id: headerNextcloudSettings
-        title: i18n.tr("Nextcloud folders")
+        title: i18n.tr("Settings Page")
         leadingActionBar.actions: [
             Action {
                 iconName: "back"
@@ -150,6 +150,13 @@ Page {
                 width: parent.width
                 anchors.topMargin: units.gu(2)
                 spacing: units.gu(2)
+
+                ListItemHeader.Header {
+                    width: parent.width
+                    text: "<font color=\"#ffffff\">"
+                          + i18n.tr("Settings for 'Nextcloud folders' page")
+                          + "</font>"
+                }
 
                 Column {
                     width: parent.width - units.gu(4)

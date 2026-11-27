@@ -9,6 +9,12 @@ import MySettings 1.0
 Page {
     id: musicSettingsPicture
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string musicPageName: i18n.tr("music") // do not remove, use pour Po files
 
     header: PageHeader {
@@ -50,19 +56,65 @@ Page {
                     text: "<font color=\"#ffffff\">"+i18n.tr("Music folder")+"</font>"
                 }
 
-                TextField {
-                    id: musicFolderField
-                    width: parent.width - units.gu(4)
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    placeholderText: i18n.tr("Folder containing the music")
-                    text: launchermodular.settings.folderMusic
-                    onTextChanged: launchermodular.settings.folderMusic = text
+                Label {
+                    text: i18n.tr("Music folder path:")
+                    color: "#FFFFFF"
+                    anchors.left: parent.left
+                    anchors.leftMargin: units.gu(2)
+                    font.weight: Font.Light
                 }
 
-                Button {
+                Rectangle {
+                    id: musicFolderBar
+                    width: parent.width - units.gu(4)
+                    height: units.gu(5)
                     anchors.horizontalCenter: parent.horizontalCenter
-                    text: i18n.tr("Use the default folder")
-                    onClicked: launchermodular.settings.folderMusic = MySettings.getMusicLocation()
+                    color: Theme.name.indexOf("Dark") !== -1 ? "#111111" : "white"
+                    radius: 5
+
+                    Row {
+                        anchors.fill: parent
+                        anchors.margins: units.gu(1)
+                        spacing: units.gu(1)
+
+                        TextField {
+                            id: musicFolderField
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: parent.width - iconMusicFolder.width - iconMusicReset.width - units.gu(2)
+                            verticalAlignment: Text.AlignVCenter
+                            placeholderText: i18n.tr("Folder containing the music")
+                            text: launchermodular.settings.folderMusic
+                            onTextChanged: launchermodular.settings.folderMusic = text
+                        }
+
+                        Icon {
+                            id: iconMusicFolder
+                            anchors.verticalCenter: parent.verticalCenter
+                            height: parent.height
+                            width: height
+                            name: "find"
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: pageStack.push(Qt.resolvedUrl("../picture/SelectFolderPage.qml"), {
+                                    settingName: "folderMusic",
+                                    rootPath: MySettings.getHomeLocation(),
+                                    startPath: launchermodular.settings.folderMusic
+                                })
+                            }
+                        }
+
+                        Icon {
+                            id: iconMusicReset
+                            anchors.verticalCenter: parent.verticalCenter
+                            height: parent.height
+                            width: height
+                            name: "undo"
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: launchermodular.settings.folderMusic = MySettings.getMusicLocation()
+                            }
+                        }
+                    }
                 }
 
                 Text {

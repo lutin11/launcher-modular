@@ -210,7 +210,7 @@ Item {
             id: emptyLabel
             fontSize: "small"
             anchors.top: rectEvent.bottom
-            visible: listEvent.count == 0
+            visible: listEvent.count === 0
             text: i18n.tr("No events")
             color: launchermodular.settings.textColor
         }

@@ -46,6 +46,11 @@ Item {
     // dialog is a separate component: an id of the dialog is not in scope
     // from the functions of the page.
     property string eventError: ""
+    // PopupUtils.open() returns the popup instance, not the component: the
+    // instance is needed to close a dialog from a function of the page (the
+    // ids inside a Component are not in scope here).
+    property var eventDialogObject: null
+    property var datePickerObject: null
 
     readonly property var weekDayNames: [
         i18n.tr("Mon"), i18n.tr("Tue"), i18n.tr("Wed"), i18n.tr("Thu"),
@@ -242,7 +247,7 @@ Item {
         eventEndDate = formatDateInput(end)
         eventEndTime = formatTimeInput(end)
         eventAllDay = false
-        PopupUtils.open(eventDialog)
+        eventDialogObject = PopupUtils.open(eventDialog)
     }
 
     function openEvent(index) {
@@ -261,7 +266,7 @@ Item {
         eventEndTime = formatTimeInput(end)
         eventAllDay = event.allDay
         eventError = ""
-        PopupUtils.open(eventDialog)
+        eventDialogObject = PopupUtils.open(eventDialog)
     }
 
     function parseDateTime(dateText, timeText) {
@@ -276,7 +281,7 @@ Item {
         datePickerSelected = isNaN(parsed.getTime()) ? new Date() : parsed
         datePickerMonth = new Date(datePickerSelected.getFullYear(),
                                    datePickerSelected.getMonth(), 1)
-        PopupUtils.open(datePickerDialog)
+        datePickerObject = PopupUtils.open(datePickerDialog)
     }
 
     function shiftPickerMonth(direction) {
@@ -292,7 +297,7 @@ Item {
             eventStartDate = formatted
         else
             eventEndDate = formatted
-        PopupUtils.close(datePickerDialogItem)
+        if (datePickerObject) PopupUtils.close(datePickerObject)
     }
 
     function saveEvent() {
@@ -324,7 +329,7 @@ Item {
                 eventError = i18n.tr("The server refused the change (HTTP %1)").arg(code)
                 return
             }
-            PopupUtils.close(eventDialog)
+            if (eventDialogObject) PopupUtils.close(eventDialogObject)
             NextcloudCalendarModel.refresh(60, 180)
         }
         if (editingIndex >= 0)
@@ -985,7 +990,7 @@ Item {
                             return
                         }
                         PopupUtils.close(confirmDeleteItem)
-                        PopupUtils.close(eventDialog)
+                        if (eventDialogObject) PopupUtils.close(eventDialogObject)
                         NextcloudCalendarModel.refresh(60, 180)
                     })
                 }

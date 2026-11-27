@@ -10,6 +10,12 @@ import QtSensors 5.12
 Page {
     id: clockSettingsPicture
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string clockPageName: i18n.tr("clock") // do not remove, use pour Po files
     property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
 

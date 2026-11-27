@@ -7,6 +7,9 @@
 #include <QHash>
 #include <QProcess>
 #include <QTextStream>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QStringConverter>
+#endif
 #include <QDebug>
 #include <QQmlListProperty>
 #include <QRegularExpression>
@@ -84,7 +87,11 @@ void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& co
       QFile file(dir.filePath(fileName));
       file.open(QIODevice::ReadOnly | QIODevice::Text);
       QTextStream filestream(&file);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+      filestream.setEncoding(QStringConverter::Utf8);
+#else
       filestream.setCodec("UTF-8");
+#endif
 
       QString content = filestream.readAll();
       QString appId = fileName.left(fileName.size() - QString(".desktop").size());
@@ -123,7 +130,11 @@ namespace {
             return QString();
 
         QTextStream stream(&file);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        stream.setEncoding(QStringConverter::Utf8);
+#else
         stream.setCodec("UTF-8");
+#endif
         return stream.readAll();
     }
 
