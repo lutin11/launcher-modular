@@ -6,6 +6,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
 import QtQuick.Layouts 1.12
+import MySettings 1.0
 
 Page {
     id: picturePageSettingsPicture
@@ -46,6 +47,13 @@ Page {
                 }
                 //anchors.fill: parent
                 spacing: units.gu(1)
+
+                ListItemHeader.Header {
+                    width: parent.width
+                    text: "<font color=\"#ffffff\">"
+                          + i18n.tr("Settings for 'picture' page")
+                          + "</font>"
+                }
 
                 // --- Image folder path ---
                 Row {
@@ -92,7 +100,11 @@ Page {
                             name: "find"
                             MouseArea {
                                 anchors.fill: parent
-                                onClicked: pageStack.push(Qt.resolvedUrl("SelectFolderPage.qml"))
+                                onClicked: pageStack.push(Qt.resolvedUrl("SelectFolderPage.qml"), {
+                                    settingName: "folderImage",
+                                    rootPath: MySettings.getHomeLocation(),
+                                    startPath: launchermodular.settings.folderImage
+                                })
                             }
                         }
                     }
