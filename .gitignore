@@ -9,3 +9,12 @@
 /.clickable/armhf/Dockerfile
 /.clickable/armhf/image.json
 launcher-modular.creator.user
+/out/appimage-run.log
+/out/Launcher_Modular-2.5.0-x86_64.AppImage
+/out/launchermodular-2.5.0-Linux.deb
+/.clickable/docker.io/clickable/amd64-20.04-amd64/Dockerfile
+/.clickable/docker.io/clickable/amd64-20.04-amd64/image.json
+/.clickable/docker.io/clickable/amd64-20.04-arm64/Dockerfile
+/.clickable/docker.io/clickable/amd64-20.04-arm64/image.json
+/.clickable/docker.io/clickable/amd64-ut24.04-1.x-amd64/Dockerfile
+/.clickable/docker.io/clickable/amd64-ut24.04-1.x-amd64/image.json
