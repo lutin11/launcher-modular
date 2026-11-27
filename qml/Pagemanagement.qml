@@ -109,11 +109,15 @@ Page {
                         }
                         divider.visible: false
                         onClicked: {
-                            // A second Home makes no sense: a Home page is always
-                            // required and it is not removable.
-                            for (var pageIndex = 0; pageIndex < launchermodular.pageModel.count; pageIndex++) {
-                                if (launchermodular.pageModel.get(pageIndex).name === "Home.qml")
-                                    return
+                            // A second Home makes no sense: a Home page is
+                            // always required and it is not removable. Only a
+                            // Home entry is refused; the other pages are added
+                            // normally.
+                            if (fileName === "Home.qml") {
+                                for (var pageIndex = 0; pageIndex < launchermodular.pageModel.count; pageIndex++) {
+                                    if (launchermodular.pageModel.get(pageIndex).name === "Home.qml")
+                                        return
+                                }
                             }
                             launchermodular.pageModel.append({
                                 "name": fileName,
@@ -170,11 +174,15 @@ Page {
                         }
                         divider.visible: false
                         onClicked: {
-                            // A second Home makes no sense: a Home page is always
-                            // required and it is not removable.
-                            for (var pageIndex = 0; pageIndex < launchermodular.pageModel.count; pageIndex++) {
-                                if (launchermodular.pageModel.get(pageIndex).name === "Home.qml")
-                                    return
+                            // A second Home makes no sense: a Home page is
+                            // always required and it is not removable. Only a
+                            // Home entry is refused; the other pages are added
+                            // normally.
+                            if (fileName === "Home.qml") {
+                                for (var pageIndex = 0; pageIndex < launchermodular.pageModel.count; pageIndex++) {
+                                    if (launchermodular.pageModel.get(pageIndex).name === "Home.qml")
+                                        return
+                                }
                             }
                             launchermodular.pageModel.append({
                                 "name": fileName,
@@ -326,7 +334,7 @@ Page {
 
 
             ViewItems.onDragUpdated: {
-                if (event.status == ListItemDrag.Moving) {
+                if (event.status === ListItemDrag.Moving) {
                     model.move(event.from, event.to, 1);
                 }
             }
