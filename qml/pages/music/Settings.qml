@@ -39,6 +39,7 @@ Page {
 
             Column {
                 id: settingsColumn
+                width: parent.width
 
                 ListItem.Header {
                     id: titleMusicSettings
