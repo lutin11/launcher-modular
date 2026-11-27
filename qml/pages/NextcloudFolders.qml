@@ -463,7 +463,8 @@ Item {
         delegate: Rectangle {
             width: folderListView.width
             height: units.gu(6)
-            color: !model.isFolder && isFileSelected(model.path) ? "#333333" : "#111111"
+            // The launcher background shows through, as on the other pages.
+            color: !model.isFolder && isFileSelected(model.path) ? "#33E95420" : "transparent"
 
             Row {
                 anchors.left: parent.left

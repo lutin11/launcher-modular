@@ -37,6 +37,15 @@ Item {
     property string eventEndDate: ""
     property string eventEndTime: ""
     property bool eventAllDay: false
+    // Month shown by the date picker, the selected day and the field it
+    // belongs to.
+    property string datePickerTarget: ""
+    property date datePickerMonth: new Date()
+    property date datePickerSelected: new Date()
+    // Error shown in the event dialog. It is kept on the page because the
+    // dialog is a separate component: an id of the dialog is not in scope
+    // from the functions of the page.
+    property string eventError: ""
 
     readonly property var weekDayNames: [
         i18n.tr("Mon"), i18n.tr("Tue"), i18n.tr("Wed"), i18n.tr("Thu"),
@@ -224,6 +233,7 @@ Item {
         start.setHours(9, 0, 0, 0)
         var end = new Date(start.getTime() + 3600000)
         editingIndex = -1
+        eventError = ""
         eventSummary = ""
         eventLocation = ""
         eventDescription = ""
@@ -250,6 +260,7 @@ Item {
         eventEndDate = formatDateInput(end)
         eventEndTime = formatTimeInput(end)
         eventAllDay = event.allDay
+        eventError = ""
         PopupUtils.open(eventDialog)
     }
 
@@ -258,22 +269,48 @@ Item {
         return isNaN(parsed.getTime()) ? null : parsed
     }
 
+    function openDatePicker(target) {
+        datePickerTarget = target
+        var text = target === "start" ? eventStartDate : eventEndDate
+        var parsed = new Date(text + "T12:00:00")
+        datePickerSelected = isNaN(parsed.getTime()) ? new Date() : parsed
+        datePickerMonth = new Date(datePickerSelected.getFullYear(),
+                                   datePickerSelected.getMonth(), 1)
+        PopupUtils.open(datePickerDialog)
+    }
+
+    function shiftPickerMonth(direction) {
+        datePickerMonth = new Date(datePickerMonth.getFullYear(),
+                                   datePickerMonth.getMonth() + direction, 1)
+    }
+
+    // A click on a day selects it, writes the field and closes the dialog.
+    function pickDate(day) {
+        datePickerSelected = day
+        var formatted = Qt.formatDate(day, "yyyy-MM-dd")
+        if (datePickerTarget === "start")
+            eventStartDate = formatted
+        else
+            eventEndDate = formatted
+        PopupUtils.close(datePickerDialogItem)
+    }
+
     function saveEvent() {
         var start = parseDateTime(eventStartDate, eventStartTime)
         var end = parseDateTime(eventEndDate, eventEndTime)
         if (!start || !end) {
-            dialogError.text = i18n.tr("Invalid date or time")
+            eventError = i18n.tr("Invalid date or time")
             return
         }
         if (end.getTime() <= start.getTime()) {
-            dialogError.text = i18n.tr("The end must be after the start")
+            eventError = i18n.tr("The end must be after the start")
             return
         }
         if (eventSummary.trim().length === 0) {
-            dialogError.text = i18n.tr("The title is required")
+            eventError = i18n.tr("The title is required")
             return
         }
-        dialogError.text = ""
+        eventError = ""
         var fields = {
             summary: eventSummary,
             location: eventLocation,
@@ -284,7 +321,7 @@ Item {
         }
         var done = function (success, code) {
             if (!success) {
-                dialogError.text = i18n.tr("The server refused the change (HTTP %1)").arg(code)
+                eventError = i18n.tr("The server refused the change (HTTP %1)").arg(code)
                 return
             }
             PopupUtils.close(eventDialog)
@@ -712,6 +749,8 @@ Item {
         Dialog {
             id: eventDialogItem
             title: calendarPage.editingIndex >= 0 ? i18n.tr("Edit event") : i18n.tr("New event")
+            // A press outside the dialog dismisses it, like Cancel.
+            __closeOnDismissAreaPress: true
 
             // The dialog holds many fields: without a bounded, scrollable
             // area, the last rows (All day) are cut on a phone screen.
@@ -764,6 +803,17 @@ Item {
                             enabled: !calendarPage.eventAllDay
                             onTextChanged: calendarPage.eventStartTime = text
                         }
+                        Icon {
+                            height: units.gu(2.5)
+                            width: height
+                            name: "calendar"
+                            anchors.verticalCenter: parent.verticalCenter
+                            MouseArea {
+                                anchors.fill: parent
+                                anchors.margins: units.gu(-0.5)
+                                onClicked: calendarPage.openDatePicker("start")
+                            }
+                        }
                     }
                     Row {
                         width: parent.width
@@ -780,6 +830,17 @@ Item {
                             text: calendarPage.eventEndTime
                             enabled: !calendarPage.eventAllDay
                             onTextChanged: calendarPage.eventEndTime = text
+                        }
+                        Icon {
+                            height: units.gu(2.5)
+                            width: height
+                            name: "calendar"
+                            anchors.verticalCenter: parent.verticalCenter
+                            MouseArea {
+                                anchors.fill: parent
+                                anchors.margins: units.gu(-0.5)
+                                onClicked: calendarPage.openDatePicker("end")
+                            }
                         }
                     }
                     // Visible again: it was the row cut by the dialog height.
@@ -805,7 +866,7 @@ Item {
                         width: parent.width
                         wrapMode: Text.WordWrap
                         color: "#ED3146"
-                        text: ""
+                        text: calendarPage.eventError
                     }
                 }
             }
@@ -828,6 +889,86 @@ Item {
         }
     }
 
+    // Calendar shown when the calendar button of a date field is pressed.
+    // It reuses the month grid of the page; clicking a day closes it.
+    Component {
+        id: datePickerDialog
+        Dialog {
+            id: datePickerDialogItem
+            title: i18n.tr("Choose a date")
+            __closeOnDismissAreaPress: true
+
+            Column {
+                spacing: units.gu(1)
+
+                Row {
+                    width: parent.width
+                    spacing: units.gu(1)
+
+                    Icon {
+                        height: units.gu(2.5)
+                        width: height
+                        name: "go-previous"
+                        MouseArea {
+                            anchors.fill: parent
+                            anchors.margins: units.gu(-0.5)
+                            onClicked: calendarPage.shiftPickerMonth(-1)
+                        }
+                    }
+                    Label {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: Qt.formatDate(calendarPage.datePickerMonth, "MMMM yyyy")
+                        color: Theme.palette.normal.backgroundText
+                        font.bold: true
+                    }
+                    Icon {
+                        height: units.gu(2.5)
+                        width: height
+                        name: "go-next"
+                        MouseArea {
+                            anchors.fill: parent
+                            anchors.margins: units.gu(-0.5)
+                            onClicked: calendarPage.shiftPickerMonth(1)
+                        }
+                    }
+                }
+
+                Grid {
+                    columns: 7
+                    Repeater {
+                        model: calendarPage.monthCells(calendarPage.datePickerMonth)
+                        Rectangle {
+                            width: units.gu(4.6)
+                            height: units.gu(4.6)
+                            color: calendarPage.sameDay(modelData.day, calendarPage.datePickerSelected)
+                                   ? "#E95420"
+                                   : (modelData.inMonth ? "#22ffffff" : "transparent")
+                            border.color: "#33ffffff"
+                            border.width: 1
+
+                            Label {
+                                anchors.centerIn: parent
+                                text: modelData.day.getDate()
+                                color: Theme.palette.normal.backgroundText
+                                opacity: modelData.inMonth ? 1 : 0.4
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: calendarPage.pickDate(modelData.day)
+                            }
+                        }
+                    }
+                }
+
+                Button {
+                    text: i18n.tr("Cancel")
+                    onClicked: PopupUtils.close(datePickerDialogItem)
+                }
+            }
+        }
+    }
+
     Component {
         id: confirmDelete
         Dialog {
@@ -839,7 +980,7 @@ Item {
                 onClicked: {
                     NextcloudCalendarModel.deleteEvent(calendarPage.editingIndex, function (success, code) {
                         if (!success) {
-                            dialogError.text = i18n.tr("The server refused the deletion (HTTP %1)").arg(code)
+                            calendarPage.eventError = i18n.tr("The server refused the deletion (HTTP %1)").arg(code)
                             PopupUtils.close(confirmDeleteItem)
                             return
                         }
