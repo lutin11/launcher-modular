@@ -58,6 +58,25 @@ if [ -f "$SQL_PLUGIN" ]; then
     cp "$SQL_PLUGIN" "$APPDIR/usr/plugins/sqldrivers/"
 fi
 
+# QtMultimedia: the GStreamer media service is loaded at run time and
+# linuxdeploy does not deploy it, so Audio/MediaPlayer had no backend in the
+# AppImage. Copy the service and the Qt Multimedia helper libraries it needs;
+# the GStreamer runtime and the codecs stay those of the host, as for a normal
+# desktop install (a .deb Recommends libqt5multimedia5-plugins for the same
+# reason).
+MEDIA_PLUGINS="$(qmake -query QT_INSTALL_PLUGINS)/mediaservice"
+QT_LIBS="$(qmake -query QT_INSTALL_LIBS)"
+if [ -d "$MEDIA_PLUGINS" ]; then
+    mkdir -p "$APPDIR/usr/plugins/mediaservice"
+    for f in libgstmediaplayer.so libgstaudiodecoder.so; do
+        [ -f "$MEDIA_PLUGINS/$f" ] && cp "$MEDIA_PLUGINS/$f" "$APPDIR/usr/plugins/mediaservice/"
+    done
+    for lib in libQt5MultimediaGstTools.so.5 libQt5MultimediaWidgets.so.5 \
+               libQt5Widgets.so.5; do
+        [ -f "$QT_LIBS/$lib" ] && cp "$QT_LIBS/$lib" "$APPDIR/usr/lib/"
+    done
+fi
+
 # The icons collected by CMake land in usr/share/icons/hicolor, but the bundle
 # has no index.theme: without it Qt cannot enumerate the theme and every
 # Icon { name: … } stays empty. Generated here, for the AppImage only (a .deb
@@ -85,6 +104,21 @@ chmod +x "$TOOLS_WORK"/*.AppImage
     --desktop-file="$APPDIR/launchermodular.desktop" \
     --icon-file="$APPDIR/launchermodular.svg" \
     --custom-apprun="$SRC/packaging/desktop/AppRun"
+
+# The multimedia media service made linuxdeploy bundle libgstreamer, its core
+# libraries and GLib from the build image, but not the GStreamer *plugins*.
+# A host's plugins are built against the host GStreamer/GLib and refuse to load
+# against the older bundled runtime (observed: no "playbin"/"fakesink").
+# Keep the host GStreamer and GLib, as a normal desktop install does; they are
+# standard on Debian, Ubuntu, Mint and Mageia. The .deb uses them as well.
+for f in "$APPDIR"/usr/lib/libgstreamer-1.0.so* \
+         "$APPDIR"/usr/lib/libgst*.so* \
+         "$APPDIR"/usr/lib/libglib-2.0.so* \
+         "$APPDIR"/usr/lib/libgobject-2.0.so* \
+         "$APPDIR"/usr/lib/libgio-2.0.so* \
+         "$APPDIR"/usr/lib/libgmodule-2.0.so*; do
+    [ -e "$f" ] && rm -f "$f"
+done
 
 if [ "${INCLUDE_TEST_PLATFORMS:-0}" = "1" ]; then
     # The continuous linuxdeploy-plugin-qt does not split

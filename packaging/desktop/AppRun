@@ -11,6 +11,9 @@ export APPDIR="${APPDIR:-$HERE}"
 # system data directories unless XDG_DATA_DIRS points inside the AppImage, so
 # Icon { name: … } would stay empty (see VALIDATION_PACKAGES.md, T2).
 export XDG_DATA_DIRS="$HERE/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+# Qt plugins are loaded with dlopen: the multimedia service added beside the
+# other plugins must find the Qt Multimedia libraries bundled in usr/lib.
+export LD_LIBRARY_PATH="$HERE/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 for d in "$HERE"/usr/lib/*/launchermodular; do
     [ -d "$d" ] || continue
     export QML2_IMPORT_PATH="$d${QML2_IMPORT_PATH:+:$QML2_IMPORT_PATH}"

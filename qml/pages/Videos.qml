@@ -5,6 +5,7 @@ import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
 import MySettings 1.0
+import Platform 1.0
 
 import QtQuick.Controls 2.2
 
@@ -273,7 +274,11 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 if (!fileIsDir) {
-                                    Qt.openUrlExternally("video://" + model.filePath)
+                                    // Ubuntu Touch knows the video:// scheme and
+                                    // opens its media player. A desktop has no
+                                    // such handler: use file:// so xdg-open
+                                    // starts the default video player.
+                                    Qt.openUrlExternally((Platform.isTouch ? "video://" : "file://") + model.filePath)
                                 } else {
                                     searchTerm = ""
                                     videoFileModel.folder = model.filePath
