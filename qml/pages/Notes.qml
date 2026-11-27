@@ -1,6 +1,5 @@
 import QtQuick 2.12
 import Lomiri.Components 1.3
-import QtQuick.Controls 2.2
 import "notes"
 
 // List of the notes stored on the device. Tapping a note opens the editor
@@ -16,7 +15,10 @@ Item {
     }
 
     function openNote(noteId) {
-        pageStack.push(Qt.resolvedUrl("notes/NoteEditor.qml"), { noteId: noteId })
+        // An existing note opens rendered (read only); a new one opens in the
+        // editor. The header action switches between the two modes.
+        pageStack.push(Qt.resolvedUrl("notes/NoteEditor.qml"),
+                       { noteId: noteId, startInPreview: noteId > 0 })
     }
 
     ListView {
@@ -75,21 +77,43 @@ Item {
             }
         }
 
-        delegate: ListItem {
-            height: layout.height + divider.height
-            ListItemLayout {
-                id: layout
-                title.text: model.title.length > 0 ? model.title : i18n.tr("Untitled")
-                title.color: launchermodular.settings.textColor
-                subtitle.text: Qt.formatDateTime(new Date(model.updatedDate), "dd/MM/yyyy hh:mm")
-                subtitle.color: launchermodular.settings.textColor
-                Icon {
-                    name: "note"
-                    color: launchermodular.settings.textColor
-                    SlotsLayout.position: SlotsLayout.Leading
-                }
+        // One line per note: a ListItem with a title and a subtitle is taller
+        // than needed for a list of notes.
+        delegate: Item {
+            width: notesList.width
+            height: units.gu(6)
+
+            Rectangle {
+                anchors.bottom: parent.bottom
+                width: parent.width
+                height: units.gu(0.1)
+                color: "#22ffffff"
             }
-            onClicked: notesPage.openNote(model.id)
+            Label {
+                anchors {
+                    left: parent.left
+                    right: dateLabel.left
+                    rightMargin: units.gu(1)
+                    verticalCenter: parent.verticalCenter
+                }
+                elide: Text.ElideRight
+                text: model.title.length > 0 ? model.title : i18n.tr("Untitled")
+                color: launchermodular.settings.textColor
+            }
+            Label {
+                id: dateLabel
+                anchors {
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
+                }
+                fontSize: "small"
+                color: "#AEA79F"
+                text: Qt.formatDateTime(new Date(model.updatedDate), "dd/MM/yyyy")
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: notesPage.openNote(model.id)
+            }
         }
     }
 

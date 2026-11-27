@@ -1,22 +1,32 @@
 import QtQuick 2.12
-import QtQuick.Controls 2.2
+import QtQuick.Controls 2.2 as QControls
 import Lomiri.Components 1.3
 import Lomiri.Components.Popups 1.3
 import "."
 import "markdown.js" as Markdown
 
-// Editor of a note: a raw text area and a Markdown preview, switched from the
-// header. The content is saved when leaving the page, and on demand.
+// Editor of a note.
+//
+// The title lives in the header, next to the back arrow, so the whole page
+// below is available for the text. An existing note is opened in its rendered
+// Markdown form (read only); the header action switches to the editor. Leaving
+// the page saves: a note saved a bit early is better than a note lost.
 Page {
     id: editor
     property int noteId: 0
     property bool preview: false
+    property bool startInPreview: false
     property bool dirty: false
+    property string noteTitle: ""
 
     function save() {
         if (!dirty)
             return
-        var title = titleField.text.length > 0 ? titleField.text : i18n.tr("Untitled")
+        // Without a title, the date is used: the list stays readable and the
+        // note can still be found later.
+        var title = noteTitle.trim().length > 0
+                ? noteTitle.trim()
+                : Qt.formatDate(new Date(), "dd/MM/yyyy")
         noteId = NotesModel.save(noteId, title, bodyField.text)
         dirty = false
     }
@@ -26,109 +36,160 @@ Page {
         pageStack.pop()
     }
 
-    header: PageHeader {
-        id: editorHeader
-        title: editor.noteId > 0 ? i18n.tr("Edit note") : i18n.tr("New note")
-
-        leadingActionBar.actions: [
-            Action {
-                iconName: "back"
-                text: i18n.tr("Back")
-                onTriggered: editor.close()
-            }
-        ]
-
-        trailingActionBar.actions: [
-            Action {
-                iconName: editor.preview ? "edit" : "view-expand"
-                text: editor.preview ? i18n.tr("Edit") : i18n.tr("Preview")
-                onTriggered: editor.preview = !editor.preview
-            },
-            Action {
-                iconName: "delete"
-                text: i18n.tr("Delete")
-                enabled: editor.noteId > 0
-                onTriggered: PopupUtils.open(confirmDelete)
-            }
-        ]
-    }
-
     Component.onCompleted: {
         if (noteId > 0) {
             var note = NotesModel.load(noteId)
-            titleField.text = note.title
+            noteTitle = note.title
             bodyField.text = note.body
         }
+        preview = startInPreview
         dirty = false
     }
 
-    Column {
-        anchors.fill: parent
-        anchors {
-            topMargin: units.gu(6)
-            leftMargin: units.gu(1)
-            rightMargin: units.gu(1)
-        }
-        spacing: units.gu(1)
+    // Header: back, editable title, preview/edit, delete.
+    header: Rectangle {
+        id: editorHeader
+        width: parent.width
+        height: units.gu(6)
+        color: "#111111"
 
-        TextField {
-            id: titleField
-            width: parent.width
-            height: units.gu(5)
-            placeholderText: i18n.tr("Title")
-            font.pixelSize: units.gu(2)
-            onTextChanged: editor.dirty = true
-        }
+        Rectangle {
+            id: backButton
+            width: units.gu(5)
+            height: parent.height
+            color: "transparent"
 
-        // Raw Markdown, or its rendering. The two views share the same text,
-        // so switching never loses anything.
-        Flickable {
-            id: editorArea
-            width: parent.width
-            height: parent.height - titleField.height - units.gu(2)
-            visible: !editor.preview
-            contentHeight: bodyField.height
-            clip: true
-
-            TextArea {
-                id: bodyField
-                width: editorArea.width
-                // implicitHeight depends on the width and the text, never on
-                // the height: binding the height to contentHeight here made a
-                // binding loop (Diagnostics in the journal showed it).
-                height: Math.max(implicitHeight, editorArea.height)
-                placeholderText: i18n.tr("Write in Markdown…")
-                wrapMode: TextArea.Wrap
-                font.pixelSize: units.gu(1.8)
-                onTextChanged: editor.dirty = true
+            Icon {
+                anchors.centerIn: parent
+                name: "back"
+                width: units.gu(2)
+                height: units.gu(2)
+                color: launchermodular.settings.textColor
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: editor.close()
             }
         }
 
-        Flickable {
-            width: parent.width
-            height: editorArea.height
-            visible: editor.preview
-            contentHeight: previewText.height
-            clip: true
+        QControls.TextField {
+            id: titleField
+            anchors {
+                left: backButton.right
+                right: headerActions.left
+                verticalCenter: parent.verticalCenter
+            }
+            height: parent.height
+            text: editor.noteTitle
+            placeholderText: i18n.tr("Note title")
+            color: launchermodular.settings.textColor
+            font.pixelSize: units.gu(2)
+            background: Rectangle {
+                color: "transparent"
+                height: parent.height
+            }
+            onTextChanged: {
+                editor.noteTitle = text
+                editor.dirty = true
+            }
+        }
 
-            Text {
-                id: previewText
-                width: parent.width
-                textFormat: Text.RichText
-                text: Markdown.toRichText(bodyField.text)
-                color: launchermodular.settings.textColor
-                wrapMode: Text.WordWrap
-                font.pixelSize: units.gu(1.8)
-                onLinkActivated: {
-                    if (/^(https?|mailto):/i.test(link))
-                        Qt.openUrlExternally(link)
+        Row {
+            id: headerActions
+            anchors.right: parent.right
+            height: parent.height
+
+            Rectangle {
+                width: units.gu(5)
+                height: parent.height
+                color: "transparent"
+
+                Icon {
+                    anchors.centerIn: parent
+                    name: editor.preview ? "edit" : "view-expand"
+                    width: units.gu(2)
+                    height: units.gu(2)
+                    color: launchermodular.settings.textColor
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: editor.preview = !editor.preview
+                }
+            }
+            Rectangle {
+                width: units.gu(5)
+                height: parent.height
+                color: "transparent"
+                visible: editor.noteId > 0
+
+                Icon {
+                    anchors.centerIn: parent
+                    name: "delete"
+                    width: units.gu(2)
+                    height: units.gu(2)
+                    color: launchermodular.settings.textColor
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: PopupUtils.open(confirmDelete)
                 }
             }
         }
     }
 
-    // Leaving the page saves: the phone has no "cancel" habit, and a note lost
-    // by a swipe would be worse than a note saved a bit early.
+    // Opaque background: a pushed page must not show the list behind it.
+    Rectangle {
+        anchors.fill: parent
+        z: -1
+        color: "#111111"
+    }
+
+    // Editor or rendering, same text, full height below the header.
+    Flickable {
+        id: editArea
+        anchors.fill: parent
+        anchors.topMargin: units.gu(6)
+        anchors.leftMargin: units.gu(1)
+        anchors.rightMargin: units.gu(1)
+        visible: !editor.preview
+        contentHeight: bodyField.height
+        clip: true
+
+        QControls.TextArea {
+            id: bodyField
+            width: editArea.width
+            // implicitHeight depends on the width and the text, never on the
+            // height: binding the height to contentHeight made a binding loop.
+            height: Math.max(implicitHeight, editArea.height)
+            placeholderText: i18n.tr("Write in Markdown…")
+            wrapMode: TextArea.Wrap
+            font.pixelSize: units.gu(1.8)
+            onTextChanged: editor.dirty = true
+        }
+    }
+
+    Flickable {
+        id: previewArea
+        anchors.fill: editArea
+        visible: editor.preview
+        contentHeight: previewText.height
+        clip: true
+
+        Text {
+            id: previewText
+            width: previewArea.width
+            textFormat: Text.RichText
+            text: Markdown.toRichText(bodyField.text)
+            color: launchermodular.settings.textColor
+            wrapMode: Text.WordWrap
+            font.pixelSize: units.gu(1.8)
+            onLinkActivated: {
+                if (/^(https?|mailto):/i.test(link))
+                    Qt.openUrlExternally(link)
+            }
+        }
+    }
+
     Keys.onBackPressed: {
         editor.close()
         event.accepted = true
