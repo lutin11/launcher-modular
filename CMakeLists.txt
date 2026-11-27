@@ -140,6 +140,36 @@ if(DESKTOP_INSTALL)
     # having been refreshed, which a package built without debhelper cannot do.
     install(FILES assets/logo.svg DESTINATION share/icons/hicolor/scalable/apps RENAME ${PROJECT_NAME}.svg)
     install(FILES assets/logo.svg DESTINATION share/pixmaps RENAME ${PROJECT_NAME}.svg)
+
+    # The chrome of the application (back arrows, delete, media controls…) is
+    # drawn with Icon { name: … }: those names are resolved through the session
+    # icon theme, Suru on Ubuntu Touch, which a plain desktop does not have.
+    # Collect the icons actually used by the QML from the themes of the build
+    # machine (a few hundred kilobytes) instead of depending on the whole
+    # theme; see packaging/desktop/collect-icons.py and VALIDATION_PACKAGES.md.
+    find_package(Python3 COMPONENTS Interpreter QUIET)
+    if(Python3_Interpreter_FOUND)
+        file(GLOB_RECURSE DESKTOP_QML_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/qml/*.qml")
+        set(DESKTOP_ICON_STAGE "${CMAKE_CURRENT_BINARY_DIR}/desktop-icons")
+        add_custom_command(
+            OUTPUT "${DESKTOP_ICON_STAGE}/.stamp"
+            COMMAND ${CMAKE_COMMAND} -E rm -rf "${DESKTOP_ICON_STAGE}"
+            COMMAND ${Python3_EXECUTABLE}
+                    "${CMAKE_CURRENT_SOURCE_DIR}/packaging/desktop/collect-icons.py"
+                    --qml "${CMAKE_CURRENT_SOURCE_DIR}/qml"
+                    --dest "${DESKTOP_ICON_STAGE}"
+            COMMAND ${CMAKE_COMMAND} -E touch "${DESKTOP_ICON_STAGE}/.stamp"
+            DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/packaging/desktop/collect-icons.py"
+                    ${DESKTOP_QML_FILES}
+            COMMENT "Collecting the themed icons used by the QML"
+            VERBATIM)
+        add_custom_target(desktop_icons ALL DEPENDS "${DESKTOP_ICON_STAGE}/.stamp")
+        install(DIRECTORY "${DESKTOP_ICON_STAGE}/" DESTINATION share/icons/hicolor
+                PATTERN ".stamp" EXCLUDE)
+    else()
+        message(WARNING "python3 not found: the themed icons used by the QML "
+                        "will not be installed, Icon { name: … } may stay empty")
+    endif()
 endif()
 
 add_subdirectory(po)

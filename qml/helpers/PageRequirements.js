@@ -22,6 +22,7 @@ var PAGES = {
     "NextcloudFolders.qml": ["hasContentModule", "hasDownloadManagerModule"],
     "Rss.qml": ["hasConnectivityModule", "hasLocalStorageModule"],
     "Todo.qml": ["hasLocalStorageModule"],
+    "Notes.qml": ["hasLocalStorageModule"],
     // The calendar page loads its data through QtOrganizer at run time, so the
     // module itself is what makes the file fail, not the provider: a machine
     // without a provider shows an empty calendar, which the page already does.

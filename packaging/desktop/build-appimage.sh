@@ -58,6 +58,15 @@ if [ -f "$SQL_PLUGIN" ]; then
     cp "$SQL_PLUGIN" "$APPDIR/usr/plugins/sqldrivers/"
 fi
 
+# The icons collected by CMake land in usr/share/icons/hicolor, but the bundle
+# has no index.theme: without it Qt cannot enumerate the theme and every
+# Icon { name: … } stays empty. Generated here, for the AppImage only (a .deb
+# uses the index.theme of the system hicolor theme).
+if [ -d "$APPDIR/usr/share/icons/hicolor" ] && command -v python3 >/dev/null 2>&1; then
+    python3 "$BUILD_DIR/packaging/desktop/collect-icons.py" \
+        --dest "$APPDIR/usr/share/icons/hicolor" --index-theme
+fi
+
 # AppDir root: the desktop file installed under usr/share/applications is
 # already themed (cmake/SetDesktopIcon.cmake) and valid for packagers.
 cp assets/logo.svg "$APPDIR/launchermodular.svg"
