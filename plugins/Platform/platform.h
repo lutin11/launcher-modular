@@ -120,6 +120,10 @@ public:
     // report, it is not a user interface label.
     Q_INVOKABLE QString diagnostics();
 
+    // Pictures folder of the session (XDG Pictures). The Ubuntu Touch images
+    // live in a fixed pablet path that does not exist on a desktop.
+    Q_INVOKABLE QString picturesLocation() const;
+
 signals:
     void capabilitiesChanged();
 

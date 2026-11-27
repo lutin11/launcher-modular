@@ -242,6 +242,14 @@ bool Platform::hasAccountsService()
     return m_hasAccountsService;
 }
 
+QString Platform::picturesLocation() const
+{
+    QString location = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    if (location.isEmpty())
+        location = QDir::homePath() + QStringLiteral("/Pictures");
+    return location;
+}
+
 QString Platform::diagnostics()
 {
     QStringList lines;

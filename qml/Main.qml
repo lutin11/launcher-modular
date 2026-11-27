@@ -46,11 +46,33 @@ MainView {
         return customIcon;
     }
 
+    // Stable identifier of a page, used to store its configuration in
+    // settings.pageConfigsJson. Generated once and kept with the page.
+    function newPageUid() {
+        return "p" + Date.now().toString(36) + Math.floor(Math.random() * 1679616).toString(36);
+    }
+
+    function getPageConfig(uid) {
+        if (!uid) return ({});
+        var all = {};
+        try { all = JSON.parse(launchermodular.settings.pageConfigsJson || "{}"); } catch (error) { all = {}; }
+        var config = all[uid];
+        return (config && typeof config === "object") ? config : ({});
+    }
+
+    function setPageConfig(uid, config) {
+        if (!uid) return;
+        var all = {};
+        try { all = JSON.parse(launchermodular.settings.pageConfigsJson || "{}"); } catch (error) { all = {}; }
+        all[uid] = config;
+        launchermodular.settings.pageConfigsJson = JSON.stringify(all);
+    }
+
     function getPageArray() {
         var page = [], hM_l = launchermodular.pageModel.count;
         for (var i=0; i<hM_l; i++){
             var item = launchermodular.pageModel.get(i);
-            page.push({"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory});
+            page.push({"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory, "uid": item.uid});
         }
 
         if (DEBUG_MODE) console.log("pageModel to array, size : "+page.length);
@@ -138,7 +160,8 @@ MainView {
         property real backgroundOpacity: 0.7
         property int backgroundBlur: 0
 
-        property string folderImage: MySettings.getPicturesLocation()
+        property string folderImage: Platform.isTouch ? MySettings.getPicturesLocation()
+                                              : Platform.picturesLocation()
         property bool reverseImagesSort: false
         property int imageSelectedSorting: FolderListModel.Time
         property bool openImageExternally: false
@@ -207,6 +230,9 @@ MainView {
         // Accounts of the Nextcloud calendar page(s), as JSON: nested lists in
         // the page data are not serialised by the settings backend.
         property string nextcloudAccountsJson: ''
+        // Per-page configurations, indexed by the stable page uid and stored as
+        // JSON because the settings backend does not serialise nested maps.
+        property string pageConfigsJson: '{}'
         property string nextcloudCalendarName: ''
 
     }//settings
@@ -224,6 +250,9 @@ MainView {
 
     PageStack {
         id: pageStack
+        // The desktop title bar takes its height from the window, so that the
+        // pages are never covered by it. On Ubuntu Touch it is invisible.
+        anchors.topMargin: desktopTitleBar.visible ? desktopTitleBar.height : 0
         Page {
             id: pageLauncher
             anchors.fill: parent
@@ -279,7 +308,10 @@ MainView {
                 var page_l = launchermodular.settings.page.length
                 for (var p=0; p<page_l; p++){
                     var itemPage = launchermodular.settings.page[p];
-                    launchermodular.pageModel.insert(p,{"name": itemPage.name, "icon": itemPage.icon, "data":itemPage.data, "directory":itemPage.directory})
+                    // Pages created before the uid existed get one now; it is
+                    // written back with the page list on the next save.
+                    var pageUid = (itemPage.uid && itemPage.uid.length > 0) ? itemPage.uid : newPageUid();
+                    launchermodular.pageModel.insert(p,{"name": itemPage.name, "icon": itemPage.icon, "data":itemPage.data, "directory":itemPage.directory, "uid": pageUid})
                 }
 
             }
@@ -403,6 +435,12 @@ MainView {
                                         // entry in the page model.
                                         if (typeof item.pageIndex !== "undefined") {
                                             item.pageIndex = realIndex
+                                        }
+                                        // Per-page configuration is stored by
+                                        // the stable uid, not by position: a
+                                        // moved or reordered page keeps it.
+                                        if (typeof item.pageUid !== "undefined") {
+                                            item.pageUid = page.uid
                                         }
                                     }
                                 }
@@ -1109,6 +1147,157 @@ MainView {
                 interval: 1500
                 onTriggered: launchermodular.tutorialRequested = true
             }
+        }
+    }
+
+    /* ******************************** BARRE DE FENETRE (DESKTOP) ******************************** */
+
+    // The desktop packages are frameless (see main.cpp). This slim internal bar
+    // replaces the window manager decoration: drag it to move the window, use
+    // the buttons to minimize or close it. It is hidden under Ubuntu Touch,
+    // where Lomiri manages the window, and then the pages keep their full
+    // height (anchors.topMargin of the PageStack above).
+    Rectangle {
+        id: desktopTitleBar
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        height: units.gu(2.6)
+        color: "#111111"
+        visible: WindowController.frameless
+        z: 100
+
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton
+            onPressed: WindowController.beginMove()
+            onDoubleClicked: WindowController.toggleFullScreen()
+        }
+
+        Text {
+            anchors {
+                left: parent.left
+                leftMargin: units.gu(1)
+                verticalCenter: parent.verticalCenter
+            }
+            text: i18n.tr("Launcher Modular")
+            color: "#ffffff"
+            opacity: 0.7
+            font.pixelSize: units.dp(12)
+        }
+
+        Row {
+            anchors {
+                right: parent.right
+                rightMargin: units.gu(0.6)
+                verticalCenter: parent.verticalCenter
+            }
+            spacing: units.gu(0.4)
+
+            Rectangle {
+                width: units.gu(2.2)
+                height: units.gu(2)
+                radius: units.gu(0.2)
+                color: minimizeArea.pressed ? "#333333" : "transparent"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "–"
+                    color: "#ffffff"
+                    font.pixelSize: units.dp(14)
+                }
+
+                MouseArea {
+                    id: minimizeArea
+                    anchors.fill: parent
+                    onClicked: WindowController.minimize()
+                }
+            }
+
+            Rectangle {
+                width: units.gu(2.2)
+                height: units.gu(2)
+                radius: units.gu(0.2)
+                color: closeArea.pressed ? "#c7162b" : "transparent"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "×"
+                    color: "#ffffff"
+                    font.pixelSize: units.dp(16)
+                }
+
+                MouseArea {
+                    id: closeArea
+                    anchors.fill: parent
+                    onClicked: WindowController.closeWindow()
+                }
+            }
+        }
+    }
+
+    // Resize handles of the frameless desktop window: four edges and four
+    // corners. Each one starts a resize from the corresponding Qt::Edges mask
+    // (TopEdge 1, LeftEdge 2, RightEdge 4, BottomEdge 8).
+    Item {
+        id: desktopResizeHandles
+        anchors.fill: parent
+        visible: WindowController.frameless
+        z: 101
+
+        MouseArea {
+            anchors { top: parent.top; left: parent.left; right: parent.right }
+            height: units.gu(0.4)
+            cursorShape: Qt.SizeVerCursor
+            onPressed: WindowController.beginResize(1)
+        }
+        MouseArea {
+            anchors { bottom: parent.bottom; left: parent.left; right: parent.right }
+            height: units.gu(0.4)
+            cursorShape: Qt.SizeVerCursor
+            onPressed: WindowController.beginResize(8)
+        }
+        MouseArea {
+            anchors { left: parent.left; top: parent.top; bottom: parent.bottom }
+            width: units.gu(0.4)
+            cursorShape: Qt.SizeHorCursor
+            onPressed: WindowController.beginResize(2)
+        }
+        MouseArea {
+            anchors { right: parent.right; top: parent.top; bottom: parent.bottom }
+            width: units.gu(0.4)
+            cursorShape: Qt.SizeHorCursor
+            onPressed: WindowController.beginResize(4)
+        }
+        MouseArea {
+            anchors { top: parent.top; left: parent.left }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeFDiagCursor
+            onPressed: WindowController.beginResize(3)
+        }
+        MouseArea {
+            anchors { top: parent.top; right: parent.right }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeBDiagCursor
+            onPressed: WindowController.beginResize(5)
+        }
+        MouseArea {
+            anchors { bottom: parent.bottom; left: parent.left }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeBDiagCursor
+            onPressed: WindowController.beginResize(10)
+        }
+        MouseArea {
+            anchors { bottom: parent.bottom; right: parent.right }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeFDiagCursor
+            onPressed: WindowController.beginResize(12)
         }
     }
 }

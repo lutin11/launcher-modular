@@ -15,6 +15,9 @@ Item {
     // Each Nextcloud page has its own account, stored in the page data. The
     // global settings remain the fallback for pages created before this.
     property int pageIndex: -1
+    // Stable page identifier (injected by Main.qml): the configuration is
+    // stored by uid in settings.pageConfigsJson, so it survives a restart.
+    property string pageUid: ""
     property string accountUrl: ""
     property string accountUser: ""
     property string accountPassword: ""
@@ -44,6 +47,12 @@ Item {
     }
 
     function pageConfig() {
+        if (pageUid.length > 0) {
+            var stored = launchermodular.getPageConfig(pageUid)
+            if (stored && typeof stored === "object")
+                return stored
+        }
+        // Legacy: pages created before the uid stored their account here.
         if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
             var data = launchermodular.pageModel.get(pageIndex).data
             if (data && typeof data === "object")

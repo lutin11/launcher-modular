@@ -88,6 +88,18 @@ Item {
         }
     }
 
+    // Empty state: the configured folder holds no image, or does not exist.
+    Label {
+        anchors.centerIn: parent
+        width: parent.width - units.gu(4)
+        horizontalAlignment: Text.AlignHCenter
+        wrapMode: Text.WordWrap
+        color: "#FFFFFF"
+        visible: selectedImageFilePath === "" && folderModel.status === FolderListModel.Ready
+                 && folderModel.count === 0
+        text: i18n.tr("No images found in %1").arg(launchermodular.settings.folderImage)
+    }
+
     GridView {
         id: gview
         visible: selectedImageFilePath === ""

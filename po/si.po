@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: launchermodular.lut11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 16:31+0000\n"
+"POT-Creation-Date: 2026-11-27 22:24+0000\n"
 "PO-Revision-Date: 2025-11-23 09:41+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Sinhala <https://hosted.weblate.org/projects/launcher-modular/"
@@ -39,7 +39,8 @@ msgstr ""
 msgid "Change Log"
 msgstr ""
 
-#: qml/ChangeLogs.qml:18 qml/pages/picture/SelectFolderPage.qml:25
+#: qml/ChangeLogs.qml:18 qml/pages/nextcloudcalendar/Settings.qml:154
+#: qml/pages/notes/Settings.qml:19 qml/pages/picture/SelectFolderPage.qml:25
 #: qml/pages/rss/Settings.qml:26
 msgid "Back"
 msgstr ""
@@ -371,111 +372,125 @@ msgstr ""
 msgid "<a href='LAUNCHER MODULAR TRANSLATORS'>Modular Launcher-translators</a>"
 msgstr ""
 
-#: qml/Help.qml:15
+#: qml/Help.qml:18
 msgid "Modular Launcher Help"
 msgstr ""
 
-#: qml/Help.qml:48
+#: qml/Help.qml:51
 msgid "How to use"
 msgstr ""
 
-#: qml/Help.qml:61
+#: qml/Help.qml:64
 msgid "<br><b>Click and hold the widget to change its settings.</b>"
 msgstr ""
 
-#: qml/Help.qml:75
+#: qml/Help.qml:78
 msgid ""
 "<br><b>To add a new page, go to 'Manage page' and click on the '+' on the "
 "top right.</b>"
 msgstr ""
 
-#: qml/Help.qml:89
+#: qml/Help.qml:92
 msgid ""
 "<br><b>To change page settings, go to 'Manage page' and click the page.</b>"
+msgstr ""
+
+#: qml/Help.qml:108 qml/Help.qml:119
+msgid "Diagnostic"
+msgstr ""
+
+#: qml/Help.qml:147
+msgid "Close"
 msgstr ""
 
 #: qml/ImportPage.qml:13
 msgid "Choose"
 msgstr ""
 
-#: qml/Main.qml:470
+#: qml/Main.qml:606
 msgid "Swipe up to configure the launcher"
 msgstr ""
 
-#: qml/Main.qml:528
+#: qml/Main.qml:737
 msgid "Add custom icon"
 msgstr ""
 
-#: qml/Main.qml:561
+#: qml/Main.qml:770
 msgid "Manage pages"
 msgstr ""
 
-#: qml/Main.qml:594
+#: qml/Main.qml:803
 msgid "Configure Launcher"
 msgstr ""
 
-#: qml/Main.qml:627
+#: qml/Main.qml:836
 msgid "Autostart"
 msgstr ""
 
-#: qml/Main.qml:660
+#: qml/Main.qml:869
 msgid "Help"
 msgstr ""
 
-#: qml/Main.qml:693
+#: qml/Main.qml:902
 msgid "About"
 msgstr ""
 
-#: qml/Main.qml:750
+#: qml/Main.qml:959
 msgid "Website"
 msgstr ""
 
-#: qml/Main.qml:750
+#: qml/Main.qml:959
 msgid "Open this URL in the web browser"
 msgstr ""
 
-#: qml/Main.qml:751
+#: qml/Main.qml:960
 msgid "Terminal command"
 msgstr ""
 
-#: qml/Main.qml:751
+#: qml/Main.qml:960
 msgid "Run a command in a terminal"
 msgstr ""
 
-#: qml/Main.qml:752
+#: qml/Main.qml:961
 msgid "Launch app"
 msgstr ""
 
-#: qml/Main.qml:752
+#: qml/Main.qml:961
 msgid "Launch an app"
 msgstr ""
 
-#: qml/Main.qml:776
+#: qml/Main.qml:992
 msgid "SVG or PNG icon. 1:1 ratio"
 msgstr ""
 
-#: qml/Main.qml:789
+#: qml/Main.qml:1005
 msgid "The <b>title</b> to be shown in the app list"
 msgstr ""
 
-#: qml/Main.qml:813 qml/Main.qml:814 qml/Main.qml:815
+#: qml/Main.qml:1029 qml/Main.qml:1030 qml/Main.qml:1031
 msgid "<b>Action</b> example: "
 msgstr ""
 
-#: qml/Main.qml:827
+#: qml/Main.qml:1043
 msgid "Create icon"
 msgstr ""
 
-#: qml/Main.qml:870 qml/Pagemanagement.qml:157 qml/pages/Home.qml:56
-#: qml/pages/Home.qml:532 qml/pages/home/Settings.qml:69
+#: qml/Main.qml:1086 qml/Pagemanagement.qml:193 qml/pages/Home.qml:57
+#: qml/pages/Home.qml:597 qml/pages/NextcloudCalendar.qml:824
+#: qml/pages/NextcloudCalendar.qml:853 qml/pages/home/Settings.qml:70
+#: qml/pages/notes/NoteEditor.qml:217 qml/pages/notes/Settings.qml:80
 msgid "Cancel"
 msgstr ""
 
-#: qml/Pagemanagement.qml:18
+#: qml/Main.qml:1185 launchermodular.desktop.in.h:1
+msgid "Launcher Modular"
+msgstr ""
+
+#: qml/Pagemanagement.qml:31
 msgid "Page management"
 msgstr ""
 
-#: qml/Pagemanagement.qml:48
+#: qml/Pagemanagement.qml:61
 msgid "Choose a page"
 msgstr ""
 
@@ -483,7 +498,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: qml/Settings.qml:50 qml/pages/home/Settings.qml:181
+#: qml/Settings.qml:50 qml/pages/home/Settings.qml:182
 msgid "General"
 msgstr ""
 
@@ -541,87 +556,103 @@ msgid ""
 "ubports/launcher-modular/'>Hosted Weblate</a>."
 msgstr ""
 
-#: qml/components/Tutorial.qml:90
+#: qml/components/PageUnavailable.qml:23
+msgid "This page is not available"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:37
+msgid "It requires a module that is not installed on this system: %1"
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:39
+msgid "One of its components is missing on this system."
+msgstr ""
+
+#: qml/components/PageUnavailable.qml:48
+msgid "You can remove this page in the configuration bar."
+msgstr ""
+
+#: qml/components/Tutorial.qml:101
 msgid "Welcome to Modular Launcher"
 msgstr ""
 
-#: qml/components/Tutorial.qml:91
+#: qml/components/Tutorial.qml:102
 msgid ""
 "Every screen of this launcher is a page you add and configure yourself. This "
 "tour shows the parts of the Home page. You can leave it at any time and find "
 "it again in the help."
 msgstr ""
 
-#: qml/components/Tutorial.qml:95
+#: qml/components/Tutorial.qml:106
 msgid "The search bar"
 msgstr ""
 
-#: qml/components/Tutorial.qml:96
+#: qml/components/Tutorial.qml:107
 msgid ""
 "Type to filter the applications of this page. The same field finds your "
 "contacts and calculates an expression. The icon on its right opens a web "
 "search, with the engine chosen in the settings of this page."
 msgstr ""
 
-#: qml/components/Tutorial.qml:100
+#: qml/components/Tutorial.qml:111
 msgid "The widgets"
 msgstr ""
 
-#: qml/components/Tutorial.qml:101
+#: qml/components/Tutorial.qml:112
 msgid ""
 "The clock, the weather, the alarms, the last calls, the last messages and "
 "the events live here. Press and hold a widget to open its own settings, and "
 "choose the ones to show in the settings of this page."
 msgstr ""
 
-#: qml/components/Tutorial.qml:105
+#: qml/components/Tutorial.qml:116
 msgid "The favorite applications"
 msgstr ""
 
-#: qml/components/Tutorial.qml:106
+#: qml/components/Tutorial.qml:117
 msgid ""
 "The applications you choose stay at the top of this page, above the others. "
 "Add, remove and reorder them in the settings of this page."
 msgstr ""
 
-#: qml/components/Tutorial.qml:110
+#: qml/components/Tutorial.qml:121
 msgid "The applications"
 msgstr ""
 
-#: qml/components/Tutorial.qml:111
+#: qml/components/Tutorial.qml:122
 msgid ""
 "All the applications installed on the device, and the custom icons you "
 "create. Touch one to launch it, press and hold it to uninstall it or to take "
 "a custom icon off, and pull down to refresh the list."
 msgstr ""
 
-#: qml/components/Tutorial.qml:116
+#: qml/components/Tutorial.qml:127
 msgid "Moving between pages"
 msgstr ""
 
-#: qml/components/Tutorial.qml:117
+#: qml/components/Tutorial.qml:128
 msgid ""
 "The bar at the bottom shows one icon per page of the launcher. Touch an icon "
 "to jump to that page, or swipe left and right, on this bar or on the page "
 "itself, to go from one page to the next."
 msgstr ""
 
-#: qml/components/Tutorial.qml:122
+#: qml/components/Tutorial.qml:133
 msgid "The configuration bar"
 msgstr ""
 
-#: qml/components/Tutorial.qml:123
+#: qml/components/Tutorial.qml:134
 msgid ""
 "Swipe up from the bottom of the screen to open it: add a custom icon, manage "
 "the pages, configure the launcher and its autostart, open the help and the "
 "about page."
 msgstr ""
 
-#: qml/components/Tutorial.qml:127
+#: qml/components/Tutorial.qml:138
 msgid "Configuring the pages"
 msgstr ""
 
-#: qml/components/Tutorial.qml:128
+#: qml/components/Tutorial.qml:139
 msgid ""
 "In that bar, Manage pages opens the list of your pages. The plus sign adds "
 "one: another home, a clock, a calendar, photos, music, videos, news feeds, "
@@ -629,23 +660,23 @@ msgid ""
 "settings. Enjoy your launcher."
 msgstr ""
 
-#: qml/components/Tutorial.qml:501
+#: qml/components/Tutorial.qml:512
 msgid "Step %1 of %2"
 msgstr ""
 
-#: qml/components/Tutorial.qml:511
+#: qml/components/Tutorial.qml:522
 msgid "Skip"
 msgstr ""
 
-#: qml/components/Tutorial.qml:518
+#: qml/components/Tutorial.qml:529
 msgid "Previous"
 msgstr ""
 
-#: qml/components/Tutorial.qml:524
+#: qml/components/Tutorial.qml:535
 msgid "Get started"
 msgstr ""
 
-#: qml/components/Tutorial.qml:524
+#: qml/components/Tutorial.qml:535
 msgid "Next"
 msgstr ""
 
@@ -657,92 +688,240 @@ msgstr ""
 msgid "Search a file"
 msgstr ""
 
-#: qml/pages/Home.qml:40
+#: qml/pages/Home.qml:41
 msgid "ok"
 msgstr ""
 
-#: qml/pages/Home.qml:266
+#: qml/pages/Home.qml:288
 msgid "Search your phone and online sources"
 msgstr ""
 
-#: qml/pages/Home.qml:491
+#: qml/pages/Home.qml:549
 msgid "Uninstall"
 msgstr ""
 
-#: qml/pages/Home.qml:491
+#: qml/pages/Home.qml:549
 msgid "Remove"
 msgstr ""
 
-#: qml/pages/Music.qml:312
+#: qml/pages/Music.qml:316
 msgid "Search your music"
 msgstr ""
 
-#: qml/pages/Music.qml:399
+#: qml/pages/Music.qml:403
 msgid "Deselect all"
 msgstr ""
 
-#: qml/pages/Music.qml:399
+#: qml/pages/Music.qml:403
 msgid "Select all"
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:130
-#: qml/pages/nextcloudfolders/Settings.qml:42
+#: qml/pages/NextcloudCalendar.qml:42
+msgid "Mon"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:42
+msgid "Tue"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:42
+msgid "Wed"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:42
+msgid "Thu"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:43
+msgid "Fri"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:43
+msgid "Sat"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:43
+msgid "Sun"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:265
+msgid "Invalid date or time"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:269
+msgid "The end must be after the start"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:273
+msgid "The title is required"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:287
+msgid "The server refused the change (HTTP %1)"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:374
+msgid "Day"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:374
+msgid "Week"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:374
+msgid "Month"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:374
+msgid "Year"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:404
+msgid "Configure the Nextcloud account in the page settings."
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:408
+msgid "Synchronising…"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:573 qml/pages/NextcloudCalendar.qml:629
+#: qml/pages/NextcloudCalendar.qml:792 qml/widgets/Event.qml:258
+msgid "All day"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:592
+msgid "No event"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:714
+msgid "Edit event"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:714
+msgid "New event"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:732
+msgid "Title"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:739
+msgid "Location"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:747
+msgid "Description"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:756
+msgid "Start date"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:762 qml/pages/NextcloudCalendar.qml:779
+#: qml/pages/picture/Settings.qml:109
+msgid "Time"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:773
+msgid "End date"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:815
+msgid "Save"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:819 qml/pages/NextcloudCalendar.qml:838
+#: qml/pages/Todo.qml:123 qml/pages/home/Settings.qml:158
+#: qml/pages/music/PlaylistsView.qml:127 qml/pages/notes/NoteEditor.qml:208
+#: qml/pages/rss/Settings.qml:195
+msgid "Delete"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:835
+msgid "Delete event"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:836
+msgid "The event will be removed from Nextcloud. Continue?"
+msgstr ""
+
+#: qml/pages/NextcloudCalendar.qml:842
+msgid "The server refused the deletion (HTTP %1)"
+msgstr ""
+
+#: qml/pages/NextcloudFolders.qml:175
+#: qml/pages/nextcloudfolders/Settings.qml:101
 msgid "Authentication failed. Check username/app password."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:132
-#: qml/pages/nextcloudfolders/Settings.qml:44
+#: qml/pages/NextcloudFolders.qml:177
+#: qml/pages/nextcloudfolders/Settings.qml:103
 msgid "Network error. Check server URL and connectivity."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:134
-#: qml/pages/nextcloudfolders/Settings.qml:46
+#: qml/pages/NextcloudFolders.qml:179
+#: qml/pages/nextcloudfolders/Settings.qml:105
 msgid "Error %1 while loading folder."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:197
+#: qml/pages/NextcloudFolders.qml:242
 msgid "Downloading 1/%1..."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:226
+#: qml/pages/NextcloudFolders.qml:271
 msgid "Failed to save %1 locally."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:229
+#: qml/pages/NextcloudFolders.qml:274
 msgid "Failed to download %1 (error %2)."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:232
+#: qml/pages/NextcloudFolders.qml:277
 msgid "Downloading %1/%2..."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:311
+#: qml/pages/NextcloudFolders.qml:357
 msgid "Nextcloud"
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:366
+#: qml/pages/NextcloudFolders.qml:412
 msgid "Configure your Nextcloud server in this page's settings first."
 msgstr ""
 
-#: qml/pages/NextcloudFolders.qml:478
+#: qml/pages/NextcloudFolders.qml:524
 msgid "This folder is empty"
 msgstr ""
 
-#: qml/pages/Rss.qml:227
+#: qml/pages/Notes.qml:69
+msgid "New note"
+msgstr ""
+
+#: qml/pages/Notes.qml:100
+msgid "Untitled"
+msgstr ""
+
+#: qml/pages/Notes.qml:126
+msgid "No notes yet. Tap 'New note' to write one."
+msgstr ""
+
+#: qml/pages/Picture.qml:100
+msgid "No images found in %1"
+msgstr ""
+
+#: qml/pages/Rss.qml:233
 msgid "Loading feeds…"
 msgstr ""
 
-#: qml/pages/Rss.qml:228
+#: qml/pages/Rss.qml:234
 msgid "Go to the page management to add feeds."
+msgstr ""
+
+#: qml/pages/Rss.qml:259
+msgid "Add feeds"
 msgstr ""
 
 #: qml/pages/Todo.qml:81
 msgid "New todo"
-msgstr ""
-
-#: qml/pages/Todo.qml:121 qml/pages/home/Settings.qml:157
-#: qml/pages/music/PlaylistsView.qml:125 qml/pages/rss/Settings.qml:187
-msgid "Delete"
 msgstr ""
 
 #: qml/pages/Videos.qml:172
@@ -754,10 +933,10 @@ msgid "calendar"
 msgstr ""
 
 #: qml/pages/calendar/Settings.qml:17 qml/pages/clock/Settings.qml:30
-#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:17
-#: qml/pages/music/Settings.qml:15 qml/pages/picture/Settings.qml:17
-#: qml/pages/rss/Settings.qml:21 qml/pages/todo/Settings.qml:14
-#: qml/pages/videos/Settings.qml:14
+#: qml/pages/folders/Settings.qml:14 qml/pages/home/Settings.qml:18
+#: qml/pages/music/Settings.qml:16 qml/pages/notes/Settings.qml:15
+#: qml/pages/picture/Settings.qml:17 qml/pages/rss/Settings.qml:21
+#: qml/pages/todo/Settings.qml:14 qml/pages/videos/Settings.qml:14
 msgid "Settings Page"
 msgstr ""
 
@@ -773,7 +952,9 @@ msgstr ""
 msgid "Calendars"
 msgstr ""
 
-#: qml/pages/calendar/Settings.qml:150 qml/widgets/event/Settings.qml:188
+#: qml/pages/calendar/Settings.qml:150
+#: qml/pages/nextcloudcalendar/Settings.qml:116
+#: qml/widgets/event/Settings.qml:188
 msgid "No calendar found"
 msgstr ""
 
@@ -825,72 +1006,72 @@ msgstr ""
 msgid "Settings for 'folder' page"
 msgstr ""
 
-#: qml/pages/folders/Settings.qml:48 qml/pages/music/Settings.qml:49
+#: qml/pages/folders/Settings.qml:48 qml/pages/music/Settings.qml:70
 #: qml/pages/videos/Settings.qml:48
 msgid "Example"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:13
+#: qml/pages/home/Settings.qml:14
 msgid "home"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:85
+#: qml/pages/home/Settings.qml:86
 msgid "Add a favorite application"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:126
+#: qml/pages/home/Settings.qml:127
 msgid "Favorite apps management"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "None"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:185
+#: qml/pages/home/Settings.qml:186
 msgid "Unstyled icons"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:186
+#: qml/pages/home/Settings.qml:187
 msgid "Rounded icons"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:211
+#: qml/pages/home/Settings.qml:212
 msgid "Style Icons : "
 msgstr ""
 
-#: qml/pages/home/Settings.qml:255
+#: qml/pages/home/Settings.qml:256
 msgid "Search engine : "
 msgstr ""
 
-#: qml/pages/home/Settings.qml:266
+#: qml/pages/home/Settings.qml:267
 msgid "Widgets"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:271
+#: qml/pages/home/Settings.qml:272
 msgid "Show clock"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:280
+#: qml/pages/home/Settings.qml:281
 msgid "Show weather"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:290
+#: qml/pages/home/Settings.qml:291
 msgid "Show alarms"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:299
+#: qml/pages/home/Settings.qml:300
 msgid "Show last calls"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:308
+#: qml/pages/home/Settings.qml:312
 msgid "Show last message"
 msgstr ""
 
-#: qml/pages/home/Settings.qml:317
+#: qml/pages/home/Settings.qml:322
 msgid "Show last events"
 msgstr ""
 
@@ -902,63 +1083,187 @@ msgstr ""
 msgid "New playlist"
 msgstr ""
 
-#: qml/pages/music/PlaylistsView.qml:110
+#: qml/pages/music/PlaylistsView.qml:112
 msgid "%1 tracks"
 msgstr ""
 
-#: qml/pages/music/Settings.qml:11
+#: qml/pages/music/Settings.qml:12
 msgid "music"
 msgstr ""
 
-#: qml/pages/music/Settings.qml:44
+#: qml/pages/music/Settings.qml:46
 msgid "Settings for 'Music' page"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:13
-msgid "nextcloudFolders"
+#: qml/pages/music/Settings.qml:50
+msgid "Music folder"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:15
-msgid "Test it !"
+#: qml/pages/music/Settings.qml:57
+msgid "Folder containing the music"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:40
-msgid "Success !"
+#: qml/pages/music/Settings.qml:64
+msgid "Use the default folder"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:49
-msgid "Failed"
+#: qml/pages/nextcloudcalendar/NextcloudCalendarModel.qml:129
+#: qml/pages/nextcloudcalendar/NextcloudCalendarModel.qml:203
+msgid "Cannot list the calendars (HTTP %1)"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:63
-msgid "Nextcloud folders"
+#: qml/pages/nextcloudcalendar/NextcloudCalendarModel.qml:135
+msgid "No calendar found on this account"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:98
+#: qml/pages/nextcloudcalendar/NextcloudCalendarModel.qml:162
+msgid "Cannot read the calendar (HTTP %1)"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:15
+msgid "nextcloud calendar"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:107
+msgid "Complete the server URL, the username and the app password"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:115
+msgid "%1 calendar(s) found"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:150
+msgid "Nextcloud calendar"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:184
+msgid "Account %1 of %2"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:197
+msgid "Add an account"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:203
+msgid "Remove this account"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:215
+#: qml/pages/nextcloudfolders/Settings.qml:160
 msgid "Server URL"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:117
+#: qml/pages/nextcloudcalendar/Settings.qml:233
+#: qml/pages/nextcloudfolders/Settings.qml:177
 msgid "Username"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:135
+#: qml/pages/nextcloudcalendar/Settings.qml:250
+#: qml/pages/nextcloudfolders/Settings.qml:193
 msgid "App password"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:151
+#: qml/pages/nextcloudcalendar/Settings.qml:264
+#: qml/pages/nextcloudfolders/Settings.qml:206
 msgid ""
 "Use a dedicated app password (Nextcloud Settings → Security → Devices & "
 "sessions), not your main account password. It can be revoked independently "
 "at any time."
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:161
+#: qml/pages/nextcloudcalendar/Settings.qml:277
+msgid "Save and list the calendars"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:292
+msgid "Calendar of this account"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:301
+msgid "No calendar listed yet. Use the button above."
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:315
+msgid "Events of the page"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:327
+msgid "Synchronise now"
+msgstr ""
+
+#: qml/pages/nextcloudcalendar/Settings.qml:335
+msgid "%1 events loaded"
+msgstr ""
+
+#: qml/pages/nextcloudfolders/Settings.qml:19
+msgid "nextcloudFolders"
+msgstr ""
+
+#: qml/pages/nextcloudfolders/Settings.qml:25
+msgid "Test it !"
+msgstr ""
+
+#: qml/pages/nextcloudfolders/Settings.qml:99
+msgid "Success !"
+msgstr ""
+
+#: qml/pages/nextcloudfolders/Settings.qml:108
+msgid "Failed"
+msgstr ""
+
+#: qml/pages/nextcloudfolders/Settings.qml:122
+msgid "Nextcloud folders"
+msgstr ""
+
+#: qml/pages/nextcloudfolders/Settings.qml:216
 msgid "Starting folder"
 msgstr ""
 
-#: qml/pages/nextcloudfolders/Settings.qml:184
-msgid "Test connection"
+#: qml/pages/nextcloudfolders/Settings.qml:237
+msgid "Save and test"
+msgstr ""
+
+#: qml/pages/notes/NoteEditor.qml:84
+msgid "Note title"
+msgstr ""
+
+#: qml/pages/notes/NoteEditor.qml:164
+msgid "Write in Markdown…"
+msgstr ""
+
+#: qml/pages/notes/NoteEditor.qml:204
+msgid "Delete note"
+msgstr ""
+
+#: qml/pages/notes/NoteEditor.qml:205
+msgid "The note will be removed from this device. Continue?"
+msgstr ""
+
+#: qml/pages/notes/Settings.qml:11
+msgid "notes"
+msgstr ""
+
+#: qml/pages/notes/Settings.qml:42
+msgid "Notes"
+msgstr ""
+
+#: qml/pages/notes/Settings.qml:53
+msgid ""
+"Notes are stored only on this device. The editor accepts Markdown: headings, "
+"lists, bold, italic, code and links are rendered by the preview."
+msgstr ""
+
+#: qml/pages/notes/Settings.qml:58 qml/pages/notes/Settings.qml:69
+msgid "Delete all notes"
+msgstr ""
+
+#: qml/pages/notes/Settings.qml:70
+msgid ""
+"Every note stored on this device will be removed. This cannot be undone."
+msgstr ""
+
+#: qml/pages/notes/Settings.qml:73
+msgid "Delete all"
 msgstr ""
 
 #: qml/pages/picture/SelectFolderPage.qml:42
@@ -979,10 +1284,6 @@ msgstr ""
 
 #: qml/pages/picture/Settings.qml:108
 msgid "Name"
-msgstr ""
-
-#: qml/pages/picture/Settings.qml:109
-msgid "Time"
 msgstr ""
 
 #: qml/pages/picture/Settings.qml:110
@@ -1013,11 +1314,11 @@ msgstr ""
 msgid "ex: https://omgubuntu.co.uk/feed"
 msgstr ""
 
-#: qml/pages/rss/Settings.qml:117
+#: qml/pages/rss/Settings.qml:125
 msgid "Invalid URL format"
 msgstr ""
 
-#: qml/pages/rss/Settings.qml:231
+#: qml/pages/rss/Settings.qml:239
 msgid "Invalid url"
 msgstr ""
 
@@ -1053,11 +1354,11 @@ msgstr ""
 msgid "Calcul result:"
 msgstr ""
 
-#: qml/widgets/Event.qml:119
+#: qml/widgets/Event.qml:200
 msgid "Events"
 msgstr ""
 
-#: qml/widgets/Event.qml:133
+#: qml/widgets/Event.qml:214
 msgid "No events"
 msgstr ""
 
@@ -1065,7 +1366,7 @@ msgstr ""
 msgid "Favorite Apps"
 msgstr ""
 
-#: qml/widgets/FavoriteContact.qml:32
+#: qml/widgets/FavoriteContact.qml:33
 msgid "Favorite Contacts"
 msgstr ""
 
@@ -1093,7 +1394,7 @@ msgstr ""
 msgid "No recent messages"
 msgstr ""
 
-#: qml/widgets/SearchContact.qml:35
+#: qml/widgets/SearchContact.qml:36
 msgid "Search Contacts"
 msgstr ""
 
@@ -1349,8 +1650,4 @@ msgstr ""
 
 #: qml/widgets/weather/Settings.qml:127
 msgid "or"
-msgstr ""
-
-#: launchermodular.desktop.in.h:1
-msgid "Launcher Modular"
 msgstr ""

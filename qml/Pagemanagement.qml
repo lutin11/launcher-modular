@@ -119,7 +119,8 @@ Page {
                                 "name": fileName,
                                 "icon": MySettings.getHomeLocation() + "/.launchermodular/pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
                                 "data": {},
-                                "directory": MySettings.getHomeLocation() + "/.launchermodular/pages/"
+                                "directory": MySettings.getHomeLocation() + "/.launchermodular/pages/",
+                                "uid": launchermodular.newPageUid()
                             })
                             PopupUtils.close(listPageDialogue)
                         }
@@ -179,7 +180,8 @@ Page {
                                 "name": fileName,
                                 "icon": "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
                                 "data": {},
-                                "directory": "pages/"
+                                "directory": "pages/",
+                                "uid": launchermodular.newPageUid()
                             })
                             PopupUtils.close(listPageDialogue)
                         }
@@ -315,7 +317,8 @@ Page {
                     // The settings page of a page can read and write its own
                     // configuration in the page model (per-page settings).
                     pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"),
-                                   { pageIndex: index, pageName: name });
+                                   { pageIndex: index, pageName: name,
+                                     pageUid: launchermodular.pageModel.get(index).uid });
                 }
 
 

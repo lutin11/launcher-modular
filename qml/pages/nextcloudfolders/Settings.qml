@@ -18,6 +18,8 @@ Page {
 
     property string nextcloudPageName: i18n.tr("nextcloudFolders") // do not remove, use pour Po files
     property int pageIndex: -1
+    // Stable page identifier (injected by Pagemanagement).
+    property string pageUid: ""
     property string pageName: ""
 
     property string testSucced: i18n.tr("Test it !")
@@ -25,6 +27,12 @@ Page {
     property string errorMessage: ""
 
     function pageConfig() {
+        if (pageUid.length > 0) {
+            var stored = launchermodular.getPageConfig(pageUid)
+            if (stored && typeof stored === "object")
+                return stored
+        }
+        // Legacy: pages created before the uid stored their account here.
         if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
             var data = launchermodular.pageModel.get(pageIndex).data
             if (data && typeof data === "object")
@@ -44,13 +52,19 @@ Page {
     // Without a page context (never reached from Pagemanagement) the global
     // settings are updated, as before.
     function saveConfig() {
-        if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
-            launchermodular.pageModel.setProperty(pageIndex, "data", {
-                "nextcloudUrl": serverUrlField.text,
-                "nextcloudUser": usernameField.text,
-                "nextcloudPassword": appPasswordField.text,
-                "nextcloudBasePath": basePathField.text.length > 0 ? basePathField.text : "/"
-            })
+        var config = {
+            "nextcloudUrl": serverUrlField.text,
+            "nextcloudUser": usernameField.text,
+            "nextcloudPassword": appPasswordField.text,
+            "nextcloudBasePath": basePathField.text.length > 0 ? basePathField.text : "/"
+        }
+        if (pageUid.length > 0) {
+            launchermodular.setPageConfig(pageUid, config)
+            // Legacy copy, for builds reading the page data.
+            if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count)
+                launchermodular.pageModel.setProperty(pageIndex, "data", config)
+        } else if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
+            launchermodular.pageModel.setProperty(pageIndex, "data", config)
         } else {
             launchermodular.settings.nextcloudUrl = serverUrlField.text
             launchermodular.settings.nextcloudUser = usernameField.text

@@ -84,14 +84,36 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(":/fonts/DSEG7Classic-Light.ttf");
     QFontDatabase::addApplicationFont(":/fonts/DSEG7Classic-LightItalic.ttf");
 
-    QQuickView view(&engine, nullptr);
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-
     // Desktop packages remember the window size and position between runs.
     // Ubuntu Touch is full screen and managed by Lomiri, and a click app must
     // not touch the window geometry: the feature is desktop only.
     const bool touchSession = !qEnvironmentVariableIsEmpty("APP_ID")
             || QFile::exists(QStringLiteral("/etc/ubports/version"));
+
+    // QtMultimedia's GStreamer backend creates a Wayland video sink for every
+    // media player, even on X11. Without a compositor each creation waits for
+    // its state change (about five seconds), and Home loads the music player at
+    // startup. On a non-Wayland session, ask for the X11 sink the widget
+    // control already uses. Ubuntu Touch and a Wayland platform keep the
+    // default waylandsink; CLICKABLE_DESKTOP_MODE marks the desktop run of a
+    // click package, where APP_ID is set but the session is still X11.
+    const bool desktopSession = !touchSession
+            || !qEnvironmentVariableIsEmpty("CLICKABLE_DESKTOP_MODE");
+    if (desktopSession
+            && !QGuiApplication::platformName().startsWith(QStringLiteral("wayland"))) {
+        if (qEnvironmentVariableIsEmpty("QT_GSTREAMER_WINDOW_VIDEOSINK"))
+            qputenv("QT_GSTREAMER_WINDOW_VIDEOSINK", "xvimagesink");
+        if (qEnvironmentVariableIsEmpty("QT_GSTREAMER_WIDGET_VIDEOSINK"))
+            qputenv("QT_GSTREAMER_WIDGET_VIDEOSINK", "xvimagesink");
+    }
+
+    QQuickView view(&engine, nullptr);
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
+
+    // The desktop builds have no window manager decoration: the internal title
+    // bar of Main.qml moves, resizes, minimizes and closes the window instead.
+    if (!touchSession)
+        view.setFlags(view.flags() | Qt::FramelessWindowHint);
     QSettings windowSettings(QSettings::IniFormat, QSettings::UserScope,
                              QStringLiteral("launchermodular.lut11"),
                              QStringLiteral("window"));
@@ -120,7 +142,7 @@ int main(int argc, char *argv[])
             windowSettings.sync();
         });
     }
-    WindowController controller(&view);
+    WindowController controller(&view, !touchSession);
 
     engine.rootContext()->setContextProperty("WindowController", &controller);
     view.setSource(QUrl::fromLocalFile(dataDirectory + "/qml/Main.qml"));

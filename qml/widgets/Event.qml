@@ -111,19 +111,29 @@ Item {
         var list = []
         for (var index = 0; index < launchermodular.pageModel.count; index++) {
             var page = launchermodular.pageModel.get(index)
-            if (page.name !== "NextcloudCalendar.qml" || !page.data)
+            if (page.name !== "NextcloudCalendar.qml")
                 continue
-            var data = page.data
-            var raw = data.nextcloudAccountsJson
+            var data = page.data || {}
+            // Configuration by stable uid, with the page data as legacy.
+            var config = (page.uid && page.uid.length > 0)
+                    ? launchermodular.getPageConfig(page.uid) : ({})
+            var raw = config.nextcloudAccountsJson || data.nextcloudAccountsJson
             if (raw && raw.length > 0) {
                 try { list = list.concat(JSON.parse(raw)) } catch (error) { }
-            } else if (data.nextcloudAccounts && data.nextcloudAccounts.length > 0) {
-                for (var accountIndex = 0; accountIndex < data.nextcloudAccounts.length; accountIndex++)
-                    list.push(data.nextcloudAccounts[accountIndex])
-            } else if (data.nextcloudUrl && data.nextcloudUser && data.nextcloudPassword) {
-                list.push({ url: data.nextcloudUrl, user: data.nextcloudUser,
-                            password: data.nextcloudPassword,
-                            href: data.nextcloudCalendarHref || "", name: "" })
+            } else if ((config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
+                       || (data.nextcloudAccounts && data.nextcloudAccounts.length > 0)) {
+                var stored = (config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
+                        ? config.nextcloudAccounts : data.nextcloudAccounts
+                for (var accountIndex = 0; accountIndex < stored.length; accountIndex++)
+                    list.push(stored[accountIndex])
+            } else if ((config.nextcloudUrl || data.nextcloudUrl)
+                       && (config.nextcloudUser || data.nextcloudUser)
+                       && (config.nextcloudPassword || data.nextcloudPassword)) {
+                list.push({ url: config.nextcloudUrl || data.nextcloudUrl,
+                            user: config.nextcloudUser || data.nextcloudUser,
+                            password: config.nextcloudPassword || data.nextcloudPassword,
+                            href: config.nextcloudCalendarHref || data.nextcloudCalendarHref || "",
+                            name: "" })
             }
         }
         if (list.length === 0 && launchermodular.settings.nextcloudAccountsJson.length > 0) {

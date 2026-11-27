@@ -14,6 +14,8 @@ Page {
 
     property string nextcloudCalendarPageName: i18n.tr("nextcloud calendar") // used by the po files
     property int pageIndex: -1
+    // Stable page identifier (injected by Pagemanagement).
+    property string pageUid: ""
     property string pageName: ""
 
     property var accounts: []
@@ -21,6 +23,12 @@ Page {
     property string statusText: ""
 
     function pageConfig() {
+        if (pageUid.length > 0) {
+            var stored = launchermodular.getPageConfig(pageUid)
+            if (stored && typeof stored === "object")
+                return stored
+        }
+        // Legacy: pages created before the uid stored their account here.
         if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
             var data = launchermodular.pageModel.get(pageIndex).data
             if (data && typeof data === "object")
@@ -72,6 +80,11 @@ Page {
         // Global copy: the page data is not serialised by the settings backend,
         // a string is. It also feeds the Event widget.
         launchermodular.settings.nextcloudAccountsJson = JSON.stringify(accounts)
+        if (pageUid.length > 0) {
+            var config = pageConfig()
+            config.nextcloudAccountsJson = JSON.stringify(accounts)
+            launchermodular.setPageConfig(pageUid, config)
+        }
         if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
             var data = pageConfig()
             var copy = {}
@@ -81,7 +94,7 @@ Page {
             // stored as a JSON string, which serialises reliably.
             copy.nextcloudAccountsJson = JSON.stringify(accounts)
             launchermodular.pageModel.setProperty(pageIndex, "data", copy)
-        } else {
+        } else if (pageUid.length === 0) {
             launchermodular.settings.nextcloudUrl = serverUrlField.text
             launchermodular.settings.nextcloudUser = usernameField.text
             launchermodular.settings.nextcloudPassword = appPasswordField.text
