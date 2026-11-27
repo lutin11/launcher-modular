@@ -114,7 +114,10 @@ Item {
             if (page.name !== "NextcloudCalendar.qml" || !page.data)
                 continue
             var data = page.data
-            if (data.nextcloudAccounts && data.nextcloudAccounts.length > 0) {
+            var raw = data.nextcloudAccountsJson
+            if (raw && raw.length > 0) {
+                try { list = list.concat(JSON.parse(raw)) } catch (error) { }
+            } else if (data.nextcloudAccounts && data.nextcloudAccounts.length > 0) {
                 for (var accountIndex = 0; accountIndex < data.nextcloudAccounts.length; accountIndex++)
                     list.push(data.nextcloudAccounts[accountIndex])
             } else if (data.nextcloudUrl && data.nextcloudUser && data.nextcloudPassword) {
@@ -122,6 +125,9 @@ Item {
                             password: data.nextcloudPassword,
                             href: data.nextcloudCalendarHref || "", name: "" })
             }
+        }
+        if (list.length === 0 && launchermodular.settings.nextcloudAccountsJson.length > 0) {
+            try { list = JSON.parse(launchermodular.settings.nextcloudAccountsJson) } catch (error) { list = [] }
         }
         if (list.length === 0 && launchermodular.settings.nextcloudUrl
                 && launchermodular.settings.nextcloudUser && launchermodular.settings.nextcloudPassword) {
