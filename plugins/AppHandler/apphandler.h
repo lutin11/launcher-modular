@@ -2,6 +2,7 @@
 #define APPHANDLER_H
 
 #include <QObject>
+#include <QSet>
 #include <QString>
 #include <QQmlListProperty>
 #include "appinfo.h"
@@ -21,6 +22,15 @@ public:
     QQmlListProperty<AppInfo> fav_appsinfo();
 
     Q_INVOKABLE void reload();
+    // Starts an application from its desktop file. Used outside Ubuntu Touch:
+    // Qt.openUrlExternally("application:///…") relies on a Lomiri URL handler
+    // and does nothing on a plain desktop. Returns false when no launcher is
+    // available or the desktop file cannot be found.
+    Q_INVOKABLE bool launchApp(const QString& desktopId);
+    // Turns the themed icon names of the inventory (Icon=firefox) into icon
+    // files, which is what QML can display. Called on demand, outside Ubuntu
+    // Touch only: on the phone every entry already carries an absolute path.
+    Q_INVOKABLE void resolveThemedIcons();
     Q_INVOKABLE void permaFilter(const QString& key = "Terminal", const QString& regexp = "false");
     Q_INVOKABLE void sort(const QString& key ="Name", bool revertsort = false);
     Q_INVOKABLE void resetTempFilter();
@@ -40,7 +50,7 @@ protected:
     QString _fav;
     bool _filtering;
 private:
-    void loadAppsFromDir(const QString& path);
+    void loadAppsFromDir(const QString& path, QSet<QString> &seen);
     void loadLibertineAppsFromDir(const QString& path, const QString& container);
     void loadAppsInfo();
     void loadAppsLibertine();

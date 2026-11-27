@@ -334,7 +334,13 @@ Page {
     Component.onCompleted: {
         AppHandler.permaFilter()
         AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
-        AppHandler.permaFilter("Icon",  "/.*$")
+        // Same rule as the home page: outside Ubuntu Touch the entries are
+        // kept and their themed icons are resolved on demand.
+        if (Platform.isTouch) {
+            AppHandler.permaFilter("Icon", "/.*$")
+        } else {
+            AppHandler.resolveThemedIcons()
+        }
         AppHandler.sort()
     }
 

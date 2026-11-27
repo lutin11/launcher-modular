@@ -48,6 +48,16 @@ cmake -S . -B build -DDESKTOP_INSTALL=ON "-DCMAKE_INSTALL_PREFIX=$APPDIR/usr"
 make -C build -j"$(nproc)"
 make -C build install
 
+# Qt SQL: the RSS page stores its feeds with QtQuick.LocalStorage, whose SQLite
+# driver is a Qt plugin that linuxdeploy does not pick up on its own (it is
+# loaded at run time, not linked). Copied before linuxdeploy runs so that its
+# own dependencies (libQt5Sql…) are deployed with it.
+SQL_PLUGIN="$(qmake -query QT_INSTALL_PLUGINS)/sqldrivers/libqsqlite.so"
+if [ -f "$SQL_PLUGIN" ]; then
+    mkdir -p "$APPDIR/usr/plugins/sqldrivers"
+    cp "$SQL_PLUGIN" "$APPDIR/usr/plugins/sqldrivers/"
+fi
+
 # AppDir root: the desktop file installed under usr/share/applications is
 # already themed (cmake/SetDesktopIcon.cmake) and valid for packagers.
 cp assets/logo.svg "$APPDIR/launchermodular.svg"

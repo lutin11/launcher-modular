@@ -131,13 +131,27 @@ Item {
         source: "music/MusicPlayer.qml"
     }
 
+    // Filters applied to the application inventory. Shared by the two places
+    // that load it: page refresh and first completion.
+    function applyAppFilters() {
+        AppHandler.permaFilter()
+        AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") // keep the entries without NoDisplay=true
+        AppHandler.permaFilter("package_name", "^(?!launchermodular.lut11_).*$")
+        // On Ubuntu Touch only entries with a real icon file are listed: the
+        // launcher relies on absolute icon paths. On a desktop the themed icon
+        // names are turned into files, and an entry without a usable icon must
+        // still be shown instead of disappearing from the list.
+        if (Platform.isTouch) {
+            AppHandler.permaFilter("Icon", "/.*$")
+        } else {
+            AppHandler.resolveThemedIcons()
+        }
+    }
+
     function refreshHomePage() {
         home.reloading = true
         AppHandler.reload()
-        AppHandler.permaFilter()
-        AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
-        AppHandler.permaFilter("package_name",  "^(?!launchermodular.lut11_).*$")
-        AppHandler.permaFilter("Icon",  "/.*$")
+        applyAppFilters()
         listCustomIcon.model = ""
         listCustomIcon.model = launchermodular.customIconModel
         AppHandler.sort()
@@ -433,7 +447,15 @@ Item {
                             console.log("Libertine launch skipped: lomiri-app-launch or container missing")
                         }
                     } else if(action.startsWith("application:///")) {
-                        Qt.openUrlExternally(action);
+                        // On Ubuntu Touch the application:/// scheme is handled
+                        // by Lomiri. On a desktop the same call goes through
+                        // xdg-open, which rejects it: start the desktop entry
+                        // through gio instead.
+                        if (Platform.isTouch) {
+                            Qt.openUrlExternally(action);
+                        } else if (!AppHandler.launchApp(action)) {
+                            console.log("Launch failed for " + action);
+                        }
                     } else if(action.startsWith("terminal:///")) {
                         var actionterm = action.replace(/^terminal:\/\/\//, "")
                         var actionsudo = actionterm.replace(/^sudo /, "sudo -S ")
@@ -624,10 +646,7 @@ Item {
                 }
 
                 Component.onCompleted: {
-                    AppHandler.permaFilter()
-                    AppHandler.permaFilter("NoDisplay", "^(?!true$).*$") //keep the one that have NOT NoDisplay=true
-                    AppHandler.permaFilter("package_name",  "^(?!launchermodular.lut11_).*$")
-                    AppHandler.permaFilter("Icon",  "/.*$")
+                    home.applyAppFilters()
 
                     //AppHandler.appsinfo.push(settingsButton)
 

@@ -107,18 +107,26 @@ Page {
                         property string urlToSave: ""
 
                         function isValidUrl(url) {
-                            var pattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+                            // Light sanity check only; QUrl and the reachability
+                            // test in NetworkHelper do the real validation. The
+                            // former pattern refused ports, query strings and
+                            // uppercase letters, i.e. many valid feeds.
+                            var pattern = /^https?:\/\/[^\s\/]+\.[^\s]+$/i;
                             return pattern.test(url);
                         }
 
-                        Keys.onReturnPressed: {
-                            if (!rssField.isValidUrl(rssField.text)) {
+                        // The field itself reports the Return/Enter key through
+                        // accepted(); the attached Keys handler is bypassed as
+                        // soon as the field consumes the key event.
+                        onAccepted: {
+                            var url = rssField.text.trim()
+                            if (!rssField.isValidUrl(url)) {
                                 errorLine.visible = true
                                 invalidTextError.text = i18n.tr("Invalid URL format")
                                 return
                             }
-                            rssField.urlToSave = rssField.text;  // Store text in temporary property
-                            NetworkHelper.checkUrlReachable(rssField.text)
+                            rssField.urlToSave = url;  // Store text in temporary property
+                            NetworkHelper.checkUrlReachable(url)
                         }
                         maximumLength: 100
                     }

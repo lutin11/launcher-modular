@@ -110,7 +110,7 @@ plugins sont indépendants entre eux** et ne communiquent que par QML.
 
 | Plugin | Rôle | Qt | Utilisé par |
 |---|---|---|---|
-| `AppHandler` | Inventaire des apps (`.desktop`, conteneurs Libertine), filtres, favoris, désinstallation | Core, Qml, Quick, DBus | `Main`, `Home`, `home/Settings`, `FavoriteApp` |
+| `AppHandler` | Inventaire des apps (dossiers XDG `.desktop`, conteneurs Libertine), résolution des icônes de thème, filtres, favoris, désinstallation, lancement `gio`/`gtk-launch` hors Ubuntu Touch | Core, Qml, Quick, DBus | `Main`, `Home`, `home/Settings`, `FavoriteApp` |
 | `MySettings` | Locales utilisateur, fond d'écran via D-Bus AccountsService | Core, Qml, Quick, DBus | `Main`, Musique, Vidéos, Dossiers, Nextcloud, RSS settings, `FavoriteApp`, `Pagemanagement` |
 | `Terminalaccess` | Exécution de commandes (`QProcess`, `sh -c`), helpers fichiers, détection de l'invite `sudo` | Core, Qml, Quick, DBus | `Home`, `MusicPlayer`, `NextcloudFolders` |
 | `NetworkHelper` | Teste une URL et détecte un flux RSS/Atom | Core, Qml, Quick, DBus | `Rss`, `rss/Settings` |
@@ -146,7 +146,7 @@ pages/
 
 | Page | Points notables |
 |---|---|
-| `Home` | Grille d'apps, recherche (apps, contacts, web, calculatrice), favoris, lancement (`terminal:///`, Libertine), désinstallation |
+| `Home` | Grille d'apps, recherche (apps, contacts, web, calculatrice), favoris, lancement (`terminal:///`, Libertine, `application:///` via Lomiri ou `AppHandler.launchApp` hors Touch), désinstallation |
 | `Calendar` | QtOrganizer 5.0 |
 | `Clock` | Horloge plein écran (DSEG7), `WindowController` |
 | `Picture` | Galerie (FolderListModel, Thumbnailer) |
@@ -187,7 +187,12 @@ provider manque (versions desktop, `.click` sans pile téléphonique). Règles :
 - **providers contacts et agenda** : `Platform.hasContactsFeature` et
   `hasCalendarFeature` valent vrai sur Ubuntu Touch (pile attendue, non sondable
   depuis le conteneur de référence) et exigent un provider exploitable ailleurs ;
-  le nom du provider vient de `Platform.preferredContactManager`.
+  le nom du provider vient de `Platform.preferredContactManager` ;
+- **filtre d'icônes du lanceur** : sur Ubuntu Touch, `Home` et `home/Settings`
+  ne gardent que les entrées dont `Icon` est un chemin de fichier
+  (`permaFilter("Icon", "/.*$")`). Hors Touch, `AppHandler` résout les noms
+  d'icônes de thème en fichiers et le filtre n'est pas appliqué : aucune
+  application installée ne disparaît de la grille à cause de son icône.
 
 Détails, vérifications et limites : `docs/PACKAGING_DESKTOP.md` §10.
 
@@ -196,7 +201,8 @@ Détails, vérifications et limites : `docs/PACKAGING_DESKTOP.md` §10.
 **Qt C++** : Core/Gui/Qml/Quick (binaire) ; DBus (AppHandler, MySettings,
 LibertineLauncher…) ; Contacts (ContactHelper) ; Network (NetworkHelper).
 **À l'exécution** : bus D-Bus (AccountsService), `sh`, `lomiri-app-launch`,
-`click`.
+`click` (Ubuntu Touch) ; `gio` ou, à défaut, `gtk-launch` pour lancer les
+entrées `.desktop` hors Ubuntu Touch (`AppHandler::launchApp`).
 
 **Modules QML** (résolus à l'exécution, selon le framework — **non vérifiés
 par la CI**) :

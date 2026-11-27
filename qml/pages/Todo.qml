@@ -83,7 +83,9 @@ Item {
                     font.pixelSize: units.gu(1.5)
                 }
                 inputMethodHints: Qt.ImhNoPredictiveText
-                Keys.onReturnPressed: {
+                // accepted() is emitted by the field itself for Return/Enter,
+                // including when the field consumes the key event.
+                onAccepted: {
                     TodoModel.save(todoField.text)
                     todoField.text = ""
                 }
