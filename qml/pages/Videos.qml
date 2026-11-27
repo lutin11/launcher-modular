@@ -11,12 +11,18 @@ import QtQuick.Controls 2.2
 Item {
     id: videos
 
-    property string rootVideo: MySettings.getVideoLocation()
+    // The folder can be changed in the page settings; the platform default is
+    // used when the setting is empty.
+    property string rootVideo: launchermodular.settings.folderVideo.length > 0
+                             ? launchermodular.settings.folderVideo
+                             : MySettings.getVideoLocation()
     property var videoNameFilters: ["*.mp4", "*.m4v", "*.webm", "*.mkv", "*.avi", "*.3gp", "*.ogv", "*.flv"]
     property string searchTerm: ""
     property var folders: []
     property bool initialParsingDone: false
-    property string parentFolder: MySettings.getVideoLocation()
+    property string parentFolder: launchermodular.settings.folderVideo.length > 0
+                                ? launchermodular.settings.folderVideo
+                                : MySettings.getVideoLocation()
     property string pendingSearch: ""
 
     ListModel {
