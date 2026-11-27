@@ -473,7 +473,10 @@ MainView {
 
                     PageIndicator {
                         id: indicator
-                        count: view.count
+                        // Real pages only: view.count includes the two clones of
+                        // the circular paging, which have no page model entry
+                        // and were displayed with the fallback (smiley) icon.
+                        count: launchermodular.pageCount
                         currentIndex: launchermodular.displayToReal(view.currentIndex)
                         interactive: false //= dont intercept press
                         anchors.horizontalCenter: parent.horizontalCenter
