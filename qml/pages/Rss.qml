@@ -23,31 +23,35 @@ Item {
     property bool isFeeds: false
     property bool completed: false
 
+    function feedCount() {
+        return RssModel.itemModel ? RssModel.itemModel.count : 0
+    }
+
     Component.onCompleted: {
         RssModel.dbInit()
-        updateFeedsTimer.start()
+        // The stored feeds are read as soon as the page exists, so that they
+        // are loaded once even if the page is not the one shown at startup.
+        RssModel.buildModel()
         completed = true
-        // Load the configured feeds once, even if the page was created while
-        // it was not the current one.
-        if (RssModel.itemModel && RssModel.itemModel.length > 0) {
-            RssModel.buildModel()
+        if (feedCount() > 0)
             _mainFeed.updateFeed()
-        }
     }
 
     onVisibleChanged: {
-        if (visible &&
-            completed &&
-            (launchermodular.settings.rssFeedChanged ||
-                !RssModel.itemModel ||
-                RssModel.itemModel.length === 0 ||
-                _mainFeed.refreshing ||
-                listSortingTimer.running)) {
-
+        if (!visible || !completed)
+            return
+        // A page shown for the first time may have been created before the
+        // feeds were stored: read them again, then load them once.
+        if (feedCount() === 0)
+            RssModel.buildModel()
+        // Load once when the page is shown with configured feeds but no
+        // article yet; afterwards the cache and the settings flag decide.
+        if (launchermodular.settings.rssFeedChanged
+                || _mainFeed.refreshing
+                || listSortingTimer.running
+                || (feedCount() > 0 && feedList.model.count === 0)) {
             if (DEBUG_MODE) console.log("reload")
-
             _mainFeed.updateFeed()
-
             launchermodular.settings.rssFeedChanged = false
         }
     }
@@ -100,21 +104,6 @@ Item {
         }
     }
 
-    Timer {
-        id: updateFeedsTimer
-
-        interval: 10
-        repeat: false
-        running: false
-
-        onTriggered: {
-            if (DEBUG_MODE) console.log("Timer updating..")
-
-            RssModel.buildModel()
-            _mainFeed.updateFeed()
-        }
-    }
-
     CachedHttpRequest {
         id: cachedHttpRequestInstance
 
@@ -135,7 +124,7 @@ Item {
 
     function updateFeed() {
         if (!RssModel.itemModel ||
-            RssModel.itemModel.length === 0 ||
+            feedCount() === 0 ||
             _mainFeed.refreshing ||
             listSortingTimer.running) {
 
@@ -200,6 +189,8 @@ Item {
 
         anchors {
             fill: parent
+            leftMargin: units.gu(1)
+            rightMargin: units.gu(1)
         }
 
         model: FeedsModel {
@@ -231,7 +222,7 @@ Item {
 
                 text: _mainFeed.isFeeds
                     ? i18n.tr("Loading feeds…")
-                    : i18n.tr("Go to the page management to add feeds.")
+                    : i18n.tr("No feed configured yet. Add the address of an RSS feed to see its articles here.")
 
                 color: launchermodular.settings.textColor
 
@@ -256,7 +247,7 @@ Item {
                     horizontalCenter: parent.horizontalCenter
                 }
                 visible: !_mainFeed.isFeeds
-                text: i18n.tr("Add feeds")
+                text: i18n.tr("Add a feed")
                 onClicked: pageStack.push(Qt.resolvedUrl("rss/Settings.qml"))
             }
         }
