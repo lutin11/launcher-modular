@@ -6,10 +6,14 @@
 #include <QString>
 #include <QStringList>
 #include <QQuickView>
+#include <QQuickWindow>
 #include <QQmlEngine>
 #include <QQmlContext>
 #include <QFont>
 #include <QFontDatabase>
+#include <QFile>
+#include <QScreen>
+#include <QSettings>
 #include "windowcontroller.h"
 
 // Directory holding qml/ and assets/. A click package keeps them next to the
@@ -82,6 +86,40 @@ int main(int argc, char *argv[])
 
     QQuickView view(&engine, nullptr);
     view.setResizeMode(QQuickView::SizeRootObjectToView);
+
+    // Desktop packages remember the window size and position between runs.
+    // Ubuntu Touch is full screen and managed by Lomiri, and a click app must
+    // not touch the window geometry: the feature is desktop only.
+    const bool touchSession = !qEnvironmentVariableIsEmpty("APP_ID")
+            || QFile::exists(QStringLiteral("/etc/ubports/version"));
+    QSettings windowSettings(QSettings::IniFormat, QSettings::UserScope,
+                             QStringLiteral("launchermodular.lut11"),
+                             QStringLiteral("window"));
+    if (!touchSession) {
+        const int savedWidth = windowSettings.value(QStringLiteral("width"), 0).toInt();
+        const int savedHeight = windowSettings.value(QStringLiteral("height"), 0).toInt();
+        const int savedX = windowSettings.value(QStringLiteral("x"), 0).toInt();
+        const int savedY = windowSettings.value(QStringLiteral("y"), 0).toInt();
+        if (savedWidth >= 320 && savedHeight >= 320) {
+            const QRect saved(savedX, savedY, savedWidth, savedHeight);
+            // The position is restored only when it is still on a screen
+            // (a monitor may have been removed since the last run).
+            if (QGuiApplication::screenAt(saved.center()) != nullptr)
+                view.setGeometry(saved);
+            else
+                view.resize(savedWidth, savedHeight);
+        }
+        // aboutToQuit avoids the private QQuickCloseEvent type of the
+        // "closing" signal; the window still has its geometry here.
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, &view,
+                         [&view, &windowSettings]() {
+            windowSettings.setValue(QStringLiteral("width"), view.width());
+            windowSettings.setValue(QStringLiteral("height"), view.height());
+            windowSettings.setValue(QStringLiteral("x"), view.x());
+            windowSettings.setValue(QStringLiteral("y"), view.y());
+            windowSettings.sync();
+        });
+    }
     WindowController controller(&view);
 
     engine.rootContext()->setContextProperty("WindowController", &controller);
