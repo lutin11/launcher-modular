@@ -27,6 +27,16 @@ Item {
     // rebuilt by a function loops forever (binding loop on "model").
     ListModel { id: dayModel }
 
+    // Week grid: one model for the timed blocks (position computed from the
+    // start/duration) and one for the all-day chips.
+    ListModel { id: weekTimedModel }
+    ListModel { id: weekAllDayModel }
+
+    readonly property real weekGutterWidth: units.gu(6.5)
+    readonly property real weekHourHeight: units.gu(5)
+    readonly property real weekAllDayRowHeight: units.gu(2.6)
+    property int weekAllDayRows: 1
+
     // Content of the event dialog.
     property int editingIndex: -1
     property string eventSummary: ""
@@ -60,6 +70,7 @@ Item {
     Component.onCompleted: {
         loadAccounts()
         refreshDayModel()
+        rebuildWeekModels()
         NextcloudCalendarModel.refresh(60, 180)
     }
 
@@ -157,12 +168,28 @@ Item {
         NextcloudCalendarModel.configureAccounts(accounts)
     }
 
-    onCurrentDateChanged: refreshDayModel()
-    onViewModeChanged: if (viewMode === 0) refreshDayModel()
+    onCurrentDateChanged: {
+        refreshDayModel()
+        if (viewMode === 1) {
+            rebuildWeekModels()
+            scrollWeekToWorkingHours()
+        }
+    }
+    onViewModeChanged: {
+        if (viewMode === 0)
+            refreshDayModel()
+        if (viewMode === 1) {
+            rebuildWeekModels()
+            Qt.callLater(scrollWeekToWorkingHours)
+        }
+    }
 
     Connections {
         target: NextcloudCalendarModel
-        function onUpdated() { calendarPage.refreshDayModel() }
+        function onUpdated() {
+            calendarPage.refreshDayModel()
+            calendarPage.rebuildWeekModels()
+        }
     }
 
 
@@ -172,6 +199,17 @@ Item {
         var copy = new Date(date)
         copy.setHours(0, 0, 0, 0)
         return copy
+    }
+
+    // Monday at 00:00 of the week holding date.
+    function startOfWeek(date) {
+        var day = startOfDay(date)
+        var offset = (day.getDay() + 6) % 7
+        return addDays(day, -offset)
+    }
+
+    function weekDayDate(index) {
+        return addDays(startOfWeek(currentDate), index)
     }
 
     function addDays(date, days) {
@@ -211,10 +249,59 @@ Item {
         // refreshed when the model is refilled.
         for (var index = 0; index < NextcloudCalendarModel.events.count; index++) {
             var event = NextcloudCalendarModel.events.get(index)
-            if (event.start >= from && event.start < to)
+            // Overlap, not only the start day: an event spanning several days
+            // (including an all-day event) appears on every day it covers.
+            if (event.end > from && event.start < to)
                 result.push({ index: index, event: event })
         }
         return result
+    }
+
+    // Fills the two week models: timed events keep their start and duration
+    // (clamped to the day), all-day events go to the strip above the grid.
+    function rebuildWeekModels() {
+        weekTimedModel.clear()
+        weekAllDayModel.clear()
+        weekAllDayRows = 1
+        var start = startOfWeek(currentDate)
+        for (var dayIndex = 0; dayIndex < 7; dayIndex++) {
+            var day = addDays(start, dayIndex)
+            var dayStart = startOfDay(day).getTime()
+            var events = eventsForDay(day)
+            var allDayRows = 0
+            for (var eventIndex = 0; eventIndex < events.length; eventIndex++) {
+                var event = events[eventIndex].event
+                if (event.allDay) {
+                    weekAllDayModel.append({
+                        dayIndex: dayIndex,
+                        row: allDayRows,
+                        label: event.summary,
+                        sourceIndex: events[eventIndex].index
+                    })
+                    allDayRows++
+                    continue
+                }
+                var from = Math.max(event.start, dayStart)
+                var to = Math.min(event.end, dayStart + 86400000)
+                if (to <= from)
+                    to = from + 30 * 60000
+                weekTimedModel.append({
+                    dayIndex: dayIndex,
+                    startMinutes: (from - dayStart) / 60000,
+                    durationMinutes: Math.max((to - from) / 60000, 20),
+                    label: event.summary,
+                    timeText: Qt.formatTime(new Date(event.start))
+                              + " – " + Qt.formatTime(new Date(event.end)),
+                    sourceIndex: events[eventIndex].index
+                })
+            }
+            weekAllDayRows = Math.max(weekAllDayRows, allDayRows)
+        }
+    }
+
+    function scrollWeekToWorkingHours() {
+        var maxY = Math.max(0, weekFlick.contentHeight - weekFlick.height)
+        weekFlick.contentY = Math.min(7 * weekHourHeight, maxY)
     }
 
     // 42 cells (six weeks) starting on a Monday.
@@ -232,9 +319,13 @@ Item {
 
     function periodLabel() {
         if (viewMode === 0)
-            return Qt.formatDate(currentDate, "dddd d MMMM yyyy")
-        if (viewMode === 1)
-            return Qt.formatDate(currentDate, "MMMM yyyy")
+            return Qt.formatDate(currentDate, Qt.SystemLocaleLongDate)
+        if (viewMode === 1) {
+            var start = startOfWeek(currentDate)
+            var end = addDays(start, 6)
+            return Qt.formatDate(start, "d MMM") + " – "
+                    + Qt.formatDate(end, "d MMM yyyy")
+        }
         if (viewMode === 2)
             return Qt.formatDate(currentDate, "MMMM yyyy")
         return currentDate.getFullYear().toString()
@@ -261,6 +352,15 @@ Item {
 
     function formatDateInput(date) {
         return Qt.formatDate(date, "yyyy-MM-dd")
+    }
+
+    // ISO is kept in the fields (parsing is unambiguous), the dialog shows
+    // the date in the format of the user's locale.
+    function displayDate(text) {
+        var parsed = new Date(String(text) + "T12:00:00")
+        if (isNaN(parsed.getTime()))
+            return text
+        return Qt.formatDate(parsed)
     }
 
     function formatTimeInput(date) {
@@ -308,6 +408,49 @@ Item {
         return isNaN(parsed.getTime()) ? null : parsed
     }
 
+    // The end cannot be before the start. Called after a date is picked, after
+    // a time is edited and when "All day" is switched.
+    function ensureEndAfterStart() {
+        if (eventAllDay) {
+            if (eventStartDate.length === 0)
+                return
+            var startDay = new Date(eventStartDate + "T12:00:00")
+            if (isNaN(startDay.getTime()))
+                return
+            if (eventEndDate.length === 0 || eventEndDate <= eventStartDate)
+                eventEndDate = formatDateInput(addDays(startOfDay(startDay), 1))
+            eventEndTime = "00:00"
+            return
+        }
+        var start = parseDateTime(eventStartDate, eventStartTime)
+        var end = parseDateTime(eventEndDate, eventEndTime)
+        if (!start || !end)
+            return
+        if (end.getTime() <= start.getTime()) {
+            var adjusted = new Date(start.getTime() + 3600000)
+            eventEndDate = formatDateInput(adjusted)
+            eventEndTime = formatTimeInput(adjusted)
+        }
+    }
+
+    function applyAllDay() {
+        if (eventAllDay) {
+            ensureEndAfterStart()
+            return
+        }
+        // Switching back to timed events: keep at least one hour.
+        var start = parseDateTime(eventStartDate, eventStartTime)
+        if (!start)
+            return
+        if (eventEndDate === "") {
+            var end = new Date(start.getTime() + 3600000)
+            eventEndDate = formatDateInput(end)
+            eventEndTime = formatTimeInput(end)
+        } else {
+            ensureEndAfterStart()
+        }
+    }
+
     function openDatePicker(target) {
         datePickerTarget = target
         var text = target === "start" ? eventStartDate : eventEndDate
@@ -329,12 +472,18 @@ Item {
         var formatted = Qt.formatDate(day, "yyyy-MM-dd")
         if (datePickerTarget === "start")
             eventStartDate = formatted
+        else if (formatted < eventStartDate)
+            eventEndDate = eventStartDate   // never before the start
         else
             eventEndDate = formatted
+        ensureEndAfterStart()
         if (datePickerObject) PopupUtils.close(datePickerObject)
     }
 
     function saveEvent() {
+        // Last line of defence: the fields may still hold an end before the
+        // start if they were not left before pressing Save.
+        ensureEndAfterStart()
         var start = parseDateTime(eventStartDate, eventStartTime)
         var end = parseDateTime(eventEndDate, eventEndTime)
         if (!start || !end) {
@@ -559,7 +708,10 @@ Item {
                     Rectangle {
                         width: parent.width
                         height: parent.height
-                        color: calendarPage.sameDay(modelData.day, new Date()) ? "#33E95420" : "transparent"
+                        color: calendarPage.sameDay(modelData.day, calendarPage.currentDate)
+                               ? "#55E95420"
+                               : (calendarPage.sameDay(modelData.day, new Date())
+                                  ? "#33E95420" : "transparent")
                     }
 
                     Label {
@@ -590,6 +742,9 @@ Item {
 
                     MouseArea {
                         anchors.fill: parent
+                        // Opening the day view on a click is the expected
+                        // navigation; when the day is empty the day view shows
+                        // "No events for this day" instead of a blank area.
                         onClicked: {
                             calendarPage.currentDate = modelData.day
                             calendarPage.viewMode = 0
@@ -601,89 +756,211 @@ Item {
     }
 
     // --- week view ---------------------------------------------------------
+    //
+    // A time grid: hours down the left, the seven days across, timed events as
+    // blocks whose height follows their duration.
 
-    ListView {
+    Item {
         id: weekView
         anchors.top: statusLabel.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         visible: viewMode === 1
-        clip: true
-        model: 7
 
-        delegate: Column {
-            id: weekDay
-            width: weekView.width
-            spacing: units.gu(0.3)
+        readonly property real dayWidth: (width - calendarPage.weekGutterWidth) / 7
 
-            property date day: calendarPage.addDays(calendarPage.startOfDay(calendarPage.currentDate), index)
+        Row {
+            id: weekHeader
+            width: parent.width
+            height: units.gu(5)
 
-            // A ListModel per day: a Repeater fed by a JS array rebuilt by a
-            // function loops on its "model" property.
-            ListModel { id: weekDayEvents }
-
-            function loadEvents() {
-                weekDayEvents.clear()
-                var events = calendarPage.eventsForDay(weekDay.day)
-                for (var eventIndex = 0; eventIndex < events.length; eventIndex++) {
-                    weekDayEvents.append({
-                        summary: events[eventIndex].event.summary,
-                        start: events[eventIndex].event.start,
-                        allDay: events[eventIndex].event.allDay,
-                        sourceIndex: events[eventIndex].index
-                    })
-                }
+            Item {
+                width: calendarPage.weekGutterWidth
+                height: parent.height
             }
 
-            Component.onCompleted: loadEvents()
-            onDayChanged: loadEvents()
-
-            Connections {
-                target: NextcloudCalendarModel
-                function onUpdated() { weekDay.loadEvents() }
-            }
-
-            Label {
-                text: Qt.formatDate(weekDay.day, "dddd d MMMM")
-                color: launchermodular.settings.textColor
-                fontSize: "small"
-            }
             Repeater {
-                model: weekDayEvents
+                model: 7
                 Item {
-                    width: weekView.width
-                    height: weekRow.height
-                    Row {
-                        id: weekRow
-                        width: parent.width
-                        spacing: units.gu(0.5)
-                        Label {
-                            width: units.gu(5)
-                            fontSize: "x-small"
-                            color: "#AEA79F"
-                            text: allDay ? i18n.tr("All day")
-                                         : Qt.formatTime(new Date(start), "HH:mm")
-                        }
-                        Label {
-                            width: weekView.width - units.gu(6)
-                            elide: Text.ElideRight
-                            fontSize: "x-small"
-                            color: launchermodular.settings.textColor
-                            text: summary
-                        }
+                    width: weekView.dayWidth
+                    height: weekHeader.height
+
+                    property date day: calendarPage.weekDayDate(index)
+
+                    Label {
+                        anchors.centerIn: parent
+                        text: Qt.formatDate(day, "ddd d")
+                        color: calendarPage.sameDay(day, new Date())
+                               ? "#E95420" : launchermodular.settings.textColor
+                        font.pixelSize: units.gu(1.4)
+                        font.bold: calendarPage.sameDay(day, new Date())
                     }
+
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: calendarPage.openEvent(sourceIndex)
+                        onClicked: {
+                            calendarPage.currentDate = day
+                            calendarPage.viewMode = 0
+                        }
                     }
                 }
             }
+        }
+
+        // All-day events, above the scrolled grid.
+        Item {
+            id: allDayStrip
+            anchors.top: weekHeader.bottom
+            width: parent.width
+            height: weekAllDayModel.count > 0
+                    ? calendarPage.weekAllDayRows * calendarPage.weekAllDayRowHeight + units.gu(0.6)
+                    : 0
+            clip: true
+            visible: height > 0
+
+            Rectangle {
+                anchors.fill: parent
+                color: "#10FFFFFF"
+            }
+
             Label {
-                visible: weekDayEvents.count === 0
-                text: i18n.tr("No event")
-                fontSize: "x-small"
+                anchors.left: parent.left
+                anchors.leftMargin: units.gu(1)
+                anchors.top: parent.top
+                anchors.topMargin: units.gu(0.8)
+                text: i18n.tr("All day")
                 color: "#AEA79F"
+                font.pixelSize: units.gu(1.2)
+            }
+
+            Repeater {
+                model: weekAllDayModel
+                Rectangle {
+                    x: calendarPage.weekGutterWidth + model.dayIndex * weekView.dayWidth + units.gu(0.2)
+                    y: units.gu(0.3) + model.row * calendarPage.weekAllDayRowHeight
+                    width: weekView.dayWidth - units.gu(0.4)
+                    height: calendarPage.weekAllDayRowHeight - units.gu(0.4)
+                    radius: units.gu(0.3)
+                    color: "#33E95420"
+                    border.width: 1
+                    border.color: "#E95420"
+
+                    Label {
+                        anchors.fill: parent
+                        anchors.margins: units.gu(0.4)
+                        elide: Text.ElideRight
+                        verticalAlignment: Text.AlignVCenter
+                        color: "#FFFFFF"
+                        font.pixelSize: units.gu(1.2)
+                        text: model.label
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: calendarPage.openEvent(model.sourceIndex)
+                    }
+                }
+            }
+        }
+
+        Flickable {
+            id: weekFlick
+            anchors.top: allDayStrip.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            contentWidth: width
+            contentHeight: 24 * calendarPage.weekHourHeight
+            clip: true
+            flickableDirection: Flickable.VerticalFlick
+
+            Item {
+                width: weekFlick.width
+                height: weekFlick.contentHeight
+
+                // Day columns, with today tinted.
+                Repeater {
+                    model: 7
+                    Rectangle {
+                        x: calendarPage.weekGutterWidth + index * weekView.dayWidth
+                        width: weekView.dayWidth
+                        height: parent.height
+                        color: calendarPage.sameDay(calendarPage.weekDayDate(index), new Date())
+                               ? "#12E95420" : "transparent"
+                        border.width: 1
+                        border.color: "#18FFFFFF"
+                    }
+                }
+
+                // Hour lines and labels (locale time format).
+                Repeater {
+                    model: 24
+                    Item {
+                        y: index * calendarPage.weekHourHeight
+                        width: parent.width
+                        height: calendarPage.weekHourHeight
+
+                        Rectangle {
+                            x: calendarPage.weekGutterWidth
+                            width: parent.width - calendarPage.weekGutterWidth
+                            height: 1
+                            color: "#22FFFFFF"
+                        }
+
+                        Label {
+                            x: 0
+                            width: calendarPage.weekGutterWidth - units.gu(0.8)
+                            horizontalAlignment: Text.AlignRight
+                            text: Qt.formatTime(new Date(2020, 0, 1, index, 0))
+                            color: "#AEA79F"
+                            font.pixelSize: units.gu(1.1)
+                        }
+                    }
+                }
+
+                // Timed events.
+                Repeater {
+                    model: weekTimedModel
+                    Rectangle {
+                        x: calendarPage.weekGutterWidth + model.dayIndex * weekView.dayWidth + units.gu(0.15)
+                        width: weekView.dayWidth - units.gu(0.3)
+                        y: model.startMinutes / 60 * calendarPage.weekHourHeight + 1
+                        height: Math.max(model.durationMinutes / 60 * calendarPage.weekHourHeight - 2,
+                                         units.gu(2.2))
+                        radius: units.gu(0.3)
+                        color: "#CCE95420"
+                        clip: true
+
+                        Column {
+                            anchors.fill: parent
+                            anchors.margins: units.gu(0.4)
+                            spacing: units.gu(0.1)
+
+                            Label {
+                                width: parent.width
+                                elide: Text.ElideRight
+                                color: "#FFFFFF"
+                                font.pixelSize: units.gu(1.2)
+                                text: model.label
+                            }
+                            Label {
+                                width: parent.width
+                                elide: Text.ElideRight
+                                visible: parent.height > units.gu(3)
+                                color: "#FFFFFF"
+                                opacity: 0.8
+                                font.pixelSize: units.gu(1)
+                                text: model.timeText
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: calendarPage.openEvent(model.sourceIndex)
+                        }
+                    }
+                }
             }
         }
     }
@@ -719,8 +996,8 @@ Item {
                 elide: Text.ElideRight
                 color: "#AEA79F"
                 text: allDay ? i18n.tr("All day")
-                             : Qt.formatTime(new Date(start), "HH:mm")
-                               + " – " + Qt.formatTime(new Date(end), "HH:mm")
+                             : Qt.formatTime(new Date(start))
+                               + " – " + Qt.formatTime(new Date(end))
             }
             Column {
                 anchors.left: parent.left
@@ -747,6 +1024,21 @@ Item {
                 onClicked: calendarPage.openEvent(sourceIndex)
             }
         }
+    }
+
+    // Empty day: a blank area looked like the calendar had vanished.
+    Label {
+        anchors.top: statusLabel.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        visible: calendarPage.viewMode === 0 && dayView.count === 0
+        text: i18n.tr("No events for this day")
+        color: "#AEA79F"
+        wrapMode: Text.WordWrap
+        z: 1
     }
 
     // --- year view ---------------------------------------------------------
@@ -845,11 +1137,13 @@ Item {
                     Row {
                         width: parent.width
                         spacing: units.gu(0.5)
-                        QControls.TextField {
+                        // The date is shown in the user's locale and picked in
+                        // a calendar: typing an ISO date was both unreadable
+                        // and error-prone.
+                        Button {
                             width: units.gu(12)
-                            placeholderText: i18n.tr("Start date")
-                            text: calendarPage.eventStartDate
-                            onTextChanged: calendarPage.eventStartDate = text
+                            text: calendarPage.displayDate(calendarPage.eventStartDate)
+                            onClicked: calendarPage.openDatePicker("start")
                         }
                         QControls.TextField {
                             width: units.gu(7)
@@ -857,27 +1151,20 @@ Item {
                             text: calendarPage.eventStartTime
                             enabled: !calendarPage.eventAllDay
                             onTextChanged: calendarPage.eventStartTime = text
-                        }
-                        Icon {
-                            height: units.gu(2.5)
-                            width: height
-                            name: "calendar"
-                            anchors.verticalCenter: parent.verticalCenter
-                            MouseArea {
-                                anchors.fill: parent
-                                anchors.margins: units.gu(-0.5)
-                                onClicked: calendarPage.openDatePicker("start")
+                            onAccepted: calendarPage.ensureEndAfterStart()
+                            onActiveFocusChanged: {
+                                if (!activeFocus)
+                                    calendarPage.ensureEndAfterStart()
                             }
                         }
                     }
                     Row {
                         width: parent.width
                         spacing: units.gu(0.5)
-                        QControls.TextField {
+                        Button {
                             width: units.gu(12)
-                            placeholderText: i18n.tr("End date")
-                            text: calendarPage.eventEndDate
-                            onTextChanged: calendarPage.eventEndDate = text
+                            text: calendarPage.displayDate(calendarPage.eventEndDate)
+                            onClicked: calendarPage.openDatePicker("end")
                         }
                         QControls.TextField {
                             width: units.gu(7)
@@ -885,16 +1172,10 @@ Item {
                             text: calendarPage.eventEndTime
                             enabled: !calendarPage.eventAllDay
                             onTextChanged: calendarPage.eventEndTime = text
-                        }
-                        Icon {
-                            height: units.gu(2.5)
-                            width: height
-                            name: "calendar"
-                            anchors.verticalCenter: parent.verticalCenter
-                            MouseArea {
-                                anchors.fill: parent
-                                anchors.margins: units.gu(-0.5)
-                                onClicked: calendarPage.openDatePicker("end")
+                            onAccepted: calendarPage.ensureEndAfterStart()
+                            onActiveFocusChanged: {
+                                if (!activeFocus)
+                                    calendarPage.ensureEndAfterStart()
                             }
                         }
                     }
@@ -913,7 +1194,10 @@ Item {
                         QControls.Switch {
                             anchors.verticalCenter: parent.verticalCenter
                             checked: calendarPage.eventAllDay
-                            onCheckedChanged: calendarPage.eventAllDay = checked
+                            onClicked: {
+                                calendarPage.eventAllDay = checked
+                                calendarPage.applyAllDay()
+                            }
                         }
                     }
                     Label {
