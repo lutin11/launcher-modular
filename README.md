@@ -91,7 +91,7 @@ run the following command:
 docker pull clickable/amd64-20.04-amd64:latest
 ```
 
-## Building the desktop packages (.deb and AppImage)
+## Building the desktop packages (.deb, AppImage and RPM)
 
 The desktop packages are built inside the Clickable SDK container (Ubuntu
 24.04, Qt 5.15); you only need Docker, not the Qt development packages on
@@ -129,8 +129,20 @@ From the repository root:
      -c 'sh /src/packaging/desktop/build-appimage.sh'
    ```
 
-The results are written to `out/`: `launchermodular-<version>-Linux.deb` and
-`Launcher_Modular-<version>-x86_64.AppImage`. Both run outside Ubuntu Touch
+3. RPM (Mageia). Mageia does not package the Lomiri QML modules, so this RPM
+   is not a normal source build: it installs the self-contained runtime of the
+   AppImage under `/opt/launchermodular`, with a wrapper in `/usr/bin` and a
+   desktop entry. Build the AppImage first (step 2), then:
+   ```
+   docker run --rm      -v "$PWD":/src:ro -v "$PWD/out:/out"      mageia:10      bash -c 'dnf install -y rpm-build tar gzip &&               sh /src/packaging/desktop/build-rpm.sh /src /out'
+   ```
+   The build needs the Mageia container image (`docker pull mageia:10`) and
+   network access to install `rpm-build`.
+
+The results are written to `out/`:
+`launchermodular-<version>-Linux.deb`,
+`Launcher_Modular-<version>-x86_64.AppImage` and
+`launchermodular-<version>-1.mga10.x86_64.rpm`. They run outside Ubuntu Touch
 as a normal desktop application: features that need phone services (calls,
 SMS, online accounts, Libertine) hide themselves when unavailable.
 
