@@ -35,7 +35,7 @@ QtObject {
 
     property var network: Connections {
         target: NetworkHelper
-        onRequestFinished: function (tag, status, body) {
+        function onRequestFinished(tag, status, body) {
             var callback = model.callbacks[tag]
             if (callback) {
                 delete model.callbacks[tag]
@@ -86,6 +86,17 @@ QtObject {
         return match ? match[1] : ""
     }
 
+    // Nextcloud may be installed under a sub-path, and the user may paste the
+    // CalDAV address instead of the server URL. Keep the sub-path, drop the
+    // /remote.php/dav… suffix.
+    function baseUrl(account) {
+        var url = String(account.url || "").replace(/\/+$/, "")
+        var dav = url.indexOf("/remote.php/dav")
+        if (dav >= 0)
+            url = url.substring(0, dav)
+        return url
+    }
+
     function request(account, method, path, body, extraHeaders, callback) {
         requestCounter++
         var tag = method + ":" + requestCounter
@@ -93,7 +104,14 @@ QtObject {
         var headers = "Authorization: Basic " + Qt.btoa(account.user + ":" + account.password)
         if (extraHeaders)
             headers += "\n" + extraHeaders
-        NetworkHelper.sendRequest(tag, method, origin(account) + path, body ? body : "", headers)
+        var target
+        if (/^https?:\/\//.test(path))
+            target = path
+        else if (path.indexOf("/remote.php/") === 0)
+            target = baseUrl(account) + path
+        else
+            target = origin(account) + path
+        NetworkHelper.sendRequest(tag, method, target, body ? body : "", headers)
     }
 
     // Sequential sync: one account after the other, then a single model fill.
@@ -189,8 +207,14 @@ QtObject {
 
     // Lists the calendars of one account (settings page).
     function listCalendars(index, callback) {
-        var account = accountAt(index)
-        if (!account.url) {
+        listCalendarsOf(accountAt(index), callback)
+    }
+
+    // The settings page holds one entry per Nextcloud account (with a list of
+    // selected calendars), while the model works with one entry per calendar:
+    // it therefore passes the account object itself, not an index.
+    function listCalendarsOf(account, callback) {
+        if (!account || !account.url) {
             callback([])
             return
         }
@@ -205,7 +229,6 @@ QtObject {
                         return
                     }
                     calendars = CalDav.parseCalendarList(text)
-                    calendarsAccount = index
                     callback(calendars)
                 })
     }

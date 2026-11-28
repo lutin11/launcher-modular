@@ -229,6 +229,9 @@ Platform::Platform(QObject *parent)
                                                             QStringList() << QStringLiteral(".2.0")
                                                                            << QStringLiteral(".2")
                                                                            << QString()));
+    // CachedHttpRequest (RSS) stores its cache with U1db.
+    m_hasU1dbModule = anyDirExists(moduleCandidates(QStringLiteral("U1db"),
+                                                    QStringList() << QString()));
 }
 
 void Platform::setImportPaths(const QStringList &paths)
@@ -312,6 +315,7 @@ QString Platform::diagnostics()
     lines << QStringLiteral("QtSensors: %1").arg(m_hasSensorsModule);
     lines << QStringLiteral("QtSystemInfo: %1").arg(m_hasSystemInfoModule);
     lines << QStringLiteral("QtQuick.LocalStorage: %1").arg(m_hasLocalStorageModule);
+    lines << QStringLiteral("U1db: %1").arg(m_hasU1dbModule);
     lines << QStringLiteral("org.freedesktop.Accounts: %1").arg(hasAccountsService());
     lines << QStringLiteral("import paths: %1").arg(g_importPaths.join(QStringLiteral(", ")));
     return lines.join(QLatin1Char('\n'));

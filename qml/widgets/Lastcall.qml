@@ -90,7 +90,7 @@ Item {
         // Watch for changes to the numberOfCallWidget parameter
         Connections {
             target: launchermodular.settings
-            onNumberOfCallWidgetChanged: {
+            function onNumberOfCallWidgetChanged() {
                 widgetLastCall.updateFilteredModelFunction();
             }
         }

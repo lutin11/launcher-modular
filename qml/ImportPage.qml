@@ -31,7 +31,7 @@ Page {
     
     Connections {
         target: ContentHub
-        onImportRequested: {
+        function onImportRequested() {
             var filePath = String(transfer.items[0].url).replace('file://', '')
             launchermodular.iconCustomUrl = filePath;
             pageStack.pop()

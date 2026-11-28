@@ -1266,7 +1266,7 @@ MainView {
         }
         height: units.gu(2.6)
         color: "#111111"
-        visible: WindowController.frameless
+        visible: WindowController !== null && WindowController.frameless
         z: 100
 
         MouseArea {
@@ -1344,7 +1344,7 @@ MainView {
     Item {
         id: desktopResizeHandles
         anchors.fill: parent
-        visible: WindowController.frameless
+        visible: WindowController !== null && WindowController.frameless
         z: 101
 
         MouseArea {

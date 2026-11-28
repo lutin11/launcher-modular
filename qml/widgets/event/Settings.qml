@@ -5,13 +5,15 @@ import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import QtOrganizer 5.0
+import Platform 1.0
 
 Page {
     id: widgetSettingsEvent
 
     OrganizerModel {
         id: calendarsModel
-        manager: "eds"
+        manager: Platform.preferredOrganizerManager.length > 0
+                 ? Platform.preferredOrganizerManager : "eds"
         autoUpdate: true
     }
 

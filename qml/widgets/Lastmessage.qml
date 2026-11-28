@@ -106,13 +106,13 @@ Item {
         // Watch for changes to the parameters
         Connections {
             target: launchermodular.settings
-            onNumberOfMessageWidgetChanged: {
+            function onNumberOfMessageWidgetChanged() {
                 widgetLastMessage.updateFilteredModelFunction();
             }
-            onWidgetMessageSummaryChanged: {
+            function onWidgetMessageSummaryChanged() {
                 widgetLastMessage.updateFilteredModelFunction();
             }
-            onWidgetMessageFilterOnReceivedMessagesChanged: {
+            function onWidgetMessageFilterOnReceivedMessagesChanged() {
                 widgetLastMessage.updateFilteredModelFunction();
             }
         }

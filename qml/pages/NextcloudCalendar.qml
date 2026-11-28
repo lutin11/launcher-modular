@@ -84,8 +84,36 @@ Item {
     // of its data, then to the global settings.
     // The model is shared by all the calendar pages and the Event widget: it
     // holds the union of their accounts, so both always see the same events.
+    // One configured Nextcloud account can expose several calendars; the
+    // model works with one entry per calendar.
+    function expandAccounts(stored) {
+        var result = []
+        for (var index = 0; index < stored.length; index++) {
+            var account = stored[index]
+            if (!account)
+                continue
+            var calendars = account.calendars || []
+            var expanded = false
+            for (var calendarIndex = 0; calendarIndex < calendars.length; calendarIndex++) {
+                if (!calendars[calendarIndex] || !calendars[calendarIndex].href)
+                    continue
+                result.push({ url: account.url, user: account.user,
+                              password: account.password,
+                              href: calendars[calendarIndex].href,
+                              name: calendars[calendarIndex].name || "" })
+                expanded = true
+            }
+            if (!expanded && account.href) {
+                result.push({ url: account.url, user: account.user,
+                              password: account.password,
+                              href: account.href, name: account.name || "" })
+            }
+        }
+        return result
+    }
+
     function loadAccounts() {
-        var list = []
+        var stored = []
         for (var index = 0; index < launchermodular.pageModel.count; index++) {
             var page = launchermodular.pageModel.get(index)
             if (page.name !== "NextcloudCalendar.qml")
@@ -96,34 +124,34 @@ Item {
                     ? launchermodular.getPageConfig(page.uid) : ({})
             var raw = config.nextcloudAccountsJson || data.nextcloudAccountsJson
             if (raw && raw.length > 0) {
-                try { list = list.concat(JSON.parse(raw)) } catch (error) { }
+                try { stored = stored.concat(JSON.parse(raw)) } catch (error) { }
             } else if ((config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
                        || (data.nextcloudAccounts && data.nextcloudAccounts.length > 0)) {
-                var stored = (config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
+                var legacy = (config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
                         ? config.nextcloudAccounts : data.nextcloudAccounts
-                for (var accountIndex = 0; accountIndex < stored.length; accountIndex++)
-                    list.push(stored[accountIndex])
+                for (var accountIndex = 0; accountIndex < legacy.length; accountIndex++)
+                    stored.push(legacy[accountIndex])
             } else if ((config.nextcloudUrl || data.nextcloudUrl)
                        && (config.nextcloudUser || data.nextcloudUser)
                        && (config.nextcloudPassword || data.nextcloudPassword)) {
-                list.push({ url: config.nextcloudUrl || data.nextcloudUrl,
-                            user: config.nextcloudUser || data.nextcloudUser,
-                            password: config.nextcloudPassword || data.nextcloudPassword,
-                            href: config.nextcloudCalendarHref || data.nextcloudCalendarHref || "",
-                            name: "" })
+                stored.push({ url: config.nextcloudUrl || data.nextcloudUrl,
+                              user: config.nextcloudUser || data.nextcloudUser,
+                              password: config.nextcloudPassword || data.nextcloudPassword,
+                              href: config.nextcloudCalendarHref || data.nextcloudCalendarHref || "",
+                              name: "" })
             }
         }
-        if (list.length === 0 && launchermodular.settings.nextcloudAccountsJson.length > 0) {
-            try { list = JSON.parse(launchermodular.settings.nextcloudAccountsJson) } catch (error) { list = [] }
+        if (stored.length === 0 && launchermodular.settings.nextcloudAccountsJson.length > 0) {
+            try { stored = JSON.parse(launchermodular.settings.nextcloudAccountsJson) } catch (error) { stored = [] }
         }
-        if (list.length === 0 && launchermodular.settings.nextcloudUrl
+        if (stored.length === 0 && launchermodular.settings.nextcloudUrl
                 && launchermodular.settings.nextcloudUser && launchermodular.settings.nextcloudPassword) {
-            list.push({ url: launchermodular.settings.nextcloudUrl,
-                        user: launchermodular.settings.nextcloudUser,
-                        password: launchermodular.settings.nextcloudPassword,
-                        href: launchermodular.settings.nextcloudCalendarHref || "", name: "" })
+            stored.push({ url: launchermodular.settings.nextcloudUrl,
+                          user: launchermodular.settings.nextcloudUser,
+                          password: launchermodular.settings.nextcloudPassword,
+                          href: launchermodular.settings.nextcloudCalendarHref || "", name: "" })
         }
-        accounts = list
+        accounts = expandAccounts(stored)
         if (targetAccount >= accounts.length)
             targetAccount = 0
         NextcloudCalendarModel.configureAccounts(accounts)
@@ -134,7 +162,7 @@ Item {
 
     Connections {
         target: NextcloudCalendarModel
-        onUpdated: calendarPage.refreshDayModel()
+        function onUpdated() { calendarPage.refreshDayModel() }
     }
 
 
@@ -210,6 +238,12 @@ Item {
         if (viewMode === 2)
             return Qt.formatDate(currentDate, "MMMM yyyy")
         return currentDate.getFullYear().toString()
+    }
+
+    // Return to the current date whatever the view (day, week, month, year).
+    function goToToday() {
+        currentDate = new Date()
+        refreshDayModel()
     }
 
     function move(direction) {
@@ -363,7 +397,7 @@ Item {
             }
         }
         Label {
-            width: toolbar.width - units.gu(16)
+            width: toolbar.width - units.gu(22)
             height: toolbar.height
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
@@ -385,6 +419,22 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: calendarPage.move(1)
+            }
+        }
+        Rectangle {
+            width: units.gu(5)
+            height: units.gu(4)
+            color: "transparent"
+            Icon {
+                anchors.centerIn: parent
+                name: "calendar-today"
+                color: launchermodular.settings.textColor
+                width: units.gu(2)
+                height: units.gu(2)
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: calendarPage.goToToday()
             }
         }
         Rectangle {
@@ -503,7 +553,7 @@ Item {
                     Component.onCompleted: loadCellEvents()
                     Connections {
                         target: NextcloudCalendarModel
-                        onUpdated: monthCell.loadCellEvents()
+                        function onUpdated() { monthCell.loadCellEvents() }
                     }
 
                     Rectangle {
@@ -591,7 +641,7 @@ Item {
 
             Connections {
                 target: NextcloudCalendarModel
-                onUpdated: weekDay.loadEvents()
+                function onUpdated() { weekDay.loadEvents() }
             }
 
             Label {

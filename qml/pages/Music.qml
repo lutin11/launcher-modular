@@ -425,11 +425,14 @@ Item {
 
             Rectangle {
                 id: searchMusicRectangle
-                opacity: 0.9
+                // The launcher background shows through, as on the other
+                // pages; only the selection/current track gets a translucent
+                // orange tint. The playback bar keeps its own opaque colour.
                 color: {
-                    if (fileIsDir) return "#111111"
-                    if (playlistViewActive) return filePath === musicPlayer.currentSongPath ? "#333333" : "#111111"
-                    return isSelected(filePath) ? "#333333" : "#111111"
+                    if (fileIsDir) return "transparent"
+                    if (playlistViewActive)
+                        return filePath === musicPlayer.currentSongPath ? "#33E95420" : "transparent"
+                    return isSelected(filePath) ? "#33E95420" : "transparent"
                 }
                 height: parent.height
                 width: parent.width

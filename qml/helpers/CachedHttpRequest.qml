@@ -23,10 +23,12 @@ Item {
         if (DEBUG_MODE) console.log("CachedHttpRequest: Retrieving data for:", requestURL, "id:", id);
 
         waitingForResults = true;
+        _internal.cacheDelivered = false;
         const cachedFactorPassed = _internal.retrieveFromCache(requestURL, id);
         if (cachedFactorPassed < recachingFactor) return;
 
-        const cachedResponseReturned = cachedFactorPassed < 1 || !onlyReturnFreshCache;
+        // A cached response was returned only if retrieveFromCache emitted one.
+        const cachedResponseReturned = _internal.cacheDelivered;
 
         if (DEBUG_MODE) console.log("CachedHttpRequest: Sending request to URL:", requestURL);
 
@@ -102,6 +104,12 @@ Item {
 
     QtObject {
         id: _internal
+        // True only when retrieveFromCache() actually emitted a response.
+        // The previous flag also became true when onlyReturnFreshCache was
+        // false, even without any cached document: on a desktop where
+        // Lomiri.Connectivity reports Offline, every network response was then
+        // suppressed and the RSS page stayed empty forever.
+        property bool cacheDelivered: false
 
         function retrieveFromCache(requestURL, id) {
             getPreviousResponses.query = [requestURL];
@@ -113,12 +121,14 @@ Item {
 
                     if (age < cachingTimeMiliSec) {
                         if (DEBUG_MODE) console.log("CachedHttpRequest: Loading cached response for:", requestURL);
+                        _internal.cacheDelivered = true;
                         _cachedHttpReq.responseDataUpdated(response, id);
                         return age / cachingTimeMiliSec;
                     }
 
                     if (!onlyReturnFreshCache) {
                         if (DEBUG_MODE) console.log("CachedHttpRequest: Returning outdated cached response for:", requestURL);
+                        _internal.cacheDelivered = true;
                         _cachedHttpReq.responseDataUpdated(response, id);
                         return 1;
                     }

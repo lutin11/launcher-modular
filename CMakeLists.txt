@@ -238,20 +238,24 @@ if(DESKTOP_INSTALL)
     # in Ubuntu 24.04 (apt-cache policy). These are the imports the application
     # cannot start without, Lomiri.Components being loaded by Main.qml itself.
     set(CPACK_DEBIAN_PACKAGE_DEPENDS
-        "qml-module-lomiri-components, qml-module-qtquick2, qml-module-qtquick-window2, qml-module-qtquick-controls2, qml-module-qtquick-templates2, qml-module-qtquick-layouts, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings, qml-module-qtgraphicaleffects")
-    # Each of these only feeds one removable feature: the application detects
-    # what is missing and leaves the feature out of the composition instead of
+        "qml-module-lomiri-components, qml-module-qtquick2, qml-module-qtquick-window2, qml-module-qtquick-controls2, qml-module-qtquick-templates2, qml-module-qtquick-layouts, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings, qml-module-qtgraphicaleffects, qml-module-qtqml-models2, qml-module-qtmultimedia, qml-module-qtsensors, qml-module-qtsysteminfo, qml-module-qtquick-localstorage, qml-module-lomiri-thumbnailer, qml-module-lomiri-content, qml-module-lomiri-downloadmanager, qml-module-lomiri-connectivity, qml-module-lomiri-history, qml-module-u1db, qml-module-qtcontacts, qml-module-qtorganizer, libqt5multimedia5-plugins, libglib2.0-bin, gstreamer1.0-plugins-good, gstreamer1.0-libav")
+    # The built-in pages must all be functional out of the box: their QML
+    # modules, the media service and the codecs are hard dependencies. The
+    # per-page detection in PageRequirements.js remains as a safety net for
+    # systems where a package cannot be installed. Contacts providers stay
+    # optional: the application detects
     # failing (docs/PACKAGING_DESKTOP.md, section 10).
     set(CPACK_DEBIAN_PACKAGE_RECOMMENDS
-        "libqt5multimedia5-plugins, lomiri-app-launch, qml-module-qtmultimedia, qml-module-qtsensors, qml-module-qtsysteminfo, qml-module-qtquick-localstorage, qml-module-lomiri-thumbnailer, qml-module-lomiri-content, qml-module-lomiri-downloadmanager, qml-module-lomiri-connectivity, qml-module-lomiri-history, qml-module-u1db")
-    # QtContacts and QtOrganizer are only useful together with a provider
-    # (galera, eds, sqlite); without one the widgets are left out.
+        "lomiri-app-launch")
+    # Lomiri.Contacts is not available in stock Ubuntu/Mint; the contact
+    # widgets stay inactive without it. The QtContacts/QtOrganizer modules are
+    # now hard dependencies so the corresponding pages load everywhere.
     # qml-module-lomiri-contacts is suggested, not recommended on purpose: apt
     # installs recommendations by default, and that module is not published in
     # the Ubuntu 24.04 archive (section 4.2), so recommending it would make the
     # package impossible to install without a PPA.
     set(CPACK_DEBIAN_PACKAGE_SUGGESTS
-        "qml-module-qtcontacts, qml-module-qtorganizer, qml-module-lomiri-contacts")
+        "qml-module-lomiri-contacts")
 
     set(CPACK_GENERATOR "DEB")
     include(CPack)

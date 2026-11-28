@@ -255,8 +255,9 @@ Item {
         pullToRefresh {
             enabled: true
 
+            // Do not tie the pull-to-refresh spinner to an empty model: with
+            // no article the indicator never stopped, even after an error.
             refreshing:
-                feedList.model.count === 0 ||
                 listSortingTimer.running ||
                 _mainFeed.refreshing
 

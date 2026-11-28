@@ -2,6 +2,7 @@ import QtQuick 2.12
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3
 import QtOrganizer 5.0
+import Platform 1.0
 import "../pages/nextcloudcalendar"
 
 Item {
@@ -21,47 +22,61 @@ Item {
         ids: launchermodular.settings.selectedCalendarIds
     }
 
-    OrganizerModel {
-        id: organizerModel
+    // The system agenda needs a QtOrganizer provider. Without one (stock
+    // Debian/Ubuntu/Mint ship only the QML module) the model is not created at
+    // all: the widget still lists the Nextcloud events.
+    Loader {
+        id: organizerLoader
+        active: Platform.hasCalendarFeature
+        sourceComponent: Component {
+            OrganizerModel {
+                id: systemOrganizerModel
 
-        function updateCalendarModel() {
-            update()
-        }
+                function updateCalendarModel() {
+                    update()
+                }
 
-        startPeriod: {
-            return getTodayBaseLine();
-        }
+                startPeriod: {
+                    return widgetEvent.getTodayBaseLine();
+                }
 
-        endPeriod: {
-            var endPeriodDate = getTodayBaseLine();
-            endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysWidgetEvent)
-            return endPeriodDate
-        }
+                endPeriod: {
+                    var endPeriodDate = widgetEvent.getTodayBaseLine();
+                    endPeriodDate.setDate(endPeriodDate.getDate() + launchermodular.settings.limiteDaysWidgetEvent)
+                    return endPeriodDate
+                }
 
-        sortOrders: [
-            SortOrder{
-                id: sortOrder
-                blankPolicy: SortOrder.BlanksFirst
-                detail: Detail.EventTime
-                field: EventTime.FieldStartDateTime
-                direction: Qt.AscendingOrder
+                sortOrders: [
+                    SortOrder{
+                        id: sortOrder
+                        blankPolicy: SortOrder.BlanksFirst
+                        detail: Detail.EventTime
+                        field: EventTime.FieldStartDateTime
+                        direction: Qt.AscendingOrder
+                    }
+                ]
+
+                filter: (launchermodular.settings.selectedCalendarIds && launchermodular.settings.selectedCalendarIds.length > 0)
+                    ? calendarCollectionFilter
+                    : null
+
+                // Only load from backend details from selected calendar
+                fetchHint: FetchHint {
+                    detailTypesHint: [Detail.EventTime, Detail.DisplayLabel, Detail.Description, Detail.Guid, Detail.ItemType]
+                    optimizationHints: FetchHint.NoBinaryBlobs
+                }
+
+                onModelChanged: Qt.callLater(widgetEvent.rebuildWidgetEventModel)
+
+                // Preferred provider of the machine; "eds" is the Ubuntu Touch
+                // one.
+                manager: Platform.preferredOrganizerManager.length > 0
+                         ? Platform.preferredOrganizerManager : "eds"
             }
-        ]
-
-        filter: (launchermodular.settings.selectedCalendarIds && launchermodular.settings.selectedCalendarIds.length > 0)
-            ? calendarCollectionFilter
-            : null
-
-        // Only load from backend details from selected calendar
-        fetchHint: FetchHint {
-            detailTypesHint: [Detail.EventTime, Detail.DisplayLabel, Detail.Description, Detail.Guid, Detail.ItemType]
-            optimizationHints: FetchHint.NoBinaryBlobs
         }
-
-        onModelChanged: Qt.callLater(rebuildWidgetEventModel)
-
-        manager: "eds"
     }
+
+    readonly property var organizerModel: organizerLoader.item
 
     // The widget shows the events of the system agenda and those of the
     // Nextcloud calendar, merged and sorted. Roles: label, description,
@@ -71,8 +86,8 @@ Item {
         var merged = []
         var today = getTodayBaseLine()
         var limit = launchermodular.settings.limiteItemWidgetEvent
-        var items = organizerModel.items
-        var count = organizerModel.itemCount
+        var items = organizerModel ? organizerModel.items : []
+        var count = organizerModel ? organizerModel.itemCount : 0
         for (var index = 0; index < count; index++) {
             var item = items[index]
             if (item.itemType === 505)
@@ -105,10 +120,38 @@ Item {
             widgetEventModel.append(merged[mergedIndex])
     }
 
+    // One configured account can expose several calendars: the model works
+    // with one entry per calendar.
+    function expandAccounts(stored) {
+        var result = []
+        for (var index = 0; index < stored.length; index++) {
+            var account = stored[index]
+            if (!account)
+                continue
+            var calendars = account.calendars || []
+            var expanded = false
+            for (var calendarIndex = 0; calendarIndex < calendars.length; calendarIndex++) {
+                if (!calendars[calendarIndex] || !calendars[calendarIndex].href)
+                    continue
+                result.push({ url: account.url, user: account.user,
+                              password: account.password,
+                              href: calendars[calendarIndex].href,
+                              name: calendars[calendarIndex].name || "" })
+                expanded = true
+            }
+            if (!expanded && account.href) {
+                result.push({ url: account.url, user: account.user,
+                              password: account.password,
+                              href: account.href, name: account.name || "" })
+            }
+        }
+        return result
+    }
+
     // Accounts of all the calendar pages, so the widget shows their events
     // even when the calendar page has never been opened.
     function loadNextcloudAccounts() {
-        var list = []
+        var stored = []
         for (var index = 0; index < launchermodular.pageModel.count; index++) {
             var page = launchermodular.pageModel.get(index)
             if (page.name !== "NextcloudCalendar.qml")
@@ -119,33 +162,34 @@ Item {
                     ? launchermodular.getPageConfig(page.uid) : ({})
             var raw = config.nextcloudAccountsJson || data.nextcloudAccountsJson
             if (raw && raw.length > 0) {
-                try { list = list.concat(JSON.parse(raw)) } catch (error) { }
+                try { stored = stored.concat(JSON.parse(raw)) } catch (error) { }
             } else if ((config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
                        || (data.nextcloudAccounts && data.nextcloudAccounts.length > 0)) {
-                var stored = (config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
+                var legacy = (config.nextcloudAccounts && config.nextcloudAccounts.length > 0)
                         ? config.nextcloudAccounts : data.nextcloudAccounts
-                for (var accountIndex = 0; accountIndex < stored.length; accountIndex++)
-                    list.push(stored[accountIndex])
+                for (var accountIndex = 0; accountIndex < legacy.length; accountIndex++)
+                    stored.push(legacy[accountIndex])
             } else if ((config.nextcloudUrl || data.nextcloudUrl)
                        && (config.nextcloudUser || data.nextcloudUser)
                        && (config.nextcloudPassword || data.nextcloudPassword)) {
-                list.push({ url: config.nextcloudUrl || data.nextcloudUrl,
-                            user: config.nextcloudUser || data.nextcloudUser,
-                            password: config.nextcloudPassword || data.nextcloudPassword,
-                            href: config.nextcloudCalendarHref || data.nextcloudCalendarHref || "",
-                            name: "" })
+                stored.push({ url: config.nextcloudUrl || data.nextcloudUrl,
+                              user: config.nextcloudUser || data.nextcloudUser,
+                              password: config.nextcloudPassword || data.nextcloudPassword,
+                              href: config.nextcloudCalendarHref || data.nextcloudCalendarHref || "",
+                              name: "" })
             }
         }
-        if (list.length === 0 && launchermodular.settings.nextcloudAccountsJson.length > 0) {
-            try { list = JSON.parse(launchermodular.settings.nextcloudAccountsJson) } catch (error) { list = [] }
+        if (stored.length === 0 && launchermodular.settings.nextcloudAccountsJson.length > 0) {
+            try { stored = JSON.parse(launchermodular.settings.nextcloudAccountsJson) } catch (error) { stored = [] }
         }
-        if (list.length === 0 && launchermodular.settings.nextcloudUrl
+        if (stored.length === 0 && launchermodular.settings.nextcloudUrl
                 && launchermodular.settings.nextcloudUser && launchermodular.settings.nextcloudPassword) {
-            list.push({ url: launchermodular.settings.nextcloudUrl,
-                        user: launchermodular.settings.nextcloudUser,
-                        password: launchermodular.settings.nextcloudPassword,
-                        href: launchermodular.settings.nextcloudCalendarHref || "", name: "" })
+            stored.push({ url: launchermodular.settings.nextcloudUrl,
+                          user: launchermodular.settings.nextcloudUser,
+                          password: launchermodular.settings.nextcloudPassword,
+                          href: launchermodular.settings.nextcloudCalendarHref || "", name: "" })
         }
+        var list = expandAccounts(stored)
         if (list.length > 0) {
             NextcloudCalendarModel.configureAccounts(list)
             NextcloudCalendarModel.refresh(60, 180)
@@ -156,18 +200,21 @@ Item {
 
     Connections {
         target: NextcloudCalendarModel
-        onUpdated: Qt.callLater(rebuildWidgetEventModel)
+        function onUpdated() { Qt.callLater(rebuildWidgetEventModel) }
     }
 
     function updateModel() {
-        organizerModel.updateCalendarModel()
+        if (organizerModel)
+            organizerModel.updateCalendarModel()
+        else
+            rebuildWidgetEventModel()
     }
 
     property var updateModelFunction: updateModel
 
     Connections {
         target: launchermodular.settings
-        onLimiteItemWidgetEventChanged: {
+        function onLimiteItemWidgetEventChanged() {
              if (DEBUG_MODE) console.log("Change detected")
              widgetEvent.updateModelFunction();
         }
@@ -271,7 +318,12 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked:{clickTimer.start();}
-        onPressAndHold: pageStack.push(Qt.resolvedUrl("event/Settings.qml"))
+        onPressAndHold: {
+            // The settings page lists the system calendars: it is only useful
+            // when a QtOrganizer provider is available.
+            if (Platform.hasCalendarFeature)
+                pageStack.push(Qt.resolvedUrl("event/Settings.qml"))
+        }
         onDoubleClicked: {clickTimer.stop(); updateModel();}
     }
 

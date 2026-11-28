@@ -326,8 +326,9 @@ Page {
                 ListItemHeader.Standard {
                     showDivider: false
                     text: "<font color=\"#ffffff\">"+i18n.tr("Show last events")+"</font>"
-                    // The widget needs QtOrganizer and a calendar provider.
-                    visible: Platform.hasOrganizerModule && Platform.hasCalendarFeature
+                    // The widget needs QtOrganizer; the Nextcloud events are
+                    // listed even without a system calendar provider.
+                    visible: Platform.hasOrganizerModule
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleEvent
                         onClicked: launchermodular.settings.widgetVisibleEvent = !launchermodular.settings.widgetVisibleEvent

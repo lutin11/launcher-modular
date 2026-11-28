@@ -69,8 +69,8 @@ Item {
 
     Connections {
         target: Terminalaccess
-        onNeedSudoPassword: {PopupUtils.open(authenticationDialog)}
-        onFinished: {
+        function onNeedSudoPassword() { PopupUtils.open(authenticationDialog) }
+        function onFinished() {
             PopupUtils.close(authenticationDialog);
             refreshafteruninstall.restart()
         }
@@ -391,12 +391,12 @@ Item {
 
                 }
 
-                // The event widget needs QtOrganizer and a calendar provider;
-                // hasCalendarFeature keeps the widget on Ubuntu Touch, where
-                // the provider cannot be probed from here.
+                // The event widget needs the QtOrganizer module. A system
+                // calendar provider only adds the agenda events: without one
+                // the widget still lists the Nextcloud events.
                 Loader {
                   id: widgetEvent
-                  active: Platform.hasOrganizerModule && Platform.hasCalendarFeature
+                  active: Platform.hasOrganizerModule
                   visible: launchermodular.settings.widgetVisibleEvent
                   source: "../widgets/Event.qml"
                 }

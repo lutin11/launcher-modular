@@ -20,7 +20,7 @@ var PAGES = {
                   "hasLocalStorageModule"],
     "Picture.qml": ["hasThumbnailerModule"],
     "NextcloudFolders.qml": ["hasContentModule", "hasDownloadManagerModule"],
-    "Rss.qml": ["hasConnectivityModule", "hasLocalStorageModule"],
+    "Rss.qml": ["hasConnectivityModule", "hasLocalStorageModule", "hasU1dbModule"],
     "Todo.qml": ["hasLocalStorageModule"],
     "Notes.qml": ["hasLocalStorageModule"],
     // The calendar page loads its data through QtOrganizer at run time, so the
@@ -42,7 +42,8 @@ var MODULES = {
     "hasContactsModule": "Lomiri.Contacts",
     "hasSensorsModule": "QtSensors",
     "hasSystemInfoModule": "QtSystemInfo",
-    "hasLocalStorageModule": "QtQuick.LocalStorage"
+    "hasLocalStorageModule": "QtQuick.LocalStorage",
+    "hasU1dbModule": "U1db"
 };
 
 // True when the page can be offered on this machine. platform is the Platform
