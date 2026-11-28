@@ -4,6 +4,7 @@ import QtGraphicalEffects 1.12
 import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
+import Platform 1.0
 
 
 Item {
@@ -13,16 +14,27 @@ Item {
     property int selectedImageIndex: -1
     property real iconbasesize: units.gu(14)
 
+    // Ubuntu Touch has the Thumbnailer service; desktops do not, and the
+    // image://thumbnailer provider then fails with a D-Bus error. On desktop
+    // the file is loaded directly, decoded at sourceSize by Qt.
+    function imageSource(path) {
+        if (!path)
+            return ""
+        if (Platform.isTouch)
+            return "image://thumbnailer/" + path
+        return "file://" + String(path).split("/").map(encodeURIComponent).join("/")
+    }
+
     function showPreviousImage() {
         if (selectedImageIndex <= 0) return
         selectedImageIndex--
-        selectedImageFilePath = "image://thumbnailer/" + folderModel.get(selectedImageIndex, "filePath")
+        selectedImageFilePath = imageSource(folderModel.get(selectedImageIndex, "filePath"))
     }
 
     function showNextImage() {
         if (selectedImageIndex < 0 || selectedImageIndex >= folderModel.count - 1) return
         selectedImageIndex++
-        selectedImageFilePath = "image://thumbnailer/" + folderModel.get(selectedImageIndex, "filePath")
+        selectedImageFilePath = imageSource(folderModel.get(selectedImageIndex, "filePath"))
     }
 
     Image {
@@ -144,7 +156,7 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
                     height: parent.height
-                    source:  "image://thumbnailer/" + filePath;
+                    source: picture.imageSource(filePath)
                     sourceSize {
                         width: parent.width
                         height: parent.height
@@ -172,7 +184,7 @@ Item {
                         } else {
                             launchermodular.settings.fullScreen = !launchermodular.settings.fullScreen;
                             WindowController.toggleFullScreen();
-                            selectedImageFilePath = "image://thumbnailer/" + filePath
+                            selectedImageFilePath = picture.imageSource(filePath)
                             selectedImageIndex = index
                         }
                     }
