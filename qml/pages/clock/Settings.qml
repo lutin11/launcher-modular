@@ -10,6 +10,12 @@ import QtSensors 5.12
 Page {
     id: clockSettingsPicture
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string clockPageName: i18n.tr("clock") // do not remove, use pour Po files
     property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
 
@@ -133,12 +139,12 @@ Page {
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(1)
                     model: [
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("Bold")+"</font>", value: "DSEG7Classic-Bold"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("BoldItalic")+"</font>", value: "DSEG7Classic-BoldItalic"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("Regular")+"</font>", value: "DSEG7Classic-Regular"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("Italic")+"</font>", value: "DSEG7Classic-Italic"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("Light")+"</font>", value: "DSEG7Classic-Light"},
-                        { name: "<font color=\"#ffffff\">"+i18n.tr("LightItalic")+"</font>", value: "DSEG7Classic-LightItalic"}
+                        { name: i18n.tr("Bold"), value: "DSEG7Classic-Bold"},
+                        { name: i18n.tr("BoldItalic"), value: "DSEG7Classic-BoldItalic"},
+                        { name: i18n.tr("Regular"), value: "DSEG7Classic-Regular"},
+                        { name: i18n.tr("Italic"), value: "DSEG7Classic-Italic"},
+                        { name: i18n.tr("Light"), value: "DSEG7Classic-Light"},
+                        { name: i18n.tr("LightItalic"), value: "DSEG7Classic-LightItalic"}
                     ]
                     delegate: OptionSelectorDelegate {
                         property var item: model.modelData ? model.modelData : model
@@ -210,8 +216,8 @@ Page {
                     anchors.right: parent.right
                     anchors.rightMargin: units.gu(1)
                     model: [
-                    { name: "<font color=\"#ffffff\">88:88:88</font>", value: "hh:mm:ss"},
-                    { name: "<font color=\"#ffffff\">88:88</font>", value: "hh:mm"},
+                    { name: "88:88:88", value: "hh:mm:ss"},
+                    { name: "88:88", value: "hh:mm"},
                     ]
                     delegate: OptionSelectorDelegate {
                         property var item: model.modelData ? model.modelData : model

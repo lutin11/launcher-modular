@@ -7,6 +7,12 @@ import Lomiri.Components.ListItems 1.3 as ListItem
 Page {
     id: folderSettingsPicture
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string foldersPageName: i18n.tr("folders") // do not remove, use pour Po files
 
     header: PageHeader {

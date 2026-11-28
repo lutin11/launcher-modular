@@ -11,7 +11,11 @@ import "./music/"
 Item {
     id: musics
 
-    property string rootMusic: MySettings.getMusicLocation()
+    // The folder can be changed in the page settings; the platform default is
+    // used when the setting is empty.
+    property string rootMusic: launchermodular.settings.folderMusic.length > 0
+                             ? launchermodular.settings.folderMusic
+                             : MySettings.getMusicLocation()
     property var musicNameFilters: ["*.mp3", "*.aac", "*.ogg", "*.wav", "*.flac", "*.m4a", "*.alac"]
     property string searchTerm: ""
     property var folders: []
@@ -209,7 +213,14 @@ Item {
             musicFileModel.folder = aFolder;
         } else {
             initialParsingDone = true;
+            // When the root is already the current folder, setting it again
+            // does not emit a status change: fill the visible model here.
+            // Otherwise the Ready handler does it once the root is reloaded.
+            var rootUrl = "file://" + rootMusic.replace(/\/+$/, "")
+            var currentUrl = String(musicFileModel.folder).replace(/\/+$/, "")
             musicFileModel.folder = rootMusic;
+            if (currentUrl === rootUrl)
+                initSearchModel();
             if (DEBUG_MODE) console.log("searching model complet")
         }
     }
@@ -414,11 +425,14 @@ Item {
 
             Rectangle {
                 id: searchMusicRectangle
-                opacity: 0.9
+                // The launcher background shows through, as on the other
+                // pages; only the selection/current track gets a translucent
+                // orange tint. The playback bar keeps its own opaque colour.
                 color: {
-                    if (fileIsDir) return "#111111"
-                    if (playlistViewActive) return filePath === musicPlayer.currentSongPath ? "#333333" : "#111111"
-                    return isSelected(filePath) ? "#333333" : "#111111"
+                    if (fileIsDir) return "transparent"
+                    if (playlistViewActive)
+                        return filePath === musicPlayer.currentSongPath ? "#33E95420" : "transparent"
+                    return isSelected(filePath) ? "#33E95420" : "transparent"
                 }
                 height: parent.height
                 width: parent.width
@@ -476,6 +490,12 @@ Item {
                             } else {
                                 toggleSelection(model.filePath, model.fileName)
                             }
+                    }
+                    // Double click (double tap) starts the track directly,
+                    // without having to add it to the playlist and press play.
+                    onDoubleClicked: {
+                        if (!fileIsDir)
+                            musicPlayer.playTrack(model.filePath, model.fileName)
                     }
                 }
             } // Item

@@ -51,8 +51,8 @@ Page {
                 }
 
                 property var model: [
-                  { title: "<font color=\"#ffffff\">"+i18n.tr("Dialer")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the dialer")+"</font>", style:"tel" },
-                  { title: "<font color=\"#ffffff\">"+i18n.tr("Linphone")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open Linphone")+"</font>", style:"linphone" }
+                  { title: i18n.tr("Dialer"), descr: i18n.tr("Open the dialer"), style:"tel" },
+                  { title: i18n.tr("Linphone"), descr: i18n.tr("Open Linphone"), style:"linphone" }
                 ]
 
                 ListItem.ItemSelector {

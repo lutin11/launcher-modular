@@ -15,6 +15,17 @@ import "helpers/PageRequirements.js" as PageRequirements
 Page {
     id: pageSettings
 
+    // A Home page is required; a duplicate Home (created by an older version)
+    // can still be removed as long as one remains.
+    function homeCount() {
+        var count = 0
+        for (var index = 0; index < launchermodular.pageModel.count; index++) {
+            if (launchermodular.pageModel.get(index).name.split(".")[0].toLowerCase() === "home")
+                count++
+        }
+        return count
+    }
+
     header: PageHeader {
         id: headerSettings
         title: i18n.tr("Page management");
@@ -98,11 +109,22 @@ Page {
                         }
                         divider.visible: false
                         onClicked: {
+                            // A second Home makes no sense: a Home page is
+                            // always required and it is not removable. Only a
+                            // Home entry is refused; the other pages are added
+                            // normally.
+                            if (fileName === "Home.qml") {
+                                for (var pageIndex = 0; pageIndex < launchermodular.pageModel.count; pageIndex++) {
+                                    if (launchermodular.pageModel.get(pageIndex).name === "Home.qml")
+                                        return
+                                }
+                            }
                             launchermodular.pageModel.append({
                                 "name": fileName,
                                 "icon": MySettings.getHomeLocation() + "/.launchermodular/pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
                                 "data": {},
-                                "directory": MySettings.getHomeLocation() + "/.launchermodular/pages/"
+                                "directory": MySettings.getHomeLocation() + "/.launchermodular/pages/",
+                                "uid": launchermodular.newPageUid()
                             })
                             PopupUtils.close(listPageDialogue)
                         }
@@ -152,11 +174,22 @@ Page {
                         }
                         divider.visible: false
                         onClicked: {
+                            // A second Home makes no sense: a Home page is
+                            // always required and it is not removable. Only a
+                            // Home entry is refused; the other pages are added
+                            // normally.
+                            if (fileName === "Home.qml") {
+                                for (var pageIndex = 0; pageIndex < launchermodular.pageModel.count; pageIndex++) {
+                                    if (launchermodular.pageModel.get(pageIndex).name === "Home.qml")
+                                        return
+                                }
+                            }
                             launchermodular.pageModel.append({
                                 "name": fileName,
                                 "icon": "pages/" + fileBaseName.toLowerCase() + "/assets/icon.svg",
                                 "data": {},
-                                "directory": "pages/"
+                                "directory": "pages/",
+                                "uid": launchermodular.newPageUid()
                             })
                             PopupUtils.close(listPageDialogue)
                         }
@@ -270,6 +303,9 @@ Page {
                     MouseArea {
                         anchors.fill: parent
                         onClicked:{
+                            if (name.split(".")[0].toLowerCase() === "home"
+                                    && pageSettings.homeCount() <= 1)
+                                return
                             launchermodular.pageModel.remove(index)
                         }
                     }
@@ -277,12 +313,20 @@ Page {
                 }
 
                 Component.onCompleted: {
-                    if(name.split(".")[0] !== "Home"){ actionDelete.visible = true }
+                    if (name.split(".")[0].toLowerCase() !== "home") {
+                        actionDelete.visible = true
+                    } else {
+                        actionDelete.visible = pageSettings.homeCount() > 1
+                    }
                 }
                 onPressAndHold: ListView.view.ViewItems.dragMode = !ListView.view.ViewItems.dragMode
 
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"));
+                    // The settings page of a page can read and write its own
+                    // configuration in the page model (per-page settings).
+                    pageStack.push(Qt.resolvedUrl(directory+name.split(".")[0].toLowerCase()+"/Settings.qml"),
+                                   { pageIndex: index, pageName: name,
+                                     pageUid: launchermodular.pageModel.get(index).uid });
                 }
 
 
@@ -290,7 +334,7 @@ Page {
 
 
             ViewItems.onDragUpdated: {
-                if (event.status == ListItemDrag.Moving) {
+                if (event.status === ListItemDrag.Moving) {
                     model.move(event.from, event.to, 1);
                 }
             }

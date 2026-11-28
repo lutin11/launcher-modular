@@ -5,6 +5,7 @@ import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
+import "../../components"
 
 Page {
     id: widgetSettingsWeather
@@ -73,7 +74,7 @@ Page {
                         anchors.right: parent.right
                         spacing: units.gu(2)
 
-                        TextField {
+                        LauncherTextField {
                             objectName: "textfield_standard"
                             placeholderText: i18n.tr("OpenWeatherMap API")
                             width: parent.width
@@ -122,7 +123,7 @@ Page {
                         anchors.right: parent.right
                         spacing: units.gu(2)
 
-                        TextField {
+                        LauncherTextField {
                             objectName: "textfield_standard"
                             placeholderText: "London,uk "+i18n.tr("or")+" Paris,fr "+i18n.tr("or")+" New York,us …"
                             width: parent.width
@@ -154,8 +155,8 @@ Page {
 
                 ListModel {
                     id: customModel
-                    ListElement { name: "<font color=\"#ffffff\">°F</font>"; description: "<font color=\"#ffffff\">Fahrenheit</font>"; url:"&units=imperial" }
-                    ListElement { name: "<font color=\"#ffffff\">°C</font>"; description: "<font color=\"#ffffff\">Celsius</font>"; url:"&units=metric" }
+                    ListElement { name: "°F"; description: "Fahrenheit"; url:"&units=imperial" }
+                    ListElement { name: "°C"; description: "Celsius"; url:"&units=metric" }
                 }
             } // column
         } //flickable

@@ -156,5 +156,16 @@ Résultats dans `out/` : `launchermodular-<version>-Linux.deb`,
 de démarrage offscreen — « start-up test: ok »). Vérifier le contenu du .deb :
 `ar x out/…deb data.tar.gz && tar -xzf data.tar.gz ./usr/share/launchermodular/qml/Main.qml`.
 
+Deux points vérifiés lors des tests de paquets (novembre 2026) :
+
+- l'AppImage doit contenir `usr/plugins/sqldrivers/libqsqlite.so` : les flux RSS
+  sont stockés par `QtQuick.LocalStorage`, et sans ce pilote l'ajout d'un flux
+  échoue avec `Driver not loaded` (le module QML, lui, est bien embarqué) ;
+  `build-appimage.sh` le copie avant `linuxdeploy` pour que `libQt5Sql` suive ;
+- l'AppImage n'embarque **pas** le thème d'icônes Suru (`usr/share/icons` ne
+  contient que `hicolor`) : les `Icon { name: … }` de Lomiri affichent
+  `image://theme/<nom>` vide (flèches de retour, icônes de suppression). Sans
+  effet sur les icônes d'application, qui viennent de fichiers.
+
 Les builds CI (`main.yml`) produisent en plus les 6 `.click`
 (matrice arch × framework) en artefacts `Launcher-modular_<framework>_<arch>`.

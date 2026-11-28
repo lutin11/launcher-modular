@@ -6,6 +6,9 @@
 #include <QDir>
 #include <QFile>
 #include <QProcessEnvironment>
+#include <QProcess>
+#include <QDesktopServices>
+#include <QUrl>
 #include <QStandardPaths>
 
 namespace {
@@ -118,7 +121,11 @@ Platform::Platform(QObject *parent)
     // tested for itself.
     const bool launchedByClick = !m_appId.isEmpty();
     const bool ubportsImage = QFile::exists(QStringLiteral("/etc/ubports/version"));
-    m_isTouch = launchedByClick || ubportsImage;
+    // clickable desktop runs a click package on the host for testing: APP_ID
+    // is set, but the session (paths, icons, window) is a desktop one.
+    const bool clickableDesktop =
+            !env.value(QStringLiteral("CLICKABLE_DESKTOP_MODE")).isEmpty();
+    m_isTouch = !clickableDesktop && (launchedByClick || ubportsImage);
 
     // --- binaries -----------------------------------------------------------
     m_hasClickTool = !QStandardPaths::findExecutable(QStringLiteral("click")).isEmpty();
@@ -222,6 +229,9 @@ Platform::Platform(QObject *parent)
                                                             QStringList() << QStringLiteral(".2.0")
                                                                            << QStringLiteral(".2")
                                                                            << QString()));
+    // CachedHttpRequest (RSS) stores its cache with U1db.
+    m_hasU1dbModule = anyDirExists(moduleCandidates(QStringLiteral("U1db"),
+                                                    QStringList() << QString()));
 }
 
 void Platform::setImportPaths(const QStringList &paths)
@@ -240,6 +250,30 @@ bool Platform::hasAccountsService()
             interface && interface->isServiceRegistered(QStringLiteral("org.freedesktop.Accounts")).value();
     }
     return m_hasAccountsService;
+}
+
+bool Platform::openExternally(const QString &url)
+{
+    if (url.isEmpty())
+        return false;
+
+    const QString gio = QStandardPaths::findExecutable(QStringLiteral("gio"));
+    if (!gio.isEmpty()) {
+        QProcess process;
+        process.setProgram(gio);
+        process.setArguments({QStringLiteral("open"), url});
+        if (process.startDetached())
+            return true;
+    }
+    return QDesktopServices::openUrl(QUrl(url));
+}
+
+QString Platform::picturesLocation() const
+{
+    QString location = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+    if (location.isEmpty())
+        location = QDir::homePath() + QStringLiteral("/Pictures");
+    return location;
 }
 
 QString Platform::diagnostics()
@@ -281,6 +315,7 @@ QString Platform::diagnostics()
     lines << QStringLiteral("QtSensors: %1").arg(m_hasSensorsModule);
     lines << QStringLiteral("QtSystemInfo: %1").arg(m_hasSystemInfoModule);
     lines << QStringLiteral("QtQuick.LocalStorage: %1").arg(m_hasLocalStorageModule);
+    lines << QStringLiteral("U1db: %1").arg(m_hasU1dbModule);
     lines << QStringLiteral("org.freedesktop.Accounts: %1").arg(hasAccountsService());
     lines << QStringLiteral("import paths: %1").arg(g_importPaths.join(QStringLiteral(", ")));
     return lines.join(QLatin1Char('\n'));

@@ -7,6 +7,14 @@ HERE="$(dirname "$(readlink -f "$0")")"
 # The AppImage runtime sets $APPDIR only when mounting; keep our own tree
 # resolvable when the AppImage was extracted (--appimage-extract, no FUSE).
 export APPDIR="${APPDIR:-$HERE}"
+# Icons collected at build time live inside the bundle. Qt only looks in the
+# system data directories unless XDG_DATA_DIRS points inside the AppImage, so
+# Icon { name: … } would stay empty (see VALIDATION_PACKAGES.md, T2).
+export XDG_DATA_DIRS="$HERE/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+# Do not export LD_LIBRARY_PATH: the executable and the Qt plugins carry a
+# RUNPATH into usr/lib, while child processes (gio, xdg-open, the default video
+# player, launched applications) must use the host libraries. Exporting it made
+# them load the AppImage's older libraries and fail (xdg-open/kde-open, VLC).
 for d in "$HERE"/usr/lib/*/launchermodular; do
     [ -d "$d" ] || continue
     export QML2_IMPORT_PATH="$d${QML2_IMPORT_PATH:+:$QML2_IMPORT_PATH}"

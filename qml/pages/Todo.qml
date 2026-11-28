@@ -3,6 +3,7 @@ import Lomiri.Components 1.3
 import QtQuick.Controls 2.2
 import "todo"
 import Qt.labs.settings 1.0
+import "../components"
 
 Item {
     id: todoPage
@@ -58,7 +59,7 @@ Item {
                 }
             }
 
-            TextField {
+            LauncherTextField {
                 id: todoField
                 focus: false
                 anchors {
@@ -83,7 +84,9 @@ Item {
                     font.pixelSize: units.gu(1.5)
                 }
                 inputMethodHints: Qt.ImhNoPredictiveText
-                Keys.onReturnPressed: {
+                // accepted() is emitted by the field itself for Return/Enter,
+                // including when the field consumes the key event.
+                onAccepted: {
                     TodoModel.save(todoField.text)
                     todoField.text = ""
                 }

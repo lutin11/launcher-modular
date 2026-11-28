@@ -5,13 +5,16 @@ import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import QtOrganizer 5.0
+import Platform 1.0
+import "../../components"
 
 Page {
     id: widgetSettingsEvent
 
     OrganizerModel {
         id: calendarsModel
-        manager: "eds"
+        manager: Platform.preferredOrganizerManager.length > 0
+                 ? Platform.preferredOrganizerManager : "eds"
         autoUpdate: true
     }
 
@@ -105,7 +108,7 @@ Page {
                         anchors.leftMargin: units.gu(2)
                         anchors.right: parent.right
                         spacing: units.gu(2)
-                        TextField {
+                        LauncherTextField {
                             objectName: "textfield_standard"
                             placeholderText: i18n.tr("By default 60 days")
                             width: parent.width
@@ -147,7 +150,7 @@ Page {
                         anchors.right: parent.right
                         spacing: units.gu(2)
 
-                        TextField {
+                        LauncherTextField {
                             objectName: "textfield_standard"
                             placeholderText: i18n.tr("By default 3 event")
                             width: parent.width

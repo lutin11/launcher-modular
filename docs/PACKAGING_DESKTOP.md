@@ -431,7 +431,7 @@ présence d'un module ne pourrait pas être vérifiée.
 
 | Propriété | Comment elle est calculée | Consommateurs |
 |---|---|---|
-| `isTouch` | `APP_ID` positionné (lanceur d'applications) **ou** `/etc/ubports/version` | heuristic affichée dans le diagnostic, **jamais** motif suffisant pour masquer |
+| `isTouch` | `APP_ID` positionné (lanceur d'applications) **ou** `/etc/ubports/version` | `qml/pages/Home.qml`, `qml/pages/home/Settings.qml` : filtre `Icon` des entrées et lancement `application:///` par Lomiri (hors Touch : `AppHandler.launchApp`, voir §10.5). Jamais utilisé pour masquer une page ou un widget |
 | `isAppImage`, `sessionDesktop` | `APPIMAGE`, `XDG_SESSION_DESKTOP`/`DESKTOP_SESSION` | diagnostic |
 | `hasClickTool` | `click` dans le `PATH` | — |
 | `hasLomiriAppLaunch` | `lomiri-app-launch` dans le `PATH` | — |
@@ -506,6 +506,8 @@ donc toujours bloquante.
 | `qml/pages/Home.qml` — widget agenda | `hasOrganizerModule && hasCalendarFeature` | idem |
 | `qml/pages/Home.qml` — recherche et favoris contacts | `hasQtContactsModule && hasContactsFeature` | idem |
 | `qml/pages/Home.qml` — lancement Libertine | `canLaunchLibertine` | appel évité, trace en console au lieu d'un clic sans effet |
+| `qml/pages/Home.qml`, `qml/pages/home/Settings.qml` — filtre `Icon` | `Platform.isTouch` | hors Touch le filtre n'est pas appliqué et `AppHandler.resolveThemedIcons()` convertit les noms d'icônes de thème en fichiers à la demande ; une entrée sans icône exploitable garde l'icône de remplacement au lieu de disparaître |
+| `qml/pages/Home.qml` — lancement d'une entrée `application:///` | `Platform.isTouch` | hors Touch, `AppHandler.launchApp` démarre le fichier `.desktop` via `gio launch` (repli `gtk-launch`) ; trace en console si aucun n'est disponible |
 | `qml/pages/Home.qml` — désinstallation | `canUninstallApps` | `sudo -S` non demandé, trace en console |
 | `qml/Main.qml` — page déjà enregistrée dont un module manque | `PageRequirements.isAvailable()` | état vide `qml/components/PageUnavailable.qml`, qui nomme le ou les modules manquants |
 | `qml/Main.qml` — `pageStack.push("ImportPage.qml")` | `hasContentModule` | ouverture évitée, trace en console |

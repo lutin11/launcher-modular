@@ -2,8 +2,14 @@
 #include <QString>
 #include <QStringList>
 #include <QFile>
+#include <QFileInfo>
 #include <QDir>
+#include <QHash>
+#include <QProcess>
 #include <QTextStream>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QStringConverter>
+#endif
 #include <QDebug>
 #include <QQmlListProperty>
 #include <QRegularExpression>
@@ -11,8 +17,24 @@
 #include "apphandler.h"
 #include "appinfo.h"
 
-#define APP_SYS_PATH "/usr/share/applications/"
 #define HOME_PATH QDir::homePath()
+
+namespace {
+QStringList applicationDirs()
+{
+    // Every XDG applications directory, not only /usr/share/applications: on a
+    // desktop, Snap and Flatpak entries live under
+    // /var/lib/snapd/desktop/applications and
+    // /var/lib/flatpak/exports/share/applications, announced by XDG_DATA_DIRS.
+    // QStandardPaths returns them in precedence order, the user directory
+    // first.
+    QStringList dirs = QStandardPaths::standardLocations(QStandardPaths::ApplicationsLocation);
+    const QString systemDir = QStringLiteral("/usr/share/applications");
+    if (!dirs.contains(systemDir))
+        dirs << systemDir;
+    return dirs;
+}
+}
 
 AppHandler::AppHandler() {
     loadAppsInfo();
@@ -34,8 +56,14 @@ QQmlListProperty<AppInfo> AppHandler::fav_appsinfo()
 }
 void AppHandler::loadAppsInfo()
 {
-    loadAppsFromDir(APP_SYS_PATH);
-    loadAppsFromDir(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+    // The same application id can be exported by several XDG directories (for
+    // example a user override of a system entry): the first one wins, as the
+    // XDG specification requires.
+    QSet<QString> seen;
+    const QStringList dirs = applicationDirs();
+    for (const QString &dir : dirs) {
+        loadAppsFromDir(dir, seen);
+    }
     loadAppsLibertine();
 }
 void AppHandler::loadAppsLibertine()
@@ -59,7 +87,11 @@ void AppHandler::loadLibertineAppsFromDir(const QString& path, const QString& co
       QFile file(dir.filePath(fileName));
       file.open(QIODevice::ReadOnly | QIODevice::Text);
       QTextStream filestream(&file);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+      filestream.setEncoding(QStringConverter::Utf8);
+#else
       filestream.setCodec("UTF-8");
+#endif
 
       QString content = filestream.readAll();
       QString appId = fileName.left(fileName.size() - QString(".desktop").size());
@@ -98,7 +130,11 @@ namespace {
             return QString();
 
         QTextStream stream(&file);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        stream.setEncoding(QStringConverter::Utf8);
+#else
         stream.setCodec("UTF-8");
+#endif
         return stream.readAll();
     }
 
@@ -137,6 +173,80 @@ namespace {
         }
     }
 
+    // QML only displays icon files (".png"/".svg"): a themed icon name such as
+    // "Icon=firefox" would show the placeholder. Search the icon themes
+    // directly instead of going through QIcon: QIconLoader only knows the icon
+    // theme reported by the platform theme, which is not reliable for an
+    // application started outside a desktop session (and missing on some
+    // distributions). Entries that already point to a file are left untouched,
+    // so nothing changes for the packages of Ubuntu Touch.
+    QString themeIconFile(const QString &name)
+    {
+        // Index built once: the icon tree is large, looking up each name
+        // separately would stat thousands of paths per entry.
+        static QHash<QString, QString> index;
+        static bool built = false;
+
+        if (!built) {
+            built = true;
+
+            QStringList iconRoots;
+            for (const QString &dataDir : QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation))
+                iconRoots << dataDir + QStringLiteral("/icons");
+            iconRoots << QDir::homePath() + QStringLiteral("/.icons");
+            iconRoots.removeDuplicates();
+
+            for (const QString &iconRoot : iconRoots) {
+                QDir rootDir(iconRoot);
+                QStringList themes = rootDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+                themes.sort();
+                // hicolor is the fallback theme every package installs to.
+                if (themes.removeAll(QStringLiteral("hicolor")))
+                    themes.prepend(QStringLiteral("hicolor"));
+
+                for (const QString &theme : themes) {
+                    QDir themeDir(rootDir.filePath(theme));
+                    QStringList sizes = themeDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+                    // Largest first, so a 256x256 icon wins over its 16x16
+                    // version; "scalable" (SVG) wins over any bitmap.
+                    std::sort(sizes.begin(), sizes.end(), [](const QString &a, const QString &b) {
+                        if ((a == QStringLiteral("scalable")) != (b == QStringLiteral("scalable")))
+                            return a == QStringLiteral("scalable");
+                        return a.section(QLatin1Char('x'), 0, 0).toInt()
+                               > b.section(QLatin1Char('x'), 0, 0).toInt();
+                    });
+
+                    for (const QString &size : sizes) {
+                        const QDir appsDir(themeDir.filePath(size + QStringLiteral("/apps")));
+                        if (!appsDir.exists())
+                            continue;
+                        const QFileInfoList files = appsDir.entryInfoList(
+                            QStringList() << QStringLiteral("*.svg") << QStringLiteral("*.png"),
+                            QDir::Files);
+                        for (const QFileInfo &file : files) {
+                            const QString iconName = file.completeBaseName();
+                            if (!index.contains(iconName))
+                                index.insert(iconName, file.absoluteFilePath());
+                        }
+                    }
+                }
+            }
+        }
+
+        return index.value(name);
+    }
+
+    void resolveThemedIcon(AppInfo* app)
+    {
+        const QString iconName = app->getProp("Icon");
+        if (iconName.isEmpty() || iconName.contains('/'))
+            return;
+
+        const QString iconFile = themeIconFile(iconName);
+        if (!iconFile.isEmpty())
+            app->setIcon(iconFile);
+    }
+
     void importSubDesktop(AppInfo* app)
     {
         QString source = app->getProp("X-Lomiri-UAL-Source-Desktop");
@@ -150,7 +260,7 @@ namespace {
 
 }
 
-void AppHandler::loadAppsFromDir(const QString& path)
+void AppHandler::loadAppsFromDir(const QString& path, QSet<QString> &seen)
 {
     QDir dir(path);
     QStringList fileList = dir.entryList({"*.desktop"}, QDir::Files);
@@ -165,6 +275,10 @@ void AppHandler::loadAppsFromDir(const QString& path)
         QString appId = fileName;
         appId.chop(QString(".desktop").size());
 
+        if (seen.contains(appId))
+            continue;
+        seen.insert(appId);
+
         AppInfo* app = new AppInfo(appId, content);
 
         importSubDesktop(app);
@@ -172,6 +286,70 @@ void AppHandler::loadAppsFromDir(const QString& path)
 
         _appinfos.append(app);
     }
+}
+
+namespace {
+QString desktopFilePath(const QString &desktopId)
+{
+    QString fileName = desktopId;
+    const QString schemePrefix = QStringLiteral("application:///");
+    if (fileName.startsWith(schemePrefix))
+        fileName.remove(0, schemePrefix.size());
+    if (!fileName.endsWith(QStringLiteral(".desktop")))
+        fileName += QStringLiteral(".desktop");
+
+    if (QFileInfo(fileName).isAbsolute())
+        return QFileInfo::exists(fileName) ? fileName : QString();
+
+    const QStringList dirs = applicationDirs();
+    for (const QString &dir : dirs) {
+        const QString candidate = QDir(dir).filePath(fileName);
+        if (QFileInfo::exists(candidate))
+            return candidate;
+    }
+    return QString();
+}
+}
+
+bool AppHandler::launchApp(const QString& desktopId)
+{
+    const QString path = desktopFilePath(desktopId);
+    if (path.isEmpty()) {
+        qWarning() << "launchApp: no desktop file for" << desktopId;
+        return false;
+    }
+
+    // "gio launch" applies what the desktop entry describes (Exec and its
+    // field codes, Terminal, working directory); it is the desktop equivalent
+    // of the Lomiri URL handler used on Ubuntu Touch. gtk-launch, which takes
+    // the application id instead of the file path, is kept as a fallback.
+    QString program = QStandardPaths::findExecutable(QStringLiteral("gio"));
+    QStringList arguments;
+    if (!program.isEmpty()) {
+        arguments << QStringLiteral("launch") << path;
+    } else {
+        program = QStandardPaths::findExecutable(QStringLiteral("gtk-launch"));
+        if (program.isEmpty()) {
+            qWarning() << "launchApp: neither gio nor gtk-launch is installed";
+            return false;
+        }
+        QString appId = QFileInfo(path).fileName();
+        appId.chop(QString(".desktop").size());
+        arguments << appId;
+    }
+
+    const bool started = QProcess::startDetached(program, arguments);
+    if (!started)
+        qWarning() << "launchApp: could not start" << program << arguments;
+    return started;
+}
+
+void AppHandler::resolveThemedIcons()
+{
+    for (AppInfo *app : _appinfos)
+        resolveThemedIcon(app);
+    for (AppInfo *app : _fav_appinfos)
+        resolveThemedIcon(app);
 }
 
 void AppHandler::append_appinfo(QQmlListProperty<AppInfo> *list, AppInfo *appinfo)

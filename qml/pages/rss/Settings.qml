@@ -2,12 +2,20 @@ import QtQuick 2.12
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
+import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import MySettings 1.0
 import NetworkHelper 1.0
+import "../../components"
 
 
 Page {
     id: pageSettingsRss
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     anchors.fill: parent
 
     property string rssPageName: i18n.tr("rss") // do not remove, use pour Po files
@@ -38,9 +46,22 @@ Page {
         anchors.topMargin: units.gu(6)
         height: units.gu(60)
 
+        ListItemHeader.Header {
+            id: rssSettingsHeader
+            width: parent.width
+            text: "<font color=\"#ffffff\">"
+                  + i18n.tr("Settings for 'RSS' page")
+                  + "</font>"
+        }
+
         Flickable {
             id: flickableRssSettings
-            anchors.fill: parent
+            anchors {
+                top: rssSettingsHeader.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
             //contentHeight: rssList.height
             flickableDirection: Flickable.VerticalFlick
             clip: true
@@ -80,7 +101,7 @@ Page {
                         }
                     }
 
-                    TextField {
+                    LauncherTextField {
                         id: rssField
                         anchors {
                             left: iconRss.right
@@ -107,25 +128,33 @@ Page {
                         property string urlToSave: ""
 
                         function isValidUrl(url) {
-                            var pattern = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+                            // Light sanity check only; QUrl and the reachability
+                            // test in NetworkHelper do the real validation. The
+                            // former pattern refused ports, query strings and
+                            // uppercase letters, i.e. many valid feeds.
+                            var pattern = /^https?:\/\/[^\s\/]+\.[^\s]+$/i;
                             return pattern.test(url);
                         }
 
-                        Keys.onReturnPressed: {
-                            if (!rssField.isValidUrl(rssField.text)) {
+                        // The field itself reports the Return/Enter key through
+                        // accepted(); the attached Keys handler is bypassed as
+                        // soon as the field consumes the key event.
+                        onAccepted: {
+                            var url = rssField.text.trim()
+                            if (!rssField.isValidUrl(url)) {
                                 errorLine.visible = true
                                 invalidTextError.text = i18n.tr("Invalid URL format")
                                 return
                             }
-                            rssField.urlToSave = rssField.text;  // Store text in temporary property
-                            NetworkHelper.checkUrlReachable(rssField.text)
+                            rssField.urlToSave = url;  // Store text in temporary property
+                            NetworkHelper.checkUrlReachable(url)
                         }
                         maximumLength: 100
                     }
 
                     Connections {
                         target: NetworkHelper
-                        onUrlCheckCompleted: function(reachable, isRssFeed) {
+                        function onUrlCheckCompleted(reachable, isRssFeed) {
                             if (reachable && isRssFeed) {
                                 if (DEBUG_MODE) console.log("URL " + rssField.urlToSave + " is a valid RSS feed");
                                 RssModel.save(rssField.urlToSave);

@@ -1,20 +1,54 @@
 import QtQuick 2.12
 import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.12
+import MySettings 1.0
 
+// Folder picker shared by the page settings (pictures, music, videos).
+// The caller gives the setting to update, the folder shown first and the
+// folder the navigation stops at:
+//
+//   pageStack.push(Qt.resolvedUrl("../picture/SelectFolderPage.qml"), {
+//       settingName: "folderMusic",
+//       rootPath: MySettings.getHomeLocation(),
+//       startPath: launchermodular.settings.folderMusic
+//   })
 Page {
     id: folderPicker
 
-    property string rootPath: "/home/phablet"
+    /// Settings property receiving the chosen folder.
+    property string settingName: "folderImage"
+    /// Folder the user cannot go above.
+    property string rootPath: MySettings.getHomeLocation()
+    /// Folder shown when the page opens.
+    property string startPath: ""
 
-    property string currentPath: rootPath
-    property string parentFolder: "/home/phablet"
+    property string currentPath: startPath.length > 0 ? startPath : rootPath
 
+    function goUp() {
+        var idx = currentPath.lastIndexOf("/")
+        if (idx > 0 && currentPath !== rootPath)
+            currentPath = currentPath.substring(0, idx)
+        else
+            pageStack.pop()
+    }
+
+    function applySelection() {
+        if (settingName === "folderMusic")
+            launchermodular.settings.folderMusic = currentPath
+        else if (settingName === "folderVideo")
+            launchermodular.settings.folderVideo = currentPath
+        else
+            launchermodular.settings.folderImage = currentPath
+        pageStack.pop()
+    }
+
+    // Only folders are listed: choosing an image or a music file as the
+    // "folder" made no sense and left the page empty.
     FolderListModel {
         id: folderModel
         folder: "file://" + currentPath
         showDirs: true
-        showFiles: true
+        showFiles: false
     }
 
     header: PageHeader {
@@ -23,33 +57,20 @@ Page {
             Action {
                 iconName: "back"
                 text: i18n.tr("Back")
-                visible: folderModel.folder != "file://" + rootPath
-
-                onTriggered: {
-                    var idx = currentPath.lastIndexOf("/")
-                    if (idx > 0 && currentPath !== rootPath) {
-                        currentPath = currentPath.substring(0, idx)
-                    } else {
-                        cancel()
-                        pageStack.pop()
-                    }
-                }
+                onTriggered: folderPicker.goUp()
             }
         ]
         trailingActionBar.actions: [
             Action {
                 iconName: "tick"
                 text: i18n.tr("Select")
-                onTriggered: {
-                    launchermodular.settings.folderImage = currentPath
-                    pageStack.pop()
-                }
+                onTriggered: folderPicker.applySelection()
             }
         ]
     }
 
     Rectangle {
-        id:pictureMainSettings
+        id: folderPickerBackground
         color: "#111111"
         anchors {
             fill: parent
@@ -58,10 +79,7 @@ Page {
 
         ListView {
             id: listView
-            anchors {
-                fill: parent
-                topMargin: folderPicker.header.height
-            }
+            anchors.fill: parent
             model: folderModel
             delegate: Item {
                 width: parent.width
@@ -72,15 +90,15 @@ Page {
                     spacing: units.gu(1)
 
                     Icon {
-                        name: model.fileIsDir ? "folder-symbolic" : "image-symbolic"
-                        height: units.gu(launchermodular.settings.musicFontSize)
-                        width: units.gu(launchermodular.settings.musicFontSize)
+                        name: "folder-symbolic"
+                        height: units.gu(3)
+                        width: height
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
                     Label {
                         text: fileName
-                        color:  "#FFFFFF"
+                        color: "#FFFFFF"
                         anchors.verticalCenter: parent.verticalCenter
                         elide: Text.ElideRight
                     }
@@ -88,21 +106,21 @@ Page {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: {
-                        folderPicker.currentPath = model.filePath
-                    }
+                    onClicked: folderPicker.currentPath = model.filePath
                 }
             }
         }
-    }
 
-    Keys.onBackPressed: {
-        var idx = currentPath.lastIndexOf("/")
-        if (idx > 0) {
-            currentPath = currentPath.substring(0, idx)
-        } else {
-            cancel()
-            pageStack.pop()
+        Label {
+            anchors.centerIn: parent
+            width: parent.width - units.gu(4)
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
+            color: "#FFFFFF"
+            visible: folderModel.status === FolderListModel.Ready && folderModel.count === 0
+            text: i18n.tr("This folder contains no sub-folder.")
         }
     }
+
+    Keys.onBackPressed: folderPicker.goUp()
 }

@@ -208,6 +208,24 @@ Rectangle {
         }
     }
 
+    // Play a track immediately (double click in the music list): add it to
+    // the playlist if needed, then load it with autoPlay.
+    function playTrack(filePath, fileName) {
+        var index = -1
+        for (var i = 0; i < playlist.length; i++) {
+            if (playlist[i].path === filePath) {
+                index = i
+                break
+            }
+        }
+        if (index === -1) {
+            addToPlaylist(filePath, fileName)
+            index = playlist.length - 1
+        }
+        if (index >= 0)
+            loadTrack(index, true)
+    }
+
     function addToPlaylist(filePath, fileName) {
         var newPlaylist = playlist.slice()
         newPlaylist.push({path: filePath, name: fileName})
@@ -282,7 +300,13 @@ Rectangle {
         copyIndex++
         currentCacheFile = cachedPath
 
-        audioPlayer.source = cachedPath
+        if (cachedPath.length === 0) {
+            console.log("MusicPlayer: could not cache", path)
+            return
+        }
+        // QMediaPlayer expects a URL; a bare absolute path is not always
+        // resolved on a desktop GStreamer backend.
+        audioPlayer.source = "file://" + cachedPath
         if (autoPlay) audioPlayer.play()
 
         currentIndex = index
@@ -400,7 +424,8 @@ Rectangle {
         var filename = sourcePath.split("/").pop()
         var cachedName = index + "_" + sanitizeName(filename)
         var destPath = tempCacheDir + cachedName
-        Terminalaccess.copyFile(sourcePath, destPath)
+        if (!Terminalaccess.copyFile(sourcePath, destPath))
+            return ""
         return destPath
     }
 

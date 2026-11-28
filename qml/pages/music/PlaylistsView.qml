@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import Lomiri.Components 1.3
 import QtQuick.Controls 2.2
+import "../../components"
 
 Item {
     id: playlistsView
@@ -62,7 +63,7 @@ Item {
                 }
             }
 
-            TextField {
+            LauncherTextField {
                 id: playlistField
                 focus: false
                 anchors {
@@ -87,7 +88,9 @@ Item {
                     font.pixelSize: units.gu(1.5)
                 }
                 inputMethodHints: Qt.ImhNoPredictiveText
-                Keys.onReturnPressed: {
+                // accepted() is emitted by the field itself for Return/Enter,
+                // including when the field consumes the key event.
+                onAccepted: {
                     createPlaylist(playlistField.text)
                     playlistField.text = ""
                     playlistField.focus = false

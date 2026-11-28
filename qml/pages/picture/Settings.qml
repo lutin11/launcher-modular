@@ -6,10 +6,18 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
 import QtQuick.Layouts 1.12
+import MySettings 1.0
+import "../../components"
 
 Page {
     id: picturePageSettingsPicture
 
+    // Injected by Pagemanagement: the settings entry of a page knows which
+    // page it configures (pageIndex is kept for compatibility, pageUid is the
+    // stable identifier used by the per-page configuration).
+    property int pageIndex: -1
+    property string pageName: ""
+    property string pageUid: ""
     property string picturePageName: i18n.tr("picture") // do not remove, use pour Po files
 
     header: PageHeader {
@@ -47,53 +55,46 @@ Page {
                 //anchors.fill: parent
                 spacing: units.gu(1)
 
-                // --- Image folder path ---
-                Row {
+                ListItemHeader.Header {
                     width: parent.width
-                    height: units.gu(4)
-                    spacing: units.gu(2)
-
-                    Label {
-                        text: i18n.tr("Image folder path:")
-                        color: "#FFFFFF"
-                        anchors.verticalCenter: parent.verticalCenter
-                        elide: Text.ElideRight
-                        font.weight: Font.Light
-                    }
+                    text: "<font color=\"#ffffff\">"
+                          + i18n.tr("Settings for 'picture' page")
+                          + "</font>"
                 }
 
-                // --- Path selection bar ---
-                Rectangle {
-                    id: searchBar
+                // --- Image folder path ---
+                Label {
+                    text: i18n.tr("Image folder path:")
+                    color: "#FFFFFF"
                     width: parent.width
-                    height: units.gu(5)
-                    color: Theme.name.indexOf("Dark") !== -1 ? "#111111" : "white"
-                    radius: 5
+                    font.pixelSize: units.gu(1.4)
+                }
 
-                    Row {
-                        anchors.fill: parent
-                        anchors.margins: units.gu(1)
-                        spacing: units.gu(1)
+                Row {
+                    width: parent.width
+                    height: units.gu(4.5)
+                    spacing: units.gu(1)
 
-                        TextField {
-                            id: imageManualPath
-                            text: launchermodular.settings.folderImage
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: parent.width - iconSearch.width - units.gu(1)
-                            verticalAlignment: Text.AlignVCenter
-                            onTextChanged: launchermodular.settings.folderImage = text
-                        }
+                    LauncherTextField {
+                        id: imageManualPath
+                        width: parent.width - iconSearch.width - units.gu(1)
+                        height: parent.height
+                        text: launchermodular.settings.folderImage
+                        onTextChanged: launchermodular.settings.folderImage = text
+                    }
 
-                        Icon {
-                            id: iconSearch
-                            anchors.verticalCenter: parent.verticalCenter
-                            height: parent.height
-                            width: height
-                            name: "find"
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: pageStack.push(Qt.resolvedUrl("SelectFolderPage.qml"))
-                            }
+                    Icon {
+                        id: iconSearch
+                        height: parent.height
+                        width: height
+                        name: "find"
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: pageStack.push(Qt.resolvedUrl("SelectFolderPage.qml"), {
+                                settingName: "folderImage",
+                                rootPath: MySettings.getHomeLocation(),
+                                startPath: launchermodular.settings.folderImage
+                            })
                         }
                     }
                 }

@@ -5,18 +5,26 @@ import Lomiri.Components 1.3
 import Qt.labs.folderlistmodel 2.12
 import Lomiri.Thumbnailer 0.1
 import MySettings 1.0
+import Platform 1.0
 
 import QtQuick.Controls 2.2
+import "../components"
 
 Item {
     id: videos
 
-    property string rootVideo: MySettings.getVideoLocation()
+    // The folder can be changed in the page settings; the platform default is
+    // used when the setting is empty.
+    property string rootVideo: launchermodular.settings.folderVideo.length > 0
+                             ? launchermodular.settings.folderVideo
+                             : MySettings.getVideoLocation()
     property var videoNameFilters: ["*.mp4", "*.m4v", "*.webm", "*.mkv", "*.avi", "*.3gp", "*.ogv", "*.flv"]
     property string searchTerm: ""
     property var folders: []
     property bool initialParsingDone: false
-    property string parentFolder: MySettings.getVideoLocation()
+    property string parentFolder: launchermodular.settings.folderVideo.length > 0
+                                ? launchermodular.settings.folderVideo
+                                : MySettings.getVideoLocation()
     property string pendingSearch: ""
 
     ListModel {
@@ -97,6 +105,17 @@ Item {
         }
     }
 
+    // Encode each path segment: file names often contain spaces or accents,
+    // and Qt.openUrlExternally needs a valid URL.
+    function openVideo(path) {
+        var encoded = path.split("/").map(encodeURIComponent).join("/")
+        var url = (Platform.isTouch ? "video://" : "file://") + encoded
+        if (Platform.isTouch)
+            Qt.openUrlExternally(url)
+        else
+            Platform.openExternally(url)
+    }
+
     function searchVideo(term) {
         if (DEBUG_MODE) console.log("searchVideo with term:" + term)
         searchTerm = term
@@ -148,7 +167,7 @@ Item {
             }
         }
 
-        TextField {
+        LauncherTextField {
             id: searchField
             focus: false
             anchors {
@@ -267,7 +286,11 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 if (!fileIsDir) {
-                                    Qt.openUrlExternally("video://" + model.filePath)
+                                    // Ubuntu Touch knows the video:// scheme and
+                                    // opens its media player. A desktop has no
+                                    // such handler: use file:// so xdg-open
+                                    // starts the default video player.
+                                    openVideo(model.filePath)
                                 } else {
                                     searchTerm = ""
                                     videoFileModel.folder = model.filePath

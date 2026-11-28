@@ -9,9 +9,19 @@ import QtSystemInfo 5.0 // for screen saver
 Item {
     id: clock
 
-    property int currentOrientation: Qt.PrimaryOrientation
     property real targetFontSize: launchermodular.settings.clockFontSize
     property int pixelDensityFactor: Screen.pixelDensity.toFixed(2) / 5.51
+
+    // Font size in pixels that fits the current page. The setting is the
+    // maximum; the window dimensions reduce it when the page is smaller, so
+    // resizing the desktop window (or rotating the phone) resizes the clock
+    // through the binding.
+    readonly property real fittedFontSize: {
+        var wanted = Math.max(10, targetFontSize * pixelDensityFactor)
+        var byWidth = width > 0 ? width / 4.8 : wanted
+        var byHeight = height > 0 ? height * 0.6 : wanted
+        return Math.max(10, Math.min(wanted, byWidth, byHeight))
+    }
 
     ScreenSaver {
         id: screenSaver
@@ -33,7 +43,6 @@ Item {
           if (visible) {
               pageClockTimer.running = true
               updateTime()
-              adjustFontSize()
               screenSaver.screenSaverEnabled = false
           } else {
               pageClockTimer.running = false
@@ -41,25 +50,10 @@ Item {
           }
     }
 
-    function adjustFontSize() {
-        targetFontSize = (OrientationReading.TopUp ||
-                          OrientationReading.TopDow ||
-                          (OrientationReading.FaceUp &&
-                           currentOrientation === (OrientationReading.TopUp || OrientationReading.TopDow)
-                           ))
-                ? launchermodular.settings.clockFontSize * 0.95
-                : (launchermodular.settings.clockFontSize * (Screen.width/Screen.height)* 0.95)
-    }
-
     function randomTimeHHMM() {
         const h = Math.floor(Math.random() * 24)
         const m = Math.floor(Math.random() * 60)
         return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`
-    }
-
-    function onOrientationChanged(newOrientation) {
-        currentOrientation = newOrientation
-        adjustFontSize()
     }
 
     Timer {
@@ -69,16 +63,6 @@ Item {
         repeat: true
         onTriggered: {
             updateTime()
-        }
-    }
-
-    OrientationSensor {
-        id: orientationSensor
-        active: true
-
-        onReadingChanged: {
-            const o = reading.orientation;
-            clock.onOrientationChanged(o)
         }
     }
 
@@ -93,7 +77,7 @@ Item {
             anchors.rightMargin: units.gu(1)
             width:parent.width
             font.family: launchermodular.settings.clockFontFamily
-            font.pixelSize: targetFontSize * pixelDensityFactor
+            font.pixelSize: clock.fittedFontSize
             font.italic: launchermodular.settings.clockFontItalic
             font.weight: launchermodular.settings.clockFontWeight
             color: launchermodular.settings.clockFontColor
@@ -110,8 +94,6 @@ Item {
                 }
             }
         }
-
-        Component.onCompleted: adjustFontSize()
 
         MouseArea {
             anchors.fill: parent

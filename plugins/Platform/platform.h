@@ -71,6 +71,7 @@ class Platform : public QObject
     Q_PROPERTY(bool hasSensorsModule READ hasSensorsModule CONSTANT)
     Q_PROPERTY(bool hasSystemInfoModule READ hasSystemInfoModule CONSTANT)
     Q_PROPERTY(bool hasLocalStorageModule READ hasLocalStorageModule CONSTANT)
+    Q_PROPERTY(bool hasU1dbModule READ hasU1dbModule CONSTANT)
 
     // Services
     Q_PROPERTY(bool hasAccountsService READ hasAccountsService NOTIFY capabilitiesChanged)
@@ -112,6 +113,7 @@ public:
     bool hasSensorsModule() const { return m_hasSensorsModule; }
     bool hasSystemInfoModule() const { return m_hasSystemInfoModule; }
     bool hasLocalStorageModule() const { return m_hasLocalStorageModule; }
+    bool hasU1dbModule() const { return m_hasU1dbModule; }
 
     bool hasAccountsService();
 
@@ -119,6 +121,16 @@ public:
     // translated: it describes the machine and is meant to be pasted into a bug
     // report, it is not a user interface label.
     Q_INVOKABLE QString diagnostics();
+
+    // Pictures folder of the session (XDG Pictures). The Ubuntu Touch images
+    // live in a fixed pablet path that does not exist on a desktop.
+    Q_INVOKABLE QString picturesLocation() const;
+
+    // Opens a URL with the desktop's default handler. On Linux this uses
+    // "gio open": xdg-open goes through kde-open on KDE, which fails to pass a
+    // local video file to the configured player. Ubuntu Touch keeps using the
+    // Lomiri URL handlers from QML.
+    Q_INVOKABLE bool openExternally(const QString &url);
 
 signals:
     void capabilitiesChanged();
@@ -151,6 +163,7 @@ private:
     bool m_hasSensorsModule = false;
     bool m_hasSystemInfoModule = false;
     bool m_hasLocalStorageModule = false;
+    bool m_hasU1dbModule = false;
     bool m_accountsChecked = false;
     bool m_hasAccountsService = false;
 };

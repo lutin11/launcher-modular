@@ -6,6 +6,7 @@ import QtQuick.Controls 2.2
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import Lomiri.Components.Popups 1.3
+import Lomiri.Components.Themes 1.3
 import Platform 1.0
 import "pages"
 
@@ -126,10 +127,16 @@ Page {
                                 TextEdit {
                                     id: diagnosticText
                                     width: parent.width
+                                    // A TextEdit does not size itself to its
+                                    // content: without this binding the dialog
+                                    // opens empty (contentHeight stays 0).
+                                    height: contentHeight
                                     readOnly: true
                                     selectByMouse: true
                                     text: Platform.diagnostics()
-                                    color: "#ffffff"
+                                    // The dialog uses the light Lomiri surface:
+                                    // a hard-coded white text would be invisible.
+                                    color: Theme.palette.normal.backgroundText
                                     font.family: "Monospace"
                                     font.pixelSize: units.gu(1.6)
                                     wrapMode: Text.WordWrap

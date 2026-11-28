@@ -63,9 +63,20 @@ Item {
 
     onVisibleChanged: {
         if (visible) {
-            // the tour explains the launcher from its first page
+            // The tour explains Home, wherever it sits in the page list. With
+            // the circular paging the SwipeView holds a clone of the last page
+            // before the real pages, so a real page is displayed one index
+            // further (index 0 is that clone, and Main.qml would jump to the
+            // last page).
             if (pageView) {
-                pageView.currentIndex = 0
+                var homeIndex = 0
+                for (var page = 0; page < launchermodular.pageModel.count; page++) {
+                    if (launchermodular.pageModel.get(page).name === "Home.qml") {
+                        homeIndex = page
+                        break
+                    }
+                }
+                pageView.currentIndex = launchermodular.pageCount > 1 ? homeIndex + 1 : homeIndex
             }
             steps = buildSteps()
             showStep(0, false)

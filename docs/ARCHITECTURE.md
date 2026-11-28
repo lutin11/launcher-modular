@@ -37,6 +37,10 @@ c'est la variable d'environnement `CLICKABLE_FRAMEWORK` qui sélectionne le
 framework (README, CI). CI : `amd64`, `arm64`, `armhf` croisés avec
 `ubuntu-touch-24.04-1.x` et `ubuntu-sdk-20.04`.
 
+Qt 5.15 reste la cible de référence : le port Qt 6 de Lomiri est en cours. Le
+code est préparé pour Qt 6 (CMake `-DUSE_QT6=ON`, C++17, APIs C++ compatibles)
+et les blocages restants sont listés dans `docs/QT6.md`.
+
 ## 3. Architecture d'exécution
 
 ```
@@ -110,7 +114,7 @@ plugins sont indépendants entre eux** et ne communiquent que par QML.
 
 | Plugin | Rôle | Qt | Utilisé par |
 |---|---|---|---|
-| `AppHandler` | Inventaire des apps (`.desktop`, conteneurs Libertine), filtres, favoris, désinstallation | Core, Qml, Quick, DBus | `Main`, `Home`, `home/Settings`, `FavoriteApp` |
+| `AppHandler` | Inventaire des apps (dossiers XDG `.desktop`, conteneurs Libertine), résolution des icônes de thème, filtres, favoris, désinstallation, lancement `gio`/`gtk-launch` hors Ubuntu Touch | Core, Qml, Quick, DBus | `Main`, `Home`, `home/Settings`, `FavoriteApp` |
 | `MySettings` | Locales utilisateur, fond d'écran via D-Bus AccountsService | Core, Qml, Quick, DBus | `Main`, Musique, Vidéos, Dossiers, Nextcloud, RSS settings, `FavoriteApp`, `Pagemanagement` |
 | `Terminalaccess` | Exécution de commandes (`QProcess`, `sh -c`), helpers fichiers, détection de l'invite `sudo` | Core, Qml, Quick, DBus | `Home`, `MusicPlayer`, `NextcloudFolders` |
 | `NetworkHelper` | Teste une URL et détecte un flux RSS/Atom | Core, Qml, Quick, DBus | `Rss`, `rss/Settings` |
@@ -128,7 +132,7 @@ Hors plugins : `WindowController` (plein écran), utilisé par `Clock` et
 
 Cœur de l'application : bloc `Settings` (≈65 propriétés persistées), trois
 `ListModel` persistés, `SwipeView` des pages, barre de navigation, panneau de
-réglages du bord bas et dialogue de création d'icône personnalisée et masque
+réglages du bord bas, dialogue de création d'icône personnalisée et masque
 pédagogique (`Tutorial`, présenté au premier lancement et relançable depuis
 l'aide). C'est aussi le principal point de couplage : presque toutes les pages,
 widgets et composants référencent `launchermodular`, `settings` et les
@@ -148,7 +152,7 @@ pages/
 
 | Page | Points notables |
 |---|---|
-| `Home` | Grille d'apps, recherche (apps, contacts, web, calculatrice), favoris, lancement (`terminal:///`, Libertine), désinstallation |
+| `Home` | Grille d'apps, recherche (apps, contacts, web, calculatrice), favoris, lancement (`terminal:///`, Libertine, `application:///` via Lomiri ou `AppHandler.launchApp` hors Touch), désinstallation |
 | `Calendar` | QtOrganizer 5.0 |
 | `Clock` | Horloge plein écran (DSEG7), `WindowController` |
 | `Picture` | Galerie (FolderListModel, Thumbnailer) |
@@ -166,10 +170,10 @@ pages/
   `Alarm`, `Calculator`, `FavoriteApp`, `FavoriteContact`, `SearchContact`.
 - Singletons QML (`pragma Singleton`, via `qmldir`) : `RssModel`, `TodoModel`.
 - `qml/components/` : `FeedsModel`, `Feed`, `FeedItem`, `RssChannel`,
-  `RssChannelItems` (modèles RSS),  `Tutorial` (masque pédagogique « visite
-  guidée », instancié par `Main.qml` ; voit l'application à travers les ids que
-  `Main.qml` lui passe et la propriété `tutorialTargets` de la page affichée).
-  `PageUnavailable` (état vide d'une page non chargeable).
+  `RssChannelItems`, `PageUnavailable` (état vide d'une page non chargeable).
+  `Tutorial` (masque pédagogique « visite guidée », instancié par `Main.qml` ;
+  voit l'application à travers les ids que `Main.qml` lui passe et la propriété
+  `tutorialTargets` de la page affichée).
   `qml/helpers/` : `CachedHttpRequest` (worker + cache U1db),
   `PageRequirements.js` (table page embarquée → modules extérieurs requis).
 
@@ -192,7 +196,12 @@ provider manque (versions desktop, `.click` sans pile téléphonique). Règles :
 - **providers contacts et agenda** : `Platform.hasContactsFeature` et
   `hasCalendarFeature` valent vrai sur Ubuntu Touch (pile attendue, non sondable
   depuis le conteneur de référence) et exigent un provider exploitable ailleurs ;
-  le nom du provider vient de `Platform.preferredContactManager`.
+  le nom du provider vient de `Platform.preferredContactManager` ;
+- **filtre d'icônes du lanceur** : sur Ubuntu Touch, `Home` et `home/Settings`
+  ne gardent que les entrées dont `Icon` est un chemin de fichier
+  (`permaFilter("Icon", "/.*$")`). Hors Touch, `AppHandler` résout les noms
+  d'icônes de thème en fichiers et le filtre n'est pas appliqué : aucune
+  application installée ne disparaît de la grille à cause de son icône.
 
 Détails, vérifications et limites : `docs/PACKAGING_DESKTOP.md` §10.
 
@@ -201,7 +210,8 @@ Détails, vérifications et limites : `docs/PACKAGING_DESKTOP.md` §10.
 **Qt C++** : Core/Gui/Qml/Quick (binaire) ; DBus (AppHandler, MySettings,
 LibertineLauncher…) ; Contacts (ContactHelper) ; Network (NetworkHelper).
 **À l'exécution** : bus D-Bus (AccountsService), `sh`, `lomiri-app-launch`,
-`click`.
+`click` (Ubuntu Touch) ; `gio` ou, à défaut, `gtk-launch` pour lancer les
+entrées `.desktop` hors Ubuntu Touch (`AppHandler::launchApp`).
 
 **Modules QML** (résolus à l'exécution, selon le framework — **non vérifiés
 par la CI**) :
@@ -294,11 +304,18 @@ l'exécution.
                                 // ou absolu pour une page personnalisée
        "data": {},              // objet JSON libre persisté, injecté dans la
                                 // page sous le nom "pageData"
-       "directory": "pages/"    // page embarquée ; page personnalisée :
+       "directory": "pages/",   // page embarquée ; page personnalisée :
                                 // MySettings.getHomeLocation()
                                 //   + "/.launchermodular/pages/"
+       "uid": "p…"              // identifiant stable, généré par
+                                // launchermodular.newPageUid() ; il indexe
+                                // settings.pageConfigsJson
    }
    ```
+
+La page de réglages reçoit `pageIndex` (position), `pageName` et `pageUid`
+(stable) via `pageStack.push()`. Une page tierce doit déclarer ces trois
+propriétés pour les recevoir sans avertissement.
 
    Le `Loader` de `Main.qml` instancie `Qt.createComponent(model.directory +
    model.name)` ; l'entrée par défaut créée au premier lancement est
@@ -312,6 +329,7 @@ l'exécution.
    `qml/helpers/PageRequirements.js` : la liste « ajouter une page » la retirera
    et `Main.qml` affichera `PageUnavailable` là où elle est déjà configurée
    (§6.4).
+4. Vérifier que tout import QML utilisé existe sur le framework cible.
 5. Facultatif — offrir la visite guidée (`qml/components/Tutorial.qml`) :
    exposer à la racine de la page une carte `tutorialTargets` dont les clés sont
    citées par les étapes et les valeurs les éléments à encadrer.

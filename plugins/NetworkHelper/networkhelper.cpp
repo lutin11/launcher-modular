@@ -6,13 +6,47 @@
 #include <QUrl>
 #include <QObject>
 
-NetworkHelper::NetworkHelper(QObject *parent) : QObject(parent), manager(new QNetworkAccessManager(this)) {
+NetworkHelper::NetworkHelper(QObject *parent)
+    : QObject(parent),
+      manager(new QNetworkAccessManager(this)),
+      requestManager(new QNetworkAccessManager(this)) {
     connect(manager, &QNetworkAccessManager::finished, this, &NetworkHelper::onReplyFinished);
+}
+
+void NetworkHelper::sendRequest(const QString &tag, const QString &method,
+                                const QString &url, const QString &body,
+                                const QString &headers) {
+    QUrl qurl(url);
+    if (!qurl.isValid() || (qurl.scheme() != "http" && qurl.scheme() != "https")) {
+        emit requestFinished(tag, 0, QString());
+        return;
+    }
+
+    QNetworkRequest request(qurl);
+    request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
+    request.setHeader(QNetworkRequest::UserAgentHeader, QStringLiteral("launchermodular"));
+
+    const QStringList lines = headers.split(QLatin1Char('\n'));
+    for (const QString &line : lines) {
+        const int colon = line.indexOf(QLatin1Char(':'));
+        if (colon > 0) {
+            request.setRawHeader(line.left(colon).trimmed().toUtf8(),
+                                 line.mid(colon + 1).trimmed().toUtf8());
+        }
+    }
+
+    QNetworkReply *reply = requestManager->sendCustomRequest(request, method.toUtf8(), body.toUtf8());
+    connect(reply, &QNetworkReply::finished, this, [this, reply, tag]() {
+        const int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+        const QString content = QString::fromUtf8(reply->readAll());
+        reply->deleteLater();
+        emit requestFinished(tag, status, content);
+    });
 }
 
 void NetworkHelper::checkUrlReachable(const QString &url) {
     QUrl qurl(url);
-    if (!qurl.isValid() || qurl.scheme() != "http" && qurl.scheme() != "https") {
+    if (!qurl.isValid() || (qurl.scheme() != "http" && qurl.scheme() != "https")) {
         qDebug() << "Invalid URL format :" << url;
         emit urlCheckCompleted(false, false);
         return;

@@ -34,8 +34,11 @@ Page {
             // module, and the project does not use the plural form of gettext.
             // %1: module names, never translated
             text: pageUnavailable.dependencies.length > 0
-                  ? i18n.tr("It requires a module that is not installed on this system: %1",
-                            pageUnavailable.dependencies.join(", "))
+                  // i18n.tr() does not substitute positional arguments: use
+                  // .arg(), like the other messages of the project. Without it
+                  // the placeholder was displayed literally.
+                  ? i18n.tr("It requires a module that is not installed on this system: %1")
+                        .arg(pageUnavailable.dependencies.join(", "))
                   : i18n.tr("One of its components is missing on this system.")
         }
 

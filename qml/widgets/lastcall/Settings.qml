@@ -5,6 +5,7 @@ import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
+import "../../components"
 
 Page {
     id: widgetSettingsLastmessage
@@ -78,7 +79,7 @@ Page {
                         anchors.leftMargin: units.gu(2)
                         anchors.right: parent.right
                         spacing: units.gu(2)
-                        TextField {
+                        LauncherTextField {
                             objectName: "textfield_standard"
                             placeholderText: i18n.tr("By default 1")
                             width: parent.width
@@ -90,8 +91,8 @@ Page {
                 }
 
                 property var model: [
-                  { title: "<font color=\"#ffffff\">"+i18n.tr("Default")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the dialer")+"</font>", style:"default" },
-                  { title: "<font color=\"#ffffff\">"+i18n.tr("Call")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the dialer with number")+"</font>", style:"dial" }
+                  { title: i18n.tr("Default"), descr: i18n.tr("Open the dialer"), style:"default" },
+                  { title: i18n.tr("Call"), descr: i18n.tr("Open the dialer with number"), style:"dial" }
                 ]
 
                 ListItem.ItemSelector {

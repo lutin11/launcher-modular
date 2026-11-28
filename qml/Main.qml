@@ -46,11 +46,37 @@ MainView {
         return customIcon;
     }
 
+    // Stable identifier of a page, used to store its configuration in
+    // settings.pageConfigsJson. Generated once and kept with the page.
+    function newPageUid() {
+        return "p" + Date.now().toString(36) + Math.floor(Math.random() * 1679616).toString(36);
+    }
+
+    function getPageConfig(uid) {
+        if (!uid) return ({});
+        var all;
+        try { all = JSON.parse(launchermodular.settings.pageConfigsJson || "{}"); } catch (error) { all = {}; }
+        if (!all || typeof all !== "object")
+            all = {};
+        var config = all[uid];
+        return (config && typeof config === "object") ? config : ({});
+    }
+
+    function setPageConfig(uid, config) {
+        if (!uid) return;
+        var all;
+        try { all = JSON.parse(launchermodular.settings.pageConfigsJson || "{}"); } catch (error) { all = {}; }
+        if (!all || typeof all !== "object")
+            all = {};
+        all[uid] = config;
+        launchermodular.settings.pageConfigsJson = JSON.stringify(all);
+    }
+
     function getPageArray() {
         var page = [], hM_l = launchermodular.pageModel.count;
         for (var i=0; i<hM_l; i++){
             var item = launchermodular.pageModel.get(i);
-            page.push({"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory});
+            page.push({"name": item.name, "icon": item.icon, "data":item.data, "directory":item.directory, "uid": item.uid});
         }
 
         if (DEBUG_MODE) console.log("pageModel to array, size : "+page.length);
@@ -66,6 +92,78 @@ MainView {
 
         if (DEBUG_MODE) console.log("favoriteAppsModel to array, size : "+favoriteApps.length);
         return favoriteApps;
+    }
+
+    readonly property int pageCount: launchermodular.pageModel.count
+    // The page list is filled entry by entry at startup. Loading the pages
+    // before it is complete re-created every Loader at each insertion (and
+    // therefore reloaded the RSS feeds and other network pages several
+    // times). The Repeater only builds the pages once the list is ready.
+    property bool pagesReady: false
+
+    // Circular paging. With more than one page the SwipeView holds two extra
+    // entries: a clone of the last page at index 0 and a clone of the first at
+    // index pageCount+1. The real page of a display index:
+    function displayToReal(display) {
+        if (pageCount <= 1)
+            return 0
+        if (display === 0)
+            return pageCount - 1
+        if (display === pageCount + 1)
+            return 0
+        return display - 1
+    }
+
+    // Icon of a page. Profiles created before the icon was stored, or entries
+    // added without one, get the icon of the page directory instead of the
+    // generic smiley.
+    function pageIcon(page) {
+        if (page && page.icon && page.icon.length > 0)
+            return page.icon
+        if (page && page.name)
+            return "pages/" + page.name.replace(".qml", "").toLowerCase() + "/assets/icon.svg"
+        return "../assets/happy-full.svg"
+    }
+
+    function realToDisplay(real) {
+        return pageCount <= 1 ? 0 : real + 1
+    }
+
+    // The SwipeView resets its currentIndex when its content model changes
+    // (a page added or removed). Remember the real page the user is on and put
+    // it back once the layout has settled, so the circular jump and the
+    // bottom-bar indicator always point at a real page. Without this the
+    // index could become out of range (no orange icon, no swipe).
+    property int lastRealIndex: 0
+    property bool pageCountChanging: false
+
+    function rememberRealIndex() {
+        if (!view || pageCount <= 0 || pageCountChanging)
+            return;
+        var total = pageCount > 1 ? pageCount + 2 : pageCount;
+        var index = view.currentIndex;
+        if (index < 0 || index >= total)
+            return;
+        var real = displayToReal(index);
+        if (real >= 0 && real < pageCount)
+            lastRealIndex = real;
+    }
+
+    function clampViewIndex() {
+        if (!view || pageCount <= 0)
+            return;
+        lastRealIndex = Math.max(0, Math.min(pageCount - 1, lastRealIndex));
+        var target = realToDisplay(lastRealIndex);
+        if (view.currentIndex !== target)
+            view.currentIndex = target;
+    }
+
+    onPageCountChanged: {
+        pageCountChanging = true;
+        Qt.callLater(function() {
+            clampViewIndex();
+            pageCountChanging = false;
+        });
     }
 
     function compareVersions(v1, v2) {
@@ -108,12 +206,14 @@ MainView {
         property real backgroundOpacity: 0.7
         property int backgroundBlur: 0
 
-        property string folderImage: MySettings.getPicturesLocation()
+        property string folderImage: Platform.isTouch ? MySettings.getPicturesLocation()
+                                              : Platform.picturesLocation()
         property bool reverseImagesSort: false
         property int imageSelectedSorting: FolderListModel.Time
         property bool openImageExternally: false
 
         property string folderMusic: MySettings.getMusicLocation()
+        property string folderVideo: MySettings.getVideoLocation()
         property real videoFontSize: 2.0
         property real musicFontSize: 2.0
         property real folderFontSize: 2.0
@@ -171,6 +271,18 @@ MainView {
         property string nextcloudPassword: ''
         property string nextcloudUrl: ''
         property string nextcloudBasePath: '/'
+        // Calendar chosen on the Nextcloud calendar page: path of the
+        // collection on the server, and its display name for the UI.
+        property string nextcloudCalendarHref: ''
+        // Accounts of the Nextcloud calendar page(s), as JSON: nested lists in
+        // the page data are not serialised by the settings backend.
+        property string nextcloudAccountsJson: ''
+        // Set when a feed is added in the RSS settings; the RSS page reloads.
+        property bool rssFeedChanged: false
+        // Per-page configurations, indexed by the stable page uid and stored as
+        // JSON because the settings backend does not serialise nested maps.
+        property string pageConfigsJson: '{}'
+        property string nextcloudCalendarName: ''
 
     }//settings
 
@@ -180,13 +292,16 @@ MainView {
         running: true
         repeat: true
         onTriggered: {
-            if(clockUpdater.interval != 60000){clockUpdater.interval = 60000}
+            if (clockUpdater.interval !== 60000) { clockUpdater.interval = 60000 }
             launchermodular.datenow = new Date()
         }
     }
 
     PageStack {
         id: pageStack
+        // The desktop title bar takes its height from the window, so that the
+        // pages are never covered by it. On Ubuntu Touch it is invisible.
+        anchors.topMargin: desktopTitleBar.visible ? desktopTitleBar.height : 0
         Page {
             id: pageLauncher
             anchors.fill: parent
@@ -194,6 +309,17 @@ MainView {
             Component.onCompleted: {
 
                 launchermodular.settings.fullScreen = false
+
+                // A desktop package must not keep the pablet paths of the
+                // click build: they do not exist and the pages stayed empty.
+                if (!Platform.isTouch) {
+                    if (launchermodular.settings.folderImage.indexOf("/home/phablet") === 0)
+                        launchermodular.settings.folderImage = Platform.picturesLocation()
+                    if (launchermodular.settings.folderMusic.indexOf("/home/phablet") === 0)
+                        launchermodular.settings.folderMusic = MySettings.getMusicLocation()
+                    if (launchermodular.settings.folderVideo.indexOf("/home/phablet") === 0)
+                        launchermodular.settings.folderVideo = MySettings.getVideoLocation()
+                }
 
                 if(launchermodular.settings.firstRunNew){
                     launchermodular.settings.page = undefined
@@ -212,7 +338,7 @@ MainView {
 
                 if (DEBUG_MODE) console.log("###### on Component completion #####")
 
-                if(typeof launchermodular.settings.customIcon == 'undefined') {
+                if (typeof launchermodular.settings.customIcon === 'undefined') {
                      launchermodular.settings.customIcon = [];
                 }
                 if (DEBUG_MODE) console.log("Retrieve custom icon with : "+ launchermodular.settings.customIcon.length +" elements");
@@ -222,7 +348,7 @@ MainView {
                     launchermodular.customIconModel.insert(i,{"name": customIcon.name, "icon": customIcon.icon, "action": customIcon.action})
                 }
 
-                if(typeof launchermodular.settings.favoriteApps == 'undefined') {
+                if (typeof launchermodular.settings.favoriteApps === 'undefined') {
                      launchermodular.settings.favoriteApps = [];
                 }
                 if (DEBUG_MODE) console.log("Retrieve Favorite Apps with : "+ launchermodular.settings.favoriteApps.length +" elements");
@@ -233,8 +359,12 @@ MainView {
                     launchermodular.favoriteAppsModel.insert(f,{"name": itemApps.name, "icon": itemApps.icon, "action": itemApps.action, "container" : itemApps.container})
                 }
 
-                if(typeof launchermodular.settings.page == 'undefined') {
-                    if (DEBUG_MODE) console.log("page is undefined, let's create a new one");
+                // An empty list (corrupted save, interrupted first run) must
+                // not leave the launcher without any page: Home is required.
+                if (typeof launchermodular.settings.page === 'undefined'
+                        || !launchermodular.settings.page
+                        || launchermodular.settings.page.length === 0) {
+                    if (DEBUG_MODE) console.log("page is undefined or empty, let's create a new one");
                     launchermodular.settings.page = [{"name": "Home.qml", "icon": "pages/home/assets/icon.svg","data":{}, "directory": "pages/"}];
                 }
 
@@ -242,9 +372,19 @@ MainView {
                 var page_l = launchermodular.settings.page.length
                 for (var p=0; p<page_l; p++){
                     var itemPage = launchermodular.settings.page[p];
-                    launchermodular.pageModel.insert(p,{"name": itemPage.name, "icon": itemPage.icon, "data":itemPage.data, "directory":itemPage.directory})
+                    // Pages created before the uid existed get one now; it is
+                    // written back with the page list on the next save.
+                    var pageUid = (itemPage.uid && itemPage.uid.length > 0) ? itemPage.uid : newPageUid();
+                    launchermodular.pageModel.insert(p,{"name": itemPage.name, "icon": itemPage.icon, "data":itemPage.data, "directory":itemPage.directory, "uid": pageUid})
                 }
 
+                // Store the identifiers now: a uid generated for a page created
+                // before they existed must be the same on the next run, or the
+                // configuration stored for it would be lost.
+                launchermodular.settings.page = getPageArray();
+
+                // The list is complete: the pages can be instantiated once.
+                launchermodular.pagesReady = true;
             }
 
             Component.onDestruction: {
@@ -319,27 +459,88 @@ MainView {
                     /* ******************************** LES PAGES COMMENCE ICI ******************************** */
                     SwipeView {
                         id: view
-                        currentIndex: 0
+                        // Display order: [clone of the last page, real pages…,
+                        // clone of the first page]; starting at 1 shows the
+                        // first real page.
+                        currentIndex: 1
                         anchors.fill: parent
                         interactive: !launchermodular.settings.fullScreen
 
+                        Component.onCompleted: currentIndex = launchermodular.pageCount > 1 ? 1 : 0
+
+                        // Once settled on a clone, jump to the real page it
+                        // duplicates: the content is identical, so the switch is
+                        // invisible and the swipe can wrap again.
+                        onCurrentIndexChanged: {
+                            launchermodular.rememberRealIndex()
+                            if (launchermodular.pageCount <= 1)
+                                return
+                            // Defer the jump: changing currentIndex while the
+                            // content model is being updated left the view on
+                            // an out-of-range index.
+                            if (currentIndex < 0
+                                    || currentIndex >= launchermodular.pageCount + 2
+                                    || currentIndex === 0
+                                    || currentIndex === launchermodular.pageCount + 1)
+                                Qt.callLater(launchermodular.clampViewIndex)
+                        }
+
                         Repeater {
                             id: pageRepeater
-                            model: launchermodular.pageModel
+                            // Two extra entries for the circular paging.
+                            model: launchermodular.pagesReady
+                                   ? (launchermodular.pageCount > 1 ? launchermodular.pageCount + 2
+                                                                    : launchermodular.pageCount)
+                                   : 0
                             Loader {
                                 id: pageLoader
+                                property int realIndex: launchermodular.displayToReal(index)
+                                // The page and its two neighbours are created;
+                                // the others wait until they come close. Every
+                                // page used to be built at startup, which
+                                // delayed the first frame. The circular paging
+                                // makes the first and last pages neighbours.
+                                readonly property int displayDistance: {
+                                    if (launchermodular.pageCount <= 1)
+                                        return index === view.currentIndex ? 0 : 1
+                                    var total = launchermodular.pageCount + 2
+                                    var distance = Math.abs(index - view.currentIndex)
+                                    return Math.min(distance, total - distance)
+                                }
+                                // The Music page owns the running Audio
+                                // object: keep it alive when another page is
+                                // shown, otherwise leaving the page destroys
+                                // the player and stops the music.
+                                readonly property bool keepAlive: {
+                                    if (realIndex < 0 || realIndex >= launchermodular.pageModel.count)
+                                        return false
+                                    return launchermodular.pageModel.get(realIndex).name === "Music.qml"
+                                }
+                                active: displayDistance <= 1 || keepAlive
                                 visible: index === view.currentIndex
                                 onLoaded: {
                                     if (item) {
+                                        var page = launchermodular.pageModel.get(realIndex)
                                         item.visible = visible
                                         // Empty state: hand it what it must display
                                         if (typeof item.dependencies !== "undefined") {
-                                            item.pageName = model.name
-                                            item.dependencies = PageRequirements.missingModules(Platform, model.name)
+                                            item.pageName = page.name
+                                            item.dependencies = PageRequirements.missingModules(Platform, page.name)
                                         }
                                         // Injecte the data used for the curent page
                                         if (typeof item.pageData !== "undefined") {
-                                            item.pageData = model.data
+                                            item.pageData = page.data
+                                        }
+                                        // Per-page settings need to find their own
+                                        // entry in the page model.
+                                        if (typeof item.pageIndex !== "undefined") {
+                                            item.pageIndex = realIndex
+                                        }
+                                        // Per-page configuration is stored by
+                                        // the stable uid, not by position: a
+                                        // moved or reordered page keeps it.
+                                        if (typeof item.pageUid !== "undefined") {
+                                            item.pageUid = page.uid
                                         }
                                     }
                                 }
@@ -347,16 +548,17 @@ MainView {
                                     if (item) item.visible = visible
                                 }
                                 sourceComponent: {
+                                    var page = launchermodular.pageModel.get(realIndex)
                                     // A page that needs a missing module cannot be loaded at
                                     // all: show an empty state naming the missing module
                                     // instead of a blank page.
-                                    if (model.directory === "pages/"
-                                            && !PageRequirements.isAvailable(Platform, model.name)) {
+                                    if (page.directory === "pages/"
+                                            && !PageRequirements.isAvailable(Platform, page.name)) {
                                         return pageUnavailableComponent
                                     }
-                                    var comp = Qt.createComponent(model.directory + model.name);
+                                    var comp = Qt.createComponent(page.directory + page.name);
                                     if (comp.status === Component.Error) {
-                                        console.error("Failed to load component: " + model.directory + model.name + ", error: " + comp.errorString());
+                                        console.error("Failed to load component: " + page.directory + page.name + ", error: " + comp.errorString());
                                         return pageUnavailableComponent;
                                     }
                                     return comp;
@@ -405,10 +607,12 @@ MainView {
                             // upward swipe: open the settings bar
                             bottomBarSettings.open()
                         } else if (dx > units.gu(4)) {
-                            view.setCurrentIndex((view.currentIndex+1)%view.count)
+                            var nextReal = (launchermodular.displayToReal(view.currentIndex) + 1) % launchermodular.pageCount
+                            view.setCurrentIndex(launchermodular.realToDisplay(nextReal))
                             startMouseX += units.gu(4)
                         } else if (-dx > units.gu(4)) {
-                            view.setCurrentIndex((view.currentIndex-1+view.count)%view.count)
+                            var previousReal = (launchermodular.displayToReal(view.currentIndex) - 1 + launchermodular.pageCount) % launchermodular.pageCount
+                            view.setCurrentIndex(launchermodular.realToDisplay(previousReal))
                             startMouseX -= units.gu(4)
                         }
                     }
@@ -417,8 +621,11 @@ MainView {
 
                     PageIndicator {
                         id: indicator
-                        count: view.count
-                        currentIndex: view.currentIndex
+                        // Real pages only: view.count includes the two clones of
+                        // the circular paging, which have no page model entry
+                        // and were displayed with the fallback (smiley) icon.
+                        count: launchermodular.pageCount
+                        currentIndex: launchermodular.displayToReal(view.currentIndex)
                         interactive: false //= dont intercept press
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
@@ -432,11 +639,11 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
                                 source: (index >= 0 && index < launchermodular.pageModel.count)
-                                        ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                        ? launchermodular.pageIcon(launchermodular.pageModel.get(index))
                                         : "../assets/happy-full.svg"
                                 height: units.gu(2)
                                 width: units.gu(2)
-                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
+                                color: index === launchermodular.displayToReal(view.currentIndex) ? "#E95420" : "#FFFFFF"
                                 id: iconBottomBar
                                 antialiasing: true
                                 visible: false
@@ -446,7 +653,7 @@ MainView {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 anchors.verticalCenter: parent.verticalCenter
                                 source: iconBottomBar
-                                color: index == view.currentIndex ? "#E95420" : "#FFFFFF"
+                                color: index === launchermodular.displayToReal(view.currentIndex) ? "#E95420" : "#FFFFFF"
                                 antialiasing: true
                             }
 
@@ -455,10 +662,10 @@ MainView {
                                 propagateComposedEvents: true
                                 onPressed: {
                                     mouse.accepted = false
-                                    if(index !== view.currentIndex) {
-                                        view.setCurrentIndex(index);
+                                    if(index !== launchermodular.displayToReal(view.currentIndex)) {
+                                        view.setCurrentIndex(launchermodular.realToDisplay(index));
                                         iconBottomBar.source = (index >= 0 && index < launchermodular.pageModel.count)
-                                           ? (launchermodular.pageModel.get(index).icon || "../assets/happy-full.svg")
+                                           ? launchermodular.pageIcon(launchermodular.pageModel.get(index))
                                            : "../assets/happy-full.svg"
                                     }
                                 }
@@ -878,7 +1085,7 @@ MainView {
                                     }
                                 }
                                 Label {
-                                    visible: imageSource.source == "../assets/placeholder-app-icon.svg" ? true : false
+                                    visible: imageSource.source === "../assets/placeholder-app-icon.svg"
                                     anchors.fill: parent
                                     anchors.margins: units.gu(1)
                                     anchors.topMargin: webAppIcon.height / 1.4
@@ -919,9 +1126,9 @@ MainView {
                                 }
                                 inputMethodHints: Qt.ImhNoAutoUppercase
                                 placeholderText: {
-                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
-                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
-                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
+                                    if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){i18n.tr("<b>Action</b> example: ")+"https://forums.ubports.com/"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){i18n.tr("<b>Action</b> example: ")+"sudo reboot"}
+                                    else if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){i18n.tr("<b>Action</b> example: ")+"dialer-app.desktop"}
                                     else ""
                                 }
                             }
@@ -954,9 +1161,9 @@ MainView {
 
                                     onClicked: {
 
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "website"){ okButton.actionIcon = "browser:///"+appAction.text }
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
-                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style == "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "website"){ okButton.actionIcon = "browser:///"+appAction.text }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "terminal"){ okButton.actionIcon = "terminal:///"+appAction.text }
+                                        if(typeIconCustom.model[typeIconCustom.selectedIndex].style === "appid"){ okButton.actionIcon = "application:///"+appAction.text  }
                                         launchermodular.customIconModel.append({"name": appTitle.text, "icon": launchermodular.iconCustomUrl, "action": okButton.actionIcon})
                                         launchermodular.settings.customIcon = launchermodular.getCustomIconArray()
                                         AppHandler.sort();
@@ -1040,6 +1247,157 @@ MainView {
                 interval: 1500
                 onTriggered: launchermodular.tutorialRequested = true
             }
+        }
+    }
+
+    /* ******************************** BARRE DE FENETRE (DESKTOP) ******************************** */
+
+    // The desktop packages are frameless (see main.cpp). This slim internal bar
+    // replaces the window manager decoration: drag it to move the window, use
+    // the buttons to minimize or close it. It is hidden under Ubuntu Touch,
+    // where Lomiri manages the window, and then the pages keep their full
+    // height (anchors.topMargin of the PageStack above).
+    Rectangle {
+        id: desktopTitleBar
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        height: units.gu(2.6)
+        color: "#111111"
+        visible: WindowController !== null && WindowController.frameless
+        z: 100
+
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton
+            onPressed: WindowController.beginMove()
+            onDoubleClicked: WindowController.toggleFullScreen()
+        }
+
+        Text {
+            anchors {
+                left: parent.left
+                leftMargin: units.gu(1)
+                verticalCenter: parent.verticalCenter
+            }
+            text: i18n.tr("Launcher Modular")
+            color: "#ffffff"
+            opacity: 0.7
+            font.pixelSize: units.dp(12)
+        }
+
+        Row {
+            anchors {
+                right: parent.right
+                rightMargin: units.gu(0.6)
+                verticalCenter: parent.verticalCenter
+            }
+            spacing: units.gu(0.4)
+
+            Rectangle {
+                width: units.gu(2.2)
+                height: units.gu(2)
+                radius: units.gu(0.2)
+                color: minimizeArea.pressed ? "#333333" : "transparent"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "–"
+                    color: "#ffffff"
+                    font.pixelSize: units.dp(14)
+                }
+
+                MouseArea {
+                    id: minimizeArea
+                    anchors.fill: parent
+                    onClicked: WindowController.minimize()
+                }
+            }
+
+            Rectangle {
+                width: units.gu(2.2)
+                height: units.gu(2)
+                radius: units.gu(0.2)
+                color: closeArea.pressed ? "#c7162b" : "transparent"
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "×"
+                    color: "#ffffff"
+                    font.pixelSize: units.dp(16)
+                }
+
+                MouseArea {
+                    id: closeArea
+                    anchors.fill: parent
+                    onClicked: WindowController.closeWindow()
+                }
+            }
+        }
+    }
+
+    // Resize handles of the frameless desktop window: four edges and four
+    // corners. Each one starts a resize from the corresponding Qt::Edges mask
+    // (TopEdge 1, LeftEdge 2, RightEdge 4, BottomEdge 8).
+    Item {
+        id: desktopResizeHandles
+        anchors.fill: parent
+        visible: WindowController !== null && WindowController.frameless
+        z: 101
+
+        MouseArea {
+            anchors { top: parent.top; left: parent.left; right: parent.right }
+            height: units.gu(0.4)
+            cursorShape: Qt.SizeVerCursor
+            onPressed: WindowController.beginResize(1)
+        }
+        MouseArea {
+            anchors { bottom: parent.bottom; left: parent.left; right: parent.right }
+            height: units.gu(0.4)
+            cursorShape: Qt.SizeVerCursor
+            onPressed: WindowController.beginResize(8)
+        }
+        MouseArea {
+            anchors { left: parent.left; top: parent.top; bottom: parent.bottom }
+            width: units.gu(0.4)
+            cursorShape: Qt.SizeHorCursor
+            onPressed: WindowController.beginResize(2)
+        }
+        MouseArea {
+            anchors { right: parent.right; top: parent.top; bottom: parent.bottom }
+            width: units.gu(0.4)
+            cursorShape: Qt.SizeHorCursor
+            onPressed: WindowController.beginResize(4)
+        }
+        MouseArea {
+            anchors { top: parent.top; left: parent.left }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeFDiagCursor
+            onPressed: WindowController.beginResize(3)
+        }
+        MouseArea {
+            anchors { top: parent.top; right: parent.right }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeBDiagCursor
+            onPressed: WindowController.beginResize(5)
+        }
+        MouseArea {
+            anchors { bottom: parent.bottom; left: parent.left }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeBDiagCursor
+            onPressed: WindowController.beginResize(10)
+        }
+        MouseArea {
+            anchors { bottom: parent.bottom; right: parent.right }
+            width: units.gu(0.6)
+            height: units.gu(0.6)
+            cursorShape: Qt.SizeFDiagCursor
+            onPressed: WindowController.beginResize(12)
         }
     }
 }

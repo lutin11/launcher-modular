@@ -48,10 +48,48 @@ cmake -S . -B build -DDESKTOP_INSTALL=ON "-DCMAKE_INSTALL_PREFIX=$APPDIR/usr"
 make -C build -j"$(nproc)"
 make -C build install
 
+# Qt SQL: the RSS page stores its feeds with QtQuick.LocalStorage, whose SQLite
+# driver is a Qt plugin that linuxdeploy does not pick up on its own (it is
+# loaded at run time, not linked). Copied before linuxdeploy runs so that its
+# own dependencies (libQt5Sql…) are deployed with it.
+SQL_PLUGIN="$(qmake -query QT_INSTALL_PLUGINS)/sqldrivers/libqsqlite.so"
+if [ -f "$SQL_PLUGIN" ]; then
+    mkdir -p "$APPDIR/usr/plugins/sqldrivers"
+    cp "$SQL_PLUGIN" "$APPDIR/usr/plugins/sqldrivers/"
+fi
+
+# QtMultimedia: the GStreamer media service is loaded at run time and
+# linuxdeploy does not deploy it, so Audio/MediaPlayer had no backend in the
+# AppImage. Copy the service and the Qt Multimedia helper libraries it needs;
+# the GStreamer runtime and the codecs stay those of the host, as for a normal
+# desktop install (a .deb Recommends libqt5multimedia5-plugins for the same
+# reason).
+MEDIA_PLUGINS="$(qmake -query QT_INSTALL_PLUGINS)/mediaservice"
+QT_LIBS="$(qmake -query QT_INSTALL_LIBS)"
+if [ -d "$MEDIA_PLUGINS" ]; then
+    mkdir -p "$APPDIR/usr/plugins/mediaservice"
+    for f in libgstmediaplayer.so libgstaudiodecoder.so; do
+        [ -f "$MEDIA_PLUGINS/$f" ] && cp "$MEDIA_PLUGINS/$f" "$APPDIR/usr/plugins/mediaservice/"
+    done
+    for lib in libQt5MultimediaGstTools.so.5 libQt5MultimediaWidgets.so.5 \
+               libQt5Widgets.so.5; do
+        [ -f "$QT_LIBS/$lib" ] && cp "$QT_LIBS/$lib" "$APPDIR/usr/lib/"
+    done
+fi
+
+# The icons collected by CMake land in usr/share/icons/hicolor, but the bundle
+# has no index.theme: without it Qt cannot enumerate the theme and every
+# Icon { name: … } stays empty. Generated here, for the AppImage only (a .deb
+# uses the index.theme of the system hicolor theme).
+if [ -d "$APPDIR/usr/share/icons/hicolor" ] && command -v python3 >/dev/null 2>&1; then
+    python3 "$BUILD_DIR/packaging/desktop/collect-icons.py" \
+        --dest "$APPDIR/usr/share/icons/hicolor" --index-theme
+fi
+
 # AppDir root: the desktop file installed under usr/share/applications is
 # already themed (cmake/SetDesktopIcon.cmake) and valid for packagers.
 cp assets/logo.svg "$APPDIR/launchermodular.svg"
-cp "$APPDIR/usr/share/applications/launchermodular.desktop" "$APPDIR/launchermodular.desktop"
+cp "$APPDIR/usr/share/applications/LauncherModular.desktop" "$APPDIR/LauncherModular.desktop"
 
 # The tools may sit on a read-only mount (/tools in CI): copy them to the
 # writable workspace before chmod.
@@ -63,9 +101,29 @@ chmod +x "$TOOLS_WORK"/*.AppImage
 "$TOOLS_WORK/linuxdeploy-x86_64.AppImage" \
     --appdir="$APPDIR" \
     --plugin=qt \
-    --desktop-file="$APPDIR/launchermodular.desktop" \
+    --desktop-file="$APPDIR/LauncherModular.desktop" \
     --icon-file="$APPDIR/launchermodular.svg" \
     --custom-apprun="$SRC/packaging/desktop/AppRun"
+
+# The multimedia media service made linuxdeploy bundle libgstreamer, its core
+# libraries and GLib from the build image, but not the GStreamer *plugins*.
+# A host's plugins are built against the host GStreamer/GLib and refuse to load
+# against the older bundled runtime (observed: no "playbin"/"fakesink").
+# Keep the host GStreamer and GLib, as a normal desktop install does; they are
+# standard on Debian, Ubuntu, Mint and Mageia. The .deb uses them as well.
+for f in "$APPDIR"/usr/lib/libgstreamer-1.0.so* \
+         "$APPDIR"/usr/lib/libgst*.so* \
+         "$APPDIR"/usr/lib/libglib-2.0.so* \
+         "$APPDIR"/usr/lib/libgobject-2.0.so* \
+         "$APPDIR"/usr/lib/libgio-2.0.so* \
+         "$APPDIR"/usr/lib/libgmodule-2.0.so* \
+         "$APPDIR"/usr/lib/libmount.so* \
+         "$APPDIR"/usr/lib/libblkid.so* \
+         "$APPDIR"/usr/lib/libselinux.so* \
+         "$APPDIR"/usr/lib/libcrypto.so* \
+         "$APPDIR"/usr/lib/libssl.so*; do
+    [ -e "$f" ] && rm -f "$f"
+done
 
 if [ "${INCLUDE_TEST_PLATFORMS:-0}" = "1" ]; then
     # The continuous linuxdeploy-plugin-qt does not split
