@@ -8,6 +8,67 @@ Item {
     id: notesPage
     anchors.fill: parent
     property var model: NotesModel.itemModel
+    // Injected by Main.qml: the settings of this page (Nextcloud export) are
+    // stored by stable uid.
+    property int pageIndex: -1
+    property string pageUid: ""
+    // Nextcloud export, triggered by the sync button or a downward pull.
+    property bool syncing: false
+    property string syncStatus: ""
+    property bool syncError: false
+    property bool pullTriggered: false
+
+    NextcloudNotes { id: nextcloud }
+
+    function pageConfig() {
+        if (pageUid.length > 0) {
+            var stored = launchermodular.getPageConfig(pageUid)
+            if (stored && typeof stored === "object")
+                return stored
+        }
+        if (pageIndex >= 0 && pageIndex < launchermodular.pageModel.count) {
+            var data = launchermodular.pageModel.get(pageIndex).data
+            if (data && typeof data === "object")
+                return data
+        }
+        return ({})
+    }
+
+    function showSyncStatus(message, isError) {
+        syncStatus = message
+        syncError = isError === true
+        // During a transfer the banner must stay: the timer only starts once
+        // the synchronisation is over.
+        if (!syncing)
+            statusTimer.restart()
+    }
+
+    // Two-way synchronisation with the destination chosen in the settings:
+    // newer remote files are received, newer local notes are sent.
+    function syncAll() {
+        if (syncing)
+            return
+        var config = pageConfig()
+        var account = nextcloud.accountFor(config)
+        if (!account) {
+            showSyncStatus(i18n.tr("Choose a Nextcloud destination in the settings of the Notes page."), true)
+            return
+        }
+        syncing = true
+        showSyncStatus(i18n.tr("Synchronising…"), false)
+        nextcloud.syncAll(account, config, function (phase, done, total) {
+            notesPage.showSyncStatus(phase === "download"
+                    ? i18n.tr("Downloading %1/%2…").arg(done).arg(total)
+                    : i18n.tr("Uploading %1/%2…").arg(done).arg(total), false)
+        }, function (ok, summary) {
+            notesPage.syncing = false
+            if (ok)
+                notesPage.showSyncStatus(i18n.tr("%1 note(s) received, %2 sent")
+                                                 .arg(summary.downloaded).arg(summary.uploaded), false)
+            else
+                notesPage.showSyncStatus(nextcloud.errorText(summary.status), true)
+        })
+    }
 
     Component.onCompleted: {
         NotesModel.dbInit()
@@ -18,7 +79,8 @@ Item {
         // An existing note opens rendered (read only); a new one opens in the
         // editor. The header action switches between the two modes.
         pageStack.push(Qt.resolvedUrl("notes/NoteEditor.qml"),
-                       { noteId: noteId, startInPreview: noteId > 0 })
+                       { noteId: noteId, startInPreview: noteId > 0,
+                         pageIndex: notesPage.pageIndex, pageUid: notesPage.pageUid })
     }
 
     ListView {
@@ -32,6 +94,16 @@ Item {
         clip: true
         spacing: units.gu(0.5)
         model: notesPage.model
+        // A downward pull at the top starts the Nextcloud synchronisation.
+        // The drag is handled by the list itself, so scrolling stays intact.
+        boundsBehavior: Flickable.DragAndOvershootBounds
+        onContentYChanged: {
+            if (dragging && contentY < -units.gu(5) && !notesPage.pullTriggered) {
+                notesPage.pullTriggered = true
+                notesPage.syncAll()
+            }
+        }
+        onMovementEnded: notesPage.pullTriggered = false
 
         header: Rectangle {
             height: units.gu(5)
@@ -125,5 +197,55 @@ Item {
         visible: notesPage.model.count === 0
         text: i18n.tr("No notes yet. Tap 'New note' to write one.")
         color: launchermodular.settings.textColor
+    }
+
+    // Sync button, and the status of the synchronisation.
+    Icon {
+        id: syncIcon
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: units.gu(1)
+        width: units.gu(3)
+        height: width
+        name: "sync"
+        color: launchermodular.settings.textColor
+        opacity: notesPage.syncing ? 0.4 : 0.9
+        z: 2
+
+        MouseArea {
+            anchors.fill: parent
+            anchors.margins: units.gu(-0.8)
+            onClicked: notesPage.syncAll()
+        }
+    }
+
+    Rectangle {
+        id: syncBanner
+        anchors.top: parent.top
+        anchors.topMargin: units.gu(6.5)
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: Math.min(notesPage.width - units.gu(4), units.gu(32))
+        height: syncBannerLabel.height + units.gu(1.2)
+        radius: units.gu(0.5)
+        color: "#E0111111"
+        visible: notesPage.syncStatus.length > 0
+        z: 3
+
+        Label {
+            id: syncBannerLabel
+            anchors.centerIn: parent
+            width: parent.width - units.gu(2)
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
+            text: notesPage.syncStatus
+            color: notesPage.syncError ? "#ED3146" : "#FFFFFF"
+        }
+    }
+
+    Timer {
+        id: statusTimer
+        interval: 5000
+        running: notesPage.syncStatus.length > 0 && !notesPage.syncing
+        onTriggered: notesPage.syncStatus = ""
     }
 }

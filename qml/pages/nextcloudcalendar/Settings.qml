@@ -1,14 +1,14 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.2 as QControls
 import Lomiri.Components 1.3
-import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import "."
 
 // Settings of one "Nextcloud calendar" page.
 //
-// A page can hold several Nextcloud accounts (page data "nextcloudAccounts").
-// The selected account has its own connection fields and its own calendar; all
-// the accounts of the page are displayed together on the calendar page.
+// A page can hold several Nextcloud accounts (stored as JSON in the page
+// configuration). The layout shows one section at a time of the same story:
+// the accounts, the connection of the selected account, its calendars, then
+// the synchronisation.
 Page {
     id: pageSettingsCalendar
 
@@ -24,6 +24,7 @@ Page {
     // (or when no usable account exists yet).
     property bool editingAccount: false
     property string statusText: ""
+    property bool statusIsError: false
 
     function pageConfig() {
         if (pageUid.length > 0) {
@@ -44,8 +45,7 @@ Page {
         var config = pageConfig()
         var loaded = null
         // The list of accounts is stored as a JSON string: the settings
-        // backend does not serialise nested lists. Without this parse, leaving
-        // and reopening the page showed only one account.
+        // backend does not serialise nested lists.
         if (config.nextcloudAccountsJson && config.nextcloudAccountsJson.length > 0) {
             try {
                 loaded = JSON.parse(config.nextcloudAccountsJson)
@@ -70,6 +70,8 @@ Page {
             normalized.push(normalizeAccount(loaded[index]))
         accounts = normalized
         selectedAccount = 0
+        statusText = ""
+        statusIsError = false
         loadFields()
         // No usable account: show the form directly so the page is not empty.
         editingAccount = !hasConfiguredAccount()
@@ -82,6 +84,11 @@ Page {
                 return true
         }
         return false
+    }
+
+    function selectedAccountConfigured() {
+        var account = accounts[selectedAccount]
+        return !!(account && account.url && account.user && account.password)
     }
 
     // One Nextcloud account can expose several calendars. The legacy single
@@ -138,8 +145,8 @@ Page {
         serverUrlField.text = account ? (account.url || "") : ""
         usernameField.text = account ? (account.user || "") : ""
         appPasswordField.text = account ? (account.password || "") : ""
-        // Show the calendars already selected for this account; "Save and list
-        // the calendars" replaces them with the full list from the server.
+        // Show the calendars already selected for this account; "Load
+        // calendars" replaces them with the full list from the server.
         var list = []
         var calendars = account ? (account.calendars || []) : []
         for (var index = 0; index < calendars.length; index++) {
@@ -151,7 +158,7 @@ Page {
         NextcloudCalendarModel.calendars = list
     }
 
-    // Writes the fields back into the selected account, keeping its calendar.
+    // Writes the fields back into the selected account, keeping its calendars.
     function storeFields() {
         if (selectedAccount < 0 || selectedAccount >= accounts.length)
             return
@@ -170,6 +177,12 @@ Page {
             name: account.name || "",
             calendars: account.calendars || []
         }
+    }
+
+    // Reassign the array so the account list (labels, selection) is refreshed
+    // after the fields were changed in place.
+    function notifyAccounts() {
+        accounts = accounts.slice()
     }
 
     function persist() {
@@ -197,23 +210,73 @@ Page {
         }
     }
 
+    function selectAccount(index) {
+        if (editingAccount && index === selectedAccount) {
+            closeForm()
+            return
+        }
+        storeFields()
+        selectedAccount = index
+        statusText = ""
+        statusIsError = false
+        loadFields()
+        editingAccount = true
+    }
+
+    function closeForm() {
+        storeFields()
+        notifyAccounts()
+        persist()
+        editingAccount = false
+    }
+
     function saveAndList() {
         if (serverUrlField.text.trim().length === 0 || usernameField.text.trim().length === 0
                 || appPasswordField.text.length === 0) {
             statusText = i18n.tr("Complete the server URL, the username and the app password")
+            statusIsError = true
             return
         }
         storeFields()
+        notifyAccounts()
         persist()
         NextcloudCalendarModel.configureAccounts(expandedAccounts())
         // The account is valid: fold the edition back to the account list, the
         // calendars are then listed in the background.
         editingAccount = false
+        loadCalendars()
+    }
+
+    function loadCalendars() {
+        if (selectedAccount < 0 || selectedAccount >= accounts.length)
+            return
+        storeFields()
+        notifyAccounts()
+        persist()
+        NextcloudCalendarModel.configureAccounts(expandedAccounts())
+        NextcloudCalendarModel.lastError = ""
+        statusText = i18n.tr("Loading the calendars…")
+        statusIsError = false
         NextcloudCalendarModel.listCalendarsOf(accounts[selectedAccount], function (list) {
             pageSettingsCalendar.statusText = list.length > 0
                     ? i18n.tr("%1 calendar(s) found").arg(list.length)
                     : i18n.tr("No calendar found")
+            // A server error is displayed from lastError; an empty account is
+            // not an error.
+            pageSettingsCalendar.statusIsError = false
         })
+    }
+
+    function isCalendarSelected(href) {
+        var account = accounts[selectedAccount]
+        if (!account)
+            return false
+        var calendars = account.calendars || []
+        for (var index = 0; index < calendars.length; index++) {
+            if (calendars[index].href === href)
+                return true
+        }
+        return false
     }
 
     function toggleCalendar(href, name) {
@@ -235,8 +298,6 @@ Page {
             calendars.push({ href: href, name: name || "" })
 
         var first = calendars.length > 0 ? calendars[0] : { href: "", name: "" }
-        // Copy the array before changing it: mutating a property in place does
-        // not notify the list of accounts (and its selection marks).
         var copy = accounts.slice()
         copy[selectedAccount] = { url: account.url, user: account.user,
                                   password: account.password,
@@ -248,6 +309,7 @@ Page {
         statusText = calendars.length > 0
                 ? i18n.tr("%1 calendar(s) selected").arg(calendars.length)
                 : i18n.tr("No calendar selected")
+        statusIsError = false
     }
 
     function addAccount() {
@@ -256,13 +318,18 @@ Page {
         copy.push({ url: "", user: "", password: "", href: "", name: "", calendars: [] })
         accounts = copy
         selectedAccount = accounts.length - 1
+        statusText = ""
+        statusIsError = false
         loadFields()
         editingAccount = true
     }
 
     function removeAccount() {
-        if (accounts.length <= 1)
+        if (accounts.length <= 1) {
+            statusText = i18n.tr("The last account cannot be removed")
+            statusIsError = true
             return
+        }
         var copy = accounts.slice()
         copy.splice(selectedAccount, 1)
         accounts = copy
@@ -271,13 +338,15 @@ Page {
         NextcloudCalendarModel.configureAccounts(expandedAccounts())
         loadFields()
         editingAccount = !hasConfiguredAccount()
+        statusText = ""
+        statusIsError = false
     }
 
     Component.onCompleted: loadAccounts()
 
     header: PageHeader {
         id: headerCalendarSettings
-        title: i18n.tr("Settings Page")
+        title: i18n.tr("Calendar settings")
         leadingActionBar.actions: [
             Action {
                 iconName: "back"
@@ -292,18 +361,14 @@ Page {
     }
 
     Rectangle {
-        id: calendarSettings
         anchors.fill: parent
         color: "#111111"
         anchors.topMargin: units.gu(6)
 
         Flickable {
-            id: calendarSettingsFlickable
+            id: settingsFlickable
             anchors.fill: parent
             flickableDirection: Flickable.VerticalFlick
-            // Without an explicit content height a long list of calendars
-            // could not be scrolled: the Flickable only followed its own
-            // height.
             contentHeight: settingsColumn.height + units.gu(4)
             contentWidth: width
             clip: true
@@ -314,290 +379,488 @@ Page {
                 anchors.topMargin: units.gu(2)
                 spacing: units.gu(2)
 
-                ListItemHeader.Header {
-                    width: parent.width
-                    text: "<font color=\"#ffffff\">"
-                          + i18n.tr("Settings for 'Nextcloud calendar' page")
-                          + "</font>"
-                }
-
-                ListItemHeader.Header {
-                    width: parent.width
-                    text: "<font color=\"#ffffff\">"
-                          + i18n.tr("Accounts")
-                          + "</font>"
-                }
-
-                // One row per account: touch a row to edit its connection
-                // fields below, use "Remove this account" to delete it.
-                Repeater {
-                    model: pageSettingsCalendar.accounts
-                    ListItemHeader.Standard {
-                        width: parent.width
-                        __foregroundColor: "#FFFFFF"
-                        text: (modelData.user && modelData.user.length > 0
-                               ? modelData.user
-                               : i18n.tr("New account"))
-                              + (modelData.url && modelData.url.length > 0
-                                 ? " — " + modelData.url : "")
-                        selected: index === pageSettingsCalendar.selectedAccount
-                        onClicked: {
-                            if (pageSettingsCalendar.editingAccount
-                                    && index === pageSettingsCalendar.selectedAccount) {
-                                pageSettingsCalendar.editingAccount = false
-                                return
-                            }
-                            pageSettingsCalendar.storeFields()
-                            pageSettingsCalendar.selectedAccount = index
-                            pageSettingsCalendar.loadFields()
-                            pageSettingsCalendar.editingAccount = true
-                        }
-                    }
-                }
-
-                Row {
+                // ----------------------------------------------------------
+                // Accounts
+                // ----------------------------------------------------------
+                Label {
                     width: parent.width - units.gu(4)
                     anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
-
-                    Button {
-                        height: units.gu(4)
-                        width: (parent.width / 2) - units.gu(2)
-                        text: i18n.tr("Add an account")
-                        onClicked: pageSettingsCalendar.addAccount()
-                    }
-                    Button {
-                        height: units.gu(4)
-                        width: (parent.width / 2) - units.gu(2)
-                        text: i18n.tr("Remove this account")
-                        enabled: pageSettingsCalendar.accounts.length > 1
-                        onClicked: pageSettingsCalendar.removeAccount()
-                    }
-                }
-
-                ListItemHeader.Header {
-                    width: parent.width
-                    visible: pageSettingsCalendar.editingAccount
-                    text: "<font color=\"#ffffff\">"
-                          + i18n.tr("Connection of the selected account")
-                          + "</font>"
-                }
-
-                Column {
-                    width: parent.width - units.gu(4)
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
-                    visible: pageSettingsCalendar.editingAccount
-
-                    Label {
-                        text: i18n.tr("Server URL or CalDAV address")
-                        color: "#FFFFFF"
-                    }
-                    Row {
-                        width: parent.width
-                        spacing: units.gu(1)
-                        QControls.TextField {
-                            id: serverUrlField
-                            width: parent.width - pasteUrlButton.width - clearUrlButton.width - units.gu(2)
-                            placeholderText: "https://cloud.example.com (or …/remote.php/dav)"
-                            inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhNoPredictiveText
-                            selectByMouse: true
-                            onTextChanged: pageSettingsCalendar.storeFields()
-                        }
-                        Button {
-                            id: pasteUrlButton
-                            width: units.gu(6)
-                            height: units.gu(4)
-                            text: i18n.tr("Paste")
-                            onClicked: serverUrlField.paste()
-                        }
-                        Icon {
-                            id: clearUrlButton
-                            width: units.gu(2)
-                            height: width
-                            anchors.verticalCenter: parent.verticalCenter
-                            name: "edit-clear"
-                            color: "#FFFFFF"
-                            MouseArea {
-                                anchors.fill: parent
-                                anchors.margins: units.gu(-1)
-                                onClicked: serverUrlField.text = ""
-                            }
-                        }
-                    }
-                }
-
-                Column {
-                    width: parent.width - units.gu(4)
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
-                    visible: pageSettingsCalendar.editingAccount
-
-                    Label {
-                        text: i18n.tr("Username")
-                        color: "#FFFFFF"
-                    }
-                    Row {
-                        width: parent.width
-                        spacing: units.gu(1)
-                        QControls.TextField {
-                            id: usernameField
-                            width: parent.width - pasteUserButton.width - clearUserButton.width - units.gu(2)
-                            inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase
-                            selectByMouse: true
-                            onTextChanged: pageSettingsCalendar.storeFields()
-                        }
-                        Button {
-                            id: pasteUserButton
-                            width: units.gu(6)
-                            height: units.gu(4)
-                            text: i18n.tr("Paste")
-                            onClicked: usernameField.paste()
-                        }
-                        Icon {
-                            id: clearUserButton
-                            width: units.gu(2)
-                            height: width
-                            anchors.verticalCenter: parent.verticalCenter
-                            name: "edit-clear"
-                            color: "#FFFFFF"
-                            MouseArea {
-                                anchors.fill: parent
-                                anchors.margins: units.gu(-1)
-                                onClicked: usernameField.text = ""
-                            }
-                        }
-                    }
-                }
-
-                Column {
-                    width: parent.width - units.gu(4)
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
-                    visible: pageSettingsCalendar.editingAccount
-
-                    Label {
-                        text: i18n.tr("App password")
-                        color: "#FFFFFF"
-                    }
-                    Row {
-                        width: parent.width
-                        spacing: units.gu(1)
-                        QControls.TextField {
-                            id: appPasswordField
-                            width: parent.width - pastePasswordButton.width - clearPasswordButton.width - units.gu(2)
-                            echoMode: TextInput.Password
-                            inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
-                            selectByMouse: true
-                            onTextChanged: pageSettingsCalendar.storeFields()
-                        }
-                        Button {
-                            id: pastePasswordButton
-                            width: units.gu(6)
-                            height: units.gu(4)
-                            text: i18n.tr("Paste")
-                            onClicked: appPasswordField.paste()
-                        }
-                        Icon {
-                            id: clearPasswordButton
-                            width: units.gu(2)
-                            height: width
-                            anchors.verticalCenter: parent.verticalCenter
-                            name: "edit-clear"
-                            color: "#FFFFFF"
-                            MouseArea {
-                                anchors.fill: parent
-                                anchors.margins: units.gu(-1)
-                                onClicked: appPasswordField.text = ""
-                            }
-                        }
-                    }
-                    Label {
-                        width: parent.width
-                        wrapMode: Text.WordWrap
-                        color: "#AEA79F"
-                        text: i18n.tr("Use a dedicated app password (Nextcloud Settings → Security → Devices & sessions), not your main account password. It can be revoked independently at any time.")
-                    }
-                }
-
-                Row {
-                    width: parent.width - units.gu(4)
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
-
-                    Button {
-                        height: units.gu(4)
-                        width: (parent.width / 2) - units.gu(2)
-                        color: "#0E8420"
-                        text: i18n.tr("Save and list the calendars")
-                        onClicked: pageSettingsCalendar.saveAndList()
-                    }
-                    Label {
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: parent.width / 2
-                        wrapMode: Text.WordWrap
-                        color: NextcloudCalendarModel.lastError.length > 0 ? "#ED3146" : "#FFFFFF"
-                        text: NextcloudCalendarModel.lastError.length > 0
-                              ? NextcloudCalendarModel.lastError
-                              : pageSettingsCalendar.statusText
-                    }
-                }
-
-                ListItemHeader.Header {
-                    text: "<font color=\"#ffffff\">" + i18n.tr("Calendars of this account (select one or more)") + "</font>"
+                    text: i18n.tr("Accounts")
+                    color: "#FFFFFF"
+                    font.pixelSize: units.gu(2.2)
+                    font.bold: true
                 }
 
                 Label {
                     width: parent.width - units.gu(4)
                     anchors.horizontalCenter: parent.horizontalCenter
                     wrapMode: Text.WordWrap
+                    color: "#AEA79F"
+                    font.pixelSize: units.gu(1.4)
+                    text: i18n.tr("Choose an account to edit its connection, or add a new one.")
+                }
+
+                Repeater {
+                    model: pageSettingsCalendar.accounts
+                    Rectangle {
+                        width: settingsColumn.width - units.gu(4)
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        height: units.gu(7)
+                        radius: units.gu(0.6)
+                        color: index === pageSettingsCalendar.selectedAccount ? "#26E95420" : "#14FFFFFF"
+                        border.width: 1
+                        border.color: index === pageSettingsCalendar.selectedAccount ? "#E95420" : "#26FFFFFF"
+
+                        Icon {
+                            id: accountIcon
+                            anchors.left: parent.left
+                            anchors.leftMargin: units.gu(1.5)
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: units.gu(2.5)
+                            height: width
+                            name: "contact"
+                            color: "#FFFFFF"
+                            opacity: 0.8
+                        }
+
+                        Column {
+                            anchors.left: accountIcon.right
+                            anchors.leftMargin: units.gu(1.5)
+                            anchors.right: accountChevron.left
+                            anchors.rightMargin: units.gu(1)
+                            anchors.verticalCenter: parent.verticalCenter
+                            spacing: units.gu(0.2)
+
+                            Label {
+                                width: parent.width
+                                elide: Text.ElideRight
+                                color: "#FFFFFF"
+                                font.pixelSize: units.gu(1.6)
+                                text: (modelData.user && modelData.user.length > 0)
+                                      ? modelData.user : i18n.tr("New account")
+                            }
+                            Label {
+                                width: parent.width
+                                elide: Text.ElideRight
+                                color: "#AEA79F"
+                                font.pixelSize: units.gu(1.2)
+                                text: (modelData.url && modelData.url.length > 0)
+                                      ? modelData.url : i18n.tr("Not configured")
+                            }
+                        }
+
+                        Icon {
+                            id: accountChevron
+                            anchors.right: parent.right
+                            anchors.rightMargin: units.gu(1.5)
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: units.gu(2)
+                            height: width
+                            name: "go-next"
+                            color: "#AEA79F"
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: pageSettingsCalendar.selectAccount(index)
+                        }
+                    }
+                }
+
+                Button {
+                    width: settingsColumn.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    height: units.gu(4.5)
+                    text: i18n.tr("Add an account")
+                    onClicked: pageSettingsCalendar.addAccount()
+                }
+
+                // ----------------------------------------------------------
+                // Connection of the selected account
+                // ----------------------------------------------------------
+                Column {
+                    width: settingsColumn.width
+                    visible: pageSettingsCalendar.editingAccount
+                    spacing: units.gu(1.5)
+
+                    Label {
+                        width: parent.width - units.gu(4)
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: i18n.tr("Connection")
+                        color: "#FFFFFF"
+                        font.pixelSize: units.gu(2.2)
+                        font.bold: true
+                    }
+
+                    Rectangle {
+                        width: settingsColumn.width - units.gu(4)
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        height: connectionColumn.height + units.gu(3)
+                        radius: units.gu(0.6)
+                        color: "#1A1A1A"
+                        border.width: 1
+                        border.color: "#33FFFFFF"
+
+                        Column {
+                            id: connectionColumn
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.top: parent.top
+                            anchors.margins: units.gu(1.5)
+                            spacing: units.gu(1.2)
+
+                            Item {
+                                width: parent.width
+                                height: units.gu(4)
+
+                                Label {
+                                    anchors.left: parent.left
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    text: i18n.tr("Account %1").arg(pageSettingsCalendar.selectedAccount + 1)
+                                    color: "#FFFFFF"
+                                    font.pixelSize: units.gu(1.7)
+                                    font.bold: true
+                                }
+
+                                Icon {
+                                    anchors.right: parent.right
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: units.gu(2.5)
+                                    height: width
+                                    name: "close"
+                                    color: "#AEA79F"
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        anchors.margins: units.gu(-1)
+                                        onClicked: pageSettingsCalendar.closeForm()
+                                    }
+                                }
+                            }
+
+                            Label {
+                                text: i18n.tr("Server URL or CalDAV address")
+                                color: "#FFFFFF"
+                                font.pixelSize: units.gu(1.4)
+                            }
+
+                            Item {
+                                width: parent.width
+                                height: units.gu(4)
+
+                                QControls.TextField {
+                                    id: serverUrlField
+                                    anchors.left: parent.left
+                                    anchors.right: pasteUrlButton.left
+                                    anchors.rightMargin: units.gu(1)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    height: parent.height
+                                    placeholderText: "https://cloud.example.com (or …/remote.php/dav)"
+                                    inputMethodHints: Qt.ImhUrlCharactersOnly | Qt.ImhNoPredictiveText
+                                    selectByMouse: true
+                                    onTextChanged: pageSettingsCalendar.storeFields()
+                                }
+                                Button {
+                                    id: pasteUrlButton
+                                    anchors.right: clearUrlButton.left
+                                    anchors.rightMargin: units.gu(1)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: units.gu(7)
+                                    height: parent.height
+                                    text: i18n.tr("Paste")
+                                    onClicked: serverUrlField.paste()
+                                }
+                                Icon {
+                                    id: clearUrlButton
+                                    anchors.right: parent.right
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: units.gu(2.5)
+                                    height: width
+                                    name: "edit-clear"
+                                    color: "#FFFFFF"
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        anchors.margins: units.gu(-1)
+                                        onClicked: serverUrlField.text = ""
+                                    }
+                                }
+                            }
+
+                            Label {
+                                text: i18n.tr("Username")
+                                color: "#FFFFFF"
+                                font.pixelSize: units.gu(1.4)
+                            }
+
+                            Item {
+                                width: parent.width
+                                height: units.gu(4)
+
+                                QControls.TextField {
+                                    id: usernameField
+                                    anchors.left: parent.left
+                                    anchors.right: pasteUserButton.left
+                                    anchors.rightMargin: units.gu(1)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    height: parent.height
+                                    inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase
+                                    selectByMouse: true
+                                    onTextChanged: pageSettingsCalendar.storeFields()
+                                }
+                                Button {
+                                    id: pasteUserButton
+                                    anchors.right: clearUserButton.left
+                                    anchors.rightMargin: units.gu(1)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: units.gu(7)
+                                    height: parent.height
+                                    text: i18n.tr("Paste")
+                                    onClicked: usernameField.paste()
+                                }
+                                Icon {
+                                    id: clearUserButton
+                                    anchors.right: parent.right
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: units.gu(2.5)
+                                    height: width
+                                    name: "edit-clear"
+                                    color: "#FFFFFF"
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        anchors.margins: units.gu(-1)
+                                        onClicked: usernameField.text = ""
+                                    }
+                                }
+                            }
+
+                            Label {
+                                text: i18n.tr("App password")
+                                color: "#FFFFFF"
+                                font.pixelSize: units.gu(1.4)
+                            }
+
+                            Item {
+                                width: parent.width
+                                height: units.gu(4)
+
+                                QControls.TextField {
+                                    id: appPasswordField
+                                    anchors.left: parent.left
+                                    anchors.right: pastePasswordButton.left
+                                    anchors.rightMargin: units.gu(1)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    height: parent.height
+                                    echoMode: TextInput.Password
+                                    inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhSensitiveData
+                                    selectByMouse: true
+                                    onTextChanged: pageSettingsCalendar.storeFields()
+                                }
+                                Button {
+                                    id: pastePasswordButton
+                                    anchors.right: clearPasswordButton.left
+                                    anchors.rightMargin: units.gu(1)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: units.gu(7)
+                                    height: parent.height
+                                    text: i18n.tr("Paste")
+                                    onClicked: appPasswordField.paste()
+                                }
+                                Icon {
+                                    id: clearPasswordButton
+                                    anchors.right: parent.right
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: units.gu(2.5)
+                                    height: width
+                                    name: "edit-clear"
+                                    color: "#FFFFFF"
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        anchors.margins: units.gu(-1)
+                                        onClicked: appPasswordField.text = ""
+                                    }
+                                }
+                            }
+
+                            Label {
+                                width: parent.width
+                                wrapMode: Text.WordWrap
+                                color: "#AEA79F"
+                                font.pixelSize: units.gu(1.2)
+                                text: i18n.tr("Use an app password (Nextcloud → Settings → Security → Devices & sessions), not your main account password.")
+                            }
+
+                            Row {
+                                width: parent.width
+                                height: units.gu(4.5)
+                                spacing: units.gu(1)
+
+                                Button {
+                                    width: (parent.width - units.gu(1)) / 2
+                                    height: parent.height
+                                    color: "#0E8420"
+                                    text: i18n.tr("Save and load calendars")
+                                    onClicked: pageSettingsCalendar.saveAndList()
+                                }
+                                Button {
+                                    width: (parent.width - units.gu(1)) / 2
+                                    height: parent.height
+                                    text: i18n.tr("Close")
+                                    onClicked: pageSettingsCalendar.closeForm()
+                                }
+                            }
+                        }
+                    }
+
+                    Button {
+                        width: settingsColumn.width - units.gu(4)
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        height: units.gu(4)
+                        color: "#C7162B"
+                        text: i18n.tr("Remove this account")
+                        visible: pageSettingsCalendar.accounts.length > 1
+                        onClicked: pageSettingsCalendar.removeAccount()
+                    }
+                }
+
+                // ----------------------------------------------------------
+                // Calendars of the selected account
+                // ----------------------------------------------------------
+                Label {
+                    width: parent.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: i18n.tr("Calendars")
                     color: "#FFFFFF"
-                    visible: NextcloudCalendarModel.calendars.length === 0
-                    text: i18n.tr("No calendar listed yet. Use the button above.")
+                    font.pixelSize: units.gu(2.2)
+                    font.bold: true
+                }
+
+                Label {
+                    width: parent.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    wrapMode: Text.WordWrap
+                    color: "#AEA79F"
+                    font.pixelSize: units.gu(1.4)
+                    text: i18n.tr("Calendars shown by this page. Load them from the server, then select one or more.")
+                }
+
+                Button {
+                    width: settingsColumn.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    height: units.gu(4.5)
+                    text: i18n.tr("Load calendars")
+                    enabled: pageSettingsCalendar.selectedAccountConfigured()
+                    onClicked: pageSettingsCalendar.loadCalendars()
+                }
+
+                Label {
+                    width: parent.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    visible: text.length > 0
+                    color: pageSettingsCalendar.statusIsError ? "#ED3146" : "#AEA79F"
+                    text: pageSettingsCalendar.statusText
+                }
+
+                Label {
+                    width: parent.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    visible: text.length > 0
+                    color: "#ED3146"
+                    text: NextcloudCalendarModel.lastError
                 }
 
                 Repeater {
                     model: NextcloudCalendarModel.calendars
-                    ListItemHeader.Standard {
-                        __foregroundColor: "#FFFFFF"
-                        text: (modelData.displayName.length > 0 ? modelData.displayName : modelData.href)
-                              + (selected ? "  ✓" : "")
-                        selected: {
-                            if (pageSettingsCalendar.accounts.length <= pageSettingsCalendar.selectedAccount)
-                                return false
-                            var calendars = pageSettingsCalendar.accounts[pageSettingsCalendar.selectedAccount].calendars || []
-                            for (var index = 0; index < calendars.length; index++)
-                                if (calendars[index].href === modelData.href)
-                                    return true
-                            return false
+                    Rectangle {
+                        width: settingsColumn.width - units.gu(4)
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        height: units.gu(6)
+                        radius: units.gu(0.5)
+                        color: pageSettingsCalendar.isCalendarSelected(modelData.href)
+                               ? "#26E95420" : "#10FFFFFF"
+                        border.width: 1
+                        border.color: pageSettingsCalendar.isCalendarSelected(modelData.href)
+                                      ? "#E95420" : "#22FFFFFF"
+
+                        Rectangle {
+                            id: calendarCheck
+                            anchors.left: parent.left
+                            anchors.leftMargin: units.gu(1.5)
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: units.gu(2.2)
+                            height: width
+                            radius: units.gu(0.3)
+                            color: pageSettingsCalendar.isCalendarSelected(modelData.href)
+                                   ? "#E95420" : "transparent"
+                            border.width: 1
+                            border.color: "#80FFFFFF"
+
+                            Label {
+                                anchors.centerIn: parent
+                                text: "\u2713"
+                                color: "#FFFFFF"
+                                visible: pageSettingsCalendar.isCalendarSelected(modelData.href)
+                            }
                         }
-                        onClicked: pageSettingsCalendar.toggleCalendar(modelData.href, modelData.displayName)
+
+                        Label {
+                            anchors.left: calendarCheck.right
+                            anchors.leftMargin: units.gu(1.5)
+                            anchors.right: parent.right
+                            anchors.rightMargin: units.gu(1.5)
+                            anchors.verticalCenter: parent.verticalCenter
+                            elide: Text.ElideRight
+                            color: "#FFFFFF"
+                            text: modelData.displayName.length > 0
+                                  ? modelData.displayName : modelData.href
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: pageSettingsCalendar.toggleCalendar(modelData.href,
+                                                                          modelData.displayName)
+                        }
                     }
                 }
 
-                ListItemHeader.Header {
-                    text: "<font color=\"#ffffff\">" + i18n.tr("Events of the page") + "</font>"
-                }
-
-                Row {
+                Label {
                     width: parent.width - units.gu(4)
                     anchors.horizontalCenter: parent.horizontalCenter
-                    spacing: units.gu(1)
+                    wrapMode: Text.WordWrap
+                    color: "#AEA79F"
+                    visible: NextcloudCalendarModel.calendars.length === 0
+                    text: i18n.tr("No calendar loaded yet. Use “Load calendars” above.")
+                }
 
-                    Button {
-                        height: units.gu(4)
-                        width: (parent.width / 2) - units.gu(2)
-                        color: "#0E8420"
-                        text: i18n.tr("Synchronise now")
-                        onClicked: NextcloudCalendarModel.refresh(60, 180)
-                    }
-                    Label {
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: parent.width / 2
-                        wrapMode: Text.WordWrap
-                        color: "#FFFFFF"
-                        text: i18n.tr("%1 events loaded").arg(NextcloudCalendarModel.events.count)
-                    }
+                // ----------------------------------------------------------
+                // Synchronisation
+                // ----------------------------------------------------------
+                Label {
+                    width: parent.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: i18n.tr("Events")
+                    color: "#FFFFFF"
+                    font.pixelSize: units.gu(2.2)
+                    font.bold: true
+                }
+
+                Button {
+                    width: settingsColumn.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    height: units.gu(4.5)
+                    text: i18n.tr("Synchronise now")
+                    onClicked: NextcloudCalendarModel.refresh(60, 180)
+                }
+
+                Label {
+                    width: parent.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    color: "#AEA79F"
+                    font.pixelSize: units.gu(1.3)
+                    text: i18n.tr("%1 events loaded").arg(NextcloudCalendarModel.events.count)
                 }
             }
         }
