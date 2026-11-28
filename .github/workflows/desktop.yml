@@ -2,7 +2,9 @@ name: Desktop Build
 
 # .deb (CPack) and AppImage, built inside the Clickable SDK container
 # (Ubuntu 24.04, Qt 5.15, Lomiri stack from the image's PPA configuration).
-# The click jobs in main.yml are unaffected. See docs/PACKAGING_DESKTOP.md.
+# The RPM is built from the AppImage in a Mageia container, because Mageia does
+# not provide the Lomiri QML modules. The click jobs in main.yml are unaffected.
+# See docs/PACKAGING_DESKTOP.md.
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -68,4 +70,34 @@ jobs:
           path: |
             desktop-artifacts/*.AppImage
             desktop-artifacts/appimage-run.log
+          if-no-files-found: error
+
+  rpm:
+    # The RPM wraps the self-contained AppImage runtime, so it is built after
+    # the AppImage job and reuses its artifact.
+    needs: appimage
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download AppImage
+        uses: actions/download-artifact@v4
+        with:
+          name: launchermodular-appimage
+          path: desktop-artifacts
+
+      - name: Build RPM in the Mageia container
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/src:ro" \
+            -v "$GITHUB_WORKSPACE/desktop-artifacts:/out" \
+            mageia:10 \
+            bash -c 'dnf install -y rpm-build tar gzip && sh /src/packaging/desktop/build-rpm.sh /src /out'
+
+      - name: Upload RPM
+        uses: actions/upload-artifact@v4
+        with:
+          name: launchermodular-rpm
+          path: desktop-artifacts/*.rpm
           if-no-files-found: error

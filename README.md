@@ -93,12 +93,13 @@ docker pull clickable/amd64-20.04-amd64:latest
 
 ## Building the desktop packages (.deb, AppImage and RPM)
 
-The desktop packages are built inside the Clickable SDK container (Ubuntu
-24.04, Qt 5.15); you only need Docker, not the Qt development packages on
-your machine. The build recipes live in `packaging/desktop/` and are run by
-the "Desktop Build" GitHub workflow (`.github/workflows/desktop.yml`), which
-uploads the results as CI artifacts. See `docs/PACKAGING_DESKTOP.md` for the
-full study and `docs/PACKAGING_WORKLOG.md` for the tested recipes.
+The `.deb` and AppImage are built inside the Clickable SDK container (Ubuntu
+24.04, Qt 5.15); the RPM is built in a Mageia container from the AppImage. You
+only need Docker, not the Qt development packages on your machine. The build
+recipes live in `packaging/desktop/` and are run by the "Desktop Build" GitHub
+workflow (`.github/workflows/desktop.yml`), which uploads the results as CI
+artifacts. See `docs/PACKAGING_DESKTOP.md` for the full study and
+`docs/PACKAGING_WORKLOG.md` for the tested recipes.
 
 From the repository root:
 
