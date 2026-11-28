@@ -104,6 +104,13 @@ Item {
         }
     }
 
+    // Encode each path segment: file names often contain spaces or accents,
+    // and Qt.openUrlExternally needs a valid URL.
+    function openVideo(path) {
+        var encoded = path.split("/").map(encodeURIComponent).join("/")
+        Qt.openUrlExternally((Platform.isTouch ? "video://" : "file://") + encoded)
+    }
+
     function searchVideo(term) {
         if (DEBUG_MODE) console.log("searchVideo with term:" + term)
         searchTerm = term
@@ -278,7 +285,7 @@ Item {
                                     // opens its media player. A desktop has no
                                     // such handler: use file:// so xdg-open
                                     // starts the default video player.
-                                    Qt.openUrlExternally((Platform.isTouch ? "video://" : "file://") + model.filePath)
+                                    openVideo(model.filePath)
                                 } else {
                                     searchTerm = ""
                                     videoFileModel.folder = model.filePath

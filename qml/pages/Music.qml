@@ -213,7 +213,14 @@ Item {
             musicFileModel.folder = aFolder;
         } else {
             initialParsingDone = true;
+            // When the root is already the current folder, setting it again
+            // does not emit a status change: fill the visible model here.
+            // Otherwise the Ready handler does it once the root is reloaded.
+            var rootUrl = "file://" + rootMusic.replace(/\/+$/, "")
+            var currentUrl = String(musicFileModel.folder).replace(/\/+$/, "")
             musicFileModel.folder = rootMusic;
+            if (currentUrl === rootUrl)
+                initSearchModel();
             if (DEBUG_MODE) console.log("searching model complet")
         }
     }

@@ -282,7 +282,13 @@ Rectangle {
         copyIndex++
         currentCacheFile = cachedPath
 
-        audioPlayer.source = cachedPath
+        if (cachedPath.length === 0) {
+            console.log("MusicPlayer: could not cache", path)
+            return
+        }
+        // QMediaPlayer expects a URL; a bare absolute path is not always
+        // resolved on a desktop GStreamer backend.
+        audioPlayer.source = "file://" + cachedPath
         if (autoPlay) audioPlayer.play()
 
         currentIndex = index
@@ -400,7 +406,8 @@ Rectangle {
         var filename = sourcePath.split("/").pop()
         var cachedName = index + "_" + sanitizeName(filename)
         var destPath = tempCacheDir + cachedName
-        Terminalaccess.copyFile(sourcePath, destPath)
+        if (!Terminalaccess.copyFile(sourcePath, destPath))
+            return ""
         return destPath
     }
 

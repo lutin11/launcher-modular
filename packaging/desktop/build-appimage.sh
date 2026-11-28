@@ -116,7 +116,12 @@ for f in "$APPDIR"/usr/lib/libgstreamer-1.0.so* \
          "$APPDIR"/usr/lib/libglib-2.0.so* \
          "$APPDIR"/usr/lib/libgobject-2.0.so* \
          "$APPDIR"/usr/lib/libgio-2.0.so* \
-         "$APPDIR"/usr/lib/libgmodule-2.0.so*; do
+         "$APPDIR"/usr/lib/libgmodule-2.0.so* \
+         "$APPDIR"/usr/lib/libmount.so* \
+         "$APPDIR"/usr/lib/libblkid.so* \
+         "$APPDIR"/usr/lib/libselinux.so* \
+         "$APPDIR"/usr/lib/libcrypto.so* \
+         "$APPDIR"/usr/lib/libssl.so*; do
     [ -e "$f" ] && rm -f "$f"
 done
 
