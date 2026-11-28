@@ -488,6 +488,12 @@ Item {
                                 toggleSelection(model.filePath, model.fileName)
                             }
                     }
+                    // Double click (double tap) starts the track directly,
+                    // without having to add it to the playlist and press play.
+                    onDoubleClicked: {
+                        if (!fileIsDir)
+                            musicPlayer.playTrack(model.filePath, model.fileName)
+                    }
                 }
             } // Item
         }// delegate Rectangle

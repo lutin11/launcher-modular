@@ -124,6 +124,12 @@ public:
     // live in a fixed pablet path that does not exist on a desktop.
     Q_INVOKABLE QString picturesLocation() const;
 
+    // Opens a URL with the desktop's default handler. On Linux this uses
+    // "gio open": xdg-open goes through kde-open on KDE, which fails to pass a
+    // local video file to the configured player. Ubuntu Touch keeps using the
+    // Lomiri URL handlers from QML.
+    Q_INVOKABLE bool openExternally(const QString &url);
+
 signals:
     void capabilitiesChanged();
 

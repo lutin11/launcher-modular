@@ -108,7 +108,11 @@ Item {
     // and Qt.openUrlExternally needs a valid URL.
     function openVideo(path) {
         var encoded = path.split("/").map(encodeURIComponent).join("/")
-        Qt.openUrlExternally((Platform.isTouch ? "video://" : "file://") + encoded)
+        var url = (Platform.isTouch ? "video://" : "file://") + encoded
+        if (Platform.isTouch)
+            Qt.openUrlExternally(url)
+        else
+            Platform.openExternally(url)
     }
 
     function searchVideo(term) {

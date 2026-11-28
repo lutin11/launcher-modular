@@ -6,6 +6,9 @@
 #include <QDir>
 #include <QFile>
 #include <QProcessEnvironment>
+#include <QProcess>
+#include <QDesktopServices>
+#include <QUrl>
 #include <QStandardPaths>
 
 namespace {
@@ -244,6 +247,22 @@ bool Platform::hasAccountsService()
             interface && interface->isServiceRegistered(QStringLiteral("org.freedesktop.Accounts")).value();
     }
     return m_hasAccountsService;
+}
+
+bool Platform::openExternally(const QString &url)
+{
+    if (url.isEmpty())
+        return false;
+
+    const QString gio = QStandardPaths::findExecutable(QStringLiteral("gio"));
+    if (!gio.isEmpty()) {
+        QProcess process;
+        process.setProgram(gio);
+        process.setArguments({QStringLiteral("open"), url});
+        if (process.startDetached())
+            return true;
+    }
+    return QDesktopServices::openUrl(QUrl(url));
 }
 
 QString Platform::picturesLocation() const

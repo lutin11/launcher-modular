@@ -208,6 +208,24 @@ Rectangle {
         }
     }
 
+    // Play a track immediately (double click in the music list): add it to
+    // the playlist if needed, then load it with autoPlay.
+    function playTrack(filePath, fileName) {
+        var index = -1
+        for (var i = 0; i < playlist.length; i++) {
+            if (playlist[i].path === filePath) {
+                index = i
+                break
+            }
+        }
+        if (index === -1) {
+            addToPlaylist(filePath, fileName)
+            index = playlist.length - 1
+        }
+        if (index >= 0)
+            loadTrack(index, true)
+    }
+
     function addToPlaylist(filePath, fileName) {
         var newPlaylist = playlist.slice()
         newPlaylist.push({path: filePath, name: fileName})

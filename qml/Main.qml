@@ -507,7 +507,16 @@ MainView {
                                     var distance = Math.abs(index - view.currentIndex)
                                     return Math.min(distance, total - distance)
                                 }
-                                active: displayDistance <= 1
+                                // The Music page owns the running Audio
+                                // object: keep it alive when another page is
+                                // shown, otherwise leaving the page destroys
+                                // the player and stops the music.
+                                readonly property bool keepAlive: {
+                                    if (realIndex < 0 || realIndex >= launchermodular.pageModel.count)
+                                        return false
+                                    return launchermodular.pageModel.get(realIndex).name === "Music.qml"
+                                }
+                                active: displayDistance <= 1 || keepAlive
                                 visible: index === view.currentIndex
                                 onLoaded: {
                                     if (item) {
