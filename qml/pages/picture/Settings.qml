@@ -7,6 +7,7 @@ import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
 import QtQuick.Layouts 1.12
 import MySettings 1.0
+import "../../components"
 
 Page {
     id: picturePageSettingsPicture
@@ -62,56 +63,38 @@ Page {
                 }
 
                 // --- Image folder path ---
-                Row {
+                Label {
+                    text: i18n.tr("Image folder path:")
+                    color: "#FFFFFF"
                     width: parent.width
-                    height: units.gu(4)
-                    spacing: units.gu(2)
-
-                    Label {
-                        text: i18n.tr("Image folder path:")
-                        color: "#FFFFFF"
-                        anchors.verticalCenter: parent.verticalCenter
-                        elide: Text.ElideRight
-                        font.weight: Font.Light
-                    }
+                    font.pixelSize: units.gu(1.4)
                 }
 
-                // --- Path selection bar ---
-                Rectangle {
-                    id: searchBar
+                Row {
                     width: parent.width
-                    height: units.gu(5)
-                    color: Theme.name.indexOf("Dark") !== -1 ? "#111111" : "white"
-                    radius: 5
+                    height: units.gu(4.5)
+                    spacing: units.gu(1)
 
-                    Row {
-                        anchors.fill: parent
-                        anchors.margins: units.gu(1)
-                        spacing: units.gu(1)
+                    LauncherTextField {
+                        id: imageManualPath
+                        width: parent.width - iconSearch.width - units.gu(1)
+                        height: parent.height
+                        text: launchermodular.settings.folderImage
+                        onTextChanged: launchermodular.settings.folderImage = text
+                    }
 
-                        TextField {
-                            id: imageManualPath
-                            text: launchermodular.settings.folderImage
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: parent.width - iconSearch.width - units.gu(1)
-                            verticalAlignment: Text.AlignVCenter
-                            onTextChanged: launchermodular.settings.folderImage = text
-                        }
-
-                        Icon {
-                            id: iconSearch
-                            anchors.verticalCenter: parent.verticalCenter
-                            height: parent.height
-                            width: height
-                            name: "find"
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: pageStack.push(Qt.resolvedUrl("SelectFolderPage.qml"), {
-                                    settingName: "folderImage",
-                                    rootPath: MySettings.getHomeLocation(),
-                                    startPath: launchermodular.settings.folderImage
-                                })
-                            }
+                    Icon {
+                        id: iconSearch
+                        height: parent.height
+                        width: height
+                        name: "find"
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: pageStack.push(Qt.resolvedUrl("SelectFolderPage.qml"), {
+                                settingName: "folderImage",
+                                rootPath: MySettings.getHomeLocation(),
+                                startPath: launchermodular.settings.folderImage
+                            })
                         }
                     }
                 }

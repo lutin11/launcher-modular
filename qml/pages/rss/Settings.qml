@@ -5,6 +5,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import MySettings 1.0
 import NetworkHelper 1.0
+import "../../components"
 
 
 Page {
@@ -100,7 +101,7 @@ Page {
                         }
                     }
 
-                    TextField {
+                    LauncherTextField {
                         id: rssField
                         anchors {
                             left: iconRss.right

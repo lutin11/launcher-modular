@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.2 as QControls
 import Lomiri.Components 1.3
 import "."
+import "../../components"
 
 // Settings of one "Nextcloud calendar" page.
 //
@@ -547,7 +548,7 @@ Page {
                                 width: parent.width
                                 height: units.gu(4)
 
-                                QControls.TextField {
+                                LauncherTextField {
                                     id: serverUrlField
                                     anchors.left: parent.left
                                     anchors.right: pasteUrlButton.left
@@ -595,7 +596,7 @@ Page {
                                 width: parent.width
                                 height: units.gu(4)
 
-                                QControls.TextField {
+                                LauncherTextField {
                                     id: usernameField
                                     anchors.left: parent.left
                                     anchors.right: pasteUserButton.left
@@ -642,7 +643,7 @@ Page {
                                 width: parent.width
                                 height: units.gu(4)
 
-                                QControls.TextField {
+                                LauncherTextField {
                                     id: appPasswordField
                                     anchors.left: parent.left
                                     anchors.right: pastePasswordButton.left

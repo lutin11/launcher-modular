@@ -6,6 +6,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItemHeader
 import Lomiri.Components.Themes 1.3
 import QtQuick.Layouts 1.12
+import "../../components"
 
 // Settings of one "Nextcloud folders" page.
 //
@@ -167,7 +168,7 @@ Page {
                         text: i18n.tr("Server URL")
                         color: "#FFFFFF"
                     }
-                    TextField {
+                    LauncherTextField {
                         id: serverUrlField
                         width: parent.width
                         placeholderText: "https://cloud.example.com"
@@ -184,7 +185,7 @@ Page {
                         text: i18n.tr("Username")
                         color: "#FFFFFF"
                     }
-                    TextField {
+                    LauncherTextField {
                         id: usernameField
                         width: parent.width
                         inputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase
@@ -200,7 +201,7 @@ Page {
                         text: i18n.tr("App password")
                         color: "#FFFFFF"
                     }
-                    TextField {
+                    LauncherTextField {
                         id: appPasswordField
                         width: parent.width
                         echoMode: TextInput.Password
@@ -223,7 +224,7 @@ Page {
                         text: i18n.tr("Starting folder")
                         color: "#FFFFFF"
                     }
-                    TextField {
+                    LauncherTextField {
                         id: basePathField
                         width: parent.width
                         placeholderText: "/"

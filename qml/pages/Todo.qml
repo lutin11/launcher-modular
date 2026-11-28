@@ -3,6 +3,7 @@ import Lomiri.Components 1.3
 import QtQuick.Controls 2.2
 import "todo"
 import Qt.labs.settings 1.0
+import "../components"
 
 Item {
     id: todoPage
@@ -58,7 +59,7 @@ Item {
                 }
             }
 
-            TextField {
+            LauncherTextField {
                 id: todoField
                 focus: false
                 anchors {

@@ -6,6 +6,7 @@ import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import QtOrganizer 5.0
+import "../../components"
 
 Page {
     id: pageSettingsCalendar
@@ -115,7 +116,7 @@ Page {
                         anchors.right: parent.right
                         spacing: units.gu(2)
 
-                        TextField {
+                        LauncherTextField {
                             objectName: "textfield_standard"
                             placeholderText: i18n.tr("By default 60 days")
                             width: parent.width

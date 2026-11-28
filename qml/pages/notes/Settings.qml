@@ -5,6 +5,7 @@ import QtQuick.Controls 2.2 as QControls
 import Lomiri.Components 1.3
 import Lomiri.Components.Popups 1.3
 import "."
+import "../../components"
 
 Page {
     id: pageSettingsNotes
@@ -266,7 +267,7 @@ Page {
                             font.pixelSize: units.gu(1.4)
                         }
 
-                        QControls.TextField {
+                        LauncherTextField {
                             id: syncFolderField
                             width: parent.width
                             placeholderText: "Notes"

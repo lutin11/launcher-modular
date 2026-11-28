@@ -8,6 +8,7 @@ import MySettings 1.0
 import Platform 1.0
 
 import QtQuick.Controls 2.2
+import "../components"
 
 Item {
     id: videos
@@ -166,7 +167,7 @@ Item {
             }
         }
 
-        TextField {
+        LauncherTextField {
             id: searchField
             focus: false
             anchors {

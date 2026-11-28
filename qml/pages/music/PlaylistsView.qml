@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import Lomiri.Components 1.3
 import QtQuick.Controls 2.2
+import "../../components"
 
 Item {
     id: playlistsView
@@ -62,7 +63,7 @@ Item {
                 }
             }
 
-            TextField {
+            LauncherTextField {
                 id: playlistField
                 focus: false
                 anchors {

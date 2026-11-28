@@ -5,6 +5,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
 import Lomiri.Components.Themes 1.3
 import MySettings 1.0
+import "../../components"
 
 Page {
     id: videoSettingsPicture
@@ -55,48 +56,38 @@ Page {
                 Label {
                     text: i18n.tr("Video folder path:")
                     color: "#FFFFFF"
-                    anchors.left: parent.left
-                    anchors.leftMargin: units.gu(2)
-                    font.weight: Font.Light
+                    width: settingsColumn.width - units.gu(4)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.pixelSize: units.gu(1.4)
                 }
 
-                Rectangle {
-                    id: videoFolderBar
-                    width: parent.width - units.gu(4)
-                    height: units.gu(5)
+                Row {
+                    width: settingsColumn.width - units.gu(4)
+                    height: units.gu(4.5)
                     anchors.horizontalCenter: parent.horizontalCenter
-                    color: Theme.name.indexOf("Dark") !== -1 ? "#111111" : "white"
-                    radius: 5
+                    spacing: units.gu(1)
 
-                    Row {
-                        anchors.fill: parent
-                        anchors.margins: units.gu(1)
-                        spacing: units.gu(1)
+                    LauncherTextField {
+                        id: videoFolderField
+                        width: parent.width - iconVideoFolder.width - units.gu(1)
+                        height: parent.height
+                        placeholderText: i18n.tr("Folder containing the videos")
+                        text: launchermodular.settings.folderVideo
+                        onTextChanged: launchermodular.settings.folderVideo = text
+                    }
 
-                        TextField {
-                            id: videoFolderField
-                            anchors.verticalCenter: parent.verticalCenter
-                            width: parent.width - iconVideoFolder.width - units.gu(1)
-                            verticalAlignment: Text.AlignVCenter
-                            placeholderText: i18n.tr("Folder containing the videos")
-                            text: launchermodular.settings.folderVideo
-                            onTextChanged: launchermodular.settings.folderVideo = text
-                        }
-
-                        Icon {
-                            id: iconVideoFolder
-                            anchors.verticalCenter: parent.verticalCenter
-                            height: parent.height
-                            width: height
-                            name: "find"
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: pageStack.push(Qt.resolvedUrl("../picture/SelectFolderPage.qml"), {
-                                    settingName: "folderVideo",
-                                    rootPath: MySettings.getHomeLocation(),
-                                    startPath: launchermodular.settings.folderVideo
-                                })
-                            }
+                    Icon {
+                        id: iconVideoFolder
+                        height: parent.height
+                        width: height
+                        name: "find"
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: pageStack.push(Qt.resolvedUrl("../picture/SelectFolderPage.qml"), {
+                                settingName: "folderVideo",
+                                rootPath: MySettings.getHomeLocation(),
+                                startPath: launchermodular.settings.folderVideo
+                            })
                         }
                     }
                 }

@@ -4,5 +4,6 @@ Exec=launchermodular
 Icon=assets/logo.svg
 Terminal=false
 Type=Application
+StartupWMClass=launchermodular.lut11
 X-Lomiri-Touch=true
 X-Lomiri-Single-Instance=true

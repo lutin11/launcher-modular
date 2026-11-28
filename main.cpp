@@ -90,6 +90,11 @@ int main(int argc, char *argv[])
     const bool touchSession = !qEnvironmentVariableIsEmpty("APP_ID")
             || QFile::exists(QStringLiteral("/etc/ubports/version"));
 
+    // Desktop environments match the window to its launcher entry by this
+    // name. The click package keeps its own desktop file.
+    if (!touchSession)
+        QGuiApplication::setDesktopFileName(QStringLiteral("LauncherModular"));
+
     // QtMultimedia's GStreamer backend creates a Wayland video sink for every
     // media player, even on X11. Without a compositor each creation waits for
     // its state change (about five seconds), and Home loads the music player at

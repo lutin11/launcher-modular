@@ -60,6 +60,10 @@ if(DESKTOP_INSTALL)
     set(DESKTOP_FILE_DIR "share/applications")
     set(APP_DATA_PATH "${CMAKE_INSTALL_PREFIX}/${DATA_DIR}")
     set(APP_IMPORT_PATH "${CMAKE_INSTALL_PREFIX}/lib/${ARCH_TRIPLET}/${PROJECT_NAME}")
+    # The desktop entry is named after the application for the desktop
+    # environments (and QGuiApplication::setDesktopFileName in main.cpp); the
+    # click package keeps the historical lower-case name.
+    set(DESKTOP_INSTALL_NAME "LauncherModular.desktop")
 else()
     set(CMAKE_INSTALL_PREFIX /)
     set(BIN_DIR /)
@@ -68,6 +72,7 @@ else()
     set(DESKTOP_FILE_DIR /)
     set(APP_DATA_PATH "/")
     set(APP_IMPORT_PATH "/lib/${ARCH_TRIPLET}")
+    set(DESKTOP_INSTALL_NAME ${DESKTOP_FILE_NAME})
 endif()
 
 # The click package metadata: manifest, AppArmor profile and content hub
@@ -139,6 +144,10 @@ if(DESKTOP_INSTALL)
                 -DDESKTOP_FILE=${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME}
                 -DICON_NAME=${PROJECT_NAME}
                 -P ${CMAKE_SOURCE_DIR}/cmake/SetDesktopIcon.cmake)
+    list(APPEND DESKTOP_POST_COMMANDS
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME}
+                ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_INSTALL_NAME})
 endif()
 
 add_custom_target(${DESKTOP_FILE_NAME} ALL
@@ -148,7 +157,7 @@ add_custom_target(${DESKTOP_FILE_NAME} ALL
     ${DESKTOP_POST_COMMANDS}
 )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME} DESTINATION ${DESKTOP_FILE_DIR})
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_INSTALL_NAME} DESTINATION ${DESKTOP_FILE_DIR})
 if(DESKTOP_INSTALL)
     # hicolor is the standard location, pixmaps is found without an icon cache
     # having been refreshed, which a package built without debhelper cannot do.
@@ -238,7 +247,7 @@ if(DESKTOP_INSTALL)
     # in Ubuntu 24.04 (apt-cache policy). These are the imports the application
     # cannot start without, Lomiri.Components being loaded by Main.qml itself.
     set(CPACK_DEBIAN_PACKAGE_DEPENDS
-        "qml-module-lomiri-components, qml-module-qtquick2, qml-module-qtquick-window2, qml-module-qtquick-controls2, qml-module-qtquick-templates2, qml-module-qtquick-layouts, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings, qml-module-qtgraphicaleffects, qml-module-qtqml-models2, qml-module-qtmultimedia, qml-module-qtsensors, qml-module-qtsysteminfo, qml-module-qtquick-localstorage, qml-module-lomiri-thumbnailer, qml-module-lomiri-content, qml-module-lomiri-downloadmanager, qml-module-lomiri-connectivity, qml-module-lomiri-history, qml-module-u1db, qml-module-qtcontacts, qml-module-qtorganizer, libqt5multimedia5-plugins, libglib2.0-bin, gstreamer1.0-plugins-good, gstreamer1.0-libav")
+        "qml-module-lomiri-components, qml-module-qtquick2, qml-module-qtquick-window2, qml-module-qtquick-controls2, qml-module-qtquick-templates2, qml-module-qtquick-layouts, qml-module-qtquick-xmllistmodel, qml-module-qt-labs-folderlistmodel, qml-module-qt-labs-settings, qml-module-qtgraphicaleffects, qml-module-qtqml-models2, qml-module-qtmultimedia, qml-module-qtsensors, qml-module-qtsysteminfo, qml-module-qtquick-localstorage, qml-module-lomiri-thumbnailer, qml-module-lomiri-content, qml-module-lomiri-downloadmanager, qml-module-lomiri-connectivity, qml-module-lomiri-history, qml-module-u1db, qml-module-qtcontacts, qml-module-qtorganizer, libqt5multimedia5-plugins, libglib2.0-bin, qt5-image-formats-plugins, gstreamer1.0-plugins-good, gstreamer1.0-libav")
     # The built-in pages must all be functional out of the box: their QML
     # modules, the media service and the codecs are hard dependencies. The
     # per-page detection in PageRequirements.js remains as a safety net for

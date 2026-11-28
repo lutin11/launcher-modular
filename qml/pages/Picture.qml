@@ -133,7 +133,8 @@ Item {
 
         FolderListModel {
             id: folderModel
-            nameFilters: ["*.png", "*.jpg", "*.jpeg"]
+            nameFilters: ["*.png", "*.jpg", "*.jpeg", "*.webp",
+                          "*.PNG", "*.JPG", "*.JPEG", "*.WEBP"]
             folder: launchermodular.settings.folderImage
             showDirs: false
             sortReversed: launchermodular.settings.reverseImagesSort

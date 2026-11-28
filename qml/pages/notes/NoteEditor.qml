@@ -4,6 +4,7 @@ import Lomiri.Components 1.3
 import Lomiri.Components.Popups 1.3
 import "."
 import "markdown.js" as Markdown
+import "../../components"
 
 // Editor of a note.
 //
@@ -148,7 +149,7 @@ Page {
             }
         }
 
-        QControls.TextField {
+        LauncherTextField {
             id: titleField
             anchors {
                 left: backButton.right
@@ -297,8 +298,9 @@ Page {
         contentHeight: bodyField.height
         clip: true
 
-        QControls.TextArea {
+        LauncherTextArea {
             id: bodyField
+            flat: true
             width: editArea.width
             // implicitHeight depends on the width and the text, never on the
             // height: binding the height to contentHeight made a binding loop.

@@ -46,7 +46,7 @@ Page {
 
                 ListItem.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show analog clock with digits")+"</font>"
+                    text: i18n.tr("Show analog clock with digits")
                     control: Switch {
                         id: backgroundHoursSwitch
                         checked: if (launchermodular.settings.backgroundAnalogHours == "num"){ true; }else{ false;}

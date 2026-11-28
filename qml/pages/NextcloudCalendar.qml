@@ -4,6 +4,7 @@ import QtQuick.Controls 2.2 as QControls
 import Lomiri.Components.Popups 1.3
 import Lomiri.Components.Themes 1.3
 import "nextcloudcalendar"
+import "../components"
 
 // Calendar of the Nextcloud account: day, week, month and year views, with
 // creation, modification and deletion of events through CalDAV.
@@ -1112,21 +1113,21 @@ Item {
                     width: parent.width
                     spacing: units.gu(0.6)
 
-                    QControls.TextField {
+                    LauncherTextField {
                         id: summaryField
                         width: parent.width
                         placeholderText: i18n.tr("Title")
                         text: calendarPage.eventSummary
                         onTextChanged: calendarPage.eventSummary = text
                     }
-                    QControls.TextField {
+                    LauncherTextField {
                         id: locationField
                         width: parent.width
                         placeholderText: i18n.tr("Location")
                         text: calendarPage.eventLocation
                         onTextChanged: calendarPage.eventLocation = text
                     }
-                    QControls.TextArea {
+                    LauncherTextArea {
                         id: descriptionField
                         width: parent.width
                         height: units.gu(8)
@@ -1145,7 +1146,7 @@ Item {
                             text: calendarPage.displayDate(calendarPage.eventStartDate)
                             onClicked: calendarPage.openDatePicker("start")
                         }
-                        QControls.TextField {
+                        LauncherTextField {
                             width: units.gu(7)
                             placeholderText: i18n.tr("Time")
                             text: calendarPage.eventStartTime
@@ -1166,7 +1167,7 @@ Item {
                             text: calendarPage.displayDate(calendarPage.eventEndDate)
                             onClicked: calendarPage.openDatePicker("end")
                         }
-                        QControls.TextField {
+                        LauncherTextField {
                             width: units.gu(7)
                             placeholderText: i18n.tr("Time")
                             text: calendarPage.eventEndTime

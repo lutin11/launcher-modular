@@ -89,7 +89,7 @@ fi
 # AppDir root: the desktop file installed under usr/share/applications is
 # already themed (cmake/SetDesktopIcon.cmake) and valid for packagers.
 cp assets/logo.svg "$APPDIR/launchermodular.svg"
-cp "$APPDIR/usr/share/applications/launchermodular.desktop" "$APPDIR/launchermodular.desktop"
+cp "$APPDIR/usr/share/applications/LauncherModular.desktop" "$APPDIR/LauncherModular.desktop"
 
 # The tools may sit on a read-only mount (/tools in CI): copy them to the
 # writable workspace before chmod.
@@ -101,7 +101,7 @@ chmod +x "$TOOLS_WORK"/*.AppImage
 "$TOOLS_WORK/linuxdeploy-x86_64.AppImage" \
     --appdir="$APPDIR" \
     --plugin=qt \
-    --desktop-file="$APPDIR/launchermodular.desktop" \
+    --desktop-file="$APPDIR/LauncherModular.desktop" \
     --icon-file="$APPDIR/launchermodular.svg" \
     --custom-apprun="$SRC/packaging/desktop/AppRun"
 

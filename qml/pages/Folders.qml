@@ -8,6 +8,7 @@ import MySettings 1.0
 
 import QtQuick.Controls 2.2
 import Lomiri.Content 1.3
+import "../components"
 
 Item {
     id: lomiriFolders
@@ -622,7 +623,7 @@ Item {
             }
         }
 
-        TextField {
+        LauncherTextField {
             id: searchField
 
             focus: false

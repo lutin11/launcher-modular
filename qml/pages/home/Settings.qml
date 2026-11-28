@@ -143,7 +143,7 @@ Page {
                         height: modelLayout.height + (divider.visible ? divider.height : 0)
                         ListItemLayout {
                             id: modelLayout
-                            title.text: "<font color=\"#ffffff\">"+name+"</font>"
+                            title.text: name
                             LomiriShape {
                                 source: Image {
                                     id: screenshotAppFavorite
@@ -189,8 +189,8 @@ Page {
                 }
 
                 property var iconStyleModel: [
-                { title: "<font color=\"#ffffff\">"+i18n.tr("None")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Unstyled icons")+"</font>", style:"none" },
-                { title: "<font color=\"#ffffff\">"+i18n.tr("Rounded")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Rounded icons")+"</font>", style:"rounded" }
+                { title: i18n.tr("None"), descr: i18n.tr("Unstyled icons"), style:"none" },
+                { title: i18n.tr("Rounded"), descr: i18n.tr("Rounded icons"), style:"rounded" }
                 ]
 
                 ListItemHeader.ItemSelector {
@@ -226,12 +226,12 @@ Page {
                 }
 
                 property var searchEngineModel: [
-                    { name: "<font color=\"#ffffff\">Duckduckgo</font>", value: "https://duckduckgo.com/?q="},
-                    { name: "<font color=\"#ffffff\">Ecosia</font>", value: "https://www.ecosia.org/search?q="},
-                    { name: "<font color=\"#ffffff\">Qwant</font>", value: "https://www.qwant.com/?q="},
-                    { name: "<font color=\"#ffffff\">Bing</font>", value: "https://www.bing.com/search?q="},
-                    { name: "<font color=\"#ffffff\">Yahoo</font>", value: "https://search.yahoo.com/search?p="},
-                    { name: "<font color=\"#ffffff\">Google</font>", value: "https://www.google.com/search?q="},
+                    { name: "Duckduckgo", value: "https://duckduckgo.com/?q="},
+                    { name: "Ecosia", value: "https://www.ecosia.org/search?q="},
+                    { name: "Qwant", value: "https://www.qwant.com/?q="},
+                    { name: "Bing", value: "https://www.bing.com/search?q="},
+                    { name: "Yahoo", value: "https://search.yahoo.com/search?p="},
+                    { name: "Google", value: "https://www.google.com/search?q="},
                 ]
 
                 ListItemHeader.ItemSelector {
@@ -275,7 +275,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show clock")+"</font>"
+                    text: i18n.tr("Show clock")
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleClock
                         onClicked: launchermodular.settings.widgetVisibleClock = !launchermodular.settings.widgetVisibleClock
@@ -284,7 +284,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show weather")+"</font>"
+                    text: i18n.tr("Show weather")
                     control: Switch {
                         checked:
                         launchermodular.settings.widgetVisibleWeather
@@ -294,7 +294,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show alarms")+"</font>"
+                    text: i18n.tr("Show alarms")
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleAlarm
                         onClicked: launchermodular.settings.widgetVisibleAlarm = !launchermodular.settings.widgetVisibleAlarm
@@ -303,7 +303,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last calls")+"</font>"
+                    text: i18n.tr("Show last calls")
                     // The widget needs Lomiri.History and Lomiri.Contacts: without
                     // them offering the option would be pointless.
                     visible: Platform.hasHistoryModule && Platform.hasContactsModule
@@ -315,7 +315,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last message")+"</font>"
+                    text: i18n.tr("Show last message")
                     visible: Platform.hasHistoryModule && Platform.hasContactsModule
                     control: Switch {
                         checked: launchermodular.settings.widgetVisibleLastmessage
@@ -325,7 +325,7 @@ Page {
 
                 ListItemHeader.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Show last events")+"</font>"
+                    text: i18n.tr("Show last events")
                     // The widget needs QtOrganizer; the Nextcloud events are
                     // listed even without a system calendar provider.
                     visible: Platform.hasOrganizerModule

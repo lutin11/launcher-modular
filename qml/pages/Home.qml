@@ -14,6 +14,7 @@ import Platform 1.0
 import Lomiri.Components.ListItems 1.3 as ListItem
 import Lomiri.Components.Themes 1.3
 import "./music/"
+import "../components"
 
 Item {
     id: home
@@ -25,7 +26,7 @@ Item {
             title: "Authentification needed"
             width: parent.width
 
-            TextField {
+            LauncherTextField {
                 id:inp
                 placeholderText: "Enter password (by defaut : phablet)"
                 echoMode: TextInput.Password
@@ -264,7 +265,7 @@ Item {
                         }
                     }
                 }
-                TextField {
+                LauncherTextField {
                     id: searchField
                     focus: false
                     anchors {

@@ -5,6 +5,7 @@ import QtGraphicalEffects 1.12
 import Qt.labs.settings 1.0
 import Lomiri.Components 1.3
 import Lomiri.Components.ListItems 1.3 as ListItem
+import "../../components"
 
     
 Page {
@@ -78,7 +79,7 @@ Page {
                         anchors.leftMargin: units.gu(2)
                         anchors.right: parent.right
                         spacing: units.gu(2)
-                        TextField {
+                        LauncherTextField {
                             objectName: "textfield_standard"
                             placeholderText: i18n.tr("By default 1")
                             width: parent.width
@@ -91,7 +92,7 @@ Page {
 
                 ListItem.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("View a summary")+"</font>"
+                    text: i18n.tr("View a summary")
                     control: Switch {
                         checked: launchermodular.settings.widgetMessageSummary
                         onClicked: if (launchermodular.settings.widgetMessageSummary == false) {
@@ -104,7 +105,7 @@ Page {
 
                 ListItem.Standard {
                     showDivider: false
-                    text: "<font color=\"#ffffff\">"+i18n.tr("Filter on received messages")+"</font>"
+                    text: i18n.tr("Filter on received messages")
                     control: Switch {
                         checked: launchermodular.settings.widgetMessageFilterOnReceivedMessages
                         onClicked: if (launchermodular.settings.widgetMessageFilterOnReceivedMessages == false) {
@@ -116,8 +117,8 @@ Page {
                 }
 
                 property var model: [
-                  { title: "<font color=\"#ffffff\">"+i18n.tr("Default")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the application")+"</font>", style:"default" },
-                  { title: "<font color=\"#ffffff\">"+i18n.tr("Open Message")+"</font>", descr: "<font color=\"#ffffff\">"+i18n.tr("Open the application with message")+"</font>", style:"message" }
+                  { title: i18n.tr("Default"), descr: i18n.tr("Open the application"), style:"default" },
+                  { title: i18n.tr("Open Message"), descr: i18n.tr("Open the application with message"), style:"message" }
                 ]
 
                 ListItem.ItemSelector {
